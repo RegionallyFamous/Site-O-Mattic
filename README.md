@@ -15,7 +15,15 @@ The repo currently includes Blueprints for GreenStripe Lawn Care and BrightJet E
 ```bash
 npm run render-brand
 npm run build
-npm run validate
+npm run quality
+```
+
+`npm run quality` runs Blueprint validation, the polish report, the production host build, and lint. The polish report checks the token stack, block-level styles, focus states, contrast pairs, anchors, component polish classes, and logo metadata.
+
+For a local Playground visual smoke test, start the Playground CLI for a Blueprint and run:
+
+```bash
+npm run blueprint:visual -- http://127.0.0.1:<port>
 ```
 
 The generated Blueprint files are written to:

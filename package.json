@@ -17,7 +17,10 @@
     "blueprint:build:pressure": "node src/build-blueprint.mjs specs/pressure-washing-service.json",
     "blueprint:build": "npm run blueprint:build:lawn && npm run blueprint:build:pressure",
     "blueprint:validate": "node src/validate-blueprint.mjs public/blueprints/lawn-care-service/blueprint.json public/blueprints/pressure-washing-service/blueprint.json",
+    "blueprint:polish": "node src/polish-report.mjs public/blueprints/lawn-care-service/blueprint.json public/blueprints/pressure-washing-service/blueprint.json",
+    "blueprint:visual": "node src/visual-qa.mjs",
     "validate": "npm run blueprint:validate",
+    "quality": "npm run validate && npm run blueprint:polish && npm run site:build && npm run lint",
     "render-brand": "sh scripts/render-brand-assets.sh"
   },
   "dependencies": {
@@ -37,6 +40,7 @@
     "drizzle-kit": "0.31.10",
     "eslint": "9.39.4",
     "eslint-config-next": "16.2.6",
+    "playwright-core": "^1.61.1",
     "react-server-dom-webpack": "19.2.6",
     "tailwindcss": "4.2.1",
     "typescript": "5.9.3",

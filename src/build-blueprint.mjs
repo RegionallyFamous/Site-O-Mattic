@@ -433,8 +433,8 @@ ${proof}
 
 <!-- wp:group {"metadata":{"name":"Quote"},"anchor":"quote","align":"full","backgroundColor":"cream","style":{"spacing":{"padding":{"top":"86px","right":"24px","bottom":"86px","left":"24px"}}},"layout":{"type":"constrained","wideSize":"1000px"}} -->
 <div id="quote" class="wp-block-group alignfull has-cream-background-color has-background" style="padding-top:86px;padding-right:24px;padding-bottom:86px;padding-left:24px">
-<!-- wp:group {"backgroundColor":"deep-green","style":{"border":{"radius":"24px"},"spacing":{"padding":{"top":"54px","right":"38px","bottom":"54px","left":"38px"}}},"layout":{"type":"constrained","contentSize":"760px"}} -->
-<div class="wp-block-group has-deep-green-background-color has-background" style="border-radius:24px;padding-top:54px;padding-right:38px;padding-bottom:54px;padding-left:38px">
+<!-- wp:group {"className":"som-quote-card","backgroundColor":"deep-green","style":{"border":{"radius":"24px"},"spacing":{"padding":{"top":"54px","right":"38px","bottom":"54px","left":"38px"}}},"layout":{"type":"constrained","contentSize":"760px"}} -->
+<div class="wp-block-group som-quote-card has-deep-green-background-color has-background" style="border-radius:24px;padding-top:54px;padding-right:38px;padding-bottom:54px;padding-left:38px">
 <!-- wp:heading {"textAlign":"center","level":2,"textColor":"white","style":{"typography":{"fontSize":"clamp(36px, 6vw, 68px)","lineHeight":"1","fontStyle":"normal","fontWeight":"900"},"spacing":{"margin":{"bottom":"18px"}}}} -->
 <h2 class="wp-block-heading has-text-align-center has-white-color has-text-color" style="margin-bottom:18px;font-size:clamp(36px, 6vw, 68px);font-style:normal;font-weight:900;line-height:1">${esc(copy.quoteTitle)}</h2>
 <!-- /wp:heading -->
@@ -458,8 +458,8 @@ ${proof}
 
 <!-- wp:group {"align":"full","backgroundColor":"deep-green","style":{"spacing":{"padding":{"top":"32px","right":"24px","bottom":"32px","left":"24px"}}},"layout":{"type":"constrained","wideSize":"1180px"}} -->
 <div class="wp-block-group alignfull has-deep-green-background-color has-background" style="padding-top:32px;padding-right:24px;padding-bottom:32px;padding-left:24px">
-<!-- wp:group {"align":"wide","layout":{"type":"flex","flexWrap":"wrap","justifyContent":"space-between","verticalAlignment":"center"}} -->
-<div class="wp-block-group alignwide">
+<!-- wp:group {"align":"wide","className":"som-footer","layout":{"type":"flex","flexWrap":"wrap","justifyContent":"space-between","verticalAlignment":"center"}} -->
+<div class="wp-block-group alignwide som-footer">
 <!-- wp:paragraph {"textColor":"white","style":{"typography":{"fontSize":"16px","fontStyle":"normal","fontWeight":"700"}}} -->
 <p class="has-white-color has-text-color" style="font-size:16px;font-style:normal;font-weight:700">${esc(spec.businessName)} - ${esc(spec.tagline)}</p>
 <!-- /wp:paragraph -->
@@ -548,8 +548,8 @@ function buildBeforeAfterQuotePageContent(spec) {
 <!-- /wp:image -->
 <!-- wp:columns {"className":"som-before-after","style":{"spacing":{"blockGap":{"left":"12px"},"margin":{"top":"12px"}}}} -->
 <div class="wp-block-columns som-before-after" style="margin-top:12px">
-<!-- wp:column {"backgroundColor":"deep-green","style":{"border":{"radius":"16px"},"spacing":{"padding":{"top":"18px","right":"20px","bottom":"18px","left":"20px"}}}} -->
-<div class="wp-block-column has-deep-green-background-color has-background" style="border-radius:16px;padding-top:18px;padding-right:20px;padding-bottom:18px;padding-left:20px">
+<!-- wp:column {"className":"som-evidence-card","backgroundColor":"deep-green","style":{"border":{"radius":"16px"},"spacing":{"padding":{"top":"18px","right":"20px","bottom":"18px","left":"20px"}}}} -->
+<div class="wp-block-column som-evidence-card has-deep-green-background-color has-background" style="border-radius:16px;padding-top:18px;padding-right:20px;padding-bottom:18px;padding-left:20px">
 <!-- wp:paragraph {"textColor":"sun","style":{"typography":{"fontSize":"14px","fontStyle":"normal","fontWeight":"900","textTransform":"uppercase","letterSpacing":"0px"}}} -->
 <p class="has-sun-color has-text-color" style="font-size:14px;font-style:normal;font-weight:900;letter-spacing:0px;text-transform:uppercase">Before</p>
 <!-- /wp:paragraph -->
@@ -558,8 +558,8 @@ function buildBeforeAfterQuotePageContent(spec) {
 <!-- /wp:paragraph -->
 </div>
 <!-- /wp:column -->
-<!-- wp:column {"backgroundColor":"leaf","style":{"border":{"radius":"16px"},"spacing":{"padding":{"top":"18px","right":"20px","bottom":"18px","left":"20px"}}}} -->
-<div class="wp-block-column has-leaf-background-color has-background" style="border-radius:16px;padding-top:18px;padding-right:20px;padding-bottom:18px;padding-left:20px">
+<!-- wp:column {"className":"som-evidence-card","backgroundColor":"leaf","style":{"border":{"radius":"16px"},"spacing":{"padding":{"top":"18px","right":"20px","bottom":"18px","left":"20px"}}}} -->
+<div class="wp-block-column som-evidence-card has-leaf-background-color has-background" style="border-radius:16px;padding-top:18px;padding-right:20px;padding-bottom:18px;padding-left:20px">
 <!-- wp:paragraph {"textColor":"deep-green","style":{"typography":{"fontSize":"14px","fontStyle":"normal","fontWeight":"900","textTransform":"uppercase","letterSpacing":"0px"}}} -->
 <p class="has-deep-green-color has-text-color" style="font-size:14px;font-style:normal;font-weight:900;letter-spacing:0px;text-transform:uppercase">After</p>
 <!-- /wp:paragraph -->
@@ -705,8 +705,8 @@ ${proof}
 <!-- wp:separator {"className":"is-style-wide","backgroundColor":"grass","style":{"spacing":{"margin":{"top":"54px","bottom":"28px"}}}} -->
 <hr class="wp-block-separator has-text-color has-grass-color has-alpha-channel-opacity has-grass-background-color has-background is-style-wide" style="margin-top:54px;margin-bottom:28px"/>
 <!-- /wp:separator -->
-<!-- wp:group {"align":"wide","layout":{"type":"flex","flexWrap":"wrap","justifyContent":"space-between","verticalAlignment":"center"}} -->
-<div class="wp-block-group alignwide">
+<!-- wp:group {"align":"wide","className":"som-footer","layout":{"type":"flex","flexWrap":"wrap","justifyContent":"space-between","verticalAlignment":"center"}} -->
+<div class="wp-block-group alignwide som-footer">
 <!-- wp:paragraph {"textColor":"white","style":{"typography":{"fontSize":"16px","fontStyle":"normal","fontWeight":"700"}}} -->
 <p class="has-white-color has-text-color" style="font-size:16px;font-style:normal;font-weight:700">${esc(spec.businessName)} - ${esc(spec.tagline)}</p>
 <!-- /wp:paragraph -->
@@ -722,8 +722,8 @@ ${proof}
 
 function card(title, text) {
   return `
-<!-- wp:column {"backgroundColor":"white","style":{"border":{"radius":"18px"},"spacing":{"padding":{"top":"30px","right":"28px","bottom":"30px","left":"28px"}}}} -->
-<div class="wp-block-column has-white-background-color has-background" style="border-radius:18px;padding-top:30px;padding-right:28px;padding-bottom:30px;padding-left:28px">
+<!-- wp:column {"className":"som-card","backgroundColor":"white","style":{"border":{"radius":"18px"},"spacing":{"padding":{"top":"30px","right":"28px","bottom":"30px","left":"28px"}}}} -->
+<div class="wp-block-column som-card has-white-background-color has-background" style="border-radius:18px;padding-top:30px;padding-right:28px;padding-bottom:30px;padding-left:28px">
 <!-- wp:heading {"level":3,"textColor":"deep-green","style":{"typography":{"fontSize":"28px","lineHeight":"1.1","fontStyle":"normal","fontWeight":"900"},"spacing":{"margin":{"bottom":"14px"}}}} -->
 <h3 class="wp-block-heading has-deep-green-color has-text-color" style="margin-bottom:14px;font-size:28px;font-style:normal;font-weight:900;line-height:1.1">${esc(title)}</h3>
 <!-- /wp:heading -->
@@ -801,8 +801,8 @@ function timelineStep(number, title, text) {
 
 function compactProof(stat, label) {
   return `
-<!-- wp:column {"backgroundColor":"grass","style":{"border":{"radius":"18px"},"spacing":{"padding":{"top":"24px","right":"20px","bottom":"24px","left":"20px"}}}} -->
-<div class="wp-block-column has-grass-background-color has-background" style="border-radius:18px;padding-top:24px;padding-right:20px;padding-bottom:24px;padding-left:20px">
+<!-- wp:column {"className":"som-proof-card","backgroundColor":"grass","style":{"border":{"radius":"18px"},"spacing":{"padding":{"top":"24px","right":"20px","bottom":"24px","left":"20px"}}}} -->
+<div class="wp-block-column som-proof-card has-grass-background-color has-background" style="border-radius:18px;padding-top:24px;padding-right:20px;padding-bottom:24px;padding-left:20px">
 <!-- wp:paragraph {"textColor":"sun","style":{"typography":{"fontSize":"clamp(26px, 4vw, 40px)","lineHeight":"1","fontStyle":"normal","fontWeight":"900"},"spacing":{"margin":{"bottom":"10px"}}}} -->
 <p class="has-sun-color has-text-color" style="margin-bottom:10px;font-size:clamp(26px, 4vw, 40px);font-style:normal;font-weight:900;line-height:1">${esc(stat)}</p>
 <!-- /wp:paragraph -->
@@ -815,8 +815,8 @@ function compactProof(stat, label) {
 
 function processStep(number, title, text) {
   return `
-<!-- wp:column {"backgroundColor":"grass","style":{"border":{"radius":"18px"},"spacing":{"padding":{"top":"30px","right":"28px","bottom":"30px","left":"28px"}}}} -->
-<div class="wp-block-column has-grass-background-color has-background" style="border-radius:18px;padding-top:30px;padding-right:28px;padding-bottom:30px;padding-left:28px">
+<!-- wp:column {"className":"som-process-card","backgroundColor":"grass","style":{"border":{"radius":"18px"},"spacing":{"padding":{"top":"30px","right":"28px","bottom":"30px","left":"28px"}}}} -->
+<div class="wp-block-column som-process-card has-grass-background-color has-background" style="border-radius:18px;padding-top:30px;padding-right:28px;padding-bottom:30px;padding-left:28px">
 <!-- wp:paragraph {"textColor":"sun","style":{"typography":{"fontSize":"18px","fontStyle":"normal","fontWeight":"900"}}} -->
 <p class="has-sun-color has-text-color" style="font-size:18px;font-style:normal;font-weight:900">Step ${number}</p>
 <!-- /wp:paragraph -->
@@ -832,8 +832,8 @@ function processStep(number, title, text) {
 
 function proofStat(stat, label) {
   return `
-<!-- wp:column {"backgroundColor":"cream","style":{"border":{"radius":"18px"},"spacing":{"padding":{"top":"30px","right":"26px","bottom":"30px","left":"26px"}}}} -->
-<div class="wp-block-column has-cream-background-color has-background" style="border-radius:18px;padding-top:30px;padding-right:26px;padding-bottom:30px;padding-left:26px">
+<!-- wp:column {"className":"som-proof-card","backgroundColor":"cream","style":{"border":{"radius":"18px"},"spacing":{"padding":{"top":"30px","right":"26px","bottom":"30px","left":"26px"}}}} -->
+<div class="wp-block-column som-proof-card has-cream-background-color has-background" style="border-radius:18px;padding-top:30px;padding-right:26px;padding-bottom:30px;padding-left:26px">
 <!-- wp:paragraph {"align":"center","textColor":"grass","style":{"typography":{"fontSize":"clamp(38px, 5vw, 64px)","lineHeight":"1","fontStyle":"normal","fontWeight":"900"}}} -->
 <p class="has-text-align-center has-grass-color has-text-color" style="font-size:clamp(38px, 5vw, 64px);font-style:normal;font-weight:900;line-height:1">${esc(stat)}</p>
 <!-- /wp:paragraph -->
@@ -845,41 +845,73 @@ function proofStat(stat, label) {
 }
 
 function buildGlobalStyles(spec) {
+  const tokens = buildDesignTokens(spec);
   const p = spec.palette;
-  const palette = [
-    ["grass", "Grass", p.grass],
-    ["deep-green", "Deep Green", p.deepGreen],
-    ["leaf", "Leaf", p.leaf],
-    ["sun", "Sun", p.sun],
-    ["cream", "Cream", p.cream],
-    ["mist", "Mist", p.mist],
-    ["soil", "Soil", p.soil],
-    ["white", "White", p.white]
-  ].map(([slug, name, color]) => ({ slug, name, color }));
 
   return {
     version: 3,
     isGlobalStylesUserThemeJSON: true,
     settings: {
       appearanceTools: true,
+      useRootPaddingAwareAlignments: true,
+      border: {
+        color: true,
+        radius: true,
+        style: true,
+        width: true
+      },
       color: {
-        palette
+        custom: false,
+        customDuotone: false,
+        customGradient: true,
+        defaultGradients: false,
+        defaultPalette: false,
+        gradients: tokens.gradients,
+        link: true,
+        palette: tokens.palette
       },
       layout: {
         contentSize: "760px",
         wideSize: "1180px"
       },
       spacing: {
+        blockGap: true,
+        customSpacingSize: false,
+        defaultSpacingSizes: false,
+        spacingSizes: tokens.spacingSizes,
         units: ["px", "rem", "%", "vw", "vh"]
       },
+      shadow: {
+        defaultPresets: false,
+        presets: tokens.shadowPresets
+      },
       typography: {
+        customFontSize: false,
+        fluid: true,
         fontFamilies: [
           {
             fontFamily: "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Inter, Roboto, Arial, sans-serif",
             name: "System Sans",
             slug: "system-sans"
           }
-        ]
+        ],
+        fontSizes: tokens.fontSizes,
+        fontStyle: true,
+        fontWeight: true,
+        letterSpacing: true,
+        lineHeight: true,
+        textDecoration: true,
+        textTransform: true
+      },
+      custom: {
+        som: {
+          measure: {
+            tight: "52ch",
+            copy: "66ch"
+          },
+          radius: tokens.radii,
+          shadow: tokens.shadows
+        }
       }
     },
     styles: {
@@ -887,8 +919,13 @@ function buildGlobalStyles(spec) {
         background: p.cream,
         text: p.deepGreen
       },
+      css: buildSharedPolishCss(spec),
+      spacing: {
+        blockGap: "var:preset|spacing|40"
+      },
       typography: {
         fontFamily: "var:preset|font-family|system-sans",
+        fontSize: "var:preset|font-size|body",
         lineHeight: "1.5"
       },
       elements: {
@@ -899,11 +936,31 @@ function buildGlobalStyles(spec) {
           typography: {
             textDecoration: "none",
             fontWeight: "800"
+          },
+          ":hover": {
+            color: {
+              text: p.deepGreen
+            },
+            typography: {
+              textDecoration: "underline"
+            }
+          },
+          ":focus": {
+            outline: {
+              color: p.sun,
+              offset: "4px",
+              style: "solid",
+              width: "3px"
+            }
           }
         },
         button: {
           border: {
             radius: "999px"
+          },
+          color: {
+            background: p.sun,
+            text: p.deepGreen
           },
           typography: {
             fontWeight: "800"
@@ -911,8 +968,47 @@ function buildGlobalStyles(spec) {
         }
       },
       blocks: {
+        "core/button": {
+          typography: {
+            fontWeight: "800"
+          }
+        },
+        "core/buttons": {
+          spacing: {
+            blockGap: "var:preset|spacing|30"
+          }
+        },
+        "core/columns": {
+          spacing: {
+            blockGap: "var:preset|spacing|50"
+          }
+        },
+        "core/group": {
+          spacing: {
+            blockGap: "var:preset|spacing|40"
+          }
+        },
+        "core/heading": {
+          typography: {
+            fontWeight: "900",
+            lineHeight: "1.05"
+          }
+        },
+        "core/image": {
+          border: {
+            radius: "var(--wp--custom--som--radius--image)"
+          }
+        },
+        "core/list": {
+          spacing: {
+            padding: {
+              left: "1.25em"
+            }
+          }
+        },
         "core/navigation": {
           typography: {
+            fontSize: "var:preset|font-size|small",
             fontWeight: "800"
           }
         }
@@ -921,7 +1017,69 @@ function buildGlobalStyles(spec) {
   };
 }
 
+function buildDesignTokens(spec) {
+  const p = spec.palette;
+  return {
+    palette: [
+      ["grass", "Grass", p.grass],
+      ["deep-green", "Deep Green", p.deepGreen],
+      ["leaf", "Leaf", p.leaf],
+      ["sun", "Sun", p.sun],
+      ["cream", "Cream", p.cream],
+      ["mist", "Mist", p.mist],
+      ["soil", "Soil", p.soil],
+      ["white", "White", p.white]
+    ].map(([slug, name, color]) => ({ slug, name, color })),
+    gradients: [
+      {
+        slug: "brand-sheen",
+        name: "Brand Sheen",
+        gradient: `linear-gradient(135deg, ${p.deepGreen} 0%, ${p.grass} 56%, ${p.leaf} 100%)`
+      },
+      {
+        slug: "warm-flash",
+        name: "Warm Flash",
+        gradient: `linear-gradient(135deg, ${p.sun} 0%, ${p.cream} 100%)`
+      }
+    ],
+    fontSizes: [
+      { slug: "small", name: "Small", size: "0.94rem", fluid: { min: "0.88rem", max: "0.98rem" } },
+      { slug: "body", name: "Body", size: "1.06rem", fluid: { min: "1rem", max: "1.12rem" } },
+      { slug: "lead", name: "Lead", size: "1.28rem", fluid: { min: "1.12rem", max: "1.42rem" } },
+      { slug: "card-title", name: "Card Title", size: "1.65rem", fluid: { min: "1.35rem", max: "1.85rem" } },
+      { slug: "section-title", name: "Section Title", size: "3.25rem", fluid: { min: "2.25rem", max: "4.25rem" } },
+      { slug: "hero", name: "Hero", size: "5.6rem", fluid: { min: "3.1rem", max: "6.25rem" } }
+    ],
+    spacingSizes: [
+      { slug: "20", name: "2XS", size: "0.5rem" },
+      { slug: "30", name: "XS", size: "0.75rem" },
+      { slug: "40", name: "S", size: "1rem" },
+      { slug: "50", name: "M", size: "1.5rem" },
+      { slug: "60", name: "L", size: "2.25rem" },
+      { slug: "70", name: "XL", size: "3.5rem" },
+      { slug: "80", name: "2XL", size: "5rem" }
+    ],
+    radii: {
+      chip: "999px",
+      card: "18px",
+      panel: "24px",
+      image: "28px"
+    },
+    shadows: {
+      card: "0 16px 50px rgba(5,45,63,.08)",
+      lift: "0 28px 80px rgba(5,45,63,.18)",
+      button: "0 10px 24px rgba(5,45,63,.14)"
+    },
+    shadowPresets: [
+      { slug: "card", name: "Card", shadow: "0 16px 50px rgba(5,45,63,.08)" },
+      { slug: "lift", name: "Lift", shadow: "0 28px 80px rgba(5,45,63,.18)" },
+      { slug: "button", name: "Button", shadow: "0 10px 24px rgba(5,45,63,.14)" }
+    ]
+  };
+}
+
 function buildCustomCss(spec) {
+  const tokens = buildDesignTokens(spec);
   const p = spec.palette;
   const colorClasses = [
     ["grass", p.grass],
@@ -936,8 +1094,23 @@ function buildCustomCss(spec) {
   const variables = colorClasses
     .map(([slug, color]) => `  --wp--preset--color--${slug}: ${color};`)
     .join("\n");
+  const spacingVariables = tokens.spacingSizes
+    .map((item) => `  --wp--preset--spacing--${item.slug}: ${item.size};`)
+    .join("\n");
+  const fontSizeVariables = tokens.fontSizes
+    .map((item) => `  --wp--preset--font-size--${item.slug}: ${item.size};`)
+    .join("\n");
+  const customVariables = [
+    "  --wp--custom--som--measure--tight: 52ch;",
+    "  --wp--custom--som--measure--copy: 66ch;",
+    ...Object.entries(tokens.radii).map(([slug, value]) => `  --wp--custom--som--radius--${slug}: ${value};`),
+    ...Object.entries(tokens.shadows).map(([slug, value]) => `  --wp--custom--som--shadow--${slug}: ${value};`)
+  ].join("\n");
   const colorUtilities = colorClasses
     .map(([slug, color]) => `.has-${slug}-color{color:${color}!important}.has-${slug}-background-color{background-color:${color}!important}`)
+    .join("\n");
+  const shadowUtilities = tokens.shadowPresets
+    .map((item) => `.has-${item.slug}-box-shadow{box-shadow:${item.shadow}!important}`)
     .join("\n");
   const variantCss = buildVariantCustomCss(spec);
   const variantCssBlock = variantCss ? `${variantCss}\n` : "";
@@ -945,6 +1118,9 @@ function buildCustomCss(spec) {
   return `
 :root{
 ${variables}
+${spacingVariables}
+${fontSizeVariables}
+${customVariables}
 }
 body{
   background:${p.cream};
@@ -954,6 +1130,8 @@ body{
   padding-bottom:0;
 }
 ${colorUtilities}
+${shadowUtilities}
+${buildSharedPolishCss(spec)}
 .wp-block-cover .wp-block-cover__inner-container{
   position:relative;
   z-index:1;
@@ -972,6 +1150,82 @@ ${variantCssBlock}@media (max-width:700px){
   .wp-block-navigation__responsive-container-open{
     min-width:44px;
     min-height:44px;
+  }
+}
+`.trim();
+}
+
+function buildSharedPolishCss(spec) {
+  const p = spec.palette;
+
+  return `
+html{
+  scroll-behavior:smooth;
+}
+body{
+  text-rendering:optimizeLegibility;
+}
+.wp-site-blocks :where(h1,h2,h3){
+  text-wrap:balance;
+}
+.wp-site-blocks :where(p,li){
+  text-wrap:pretty;
+}
+.wp-block-button__link{
+  box-shadow:var(--wp--custom--som--shadow--button);
+  transition:transform .18s ease, box-shadow .18s ease, background-color .18s ease, color .18s ease;
+}
+.wp-block-button__link:hover{
+  transform:translateY(-1px);
+  box-shadow:var(--wp--custom--som--shadow--card);
+}
+.wp-block-button__link:focus-visible,
+.wp-block-navigation a:focus-visible{
+  outline:3px solid ${p.sun};
+  outline-offset:4px;
+}
+.wp-block-navigation a:hover{
+  text-decoration:underline;
+  text-decoration-thickness:2px;
+  text-underline-offset:.25em;
+}
+.som-card,
+.som-process-card,
+.som-proof-card,
+.som-quote-card,
+.som-evidence-card{
+  box-shadow:var(--wp--custom--som--shadow--card);
+  border-radius:var(--wp--custom--som--radius--card);
+}
+.som-card,
+.som-process-card,
+.som-proof-card{
+  min-height:100%;
+}
+.som-quote-card{
+  border-radius:var(--wp--custom--som--radius--panel);
+  box-shadow:var(--wp--custom--som--shadow--lift);
+}
+.som-footer{
+  font-size:var(--wp--preset--font-size--small);
+}
+.som-chip,
+.som-method-pill{
+  box-shadow:inset 0 0 0 1px color-mix(in srgb, ${p.deepGreen} 12%, transparent);
+}
+.wp-block-image img{
+  max-width:100%;
+}
+@media (max-width:700px){
+  .wp-block-button,
+  .wp-block-button__link{
+    width:100%;
+  }
+  .wp-block-columns{
+    gap:var(--wp--preset--spacing--50);
+  }
+  .wp-site-blocks :where(h1,h2){
+    overflow-wrap:anywhere;
   }
 }
 `.trim();
