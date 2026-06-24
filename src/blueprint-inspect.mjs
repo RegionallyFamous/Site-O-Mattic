@@ -21,6 +21,11 @@ export function extractPageContent(phpCode) {
   return extractPhpStringAssignment(phpCode, "$content_template") || "";
 }
 
+export function extractLayoutSignature(phpCode) {
+  const raw = extractPhpStringAssignment(phpCode, "$site_o_mattic_layout_signature_json");
+  return raw ? JSON.parse(raw) : null;
+}
+
 export function extractPhpStringAssignment(phpCode, variableName) {
   const assignmentStart = phpCode.indexOf(`${variableName} = `);
   if (assignmentStart === -1) {

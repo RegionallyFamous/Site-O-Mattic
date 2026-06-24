@@ -4,6 +4,7 @@ import {
   extractElementIds,
   extractGlobalStyles,
   extractHrefTargets,
+  extractLayoutSignature,
   extractPageContent,
   getRunPhpStep,
   readBlueprint
@@ -50,6 +51,7 @@ async function buildReport(target) {
   const pageContent = extractPageContent(phpStep.code);
   const customCss = extractCustomCss(phpStep.code);
   const globalStyles = extractGlobalStyles(phpStep.code);
+  const layoutSignature = extractLayoutSignature(phpStep.code);
   const palette = Object.fromEntries((globalStyles?.settings?.color?.palette || []).map((item) => [item.slug, item.color]));
   const blockStyles = globalStyles?.styles?.blocks || {};
   const componentClasses = new Set([...pageContent.matchAll(/\bsom-[a-z0-9-]+/g)].map((match) => match[0]));
@@ -67,12 +69,16 @@ async function buildReport(target) {
   add(checks, "block-level styling", ["core/button", "core/buttons", "core/columns", "core/group", "core/heading", "core/image", "core/list", "core/navigation"].every((name) => blockStyles[name]), "Core block defaults are styled in global styles.");
   add(checks, "hover and focus", Boolean(globalStyles?.styles?.elements?.link?.[":hover"] && globalStyles?.styles?.elements?.link?.[":focus"] && customCss.includes(":focus-visible")), "Links and buttons have interactive states.");
   add(checks, "component polish classes", componentClasses.size >= 3 && customCss.includes(".som-card"), `${componentClasses.size} Site-O-Mattic component classes found.`);
+  add(checks, "layout signature", Boolean(layoutSignature?.variant && layoutSignature?.archetype), layoutSignature ? `${layoutSignature.variant}: ${layoutSignature.archetype}` : "Missing layout signature.");
   add(checks, "valid in-page anchors", hrefTargets.every((targetId) => ids.has(targetId)), hrefTargets.length ? `${hrefTargets.length} in-page links checked.` : "No in-page links found.");
   add(checks, "no empty links", !/href=(["'])#\1/.test(pageContent), "No empty hash links.");
   add(checks, "contrast pairs", contrastPairsPass(palette), "Primary text/background pairs meet WCAG AA contrast.");
   add(checks, "logo rule", phpStep.code.includes(`${extractBusinessName(phpStep.code)} logo`) && !/tagline/i.test(extractLogoMetadata(phpStep.code)), "Logo metadata stays brand/name only.");
 
   info.push(`inline style attributes: ${inlineStyleCount}`);
+  if (layoutSignature) {
+    info.push(`layout signature: ${layoutSignature.variant} / ${layoutSignature.hero}`);
+  }
   info.push(`component classes: ${[...componentClasses].sort().join(", ")}`);
 
   return { target, checks, info };

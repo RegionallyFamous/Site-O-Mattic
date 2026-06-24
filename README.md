@@ -18,7 +18,7 @@ npm run build
 npm run quality
 ```
 
-`npm run quality` runs Blueprint validation, the polish report, the production host build, and lint. The polish report checks the token stack, block-level styles, focus states, contrast pairs, anchors, component polish classes, and logo metadata.
+`npm run quality` runs Blueprint validation, the polish report, the layout variety report, the production host build, and lint. The polish report checks the token stack, block-level styles, focus states, contrast pairs, anchors, component polish classes, layout signatures, and logo metadata. The variety report compares Blueprints so different niches cannot quietly reuse the same hero structure, service presentation, proof treatment, CTA rhythm, navigation, and component class mix.
 
 For a local Playground visual smoke test, start the Playground CLI for a Blueprint and run:
 

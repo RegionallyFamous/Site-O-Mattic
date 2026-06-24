@@ -6,6 +6,7 @@ import {
   extractElementIds,
   extractGlobalStyles,
   extractHrefTargets,
+  extractLayoutSignature,
   extractPageContent,
   getRunPhpStep,
   readBlueprint
@@ -124,6 +125,7 @@ if (!phpStep) {
       errors.push(`In-page link points to missing anchor: #${hrefTarget}`);
     }
   }
+  validateLayoutSignature(phpStep.code, pageContent, errors);
   if (!phpStep.code.includes("wp_set_object_terms") || !phpStep.code.includes("'wp_theme'")) {
     warnings.push("Global styles are not explicitly attached to the active theme term.");
   }
@@ -201,6 +203,48 @@ function validateGlobalStyles(phpCode, errors) {
   }
   if (!customCss.includes(":focus-visible") || !customCss.includes(".som-card")) {
     errors.push("Custom CSS fallback should include focus-visible and component polish classes.");
+  }
+}
+
+function validateLayoutSignature(phpCode, pageContent, errors) {
+  let signature;
+  try {
+    signature = extractLayoutSignature(phpCode);
+  } catch (error) {
+    errors.push(`Could not parse layout signature JSON: ${error.message}`);
+    return;
+  }
+
+  if (!signature) {
+    errors.push("Missing Site-O-Mattic layout signature.");
+    return;
+  }
+
+  const requiredStringFields = ["variant", "archetype", "hero", "servicePresentation", "proofTreatment", "ctaRhythm"];
+  for (const field of requiredStringFields) {
+    if (!signature[field] || typeof signature[field] !== "string") {
+      errors.push(`Layout signature missing string field: ${field}.`);
+    }
+  }
+
+  const requiredArrayFields = ["sectionOrder", "navLabels", "anchorOrder", "componentClassesExpected", "layoutMarkers"];
+  for (const field of requiredArrayFields) {
+    if (!Array.isArray(signature[field]) || !signature[field].length) {
+      errors.push(`Layout signature missing array field: ${field}.`);
+    }
+  }
+
+  const componentClasses = new Set([...pageContent.matchAll(/\bsom-[a-z0-9-]+/g)].map((match) => match[0]));
+  for (const className of signature.componentClassesExpected || []) {
+    if (!componentClasses.has(className)) {
+      errors.push(`Layout signature expects missing component class: ${className}.`);
+    }
+  }
+
+  for (const marker of signature.layoutMarkers || []) {
+    if (!pageContent.includes(marker)) {
+      errors.push(`Layout signature expects missing layout marker: ${marker}.`);
+    }
   }
 }
 

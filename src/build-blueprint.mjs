@@ -30,6 +30,62 @@ const CORE_BLOCKS_USED = [
   "spacer"
 ];
 
+const LAYOUT_SIGNATURES = {
+  "route-plan": {
+    archetype: "Recurring route service plan",
+    hero: "cover-left-copy-full-bleed",
+    sectionOrder: [
+      "navigation",
+      "cover-hero",
+      "intro-service-area",
+      "services-cards",
+      "process-cards",
+      "proof-stat-cards",
+      "centered-quote-card",
+      "footer"
+    ],
+    servicePresentation: "three-equal-service-cards",
+    proofTreatment: "large-stat-cards-on-mist",
+    ctaRhythm: "hero-buttons-plus-centered-final-quote-card",
+    navLabels: ["Services", "How it works", "Quote"],
+    anchorOrder: ["services", "process", "quote"],
+    componentClassesExpected: ["som-card", "som-process-card", "som-proof-card", "som-quote-card", "som-footer"],
+    layoutMarkers: ["wp:cover", "som-card", "som-process-card", "som-quote-card"]
+  },
+  "before-after-quote": {
+    archetype: "Photo quote before-and-after service story",
+    hero: "split-copy-with-hero-photo-and-evidence-cards",
+    sectionOrder: [
+      "navigation",
+      "split-editorial-hero",
+      "photo-quote-strip",
+      "surface-rows",
+      "method-panel",
+      "timeline",
+      "proof-grid-footer"
+    ],
+    servicePresentation: "numbered-surface-rows-with-method-pills",
+    proofTreatment: "compact-proof-grid-inside-final-cta",
+    ctaRhythm: "early-photo-quote-strip-plus-final-proof-cta",
+    navLabels: ["Photo quote", "Surfaces", "Method"],
+    anchorOrder: ["quote", "surfaces", "method"],
+    componentClassesExpected: [
+      "som-split-hero",
+      "som-hero-photo",
+      "som-before-after",
+      "som-evidence-card",
+      "som-quote-strip",
+      "som-surface-row",
+      "som-method-pill",
+      "som-timeline-step",
+      "som-proof-grid",
+      "som-proof-card",
+      "som-footer"
+    ],
+    layoutMarkers: ["som-split-hero", "som-before-after", "som-quote-strip", "som-surface-row", "som-method-list", "som-timeline-step", "som-proof-grid"]
+  }
+};
+
 async function main() {
   const specPath = process.argv[2] || "specs/lawn-care-service.json";
   const spec = JSON.parse(await fs.readFile(specPath, "utf8"));
@@ -101,6 +157,7 @@ function buildSetupPhp(spec, assets) {
   const pageContent = buildPageContent(spec);
   const globalStyles = buildGlobalStyles(spec);
   const customCss = buildCustomCss(spec);
+  const layoutSignature = buildLayoutSignature(spec);
   const frontPageTemplateContent = '<!-- wp:post-content {"align":"full","layout":{"type":"default"}} /-->';
   const heroMeta = spec.assetMeta?.hero || {};
   const assetPayloads = {
@@ -169,6 +226,8 @@ function site_o_mattic_import_asset($asset) {
 }
 
 $site_o_mattic_assets = json_decode(${phpString(JSON.stringify(assetPayloads))}, true);
+$site_o_mattic_layout_signature_json = ${phpString(JSON.stringify(layoutSignature))};
+$site_o_mattic_layout_signature = json_decode($site_o_mattic_layout_signature_json, true);
 $hero_id = site_o_mattic_import_asset($site_o_mattic_assets['hero']);
 $logo_id = site_o_mattic_import_asset($site_o_mattic_assets['logo']);
 $favicon_id = site_o_mattic_import_asset($site_o_mattic_assets['favicon']);
@@ -307,9 +366,19 @@ flush_rewrite_rules();
 }
 
 function buildPageContent(spec) {
-  if (spec.layoutVariant === "before-after-quote") {
+  const variant = layoutVariantFor(spec);
+
+  if (variant === "before-after-quote") {
     return buildBeforeAfterQuotePageContent(spec);
   }
+  if (variant === "route-plan") {
+    return buildRoutePlanPageContent(spec);
+  }
+
+  throw new Error(`Unsupported layoutVariant: ${variant}`);
+}
+
+function buildRoutePlanPageContent(spec) {
 
   const { copy, contact } = spec;
   const services = spec.services.map((item) => card(item.title, item.text)).join("\n");
@@ -471,6 +540,25 @@ ${proof}
 </div>
 <!-- /wp:group -->
 `.trim();
+}
+
+function layoutVariantFor(spec) {
+  return spec.layoutVariant || "route-plan";
+}
+
+function buildLayoutSignature(spec) {
+  const variant = layoutVariantFor(spec);
+  const signature = LAYOUT_SIGNATURES[variant];
+
+  if (!signature) {
+    throw new Error(`Unsupported layoutVariant: ${variant}`);
+  }
+
+  return {
+    version: 1,
+    variant,
+    ...signature
+  };
 }
 
 function buildBeforeAfterQuotePageContent(spec) {

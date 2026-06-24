@@ -2,6 +2,7 @@
   "slug": "lawn-care-service",
   "businessName": "GreenStripe Lawn Care",
   "niche": "lawn care service",
+  "layoutVariant": "route-plan",
   "tagline": "Lawn care that makes the neighbors slow down.",
   "themeSlug": "twentytwentyfive",
   "landingPage": "/",

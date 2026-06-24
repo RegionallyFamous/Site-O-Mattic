@@ -18,9 +18,10 @@
     "blueprint:build": "npm run blueprint:build:lawn && npm run blueprint:build:pressure",
     "blueprint:validate": "node src/validate-blueprint.mjs public/blueprints/lawn-care-service/blueprint.json public/blueprints/pressure-washing-service/blueprint.json",
     "blueprint:polish": "node src/polish-report.mjs public/blueprints/lawn-care-service/blueprint.json public/blueprints/pressure-washing-service/blueprint.json",
+    "blueprint:variety": "node src/layout-variety-report.mjs public/blueprints/lawn-care-service/blueprint.json public/blueprints/pressure-washing-service/blueprint.json",
     "blueprint:visual": "node src/visual-qa.mjs",
     "validate": "npm run blueprint:validate",
-    "quality": "npm run validate && npm run blueprint:polish && npm run site:build && npm run lint",
+    "quality": "npm run validate && npm run blueprint:polish && npm run blueprint:variety && npm run site:build && npm run lint",
     "render-brand": "sh scripts/render-brand-assets.sh"
   },
   "dependencies": {
