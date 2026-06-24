@@ -316,7 +316,7 @@ function buildPageContent(spec) {
 <div class="wp-block-group alignfull has-cream-background-color has-background" style="padding-top:18px;padding-right:24px;padding-bottom:18px;padding-left:24px">
 <!-- wp:group {"align":"wide","layout":{"type":"flex","flexWrap":"wrap","justifyContent":"space-between","verticalAlignment":"center"}} -->
 <div class="wp-block-group alignwide">
-<!-- wp:site-logo {"width":150,"shouldSyncIcon":true} /-->
+<!-- wp:site-logo {"width":230,"shouldSyncIcon":true} /-->
 <!-- wp:navigation {"overlayMenu":"mobile","layout":{"type":"flex","justifyContent":"right"},"style":{"typography":{"fontSize":"16px","fontStyle":"normal","fontWeight":"700"}}} -->
 <!-- wp:navigation-link {"label":"Services","url":"#services","kind":"custom","isTopLevelLink":true} /-->
 <!-- wp:navigation-link {"label":"How it works","url":"#process","kind":"custom","isTopLevelLink":true} /-->
@@ -627,6 +627,7 @@ ${colorUtilities}
 }
 .wp-block-site-logo img{
   height:auto;
+  max-width:min(230px, 62vw);
 }
 @media (max-width:700px){
   .wp-block-cover{
