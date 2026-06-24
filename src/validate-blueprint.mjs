@@ -15,6 +15,7 @@ const ALLOWED_CORE_BLOCKS = new Set([
   "navigation",
   "navigation-link",
   "paragraph",
+  "post-content",
   "separator",
   "site-logo",
   "spacer"
@@ -72,6 +73,15 @@ if (!phpStep) {
   if (!phpStep.code.includes("wp_insert_attachment") || !phpStep.code.includes("wp_generate_attachment_metadata")) {
     errors.push("runPHP should import embedded assets into the Media Library.");
   }
+  if (!phpStep.code.includes("'post_type' => 'wp_template'") || !phpStep.code.includes("'post_name' => 'front-page'")) {
+    errors.push("runPHP should create a custom front-page block template to avoid default theme wrappers.");
+  }
+  if (!phpStep.code.includes("wp_update_custom_css_post")) {
+    errors.push("runPHP should add core custom CSS fallback for palette preset classes.");
+  }
+  if (!phpStep.code.includes("show_admin_bar_front")) {
+    errors.push("runPHP should hide the front-end admin bar for clean visual previews.");
+  }
   const blockNames = [...phpStep.code.matchAll(/<!--\s+wp:([a-z0-9-]+)/g)].map((match) => match[1]);
   const disallowed = [...new Set(blockNames.filter((name) => !ALLOWED_CORE_BLOCKS.has(name)))];
   if (disallowed.length) {
@@ -85,6 +95,9 @@ if (!phpStep) {
   }
   if (!phpStep.code.includes("wp_set_object_terms") || !phpStep.code.includes("'wp_theme'")) {
     warnings.push("Global styles are not explicitly attached to the active theme term.");
+  }
+  if (!phpStep.code.includes("WP_Theme_JSON_Resolver::clean_cached_data")) {
+    warnings.push("Theme JSON cache is not explicitly cleaned after global style updates.");
   }
 }
 
