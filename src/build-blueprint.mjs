@@ -102,12 +102,13 @@ function buildSetupPhp(spec, assets) {
   const globalStyles = buildGlobalStyles(spec);
   const customCss = buildCustomCss(spec);
   const frontPageTemplateContent = '<!-- wp:post-content {"align":"full","layout":{"type":"default"}} /-->';
+  const heroMeta = spec.assetMeta?.hero || {};
   const assetPayloads = {
     hero: {
       filename: assets.hero.fileName,
       mimeType: assets.hero.mimeType,
-      title: "Freshly edged lawn hero image",
-      alt: "A lawn care professional trimming a crisp green front lawn.",
+      title: heroMeta.title || `${spec.businessName} hero image`,
+      alt: heroMeta.alt || `Hero image for ${spec.businessName}.`,
       base64: assets.hero.base64
     },
     logo: {
@@ -660,7 +661,7 @@ The ZIP includes the same root \`blueprint.json\` plus asset files for inspectio
 - Switches to \`${spec.themeSlug}\` when that default theme exists.
 - Imports the embedded hero image, logo, and favicon into the Media Library.
 - Sets the site logo and site icon.
-- Creates a one-page lawn care service homepage using core blocks only.
+- Creates a one-page ${spec.niche || "service business"} homepage using core blocks only.
 - Creates a front-page block template so the default theme does not wrap the site with its stock header, title, or footer.
 - Applies the site palette and typography through WordPress global styles/settings, with a core custom CSS fallback for first-load palette classes.
 `;

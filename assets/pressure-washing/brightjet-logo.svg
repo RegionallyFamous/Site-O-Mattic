@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="300" viewBox="0 0 1200 300" role="img" aria-labelledby="title desc">
+  <title id="title">BrightJet Exterior Cleaning logo</title>
+  <desc id="desc">A navy and aqua wordmark with a spray wand, water droplet, and yellow shine accent.</desc>
+  <rect width="1200" height="300" rx="0" fill="none"/>
+  <g transform="translate(46 35)">
+    <circle cx="115" cy="115" r="108" fill="#052d3f"/>
+    <path d="M69 153c0-40 46-77 46-77s46 37 46 77c0 27-20 47-46 47s-46-20-46-47z" fill="#4bd7e8"/>
+    <path d="M90 153c0-23 25-46 25-46s25 23 25 46c0 15-11 27-25 27s-25-12-25-27z" fill="#ffffff" opacity=".9"/>
+    <path d="M65 83l28-28 91 91-28 28z" fill="#f6c84c"/>
+    <path d="M169 174l24 24" stroke="#4bd7e8" stroke-width="17" stroke-linecap="round"/>
+    <path d="M199 99l27-10M191 66l19-21M154 47l5-28" stroke="#f6c84c" stroke-width="12" stroke-linecap="round"/>
+  </g>
+  <g transform="translate(320 64)">
+    <text x="0" y="102" font-family="Inter, Arial, Helvetica, sans-serif" font-size="112" font-weight="900" letter-spacing="0" fill="#052d3f">BrightJet</text>
+    <text x="6" y="165" font-family="Inter, Arial, Helvetica, sans-serif" font-size="40" font-weight="900" letter-spacing="6" fill="#167c91">EXTERIOR CLEANING</text>
+    <path d="M8 205h548" stroke="#f6c84c" stroke-width="15" stroke-linecap="round"/>
+  </g>
+</svg>

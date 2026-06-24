@@ -1,0 +1,92 @@
+{
+  "slug": "pressure-washing-service",
+  "businessName": "BrightJet Exterior Cleaning",
+  "niche": "pressure washing and soft washing service",
+  "tagline": "Driveways, siding, and patios with their sparkle switched back on.",
+  "themeSlug": "twentytwentyfive",
+  "landingPage": "/",
+  "palette": {
+    "grass": "#167c91",
+    "deepGreen": "#052d3f",
+    "leaf": "#4bd7e8",
+    "sun": "#f6c84c",
+    "cream": "#f4fbfc",
+    "mist": "#d9f4f7",
+    "soil": "#415563",
+    "white": "#ffffff"
+  },
+  "assets": {
+    "hero": "assets/pressure-washing/brightjet-hero.jpg",
+    "logo": "assets/pressure-washing/brightjet-logo.png",
+    "favicon": "assets/pressure-washing/brightjet-favicon.png"
+  },
+  "assetMeta": {
+    "hero": {
+      "title": "BrightJet pressure washing hero image",
+      "alt": "A professional pressure washing technician cleaning a residential driveway beside a bright suburban home."
+    }
+  },
+  "contact": {
+    "phoneLabel": "(555) 014-2096",
+    "phoneHref": "tel:+15550142096",
+    "email": "hello@brightjet.test",
+    "emailHref": "mailto:hello@brightjet.test",
+    "serviceArea": "Driveways, patios, siding, fences, and storefronts across the north metro and nearby lake neighborhoods"
+  },
+  "copy": {
+    "eyebrow": "Pressure washing without the guesswork",
+    "heroTitle": "Send the grime packing.",
+    "heroText": "BrightJet cleans driveways, siding, patios, fences, and storefronts with smart pressure, soft-wash care, and crews who treat your place like it has company coming.",
+    "primaryCta": "Text a photo for a quote",
+    "secondaryCta": "See what we clean",
+    "introTitle": "Fresh curb appeal, no weekend wrestling match.",
+    "introText": "From algae-streaked siding to driveway mystery stains, we match the cleaning method to the surface so your home looks sharper without getting roughed up.",
+    "servicesTitle": "Surfaces we brighten",
+    "processTitle": "How the clean happens",
+    "proofTitle": "Clean work, clear expectations",
+    "quoteTitle": "Ready for the satisfying before-and-after?",
+    "quoteText": "Send a few photos of the surface, the address, and any trouble spots. We will reply with the right method, a clear estimate, and the soonest available clean day."
+  },
+  "services": [
+    {
+      "title": "Driveways and walks",
+      "text": "Concrete, pavers, steps, and sidewalks cleaned with crisp passes that make the entry feel new again."
+    },
+    {
+      "title": "Soft-wash siding",
+      "text": "Low-pressure washing for siding, trim, and gutters where algae and mildew need to leave politely."
+    },
+    {
+      "title": "Patios and fences",
+      "text": "Outdoor living spaces, decks, and fence lines freshened up before cookouts, listings, or long-overdue resets."
+    }
+  ],
+  "process": [
+    {
+      "title": "Send the photos",
+      "text": "Show us the surface, stains, water access, and anything delicate nearby."
+    },
+    {
+      "title": "Pick the method",
+      "text": "We recommend pressure wash, soft wash, or a combo plan with simple pricing."
+    },
+    {
+      "title": "Watch it brighten",
+      "text": "We protect plants, rinse thoroughly, and leave the satisfying clean lines behind."
+    }
+  ],
+  "proof": [
+    {
+      "stat": "24-hour",
+      "label": "weekday quote follow-up"
+    },
+    {
+      "stat": "Soft-wash",
+      "label": "options for siding and delicate surfaces"
+    },
+    {
+      "stat": "Plant-safe",
+      "label": "rinse and protection checklist"
+    }
+  ]
+}

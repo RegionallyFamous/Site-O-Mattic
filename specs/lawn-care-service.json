@@ -1,6 +1,7 @@
 {
   "slug": "lawn-care-service",
   "businessName": "GreenStripe Lawn Care",
+  "niche": "lawn care service",
   "tagline": "Lawn care that makes the neighbors slow down.",
   "themeSlug": "twentytwentyfive",
   "landingPage": "/",
@@ -18,6 +19,12 @@
     "hero": "assets/lawn-care/greenstripe-hero.jpg",
     "logo": "assets/lawn-care/greenstripe-logo.png",
     "favicon": "assets/lawn-care/greenstripe-favicon.png"
+  },
+  "assetMeta": {
+    "hero": {
+      "title": "GreenStripe lawn care hero image",
+      "alt": "A lawn care professional trimming a crisp green front lawn."
+    }
   },
   "contact": {
     "phoneLabel": "(555) 014-7883",

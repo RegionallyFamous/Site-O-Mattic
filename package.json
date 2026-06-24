@@ -13,8 +13,10 @@
     "start": "vinext start",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
     "db:generate": "drizzle-kit generate",
-    "blueprint:build": "node src/build-blueprint.mjs specs/lawn-care-service.json",
-    "blueprint:validate": "node src/validate-blueprint.mjs public/blueprints/lawn-care-service/blueprint.json",
+    "blueprint:build:lawn": "node src/build-blueprint.mjs specs/lawn-care-service.json",
+    "blueprint:build:pressure": "node src/build-blueprint.mjs specs/pressure-washing-service.json",
+    "blueprint:build": "npm run blueprint:build:lawn && npm run blueprint:build:pressure",
+    "blueprint:validate": "node src/validate-blueprint.mjs public/blueprints/lawn-care-service/blueprint.json public/blueprints/pressure-washing-service/blueprint.json",
     "validate": "npm run blueprint:validate",
     "render-brand": "sh scripts/render-brand-assets.sh"
   },

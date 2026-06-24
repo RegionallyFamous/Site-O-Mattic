@@ -21,7 +21,25 @@ const ALLOWED_CORE_BLOCKS = new Set([
   "spacer"
 ]);
 
-const target = process.argv[2] || "public/blueprints/lawn-care-service/blueprint.json";
+const targets = process.argv.slice(2);
+if (!targets.length) {
+  targets.push("public/blueprints/lawn-care-service/blueprint.json");
+}
+
+let hasFailures = false;
+
+for (const target of targets) {
+  const result = await validate(target);
+  if (!result.ok) {
+    hasFailures = true;
+  }
+}
+
+if (hasFailures) {
+  process.exit(1);
+}
+
+async function validate(target) {
 const blueprint = JSON.parse(await fs.readFile(target, "utf8"));
 const errors = [];
 const warnings = [];
@@ -110,12 +128,14 @@ if (errors.length) {
   for (const error of errors) {
     console.log(`- ${error}`);
   }
-  process.exit(1);
+  return { ok: false };
 }
 
 console.log(`Validation OK for ${target}`);
 for (const warning of warnings) {
   console.log(`Warning: ${warning}`);
+}
+return { ok: true };
 }
 
 async function exists(targetPath) {
