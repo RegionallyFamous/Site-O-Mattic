@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="260" viewBox="0 0 900 260" role="img" aria-labelledby="title desc">
+  <title id="title">GreenStripe Lawn Care logo</title>
+  <desc id="desc">A green circular lawn stripe mark beside the GreenStripe Lawn Care wordmark.</desc>
+  <rect width="900" height="260" fill="none"/>
+  <g transform="translate(36 34)">
+    <circle cx="96" cy="96" r="92" fill="#102f1d"/>
+    <path d="M39 133c38-6 76-24 113-55 13-11 25-23 37-37-8 45-25 80-51 105-27 25-60 34-99 27 23-7 43-20 60-39-19 9-39 15-60 19z" fill="#8cc63f"/>
+    <path d="M42 112c43-12 78-29 107-51" fill="none" stroke="#f3c14b" stroke-width="12" stroke-linecap="round"/>
+    <path d="M54 151c35-8 65-23 90-45" fill="none" stroke="#ffffff" stroke-width="8" stroke-linecap="round" opacity=".88"/>
+  </g>
+  <g transform="translate(248 64)">
+    <text x="0" y="74" font-family="Inter, Montserrat, Arial, sans-serif" font-size="72" font-weight="800" fill="#102f1d">GreenStripe</text>
+    <text x="4" y="126" font-family="Inter, Montserrat, Arial, sans-serif" font-size="34" font-weight="700" letter-spacing="4" fill="#1f7a3a">LAWN CARE</text>
+    <path d="M4 154h430" stroke="#8cc63f" stroke-width="10" stroke-linecap="round"/>
+  </g>
+</svg>

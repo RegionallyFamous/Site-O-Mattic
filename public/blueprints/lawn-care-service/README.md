@@ -1,0 +1,17 @@
+# GreenStripe Lawn Care
+
+Generated WordPress Studio / Playground Blueprint.
+
+## Import
+
+Use `public/blueprints/lawn-care-service/blueprint.json` as the Studio-ready Blueprint file. It is self-contained and embeds the hero image, logo, and favicon in the PHP setup step.
+
+The ZIP includes the same root `blueprint.json` plus asset files for inspection and Playground/CLI distribution.
+
+## What It Builds
+
+- Switches to `twentytwentyfive` when that default theme exists.
+- Imports the embedded hero image, logo, and favicon into the Media Library.
+- Sets the site logo and site icon.
+- Creates a one-page lawn care service homepage using core blocks only.
+- Applies the site palette and typography through WordPress global styles/settings.

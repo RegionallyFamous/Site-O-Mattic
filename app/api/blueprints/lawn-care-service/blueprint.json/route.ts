@@ -1,0 +1,22 @@
+import blueprint from "@/public/blueprints/lawn-care-service/blueprint.json";
+
+const responseHeaders = {
+  "access-control-allow-origin": "*",
+  "access-control-allow-methods": "GET, OPTIONS",
+  "access-control-allow-headers": "content-type",
+  "cache-control": "public, max-age=300",
+  "content-type": "application/json; charset=utf-8",
+};
+
+export function GET() {
+  return new Response(JSON.stringify(blueprint), {
+    headers: responseHeaders,
+  });
+}
+
+export function OPTIONS() {
+  return new Response(null, {
+    status: 204,
+    headers: responseHeaders,
+  });
+}
