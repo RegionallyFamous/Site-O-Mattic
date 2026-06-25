@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "slug": "pressure-washing-service",
+  "businessName": "BrightJet Exterior Cleaning",
+  "layoutVariant": "before-after-quote",
+  "assets": {
+    "hero": {
+      "source": "assets/pressure-washing/brightjet-hero.jpg",
+      "fileName": "hero.jpg",
+      "outputPath": "/assets/hero.jpg",
+      "mimeType": "image/jpeg",
+      "byteSize": 353000,
+      "width": 1920,
+      "height": 1080,
+      "embedded": true
+    },
+    "logo": {
+      "source": "assets/pressure-washing/brightjet-logo.png",
+      "fileName": "logo.png",
+      "outputPath": "/assets/logo.png",
+      "mimeType": "image/png",
+      "byteSize": 23690,
+      "width": 1200,
+      "height": 260,
+      "embedded": true
+    },
+    "favicon": {
+      "source": "assets/pressure-washing/brightjet-favicon.png",
+      "fileName": "favicon.png",
+      "outputPath": "/assets/favicon.png",
+      "mimeType": "image/png",
+      "byteSize": 26587,
+      "width": 512,
+      "height": 512,
+      "embedded": true
+    }
+  }
+}

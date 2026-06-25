@@ -1,0 +1,164 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://regionallyfamous.test/site-o-mattic-spec.schema.json",
+  "title": "Site-O-Mattic niche Blueprint spec",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "slug",
+    "businessName",
+    "niche",
+    "layoutVariant",
+    "tagline",
+    "themeSlug",
+    "landingPage",
+    "palette",
+    "assets",
+    "assetMeta",
+    "contact",
+    "copy",
+    "services",
+    "process",
+    "proof",
+    "release"
+  ],
+  "properties": {
+    "slug": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "businessName": { "type": "string", "minLength": 3 },
+    "niche": { "type": "string", "minLength": 3 },
+    "layoutVariant": { "type": "string" },
+    "tagline": { "type": "string", "minLength": 8 },
+    "themeSlug": { "type": "string", "minLength": 3 },
+    "landingPage": { "type": "string", "pattern": "^/" },
+    "palette": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["grass", "deepGreen", "leaf", "sun", "cream", "mist", "soil", "white"],
+      "properties": {
+        "grass": { "$ref": "#/$defs/hex" },
+        "deepGreen": { "$ref": "#/$defs/hex" },
+        "leaf": { "$ref": "#/$defs/hex" },
+        "sun": { "$ref": "#/$defs/hex" },
+        "cream": { "$ref": "#/$defs/hex" },
+        "mist": { "$ref": "#/$defs/hex" },
+        "soil": { "$ref": "#/$defs/hex" },
+        "white": { "$ref": "#/$defs/hex" }
+      }
+    },
+    "assets": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["hero", "logo", "favicon"],
+      "properties": {
+        "hero": { "type": "string" },
+        "logo": { "type": "string" },
+        "favicon": { "type": "string" }
+      }
+    },
+    "assetMeta": {
+      "type": "object",
+      "required": ["hero"],
+      "properties": {
+        "hero": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["title", "alt"],
+          "properties": {
+            "title": { "type": "string", "minLength": 8 },
+            "alt": { "type": "string", "minLength": 20 }
+          }
+        }
+      }
+    },
+    "contact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["phoneLabel", "phoneHref", "email", "emailHref", "serviceArea"],
+      "properties": {
+        "phoneLabel": { "type": "string" },
+        "phoneHref": { "type": "string", "pattern": "^tel:\\+?[0-9]+" },
+        "email": { "type": "string" },
+        "emailHref": { "type": "string", "pattern": "^mailto:" },
+        "serviceArea": { "type": "string", "minLength": 20 }
+      }
+    },
+    "copy": {
+      "type": "object",
+      "required": [
+        "eyebrow",
+        "heroTitle",
+        "heroText",
+        "primaryCta",
+        "secondaryCta",
+        "introTitle",
+        "introText",
+        "servicesTitle",
+        "processTitle",
+        "proofTitle",
+        "quoteTitle",
+        "quoteText"
+      ]
+    },
+    "services": { "$ref": "#/$defs/cardArray" },
+    "process": { "$ref": "#/$defs/cardArray" },
+    "proof": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["stat", "label"],
+        "properties": {
+          "stat": { "type": "string", "minLength": 2 },
+          "label": { "type": "string", "minLength": 8 }
+        }
+      }
+    },
+    "release": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "reviewedAt", "visualBaseline", "reviewChecklist"],
+      "properties": {
+        "status": { "enum": ["draft", "approved", "published"] },
+        "reviewedAt": { "type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$" },
+        "visualBaseline": { "enum": ["pending", "approved"] },
+        "reviewChecklist": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "firstViewportClear",
+            "logoReadable",
+            "layoutDistinct",
+            "ctaClear",
+            "copySpecific",
+            "noImageArtifacts"
+          ],
+          "properties": {
+            "firstViewportClear": { "type": "boolean" },
+            "logoReadable": { "type": "boolean" },
+            "layoutDistinct": { "type": "boolean" },
+            "ctaClear": { "type": "boolean" },
+            "copySpecific": { "type": "boolean" },
+            "noImageArtifacts": { "type": "boolean" }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "hex": { "type": "string", "pattern": "^#[0-9a-fA-F]{6}$" },
+    "cardArray": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["title", "text"],
+        "properties": {
+          "title": { "type": "string", "minLength": 3 },
+          "text": { "type": "string", "minLength": 20 }
+        }
+      }
+    }
+  }
+}

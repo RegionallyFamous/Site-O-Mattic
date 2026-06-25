@@ -2,6 +2,11 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { execFile } from "node:child_process";
 import { promisify } from "node:util";
+import { imageInfo } from "./image-size.mjs";
+import {
+  buildLayoutSignature,
+  layoutVariantFor
+} from "./layout-archetypes.mjs";
 
 const execFileAsync = promisify(execFile);
 
@@ -30,62 +35,6 @@ const CORE_BLOCKS_USED = [
   "spacer"
 ];
 
-const LAYOUT_SIGNATURES = {
-  "route-plan": {
-    archetype: "Recurring route service plan",
-    hero: "cover-left-copy-full-bleed",
-    sectionOrder: [
-      "navigation",
-      "cover-hero",
-      "intro-service-area",
-      "services-cards",
-      "process-cards",
-      "proof-stat-cards",
-      "centered-quote-card",
-      "footer"
-    ],
-    servicePresentation: "three-equal-service-cards",
-    proofTreatment: "large-stat-cards-on-mist",
-    ctaRhythm: "hero-buttons-plus-centered-final-quote-card",
-    navLabels: ["Services", "How it works", "Quote"],
-    anchorOrder: ["services", "process", "quote"],
-    componentClassesExpected: ["som-card", "som-process-card", "som-proof-card", "som-quote-card", "som-footer"],
-    layoutMarkers: ["wp:cover", "som-card", "som-process-card", "som-quote-card"]
-  },
-  "before-after-quote": {
-    archetype: "Photo quote before-and-after service story",
-    hero: "split-copy-with-hero-photo-and-evidence-cards",
-    sectionOrder: [
-      "navigation",
-      "split-editorial-hero",
-      "photo-quote-strip",
-      "surface-rows",
-      "method-panel",
-      "timeline",
-      "proof-grid-footer"
-    ],
-    servicePresentation: "numbered-surface-rows-with-method-pills",
-    proofTreatment: "compact-proof-grid-inside-final-cta",
-    ctaRhythm: "early-photo-quote-strip-plus-final-proof-cta",
-    navLabels: ["Photo quote", "Surfaces", "Method"],
-    anchorOrder: ["quote", "surfaces", "method"],
-    componentClassesExpected: [
-      "som-split-hero",
-      "som-hero-photo",
-      "som-before-after",
-      "som-evidence-card",
-      "som-quote-strip",
-      "som-surface-row",
-      "som-method-pill",
-      "som-timeline-step",
-      "som-proof-grid",
-      "som-proof-card",
-      "som-footer"
-    ],
-    layoutMarkers: ["som-split-hero", "som-before-after", "som-quote-strip", "som-surface-row", "som-method-list", "som-timeline-step", "som-proof-grid"]
-  }
-};
-
 async function main() {
   const specPath = process.argv[2] || "specs/lawn-care-service.json";
   const spec = JSON.parse(await fs.readFile(specPath, "utf8"));
@@ -96,9 +45,11 @@ async function main() {
   await fs.mkdir(outAssets, { recursive: true });
 
   const assets = await copyAssets(spec, outAssets);
+  const assetManifest = buildAssetManifest(spec, assets);
   const blueprint = buildBlueprint(spec, assets);
 
   await fs.writeFile(path.join(outDir, "blueprint.json"), `${JSON.stringify(blueprint, null, 2)}\n`);
+  await fs.writeFile(path.join(outDir, "asset-manifest.json"), `${JSON.stringify(assetManifest, null, 2)}\n`);
   await fs.writeFile(path.join(outDir, "README.md"), buildOutputReadme(spec));
   await fs.writeFile(path.join(outDir, "playground-preview.md"), buildPreviewNotes(spec));
   await writeBundle(outDir, `${spec.slug}-blueprint.zip`);
@@ -117,15 +68,42 @@ async function copyAssets(spec, outAssets) {
     const fileName = `${key}${extension}`;
     const targetPath = path.join(outAssets, fileName);
     await fs.copyFile(sourcePath, targetPath);
+    const sourceInfo = await imageInfo(sourcePath);
     mapped[key] = {
+      source: source,
       path: `/assets/${fileName}`,
       fileName,
       mimeType: mimeTypeForPath(sourcePath),
+      byteSize: sourceInfo.byteSize,
+      width: sourceInfo.width,
+      height: sourceInfo.height,
       base64: await fs.readFile(sourcePath, "base64")
     };
   }
 
   return mapped;
+}
+
+function buildAssetManifest(spec, assets) {
+  return {
+    version: 1,
+    slug: spec.slug,
+    businessName: spec.businessName,
+    layoutVariant: layoutVariantFor(spec),
+    assets: Object.fromEntries(Object.entries(assets).map(([key, asset]) => [
+      key,
+      {
+        source: asset.source,
+        fileName: asset.fileName,
+        outputPath: asset.path,
+        mimeType: asset.mimeType,
+        byteSize: asset.byteSize,
+        width: asset.width,
+        height: asset.height,
+        embedded: true
+      }
+    ]))
+  };
 }
 
 function buildBlueprint(spec, assets) {
@@ -540,25 +518,6 @@ ${proof}
 </div>
 <!-- /wp:group -->
 `.trim();
-}
-
-function layoutVariantFor(spec) {
-  return spec.layoutVariant || "route-plan";
-}
-
-function buildLayoutSignature(spec) {
-  const variant = layoutVariantFor(spec);
-  const signature = LAYOUT_SIGNATURES[variant];
-
-  if (!signature) {
-    throw new Error(`Unsupported layoutVariant: ${variant}`);
-  }
-
-  return {
-    version: 1,
-    variant,
-    ...signature
-  };
 }
 
 function buildBeforeAfterQuotePageContent(spec) {
@@ -1398,7 +1357,7 @@ Generated WordPress Studio / Playground Blueprint.
 
 Use \`public/blueprints/${spec.slug}/blueprint.json\` as the Studio-ready Blueprint file. It is self-contained and embeds the hero image, logo, and favicon in the PHP setup step.
 
-The ZIP includes the same root \`blueprint.json\` plus asset files for inspection and Playground/CLI distribution.
+The ZIP includes the same root \`blueprint.json\`, an \`asset-manifest.json\`, plus asset files for inspection and Playground/CLI distribution.
 
 ## What It Builds
 
@@ -1408,6 +1367,7 @@ The ZIP includes the same root \`blueprint.json\` plus asset files for inspectio
 - Creates a one-page ${spec.niche || "service business"} homepage using core blocks only.
 - Creates a front-page block template so the default theme does not wrap the site with its stock header, title, or footer.
 - Applies the site palette and typography through WordPress global styles/settings, with a core custom CSS fallback for first-load palette classes.
+- Uses the \`${layoutVariantFor(spec)}\` layout archetype.
 `;
 }
 
@@ -1426,7 +1386,7 @@ For WordPress Studio, import \`public/blueprints/${spec.slug}/blueprint.json\`.
 
 async function writeBundle(outDir, bundleName) {
   const bundlePath = path.join(outDir, bundleName);
-  await execFileAsync("zip", ["-qr", bundlePath, "blueprint.json", "assets"], { cwd: outDir });
+  await execFileAsync("zip", ["-qr", bundlePath, "blueprint.json", "asset-manifest.json", "assets"], { cwd: outDir });
 }
 
 function phpString(value) {

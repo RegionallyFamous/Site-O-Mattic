@@ -11,6 +11,7 @@ import {
   getRunPhpStep,
   readBlueprint
 } from "./blueprint-inspect.mjs";
+import { LAYOUT_ARCHETYPES } from "./layout-archetypes.mjs";
 
 const ALLOWED_CORE_BLOCKS = new Set([
   "button",
@@ -218,6 +219,9 @@ function validateLayoutSignature(phpCode, pageContent, errors) {
   if (!signature) {
     errors.push("Missing Site-O-Mattic layout signature.");
     return;
+  }
+  if (!LAYOUT_ARCHETYPES[signature.variant]?.archetype) {
+    errors.push(`Layout signature variant is not implemented in the layout catalog: ${signature.variant}.`);
   }
 
   const requiredStringFields = ["variant", "archetype", "hero", "servicePresentation", "proofTreatment", "ctaRhythm"];

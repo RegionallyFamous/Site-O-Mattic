@@ -1,0 +1,114 @@
+export const LAYOUT_ARCHETYPES = {
+  "route-plan": {
+    label: "Route or recurring plan",
+    bestFor: ["lawn care", "pool cleaning", "plant care", "knife sharpening", "mobile bicycle repair"],
+    archetype: "Recurring route service plan",
+    hero: "cover-left-copy-full-bleed",
+    sectionOrder: [
+      "navigation",
+      "cover-hero",
+      "intro-service-area",
+      "services-cards",
+      "process-cards",
+      "proof-stat-cards",
+      "centered-quote-card",
+      "footer"
+    ],
+    servicePresentation: "three-equal-service-cards",
+    proofTreatment: "large-stat-cards-on-mist",
+    ctaRhythm: "hero-buttons-plus-centered-final-quote-card",
+    navLabels: ["Services", "How it works", "Quote"],
+    anchorOrder: ["services", "process", "quote"],
+    componentClassesExpected: ["som-card", "som-process-card", "som-proof-card", "som-quote-card", "som-footer"],
+    layoutMarkers: ["wp:cover", "som-card", "som-process-card", "som-quote-card"]
+  },
+  "before-after-quote": {
+    label: "Before/after photo quote",
+    bestFor: ["pressure washing", "driveway sealing", "carpet cleaning", "junk removal", "furniture refinishing"],
+    archetype: "Photo quote before-and-after service story",
+    hero: "split-copy-with-hero-photo-and-evidence-cards",
+    sectionOrder: [
+      "navigation",
+      "split-editorial-hero",
+      "photo-quote-strip",
+      "surface-rows",
+      "method-panel",
+      "timeline",
+      "proof-grid-footer"
+    ],
+    servicePresentation: "numbered-surface-rows-with-method-pills",
+    proofTreatment: "compact-proof-grid-inside-final-cta",
+    ctaRhythm: "early-photo-quote-strip-plus-final-proof-cta",
+    navLabels: ["Photo quote", "Surfaces", "Method"],
+    anchorOrder: ["quote", "surfaces", "method"],
+    componentClassesExpected: [
+      "som-split-hero",
+      "som-hero-photo",
+      "som-before-after",
+      "som-evidence-card",
+      "som-quote-strip",
+      "som-surface-row",
+      "som-method-pill",
+      "som-timeline-step",
+      "som-proof-grid",
+      "som-proof-card",
+      "som-footer"
+    ],
+    layoutMarkers: ["som-split-hero", "som-before-after", "som-quote-strip", "som-surface-row", "som-method-list", "som-timeline-step", "som-proof-grid"]
+  },
+  "checklist-urgency": {
+    label: "Checklist and urgency",
+    bestFor: ["gutter cleaning", "vacation rental turnover", "holiday lights", "move prep"],
+    guidance: "Lead with warning signs, seasonal urgency, checklist blocks, availability prompts, and risk-reduction proof."
+  },
+  "package-comparison": {
+    label: "Package comparison",
+    bestFor: ["mobile detailing", "photo booth rental", "DJ service", "coffee cart", "mocktail cart", "catering"],
+    guidance: "Lead with event fit, package columns, add-ons, date-check CTAs, and easy package selection."
+  },
+  "gallery-led": {
+    label: "Gallery or portfolio led",
+    bestFor: ["photography", "murals", "florals", "balloon styling", "dessert tables", "color consulting"],
+    guidance: "Put visual proof early, then use concise process, style notes, package cues, and contact prompts."
+  },
+  "consultation-led": {
+    label: "Consultation led",
+    bestFor: ["smart home setup", "senior downsizing", "home organization", "micro-wedding florals", "interior color consulting"],
+    guidance: "Lead with trust, what to expect, consult steps, supportive language, and a low-friction first call."
+  }
+};
+
+export function layoutVariantFor(spec) {
+  return spec.layoutVariant || "route-plan";
+}
+
+export function layoutVariantSlugs() {
+  return Object.keys(LAYOUT_ARCHETYPES);
+}
+
+export function buildLayoutSignature(spec) {
+  const variant = layoutVariantFor(spec);
+  const archetype = LAYOUT_ARCHETYPES[variant];
+
+  if (!archetype) {
+    throw new Error(`Unsupported layoutVariant: ${variant}`);
+  }
+  if (!archetype.archetype) {
+    throw new Error(`Layout variant is cataloged but not implemented yet: ${variant}`);
+  }
+
+  return {
+    version: 1,
+    variant,
+    archetype: archetype.archetype,
+    hero: archetype.hero,
+    sectionOrder: archetype.sectionOrder,
+    servicePresentation: archetype.servicePresentation,
+    proofTreatment: archetype.proofTreatment,
+    ctaRhythm: archetype.ctaRhythm,
+    navLabels: archetype.navLabels,
+    anchorOrder: archetype.anchorOrder,
+    componentClassesExpected: archetype.componentClassesExpected,
+    layoutMarkers: archetype.layoutMarkers
+  };
+}

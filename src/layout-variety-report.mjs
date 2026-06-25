@@ -4,6 +4,7 @@ import {
   getRunPhpStep,
   readBlueprint
 } from "./blueprint-inspect.mjs";
+import { LAYOUT_ARCHETYPES } from "./layout-archetypes.mjs";
 
 const DEFAULT_TARGETS = [
   "public/blueprints/lawn-care-service/blueprint.json",
@@ -75,6 +76,7 @@ async function inspectBlueprint(target) {
   const navTargets = navigationLinks.map((link) => link.target);
 
   add(checks, "embedded signature", Boolean(signature?.variant), signature?.variant || "Missing layout variant.");
+  add(checks, "cataloged layout variant", Boolean(LAYOUT_ARCHETYPES[signature?.variant]?.archetype), signature?.variant || "Missing layout variant.");
   add(checks, "signature shape", hasSignatureShape(signature), signature ? `${signature.archetype}; ${signature.hero}` : "Missing signature fields.");
   add(checks, "expected component classes", hasExpectedClasses(signature, componentClasses), signature?.componentClassesExpected?.join(", ") || "No expected classes.");
   add(checks, "expected layout markers", hasExpectedMarkers(signature, pageContent), signature?.layoutMarkers?.join(", ") || "No expected markers.");

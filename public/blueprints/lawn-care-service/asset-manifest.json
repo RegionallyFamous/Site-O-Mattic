@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "slug": "lawn-care-service",
+  "businessName": "GreenStripe Lawn Care",
+  "layoutVariant": "route-plan",
+  "assets": {
+    "hero": {
+      "source": "assets/lawn-care/greenstripe-hero.jpg",
+      "fileName": "hero.jpg",
+      "outputPath": "/assets/hero.jpg",
+      "mimeType": "image/jpeg",
+      "byteSize": 500409,
+      "width": 1920,
+      "height": 1080,
+      "embedded": true
+    },
+    "logo": {
+      "source": "assets/lawn-care/greenstripe-logo.png",
+      "fileName": "logo.png",
+      "outputPath": "/assets/logo.png",
+      "mimeType": "image/png",
+      "byteSize": 28686,
+      "width": 1200,
+      "height": 260,
+      "embedded": true
+    },
+    "favicon": {
+      "source": "assets/lawn-care/greenstripe-favicon.png",
+      "fileName": "favicon.png",
+      "outputPath": "/assets/favicon.png",
+      "mimeType": "image/png",
+      "byteSize": 27628,
+      "width": 512,
+      "height": 512,
+      "embedded": true
+    }
+  }
+}

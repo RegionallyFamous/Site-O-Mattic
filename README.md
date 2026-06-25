@@ -14,16 +14,23 @@ The repo currently includes Blueprints for GreenStripe Lawn Care and BrightJet E
 
 ```bash
 npm run render-brand
-npm run build
+npm run blueprint:build
 npm run quality
+npm run build
 ```
 
-`npm run quality` runs Blueprint validation, the polish report, the layout variety report, the production host build, and lint. The polish report checks the token stack, block-level styles, focus states, contrast pairs, anchors, component polish classes, layout signatures, and logo metadata. The variety report compares Blueprints so different niches cannot quietly reuse the same hero structure, service presentation, proof treatment, CTA rhythm, navigation, and component class mix.
+`npm run quality` runs spec validation, Blueprint validation, the polish report, accessibility checks, the layout variety report, production guardrails, the visual baseline gate, the production host build, and lint. The polish report checks the token stack, block-level styles, focus states, contrast pairs, anchors, component polish classes, layout signatures, and logo metadata. The variety report compares Blueprints so different niches cannot quietly reuse the same hero structure, service presentation, proof treatment, CTA rhythm, navigation, and component class mix.
 
 For a local Playground visual smoke test, start the Playground CLI for a Blueprint and run:
 
 ```bash
 npm run blueprint:visual -- http://127.0.0.1:<port>
+```
+
+For published releases, capture approved desktop/mobile baselines:
+
+```bash
+SLUG=<slug> PLAYGROUND_URL=<url> npm run visual:baseline:capture
 ```
 
 The generated Blueprint files are written to:
@@ -48,9 +55,14 @@ Use each `public/blueprints/<slug>/blueprint.json` as the Studio-ready Blueprint
 ## Structure
 
 - `specs/`: editable source specs.
+- `schemas/`: spec contract for production inputs.
+- `config/production-guardrails.json`: asset, Blueprint, and bundle budgets.
 - `src/`: Blueprint builder and validator.
 - `assets/`: Imagegen heroes, logo sources, favicon sources, rendered PNG assets, and prompt notes by niche.
 - `public/blueprints/`: generated Blueprint directories and bundles served by the host site.
+- `qa/baselines/`: approved desktop/mobile screenshots for published Blueprints.
+- `docs/layout-archetypes.md`: implemented and planned one-page layout archetypes.
+- `docs/production-readiness.md`: release states and production checklist.
 - `docs/niche-shortlist.md`: candidate niche backlog for future single-page Blueprints.
 
 ## Notes

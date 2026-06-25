@@ -89,5 +89,18 @@
       "stat": "Gate-check",
       "label": "crew checklist after every visit"
     }
-  ]
+  ],
+  "release": {
+    "status": "approved",
+    "reviewedAt": "2026-06-24",
+    "visualBaseline": "pending",
+    "reviewChecklist": {
+      "firstViewportClear": true,
+      "logoReadable": true,
+      "layoutDistinct": true,
+      "ctaClear": true,
+      "copySpecific": true,
+      "noImageArtifacts": true
+    }
+  }
 }

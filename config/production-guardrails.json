@@ -1,0 +1,30 @@
+{
+  "blueprintJsonMaxBytes": 950000,
+  "zipMaxBytes": 1400000,
+  "assets": {
+    "hero": {
+      "maxBytes": 650000,
+      "minWidth": 1600,
+      "minHeight": 900,
+      "maxWidth": 2400,
+      "maxHeight": 1600,
+      "allowedExtensions": [".jpg", ".jpeg", ".png"]
+    },
+    "logo": {
+      "maxBytes": 140000,
+      "minWidth": 900,
+      "minHeight": 180,
+      "maxWidth": 1800,
+      "maxHeight": 520,
+      "allowedExtensions": [".png"]
+    },
+    "favicon": {
+      "maxBytes": 100000,
+      "minWidth": 256,
+      "minHeight": 256,
+      "maxWidth": 1024,
+      "maxHeight": 1024,
+      "allowedExtensions": [".png"]
+    }
+  }
+}
