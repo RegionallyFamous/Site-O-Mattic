@@ -22,6 +22,7 @@
     "blueprint:variety": "node src/layout-variety-report.mjs",
     "blueprint:guardrails": "node src/production-guardrails.mjs",
     "blueprint:visual": "node src/visual-qa.mjs",
+    "fonts:catalog": "node src/google-fonts-catalog.mjs",
     "app:sync": "node src/sync-app-blueprints.mjs",
     "visual:baseline": "node src/visual-baseline-report.mjs",
     "visual:baseline:capture": "node src/capture-visual-baseline.mjs",
