@@ -5706,15 +5706,15 @@ function buildTypographyTokens(spec) {
   };
   treatments["technical-bike-service-sans-with-compact-utility-labels"] = {
     body: stacks.system,
-    display: stacks.condensed,
+    display: stacks.sturdy,
     accent: stacks.mono,
-    scale: "wide",
-    headingWeight: "880",
-    actionWeight: "850",
-    navWeight: "850",
-    linkWeight: "800",
-    headingLineHeight: "0.99",
-    bodyLineHeight: "1.48"
+    scale: "compact",
+    headingWeight: "780",
+    actionWeight: "760",
+    navWeight: "740",
+    linkWeight: "740",
+    headingLineHeight: "1.05",
+    bodyLineHeight: "1.56"
   };
   treatments["fresh-hospitality-menu-sans-with-script-like-display"] = {
     body: stacks.humanist,
@@ -8462,32 +8462,45 @@ function buildAliasVisualCss(spec) {
     "bike-route-workstand": `
 .som-bike-hero{
   background:
-    linear-gradient(90deg, color-mix(in srgb, ${p.leaf} 12%, transparent) 1px, transparent 1px),
-    linear-gradient(0deg, color-mix(in srgb, ${p.white} 7%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, ${p.leaf} 10%, transparent) 1px, transparent 1px),
+    linear-gradient(0deg, color-mix(in srgb, ${p.white} 6%, transparent) 1px, transparent 1px),
     ${p.deepGreen};
-  background-size:34px 34px;
+  background-size:28px 28px;
+}
+.som-bike-hero h1{
+  font-size:clamp(2.55rem, 4.6vw, 4.7rem)!important;
 }
 .som-workstand-photo img{
-  aspect-ratio:4/3;
-  min-height:590px;
+  aspect-ratio:16/11;
+  min-height:520px;
   object-position:50% 44%;
-  border-radius:999px 999px 8px 8px;
+  border-radius:8px;
+  box-shadow:0 24px 70px rgba(0,0,0,.22);
 }
 .som-route-ticket{
-  transform:translateY(-22px);
-  border-radius:18px!important;
+  margin-left:auto!important;
+  margin-right:24px!important;
+  transform:translateY(-34px);
+  width:min(86%, 560px);
+  border-radius:8px!important;
 }
 .som-tune-card{
   border-top:0!important;
   border-bottom:8px solid ${p.leaf};
-  border-radius:18px!important;
+  border-radius:8px!important;
 }
 @media (max-width:700px){
+  .som-bike-hero h1{
+    font-size:clamp(2.15rem, 10vw, 2.85rem)!important;
+  }
   .som-workstand-photo img{
-    min-height:310px;
+    min-height:260px;
+    aspect-ratio:16/10;
   }
   .som-route-ticket{
+    margin-right:0!important;
     transform:none;
+    width:auto;
   }
 }`.trim(),
     "mural-lettering-workshop": `
@@ -8520,7 +8533,8 @@ function buildAliasVisualCss(spec) {
     "micro-wedding-floral-story": `
 .som-floral-story-hero{
   background:
-    radial-gradient(circle at 12% 12%, color-mix(in srgb, ${p.sun} 20%, transparent), transparent 28%),
+    radial-gradient(circle at 12% 12%, color-mix(in srgb, ${p.sun} 18%, transparent), transparent 28%),
+    radial-gradient(circle at 88% 0%, color-mix(in srgb, ${p.leaf} 18%, transparent), transparent 24%),
     linear-gradient(180deg, ${p.cream}, ${p.white});
 }
 .som-floral-story-hero .som-hero-photo img{
@@ -8529,8 +8543,8 @@ function buildAliasVisualCss(spec) {
   border-radius:120px 120px 8px 8px;
 }
 .som-floral-story-hero h1{
-  font-size:clamp(38px, 5vw, 64px)!important;
-  line-height:1.04!important;
+  font-size:clamp(40px, 4.6vw, 62px)!important;
+  line-height:1.08!important;
 }
 .som-floral-support-card{
   border-left:0!important;
@@ -8539,6 +8553,22 @@ function buildAliasVisualCss(spec) {
 }
 .som-floral-proof-band{
   background:color-mix(in srgb, ${p.leaf} 18%, ${p.cream})!important;
+}
+.som-floral-proof-card{
+  background:color-mix(in srgb, ${p.white} 88%, ${p.cream})!important;
+  border:1px solid color-mix(in srgb, ${p.leaf} 34%, transparent);
+  border-radius:8px!important;
+  box-shadow:none!important;
+}
+.som-floral-proof-card p:first-child{
+  color:${p.deepGreen}!important;
+  font-size:clamp(1.15rem, 2vw, 1.55rem)!important;
+  line-height:1.08!important;
+}
+.som-floral-proof-card p:last-child{
+  color:${p.soil}!important;
+  font-size:1rem!important;
+  font-weight:650!important;
 }
 .som-floral-consult-strip{
   background:linear-gradient(135deg, ${p.deepGreen}, color-mix(in srgb, ${p.deepGreen} 82%, ${p.leaf}))!important;
