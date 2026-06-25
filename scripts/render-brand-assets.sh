@@ -11,3 +11,5 @@ rsvg-convert -w 1200 -h 260 assets/gutter-cleaning/clearflow-logo.svg -o assets/
 rsvg-convert -w 512 -h 512 assets/gutter-cleaning/clearflow-favicon.svg -o assets/gutter-cleaning/clearflow-favicon.png
 rsvg-convert -w 1200 -h 260 assets/pollinator-garden/bloomroute-logo.svg -o assets/pollinator-garden/bloomroute-logo.png
 rsvg-convert -w 512 -h 512 assets/pollinator-garden/bloomroute-favicon.svg -o assets/pollinator-garden/bloomroute-favicon.png
+rsvg-convert -w 1200 -h 260 assets/driveway-sealcoating/blackline-logo.svg -o assets/driveway-sealcoating/blackline-logo.png
+rsvg-convert -w 512 -h 512 assets/driveway-sealcoating/blackline-favicon.svg -o assets/driveway-sealcoating/blackline-favicon.png

@@ -98,6 +98,27 @@ export const LAYOUT_ARCHETYPES = {
     componentClassesExpected: ["som-risk-hero", "som-risk-band", "som-warning-row", "som-plan-step", "som-proof-card", "som-quote-strip", "som-footer"],
     layoutMarkers: ["som-risk-hero", "som-risk-band", "som-warning-row", "som-plan-step", "som-quote-strip"]
   },
+  "surface-seasonal": {
+    label: "Seasonal surface restoration",
+    bestFor: ["driveway sealcoating", "deck staining", "fence staining", "asphalt repair"],
+    archetype: "Seasonal surface restoration quote",
+    hero: "dark-copy-left-wide-driveway-action-photo",
+    sectionOrder: [
+      "navigation",
+      "surface-hero",
+      "seasonal-readiness-band",
+      "prep-scope-cards",
+      "sealcoat-process",
+      "quote-footer"
+    ],
+    servicePresentation: "prep-and-scope-cards-with-season-note",
+    proofTreatment: "seasonal-readiness-badges-under-hero",
+    ctaRhythm: "hero-estimate-buttons-plus-final-photo-quote",
+    navLabels: ["Timing", "Prep", "Quote"],
+    anchorOrder: ["timing", "prep", "quote"],
+    componentClassesExpected: ["som-surface-hero", "som-surface-photo", "som-surface-badge", "som-seal-card", "som-season-note", "som-process-card", "som-quote-strip", "som-footer"],
+    layoutMarkers: ["som-surface-hero", "som-surface-photo", "som-surface-badge", "som-seal-card", "som-season-note", "som-quote-strip"]
+  },
   "package-comparison": {
     label: "Package comparison",
     bestFor: ["mobile detailing", "photo booth rental", "DJ service", "coffee cart", "mocktail cart", "catering"],

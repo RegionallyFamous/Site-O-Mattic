@@ -2,6 +2,22 @@
 
 export const blueprints = [
   {
+    "slug": "driveway-sealcoating",
+    "name": "Blackline Sealcoating",
+    "eyebrow": "Driveway Sealcoating Service",
+    "summary": "Blackline cleans, fills small cracks, and seals tired asphalt with tidy passes that make your driveway look cared for before the next rain gets ideas.",
+    "logo": "/blueprints/driveway-sealcoating/assets/logo.png",
+    "logoWidth": 1200,
+    "logoHeight": 260,
+    "hero": "/blueprints/driveway-sealcoating/assets/hero.jpg",
+    "heroWidth": 1920,
+    "heroHeight": 1080,
+    "alt": "A driveway sealcoating worker applying a fresh black sealcoat beside an unsealed cracked asphalt section.",
+    "path": "/api/blueprints/driveway-sealcoating/blueprint.json",
+    "layoutVariant": "surface-seasonal",
+    "releaseStatus": "approved"
+  },
+  {
     "slug": "gutter-cleaning",
     "name": "ClearFlow Gutter Care",
     "eyebrow": "Gutter Cleaning Service",

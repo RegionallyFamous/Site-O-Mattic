@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "slug": "driveway-sealcoating",
+  "businessName": "Blackline Sealcoating",
+  "layoutVariant": "surface-seasonal",
+  "assets": {
+    "hero": {
+      "source": "assets/driveway-sealcoating/blacktop-hero.jpg",
+      "fileName": "hero.jpg",
+      "outputPath": "/assets/hero.jpg",
+      "mimeType": "image/jpeg",
+      "byteSize": 344473,
+      "width": 1920,
+      "height": 1080,
+      "embedded": true
+    },
+    "logo": {
+      "source": "assets/driveway-sealcoating/blackline-logo.png",
+      "fileName": "logo.png",
+      "outputPath": "/assets/logo.png",
+      "mimeType": "image/png",
+      "byteSize": 20324,
+      "width": 1200,
+      "height": 260,
+      "embedded": true
+    },
+    "favicon": {
+      "source": "assets/driveway-sealcoating/blackline-favicon.png",
+      "fileName": "favicon.png",
+      "outputPath": "/assets/favicon.png",
+      "mimeType": "image/png",
+      "byteSize": 19700,
+      "width": 512,
+      "height": 512,
+      "embedded": true
+    }
+  }
+}

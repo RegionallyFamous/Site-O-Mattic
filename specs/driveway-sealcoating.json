@@ -1,0 +1,106 @@
+{
+  "slug": "driveway-sealcoating",
+  "businessName": "Blackline Sealcoating",
+  "niche": "driveway sealcoating service",
+  "layoutVariant": "surface-seasonal",
+  "tagline": "Fresh blacktop with clean edges and no driveway drama.",
+  "themeSlug": "twentytwentyfive",
+  "landingPage": "/",
+  "palette": {
+    "grass": "#916000",
+    "deepGreen": "#15191c",
+    "leaf": "#6f7c6d",
+    "sun": "#ffd166",
+    "cream": "#f7f2e7",
+    "mist": "#e3e7e2",
+    "soil": "#3f4444",
+    "white": "#ffffff"
+  },
+  "assets": {
+    "hero": "assets/driveway-sealcoating/blacktop-hero.jpg",
+    "logo": "assets/driveway-sealcoating/blackline-logo.png",
+    "favicon": "assets/driveway-sealcoating/blackline-favicon.png"
+  },
+  "assetMeta": {
+    "hero": {
+      "title": "Blackline driveway sealcoating hero image",
+      "alt": "A driveway sealcoating worker applying a fresh black sealcoat beside an unsealed cracked asphalt section."
+    }
+  },
+  "contact": {
+    "phoneLabel": "(555) 014-7730",
+    "phoneHref": "tel:+15550147730",
+    "email": "quotes@blackline.test",
+    "emailHref": "mailto:quotes@blackline.test",
+    "serviceArea": "Residential asphalt driveways, private lanes, and small parking pads across the west suburbs, lake roads, and nearby townships"
+  },
+  "copy": {
+    "eyebrow": "Driveway sealcoating timed for real weather",
+    "heroTitle": "Fresh blacktop. Sharp edges.",
+    "heroText": "Blackline cleans, fills small cracks, and seals tired asphalt with tidy passes that make your driveway look cared for before the next rain gets ideas.",
+    "primaryCta": "Get a driveway quote",
+    "secondaryCta": "Check sealing weather",
+    "introTitle": "Sealcoating is half timing, half prep.",
+    "introText": "We look at surface condition, temperature, cure time, and edges so the finish lands smooth instead of rushed.",
+    "servicesTitle": "What we check before the coat",
+    "processTitle": "How the blackline goes down",
+    "proofTitle": "Good sealing windows",
+    "quoteTitle": "Ready for the satisfying blacktop reset?",
+    "quoteText": "Send driveway photos, rough dimensions, crack trouble spots, and the last time it was sealed. We will reply with timing, prep notes, and a clear estimate."
+  },
+  "services": [
+    {
+      "title": "Crack and edge read",
+      "text": "We flag small cracks, crumbly edges, oil spots, and drainage spots before promising a glossy finish."
+    },
+    {
+      "title": "Clean-and-prime prep",
+      "text": "Loose grit, weeds, and stains get handled so the sealcoat grips the driveway instead of skating over dirt."
+    },
+    {
+      "title": "Tidy sealcoat pass",
+      "text": "Squeegee application, careful borders, and taped transitions keep the blacktop sharp without painting the sidewalk."
+    }
+  ],
+  "process": [
+    {
+      "title": "Send the driveway",
+      "text": "A wide photo, a crack close-up, and rough dimensions are enough to start a real estimate."
+    },
+    {
+      "title": "Pick the weather window",
+      "text": "We line up the job around dry pavement, friendly temperatures, and cure time that will not ruin your plans."
+    },
+    {
+      "title": "Seal, edge, and rope off",
+      "text": "We prep, apply, clean the borders, and leave simple keep-off notes so the finish cures clean."
+    }
+  ],
+  "proof": [
+    {
+      "stat": "70-90F",
+      "label": "favorite sealcoat temperature range"
+    },
+    {
+      "stat": "24-48hr",
+      "label": "typical keep-off cure window"
+    },
+    {
+      "stat": "Clean edge",
+      "label": "garage, walkway, and curb transitions"
+    }
+  ],
+  "release": {
+    "status": "approved",
+    "reviewedAt": "2026-06-25",
+    "visualBaseline": "pending",
+    "reviewChecklist": {
+      "firstViewportClear": true,
+      "logoReadable": true,
+      "layoutDistinct": true,
+      "ctaClear": true,
+      "copySpecific": true,
+      "noImageArtifacts": true
+    }
+  }
+}
