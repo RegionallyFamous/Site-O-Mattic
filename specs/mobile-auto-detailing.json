@@ -1,0 +1,111 @@
+{
+  "slug": "mobile-auto-detailing",
+  "businessName": "ShineShift Mobile Detail",
+  "niche": "mobile auto detailing service",
+  "layoutVariant": "fixed-bottom-action",
+  "tagline": "Driveway detailing with a showroom-level finish.",
+  "themeSlug": "twentytwentyfive",
+  "landingPage": "/",
+  "palette": {
+    "grass": "#155e75",
+    "deepGreen": "#101923",
+    "leaf": "#21d4e8",
+    "sun": "#ffd24a",
+    "cream": "#f5f8fb",
+    "mist": "#dcecf3",
+    "soil": "#435363",
+    "white": "#ffffff"
+  },
+  "assets": {
+    "hero": "assets/mobile-detailing/shineshift-hero.jpg",
+    "logo": "assets/mobile-detailing/shineshift-logo.png",
+    "favicon": "assets/mobile-detailing/shineshift-favicon.png"
+  },
+  "assetMeta": {
+    "hero": {
+      "title": "ShineShift mobile auto detailing hero image",
+      "alt": "A mobile auto detailer washing a glossy dark blue car in a residential driveway with detailing equipment and van nearby."
+    }
+  },
+  "contact": {
+    "phoneLabel": "(555) 014-9052",
+    "phoneHref": "tel:+15550149052",
+    "email": "hello@shineshift.test",
+    "emailHref": "mailto:hello@shineshift.test",
+    "serviceArea": "Driveway and garage-friendly mobile detailing for daily drivers, commuter cars, SUVs, trucks, and weekend cars across the central metro and nearby suburbs"
+  },
+  "copy": {
+    "eyebrow": "Mobile detail packages that come to you",
+    "heroTitle": "Your driveway, but make it a detail bay.",
+    "heroText": "ShineShift brings foam, filtration, careful towels, interior tools, and a clean finish routine to your home or office without turning the curb into chaos.",
+    "primaryCta": "Get a detail quote",
+    "secondaryCta": "Compare packages",
+    "introTitle": "The detail stays tidy before the shine shows up.",
+    "introText": "We plan water access, shade, vehicle condition, pet hair, kid-seat crumbs, and paint-safe wash steps before the first mitt touches the car.",
+    "servicesTitle": "Pick your driveway detail",
+    "processTitle": "How mobile service stays smooth",
+    "proofTitle": "Proof you can see before you pull away",
+    "quoteTitle": "Ready for the driveway detail bay?",
+    "quoteText": "Send your vehicle type, address, preferred window, and a few photos of the interior and paint. We will match the right package and confirm what to move before arrival."
+  },
+  "services": [
+    {
+      "title": "Express Exterior",
+      "text": "Foam wash, hand contact wash, wheel faces, tires dressed, glass cleaned, and a gloss boost for cars that need a crisp reset."
+    },
+    {
+      "title": "Interior Reset",
+      "text": "Vacuuming, mats, dust, cupholders, door pockets, glass, light stain attention, and dashboard care without the chemical fog."
+    },
+    {
+      "title": "Full Driveway Detail",
+      "text": "Exterior wash, interior reset, wheels, trim, glass, protection topper, and a handoff walkaround before the kit rolls away."
+    }
+  ],
+  "process": [
+    {
+      "title": "Send quick photos",
+      "text": "A few exterior and interior photos help us spot pet hair, brake dust, sap, stains, and the right package before quote time."
+    },
+    {
+      "title": "Prep the spot",
+      "text": "We confirm water access, shade, parking angle, and anything that should come out of the car before the appointment."
+    },
+    {
+      "title": "Detail and hand off",
+      "text": "We work panel by panel, keep towels organized, clean up the driveway, and walk you through care notes at the end."
+    }
+  ],
+  "proof": [
+    {
+      "stat": "2 bucket",
+      "label": "paint-safe wash routine for contact work"
+    },
+    {
+      "stat": "Home or office",
+      "label": "mobile appointments with a clean setup"
+    },
+    {
+      "stat": "Photo quote",
+      "label": "package match before we roll out"
+    }
+  ],
+  "release": {
+    "status": "approved",
+    "reviewedAt": "2026-06-25",
+    "visualBaseline": "pending",
+    "reviewChecklist": {
+      "firstViewportClear": true,
+      "logoReadable": true,
+      "layoutDistinct": true,
+      "ctaClear": true,
+      "copySpecific": true,
+      "noImageArtifacts": true,
+      "heroArtDirected": true,
+      "hierarchyDistinct": true,
+      "signatureMove": true,
+      "restrainedComposition": true,
+      "screenshotCompared": true
+    }
+  }
+}

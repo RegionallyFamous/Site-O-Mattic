@@ -206,9 +206,39 @@ export const LAYOUT_ARCHETYPES = {
   "fixed-bottom-action": {
     label: "Fixed bottom action bar",
     bestFor: ["mobile detailing", "photo booth rental", "DJ service", "holiday light installation", "coffee cart", "mocktail cart"],
+    archetype: "Mobile-first fixed action detail service",
+    hero: "split-detail-hero-with-mobile-fixed-action-bar",
+    sectionOrder: [
+      "compact-action-header",
+      "detail-hero",
+      "mobile-proof-strip",
+      "detail-package-cards",
+      "add-on-route-process",
+      "final-quote-panel",
+      "mobile-fixed-action-bar"
+    ],
     navigationTreatment: "desktop-top-header-plus-mobile-fixed-bottom-cta-bar",
     typographyTreatment: "mobile-action-ui-sans",
     colorStrategy: "thumb-friendly-contrast-with-clear-action-color",
+    servicePresentation: "package-cards-with-mobile-sticky-action",
+    proofTreatment: "compact-mobile-proof-strip-after-hero",
+    ctaRhythm: "desktop-hero-quote-plus-mobile-fixed-quote-call-bar",
+    navLabels: ["Packages", "Process", "Quote"],
+    anchorOrder: ["packages", "process", "quote"],
+    componentClassesExpected: [
+      "som-fixed-page",
+      "som-fixed-header",
+      "som-fixed-hero",
+      "som-detail-photo",
+      "som-detail-ticket",
+      "som-detail-proof",
+      "som-detail-package",
+      "som-detail-step",
+      "som-mobile-action-bar",
+      "som-quote-strip",
+      "som-footer"
+    ],
+    layoutMarkers: ["som-fixed-page", "som-fixed-header", "som-fixed-hero", "som-detail-photo", "som-detail-ticket", "som-detail-package", "som-detail-step", "som-mobile-action-bar", "som-quote-strip"],
     guidance: "Use a normal desktop header, but make mobile action sticky at the bottom with quote/call/date-check buttons. Keep content padding clear of the bar and make the bar part of the layout signature."
   },
   "side-rail-estimate": {

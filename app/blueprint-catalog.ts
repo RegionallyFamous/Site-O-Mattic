@@ -98,6 +98,22 @@ export const blueprints = [
     "releaseStatus": "approved"
   },
   {
+    "slug": "mobile-auto-detailing",
+    "name": "ShineShift Mobile Detail",
+    "eyebrow": "Mobile Auto Detailing Service",
+    "summary": "ShineShift brings foam, filtration, careful towels, interior tools, and a clean finish routine to your home or office without turning the curb into chaos.",
+    "logo": "/blueprints/mobile-auto-detailing/assets/logo.png",
+    "logoWidth": 1100,
+    "logoHeight": 260,
+    "hero": "/blueprints/mobile-auto-detailing/assets/hero.jpg",
+    "heroWidth": 1920,
+    "heroHeight": 1080,
+    "alt": "A mobile auto detailer washing a glossy dark blue car in a residential driveway with detailing equipment and van nearby.",
+    "path": "/api/blueprints/mobile-auto-detailing/blueprint.json",
+    "layoutVariant": "fixed-bottom-action",
+    "releaseStatus": "approved"
+  },
+  {
     "slug": "pollinator-garden-refresh",
     "name": "BloomRoute Garden Studio",
     "eyebrow": "Pollinator Garden Refresh Service",

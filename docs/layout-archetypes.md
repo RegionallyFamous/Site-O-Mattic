@@ -19,13 +19,13 @@ Use [Pattern And Style Catalog](./pattern-style-catalog.md) before implementing 
 | `stain-care` | Carpet cleaning, upholstery cleaning, area rugs, mattress cleaning | Top header with fabric-care anchors | Soft home hero with fabric service photo | Stain and fabric care cards with a care note | Trust proof badges after the hero | Hero estimate buttons plus final fabric quote |
 | `side-rail-service` | Junk removal, garage organization, closet organization, senior downsizing, smart home setup | Desktop side rail, mobile top header | Side rail with haul-away action hero and haul ticket | Accepted-items grid with donation route note | Donation sorting proof strip after hero | Persistent rail photo CTA plus final haul plan |
 | `package-menu-board` | Coffee carts, mocktail carts, photo booths, DJs, pizza/taco catering | Menu-board top nav with package/event/date anchors | Split hero with live service photo and menu ticket | Package cards styled like a readable event menu | Host detail proof strip under hero | Hero date check, package selection, final date CTA |
+| `fixed-bottom-action` | Mobile detailing, photo booths, DJs, holiday lights, coffee carts, mocktail carts | Desktop top header plus mobile fixed bottom CTA bar | Split detail hero with live service photo and kit ticket | Package cards with sticky mobile action | Compact proof strip under hero | Desktop hero quote plus mobile fixed quote/call bar |
 
 ## Cataloged For Scale
 
 | Variant | Best for | Navigation | Production direction |
 | --- | --- | --- | --- |
 | `package-comparison` | Mobile detailing, photo booths, DJs, coffee carts, catering | Menu-style top header with date-check anchor | Event fit, package columns, add-ons, date-check CTAs, package selection |
-| `fixed-bottom-action` | Mobile detailing, photo booths, DJs, holiday lights, coffee carts, mocktail carts | Desktop top header, mobile fixed bottom CTA bar | Quote, call, or date-check actions stay thumb-friendly on mobile |
 | `side-rail-estimate` | Smart home setup, senior downsizing, color consulting, furniture refinishing | Desktop fixed left rail with phone CTA | Full-height right-side hero image, trust cues, consult steps, services, and final soft CTA |
 | `bottom-dock-booking` | Mobile auto detailing, mobile bike repair, knife sharpening, pool cleaning | Mobile fixed bottom dock | App-like service dashboard, packages, route/service area, process, reviews, and quote |
 | `split-proof-transform` | Junk removal, garage organization, carpet cleaning, deck staining | Minimal top logo plus send-photo button | Before/after transformation story, what gets fixed, process, proof, and photo-submit CTA |
