@@ -9,6 +9,7 @@
     "businessName",
     "niche",
     "layoutVariant",
+    "pattern",
     "tagline",
     "themeSlug",
     "landingPage",
@@ -44,12 +45,309 @@
         "surface-seasonal",
         "stain-care",
         "side-rail-service",
+        "side-rail-estimate",
         "gallery-led",
         "package-menu-board",
         "fixed-bottom-action",
+        "bottom-dock-booking",
         "workshop-bench",
-        "water-test-board"
+        "sharp-route-bench",
+        "bike-route-workstand",
+        "water-test-board",
+        "zone-grid-planner",
+        "organizing-zone-board",
+        "route-led-schedule",
+        "lawn-route-status-board",
+        "urgent-checklist",
+        "story-card-consult",
+        "turnover-receipt-board",
+        "service-receipt-stack",
+        "pet-portrait-gallery",
+        "street-food-menu-board",
+        "dessert-table-gallery",
+        "balloon-backdrop-gallery",
+        "micro-wedding-floral-story",
+        "photo-booth-strip-packages",
+        "soundcheck-console",
+        "picnic-proposal-lookbook",
+        "mocktail-cart-menu",
+        "headshot-proof-gallery",
+        "mural-lettering-workshop",
+        "color-consult-story",
+        "furniture-refinish-proof"
       ]
+    },
+    "pattern": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "primaryPattern",
+        "secondaryPattern",
+        "silhouette",
+        "navigationPrimitive",
+        "mobileActionPattern",
+        "imageRole",
+        "imageEvidence",
+        "ctaRhythm",
+        "surfaceFamily",
+        "surfaceModel",
+        "styleFamily",
+        "density",
+        "colorRoles",
+        "geometry",
+        "coreBlockPlan",
+        "knownRisks",
+        "styleContract"
+      ],
+      "properties": {
+        "primaryPattern": {
+          "enum": [
+            "decision-filter-route-plan",
+            "photo-quote-transformation",
+            "checklist-urgency-gate",
+            "risk-prevention-warning-path",
+            "seasonal-readiness-estimate",
+            "date-window-reservation",
+            "soft-care-trust-plan",
+            "operational-side-rail-console",
+            "package-menu-board",
+            "mobile-fixed-action-flow",
+            "workshop-bench-photo-quote",
+            "water-test-board-route",
+            "zone-grid-planner",
+            "gallery-led-portfolio-proof",
+            "service-receipt-stack",
+            "consultation-story-flow",
+            "objection-led-faq-close"
+          ]
+        },
+        "secondaryPattern": {
+          "type": "string",
+          "minLength": 3
+        },
+        "navigationPrimitive": {
+          "enum": [
+            "compact-header",
+            "split-nav-action-header",
+            "menu-utility-header",
+            "desktop-side-rail",
+            "split-side-top-hybrid",
+            "section-anchor-strip",
+            "fixed-bottom-mobile-cta",
+            "floating-proof-action",
+            "viewport-safe-hero-shell"
+          ]
+        },
+        "imageRole": {
+          "enum": [
+            "work-in-progress",
+            "finished-outcome",
+            "process-closeup",
+            "local-context",
+            "proof-collage",
+            "operator-or-founder",
+            "environment-context"
+          ]
+        },
+        "ctaRhythm": {
+          "enum": [
+            "call-first",
+            "quote-first",
+            "photo-first",
+            "date-check",
+            "package-select",
+            "consult-first",
+            "route-join",
+            "book-first",
+            "start-service",
+            "photo-plan"
+          ]
+        },
+        "surfaceModel": {
+          "type": "string",
+          "minLength": 3
+        },
+        "knownRisks": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "string",
+            "minLength": 4
+          }
+        },
+        "styleContract": {
+          "type": "string",
+          "minLength": 40
+        },
+        "silhouette": {
+          "enum": [
+            "viewport-safe-conversion-shell",
+            "editorial-proof-stage",
+            "split-quote-board",
+            "receipt-scope-stack",
+            "operator-console",
+            "side-rail-service-story",
+            "gallery-mosaic-proof",
+            "checklist-urgency-gate",
+            "route-status-board",
+            "package-menu-board",
+            "consultation-story-flow",
+            "mobile-action-dock",
+            "floating-proof-sidecar"
+          ]
+        },
+        "mobileActionPattern": {
+          "type": "string",
+          "minLength": 3
+        },
+        "imageEvidence": {
+          "type": "string",
+          "minLength": 20
+        },
+        "surfaceFamily": {
+          "enum": [
+            "mostly-flat",
+            "outlined-repeaters",
+            "single-elevated-proof",
+            "dark-panel",
+            "receipt-stack",
+            "ticket-menu-board",
+            "grid-board",
+            "gallery-mosaic",
+            "mobile-dock",
+            "side-rail",
+            "status-board"
+          ]
+        },
+        "styleFamily": {
+          "enum": [
+            "quiet-utility-grid",
+            "humanist-local-calm",
+            "editorial-proof-stage",
+            "operator-console",
+            "material-workbench",
+            "mobile-action-gloss",
+            "risk-control-alert",
+            "receipt-ledger",
+            "hospitality-menu",
+            "clear-status-dashboard"
+          ]
+        },
+        "density": {
+          "enum": [
+            "compact-leadgen",
+            "balanced-editorial",
+            "visual-first"
+          ]
+        },
+        "colorRoles": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "ink",
+            "paper",
+            "field",
+            "line",
+            "primary",
+            "action",
+            "proof",
+            "muted",
+            "warning",
+            "shadowTint"
+          ],
+          "properties": {
+            "ink": {
+              "type": "string",
+              "minLength": 3
+            },
+            "paper": {
+              "type": "string",
+              "minLength": 3
+            },
+            "field": {
+              "type": "string",
+              "minLength": 3
+            },
+            "line": {
+              "type": "string",
+              "minLength": 3
+            },
+            "primary": {
+              "type": "string",
+              "minLength": 3
+            },
+            "action": {
+              "type": "string",
+              "minLength": 3
+            },
+            "proof": {
+              "type": "string",
+              "minLength": 3
+            },
+            "muted": {
+              "type": "string",
+              "minLength": 3
+            },
+            "warning": {
+              "type": "string",
+              "minLength": 3
+            },
+            "shadowTint": {
+              "type": "string",
+              "minLength": 3
+            }
+          }
+        },
+        "geometry": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "radiusScale",
+            "borderRole",
+            "shadowRole",
+            "mediaCrop"
+          ],
+          "properties": {
+            "radiusScale": {
+              "type": "string",
+              "minLength": 3
+            },
+            "borderRole": {
+              "type": "string",
+              "minLength": 3
+            },
+            "shadowRole": {
+              "type": "string",
+              "minLength": 3
+            },
+            "mediaCrop": {
+              "type": "string",
+              "minLength": 3
+            }
+          }
+        },
+        "coreBlockPlan": {
+          "type": "array",
+          "minItems": 3,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "buttons",
+              "columns",
+              "cover",
+              "details",
+              "gallery",
+              "image",
+              "list",
+              "media-text",
+              "navigation",
+              "quote",
+              "pullquote",
+              "table"
+            ]
+          }
+        }
+      }
     },
     "tagline": {
       "type": "string",

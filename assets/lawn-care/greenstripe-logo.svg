@@ -1,16 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="260" viewBox="0 0 1200 260" role="img" aria-labelledby="title desc">
   <title id="title">GreenStripe logo</title>
-  <desc id="desc">A green circular lawn stripe mark beside a bold GreenStripe wordmark.</desc>
+  <desc id="desc">A route-style lawn stripe mark beside a bold GreenStripe wordmark.</desc>
   <rect width="1200" height="260" fill="none"/>
-  <g transform="translate(40 34)">
-    <circle cx="96" cy="96" r="92" fill="#102f1d"/>
-    <path d="M39 133c38-6 76-24 113-55 13-11 25-23 37-37-8 45-25 80-51 105-27 25-60 34-99 27 23-7 43-20 60-39-19 9-39 15-60 19z" fill="#8cc63f"/>
-    <path d="M42 112c43-12 78-29 107-51" fill="none" stroke="#f3c14b" stroke-width="12" stroke-linecap="round"/>
-    <path d="M54 151c35-8 65-23 90-45" fill="none" stroke="#ffffff" stroke-width="8" stroke-linecap="round" opacity=".88"/>
+  <g transform="translate(48 40)">
+    <rect x="0" y="0" width="180" height="180" rx="42" fill="#14251e"/>
+    <path d="M38 128c44-5 83-22 117-51" fill="none" stroke="#8fbd3f" stroke-width="24" stroke-linecap="round"/>
+    <path d="M38 92c38-6 73-22 105-48" fill="none" stroke="#246b56" stroke-width="24" stroke-linecap="round"/>
+    <path d="M49 142c34-6 65-20 93-42" fill="none" stroke="#ffffff" stroke-width="10" stroke-linecap="round" opacity=".9"/>
+    <circle cx="138" cy="40" r="18" fill="#f4ba3a"/>
+    <path d="M45 52h42" stroke="#f4ba3a" stroke-width="12" stroke-linecap="round"/>
   </g>
-  <g transform="translate(268 53)">
-    <text x="0" y="116" font-family="Arial Black, Arial, Helvetica, sans-serif" font-size="108" font-weight="900" letter-spacing="0" fill="#102f1d">GreenStripe</text>
-    <path d="M8 154h604" stroke="#8cc63f" stroke-width="14" stroke-linecap="round"/>
-    <path d="M8 154h194" stroke="#f3c14b" stroke-width="14" stroke-linecap="round"/>
+  <g transform="translate(278 49)">
+    <text x="0" y="118" fill="#14251e" font-family="Arial Black, Arial, Helvetica, sans-serif" font-size="110" font-weight="900" letter-spacing="0">GreenStripe</text>
+    <path d="M8 154h592" stroke="#8fbd3f" stroke-width="13" stroke-linecap="round"/>
+    <path d="M8 154h214" stroke="#f4ba3a" stroke-width="13" stroke-linecap="round"/>
   </g>
 </svg>

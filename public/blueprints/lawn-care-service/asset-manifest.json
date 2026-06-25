@@ -2,14 +2,14 @@
   "version": 1,
   "slug": "lawn-care-service",
   "businessName": "GreenStripe Lawn Care",
-  "layoutVariant": "route-plan",
+  "layoutVariant": "lawn-route-status-board",
   "assets": {
     "hero": {
       "source": "assets/lawn-care/greenstripe-hero.jpg",
       "fileName": "hero.jpg",
       "outputPath": "/assets/hero.jpg",
       "mimeType": "image/jpeg",
-      "byteSize": 500409,
+      "byteSize": 485289,
       "width": 1920,
       "height": 1080,
       "embedded": true
@@ -19,7 +19,7 @@
       "fileName": "logo.png",
       "outputPath": "/assets/logo.png",
       "mimeType": "image/png",
-      "byteSize": 28686,
+      "byteSize": 26096,
       "width": 1200,
       "height": 260,
       "embedded": true
@@ -29,7 +29,7 @@
       "fileName": "favicon.png",
       "outputPath": "/assets/favicon.png",
       "mimeType": "image/png",
-      "byteSize": 27628,
+      "byteSize": 23956,
       "width": 512,
       "height": 512,
       "embedded": true

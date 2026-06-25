@@ -3,14 +3,5 @@
 Built-in Imagegen was used for `greenstripe-hero.jpg`.
 
 ```text
-Use case: ads-marketing
-Asset type: WordPress one-page site hero image for a local lawn care service
-Primary request: a polished, professional but friendly hero image for a lawn care company website
-Scene/backdrop: sunny suburban front lawn after a fresh mow, crisp diagonal mowing stripes, healthy green grass, tidy flower beds, clean driveway edge, warm neighborhood curb appeal
-Subject: one friendly uniformed lawn care professional finishing a clean edge with a trimmer near the walkway, modern battery mower nearby, no brand logos
-Style/medium: high-end editorial commercial photography, realistic, bright and trustworthy
-Composition/framing: wide landscape website hero, 16:9 feel, subject on the right third, generous clean negative space on the left for page text, crisp foreground grass texture
-Lighting/mood: late morning sunlight, fresh, capable, upbeat, not overly staged
-Color palette: vibrant greens, warm sunlight, white trim, subtle navy workwear accents
-Constraints: no text, no watermark, no visible brand names, no distorted tools, no messy yard, no exaggerated mansion, no unsafe tool use
+High-end realistic commercial photography for a WordPress one-page lawn care service website hero. A tidy suburban corner-lot front lawn with crisp diagonal mowing stripes, clean sidewalk and driveway edges, fresh mulch beds, and a uniformed lawn care professional doing a final gate-and-edge check near a compact mower and trimmer. The scene should communicate recurring route-day lawn care, reliable local service, and a finished outcome. Wide 16:9 landscape composition, subject and equipment on the right third, generous clean negative space on the left for headline text, bright late-morning sunlight, rich but natural greens, warm yellow highlights, premium local-service feel. No text, no logo, no watermark, no signs, no distorted tools, no unsafe tool use, no mansion, no messy yard.
 ```

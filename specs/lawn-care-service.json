@@ -2,18 +2,63 @@
   "slug": "lawn-care-service",
   "businessName": "GreenStripe Lawn Care",
   "niche": "lawn care service",
-  "layoutVariant": "route-plan",
-  "tagline": "Lawn care that makes the neighbors slow down.",
+  "layoutVariant": "lawn-route-status-board",
+  "pattern": {
+    "primaryPattern": "decision-filter-route-plan",
+    "secondaryPattern": "route-date-confidence",
+    "silhouette": "route-status-board",
+    "navigationPrimitive": "split-nav-action-header",
+    "mobileActionPattern": "route-join-actions",
+    "imageRole": "finished-outcome",
+    "imageEvidence": "finished striped lawn with a route-day gate and edge check in progress",
+    "ctaRhythm": "route-join",
+    "surfaceFamily": "status-board",
+    "surfaceModel": "floating-route-board-and-visit-notes-table",
+    "styleFamily": "clear-status-dashboard",
+    "density": "balanced-editorial",
+    "colorRoles": {
+      "ink": "deepGreen",
+      "paper": "cream",
+      "field": "mist",
+      "line": "soil",
+      "primary": "grass",
+      "action": "sun",
+      "proof": "leaf",
+      "muted": "soil",
+      "warning": "sun",
+      "shadowTint": "deepGreen"
+    },
+    "geometry": {
+      "radiusScale": "utility-8",
+      "borderRole": "status board and route card dividers",
+      "shadowRole": "hero media and route board only",
+      "mediaCrop": "wide route-day lawn outcome crop"
+    },
+    "coreBlockPlan": [
+      "columns",
+      "buttons",
+      "image",
+      "table",
+      "details"
+    ],
+    "knownRisks": [
+      "route-board-crowds-mobile-hero",
+      "sticky-header-anchor-offset",
+      "table-rows-readable-on-mobile"
+    ],
+    "styleContract": "Crisp route-day utility with gate-check proof, striped lawn outcome evidence, sun accent actions, and a floating route status board as the signature move."
+  },
+  "tagline": "Neighborhood routes for lawns that look ready by Friday.",
   "themeSlug": "twentytwentyfive",
   "landingPage": "/",
   "palette": {
-    "grass": "#1f7a3a",
-    "deepGreen": "#102f1d",
-    "leaf": "#8cc63f",
-    "sun": "#f3c14b",
-    "cream": "#f7f3e8",
-    "mist": "#e7f0df",
-    "soil": "#5a3b25",
+    "grass": "#246b56",
+    "deepGreen": "#14251e",
+    "leaf": "#8fbd3f",
+    "sun": "#f4ba3a",
+    "cream": "#f7f4ea",
+    "mist": "#dfe8dd",
+    "soil": "#4b574d",
     "white": "#ffffff"
   },
   "assets": {
@@ -23,8 +68,8 @@
   },
   "assetMeta": {
     "hero": {
-      "title": "GreenStripe lawn care hero image",
-      "alt": "A lawn care professional trimming a crisp green front lawn."
+      "title": "GreenStripe route-day lawn care hero image",
+      "alt": "A lawn care professional checking a wooden gate beside a freshly striped suburban lawn with mower and trimmer ready for route-day service."
     }
   },
   "contact": {
@@ -32,67 +77,67 @@
     "phoneHref": "tel:+15550147883",
     "email": "hello@greenstripe.test",
     "emailHref": "mailto:hello@greenstripe.test",
-    "serviceArea": "Northside neighborhoods, west suburbs, and the sunny lawns in between"
+    "serviceArea": "Northside, Oak Hill, Westbrook, Maple Bend, and nearby weekly mowing routes with room for one-time cleanup passes when the calendar allows"
   },
   "copy": {
-    "eyebrow": "Local lawn care with tidy edges",
-    "heroTitle": "Your lawn, minus the weekend chore.",
-    "heroText": "GreenStripe keeps yards crisp, healthy, and party-ready with mowing, edging, seasonal cleanups, and friendly crews who actually close the gate.",
-    "primaryCta": "Get a quick quote",
-    "secondaryCta": "See services",
-    "introTitle": "The grass-is-greener treatment, without the drama.",
-    "introText": "We show up when we say we will, make clean work of the messy bits, and leave your yard looking like it has its life together.",
-    "servicesTitle": "What we handle",
-    "processTitle": "How it works",
-    "proofTitle": "Neighbor-approved yard care",
-    "quoteTitle": "Ready for a better-looking yard?",
-    "quoteText": "Send a note with your address, yard size, and what is bugging you. We will reply with a straightforward next step."
+    "eyebrow": "Weekly mowing routes with gate-check notes",
+    "heroTitle": "Route-day lawns with crisp Friday energy.",
+    "heroText": "GreenStripe runs tidy neighborhood routes for mowing, edging, bed touch-ups, and post-visit gate checks, so your yard looks handled before the weekend shows up.",
+    "primaryCta": "Join the route",
+    "secondaryCta": "View route plans",
+    "introTitle": "A lawn route should feel predictable, not mysterious.",
+    "introText": "We confirm the access point, set the mowing cadence, trim the edges that make the yard feel finished, and leave simple notes when weather, growth, or cleanup timing changes the plan.",
+    "servicesTitle": "Choose your route lane",
+    "processTitle": "How the route stays on track",
+    "proofTitle": "The small checks make the stripes feel premium",
+    "quoteTitle": "Want a cleaner lawn route?",
+    "quoteText": "Send your address, a few yard photos, gate or access notes, and your ideal mowing rhythm. We will reply with the best route fit and a clear first-visit plan."
   },
   "services": [
     {
-      "title": "Weekly mowing",
-      "text": "Clean cuts, fresh stripes, and reliable scheduling during peak growing season."
+      "title": "Weekly stripe route",
+      "text": "Consistent mowing, clean passes, and route-day timing for lawns that need to look ready before the weekend."
     },
     {
-      "title": "Edges and walkways",
-      "text": "Crisp borders along drives, sidewalks, beds, and patios so everything feels finished."
+      "title": "Edge and bed touch",
+      "text": "Walkways, driveway seams, fence lines, and bed borders get the crisp finish that makes the whole yard look intentional."
     },
     {
-      "title": "Seasonal cleanups",
-      "text": "Leaves, sticks, storm debris, and the mysterious corner pile finally meet their match."
+      "title": "Cleanup reset pass",
+      "text": "Storm sticks, leaf mats, overgrowth, and that one corner nobody wants to talk about get handled before regular mowing starts."
     }
   ],
   "process": [
     {
-      "title": "Snap a few photos",
-      "text": "Send the lawn, trouble spots, and the best way to access the yard."
+      "title": "Check the route fit",
+      "text": "Send yard photos, address, slope or gate notes, and any trouble spots so we can match the right route lane."
     },
     {
-      "title": "Get a clear plan",
-      "text": "We recommend a cadence, scope, and price without making it weird."
+      "title": "Set the cadence",
+      "text": "We recommend weekly, biweekly, or reset-first service based on growth, shade, edges, and how much polish you want."
     },
     {
-      "title": "Enjoy the view",
-      "text": "We keep the schedule moving and the curb appeal doing its little victory lap."
+      "title": "Leave the gate check",
+      "text": "After the visit, we check gates, blow hard surfaces, and flag weather or cleanup notes before the next stop."
     }
   ],
   "proof": [
     {
-      "stat": "24-hour",
-      "label": "quote follow-up on weekdays"
+      "stat": "Friday-ready",
+      "label": "route planning that protects weekend curb appeal"
     },
     {
-      "stat": "3-season",
-      "label": "mowing, cleanup, and refresh plans"
+      "stat": "Gate check",
+      "label": "access and cleanup notes after every visit"
     },
     {
-      "stat": "Gate-check",
-      "label": "crew checklist after every visit"
+      "stat": "24 hr",
+      "label": "weekday quote reply with a route-fit next step"
     }
   ],
   "release": {
     "status": "approved",
-    "reviewedAt": "2026-06-24",
+    "reviewedAt": "2026-06-25",
     "visualBaseline": "pending",
     "reviewChecklist": {
       "firstViewportClear": true,

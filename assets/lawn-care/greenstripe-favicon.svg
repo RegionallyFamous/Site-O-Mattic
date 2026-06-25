@@ -1,9 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
   <title id="title">GreenStripe favicon</title>
-  <desc id="desc">A circular green lawn stripe mark.</desc>
-  <rect width="512" height="512" rx="112" fill="#102f1d"/>
-  <circle cx="256" cy="256" r="190" fill="#1f7a3a"/>
-  <path d="M139 332c77-13 147-50 211-113 27-27 49-55 67-83-12 97-48 169-106 216-57 47-126 61-206 42 45-12 85-35 119-70-30 11-59 18-85 22z" fill="#8cc63f"/>
-  <path d="M142 270c82-23 149-59 203-109" fill="none" stroke="#f3c14b" stroke-width="32" stroke-linecap="round"/>
-  <path d="M162 361c68-18 125-49 171-92" fill="none" stroke="#ffffff" stroke-width="21" stroke-linecap="round" opacity=".88"/>
+  <desc id="desc">A square route-style lawn stripe mark.</desc>
+  <rect width="512" height="512" rx="116" fill="#14251e"/>
+  <path d="M108 356c126-18 226-66 300-145" fill="none" stroke="#8fbd3f" stroke-width="66" stroke-linecap="round"/>
+  <path d="M106 254c110-19 203-64 278-137" fill="none" stroke="#246b56" stroke-width="66" stroke-linecap="round"/>
+  <path d="M126 396c98-19 178-57 239-115" fill="none" stroke="#ffffff" stroke-width="30" stroke-linecap="round" opacity=".92"/>
+  <circle cx="356" cy="115" r="48" fill="#f4ba3a"/>
+  <path d="M118 138h112" stroke="#f4ba3a" stroke-width="34" stroke-linecap="round"/>
 </svg>
