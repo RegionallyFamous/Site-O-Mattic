@@ -1,0 +1,111 @@
+{
+  "slug": "coffee-cart-catering",
+  "businessName": "Cartwright Coffee Co.",
+  "niche": "coffee cart catering service",
+  "layoutVariant": "package-menu-board",
+  "tagline": "A tidy espresso bar that makes the room smell like yes.",
+  "themeSlug": "twentytwentyfive",
+  "landingPage": "/",
+  "palette": {
+    "grass": "#1f6f66",
+    "deepGreen": "#2b2118",
+    "leaf": "#7bd0c2",
+    "sun": "#e88d2a",
+    "cream": "#fff7ea",
+    "mist": "#efe2cf",
+    "soil": "#7a4a24",
+    "white": "#ffffff"
+  },
+  "assets": {
+    "hero": "assets/coffee-cart/cartwright-hero.jpg",
+    "logo": "assets/coffee-cart/cartwright-logo.png",
+    "favicon": "assets/coffee-cart/cartwright-favicon.png"
+  },
+  "assetMeta": {
+    "hero": {
+      "title": "Cartwright Coffee Co. mobile espresso cart hero image",
+      "alt": "A barista preparing espresso drinks at a wood coffee cart during a bright indoor event with guests in the background."
+    }
+  },
+  "contact": {
+    "phoneLabel": "(555) 014-7741",
+    "phoneHref": "tel:+15550147741",
+    "email": "hello@cartwrightcoffee.test",
+    "emailHref": "mailto:hello@cartwrightcoffee.test",
+    "serviceArea": "Espresso cart service for weddings, offices, open houses, showers, markets, and private events across the central metro and nearby suburbs"
+  },
+  "copy": {
+    "eyebrow": "Mobile espresso bar for event hosts",
+    "heroTitle": "Coffee service with a little line-around-the-cart energy.",
+    "heroText": "Cartwright rolls in with a polished espresso cart, friendly baristas, and a tight drink menu that keeps guests moving, caffeinated, and gently impressed.",
+    "primaryCta": "Check your date",
+    "secondaryCta": "See packages",
+    "introTitle": "A small bar that carries the whole room.",
+    "introText": "We bring the machine, beans, dairy and non-dairy options, cups, cleanup rhythm, and a menu that feels special without turning your event into a checkout counter.",
+    "servicesTitle": "Choose the cart format",
+    "processTitle": "How booking stays smooth",
+    "proofTitle": "Built for hosts who notice details",
+    "quoteTitle": "Want the cart at your event?",
+    "quoteText": "Send the date, venue, guest count, service window, and whether you want espresso only or a fuller pastry-and-cold-drink spread. We will reply with the best-fit package."
+  },
+  "services": [
+    {
+      "title": "Espresso Social",
+      "text": "A compact espresso and latte menu for showers, open houses, team mornings, and events where the cart should feel easy and elegant."
+    },
+    {
+      "title": "Full Barista Bar",
+      "text": "Espresso drinks, drip coffee, tea, milk alternatives, flavored syrups, and a service pace planned around your guest count."
+    },
+    {
+      "title": "Coffee plus Bites",
+      "text": "A hosted coffee cart with pastries, sparkling water, iced options, and a tidy display that photographs beautifully without hogging the floor plan."
+    }
+  ],
+  "process": [
+    {
+      "title": "Send the event basics",
+      "text": "Share the date, location, guest count, service window, power access, and any dietary notes we should plan around."
+    },
+    {
+      "title": "Match the menu",
+      "text": "We recommend a cart format, staffing level, and drink list so the line keeps moving and the host is not troubleshooting milk."
+    },
+    {
+      "title": "Roll in and pour",
+      "text": "The cart arrives polished, self-contained, and calm, then leaves the area clean after the final cup is handed off."
+    }
+  ],
+  "proof": [
+    {
+      "stat": "90 min",
+      "label": "minimum service window for small private events"
+    },
+    {
+      "stat": "2 baristas",
+      "label": "available for higher-volume guest flow"
+    },
+    {
+      "stat": "No logo",
+      "label": "quiet cart styling that blends into your event"
+    }
+  ],
+  "release": {
+    "status": "approved",
+    "reviewedAt": "2026-06-25",
+    "visualBaseline": "pending",
+    "reviewChecklist": {
+      "firstViewportClear": true,
+      "logoReadable": true,
+      "layoutDistinct": true,
+      "ctaClear": true,
+      "copySpecific": true,
+      "noImageArtifacts": true,
+      "heroArtDirected": true,
+      "hierarchyDistinct": true,
+      "signatureMove": true,
+      "restrainedComposition": true,
+      "screenshotCompared": true
+    }
+  }
+}

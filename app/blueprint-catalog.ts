@@ -18,6 +18,22 @@ export const blueprints = [
     "releaseStatus": "approved"
   },
   {
+    "slug": "coffee-cart-catering",
+    "name": "Cartwright Coffee Co.",
+    "eyebrow": "Coffee Cart Catering Service",
+    "summary": "Cartwright rolls in with a polished espresso cart, friendly baristas, and a tight drink menu that keeps guests moving, caffeinated, and gently impressed.",
+    "logo": "/blueprints/coffee-cart-catering/assets/logo.png",
+    "logoWidth": 1100,
+    "logoHeight": 260,
+    "hero": "/blueprints/coffee-cart-catering/assets/hero.jpg",
+    "heroWidth": 1920,
+    "heroHeight": 1080,
+    "alt": "A barista preparing espresso drinks at a wood coffee cart during a bright indoor event with guests in the background.",
+    "path": "/api/blueprints/coffee-cart-catering/blueprint.json",
+    "layoutVariant": "package-menu-board",
+    "releaseStatus": "approved"
+  },
+  {
     "slug": "driveway-sealcoating",
     "name": "Blackline Sealcoating",
     "eyebrow": "Driveway Sealcoating Service",

@@ -19,3 +19,6 @@ rsvg-convert -w 512 -h 512 assets/carpet-upholstery/freshthread-favicon.svg -o a
 rsvg-convert -w 1200 -h 260 assets/junk-removal/clearpath-logo.svg -o assets/junk-removal/clearpath-logo.png
 magick assets/junk-removal/clearpath-logo.png -trim +repage -resize 920x220 -background none -gravity center -extent 1100x260 assets/junk-removal/clearpath-logo.png
 rsvg-convert -w 512 -h 512 assets/junk-removal/clearpath-favicon.svg -o assets/junk-removal/clearpath-favicon.png
+rsvg-convert -w 1200 -h 260 assets/coffee-cart/cartwright-logo.svg -o assets/coffee-cart/cartwright-logo.png
+magick assets/coffee-cart/cartwright-logo.png -trim +repage -resize 920x220 -background none -gravity center -extent 1100x260 assets/coffee-cart/cartwright-logo.png
+rsvg-convert -w 512 -h 512 assets/coffee-cart/cartwright-favicon.svg -o assets/coffee-cart/cartwright-favicon.png

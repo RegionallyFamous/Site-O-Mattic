@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title">
+  <title id="title">Cartwright Coffee Co. favicon</title>
+  <rect x="52" y="52" width="408" height="408" rx="116" fill="#2b2118"/>
+  <path d="M148 318h168c52 0 94-42 94-94H148z" fill="#f7eee0"/>
+  <path d="M318 224h42c34 0 60 27 60 60s-26 60-60 60h-42" fill="none" stroke="#e88d2a" stroke-width="40" stroke-linecap="round"/>
+  <path d="M176 156c24-32 16-58-4-84M244 156c24-32 16-58-4-84M312 156c24-32 16-58-4-84" fill="none" stroke="#7bd0c2" stroke-width="28" stroke-linecap="round"/>
+  <path d="M134 374h210" stroke="#e88d2a" stroke-width="34" stroke-linecap="round"/>
+</svg>

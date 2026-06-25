@@ -254,9 +254,37 @@ export const LAYOUT_ARCHETYPES = {
   "package-menu-board": {
     label: "Package menu board",
     bestFor: ["photo booth rental", "DJ service", "coffee cart", "mocktail cart", "pizza catering", "taco catering"],
+    archetype: "Hospitality package menu board",
+    hero: "split-hero-with-live-service-photo-and-menu-ticket",
+    sectionOrder: [
+      "menu-header",
+      "package-menu-hero",
+      "host-proof-strip",
+      "package-board",
+      "event-fit-and-booking-flow",
+      "date-check-footer"
+    ],
     navigationTreatment: "menu-board-top-nav-with-packages-events-date-anchors",
     typographyTreatment: "menu-board-display-sans",
     colorStrategy: "hospitality-menu-contrast-with-flavor-accent",
+    servicePresentation: "package-board-cards-with-menu-ticket",
+    proofTreatment: "host-detail-proof-strip-under-hero",
+    ctaRhythm: "hero-date-check-plus-package-selection-plus-final-date-cta",
+    navLabels: ["Packages", "Events", "Date"],
+    anchorOrder: ["packages", "events", "quote"],
+    componentClassesExpected: [
+      "som-menu-header",
+      "som-menu-hero",
+      "som-menu-photo",
+      "som-menu-ticket",
+      "som-menu-proof",
+      "som-menu-package",
+      "som-menu-event",
+      "som-menu-step",
+      "som-quote-strip",
+      "som-footer"
+    ],
+    layoutMarkers: ["som-menu-header", "som-menu-hero", "som-menu-photo", "som-menu-ticket", "som-menu-package", "som-menu-event", "som-menu-step", "som-quote-strip"],
     guidance: "Present event packages like a readable menu board, include add-ons and event-fit sections, and frame the primary action as checking the date."
   },
   "urgent-checklist": {

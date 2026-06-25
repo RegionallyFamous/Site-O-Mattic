@@ -41,6 +41,7 @@ Stay inside core WordPress blocks and global styles:
 | `surface-seasonal` | Hero Quote Panel, Proof Bar, Process Timeline. | Good seasonal urgency; vary surface/card rhythm if reused. |
 | `stain-care` | Decision Filter Hero, Proof Bar, Service Path Tiles. | Good softer trust pattern; add more distinctive proof if reused. |
 | `side-rail-service` | Desktop Side Rail, Hero Quote Panel, Proof Bar, Process Timeline. | Strong operational silhouette; mobile collapse and logo scale must be checked. |
+| `package-menu-board` | Package / Menu Board, Proof Bar, Process Reassurance Timeline. | Strong for event and catering services; keep menu ticket and package comparison readable on mobile. |
 
 ## Style Dimensions
 

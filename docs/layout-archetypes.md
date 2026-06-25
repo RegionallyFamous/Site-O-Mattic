@@ -18,6 +18,7 @@ Use [Pattern And Style Catalog](./pattern-style-catalog.md) before implementing 
 | `surface-seasonal` | Driveway sealcoating, deck staining, fence staining, asphalt repair | Top header with seasonal anchors | Dark copy-left hero with wide service-action photo | Prep and scope cards with a season note | Seasonal readiness badges under hero | Hero estimate buttons plus final photo quote |
 | `stain-care` | Carpet cleaning, upholstery cleaning, area rugs, mattress cleaning | Top header with fabric-care anchors | Soft home hero with fabric service photo | Stain and fabric care cards with a care note | Trust proof badges after the hero | Hero estimate buttons plus final fabric quote |
 | `side-rail-service` | Junk removal, garage organization, closet organization, senior downsizing, smart home setup | Desktop side rail, mobile top header | Side rail with haul-away action hero and haul ticket | Accepted-items grid with donation route note | Donation sorting proof strip after hero | Persistent rail photo CTA plus final haul plan |
+| `package-menu-board` | Coffee carts, mocktail carts, photo booths, DJs, pizza/taco catering | Menu-board top nav with package/event/date anchors | Split hero with live service photo and menu ticket | Package cards styled like a readable event menu | Host detail proof strip under hero | Hero date check, package selection, final date CTA |
 
 ## Cataloged For Scale
 
@@ -30,7 +31,6 @@ Use [Pattern And Style Catalog](./pattern-style-catalog.md) before implementing 
 | `split-proof-transform` | Junk removal, garage organization, carpet cleaning, deck staining | Minimal top logo plus send-photo button | Before/after transformation story, what gets fixed, process, proof, and photo-submit CTA |
 | `portfolio-first-mosaic` | Pet photography, headshots, murals, florals, dessert tables | Simple top gallery nav | Mosaic hero, style/package sections, process, testimonial, and inquiry |
 | `route-led-schedule` | Lawn care, plant care, pool cleaning, knife sharpening, bike repair | Horizontal route header | Route days, service-area panel, plans, service menu, proof, and join-the-route CTA |
-| `package-menu-board` | Photo booth, DJ, coffee cart, mocktail cart, pizza/taco catering | Menu-board top nav | Package board, add-ons, event fit, process, and date CTA |
 | `urgent-checklist` | Gutter cleaning, holiday lights, vacation rental turnover, solar panel cleaning | Utility header with urgent CTA | Problem checklist, warning signs, packages, safety proof, area, and quote |
 | `story-card-consult` | Senior downsizing, color consulting, organization, micro-wedding florals | Calm top header | Warm editorial flow with next steps, support cards, packages, proof, and gentle consult CTA |
 | `service-receipt-stack` | Window cleaning, carpet cleaning, detailing, vacation turnover | Compact top nav plus phone button | Receipt-style scope summary, included services, add-ons, process, proof, and build-my-estimate CTA |
