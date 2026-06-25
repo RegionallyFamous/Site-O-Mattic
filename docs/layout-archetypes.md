@@ -21,6 +21,7 @@ Use [Pattern And Style Catalog](./pattern-style-catalog.md) before implementing 
 | `package-menu-board` | Coffee carts, mocktail carts, photo booths, DJs, pizza/taco catering | Menu-board top nav with package/event/date anchors | Split hero with live service photo and menu ticket | Package cards styled like a readable event menu | Host detail proof strip under hero | Hero date check, package selection, final date CTA |
 | `fixed-bottom-action` | Mobile detailing, photo booths, DJs, holiday lights, coffee carts, mocktail carts | Desktop top header plus mobile fixed bottom CTA bar | Split detail hero with live service photo and kit ticket | Package cards with sticky mobile action | Compact proof strip under hero | Desktop hero quote plus mobile fixed quote/call bar |
 | `workshop-bench` | Deck staining, fence staining, furniture refinishing, knife sharpening, bike repair | Side/top hybrid with craft labels | Wide craft photo with bench ticket and side labels | Wood/craft scope cards with material note | Material proof rail with craft stats | Hero send-photo CTA plus final care-note quote |
+| `water-test-board` | Pool cleaning, spa care, fountain maintenance | Split nav/action header with route and water anchors | Cover photo with floating water test board | Service-lane plan cards with water status bars | Chemistry test strip proof rail | Hero start-service CTA plus route-day final quote |
 
 ## Cataloged For Scale
 
@@ -31,7 +32,7 @@ Use [Pattern And Style Catalog](./pattern-style-catalog.md) before implementing 
 | `bottom-dock-booking` | Mobile auto detailing, mobile bike repair, knife sharpening, pool cleaning | Mobile fixed bottom dock | App-like service dashboard, packages, route/service area, process, reviews, and quote |
 | `split-proof-transform` | Junk removal, garage organization, carpet cleaning, deck staining | Minimal top logo plus send-photo button | Before/after transformation story, what gets fixed, process, proof, and photo-submit CTA |
 | `portfolio-first-mosaic` | Pet photography, headshots, murals, florals, dessert tables | Simple top gallery nav | Mosaic hero, style/package sections, process, testimonial, and inquiry |
-| `route-led-schedule` | Lawn care, plant care, pool cleaning, knife sharpening, bike repair | Horizontal route header | Route days, service-area panel, plans, service menu, proof, and join-the-route CTA |
+| `route-led-schedule` | Lawn care, plant care, knife sharpening, bike repair | Horizontal route header | Route days, service-area panel, plans, service menu, proof, and join-the-route CTA |
 | `urgent-checklist` | Gutter cleaning, holiday lights, vacation rental turnover, solar panel cleaning | Utility header with urgent CTA | Problem checklist, warning signs, packages, safety proof, area, and quote |
 | `story-card-consult` | Senior downsizing, color consulting, organization, micro-wedding florals | Calm top header | Warm editorial flow with next steps, support cards, packages, proof, and gentle consult CTA |
 | `service-receipt-stack` | Window cleaning, carpet cleaning, detailing, vacation turnover | Compact top nav plus phone button | Receipt-style scope summary, included services, add-ons, process, proof, and build-my-estimate CTA |

@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "slug": "pool-cleaning",
+  "businessName": "BlueLane Pool Care",
+  "layoutVariant": "water-test-board",
+  "assets": {
+    "hero": {
+      "source": "assets/pool-cleaning/bluelane-hero.jpg",
+      "fileName": "hero.jpg",
+      "outputPath": "/assets/hero.jpg",
+      "mimeType": "image/jpeg",
+      "byteSize": 327369,
+      "width": 1920,
+      "height": 1080,
+      "embedded": true
+    },
+    "logo": {
+      "source": "assets/pool-cleaning/bluelane-logo.png",
+      "fileName": "logo.png",
+      "outputPath": "/assets/logo.png",
+      "mimeType": "image/png",
+      "byteSize": 37738,
+      "width": 1100,
+      "height": 260,
+      "embedded": true
+    },
+    "favicon": {
+      "source": "assets/pool-cleaning/bluelane-favicon.png",
+      "fileName": "favicon.png",
+      "outputPath": "/assets/favicon.png",
+      "mimeType": "image/png",
+      "byteSize": 23070,
+      "width": 512,
+      "height": 512,
+      "embedded": true
+    }
+  }
+}

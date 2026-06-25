@@ -28,3 +28,6 @@ rsvg-convert -w 512 -h 512 assets/mobile-detailing/shineshift-favicon.svg -o ass
 rsvg-convert -w 1200 -h 260 assets/deck-fence-staining/cedarline-logo.svg -o assets/deck-fence-staining/cedarline-logo.png
 magick assets/deck-fence-staining/cedarline-logo.png -trim +repage -resize 920x220 -background none -gravity center -extent 1100x260 assets/deck-fence-staining/cedarline-logo.png
 rsvg-convert -w 512 -h 512 assets/deck-fence-staining/cedarline-favicon.svg -o assets/deck-fence-staining/cedarline-favicon.png
+rsvg-convert -w 1200 -h 260 assets/pool-cleaning/bluelane-logo.svg -o assets/pool-cleaning/bluelane-logo.png
+magick assets/pool-cleaning/bluelane-logo.png -trim +repage -resize 920x220 -background none -gravity center -extent 1100x260 assets/pool-cleaning/bluelane-logo.png
+rsvg-convert -w 512 -h 512 assets/pool-cleaning/bluelane-favicon.svg -o assets/pool-cleaning/bluelane-favicon.png

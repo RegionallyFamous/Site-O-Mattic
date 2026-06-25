@@ -281,6 +281,44 @@ export const LAYOUT_ARCHETYPES = {
     colorStrategy: "route-map-colors-with-readable-plan-contrast",
     guidance: "Lead with route days and schedule confidence, show a CSS-styled service-area panel instead of an external map, then use plan and proof sections around a join-the-route CTA."
   },
+  "water-test-board": {
+    label: "Water test board",
+    bestFor: ["pool cleaning", "spa care", "fountain maintenance"],
+    archetype: "Recurring water care test board",
+    hero: "cover-photo-with-floating-water-test-board",
+    sectionOrder: [
+      "split-action-header",
+      "pool-cover-hero",
+      "chemistry-proof-strip",
+      "service-lane-plans",
+      "route-day-board",
+      "final-water-check-quote",
+      "footer"
+    ],
+    navigationTreatment: "split-nav-action-header-with-route-and-water-anchors",
+    typographyTreatment: "clean-water-dashboard-sans",
+    colorStrategy: "clear-water-aqua-with-sun-test-strip-accent",
+    servicePresentation: "service-lane-plan-cards-with-water-status-bars",
+    proofTreatment: "chemistry-test-strip-proof-rail",
+    ctaRhythm: "hero-start-service-plus-route-day-final-quote",
+    navLabels: ["Plans", "Water", "Quote"],
+    anchorOrder: ["plans", "water", "quote"],
+    componentClassesExpected: [
+      "som-water-page",
+      "som-water-header",
+      "som-water-hero",
+      "som-water-board",
+      "som-water-mini-board",
+      "som-water-proof",
+      "som-water-plan",
+      "som-water-route-step",
+      "som-water-note",
+      "som-quote-strip",
+      "som-footer"
+    ],
+    layoutMarkers: ["som-water-page", "som-water-header", "som-water-hero", "som-water-board", "som-water-mini-board", "som-water-proof", "som-water-plan", "som-water-route-step", "som-water-note", "som-quote-strip"],
+    guidance: "Use a pool-photo cover hero with a floating water test board, chemistry proof strip, recurring service lanes, route-day notes, and a start-weekly-service CTA."
+  },
   "package-menu-board": {
     label: "Package menu board",
     bestFor: ["photo booth rental", "DJ service", "coffee cart", "mocktail cart", "pizza catering", "taco catering"],

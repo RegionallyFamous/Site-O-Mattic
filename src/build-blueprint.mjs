@@ -354,6 +354,9 @@ function buildPageContent(spec) {
   if (variant === "route-plan") {
     return buildRoutePlanPageContent(spec);
   }
+  if (variant === "water-test-board") {
+    return buildWaterTestBoardPageContent(spec);
+  }
   if (variant === "checklist-urgency") {
     return buildChecklistUrgencyPageContent(spec);
   }
@@ -383,6 +386,197 @@ function buildPageContent(spec) {
   }
 
   throw new Error(`Unsupported layoutVariant: ${variant}`);
+}
+
+function buildWaterTestBoardPageContent(spec) {
+  const { copy, contact } = spec;
+  const services = spec.services;
+  const process = spec.process;
+  const proof = spec.proof;
+
+  return `
+<!-- wp:group {"metadata":{"name":"Water test board page"},"align":"full","className":"som-water-page","backgroundColor":"cream","style":{"spacing":{"padding":{"top":"0","right":"0","bottom":"0","left":"0"}}},"layout":{"type":"default"}} -->
+<div class="wp-block-group alignfull som-water-page has-cream-background-color has-background" style="padding-top:0;padding-right:0;padding-bottom:0;padding-left:0">
+<!-- wp:group {"className":"som-water-header","backgroundColor":"white","style":{"spacing":{"padding":{"top":"20px","right":"clamp(24px, 5vw, 72px)","bottom":"18px","left":"clamp(24px, 5vw, 72px)"}}},"layout":{"type":"constrained","wideSize":"1180px"}} -->
+<div class="wp-block-group som-water-header has-white-background-color has-background" style="padding-top:20px;padding-right:clamp(24px, 5vw, 72px);padding-bottom:18px;padding-left:clamp(24px, 5vw, 72px)">
+<!-- wp:columns {"verticalAlignment":"center","isStackedOnMobile":false,"style":{"spacing":{"blockGap":{"left":"24px"}}}} -->
+<div class="wp-block-columns are-vertically-aligned-center is-not-stacked-on-mobile">
+<!-- wp:column {"verticalAlignment":"center","width":"270px"} -->
+<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:270px">
+<!-- wp:site-logo {"width":235,"shouldSyncIcon":false} /-->
+</div>
+<!-- /wp:column -->
+<!-- wp:column {"verticalAlignment":"center"} -->
+<div class="wp-block-column is-vertically-aligned-center">
+<!-- wp:navigation {"overlayMenu":"mobile","layout":{"type":"flex","justifyContent":"right"},"style":{"typography":{"fontSize":"16px","fontStyle":"normal","fontWeight":"800"}}} -->
+<!-- wp:navigation-link {"label":"Plans","url":"#plans","kind":"custom","isTopLevelLink":true} /-->
+<!-- wp:navigation-link {"label":"Water","url":"#water","kind":"custom","isTopLevelLink":true} /-->
+<!-- wp:navigation-link {"label":"Quote","url":"#quote","kind":"custom","isTopLevelLink":true} /-->
+<!-- /wp:navigation -->
+</div>
+<!-- /wp:column -->
+<!-- wp:column {"verticalAlignment":"center","width":"190px","className":"som-water-header-action"} -->
+<div class="wp-block-column is-vertically-aligned-center som-water-header-action" style="flex-basis:190px">
+<!-- wp:buttons {"layout":{"type":"flex","justifyContent":"right"}} -->
+<div class="wp-block-buttons">
+<!-- wp:button {"backgroundColor":"deep-green","textColor":"white","style":{"border":{"radius":"999px"},"spacing":{"padding":{"top":"12px","right":"18px","bottom":"12px","left":"18px"}}}} -->
+<div class="wp-block-button"><a class="wp-block-button__link has-white-color has-deep-green-background-color has-text-color has-background wp-element-button" href="#quote" style="border-radius:999px;padding-top:12px;padding-right:18px;padding-bottom:12px;padding-left:18px">${esc(copy.primaryCta)}</a></div>
+<!-- /wp:button -->
+</div>
+<!-- /wp:buttons -->
+</div>
+<!-- /wp:column -->
+</div>
+<!-- /wp:columns -->
+</div>
+<!-- /wp:group -->
+
+<!-- wp:cover {"url":"{{hero_url}}","id":{{hero_id}},"dimRatio":10,"overlayColor":"deep-green","isUserOverlayColor":true,"minHeight":720,"minHeightUnit":"px","align":"full","className":"som-water-hero","style":{"spacing":{"padding":{"top":"clamp(38px, 6vw, 78px)","right":"clamp(24px, 5vw, 72px)","bottom":"clamp(44px, 7vw, 86px)","left":"clamp(24px, 5vw, 72px)"}}},"layout":{"type":"constrained","wideSize":"1180px"}} -->
+<div class="wp-block-cover alignfull som-water-hero" style="padding-top:clamp(38px, 6vw, 78px);padding-right:clamp(24px, 5vw, 72px);padding-bottom:clamp(44px, 7vw, 86px);padding-left:clamp(24px, 5vw, 72px);min-height:720px"><span aria-hidden="true" class="wp-block-cover__background has-deep-green-background-color has-background-dim-10 has-background-dim"></span><img class="wp-block-cover__image-background wp-image-{{hero_id}}" alt="" src="{{hero_url}}" data-object-fit="cover" data-object-position="58% 50%"/><div class="wp-block-cover__inner-container">
+<!-- wp:columns {"align":"wide","verticalAlignment":"center","style":{"spacing":{"blockGap":{"left":"clamp(32px, 5vw, 72px)"}}}} -->
+<div class="wp-block-columns alignwide are-vertically-aligned-center">
+<!-- wp:column {"verticalAlignment":"center","width":"52%"} -->
+<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:52%">
+<!-- wp:group {"className":"som-water-board","backgroundColor":"cream","style":{"border":{"radius":"22px"},"spacing":{"padding":{"top":"34px","right":"34px","bottom":"30px","left":"34px"}}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group som-water-board has-cream-background-color has-background" style="border-radius:22px;padding-top:34px;padding-right:34px;padding-bottom:30px;padding-left:34px">
+<!-- wp:paragraph {"textColor":"grass","style":{"typography":{"fontSize":"15px","fontStyle":"normal","fontWeight":"900","textTransform":"uppercase","letterSpacing":"0px"},"spacing":{"margin":{"bottom":"10px"}}}} -->
+<p class="has-grass-color has-text-color" style="margin-bottom:10px;font-size:15px;font-style:normal;font-weight:900;letter-spacing:0px;text-transform:uppercase">${esc(copy.eyebrow)}</p>
+<!-- /wp:paragraph -->
+<!-- wp:heading {"level":1,"textColor":"deep-green","style":{"typography":{"fontSize":"var:preset|font-size|hero","lineHeight":"0.98","fontStyle":"normal","fontWeight":"900"},"spacing":{"margin":{"top":"0","bottom":"20px"}}}} -->
+<h1 class="wp-block-heading has-deep-green-color has-text-color" style="margin-top:0;margin-bottom:20px;font-size:var(--wp--preset--font-size--hero);font-style:normal;font-weight:900;line-height:0.98">${esc(copy.heroTitle)}</h1>
+<!-- /wp:heading -->
+<!-- wp:paragraph {"textColor":"soil","style":{"typography":{"fontSize":"var:preset|font-size|lead","lineHeight":"1.5"},"spacing":{"margin":{"bottom":"26px"}}}} -->
+<p class="has-soil-color has-text-color" style="margin-bottom:26px;font-size:var(--wp--preset--font-size--lead);line-height:1.5">${esc(copy.heroText)}</p>
+<!-- /wp:paragraph -->
+<!-- wp:buttons {"style":{"spacing":{"blockGap":{"left":"12px"}}}} -->
+<div class="wp-block-buttons">
+<!-- wp:button {"backgroundColor":"sun","textColor":"deep-green","style":{"border":{"radius":"999px"},"spacing":{"padding":{"top":"15px","right":"24px","bottom":"15px","left":"24px"}}}} -->
+<div class="wp-block-button"><a class="wp-block-button__link has-deep-green-color has-sun-background-color has-text-color has-background wp-element-button" href="#quote" style="border-radius:999px;padding-top:15px;padding-right:24px;padding-bottom:15px;padding-left:24px">${esc(copy.primaryCta)}</a></div>
+<!-- /wp:button -->
+<!-- wp:button {"backgroundColor":"white","textColor":"deep-green","style":{"border":{"radius":"999px"},"spacing":{"padding":{"top":"15px","right":"24px","bottom":"15px","left":"24px"}}}} -->
+<div class="wp-block-button"><a class="wp-block-button__link has-deep-green-color has-white-background-color has-text-color has-background wp-element-button" href="#plans" style="border-radius:999px;padding-top:15px;padding-right:24px;padding-bottom:15px;padding-left:24px">${esc(copy.secondaryCta)}</a></div>
+<!-- /wp:button -->
+</div>
+<!-- /wp:buttons -->
+${waterMiniBoard(proof)}
+</div>
+<!-- /wp:group -->
+</div>
+<!-- /wp:column -->
+<!-- wp:column {"verticalAlignment":"bottom","width":"48%"} -->
+<div class="wp-block-column is-vertically-aligned-bottom" style="flex-basis:48%">
+<!-- wp:group {"className":"som-water-note","backgroundColor":"deep-green","style":{"border":{"radius":"18px"},"spacing":{"padding":{"top":"22px","right":"24px","bottom":"22px","left":"24px"}}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group som-water-note has-deep-green-background-color has-background" style="border-radius:18px;padding-top:22px;padding-right:24px;padding-bottom:22px;padding-left:24px">
+<!-- wp:paragraph {"textColor":"sun","style":{"typography":{"fontSize":"14px","fontStyle":"normal","fontWeight":"900","textTransform":"uppercase","letterSpacing":"0px"},"spacing":{"margin":{"bottom":"8px"}}}} -->
+<p class="has-sun-color has-text-color" style="margin-bottom:8px;font-size:14px;font-style:normal;font-weight:900;letter-spacing:0px;text-transform:uppercase">Route note</p>
+<!-- /wp:paragraph -->
+<!-- wp:paragraph {"textColor":"white","style":{"typography":{"fontSize":"18px","lineHeight":"1.45","fontStyle":"normal","fontWeight":"800"}}} -->
+<p class="has-white-color has-text-color" style="font-size:18px;font-style:normal;font-weight:800;line-height:1.45">${esc(copy.introTitle)}</p>
+<!-- /wp:paragraph -->
+</div>
+<!-- /wp:group -->
+</div>
+<!-- /wp:column -->
+</div>
+<!-- /wp:columns -->
+</div></div>
+<!-- /wp:cover -->
+
+<!-- wp:group {"metadata":{"name":"Water proof"},"id":"water","className":"som-water-proof-strip","backgroundColor":"deep-green","style":{"spacing":{"padding":{"top":"30px","right":"clamp(24px, 5vw, 72px)","bottom":"30px","left":"clamp(24px, 5vw, 72px)"}}},"layout":{"type":"constrained","wideSize":"1180px"}} -->
+<div id="water" class="wp-block-group som-water-proof-strip has-deep-green-background-color has-background" style="padding-top:30px;padding-right:clamp(24px, 5vw, 72px);padding-bottom:30px;padding-left:clamp(24px, 5vw, 72px)">
+<!-- wp:columns {"style":{"spacing":{"blockGap":{"left":"16px"}}}} -->
+<div class="wp-block-columns">
+${proof.map((item) => waterProof(item.stat, item.label)).join("\n")}
+</div>
+<!-- /wp:columns -->
+</div>
+<!-- /wp:group -->
+
+<!-- wp:group {"metadata":{"name":"Plans"},"id":"plans","className":"som-water-plans","backgroundColor":"cream","style":{"spacing":{"padding":{"top":"clamp(54px, 7vw, 92px)","right":"clamp(24px, 5vw, 72px)","bottom":"clamp(54px, 7vw, 88px)","left":"clamp(24px, 5vw, 72px)"}}},"layout":{"type":"constrained","wideSize":"1180px"}} -->
+<div id="plans" class="wp-block-group som-water-plans has-cream-background-color has-background" style="padding-top:clamp(54px, 7vw, 92px);padding-right:clamp(24px, 5vw, 72px);padding-bottom:clamp(54px, 7vw, 88px);padding-left:clamp(24px, 5vw, 72px)">
+<!-- wp:columns {"verticalAlignment":"bottom","style":{"spacing":{"blockGap":{"left":"clamp(32px, 5vw, 70px)"}}}} -->
+<div class="wp-block-columns are-vertically-aligned-bottom">
+<!-- wp:column {"verticalAlignment":"bottom","width":"48%"} -->
+<div class="wp-block-column is-vertically-aligned-bottom" style="flex-basis:48%">
+<!-- wp:heading {"textColor":"deep-green","style":{"typography":{"fontSize":"var:preset|font-size|section-title","lineHeight":"1","fontStyle":"normal","fontWeight":"900"},"spacing":{"margin":{"bottom":"18px"}}}} -->
+<h2 class="wp-block-heading has-deep-green-color has-text-color" style="margin-bottom:18px;font-size:var(--wp--preset--font-size--section-title);font-style:normal;font-weight:900;line-height:1">${esc(copy.servicesTitle)}</h2>
+<!-- /wp:heading -->
+</div>
+<!-- /wp:column -->
+<!-- wp:column {"verticalAlignment":"bottom"} -->
+<div class="wp-block-column is-vertically-aligned-bottom">
+<!-- wp:paragraph {"textColor":"soil","style":{"typography":{"fontSize":"var:preset|font-size|lead","lineHeight":"1.55"},"spacing":{"margin":{"bottom":"24px"}}}} -->
+<p class="has-soil-color has-text-color" style="margin-bottom:24px;font-size:var(--wp--preset--font-size--lead);line-height:1.55">${esc(copy.introText)}</p>
+<!-- /wp:paragraph -->
+</div>
+<!-- /wp:column -->
+</div>
+<!-- /wp:columns -->
+<!-- wp:columns {"style":{"spacing":{"blockGap":{"left":"20px"}}}} -->
+<div class="wp-block-columns">
+${services.map((service, index) => waterPlanCard(index + 1, service.title, service.text)).join("\n")}
+</div>
+<!-- /wp:columns -->
+</div>
+<!-- /wp:group -->
+
+<!-- wp:group {"metadata":{"name":"Route day"},"id":"process","className":"som-water-route","backgroundColor":"white","style":{"spacing":{"padding":{"top":"clamp(54px, 7vw, 88px)","right":"clamp(24px, 5vw, 72px)","bottom":"clamp(54px, 7vw, 88px)","left":"clamp(24px, 5vw, 72px)"}}},"layout":{"type":"constrained","wideSize":"1180px"}} -->
+<div id="process" class="wp-block-group som-water-route has-white-background-color has-background" style="padding-top:clamp(54px, 7vw, 88px);padding-right:clamp(24px, 5vw, 72px);padding-bottom:clamp(54px, 7vw, 88px);padding-left:clamp(24px, 5vw, 72px)">
+<!-- wp:columns {"verticalAlignment":"top","style":{"spacing":{"blockGap":{"left":"clamp(34px, 5vw, 74px)"}}}} -->
+<div class="wp-block-columns are-vertically-aligned-top">
+<!-- wp:column {"verticalAlignment":"top","width":"38%"} -->
+<div class="wp-block-column is-vertically-aligned-top" style="flex-basis:38%">
+<!-- wp:paragraph {"textColor":"grass","style":{"typography":{"fontSize":"15px","fontStyle":"normal","fontWeight":"900","textTransform":"uppercase","letterSpacing":"0px"}}} -->
+<p class="has-grass-color has-text-color" style="font-size:15px;font-style:normal;font-weight:900;letter-spacing:0px;text-transform:uppercase">${esc(copy.proofTitle)}</p>
+<!-- /wp:paragraph -->
+<!-- wp:heading {"textColor":"deep-green","style":{"typography":{"fontSize":"var:preset|font-size|section-title","lineHeight":"1.02","fontStyle":"normal","fontWeight":"900"},"spacing":{"margin":{"top":"10px","bottom":"18px"}}}} -->
+<h2 class="wp-block-heading has-deep-green-color has-text-color" style="margin-top:10px;margin-bottom:18px;font-size:var(--wp--preset--font-size--section-title);font-style:normal;font-weight:900;line-height:1.02">${esc(copy.processTitle)}</h2>
+<!-- /wp:heading -->
+<!-- wp:paragraph {"textColor":"soil","style":{"typography":{"fontSize":"19px","lineHeight":"1.55"}}} -->
+<p class="has-soil-color has-text-color" style="font-size:19px;line-height:1.55">${esc(contact.serviceArea)}</p>
+<!-- /wp:paragraph -->
+</div>
+<!-- /wp:column -->
+<!-- wp:column {"verticalAlignment":"top"} -->
+<div class="wp-block-column is-vertically-aligned-top">
+${process.map((step, index) => waterRouteStep(index + 1, step.title, step.text)).join("\n")}
+</div>
+<!-- /wp:column -->
+</div>
+<!-- /wp:columns -->
+</div>
+<!-- /wp:group -->
+
+<!-- wp:group {"metadata":{"name":"Quote"},"id":"quote","className":"som-quote-strip","backgroundColor":"mist","style":{"spacing":{"padding":{"top":"clamp(54px, 7vw, 84px)","right":"clamp(24px, 5vw, 72px)","bottom":"clamp(54px, 7vw, 84px)","left":"clamp(24px, 5vw, 72px)"}}},"layout":{"type":"constrained","wideSize":"980px"}} -->
+<div id="quote" class="wp-block-group som-quote-strip has-mist-background-color has-background" style="padding-top:clamp(54px, 7vw, 84px);padding-right:clamp(24px, 5vw, 72px);padding-bottom:clamp(54px, 7vw, 84px);padding-left:clamp(24px, 5vw, 72px)">
+<!-- wp:heading {"textAlign":"center","textColor":"deep-green","style":{"typography":{"fontSize":"var:preset|font-size|section-title","lineHeight":"1","fontStyle":"normal","fontWeight":"900"},"spacing":{"margin":{"bottom":"18px"}}}} -->
+<h2 class="wp-block-heading has-text-align-center has-deep-green-color has-text-color" style="margin-bottom:18px;font-size:var(--wp--preset--font-size--section-title);font-style:normal;font-weight:900;line-height:1">${esc(copy.quoteTitle)}</h2>
+<!-- /wp:heading -->
+<!-- wp:paragraph {"align":"center","textColor":"soil","style":{"typography":{"fontSize":"var:preset|font-size|lead","lineHeight":"1.55"},"spacing":{"margin":{"bottom":"28px"}}}} -->
+<p class="has-text-align-center has-soil-color has-text-color" style="margin-bottom:28px;font-size:var(--wp--preset--font-size--lead);line-height:1.55">${esc(copy.quoteText)}</p>
+<!-- /wp:paragraph -->
+<!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"},"style":{"spacing":{"blockGap":{"left":"12px"}}}} -->
+<div class="wp-block-buttons">
+<!-- wp:button {"backgroundColor":"sun","textColor":"deep-green","style":{"border":{"radius":"999px"},"spacing":{"padding":{"top":"15px","right":"24px","bottom":"15px","left":"24px"}}}} -->
+<div class="wp-block-button"><a class="wp-block-button__link has-deep-green-color has-sun-background-color has-text-color has-background wp-element-button" href="${esc(contact.emailHref)}" style="border-radius:999px;padding-top:15px;padding-right:24px;padding-bottom:15px;padding-left:24px">${esc(copy.primaryCta)}</a></div>
+<!-- /wp:button -->
+<!-- wp:button {"backgroundColor":"deep-green","textColor":"white","style":{"border":{"radius":"999px"},"spacing":{"padding":{"top":"15px","right":"24px","bottom":"15px","left":"24px"}}}} -->
+<div class="wp-block-button"><a class="wp-block-button__link has-white-color has-deep-green-background-color has-text-color has-background wp-element-button" href="${esc(contact.phoneHref)}" style="border-radius:999px;padding-top:15px;padding-right:24px;padding-bottom:15px;padding-left:24px">${esc(contact.phoneLabel)}</a></div>
+<!-- /wp:button -->
+</div>
+<!-- /wp:buttons -->
+</div>
+<!-- /wp:group -->
+
+<!-- wp:group {"className":"som-footer","backgroundColor":"deep-green","style":{"spacing":{"padding":{"top":"28px","right":"clamp(24px, 5vw, 72px)","bottom":"34px","left":"clamp(24px, 5vw, 72px)"}}},"layout":{"type":"constrained","wideSize":"1180px"}} -->
+<div class="wp-block-group som-footer has-deep-green-background-color has-background" style="padding-top:28px;padding-right:clamp(24px, 5vw, 72px);padding-bottom:34px;padding-left:clamp(24px, 5vw, 72px)">
+<!-- wp:paragraph {"align":"center","textColor":"white"} -->
+<p class="has-text-align-center has-white-color has-text-color">${esc(spec.businessName)} - ${esc(contact.serviceArea)} - <a href="${esc(contact.emailHref)}">${esc(contact.email)}</a></p>
+<!-- /wp:paragraph -->
+</div>
+<!-- /wp:group -->
+</div>
+<!-- /wp:group -->`.trim();
 }
 
 function buildWorkshopBenchPageContent(spec) {
@@ -2321,6 +2515,82 @@ ${proof}
 `.trim();
 }
 
+function waterMiniBoard(proof) {
+  const items = proof.slice(0, 3);
+  return `
+<!-- wp:group {"className":"som-water-mini-board","backgroundColor":"white","style":{"border":{"radius":"16px"},"spacing":{"padding":{"top":"16px","right":"18px","bottom":"10px","left":"18px"},"margin":{"top":"24px"}}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group som-water-mini-board has-white-background-color has-background" style="border-radius:16px;margin-top:24px;padding-top:16px;padding-right:18px;padding-bottom:10px;padding-left:18px">
+<!-- wp:paragraph {"textColor":"grass","style":{"typography":{"fontSize":"13px","fontStyle":"normal","fontWeight":"900","textTransform":"uppercase","letterSpacing":"0px"},"spacing":{"margin":{"bottom":"10px"}}}} -->
+<p class="has-grass-color has-text-color" style="margin-bottom:10px;font-size:13px;font-style:normal;font-weight:900;letter-spacing:0px;text-transform:uppercase">Water board</p>
+<!-- /wp:paragraph -->
+${items.map((item) => `
+<!-- wp:paragraph {"textColor":"deep-green","className":"som-ticket-line","style":{"typography":{"fontSize":"14px","fontStyle":"normal","fontWeight":"850","lineHeight":"1.35"},"spacing":{"margin":{"bottom":"7px"}}}} -->
+<p class="som-ticket-line has-deep-green-color has-text-color" style="margin-bottom:7px;font-size:14px;font-style:normal;font-weight:850;line-height:1.35"><strong>${esc(item.stat)}</strong> / ${esc(item.label)}</p>
+<!-- /wp:paragraph -->`.trim()).join("\n")}
+</div>
+<!-- /wp:group -->`.trim();
+}
+
+function waterProof(stat, label) {
+  return `
+<!-- wp:column {"className":"som-water-proof","backgroundColor":"cream","style":{"border":{"radius":"16px"},"spacing":{"padding":{"top":"22px","right":"20px","bottom":"22px","left":"20px"}}}} -->
+<div class="wp-block-column som-water-proof has-cream-background-color has-background" style="border-radius:16px;padding-top:22px;padding-right:20px;padding-bottom:22px;padding-left:20px">
+<!-- wp:paragraph {"textColor":"leaf","style":{"typography":{"fontSize":"clamp(26px, 3.6vw, 42px)","lineHeight":"1","fontStyle":"normal","fontWeight":"900"},"spacing":{"margin":{"bottom":"8px"}}}} -->
+<p class="has-leaf-color has-text-color" style="margin-bottom:8px;font-size:clamp(26px, 3.6vw, 42px);font-style:normal;font-weight:900;line-height:1">${esc(stat)}</p>
+<!-- /wp:paragraph -->
+<!-- wp:paragraph {"textColor":"deep-green","style":{"typography":{"fontSize":"15px","lineHeight":"1.35","fontStyle":"normal","fontWeight":"800"}}} -->
+<p class="has-deep-green-color has-text-color" style="font-size:15px;font-style:normal;font-weight:800;line-height:1.35">${esc(label)}</p>
+<!-- /wp:paragraph -->
+</div>
+<!-- /wp:column -->`.trim();
+}
+
+function waterPlanCard(number, title, text) {
+  return `
+<!-- wp:column {"className":"som-water-plan","backgroundColor":"white","style":{"border":{"radius":"18px"},"spacing":{"padding":{"top":"30px","right":"28px","bottom":"30px","left":"28px"}}}} -->
+<div class="wp-block-column som-water-plan has-white-background-color has-background" style="border-radius:18px;padding-top:30px;padding-right:28px;padding-bottom:30px;padding-left:28px">
+<!-- wp:paragraph {"textColor":"grass","style":{"typography":{"fontSize":"15px","fontStyle":"normal","fontWeight":"900","textTransform":"uppercase","letterSpacing":"0px"},"spacing":{"margin":{"bottom":"14px"}}}} -->
+<p class="has-grass-color has-text-color" style="margin-bottom:14px;font-size:15px;font-style:normal;font-weight:900;letter-spacing:0px;text-transform:uppercase">Lane ${number}</p>
+<!-- /wp:paragraph -->
+<!-- wp:heading {"level":3,"textColor":"deep-green","style":{"typography":{"fontSize":"var:preset|font-size|card-title","lineHeight":"1.08","fontStyle":"normal","fontWeight":"900"},"spacing":{"margin":{"bottom":"14px"}}}} -->
+<h3 class="wp-block-heading has-deep-green-color has-text-color" style="margin-bottom:14px;font-size:var(--wp--preset--font-size--card-title);font-style:normal;font-weight:900;line-height:1.08">${esc(title)}</h3>
+<!-- /wp:heading -->
+<!-- wp:paragraph {"textColor":"soil","style":{"typography":{"fontSize":"18px","lineHeight":"1.55"}}} -->
+<p class="has-soil-color has-text-color" style="font-size:18px;line-height:1.55">${esc(text)}</p>
+<!-- /wp:paragraph -->
+</div>
+<!-- /wp:column -->`.trim();
+}
+
+function waterRouteStep(number, title, text) {
+  return `
+<!-- wp:group {"className":"som-water-route-step","backgroundColor":"cream","style":{"border":{"radius":"18px"},"spacing":{"padding":{"top":"22px","right":"24px","bottom":"22px","left":"24px"},"margin":{"bottom":"14px"}}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group som-water-route-step has-cream-background-color has-background" style="border-radius:18px;margin-bottom:14px;padding-top:22px;padding-right:24px;padding-bottom:22px;padding-left:24px">
+<!-- wp:columns {"verticalAlignment":"center","style":{"spacing":{"blockGap":{"left":"20px"}}}} -->
+<div class="wp-block-columns are-vertically-aligned-center">
+<!-- wp:column {"verticalAlignment":"center","width":"68px"} -->
+<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:68px">
+<!-- wp:paragraph {"align":"center","backgroundColor":"leaf","textColor":"deep-green","className":"som-water-step-number","style":{"typography":{"fontSize":"20px","lineHeight":"1","fontStyle":"normal","fontWeight":"900"},"spacing":{"padding":{"top":"14px","bottom":"14px"}}}} -->
+<p class="has-text-align-center som-water-step-number has-deep-green-color has-leaf-background-color has-text-color has-background" style="padding-top:14px;padding-bottom:14px;font-size:20px;font-style:normal;font-weight:900;line-height:1">0${number}</p>
+<!-- /wp:paragraph -->
+</div>
+<!-- /wp:column -->
+<!-- wp:column {"verticalAlignment":"center"} -->
+<div class="wp-block-column is-vertically-aligned-center">
+<!-- wp:heading {"level":3,"textColor":"deep-green","style":{"typography":{"fontSize":"27px","lineHeight":"1.1","fontStyle":"normal","fontWeight":"900"},"spacing":{"margin":{"bottom":"8px"}}}} -->
+<h3 class="wp-block-heading has-deep-green-color has-text-color" style="margin-bottom:8px;font-size:27px;font-style:normal;font-weight:900;line-height:1.1">${esc(title)}</h3>
+<!-- /wp:heading -->
+<!-- wp:paragraph {"textColor":"soil","style":{"typography":{"fontSize":"18px","lineHeight":"1.5"}}} -->
+<p class="has-soil-color has-text-color" style="font-size:18px;line-height:1.5">${esc(text)}</p>
+<!-- /wp:paragraph -->
+</div>
+<!-- /wp:column -->
+</div>
+<!-- /wp:columns -->
+</div>
+<!-- /wp:group -->`.trim();
+}
+
 function workshopTicket(proof) {
   const items = proof.slice(0, 3);
   return `
@@ -3289,6 +3559,18 @@ function buildTypographyTokens(spec) {
       headingLineHeight: "0.98",
       bodyLineHeight: "1.48"
     },
+    "clean-water-dashboard-sans": {
+      body: stacks.system,
+      display: stacks.rounded,
+      accent: stacks.mono,
+      scale: "generous",
+      headingWeight: "900",
+      actionWeight: "850",
+      navWeight: "850",
+      linkWeight: "800",
+      headingLineHeight: "0.99",
+      bodyLineHeight: "1.5"
+    },
     "craft-bench-sturdy-serif-sans": {
       body: stacks.humanist,
       display: stacks.sturdy,
@@ -3440,6 +3722,10 @@ function buildColorStrategyTokens(spec) {
     "fixed-bottom-action": {
       brandGradient: `linear-gradient(135deg, ${p.deepGreen} 0%, ${p.grass} 58%, ${p.leaf} 100%)`,
       highlightGradient: `linear-gradient(135deg, ${p.sun} 0%, ${p.white} 100%)`
+    },
+    "water-test-board": {
+      brandGradient: `linear-gradient(135deg, ${p.deepGreen} 0%, ${p.grass} 52%, ${p.leaf} 100%)`,
+      highlightGradient: `linear-gradient(135deg, ${p.white} 0%, ${p.mist} 48%, ${p.sun} 100%)`
     },
     "workshop-bench": {
       brandGradient: `linear-gradient(135deg, ${p.deepGreen} 0%, ${p.soil} 54%, ${p.leaf} 100%)`,
@@ -4204,6 +4490,144 @@ function buildVariantCustomCss(spec) {
   .som-footer{
     margin-bottom:var(--som-mobile-action-reserve)!important;
     padding-bottom:96px!important;
+  }
+}
+`.trim();
+  }
+
+  if (variant === "water-test-board") {
+    return `
+.som-water-header{
+  position:relative;
+  z-index:4;
+  border-bottom:1px solid color-mix(in srgb, ${spec.palette.deepGreen} 10%, transparent);
+}
+.som-water-header .wp-block-site-logo img{
+  max-width:min(235px, 62vw);
+}
+.som-water-header .wp-block-navigation a{
+  border-radius:999px;
+  padding:8px 12px;
+}
+.som-water-header .wp-block-navigation a:hover{
+  background:color-mix(in srgb, ${spec.palette.leaf} 18%, transparent);
+  text-decoration:none;
+}
+.som-water-hero{
+  overflow:hidden;
+}
+.som-water-hero .wp-block-cover__background{
+  background:linear-gradient(90deg, color-mix(in srgb, ${spec.palette.deepGreen} 26%, transparent), color-mix(in srgb, ${spec.palette.deepGreen} 4%, transparent))!important;
+}
+.som-water-board{
+  border:1px solid color-mix(in srgb, ${spec.palette.leaf} 30%, transparent);
+  box-shadow:0 28px 80px rgba(7,35,61,.22);
+}
+.som-water-mini-board,
+.som-water-note{
+  box-shadow:0 18px 44px rgba(7,35,61,.14);
+}
+.som-water-mini-board{
+  border:1px solid color-mix(in srgb, ${spec.palette.leaf} 28%, transparent);
+}
+.som-water-mini-board strong{
+  color:${spec.palette.grass};
+  font-weight:900;
+}
+.som-water-note{
+  border:1px solid color-mix(in srgb, ${spec.palette.sun} 32%, transparent);
+}
+.som-water-proof,
+.som-water-plan,
+.som-water-route-step{
+  box-shadow:var(--wp--custom--som--shadow--card);
+}
+.som-water-proof{
+  border-bottom:7px solid ${spec.palette.leaf};
+  min-height:100%;
+}
+.som-water-proof:nth-child(2){
+  border-bottom-color:${spec.palette.sun};
+}
+.som-water-proof:nth-child(3){
+  border-bottom-color:${spec.palette.grass};
+}
+.som-water-plan{
+  border-top:8px solid ${spec.palette.leaf};
+  min-height:100%;
+}
+.som-water-plan:nth-child(2){
+  border-top-color:${spec.palette.sun};
+}
+.som-water-plan:nth-child(3){
+  border-top-color:${spec.palette.grass};
+}
+.som-water-route{
+  box-shadow:inset 0 1px 0 color-mix(in srgb, ${spec.palette.deepGreen} 8%, transparent);
+}
+.som-water-route-step{
+  border-left:7px solid ${spec.palette.leaf};
+}
+.som-water-route-step:nth-child(2){
+  border-left-color:${spec.palette.sun};
+}
+.som-water-route-step:nth-child(3){
+  border-left-color:${spec.palette.grass};
+}
+.som-water-step-number{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:54px;
+  height:54px;
+  box-sizing:border-box;
+  border-radius:999px;
+  margin:0!important;
+  padding:0!important;
+  white-space:nowrap;
+}
+@media (max-width:900px){
+  .som-water-header{
+    padding-right:24px!important;
+    padding-left:24px!important;
+  }
+  .som-water-header-action{
+    display:none;
+  }
+  .som-water-note{
+    display:none;
+  }
+}
+@media (max-width:700px){
+  .som-water-header .wp-block-columns{
+    gap:12px!important;
+  }
+  .som-water-hero{
+    min-height:690px!important;
+    padding-top:32px!important;
+    padding-right:20px!important;
+    padding-bottom:36px!important;
+    padding-left:20px!important;
+  }
+  .som-water-hero .wp-block-cover__image-background{
+    object-position:58% 50%!important;
+  }
+  .som-water-board{
+    padding:24px!important;
+    border-radius:20px!important;
+  }
+  .som-water-board h1{
+    font-size:clamp(38px, 10.6vw, 52px)!important;
+  }
+  .som-water-mini-board{
+    display:none;
+  }
+  .som-water-proof-strip,
+  .som-water-plans,
+  .som-water-route,
+  .som-quote-strip{
+    padding-right:24px!important;
+    padding-left:24px!important;
   }
 }
 `.trim();

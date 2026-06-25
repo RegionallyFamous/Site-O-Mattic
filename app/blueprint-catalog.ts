@@ -146,6 +146,22 @@ export const blueprints = [
     "releaseStatus": "approved"
   },
   {
+    "slug": "pool-cleaning",
+    "name": "BlueLane Pool Care",
+    "eyebrow": "Pool Cleaning Service",
+    "summary": "BlueLane keeps the skim, brush, baskets, and chemistry on a simple route so the pool is ready before anyone asks if it is safe to jump in.",
+    "logo": "/blueprints/pool-cleaning/assets/logo.png",
+    "logoWidth": 1100,
+    "logoHeight": 260,
+    "hero": "/blueprints/pool-cleaning/assets/hero.jpg",
+    "heroWidth": 1920,
+    "heroHeight": 1080,
+    "alt": "A pool care technician skimming a bright blue backyard pool beside an open water testing kit on a sunny patio.",
+    "path": "/api/blueprints/pool-cleaning/blueprint.json",
+    "layoutVariant": "water-test-board",
+    "releaseStatus": "approved"
+  },
+  {
     "slug": "pressure-washing-service",
     "name": "BrightJet Exterior Cleaning",
     "eyebrow": "Pressure Washing And Soft Washing Service",

@@ -1,0 +1,111 @@
+{
+  "slug": "pool-cleaning",
+  "businessName": "BlueLane Pool Care",
+  "niche": "pool cleaning service",
+  "layoutVariant": "water-test-board",
+  "tagline": "Weekly pool care with chemistry that behaves.",
+  "themeSlug": "twentytwentyfive",
+  "landingPage": "/",
+  "palette": {
+    "grass": "#007c89",
+    "deepGreen": "#07233d",
+    "leaf": "#23b6c8",
+    "sun": "#f7d35a",
+    "cream": "#f5fbff",
+    "mist": "#d4eef5",
+    "soil": "#35515f",
+    "white": "#ffffff"
+  },
+  "assets": {
+    "hero": "assets/pool-cleaning/bluelane-hero.jpg",
+    "logo": "assets/pool-cleaning/bluelane-logo.png",
+    "favicon": "assets/pool-cleaning/bluelane-favicon.png"
+  },
+  "assetMeta": {
+    "hero": {
+      "title": "BlueLane pool cleaning hero image",
+      "alt": "A pool care technician skimming a bright blue backyard pool beside an open water testing kit on a sunny patio."
+    }
+  },
+  "contact": {
+    "phoneLabel": "(555) 014-0824",
+    "phoneHref": "tel:+15550140824",
+    "email": "hello@bluelane.test",
+    "emailHref": "mailto:hello@bluelane.test",
+    "serviceArea": "Weekly pool cleaning, water testing, skimming, basket checks, brush work, filter attention, green-to-clean help, vacation checks, and opening support for backyard pools across the west metro and lakeside suburbs"
+  },
+  "copy": {
+    "eyebrow": "Weekly pool care with a clean test board",
+    "heroTitle": "Clear water should feel boring in the best way.",
+    "heroText": "BlueLane keeps the skim, brush, baskets, and chemistry on a simple route so the pool is ready before anyone asks if it is safe to jump in.",
+    "primaryCta": "Start weekly service",
+    "secondaryCta": "Check the water plan",
+    "introTitle": "A weekly route with visible chemistry notes.",
+    "introText": "We balance the basics, watch the equipment clues, note weather swings, and send plain-language service updates after each visit.",
+    "servicesTitle": "Pick the pool lane",
+    "processTitle": "What happens on route day",
+    "proofTitle": "The water board stays honest",
+    "quoteTitle": "Want the pool off your mental checklist?",
+    "quoteText": "Send the pool size, gate details, equipment photos, and the current water mood. We will reply with a route-day option, first-visit notes, and a simple weekly plan."
+  },
+  "services": [
+    {
+      "title": "Weekly Clear Care",
+      "text": "Skim, brush, basket check, surface scan, water test, balance notes, and a quick equipment look for pools that need steady predictable care."
+    },
+    {
+      "title": "Green-To-Clean Reset",
+      "text": "A practical recovery plan for cloudy or green water, with extra brushing, chemistry guidance, filter attention, and progress notes after each visit."
+    },
+    {
+      "title": "Vacation Watch",
+      "text": "Short-term pool check-ins while you are away, including baskets, water level notes, storm debris cleanup, and a photo update before you come home."
+    }
+  ],
+  "process": [
+    {
+      "title": "Send the setup",
+      "text": "Photos of the pool, gate, pump area, filter label, and current water color help us plan the first visit without making you decode equipment names."
+    },
+    {
+      "title": "Test and tune",
+      "text": "On route day we skim, brush, check baskets, test water, note the weather pattern, and make small balance moves before they become weekend problems."
+    },
+    {
+      "title": "Read the update",
+      "text": "You get a plain note with what changed, what looked good, what needs watching, and when the next service window is scheduled."
+    }
+  ],
+  "proof": [
+    {
+      "stat": "7 day",
+      "label": "weekly route rhythm for steady water"
+    },
+    {
+      "stat": "Test kit",
+      "label": "chemistry notes after each service"
+    },
+    {
+      "stat": "Storm check",
+      "label": "debris and basket attention after weather"
+    }
+  ],
+  "release": {
+    "status": "approved",
+    "reviewedAt": "2026-06-25",
+    "visualBaseline": "pending",
+    "reviewChecklist": {
+      "firstViewportClear": true,
+      "logoReadable": true,
+      "layoutDistinct": true,
+      "ctaClear": true,
+      "copySpecific": true,
+      "noImageArtifacts": true,
+      "heroArtDirected": true,
+      "hierarchyDistinct": true,
+      "signatureMove": true,
+      "restrainedComposition": true,
+      "screenshotCompared": true
+    }
+  }
+}

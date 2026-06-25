@@ -47,7 +47,8 @@
         "gallery-led",
         "package-menu-board",
         "fixed-bottom-action",
-        "workshop-bench"
+        "workshop-bench",
+        "water-test-board"
       ]
     },
     "tagline": {

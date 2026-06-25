@@ -87,6 +87,7 @@ CTA rhythm should be deliberate, not noisy: header, hero, after proof or offer, 
 | `package-menu-board` | Package / Menu Board, Proof Bar, Process Reassurance Timeline. | Strong for event and catering services; keep menu ticket and package comparison readable on mobile. |
 | `fixed-bottom-action` | Mobile Fixed Action Bar, Decision Filter Hero, Proof Bar. | Strong for phone-first/mobile services; verify the fixed bar does not cover footer content or compete with desktop CTAs. |
 | `workshop-bench` | Workshop / Craft Bench, Receipt / Scope Summary, Process Reassurance Timeline. | Strong for craft and material-sensitive services; keep process closeups, care notes, and photo quote instructions concrete. |
+| `water-test-board` | Route / Schedule Board, Proof Bar Under Hero, Receipt / Scope Summary. | Strong for recurring water-care services; keep water evidence visible in the hero and make chemistry/service notes concrete. |
 
 ## Style Dimensions
 
