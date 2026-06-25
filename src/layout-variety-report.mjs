@@ -5,6 +5,7 @@ import {
   readBlueprint
 } from "./blueprint-inspect.mjs";
 import { LAYOUT_ARCHETYPES } from "./layout-archetypes.mjs";
+import { blueprintPathForSpec, readSpec, specTargets } from "./spec-utils.mjs";
 
 const DEFAULT_TARGETS = [
   "public/blueprints/lawn-care-service/blueprint.json",
@@ -13,7 +14,7 @@ const DEFAULT_TARGETS = [
 
 const targets = process.argv.slice(2);
 if (!targets.length) {
-  targets.push(...DEFAULT_TARGETS);
+  targets.push(...await defaultTargets());
 }
 
 if (targets.length < 2) {
@@ -181,4 +182,9 @@ function printComparison(comparison) {
   for (const check of comparison.checks) {
     console.log(`- ${check.passed ? "OK" : "FAIL"} ${check.name}: ${check.detail}`);
   }
+}
+
+async function defaultTargets() {
+  const targetsFromSpecs = await Promise.all((await specTargets([])).map(async (specPath) => blueprintPathForSpec(await readSpec(specPath))));
+  return targetsFromSpecs.length ? targetsFromSpecs : DEFAULT_TARGETS;
 }

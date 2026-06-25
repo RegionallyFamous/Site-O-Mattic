@@ -59,7 +59,23 @@ export const LAYOUT_ARCHETYPES = {
   "checklist-urgency": {
     label: "Checklist and urgency",
     bestFor: ["gutter cleaning", "vacation rental turnover", "holiday lights", "move prep"],
-    guidance: "Lead with warning signs, seasonal urgency, checklist blocks, availability prompts, and risk-reduction proof."
+    archetype: "Checklist-first service with urgency band",
+    hero: "stacked-hero-with-checklist-panel",
+    sectionOrder: [
+      "navigation",
+      "checklist-hero",
+      "urgency-proof-band",
+      "service-checklist",
+      "process-steps",
+      "quote-footer"
+    ],
+    servicePresentation: "checklist-cards-with-service-area-panel",
+    proofTreatment: "compact-proof-strip-before-services",
+    ctaRhythm: "hero-buttons-plus-midpage-urgency-band",
+    navLabels: ["Checklist", "Proof", "Quote"],
+    anchorOrder: ["checklist", "proof", "quote"],
+    componentClassesExpected: ["som-checklist-hero", "som-urgency-band", "som-check-card", "som-proof-card", "som-quote-strip", "som-footer"],
+    layoutMarkers: ["som-checklist-hero", "som-urgency-band", "som-check-card", "som-quote-strip"]
   },
   "package-comparison": {
     label: "Package comparison",

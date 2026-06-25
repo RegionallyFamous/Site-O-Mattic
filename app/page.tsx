@@ -1,27 +1,6 @@
+import Image from "next/image";
 import { headers } from "next/headers";
-
-const blueprints = [
-  {
-    name: "GreenStripe Lawn Care",
-    eyebrow: "Lawn care service",
-    summary:
-      "A crisp, cheerful lawn care one-pager with mowing, edging, seasonal cleanups, and neighbor-approved proof.",
-    logo: "/blueprints/lawn-care-service/assets/logo.png",
-    hero: "/blueprints/lawn-care-service/assets/hero.jpg",
-    alt: "Freshly edged green lawn with a lawn care professional at work",
-    path: "/api/blueprints/lawn-care-service/blueprint.json",
-  },
-  {
-    name: "BrightJet Exterior Cleaning",
-    eyebrow: "Pressure washing service",
-    summary:
-      "A punchy exterior-cleaning site for driveways, siding, patios, and soft-wash quote requests.",
-    logo: "/blueprints/pressure-washing-service/assets/logo.png",
-    hero: "/blueprints/pressure-washing-service/assets/hero.jpg",
-    alt: "Pressure washing technician cleaning a residential driveway",
-    path: "/api/blueprints/pressure-washing-service/blueprint.json",
-  },
-];
+import { blueprints } from "./blueprint-catalog";
 
 export default async function Home() {
   const requestHeaders = await headers();
@@ -50,9 +29,21 @@ export default async function Home() {
 
           return (
             <article className="blueprint-card" key={blueprint.path}>
-              <img className="preview" src={blueprint.hero} alt={blueprint.alt} />
+              <Image
+                className="preview"
+                src={blueprint.hero}
+                alt={blueprint.alt}
+                width={blueprint.heroWidth}
+                height={blueprint.heroHeight}
+              />
               <div className="card-copy">
-                <img className="brand-mark" src={blueprint.logo} alt={blueprint.name} />
+                <Image
+                  className="brand-mark"
+                  src={blueprint.logo}
+                  alt={blueprint.name}
+                  width={blueprint.logoWidth}
+                  height={blueprint.logoHeight}
+                />
                 <p className="eyebrow">{blueprint.eyebrow}</p>
                 <h2>{blueprint.name}</h2>
                 <p className="summary">{blueprint.summary}</p>

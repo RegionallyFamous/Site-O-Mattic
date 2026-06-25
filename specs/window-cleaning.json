@@ -1,0 +1,106 @@
+{
+  "slug": "window-cleaning",
+  "businessName": "ClearPane Window Care",
+  "niche": "window cleaning service",
+  "layoutVariant": "checklist-urgency",
+  "tagline": "Glass so clear the sunshine gets cocky.",
+  "themeSlug": "twentytwentyfive",
+  "landingPage": "/",
+  "palette": {
+    "grass": "#087084",
+    "deepGreen": "#073b4c",
+    "leaf": "#2ec4d6",
+    "sun": "#f7c948",
+    "cream": "#f5fbfc",
+    "mist": "#d8f3f6",
+    "soil": "#45616c",
+    "white": "#ffffff"
+  },
+  "assets": {
+    "hero": "assets/window-cleaning/clearpane-hero.jpg",
+    "logo": "assets/window-cleaning/clearpane-logo.png",
+    "favicon": "assets/window-cleaning/clearpane-favicon.png"
+  },
+  "assetMeta": {
+    "hero": {
+      "title": "ClearPane window cleaning hero image",
+      "alt": "A professional window cleaner using a squeegee on large residential windows in bright daylight."
+    }
+  },
+  "contact": {
+    "phoneLabel": "(555) 014-6124",
+    "phoneHref": "tel:+15550146124",
+    "email": "hello@clearpane.test",
+    "emailHref": "mailto:hello@clearpane.test",
+    "serviceArea": "Homes, storefronts, and small offices across the east side, lake blocks, and nearby suburbs"
+  },
+  "copy": {
+    "eyebrow": "Local window cleaning without the streak circus",
+    "heroTitle": "Let the light back in.",
+    "heroText": "ClearPane handles interior glass, exterior panes, screens, tracks, and storefront touch-ups with tidy crews, careful edges, and squeegee lines that know when to quit.",
+    "primaryCta": "Get a shine quote",
+    "secondaryCta": "See the checklist",
+    "introTitle": "Clean glass changes the whole room.",
+    "introText": "We bring the water-fed poles, detail towels, screen brushes, and the sort of patience that makes fingerprints reconsider their life choices.",
+    "servicesTitle": "What gets cleaned",
+    "processTitle": "How the shine happens",
+    "proofTitle": "Clear expectations",
+    "quoteTitle": "Ready for brighter windows?",
+    "quoteText": "Send a window count, a few photos, and whether you need inside, outside, or both. We will reply with a simple estimate and the next open shine day."
+  },
+  "services": [
+    {
+      "title": "Exterior panes",
+      "text": "Ground-level and reachable exterior glass cleaned with pro tools, clean edges, and careful rinse work."
+    },
+    {
+      "title": "Interior glass",
+      "text": "Fingerprints, pet nose art, and mystery smudges removed without turning your floors into a splash zone."
+    },
+    {
+      "title": "Screens and tracks",
+      "text": "Screens brushed, sills wiped, and tracks cleared so the whole window feels finished instead of half-done."
+    }
+  ],
+  "process": [
+    {
+      "title": "Count the windows",
+      "text": "Send a quick count, note tricky spots, and include photos of tall or tucked-away glass."
+    },
+    {
+      "title": "Choose the scope",
+      "text": "Pick exterior only, inside and out, screens, tracks, or a storefront refresh."
+    },
+    {
+      "title": "Enjoy the view",
+      "text": "We protect floors, wipe edges, check the shine from multiple angles, and leave the light doing its thing."
+    }
+  ],
+  "proof": [
+    {
+      "stat": "48-hour",
+      "label": "weekday quote follow-up"
+    },
+    {
+      "stat": "Screen-safe",
+      "label": "brush and rinse options"
+    },
+    {
+      "stat": "Edge-check",
+      "label": "final towel pass on every visit"
+    }
+  ],
+  "release": {
+    "status": "approved",
+    "reviewedAt": "2026-06-24",
+    "visualBaseline": "pending",
+    "reviewChecklist": {
+      "firstViewportClear": true,
+      "logoReadable": true,
+      "layoutDistinct": true,
+      "ctaClear": true,
+      "copySpecific": true,
+      "noImageArtifacts": true
+    }
+  }
+}

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-labelledby="title">
+  <title id="title">ClearPane favicon</title>
+  <rect width="512" height="512" rx="128" fill="#073b4c"/>
+  <rect x="104" y="116" width="304" height="270" rx="42" fill="#d8f3f6"/>
+  <path d="M256 116v270M104 252h304" stroke="#2ec4d6" stroke-width="34" stroke-linecap="round"/>
+  <path d="M164 354c56 30 144 31 202-16" fill="none" stroke="#f7c948" stroke-width="34" stroke-linecap="round"/>
+  <circle cx="374" cy="154" r="28" fill="#ffffff"/>
+</svg>

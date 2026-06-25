@@ -6,6 +6,7 @@ import {
   getRunPhpStep,
   readBlueprint
 } from "./blueprint-inspect.mjs";
+import { blueprintPathForSpec, readSpec, specTargets } from "./spec-utils.mjs";
 
 const DEFAULT_TARGETS = [
   "public/blueprints/lawn-care-service/blueprint.json",
@@ -14,7 +15,7 @@ const DEFAULT_TARGETS = [
 
 const targets = process.argv.slice(2);
 if (!targets.length) {
-  targets.push(...DEFAULT_TARGETS);
+  targets.push(...await defaultTargets());
 }
 
 let hasFailure = false;
@@ -122,4 +123,9 @@ function printReport(report) {
   for (const check of report.checks) {
     console.log(`- ${check.passed ? "OK" : "FAIL"} ${check.name}: ${check.detail}`);
   }
+}
+
+async function defaultTargets() {
+  const targetsFromSpecs = await Promise.all((await specTargets([])).map(async (specPath) => blueprintPathForSpec(await readSpec(specPath))));
+  return targetsFromSpecs.length ? targetsFromSpecs : DEFAULT_TARGETS;
 }

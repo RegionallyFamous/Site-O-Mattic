@@ -12,6 +12,7 @@ import {
   readBlueprint
 } from "./blueprint-inspect.mjs";
 import { LAYOUT_ARCHETYPES } from "./layout-archetypes.mjs";
+import { blueprintPathForSpec, readSpec, specTargets } from "./spec-utils.mjs";
 
 const ALLOWED_CORE_BLOCKS = new Set([
   "button",
@@ -35,7 +36,7 @@ const ALLOWED_CORE_BLOCKS = new Set([
 
 const targets = process.argv.slice(2);
 if (!targets.length) {
-  targets.push("public/blueprints/lawn-care-service/blueprint.json");
+  targets.push(...await defaultTargets());
 }
 
 let hasFailures = false;
@@ -274,4 +275,8 @@ async function exists(targetPath) {
   } catch {
     return false;
   }
+}
+
+async function defaultTargets() {
+  return Promise.all((await specTargets([])).map(async (specPath) => blueprintPathForSpec(await readSpec(specPath))));
 }
