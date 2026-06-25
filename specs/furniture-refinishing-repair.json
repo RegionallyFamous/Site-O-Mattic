@@ -150,6 +150,43 @@
       "signatureMove": true,
       "restrainedComposition": true,
       "screenshotCompared": true
+    },
+    "premiumReview": {
+      "version": 1,
+      "reviewedAt": "2026-06-25",
+      "score": 100,
+      "categories": {
+        "firstViewport": true,
+        "logoScale": true,
+        "typography": true,
+        "imageProof": true,
+        "ctaClarity": true,
+        "mobilePolish": true,
+        "layoutDistinctness": true,
+        "copySpecificity": true,
+        "assetQa": true,
+        "brandBrief": true
+      },
+      "notes": [
+        "Works: a send-photo estimate strip. gives the page a memorable shape.",
+        "Proof: craftsperson refinishing a wooden furniture piece in a tidy workshop with tools and finish samples. anchors the niche in the first viewport.",
+        "Action: Send a furniture photo is the main conversion path."
+      ]
     }
+  },
+  "brandBrief": {
+    "mood": "Patient and tactile.",
+    "trustCue": "material proof.",
+    "accentBehavior": "sun stays reserved for Send a furniture photo, active proof cues, and key booking moments.",
+    "imageProof": "craftsperson refinishing a wooden furniture piece in a tidy workshop with tools and finish samples.",
+    "signatureMove": "a send-photo estimate strip.",
+    "avoidLookingLike": "Avoid a generic before-after-quote recolor; do not repeat stock hero framing, copied card rhythm, or vague local-service claims."
+  },
+  "serviceDetails": {
+    "turnaround": "Photo estimate: repair path scoped before pickup.",
+    "whatToSend": "Send clear photos, dimensions, damage notes, and what you hope the piece becomes. We will reply with the likely repair path and next step.",
+    "prepNote": "Clear photos, dimensions, damage, finish goals, and any sentimental constraints help us triage.",
+    "serviceRhythm": "photo first for Furniture refinishing, chair repair, table restoration, finish refreshes, small cabinet repair, heirloom care, photo estimates, and local pickup or drop-off guidance across the area.",
+    "objectionAnswer": "Scope, access, timing, and fit are confirmed before booking so the next step is clear and low-pressure."
   }
 }

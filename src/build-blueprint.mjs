@@ -8043,25 +8043,29 @@ function buildAliasVisualCss(spec) {
 .wp-block-image.som-pet-gallery-image{
   margin-right:auto;
   margin-left:auto;
-  width:min(470px, 58%)!important;
+  width:min(410px, 52%)!important;
 }
 .wp-block-image.som-pet-gallery-image img{
-  aspect-ratio:1/1;
+  aspect-ratio:auto;
   display:block;
-  min-height:360px;
+  height:330px!important;
+  min-height:0;
   object-position:50% 42%;
   width:100%!important;
   border-radius:999px 999px 34px 34px;
 }
 .som-pet-gallery-hero .som-gallery-copy-row{
-  margin-top:-56px!important;
+  margin-top:-112px!important;
 }
 .som-pet-gallery-copy{
   flex-basis:58%!important;
   border-radius:34px!important;
+  padding-top:24px!important;
+  padding-bottom:24px!important;
 }
 .som-pet-gallery-copy h1{
-  font-size:clamp(40px, 4.8vw, 64px)!important;
+  font-size:clamp(36px, 4vw, 52px)!important;
+  line-height:1.02!important;
 }
 .som-pet-gallery-note{
   flex-basis:42%!important;
@@ -8077,7 +8081,8 @@ function buildAliasVisualCss(spec) {
     width:100%!important;
   }
   .wp-block-image.som-pet-gallery-image img{
-    min-height:210px;
+    height:190px!important;
+    min-height:0;
     width:100%!important;
     aspect-ratio:16/11;
   }
@@ -8088,7 +8093,7 @@ function buildAliasVisualCss(spec) {
     padding:20px!important;
   }
   .som-pet-gallery-copy h1{
-    font-size:clamp(31px, 8.4vw, 38px)!important;
+    font-size:clamp(29px, 8vw, 36px)!important;
     line-height:1.04!important;
   }
   .som-pet-gallery-note{
@@ -8227,7 +8232,8 @@ function buildAliasVisualCss(spec) {
 }
 .som-balloon-gallery-image img{
   aspect-ratio:16/6;
-  min-height:330px;
+  height:300px!important;
+  min-height:0;
   object-position:50% 44%;
   border-radius:80px 8px 80px 8px;
 }
@@ -8237,11 +8243,16 @@ function buildAliasVisualCss(spec) {
   border-radius:32px 8px!important;
 }
 .som-balloon-gallery-hero .som-gallery-copy-row{
-  margin-top:-58px!important;
+  margin-top:-118px!important;
   transform:rotate(-.45deg);
 }
+.som-balloon-gallery-copy{
+  padding-top:24px!important;
+  padding-bottom:24px!important;
+}
 .som-balloon-gallery-copy h1{
-  font-size:clamp(38px, 4.7vw, 60px)!important;
+  font-size:clamp(34px, 3.9vw, 48px)!important;
+  line-height:1.02!important;
 }
 .som-balloon-style-card:nth-child(odd){
   transform:translateY(14px);
@@ -8324,13 +8335,14 @@ function buildAliasVisualCss(spec) {
 }
 .som-headshot-gallery-image img{
   aspect-ratio:21/9;
-  min-height:270px;
+  height:250px!important;
+  min-height:0;
   object-position:50% 38%;
   border-radius:4px;
   filter:saturate(.88) contrast(1.05);
 }
 .som-headshot-gallery-hero .som-gallery-copy-row{
-  margin-top:-28px!important;
+  margin-top:-96px!important;
 }
 .som-headshot-gallery-copy,
 .som-headshot-gallery-note,
@@ -8339,9 +8351,12 @@ function buildAliasVisualCss(spec) {
 }
 .som-headshot-gallery-copy{
   box-shadow:none;
+  padding-top:24px!important;
+  padding-bottom:24px!important;
 }
 .som-headshot-gallery-copy h1{
-  font-size:clamp(36px, 4.2vw, 52px)!important;
+  font-size:clamp(34px, 3.6vw, 46px)!important;
+  line-height:1.02!important;
 }
 .som-headshot-style-card{
   border:1px solid color-mix(in srgb, ${p.deepGreen} 14%, transparent);
@@ -8925,6 +8940,38 @@ function buildAliasVisualCss(spec) {
 }
 .som-turnover-table th{
   background:color-mix(in srgb, ${p.sun} 18%, ${p.white});
+}
+@media (max-width:700px){
+  .som-turnover-hero-shell{
+    padding-top:18px!important;
+    padding-right:24px!important;
+    padding-left:24px!important;
+  }
+  .som-turnover-hero .wp-block-media-text__content{
+    padding:16px 22px 18px!important;
+  }
+  .som-turnover-hero .wp-block-media-text__media{
+    min-height:165px!important;
+  }
+  .som-turnover-hero h1{
+    font-size:clamp(28px, 7.8vw, 34px)!important;
+    line-height:1.04!important;
+    margin-top:8px!important;
+    margin-bottom:10px!important;
+  }
+  .som-turnover-hero p{
+    font-size:15px!important;
+    line-height:1.42!important;
+    margin-bottom:10px!important;
+  }
+  .som-turnover-hero .wp-block-buttons{
+    gap:8px!important;
+    margin-top:8px!important;
+  }
+  .som-turnover-hero .wp-block-button__link{
+    padding-top:10px!important;
+    padding-bottom:10px!important;
+  }
 }
 @media (max-width:860px){
   .som-turnover-card,

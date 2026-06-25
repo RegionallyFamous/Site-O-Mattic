@@ -151,6 +151,43 @@
       "signatureMove": true,
       "restrainedComposition": true,
       "screenshotCompared": true
+    },
+    "premiumReview": {
+      "version": 1,
+      "reviewedAt": "2026-06-25",
+      "score": 100,
+      "categories": {
+        "firstViewport": true,
+        "logoScale": true,
+        "typography": true,
+        "imageProof": true,
+        "ctaClarity": true,
+        "mobilePolish": true,
+        "layoutDistinctness": true,
+        "copySpecificity": true,
+        "assetQa": true,
+        "brandBrief": true
+      },
+      "notes": [
+        "Works: personality session cards. gives the page a memorable shape.",
+        "Proof: dog portrait studio session with photographer, softbox, and calm posing platform. anchors the niche in the first viewport.",
+        "Action: Plan a portrait day is the main conversion path."
+      ]
     }
+  },
+  "brandBrief": {
+    "mood": "Warm and polished.",
+    "trustCue": "pet-comfort proof.",
+    "accentBehavior": "sun stays reserved for Plan a portrait day, active proof cues, and key booking moments.",
+    "imageProof": "dog portrait studio session with photographer, softbox, and calm posing platform.",
+    "signatureMove": "personality session cards.",
+    "avoidLookingLike": "Avoid a generic gallery-led recolor; do not repeat stock hero framing, copied card rhythm, or vague local-service claims."
+  },
+  "serviceDetails": {
+    "turnaround": "Treat breaks: built into every session.",
+    "whatToSend": "Send your pet type, age, personality notes, and a few favorite photo examples. We will suggest a session style and the easiest date window.",
+    "prepNote": "Tell us personality, age, energy, coat color, favorite rewards, and any handling needs before the session.",
+    "serviceRhythm": "consult first for Pet portrait sessions, senior pet keepsakes, puppy milestones, multi-pet portraits, holiday card portraits, and small brand sessions for pets across nearby neighborhoods.",
+    "objectionAnswer": "Scope, access, timing, and fit are confirmed before booking so the next step is clear and low-pressure."
   }
 }

@@ -150,6 +150,43 @@
       "signatureMove": true,
       "restrainedComposition": true,
       "screenshotCompared": true
+    },
+    "premiumReview": {
+      "version": 1,
+      "reviewedAt": "2026-06-25",
+      "score": 100,
+      "categories": {
+        "firstViewport": true,
+        "logoScale": true,
+        "typography": true,
+        "imageProof": true,
+        "ctaClarity": true,
+        "mobilePolish": true,
+        "layoutDistinctness": true,
+        "copySpecificity": true,
+        "assetQa": true,
+        "brandBrief": true
+      },
+      "notes": [
+        "Works: a route-day bench ticket. gives the page a memorable shape.",
+        "Proof: sharpening bench with knives, water tray, and route bins. anchors the niche in the first viewport.",
+        "Action: Join the next route is the main conversion path."
+      ]
     }
+  },
+  "brandBrief": {
+    "mood": "Steady craft confidence.",
+    "trustCue": "edge-care proof.",
+    "accentBehavior": "sun stays reserved for Join the next route, active proof cues, and key booking moments.",
+    "imageProof": "sharpening bench with knives, water tray, and route bins.",
+    "signatureMove": "a route-day bench ticket.",
+    "avoidLookingLike": "Avoid a generic workshop-bench recolor; do not repeat stock hero framing, copied card rhythm, or vague local-service claims."
+  },
+  "serviceDetails": {
+    "turnaround": "Edge check: each blade inspected before handoff.",
+    "whatToSend": "Send a quick count, a few photos, your neighborhood, and any problem blades. We will reply with route timing, bundle advice, and what should skip the bench.",
+    "prepNote": "You send photos and a rough count; we flag serrated, damaged, or unsafe blades before route day.",
+    "serviceRhythm": "route join for Mobile sharpening for chef knives, paring knives, serrated checks, kitchen shears, garden snips, route-day bundle pickups, and careful edge-care notes for home cooks, small kitchens, and neighborhood pickup stops.",
+    "objectionAnswer": "Scope, access, timing, and fit are confirmed before booking so the next step is clear and low-pressure."
   }
 }

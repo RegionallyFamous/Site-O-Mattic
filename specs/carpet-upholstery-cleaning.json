@@ -150,6 +150,43 @@
       "signatureMove": true,
       "restrainedComposition": true,
       "screenshotCompared": true
+    },
+    "premiumReview": {
+      "version": 1,
+      "reviewedAt": "2026-06-25",
+      "score": 100,
+      "categories": {
+        "firstViewport": true,
+        "logoScale": true,
+        "typography": true,
+        "imageProof": true,
+        "ctaClarity": true,
+        "mobilePolish": true,
+        "layoutDistinctness": true,
+        "copySpecificity": true,
+        "assetQa": true,
+        "brandBrief": true
+      },
+      "notes": [
+        "Works: a fabric care note. gives the page a memorable shape.",
+        "Proof: fabric-safe cleaning process in a real room. anchors the niche in the first viewport.",
+        "Action: Book a free estimate is the main conversion path."
+      ]
     }
+  },
+  "brandBrief": {
+    "mood": "Soft domestic calm.",
+    "trustCue": "fabric-safe extraction proof.",
+    "accentBehavior": "sun stays reserved for Book a free estimate, active proof cues, and key booking moments.",
+    "imageProof": "fabric-safe cleaning process in a real room.",
+    "signatureMove": "a fabric care note.",
+    "avoidLookingLike": "Avoid a generic stain-care recolor; do not repeat stock hero framing, copied card rhythm, or vague local-service claims."
+  },
+  "serviceDetails": {
+    "turnaround": "Fabric-safe: methods matched to upholstery, rugs, and carpet fibers.",
+    "whatToSend": "Send room photos, fabric type if you know it, stain close-ups, and the best day to clean. We will reply with the right method, timing, and a clear estimate.",
+    "prepNote": "We identify fabric type, colorfastness, soil level, and any stain that needs a gentler conversation.",
+    "serviceRhythm": "quote first for Sofas, sectionals, area rugs, stairs, bedrooms, and favorite living room paths across the east metro and nearby suburbs.",
+    "objectionAnswer": "Scope, access, timing, and fit are confirmed before booking so the next step is clear and low-pressure."
   }
 }

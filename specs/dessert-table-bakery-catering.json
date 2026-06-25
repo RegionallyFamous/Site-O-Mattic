@@ -151,6 +151,43 @@
       "signatureMove": true,
       "restrainedComposition": true,
       "screenshotCompared": true
+    },
+    "premiumReview": {
+      "version": 1,
+      "reviewedAt": "2026-06-25",
+      "score": 100,
+      "categories": {
+        "firstViewport": true,
+        "logoScale": true,
+        "typography": true,
+        "imageProof": true,
+        "ctaClarity": true,
+        "mobilePolish": true,
+        "layoutDistinctness": true,
+        "copySpecificity": true,
+        "assetQa": true,
+        "brandBrief": true
+      },
+      "notes": [
+        "Works: flavor caption cards. gives the page a memorable shape.",
+        "Proof: styled dessert table with tiered cake, tarts, macarons, and final placement detail. anchors the niche in the first viewport.",
+        "Action: Design my dessert table is the main conversion path."
+      ]
     }
+  },
+  "brandBrief": {
+    "mood": "Celebratory and polished.",
+    "trustCue": "portion proof.",
+    "accentBehavior": "sun stays reserved for Design my dessert table, active proof cues, and key booking moments.",
+    "imageProof": "styled dessert table with tiered cake, tarts, macarons, and final placement detail.",
+    "signatureMove": "flavor caption cards.",
+    "avoidLookingLike": "Avoid a generic gallery-led recolor; do not repeat stock hero framing, copied card rhythm, or vague local-service claims."
+  },
+  "serviceDetails": {
+    "turnaround": "Portion plan: guest count matched to table size.",
+    "whatToSend": "Send your date, guest count, venue, palette, favorite flavors, and any inspiration photos. We will shape a table direction and quote path.",
+    "prepNote": "We plan quantities, palette, venue rules, and table size before flavor talk gets too dreamy.",
+    "serviceRhythm": "date check for Dessert tables, bakery catering, cake-and-mini spreads, shower sweets, birthday tables, corporate dessert bars, and celebration delivery across the metro area.",
+    "objectionAnswer": "Scope, access, timing, and fit are confirmed before booking so the next step is clear and low-pressure."
   }
 }

@@ -3,3 +3,5 @@ node_modules/
 dist/
 .wrangler/
 .DS_Store
+qa/reports/visual-sweep*/
+qa/reports/public-smoke/

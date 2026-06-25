@@ -2,6 +2,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { implementedLayoutVariantSlugs } from "./layout-archetypes.mjs";
 import { validatePatternContract } from "./pattern-contracts.mjs";
+import { validateProductionPolishFields } from "./production-polish-fields.mjs";
 import { readSpec, specTargets } from "./spec-utils.mjs";
 
 const targets = await specTargets();
@@ -46,6 +47,8 @@ async function validateSpec(spec, target) {
     "services",
     "process",
     "proof",
+    "brandBrief",
+    "serviceDetails",
     "release"
   ];
 
@@ -74,6 +77,7 @@ async function validateSpec(spec, target) {
   validateCards(spec.services, "services", errors);
   validateCards(spec.process, "process", errors);
   validateProof(spec.proof, errors);
+  validateProductionPolish(spec, errors);
   validateRelease(spec.release, errors);
 
   if (path.basename(target) !== `${spec.slug}.json`) {
@@ -191,6 +195,10 @@ function validateProof(items, errors) {
   });
 }
 
+function validateProductionPolish(spec, errors) {
+  errors.push(...validateProductionPolishFields(spec));
+}
+
 function validateRelease(release, errors) {
   const statuses = new Set(["draft", "approved", "published"]);
   if (!statuses.has(release?.status)) {
@@ -223,5 +231,40 @@ function validateRelease(release, errors) {
     } else if (release?.status !== "draft" && checklist[key] !== true) {
       errors.push(`release.reviewChecklist.${key} must be true before approval.`);
     }
+  }
+
+  const premium = release?.premiumReview;
+  if (!premium || typeof premium !== "object") {
+    errors.push("release.premiumReview is required.");
+    return;
+  }
+  if (premium.version !== 1) {
+    errors.push("release.premiumReview.version must be 1.");
+  }
+  if (!/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/.test(premium.reviewedAt || "")) {
+    errors.push("release.premiumReview.reviewedAt must use YYYY-MM-DD.");
+  }
+  if (!Number.isFinite(premium.score) || premium.score < 90 || premium.score > 100) {
+    errors.push("release.premiumReview.score must be between 90 and 100.");
+  }
+  const categories = [
+    "firstViewport",
+    "logoScale",
+    "typography",
+    "imageProof",
+    "ctaClarity",
+    "mobilePolish",
+    "layoutDistinctness",
+    "copySpecificity",
+    "assetQa",
+    "brandBrief"
+  ];
+  for (const category of categories) {
+    if (premium.categories?.[category] !== true) {
+      errors.push(`release.premiumReview.categories.${category} must be true.`);
+    }
+  }
+  if (!Array.isArray(premium.notes) || premium.notes.length < 3) {
+    errors.push("release.premiumReview.notes must include at least three notes.");
   }
 }

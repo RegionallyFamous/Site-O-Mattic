@@ -150,6 +150,43 @@
       "signatureMove": true,
       "restrainedComposition": true,
       "screenshotCompared": true
+    },
+    "premiumReview": {
+      "version": 1,
+      "reviewedAt": "2026-06-25",
+      "score": 100,
+      "categories": {
+        "firstViewport": true,
+        "logoScale": true,
+        "typography": true,
+        "imageProof": true,
+        "ctaClarity": true,
+        "mobilePolish": true,
+        "layoutDistinctness": true,
+        "copySpecificity": true,
+        "assetQa": true,
+        "brandBrief": true
+      },
+      "notes": [
+        "Works: size-based backdrop cards. gives the page a memorable shape.",
+        "Proof: stylist installing a colorful balloon garland and party backdrop in an event space. anchors the niche in the first viewport.",
+        "Action: Style my party is the main conversion path."
+      ]
     }
+  },
+  "brandBrief": {
+    "mood": "Playful and polished.",
+    "trustCue": "install proof.",
+    "accentBehavior": "sun stays reserved for Style my party, active proof cues, and key booking moments.",
+    "imageProof": "stylist installing a colorful balloon garland and party backdrop in an event space.",
+    "signatureMove": "size-based backdrop cards.",
+    "avoidLookingLike": "Avoid a generic gallery-led recolor; do not repeat stock hero framing, copied card rhythm, or vague local-service claims."
+  },
+  "serviceDetails": {
+    "turnaround": "Color plan: palette checked before ordering.",
+    "whatToSend": "Send your date, venue, install window, palette, backdrop inspiration, and rough guest flow. We will recommend the right size and setup path.",
+    "prepNote": "Photos, wall size, install window, access rules, and color references help us choose a realistic build.",
+    "serviceRhythm": "date check for Balloon garlands, party backdrops, shower installs, birthday arches, corporate photo corners, color plans, delivery, setup, and teardown options across town.",
+    "objectionAnswer": "Scope, access, timing, and fit are confirmed before booking so the next step is clear and low-pressure."
   }
 }

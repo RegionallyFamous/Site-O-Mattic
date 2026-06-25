@@ -150,6 +150,43 @@
       "signatureMove": true,
       "restrainedComposition": true,
       "screenshotCompared": true
+    },
+    "premiumReview": {
+      "version": 1,
+      "reviewedAt": "2026-06-25",
+      "score": 100,
+      "categories": {
+        "firstViewport": true,
+        "logoScale": true,
+        "typography": true,
+        "imageProof": true,
+        "ctaClarity": true,
+        "mobilePolish": true,
+        "layoutDistinctness": true,
+        "copySpecificity": true,
+        "assetQa": true,
+        "brandBrief": true
+      },
+      "notes": [
+        "Works: a side-rail dispatch console. gives the page a memorable shape.",
+        "Proof: finished clean-out outcome with donation path. anchors the niche in the first viewport.",
+        "Action: Send junk photos is the main conversion path."
+      ]
     }
+  },
+  "brandBrief": {
+    "mood": "Organized and humane.",
+    "trustCue": "donation-route proof.",
+    "accentBehavior": "sun stays reserved for Send junk photos, active proof cues, and key booking moments.",
+    "imageProof": "finished clean-out outcome with donation path.",
+    "signatureMove": "a side-rail dispatch console.",
+    "avoidLookingLike": "Avoid a generic side-rail-service recolor; do not repeat stock hero framing, copied card rhythm, or vague local-service claims."
+  },
+  "serviceDetails": {
+    "turnaround": "Photo-first: estimates before you drag everything to the curb.",
+    "whatToSend": "Send a few photos, your pickup address, stairs or elevator notes, and any items that should be donated first. We will reply with a clear haul plan and arrival window.",
+    "prepNote": "Text or email wide photos of the pile, close-ups of bulky items, and access notes like stairs or tight turns.",
+    "serviceRhythm": "photo first for Garage cleanouts, basement piles, apartment move-outs, donation runs, and curbside pickups across the central metro and close-in suburbs.",
+    "objectionAnswer": "Scope, access, timing, and fit are confirmed before booking so the next step is clear and low-pressure."
   }
 }

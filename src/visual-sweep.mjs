@@ -136,9 +136,7 @@ function scenarios() {
 }
 
 function startPlaygroundServer(blueprintPath, port) {
-  return spawn("npx", [
-    "-y",
-    "@wp-playground/cli@latest",
+  const cliArgs = [
     "server",
     `--blueprint=${blueprintPath}`,
     "--php=8.4",
@@ -146,11 +144,29 @@ function startPlaygroundServer(blueprintPath, port) {
     `--port=${port}`,
     "--login",
     "--verbosity=normal"
-  ], {
+  ];
+  const command = playgroundCommand(cliArgs);
+  return spawn(command.bin, command.args, {
     cwd: ROOT,
     env: process.env,
     stdio: ["ignore", "pipe", "pipe"]
   });
+}
+
+function playgroundCommand(cliArgs) {
+  if (process.env.PLAYGROUND_CLI_BIN) {
+    return { bin: process.env.PLAYGROUND_CLI_BIN, args: cliArgs };
+  }
+  if (process.env.PLAYGROUND_CLI_USE_NPM_EXEC === "1") {
+    return {
+      bin: "npm",
+      args: ["exec", "--yes", "--package", "@wp-playground/cli@latest", "--", "wp-playground-cli", ...cliArgs]
+    };
+  }
+  return {
+    bin: "npx",
+    args: ["--yes", "--package", "@wp-playground/cli@latest", "--", "wp-playground-cli", ...cliArgs]
+  };
 }
 
 function waitForReady(child, timeoutMs) {
