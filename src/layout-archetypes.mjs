@@ -78,6 +78,30 @@ function beforeAfterAlias(config) {
   return { ...config, ...classes };
 }
 
+const RENDER_FAMILY_BY_LAYOUT = {
+  "side-rail-estimate": "side-rail-service",
+  "bottom-dock-booking": "fixed-bottom-action",
+  "sharp-route-bench": "workshop-bench",
+  "bike-route-workstand": "workshop-bench",
+  "organizing-zone-board": "zone-grid-planner",
+  "route-led-schedule": "route-plan",
+  "story-card-consult": "checklist-urgency",
+  "turnover-receipt-board": "service-receipt-stack",
+  "pet-portrait-gallery": "gallery-led",
+  "street-food-menu-board": "package-menu-board",
+  "dessert-table-gallery": "gallery-led",
+  "balloon-backdrop-gallery": "gallery-led",
+  "micro-wedding-floral-story": "checklist-urgency",
+  "photo-booth-strip-packages": "fixed-bottom-action",
+  "soundcheck-console": "side-rail-service",
+  "picnic-proposal-lookbook": "gallery-led",
+  "mocktail-cart-menu": "package-menu-board",
+  "headshot-proof-gallery": "gallery-led",
+  "mural-lettering-workshop": "workshop-bench",
+  "color-consult-story": "checklist-urgency",
+  "furniture-refinish-proof": "before-after-quote"
+};
+
 export const LAYOUT_ARCHETYPES = {
   "route-plan": {
     label: "Route or recurring plan",
@@ -1214,6 +1238,10 @@ export function layoutVariantSlugs() {
   return Object.keys(LAYOUT_ARCHETYPES);
 }
 
+export function renderFamilyForVariant(variant) {
+  return RENDER_FAMILY_BY_LAYOUT[variant] || variant;
+}
+
 export function implementedLayoutVariantSlugs() {
   return Object.entries(LAYOUT_ARCHETYPES)
     .filter(([, archetype]) => Boolean(archetype.archetype))
@@ -1235,6 +1263,10 @@ export function buildLayoutSignature(spec) {
   const variant = layoutVariantFor(spec);
   const archetype = layoutArchetypeFor(spec);
   const pattern = spec.pattern || {};
+  const visualDifferentiator = archetype.visualDifferentiator
+    || archetype.signatureMove
+    || archetype.guidance
+    || `${archetype.hero}; ${archetype.servicePresentation}; ${archetype.proofTreatment}`;
 
   if (!archetype.archetype) {
     throw new Error(`Layout variant is cataloged but not implemented yet: ${variant}`);
@@ -1243,6 +1275,8 @@ export function buildLayoutSignature(spec) {
   return {
     version: 1,
     variant,
+    renderFamily: renderFamilyForVariant(variant),
+    visualDifferentiator,
     archetype: archetype.archetype,
     hero: archetype.hero,
     navigationTreatment: archetype.navigationTreatment,

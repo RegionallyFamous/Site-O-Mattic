@@ -38,6 +38,7 @@ for (const report of reports) {
     hasFailure = true;
   }
 }
+printRenderFamilySummary(reports);
 
 for (let left = 0; left < reports.length; left += 1) {
   for (let right = left + 1; right < reports.length; right += 1) {
@@ -103,6 +104,8 @@ function compareReports(left, right) {
   const classSimilarity = jaccard([...left.componentClasses], [...right.componentClasses]);
 
   checks.push(diffCheck("variant family", leftSignature.variant !== rightSignature.variant, leftSignature.variant, rightSignature.variant));
+  checks.push(diffCheck("render family", leftSignature.renderFamily !== rightSignature.renderFamily, leftSignature.renderFamily, rightSignature.renderFamily));
+  checks.push(diffCheck("visual differentiator", leftSignature.visualDifferentiator !== rightSignature.visualDifferentiator, leftSignature.visualDifferentiator, rightSignature.visualDifferentiator));
   checks.push(diffCheck("hero", leftSignature.hero !== rightSignature.hero, leftSignature.hero, rightSignature.hero));
   checks.push(diffCheck("navigation treatment", leftSignature.navigationTreatment !== rightSignature.navigationTreatment, leftSignature.navigationTreatment, rightSignature.navigationTreatment));
   checks.push(diffCheck("typography treatment", leftSignature.typographyTreatment !== rightSignature.typographyTreatment, leftSignature.typographyTreatment, rightSignature.typographyTreatment));
@@ -126,6 +129,11 @@ function compareReports(left, right) {
   checks.push({ name: "core block plan overlap", passed: jaccard(leftSignature.coreBlockPlan || [], rightSignature.coreBlockPlan || []) < 0.85, detail: `Jaccard ${jaccard(leftSignature.coreBlockPlan || [], rightSignature.coreBlockPlan || []).toFixed(2)}` });
   checks.push({ name: "nav label overlap", passed: navSimilarity < 0.75, detail: `Jaccard ${navSimilarity.toFixed(2)}` });
   checks.push({ name: "component class overlap", passed: classSimilarity < 0.65, detail: `Jaccard ${classSimilarity.toFixed(2)}` });
+  checks.push({
+    name: "same-renderer visual differentiation",
+    passed: hasSameRendererVisualDifferentiation(leftSignature, rightSignature),
+    detail: sameRendererDetail(leftSignature, rightSignature)
+  });
 
   const score = checks.filter((check) => check.passed).length;
   const hardCheckNames = new Set([
@@ -135,7 +143,8 @@ function compareReports(left, right) {
     "color strategy",
     "palette fingerprint",
     "service presentation",
-    "section order"
+    "section order",
+    "same-renderer visual differentiation"
   ]);
   return {
     left: left.target,
@@ -167,6 +176,8 @@ function hasSignatureShape(signature) {
   }
   const strings = [
     "variant",
+    "renderFamily",
+    "visualDifferentiator",
     "archetype",
     "hero",
     "navigationTreatment",
@@ -194,6 +205,58 @@ function hasSignatureShape(signature) {
   return strings.every((field) => typeof signature[field] === "string" && signature[field])
     && objects.every((field) => signature[field] && typeof signature[field] === "object" && !Array.isArray(signature[field]))
     && arrays.every((field) => Array.isArray(signature[field]) && signature[field].length);
+}
+
+function hasSameRendererVisualDifferentiation(leftSignature, rightSignature) {
+  if (!leftSignature.renderFamily || leftSignature.renderFamily !== rightSignature.renderFamily) {
+    return true;
+  }
+
+  const visibleFields = [
+    "visualDifferentiator",
+    "hero",
+    "navigationTreatment",
+    "typographyTreatment",
+    "colorStrategy",
+    "servicePresentation",
+    "proofTreatment",
+    "ctaRhythm",
+    "silhouette",
+    "navigationPrimitive",
+    "mobileActionPattern",
+    "imageRole",
+    "surfaceFamily"
+  ];
+  const differingFields = visibleFields.filter((field) => leftSignature[field] && rightSignature[field] && leftSignature[field] !== rightSignature[field]);
+  const sectionOrderDiffers = !arraysEqual(leftSignature.sectionOrder || [], rightSignature.sectionOrder || []);
+  return leftSignature.visualDifferentiator !== rightSignature.visualDifferentiator
+    && differingFields.length >= 7
+    && sectionOrderDiffers;
+}
+
+function sameRendererDetail(leftSignature, rightSignature) {
+  if (!leftSignature.renderFamily || leftSignature.renderFamily !== rightSignature.renderFamily) {
+    return `${leftSignature.renderFamily || "missing"} | ${rightSignature.renderFamily || "missing"}`;
+  }
+
+  const visibleFields = [
+    "visualDifferentiator",
+    "hero",
+    "navigationTreatment",
+    "typographyTreatment",
+    "colorStrategy",
+    "servicePresentation",
+    "proofTreatment",
+    "ctaRhythm",
+    "silhouette",
+    "navigationPrimitive",
+    "mobileActionPattern",
+    "imageRole",
+    "surfaceFamily"
+  ];
+  const differingCount = visibleFields.filter((field) => leftSignature[field] && rightSignature[field] && leftSignature[field] !== rightSignature[field]).length;
+  const sectionOrderDiffers = !arraysEqual(leftSignature.sectionOrder || [], rightSignature.sectionOrder || []);
+  return `${leftSignature.renderFamily}; visible field differences ${differingCount}; section order differs: ${sectionOrderDiffers}`;
 }
 
 function paletteFingerprint(globalStyles) {
@@ -239,6 +302,22 @@ function printBlueprintReport(report) {
   console.log(`\nBlueprint: ${report.target}`);
   for (const check of report.checks) {
     console.log(`- ${check.passed ? "OK" : "FAIL"} ${check.name}: ${check.detail}`);
+  }
+}
+
+function printRenderFamilySummary(reports) {
+  const groups = new Map();
+  for (const report of reports) {
+    const family = report.signature?.renderFamily || "missing";
+    if (!groups.has(family)) {
+      groups.set(family, []);
+    }
+    groups.get(family).push(report.signature?.variant || report.target);
+  }
+
+  console.log("\nRender family summary");
+  for (const [family, variants] of [...groups.entries()].sort((left, right) => right[1].length - left[1].length || left[0].localeCompare(right[0]))) {
+    console.log(`- ${family}: ${variants.length} -> ${variants.join(", ")}`);
   }
 }
 
