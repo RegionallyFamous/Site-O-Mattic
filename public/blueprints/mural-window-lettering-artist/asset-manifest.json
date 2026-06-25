@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "slug": "mural-window-lettering-artist",
+  "businessName": "LetterLoom Studio",
+  "layoutVariant": "mural-lettering-workshop",
+  "assets": {
+    "hero": {
+      "source": "assets/mural-window-lettering-artist/letterloom-hero.jpg",
+      "fileName": "hero.jpg",
+      "outputPath": "/assets/hero.jpg",
+      "mimeType": "image/jpeg",
+      "byteSize": 268664,
+      "width": 1920,
+      "height": 1080,
+      "embedded": true
+    },
+    "logo": {
+      "source": "assets/mural-window-lettering-artist/letterloom-logo.png",
+      "fileName": "logo.png",
+      "outputPath": "/assets/logo.png",
+      "mimeType": "image/png",
+      "byteSize": 26292,
+      "width": 1100,
+      "height": 260,
+      "embedded": true
+    },
+    "favicon": {
+      "source": "assets/mural-window-lettering-artist/letterloom-favicon.png",
+      "fileName": "favicon.png",
+      "outputPath": "/assets/favicon.png",
+      "mimeType": "image/png",
+      "byteSize": 12495,
+      "width": 512,
+      "height": 512,
+      "embedded": true
+    }
+  }
+}

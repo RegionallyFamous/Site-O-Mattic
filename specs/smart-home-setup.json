@@ -1,0 +1,155 @@
+{
+  "slug": "smart-home-setup",
+  "businessName": "SignalNest Home Setup",
+  "niche": "smart home and home theater setup service",
+  "layoutVariant": "side-rail-estimate",
+  "pattern": {
+    "primaryPattern": "consultation-story-flow",
+    "secondaryPattern": "room-readiness-signal-check",
+    "silhouette": "side-rail-service-story",
+    "navigationPrimitive": "desktop-side-rail",
+    "mobileActionPattern": "rail-collapses-to-consult-actions",
+    "imageRole": "work-in-progress",
+    "imageEvidence": "technician configuring home theater cables and app controls",
+    "ctaRhythm": "consult-first",
+    "surfaceFamily": "side-rail",
+    "surfaceModel": "consult-rail-scope-cards",
+    "styleFamily": "humanist-local-calm",
+    "density": "balanced-editorial",
+    "colorRoles": {
+      "ink": "deepGreen",
+      "paper": "cream",
+      "field": "mist",
+      "line": "soil",
+      "primary": "grass",
+      "action": "sun",
+      "proof": "leaf",
+      "muted": "soil",
+      "warning": "sun",
+      "shadowTint": "deepGreen"
+    },
+    "geometry": {
+      "radiusScale": "consult-rail-18",
+      "borderRole": "quiet setup dividers",
+      "shadowRole": "hero device photo and rail card",
+      "mediaCrop": "home theater setup crop"
+    },
+    "coreBlockPlan": [
+      "columns",
+      "image",
+      "navigation",
+      "buttons"
+    ],
+    "knownRisks": [
+      "too-technical-copy",
+      "wire-clutter-image",
+      "side-rail-mobile-cramp"
+    ],
+    "styleContract": "Calm room-ready confidence with signal-check proof, real home theater setup evidence, warm-gold action accents, and a desktop consult rail as the signature move."
+  },
+  "tagline": "Smart rooms set up neatly enough to forget the wires exist.",
+  "themeSlug": "twentytwentyfive",
+  "landingPage": "/",
+  "palette": {
+    "grass": "#566a8f",
+    "deepGreen": "#172235",
+    "leaf": "#7fb7a3",
+    "sun": "#f1b94a",
+    "cream": "#f4eee4",
+    "mist": "#dde5eb",
+    "soil": "#5b5149",
+    "white": "#ffffff"
+  },
+  "assets": {
+    "hero": "assets/smart-home-setup/signalnest-hero.jpg",
+    "logo": "assets/smart-home-setup/signalnest-logo.png",
+    "favicon": "assets/smart-home-setup/signalnest-favicon.png"
+  },
+  "assetMeta": {
+    "hero": {
+      "title": "SignalNest smart home setup hero image",
+      "alt": "A smart home setup technician kneeling by a media console, organizing cables with a tablet beside a wall-mounted TV and soundbar in a cozy living room."
+    }
+  },
+  "contact": {
+    "phoneLabel": "(555) 014-3370",
+    "phoneHref": "tel:+15550143370",
+    "email": "hello@signalnest.test",
+    "emailHref": "mailto:hello@signalnest.test",
+    "serviceArea": "Smart TV mounting support, home theater setup, soundbar tuning, streaming device cleanup, Wi-Fi device pairing, cable labeling, remote simplification, and tidy room-ready walkthroughs for homes, condos, and townhomes across the central suburbs"
+  },
+  "copy": {
+    "eyebrow": "Smart home setup without cable chaos",
+    "heroTitle": "Make the room work before movie night gets weird.",
+    "heroText": "SignalNest turns TVs, soundbars, streaming boxes, remotes, speakers, and mystery cables into a clean setup that your whole household can actually use.",
+    "primaryCta": "Plan my setup",
+    "secondaryCta": "See the scope",
+    "introTitle": "A calm setup path for rooms with too many tiny boxes.",
+    "introText": "We check the wall, console, signal strength, device list, cable path, app access, remote goals, and the person who just wants one button to turn everything on.",
+    "servicesTitle": "What we set up",
+    "processTitle": "From device pile to simple controls",
+    "proofTitle": "Room-ready proof",
+    "quoteTitle": "Ready to make the living room behave?",
+    "quoteText": "Send room photos, device names, TV size, Wi-Fi notes, and what feels annoying right now. We will reply with a simple setup plan and clean next step."
+  },
+  "services": [
+    {
+      "title": "TV And Soundbar Setup",
+      "text": "Wall-mounted or console-based TV setup, soundbar connection, HDMI cleanup, power planning, and a clean handoff so inputs make sense."
+    },
+    {
+      "title": "Streaming And Remote Cleanup",
+      "text": "Streaming boxes, apps, remotes, voice controls, and household profiles organized into a setup that does not require a group text."
+    },
+    {
+      "title": "Networked Device Pairing",
+      "text": "Smart speakers, hubs, doorbells, displays, and Wi-Fi devices paired carefully, labeled clearly, and documented for future changes."
+    }
+  ],
+  "process": [
+    {
+      "title": "Send the room scan",
+      "text": "Wide photos, device list, Wi-Fi notes, outlet locations, and what you want the room to do help us spot the right setup path."
+    },
+    {
+      "title": "Connect and label",
+      "text": "We route cables, pair devices, test inputs, label the important connections, and remove duplicate steps where possible."
+    },
+    {
+      "title": "Walk through controls",
+      "text": "Before we leave, you get a plain-language control walkthrough, restart notes, and a short list of what changed."
+    }
+  ],
+  "proof": [
+    {
+      "stat": "1 remote",
+      "label": "goal for most TV rooms after setup"
+    },
+    {
+      "stat": "Cable notes",
+      "label": "labels and setup notes for future fixes"
+    },
+    {
+      "stat": "Signal check",
+      "label": "Wi-Fi and device pairing reviewed before handoff"
+    }
+  ],
+  "release": {
+    "status": "approved",
+    "reviewedAt": "2026-06-25",
+    "visualBaseline": "pending",
+    "reviewChecklist": {
+      "firstViewportClear": true,
+      "logoReadable": true,
+      "layoutDistinct": true,
+      "ctaClear": true,
+      "copySpecific": true,
+      "noImageArtifacts": true,
+      "heroArtDirected": true,
+      "hierarchyDistinct": true,
+      "signatureMove": true,
+      "restrainedComposition": true,
+      "screenshotCompared": true
+    }
+  }
+}

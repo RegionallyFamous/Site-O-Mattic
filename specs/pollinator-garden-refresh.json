@@ -3,6 +3,51 @@
   "businessName": "BloomRoute Garden Studio",
   "niche": "pollinator garden refresh service",
   "layoutVariant": "gallery-led",
+  "pattern": {
+    "primaryPattern": "gallery-led-portfolio-proof",
+    "secondaryPattern": "seasonal-style-proof",
+    "silhouette": "editorial-proof-stage",
+    "navigationPrimitive": "compact-header",
+    "mobileActionPattern": "post-hero-anchor-actions",
+    "imageRole": "finished-outcome",
+    "imageEvidence": "finished visual result with proof-ready composition",
+    "ctaRhythm": "consult-first",
+    "surfaceFamily": "gallery-mosaic",
+    "surfaceModel": "editorial-gallery-captions",
+    "styleFamily": "editorial-proof-stage",
+    "density": "visual-first",
+    "colorRoles": {
+      "ink": "deepGreen",
+      "paper": "cream",
+      "field": "mist",
+      "line": "leaf",
+      "primary": "grass",
+      "action": "sun",
+      "proof": "leaf",
+      "muted": "soil",
+      "warning": "sun",
+      "shadowTint": "deepGreen"
+    },
+    "geometry": {
+      "radiusScale": "editorial-8",
+      "borderRole": "caption and proof separators",
+      "shadowRole": "image stage sparingly",
+      "mediaCrop": "large editorial outcome crop"
+    },
+    "coreBlockPlan": [
+      "cover",
+      "image",
+      "gallery",
+      "quote",
+      "buttons"
+    ],
+    "knownRisks": [
+      "cta-below-gallery-fold",
+      "decorative-plant-photo",
+      "palette-too-green"
+    ],
+    "styleContract": "Ecological and editorial with native-season proof, colorful finished garden evidence, pollen-gold action accents, and gallery captions as the signature move."
+  },
   "tagline": "Native blooms with excellent neighborhood manners.",
   "themeSlug": "twentytwentyfive",
   "landingPage": "/",

@@ -1,0 +1,155 @@
+{
+  "slug": "furniture-refinishing-repair",
+  "businessName": "GrainMend Furniture Co.",
+  "niche": "furniture refinishing and repair service",
+  "layoutVariant": "furniture-refinish-proof",
+  "pattern": {
+    "primaryPattern": "photo-quote-transformation",
+    "secondaryPattern": "material-care-proof",
+    "silhouette": "split-quote-board",
+    "navigationPrimitive": "compact-header",
+    "mobileActionPattern": "send-photo-estimate-actions",
+    "imageRole": "process-closeup",
+    "imageEvidence": "craftsperson refinishing a wooden furniture piece in a tidy workshop with tools and finish samples",
+    "ctaRhythm": "photo-first",
+    "surfaceFamily": "outlined-repeaters",
+    "surfaceModel": "repair-surface-rows-with-finish-pills",
+    "styleFamily": "material-workbench",
+    "density": "balanced-editorial",
+    "colorRoles": {
+      "ink": "deepGreen",
+      "paper": "cream",
+      "field": "mist",
+      "line": "leaf",
+      "primary": "grass",
+      "action": "sun",
+      "proof": "leaf",
+      "muted": "soil",
+      "warning": "sun",
+      "shadowTint": "deepGreen"
+    },
+    "geometry": {
+      "radiusScale": "woodshop-8",
+      "borderRole": "repair row dividers",
+      "shadowRole": "estimate card and hero photo",
+      "mediaCrop": "wood grain repair closeup crop"
+    },
+    "coreBlockPlan": [
+      "columns",
+      "image",
+      "list",
+      "buttons"
+    ],
+    "knownRisks": [
+      "first-viewport-cta",
+      "logo-scale",
+      "mobile-crop"
+    ],
+    "styleContract": "Patient and tactile with material proof, real refinishing evidence, brass action accents, and a send-photo estimate strip as the signature move."
+  },
+  "tagline": "Furniture repair with grain, care, and receipts.",
+  "themeSlug": "twentytwentyfive",
+  "landingPage": "/",
+  "palette": {
+    "grass": "#7a4f2a",
+    "deepGreen": "#251b15",
+    "leaf": "#a8784a",
+    "sun": "#e7b75c",
+    "cream": "#f7efe4",
+    "mist": "#e5d6c5",
+    "soil": "#655142",
+    "white": "#ffffff"
+  },
+  "assets": {
+    "hero": "assets/furniture-refinishing-repair/grainmend-hero.jpg",
+    "logo": "assets/furniture-refinishing-repair/grainmend-logo.png",
+    "favicon": "assets/furniture-refinishing-repair/grainmend-favicon.png"
+  },
+  "assetMeta": {
+    "hero": {
+      "title": "GrainMend furniture refinishing hero image",
+      "alt": "A craftsperson refinishing a wooden furniture piece in a tidy workshop with sanding block, brush, clamps, and wood samples."
+    }
+  },
+  "contact": {
+    "phoneLabel": "(555) 014-6744",
+    "phoneHref": "tel:+15550146744",
+    "email": "hello@grainmend.test",
+    "emailHref": "mailto:hello@grainmend.test",
+    "serviceArea": "Furniture refinishing, chair repair, table restoration, finish refreshes, small cabinet repair, heirloom care, photo estimates, and local pickup or drop-off guidance across the area"
+  },
+  "copy": {
+    "eyebrow": "Furniture refinishing with photo-first estimates",
+    "heroTitle": "Bring the piece back without losing its story.",
+    "heroText": "GrainMend repairs worn edges, tired finishes, wobbly joints, and beloved wood pieces with a practical photo estimate and a finish plan you can understand.",
+    "primaryCta": "Send a furniture photo",
+    "secondaryCta": "See repair types",
+    "introTitle": "A good refinish respects the piece before it starts shining.",
+    "introText": "We look at wood type, finish condition, structural issues, sentimental value, timeline, and whether repair or full refinishing is the better path.",
+    "servicesTitle": "What can be restored",
+    "processTitle": "How the repair path works",
+    "proofTitle": "Wood proof before the quote",
+    "quoteTitle": "Ready to send a furniture photo?",
+    "quoteText": "Send clear photos, dimensions, damage notes, and what you hope the piece becomes. We will reply with the likely repair path and next step."
+  },
+  "services": [
+    {
+      "title": "Finish Refresh",
+      "text": "Clean, scuff, tone, and protect pieces that need life back without a full strip-down."
+    },
+    {
+      "title": "Repair And Stabilize",
+      "text": "Loose joints, worn edges, missing pulls, small veneer issues, and structural fixes before the finish work."
+    },
+    {
+      "title": "Full Refinish",
+      "text": "A deeper reset for tables, chairs, dressers, and heirloom pieces that need a new finish plan."
+    }
+  ],
+  "process": [
+    {
+      "title": "Send the piece",
+      "text": "Clear photos, dimensions, damage, finish goals, and any sentimental constraints help us triage."
+    },
+    {
+      "title": "Choose the repair path",
+      "text": "We explain refresh, repair, or refinish options before quoting the next step."
+    },
+    {
+      "title": "Restore and care",
+      "text": "The piece is repaired, finished, cured, and handed back with care notes."
+    }
+  ],
+  "proof": [
+    {
+      "stat": "Photo estimate",
+      "label": "repair path scoped before pickup"
+    },
+    {
+      "stat": "Finish samples",
+      "label": "tone and sheen discussed early"
+    },
+    {
+      "stat": "Care notes",
+      "label": "aftercare included at handoff"
+    }
+  ],
+  "release": {
+    "status": "approved",
+    "reviewedAt": "2026-06-25",
+    "visualBaseline": "pending",
+    "reviewChecklist": {
+      "firstViewportClear": true,
+      "logoReadable": true,
+      "layoutDistinct": true,
+      "ctaClear": true,
+      "copySpecific": true,
+      "noImageArtifacts": true,
+      "heroArtDirected": true,
+      "hierarchyDistinct": true,
+      "signatureMove": true,
+      "restrainedComposition": true,
+      "screenshotCompared": true
+    }
+  }
+}

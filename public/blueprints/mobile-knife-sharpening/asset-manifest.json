@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "slug": "mobile-knife-sharpening",
+  "businessName": "EdgeRoute Sharpening",
+  "layoutVariant": "sharp-route-bench",
+  "assets": {
+    "hero": {
+      "source": "assets/mobile-knife-sharpening/edgeroute-hero.jpg",
+      "fileName": "hero.jpg",
+      "outputPath": "/assets/hero.jpg",
+      "mimeType": "image/jpeg",
+      "byteSize": 222297,
+      "width": 1920,
+      "height": 1080,
+      "embedded": true
+    },
+    "logo": {
+      "source": "assets/mobile-knife-sharpening/edgeroute-logo.png",
+      "fileName": "logo.png",
+      "outputPath": "/assets/logo.png",
+      "mimeType": "image/png",
+      "byteSize": 42401,
+      "width": 1100,
+      "height": 260,
+      "embedded": true
+    },
+    "favicon": {
+      "source": "assets/mobile-knife-sharpening/edgeroute-favicon.png",
+      "fileName": "favicon.png",
+      "outputPath": "/assets/favicon.png",
+      "mimeType": "image/png",
+      "byteSize": 21673,
+      "width": 512,
+      "height": 512,
+      "embedded": true
+    }
+  }
+}

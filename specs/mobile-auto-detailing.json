@@ -3,6 +3,49 @@
   "businessName": "ShineShift Mobile Detail",
   "niche": "mobile auto detailing service",
   "layoutVariant": "fixed-bottom-action",
+  "pattern": {
+    "primaryPattern": "mobile-fixed-action-flow",
+    "secondaryPattern": "package-comparison-proof",
+    "silhouette": "mobile-action-dock",
+    "navigationPrimitive": "fixed-bottom-mobile-cta",
+    "mobileActionPattern": "fixed-bottom-primary-plus-call",
+    "imageRole": "work-in-progress",
+    "imageEvidence": "mobile service action at the customer location",
+    "ctaRhythm": "quote-first",
+    "surfaceFamily": "mobile-dock",
+    "surfaceModel": "package-cards-fixed-bar",
+    "styleFamily": "mobile-action-gloss",
+    "density": "compact-leadgen",
+    "colorRoles": {
+      "ink": "deepGreen",
+      "paper": "cream",
+      "field": "mist",
+      "line": "leaf",
+      "primary": "grass",
+      "action": "sun",
+      "proof": "leaf",
+      "muted": "soil",
+      "warning": "sun",
+      "shadowTint": "deepGreen"
+    },
+    "geometry": {
+      "radiusScale": "gloss-pill",
+      "borderRole": "package card borders",
+      "shadowRole": "mobile dock strongest",
+      "mediaCrop": "tight glossy service crop"
+    },
+    "coreBlockPlan": [
+      "columns",
+      "buttons",
+      "list"
+    ],
+    "knownRisks": [
+      "fixed-bar-footer-coverage",
+      "duplicate-cta-order",
+      "gloss-photo-too-cropped"
+    ],
+    "styleContract": "Glossy and mobile-first with paint-safe package proof, driveway detailing evidence, electric action accents, and a thumb-ready bottom bar as the signature move."
+  },
   "tagline": "Driveway detailing with a showroom-level finish.",
   "themeSlug": "twentytwentyfive",
   "landingPage": "/",

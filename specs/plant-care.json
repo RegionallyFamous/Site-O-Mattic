@@ -1,0 +1,155 @@
+{
+  "slug": "plant-care",
+  "businessName": "LeafDesk Plant Care",
+  "niche": "houseplant and office plant care service",
+  "layoutVariant": "route-led-schedule",
+  "pattern": {
+    "primaryPattern": "decision-filter-route-plan",
+    "secondaryPattern": "living-plant-health-proof",
+    "silhouette": "route-status-board",
+    "navigationPrimitive": "compact-header",
+    "mobileActionPattern": "route-join-actions",
+    "imageRole": "work-in-progress",
+    "imageEvidence": "plant care specialist pruning and checking soil moisture on plant shelf",
+    "ctaRhythm": "route-join",
+    "surfaceFamily": "status-board",
+    "surfaceModel": "route-care-plan-cards",
+    "styleFamily": "clear-status-dashboard",
+    "density": "balanced-editorial",
+    "colorRoles": {
+      "ink": "deepGreen",
+      "paper": "cream",
+      "field": "mist",
+      "line": "soil",
+      "primary": "grass",
+      "action": "sun",
+      "proof": "leaf",
+      "muted": "soil",
+      "warning": "sun",
+      "shadowTint": "deepGreen"
+    },
+    "geometry": {
+      "radiusScale": "living-route-18",
+      "borderRole": "care route dividers",
+      "shadowRole": "route plan card only",
+      "mediaCrop": "plant shelf service crop"
+    },
+    "coreBlockPlan": [
+      "cover",
+      "columns",
+      "list",
+      "buttons"
+    ],
+    "knownRisks": [
+      "too-botanical-generic",
+      "plant-photo-crowding",
+      "route-copy-too-cute"
+    ],
+    "styleContract": "Fresh route-care calm with soil-moisture proof, real plant maintenance evidence, sunlit action accents, and a route status board as the signature move."
+  },
+  "tagline": "Plant care routes for leaves that have meetings to attend.",
+  "themeSlug": "twentytwentyfive",
+  "landingPage": "/",
+  "palette": {
+    "grass": "#35745d",
+    "deepGreen": "#173527",
+    "leaf": "#86b56a",
+    "sun": "#e8c866",
+    "cream": "#f4f3e8",
+    "mist": "#dfe8d8",
+    "soil": "#52614f",
+    "white": "#ffffff"
+  },
+  "assets": {
+    "hero": "assets/plant-care/leafdesk-hero.jpg",
+    "logo": "assets/plant-care/leafdesk-logo.png",
+    "favicon": "assets/plant-care/leafdesk-favicon.png"
+  },
+  "assetMeta": {
+    "hero": {
+      "title": "LeafDesk plant care hero image",
+      "alt": "A plant care specialist pruning and checking soil moisture on a lush indoor plant shelf in a bright office lobby with tools and watering can nearby."
+    }
+  },
+  "contact": {
+    "phoneLabel": "(555) 014-2684",
+    "phoneHref": "tel:+15550142684",
+    "email": "hello@leafdesk.test",
+    "emailHref": "mailto:hello@leafdesk.test",
+    "serviceArea": "Recurring houseplant and office plant care, watering routes, pruning, soil moisture checks, yellow leaf cleanup, plant rescue triage, lobby plant refreshes, and vacation plant visits for homes, studios, offices, and sunny apartments"
+  },
+  "copy": {
+    "eyebrow": "Houseplant and office plant care on route",
+    "heroTitle": "Healthy plants, fewer “what happened?” leaves.",
+    "heroText": "LeafDesk keeps watering, pruning, soil checks, rotations, and plant rescue notes on a simple care route for homes and offices that want greenery without guesswork.",
+    "primaryCta": "Get a plant plan",
+    "secondaryCta": "See care routes",
+    "introTitle": "Watering is only one line on the leaf report.",
+    "introText": "We track light, soil feel, pot drainage, leaf color, pest clues, humidity swings, and vacation gaps before deciding the right care rhythm.",
+    "servicesTitle": "Choose your care route",
+    "processTitle": "How the plants stay understood",
+    "proofTitle": "Plant notes beat panic watering",
+    "quoteTitle": "Ready for calmer plant care?",
+    "quoteText": "Send plant photos, room light notes, watering history, and any sad-leaf situations. We will reply with a care rhythm and first-visit plan."
+  },
+  "services": [
+    {
+      "title": "Home Plant Route",
+      "text": "Recurring watering, pruning, leaf cleanup, rotations, soil checks, and gentle notes for apartments, homes, and sunny shelves."
+    },
+    {
+      "title": "Office Greenery Care",
+      "text": "Lobby, desk, conference room, and reception plants kept tidy with schedule notes that work around business hours."
+    },
+    {
+      "title": "Plant Rescue Visit",
+      "text": "A focused triage visit for yellow leaves, dry soil, pests, drainage questions, and plants that are being loved a little too much."
+    }
+  ],
+  "process": [
+    {
+      "title": "Send plant photos",
+      "text": "Room photos, plant count, window direction, watering habits, and problem leaves help us sketch the first route."
+    },
+    {
+      "title": "Check soil and light",
+      "text": "We test moisture, inspect leaves, prune what is ready, clean surfaces, and adjust care by plant type and room conditions."
+    },
+    {
+      "title": "Leave care notes",
+      "text": "You get plain notes about what changed, what to watch, and when the next visit should happen."
+    }
+  ],
+  "proof": [
+    {
+      "stat": "Moisture check",
+      "label": "soil feel before watering decisions"
+    },
+    {
+      "stat": "Route notes",
+      "label": "care changes tracked each visit"
+    },
+    {
+      "stat": "Plant rescue",
+      "label": "triage for yellow leaves and sad corners"
+    }
+  ],
+  "release": {
+    "status": "approved",
+    "reviewedAt": "2026-06-25",
+    "visualBaseline": "pending",
+    "reviewChecklist": {
+      "firstViewportClear": true,
+      "logoReadable": true,
+      "layoutDistinct": true,
+      "ctaClear": true,
+      "copySpecific": true,
+      "noImageArtifacts": true,
+      "heroArtDirected": true,
+      "hierarchyDistinct": true,
+      "signatureMove": true,
+      "restrainedComposition": true,
+      "screenshotCompared": true
+    }
+  }
+}

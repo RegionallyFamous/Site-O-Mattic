@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 260" role="img" aria-labelledby="title desc">
+  <title id="title">Sugarline Dessert Co. logo</title>
+  <desc id="desc">A custom brand mark beside the Sugarline Dessert Co. wordmark.</desc>
+  <rect width="1100" height="260" fill="none"/>
+  <g transform="translate(78 34)">
+    <rect x="0" y="0" width="192" height="192" rx="44" fill="#2a1f26"/>
+    <rect x="70" y="118" width="128" height="74" rx="16" fill="#fff7ef"/><path d="M82 118c20 18 38 18 58 0 19 18 36 18 56 0" fill="none" stroke="#c6788f" stroke-width="12" stroke-linecap="round"/><rect x="92" y="80" width="86" height="44" rx="12" fill="#f2c86d"/><path d="M100 72h70" stroke="#fff7ef" stroke-width="10" stroke-linecap="round"/><circle cx="111" cy="160" r="8" fill="#f2c86d"/><circle cx="137" cy="160" r="8" fill="#c6788f"/><circle cx="163" cy="160" r="8" fill="#f2c86d"/>
+  </g>
+  <text x="304" y="150" fill="#2a1f26" font-family="Avenir Next, Avenir, Segoe UI, Arial, sans-serif" font-size="94" font-weight="900" letter-spacing="0">Sugarline</text>
+  <path d="M310 184h716" fill="none" stroke="#f2c86d" stroke-width="12" stroke-linecap="round"/>
+</svg>

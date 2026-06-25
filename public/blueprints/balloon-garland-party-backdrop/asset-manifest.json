@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "slug": "balloon-garland-party-backdrop",
+  "businessName": "PopArc Party Styling",
+  "layoutVariant": "balloon-backdrop-gallery",
+  "assets": {
+    "hero": {
+      "source": "assets/balloon-garland-party-backdrop/poparc-hero.jpg",
+      "fileName": "hero.jpg",
+      "outputPath": "/assets/hero.jpg",
+      "mimeType": "image/jpeg",
+      "byteSize": 220941,
+      "width": 1920,
+      "height": 1080,
+      "embedded": true
+    },
+    "logo": {
+      "source": "assets/balloon-garland-party-backdrop/poparc-logo.png",
+      "fileName": "logo.png",
+      "outputPath": "/assets/logo.png",
+      "mimeType": "image/png",
+      "byteSize": 30082,
+      "width": 1100,
+      "height": 260,
+      "embedded": true
+    },
+    "favicon": {
+      "source": "assets/balloon-garland-party-backdrop/poparc-favicon.png",
+      "fileName": "favicon.png",
+      "outputPath": "/assets/favicon.png",
+      "mimeType": "image/png",
+      "byteSize": 20146,
+      "width": 512,
+      "height": 512,
+      "embedded": true
+    }
+  }
+}

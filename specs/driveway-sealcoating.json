@@ -3,6 +3,50 @@
   "businessName": "Blackline Sealcoating",
   "niche": "driveway sealcoating service",
   "layoutVariant": "surface-seasonal",
+  "pattern": {
+    "primaryPattern": "seasonal-readiness-estimate",
+    "secondaryPattern": "weather-window-proof",
+    "silhouette": "split-quote-board",
+    "navigationPrimitive": "compact-header",
+    "mobileActionPattern": "inline-estimate-actions",
+    "imageRole": "work-in-progress",
+    "imageEvidence": "seasonal surface restoration in progress",
+    "ctaRhythm": "quote-first",
+    "surfaceFamily": "dark-panel",
+    "surfaceModel": "dark-panel-prep-cards",
+    "styleFamily": "operator-console",
+    "density": "balanced-editorial",
+    "colorRoles": {
+      "ink": "deepGreen",
+      "paper": "cream",
+      "field": "mist",
+      "line": "soil",
+      "primary": "grass",
+      "action": "sun",
+      "proof": "leaf",
+      "muted": "soil",
+      "warning": "sun",
+      "shadowTint": "deepGreen"
+    },
+    "geometry": {
+      "radiusScale": "industrial-6",
+      "borderRole": "dark-panel contrast lines",
+      "shadowRole": "hero media lift only",
+      "mediaCrop": "wide surface-action crop"
+    },
+    "coreBlockPlan": [
+      "columns",
+      "image",
+      "buttons",
+      "list"
+    ],
+    "knownRisks": [
+      "dark-hero-contrast",
+      "weather-window-cta-buried",
+      "asphalt-palette-too-flat"
+    ],
+    "styleContract": "Bold seasonal and street-readable with weather-window proof, fresh sealcoat action imagery, yellow action accents, and a readiness badge strip as the signature move."
+  },
   "tagline": "Fresh blacktop with clean edges and no driveway drama.",
   "themeSlug": "twentytwentyfive",
   "landingPage": "/",

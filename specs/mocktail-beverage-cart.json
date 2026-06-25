@@ -1,0 +1,155 @@
+{
+  "slug": "mocktail-beverage-cart",
+  "businessName": "SpritzLoop Beverage Cart",
+  "niche": "mocktail and beverage cart service",
+  "layoutVariant": "mocktail-cart-menu",
+  "pattern": {
+    "primaryPattern": "package-menu-board",
+    "secondaryPattern": "guest-service-proof",
+    "silhouette": "package-menu-board",
+    "navigationPrimitive": "menu-utility-header",
+    "mobileActionPattern": "date-check-menu-actions",
+    "imageRole": "work-in-progress",
+    "imageEvidence": "beverage attendant garnishing mocktails at a citrus cart with glassware and herbs",
+    "ctaRhythm": "package-select",
+    "surfaceFamily": "ticket-menu-board",
+    "surfaceModel": "drink-package-cards-with-garnish-ticket",
+    "styleFamily": "hospitality-menu",
+    "density": "compact-leadgen",
+    "colorRoles": {
+      "ink": "deepGreen",
+      "paper": "cream",
+      "field": "mist",
+      "line": "leaf",
+      "primary": "grass",
+      "action": "sun",
+      "proof": "leaf",
+      "muted": "soil",
+      "warning": "sun",
+      "shadowTint": "deepGreen"
+    },
+    "geometry": {
+      "radiusScale": "fresh-menu-8",
+      "borderRole": "drink menu dividers",
+      "shadowRole": "cart ticket and hero photo",
+      "mediaCrop": "beverage cart service crop"
+    },
+    "coreBlockPlan": [
+      "columns",
+      "table",
+      "list",
+      "buttons"
+    ],
+    "knownRisks": [
+      "first-viewport-cta",
+      "logo-scale",
+      "mobile-crop"
+    ],
+    "styleContract": "Fresh and inclusive with guest-service proof, real mocktail cart evidence, citrus action accents, and garnish menu cards as the signature move."
+  },
+  "tagline": "A beverage cart with zero boring sips.",
+  "themeSlug": "twentytwentyfive",
+  "landingPage": "/",
+  "palette": {
+    "grass": "#21796f",
+    "deepGreen": "#122b2a",
+    "leaf": "#7fc9a9",
+    "sun": "#f4b84a",
+    "cream": "#fff7e8",
+    "mist": "#d9eee7",
+    "soil": "#52645f",
+    "white": "#ffffff"
+  },
+  "assets": {
+    "hero": "assets/mocktail-beverage-cart/spritzloop-hero.jpg",
+    "logo": "assets/mocktail-beverage-cart/spritzloop-logo.png",
+    "favicon": "assets/mocktail-beverage-cart/spritzloop-favicon.png"
+  },
+  "assetMeta": {
+    "hero": {
+      "title": "SpritzLoop mocktail beverage cart hero image",
+      "alt": "A beverage attendant garnishing colorful mocktails at a compact cart with citrus, herbs, and glassware."
+    }
+  },
+  "contact": {
+    "phoneLabel": "(555) 014-3580",
+    "phoneHref": "tel:+15550143580",
+    "email": "hello@spritzloop.test",
+    "emailHref": "mailto:hello@spritzloop.test",
+    "serviceArea": "Mocktail carts, zero-proof bars, citrus spritz service, shower beverages, corporate refreshment carts, graduation parties, weddings, birthdays, and private events across the metro"
+  },
+  "copy": {
+    "eyebrow": "Mocktail carts with garnish-level planning",
+    "heroTitle": "A bar cart that keeps every guest in the toast.",
+    "heroText": "SpritzLoop brings zero-proof drinks, citrus, herbs, glassware, garnish prep, and a tidy cart setup for events that want the fun without leaning on alcohol.",
+    "primaryCta": "Build my bar",
+    "secondaryCta": "View drink styles",
+    "introTitle": "The garnish is cute. The service plan matters.",
+    "introText": "We match drink styles, guest count, glassware needs, service timing, power or water access, and whether the cart is hosted or self-serve.",
+    "servicesTitle": "Choose the sip setup",
+    "processTitle": "How the cart rolls in",
+    "proofTitle": "Fresh proof before the first pour",
+    "quoteTitle": "Ready to build your bar?",
+    "quoteText": "Send the date, location, guest count, drink vibe, and service window. We will suggest the right cart package and garnish plan."
+  },
+  "services": [
+    {
+      "title": "Spritz Cart",
+      "text": "A hosted cart with citrus-forward mocktails, garnish prep, glassware notes, and a cheerful service rhythm."
+    },
+    {
+      "title": "Batch And Pour",
+      "text": "Prepped zero-proof drinks served cleanly for showers, offices, and open-house style events."
+    },
+    {
+      "title": "Signature Sip Menu",
+      "text": "Two or three custom flavors, garnish styling, and a menu flow built around the guest count."
+    }
+  ],
+  "process": [
+    {
+      "title": "Pick the drink vibe",
+      "text": "Fresh, herbal, bright, cozy, or celebratory notes help us shape the menu."
+    },
+    {
+      "title": "Plan the cart",
+      "text": "Guest count, service time, power, ice, glassware, and location access get confirmed."
+    },
+    {
+      "title": "Serve and reset",
+      "text": "We garnish, pour, replenish, tidy the cart, and hand off leftovers or batch notes."
+    }
+  ],
+  "proof": [
+    {
+      "stat": "Zero-proof",
+      "label": "built for every guest"
+    },
+    {
+      "stat": "Garnish plan",
+      "label": "citrus, herbs, and glassware matched"
+    },
+    {
+      "stat": "Cart footprint",
+      "label": "setup needs confirmed before event day"
+    }
+  ],
+  "release": {
+    "status": "approved",
+    "reviewedAt": "2026-06-25",
+    "visualBaseline": "pending",
+    "reviewChecklist": {
+      "firstViewportClear": true,
+      "logoReadable": true,
+      "layoutDistinct": true,
+      "ctaClear": true,
+      "copySpecific": true,
+      "noImageArtifacts": true,
+      "heroArtDirected": true,
+      "hierarchyDistinct": true,
+      "signatureMove": true,
+      "restrainedComposition": true,
+      "screenshotCompared": true
+    }
+  }
+}

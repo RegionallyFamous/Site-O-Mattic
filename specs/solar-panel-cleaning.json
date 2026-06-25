@@ -1,0 +1,156 @@
+{
+  "slug": "solar-panel-cleaning",
+  "businessName": "SunWash Solar Care",
+  "niche": "solar panel cleaning service",
+  "layoutVariant": "service-receipt-stack",
+  "pattern": {
+    "primaryPattern": "service-receipt-stack",
+    "secondaryPattern": "safety-output-proof",
+    "silhouette": "receipt-scope-stack",
+    "navigationPrimitive": "section-anchor-strip",
+    "mobileActionPattern": "section-anchor-plus-inline-phone",
+    "imageRole": "process-closeup",
+    "imageEvidence": "solar panel brush-wash evidence with roof-safety context",
+    "ctaRhythm": "quote-first",
+    "surfaceFamily": "receipt-stack",
+    "surfaceModel": "receipt-table-details-stack",
+    "styleFamily": "receipt-ledger",
+    "density": "compact-leadgen",
+    "colorRoles": {
+      "ink": "deepGreen",
+      "paper": "white",
+      "field": "cream",
+      "line": "mist",
+      "primary": "grass",
+      "action": "sun",
+      "proof": "leaf",
+      "muted": "soil",
+      "warning": "sun",
+      "shadowTint": "deepGreen"
+    },
+    "geometry": {
+      "radiusScale": "receipt-6",
+      "borderRole": "ledger lines and receipt borders",
+      "shadowRole": "single hero receipt stack",
+      "mediaCrop": "service evidence media-text crop"
+    },
+    "coreBlockPlan": [
+      "media-text",
+      "table",
+      "quote",
+      "details",
+      "buttons"
+    ],
+    "knownRisks": [
+      "table-mobile-overflow",
+      "roof-safety-trust",
+      "hero-media-too-tall"
+    ],
+    "styleContract": "Clean ledger confidence with roof-safety proof, real panel-washing evidence, sun-stamp action accents, and a receipt table as the signature move."
+  },
+  "tagline": "Solar panels cleaned gently, safely, and without output guesswork.",
+  "themeSlug": "twentytwentyfive",
+  "landingPage": "/",
+  "palette": {
+    "grass": "#1f7a9a",
+    "deepGreen": "#10233f",
+    "leaf": "#3eb489",
+    "sun": "#f5c84b",
+    "cream": "#f6f8f2",
+    "mist": "#dceff5",
+    "soil": "#4b5967",
+    "white": "#ffffff"
+  },
+  "assets": {
+    "hero": "assets/solar-panel-cleaning/sunwash-hero.jpg",
+    "logo": "assets/solar-panel-cleaning/sunwash-logo.png",
+    "favicon": "assets/solar-panel-cleaning/sunwash-favicon.png"
+  },
+  "assetMeta": {
+    "hero": {
+      "title": "SunWash solar panel cleaning hero image",
+      "alt": "Solar panel cleaning technician using a soft water-fed brush on residential rooftop panels under a clear sky."
+    }
+  },
+  "contact": {
+    "phoneLabel": "(555) 014-2088",
+    "phoneHref": "tel:+15550142088",
+    "email": "hello@sunwash.test",
+    "emailHref": "mailto:hello@sunwash.test",
+    "serviceArea": "Residential solar panel washing, bird-mess rinse downs, pollen season cleanups, production-check photos, and soft-brush maintenance across sunny suburbs, lake homes, and rural rooflines"
+  },
+  "copy": {
+    "eyebrow": "Solar panel cleaning with receipt-level scope",
+    "heroTitle": "Clean panels, clear scope, no roof heroics.",
+    "heroText": "SunWash washes dusty, pollen-coated, and bird-marked panels with soft brushes, filtered water, safety-minded roof access, and before/after panel notes you can actually read.",
+    "primaryCta": "Build my panel estimate",
+    "secondaryCta": "Review the scope",
+    "introTitle": "What we check before water touches glass",
+    "introText": "Panel count, roof pitch, access path, water source, inverter location, bird-mess spots, and any cracked glass or loose conduit get noted before the wash plan is priced.",
+    "servicesTitle": "Your cleaning receipt",
+    "processTitle": "Safe wash sequence",
+    "proofTitle": "Panel proof",
+    "quoteTitle": "Ready for a clean-panel estimate?",
+    "quoteText": "Send a panel photo, roof angle, approximate panel count, water spigot location, and any production dip notes. We will reply with a clear scope and safe access plan."
+  },
+  "services": [
+    {
+      "title": "Panel Face Wash",
+      "text": "Soft-brush panel cleaning with filtered rinse water, frame-edge debris removal, and a final photo pass for visible dust, pollen, and bird mess."
+    },
+    {
+      "title": "Bird Mess Spot Reset",
+      "text": "Targeted cleaning for stubborn panel spots, rail corners, and high-splash areas without abrasive scrubbing or mystery chemicals."
+    },
+    {
+      "title": "Output Note Package",
+      "text": "Before/after photos, access notes, panel count confirmation, and a simple maintenance window recommendation for the next dusty season."
+    }
+  ],
+  "process": [
+    {
+      "title": "Confirm roof access",
+      "text": "You send photos and panel count; we check pitch, ladder path, water access, and any areas that need extra caution."
+    },
+    {
+      "title": "Wash glass gently",
+      "text": "We use soft brushes and filtered rinse water, working panel rows without stepping on glass or flooding roof penetrations."
+    },
+    {
+      "title": "Send the receipt",
+      "text": "You get completion photos, scope notes, and a next-clean window based on pollen, dust, trees, and bird activity."
+    }
+  ],
+  "proof": [
+    {
+      "stat": "Soft brush",
+      "label": "panel-safe wash method with no harsh scrubbing"
+    },
+    {
+      "stat": "Photo proof",
+      "label": "before and after notes included with every visit"
+    },
+    {
+      "stat": "Access first",
+      "label": "roof pitch and ladder path checked before scheduling"
+    }
+  ],
+  "release": {
+    "status": "approved",
+    "reviewedAt": "2026-06-25",
+    "visualBaseline": "pending",
+    "reviewChecklist": {
+      "firstViewportClear": true,
+      "logoReadable": true,
+      "layoutDistinct": true,
+      "ctaClear": true,
+      "copySpecific": true,
+      "noImageArtifacts": true,
+      "heroArtDirected": true,
+      "hierarchyDistinct": true,
+      "signatureMove": true,
+      "restrainedComposition": true,
+      "screenshotCompared": true
+    }
+  }
+}

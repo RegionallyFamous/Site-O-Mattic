@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 260" role="img" aria-labelledby="title desc">
+  <title id="title">FlashDash Photo Booth logo</title>
+  <desc id="desc">A custom brand mark beside the FlashDash Photo Booth wordmark.</desc>
+  <rect width="1100" height="260" fill="none"/>
+  <g transform="translate(78 34)">
+    <rect x="0" y="0" width="192" height="192" rx="44" fill="#10131c"/>
+    <rect x="70" y="52" width="132" height="160" rx="18" fill="#f8f5f0"/><rect x="88" y="72" width="96" height="38" rx="8" fill="#ff6f91"/><rect x="88" y="124" width="96" height="38" rx="8" fill="#ffd166"/><rect x="88" y="176" width="96" height="18" rx="6" fill="#565969"/><circle cx="136" cy="92" r="15" fill="#10131c"/>
+  </g>
+  <text x="304" y="150" fill="#10131c" font-family="Avenir Next, Avenir, Segoe UI, Arial, sans-serif" font-size="88" font-weight="900" letter-spacing="0">FlashDash Booth</text>
+  <path d="M310 184h830" fill="none" stroke="#ffd166" stroke-width="12" stroke-linecap="round"/>
+</svg>

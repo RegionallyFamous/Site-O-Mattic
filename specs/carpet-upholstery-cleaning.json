@@ -3,6 +3,50 @@
   "businessName": "FreshThread Fabric Care",
   "niche": "carpet and upholstery cleaning service",
   "layoutVariant": "stain-care",
+  "pattern": {
+    "primaryPattern": "soft-care-trust-plan",
+    "secondaryPattern": "fabric-proof-process-reassurance",
+    "silhouette": "viewport-safe-conversion-shell",
+    "navigationPrimitive": "compact-header",
+    "mobileActionPattern": "inline-estimate-actions",
+    "imageRole": "work-in-progress",
+    "imageEvidence": "fabric-safe cleaning process in a real room",
+    "ctaRhythm": "quote-first",
+    "surfaceFamily": "outlined-repeaters",
+    "surfaceModel": "outlined-care-cards",
+    "styleFamily": "humanist-local-calm",
+    "density": "balanced-editorial",
+    "colorRoles": {
+      "ink": "deepGreen",
+      "paper": "cream",
+      "field": "mist",
+      "line": "leaf",
+      "primary": "grass",
+      "action": "sun",
+      "proof": "leaf",
+      "muted": "soil",
+      "warning": "sun",
+      "shadowTint": "deepGreen"
+    },
+    "geometry": {
+      "radiusScale": "friendly-8",
+      "borderRole": "soft care card outlines",
+      "shadowRole": "hero proof and final quote",
+      "mediaCrop": "soft home service crop"
+    },
+    "coreBlockPlan": [
+      "columns",
+      "image",
+      "buttons",
+      "list"
+    ],
+    "knownRisks": [
+      "soft-palette-contrast",
+      "generic-cleaning-proof",
+      "drying-notes-buried"
+    ],
+    "styleContract": "Soft domestic calm with fabric-safe extraction proof, a visible upholstery cleaning moment, teal proof accents, and a fabric care note as the signature move."
+  },
   "tagline": "Sofas, rugs, and carpets reset without the mystery damp smell.",
   "themeSlug": "twentytwentyfive",
   "landingPage": "/",

@@ -1,0 +1,156 @@
+{
+  "slug": "pet-portrait-photography",
+  "businessName": "BrightPaw Portraits",
+  "niche": "pet portrait photography studio",
+  "layoutVariant": "pet-portrait-gallery",
+  "pattern": {
+    "primaryPattern": "gallery-led-portfolio-proof",
+    "secondaryPattern": "pet-comfort-session-prep",
+    "silhouette": "editorial-proof-stage",
+    "navigationPrimitive": "compact-header",
+    "mobileActionPattern": "post-hero-session-actions",
+    "imageRole": "work-in-progress",
+    "imageEvidence": "dog portrait studio session with photographer, softbox, and calm posing platform",
+    "ctaRhythm": "consult-first",
+    "surfaceFamily": "gallery-mosaic",
+    "surfaceModel": "portrait-session-cards-with-comfort-proof",
+    "styleFamily": "editorial-proof-stage",
+    "density": "visual-first",
+    "colorRoles": {
+      "ink": "deepGreen",
+      "paper": "cream",
+      "field": "mist",
+      "line": "leaf",
+      "primary": "grass",
+      "action": "sun",
+      "proof": "leaf",
+      "muted": "soil",
+      "warning": "sun",
+      "shadowTint": "deepGreen"
+    },
+    "geometry": {
+      "radiusScale": "soft-studio-portrait",
+      "borderRole": "caption separators",
+      "shadowRole": "hero portrait stage only",
+      "mediaCrop": "wide portrait studio crop"
+    },
+    "coreBlockPlan": [
+      "cover",
+      "image",
+      "gallery",
+      "quote",
+      "buttons"
+    ],
+    "knownRisks": [
+      "first-viewport-cta",
+      "logo-scale",
+      "mobile-crop"
+    ],
+    "styleContract": "Warm and polished with pet-comfort proof, real studio portrait evidence, collar-gold action accents, and personality session cards as the signature move."
+  },
+  "tagline": "Portrait days for pets with big personality.",
+  "themeSlug": "twentytwentyfive",
+  "landingPage": "/",
+  "palette": {
+    "grass": "#8b5f4d",
+    "deepGreen": "#251c1a",
+    "leaf": "#d08f78",
+    "sun": "#f2c56b",
+    "cream": "#fbf3ea",
+    "mist": "#eadbd2",
+    "soil": "#66534d",
+    "white": "#ffffff"
+  },
+  "assets": {
+    "hero": "assets/pet-portrait-photography/brightpaw-hero.jpg",
+    "logo": "assets/pet-portrait-photography/brightpaw-logo.png",
+    "favicon": "assets/pet-portrait-photography/brightpaw-favicon.png"
+  },
+  "assetMeta": {
+    "hero": {
+      "title": "BrightPaw pet portrait photography hero image",
+      "alt": "A calm dog posing on a studio platform while a photographer adjusts softbox lighting for a pet portrait session."
+    }
+  },
+  "contact": {
+    "phoneLabel": "(555) 014-8124",
+    "phoneHref": "tel:+15550148124",
+    "email": "hello@brightpaw.test",
+    "emailHref": "mailto:hello@brightpaw.test",
+    "serviceArea": "Pet portrait sessions, senior pet keepsakes, puppy milestones, multi-pet portraits, holiday card portraits, and small brand sessions for pets across nearby neighborhoods"
+  },
+  "copy": {
+    "eyebrow": "Pet portraits with treat-level patience",
+    "heroTitle": "Studio portraits for the pet who runs the house.",
+    "heroText": "BrightPaw builds relaxed studio sessions around treats, breaks, favorite toys, and the tiny expressions that make your pet unmistakably yours.",
+    "primaryCta": "Plan a portrait day",
+    "secondaryCta": "See session styles",
+    "introTitle": "Comfort first, portraits second, tail wags throughout.",
+    "introText": "We ask about personality, mobility, coat color, favorite sounds, and patience level before building a session that feels easy instead of staged.",
+    "servicesTitle": "Pick the portrait mood",
+    "processTitle": "A calmer path to camera-ready pets",
+    "proofTitle": "Proof your pet can relax here",
+    "quoteTitle": "Ready to plan a portrait day?",
+    "quoteText": "Send your pet type, age, personality notes, and a few favorite photo examples. We will suggest a session style and the easiest date window."
+  },
+  "services": [
+    {
+      "title": "Personality Session",
+      "text": "One pet, one expressive setup, a gentle pace, and enough treat breaks to keep ears, tails, and attention working with us."
+    },
+    {
+      "title": "Keepsake Portrait Day",
+      "text": "Senior pets, shy pets, or milestone sessions with slower pacing, soft posing, and extra time for favorite blankets or toys."
+    },
+    {
+      "title": "Tiny Brand Set",
+      "text": "A clean set for trainers, groomers, pet boutiques, or creators who need polished pet-forward images without a giant production."
+    }
+  ],
+  "process": [
+    {
+      "title": "Send the pet notes",
+      "text": "Tell us personality, age, energy, coat color, favorite rewards, and any handling needs before the session."
+    },
+    {
+      "title": "Set the studio pace",
+      "text": "We start with easy poses, short breaks, and sounds or toys that keep the pet comfortable."
+    },
+    {
+      "title": "Choose the keepers",
+      "text": "You get a clear gallery path, simple retouch notes, and delivery guidance for prints, cards, or web use."
+    }
+  ],
+  "proof": [
+    {
+      "stat": "Treat breaks",
+      "label": "built into every session"
+    },
+    {
+      "stat": "Softbox calm",
+      "label": "gentle studio lighting, no chaos"
+    },
+    {
+      "stat": "Gallery help",
+      "label": "favorites selected with clear use notes"
+    }
+  ],
+  "release": {
+    "status": "approved",
+    "reviewedAt": "2026-06-25",
+    "visualBaseline": "pending",
+    "reviewChecklist": {
+      "firstViewportClear": true,
+      "logoReadable": true,
+      "layoutDistinct": true,
+      "ctaClear": true,
+      "copySpecific": true,
+      "noImageArtifacts": true,
+      "heroArtDirected": true,
+      "hierarchyDistinct": true,
+      "signatureMove": true,
+      "restrainedComposition": true,
+      "screenshotCompared": true
+    }
+  }
+}

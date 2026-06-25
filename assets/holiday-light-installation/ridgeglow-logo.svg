@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 260" role="img" aria-labelledby="title desc">
+  <title id="title">RidgeGlow Holiday Lights logo</title>
+  <desc id="desc">Brand-only wordmark with a roofline light mark.</desc>
+  <rect width="1100" height="260" rx="0" fill="none"/>
+  <g transform="translate(42 44)">
+    <path d="M17 102 110 28l93 74" fill="none" stroke="#10233f" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M41 106h139" fill="none" stroke="#10233f" stroke-width="18" stroke-linecap="round"/>
+    <g fill="#f7c948" stroke="#10233f" stroke-width="8">
+      <circle cx="55" cy="83" r="15"/>
+      <circle cx="91" cy="55" r="15"/>
+      <circle cx="129" cy="55" r="15"/>
+      <circle cx="165" cy="83" r="15"/>
+    </g>
+    <path d="M76 132h68v44H76z" fill="#ffffff" stroke="#10233f" stroke-width="14" stroke-linejoin="round"/>
+    <path d="M104 176v-30h12v30" fill="none" stroke="#10233f" stroke-width="10" stroke-linecap="round"/>
+  </g>
+  <text x="290" y="158" fill="#10233f" font-family="Avenir Next, Avenir, Segoe UI, Arial, sans-serif" font-size="116" font-weight="900" letter-spacing="0">RidgeGlow</text>
+</svg>

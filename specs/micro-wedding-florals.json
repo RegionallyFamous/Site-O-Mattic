@@ -1,0 +1,156 @@
+{
+  "slug": "micro-wedding-florals",
+  "businessName": "VowSprig Florals",
+  "niche": "micro-wedding floral design",
+  "layoutVariant": "micro-wedding-floral-story",
+  "pattern": {
+    "primaryPattern": "consultation-story-flow",
+    "secondaryPattern": "date-and-style-proof",
+    "silhouette": "consultation-story-flow",
+    "navigationPrimitive": "compact-header",
+    "mobileActionPattern": "soft-date-check-actions",
+    "imageRole": "process-closeup",
+    "imageEvidence": "florist arranging micro-wedding bouquet and small ceremony florals on a prep table",
+    "ctaRhythm": "date-check",
+    "surfaceFamily": "single-elevated-proof",
+    "surfaceModel": "floral-support-cards-with-date-proof",
+    "styleFamily": "humanist-local-calm",
+    "density": "balanced-editorial",
+    "colorRoles": {
+      "ink": "deepGreen",
+      "paper": "cream",
+      "field": "mist",
+      "line": "leaf",
+      "primary": "grass",
+      "action": "sun",
+      "proof": "leaf",
+      "muted": "soil",
+      "warning": "sun",
+      "shadowTint": "deepGreen"
+    },
+    "geometry": {
+      "radiusScale": "petal-soft-8",
+      "borderRole": "floral support card borders",
+      "shadowRole": "single proof panel",
+      "mediaCrop": "floral prep closeup crop"
+    },
+    "coreBlockPlan": [
+      "columns",
+      "list",
+      "quote",
+      "details",
+      "buttons"
+    ],
+    "knownRisks": [
+      "first-viewport-cta",
+      "logo-scale",
+      "mobile-crop"
+    ],
+    "styleContract": "Romantic and calm with date proof, real bouquet prep evidence, coral action accents, and floral path support cards as the signature move."
+  },
+  "tagline": "Small wedding flowers with a calm little plan.",
+  "themeSlug": "twentytwentyfive",
+  "landingPage": "/",
+  "palette": {
+    "grass": "#667a5b",
+    "deepGreen": "#253025",
+    "leaf": "#b88f8e",
+    "sun": "#efb86a",
+    "cream": "#fbf2eb",
+    "mist": "#eadfdc",
+    "soil": "#625452",
+    "white": "#ffffff"
+  },
+  "assets": {
+    "hero": "assets/micro-wedding-florals/vowsprig-hero.jpg",
+    "logo": "assets/micro-wedding-florals/vowsprig-logo.png",
+    "favicon": "assets/micro-wedding-florals/vowsprig-favicon.png"
+  },
+  "assetMeta": {
+    "hero": {
+      "title": "VowSprig micro-wedding florals hero image",
+      "alt": "A florist arranging a compact bridal bouquet and small wedding floral pieces on a bright prep table."
+    }
+  },
+  "contact": {
+    "phoneLabel": "(555) 014-3329",
+    "phoneHref": "tel:+15550143329",
+    "email": "hello@vowsprig.test",
+    "emailHref": "mailto:hello@vowsprig.test",
+    "serviceArea": "Micro-wedding bouquets, personals, bud vases, ceremony markers, small installations, elopements, courthouse florals, and intimate receptions across the region"
+  },
+  "copy": {
+    "eyebrow": "Micro-wedding florals with date-first planning",
+    "heroTitle": "Florals for the small wedding that still deserves the good stuff.",
+    "heroText": "VowSprig handles bouquets, personals, bud vases, and small ceremony moments with a clear palette, setup plan, and a floral scope that fits intimate celebrations.",
+    "primaryCta": "Ask about a date",
+    "secondaryCta": "See floral paths",
+    "introTitle": "Small guest count, full floral intention.",
+    "introText": "We start with date, venue, palette, personal flowers, setup access, and what should feel lush versus lightly styled.",
+    "servicesTitle": "Choose the floral path",
+    "processTitle": "How your date gets designed",
+    "proofTitle": "Gentle proof before petals",
+    "quoteTitle": "Want to check your wedding date?",
+    "quoteText": "Send your date, venue, colors, guest count, and floral must-haves. We will reply with availability and a right-sized floral path."
+  },
+  "services": [
+    {
+      "title": "Personal Flowers",
+      "text": "Bouquets, boutonnières, corsages, and small details for intimate wedding parties."
+    },
+    {
+      "title": "Ceremony Touches",
+      "text": "Bud vases, aisle markers, signing table florals, and compact installation moments that travel well."
+    },
+    {
+      "title": "Reception Table Florals",
+      "text": "Low arrangements, bud vases, and candle-safe floral plans for small dinners and private rooms."
+    }
+  ],
+  "process": [
+    {
+      "title": "Check the date",
+      "text": "Venue, timing, color direction, and must-have pieces help us confirm fit quickly."
+    },
+    {
+      "title": "Shape the palette",
+      "text": "We translate inspiration into seasonal stems, scale, and the pieces that matter most."
+    },
+    {
+      "title": "Prep and place",
+      "text": "Florals arrive organized, labeled, and placed with a calm handoff for the day."
+    }
+  ],
+  "proof": [
+    {
+      "stat": "Date first",
+      "label": "availability checked before design drift"
+    },
+    {
+      "stat": "Seasonal stems",
+      "label": "palette adjusted to what looks best"
+    },
+    {
+      "stat": "Setup notes",
+      "label": "venue access and timing confirmed"
+    }
+  ],
+  "release": {
+    "status": "approved",
+    "reviewedAt": "2026-06-25",
+    "visualBaseline": "pending",
+    "reviewChecklist": {
+      "firstViewportClear": true,
+      "logoReadable": true,
+      "layoutDistinct": true,
+      "ctaClear": true,
+      "copySpecific": true,
+      "noImageArtifacts": true,
+      "heroArtDirected": true,
+      "hierarchyDistinct": true,
+      "signatureMove": true,
+      "restrainedComposition": true,
+      "screenshotCompared": true
+    }
+  }
+}

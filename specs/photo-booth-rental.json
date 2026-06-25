@@ -1,0 +1,156 @@
+{
+  "slug": "photo-booth-rental",
+  "businessName": "FlashDash Photo Booth",
+  "niche": "photo booth rental service",
+  "layoutVariant": "photo-booth-strip-packages",
+  "pattern": {
+    "primaryPattern": "mobile-fixed-action-flow",
+    "secondaryPattern": "package-comparison-proof",
+    "silhouette": "mobile-action-dock",
+    "navigationPrimitive": "fixed-bottom-mobile-cta",
+    "mobileActionPattern": "reserve-date-bottom-dock",
+    "imageRole": "work-in-progress",
+    "imageEvidence": "open-air photo booth kiosk with attendant, guests, props, and event backdrop",
+    "ctaRhythm": "date-check",
+    "surfaceFamily": "mobile-dock",
+    "surfaceModel": "booth-package-cards-fixed-reserve-bar",
+    "styleFamily": "mobile-action-gloss",
+    "density": "compact-leadgen",
+    "colorRoles": {
+      "ink": "deepGreen",
+      "paper": "cream",
+      "field": "mist",
+      "line": "leaf",
+      "primary": "grass",
+      "action": "sun",
+      "proof": "leaf",
+      "muted": "soil",
+      "warning": "sun",
+      "shadowTint": "deepGreen"
+    },
+    "geometry": {
+      "radiusScale": "flash-pill",
+      "borderRole": "photo-strip package rails",
+      "shadowRole": "mobile reserve dock strongest",
+      "mediaCrop": "event booth setup crop"
+    },
+    "coreBlockPlan": [
+      "columns",
+      "image",
+      "buttons",
+      "list",
+      "navigation"
+    ],
+    "knownRisks": [
+      "first-viewport-cta",
+      "logo-scale",
+      "mobile-crop"
+    ],
+    "styleContract": "Bright and event-ready with guest-flow proof, real photo booth evidence, flash-yellow action accents, and a mobile reserve dock as the signature move."
+  },
+  "tagline": "Photo booth rentals that keep the line moving.",
+  "themeSlug": "twentytwentyfive",
+  "landingPage": "/",
+  "palette": {
+    "grass": "#252a36",
+    "deepGreen": "#10131c",
+    "leaf": "#ff6f91",
+    "sun": "#ffd166",
+    "cream": "#f8f5f0",
+    "mist": "#e6e1e8",
+    "soil": "#565969",
+    "white": "#ffffff"
+  },
+  "assets": {
+    "hero": "assets/photo-booth-rental/flashdash-hero.jpg",
+    "logo": "assets/photo-booth-rental/flashdash-logo.png",
+    "favicon": "assets/photo-booth-rental/flashdash-favicon.png"
+  },
+  "assetMeta": {
+    "hero": {
+      "title": "FlashDash photo booth rental hero image",
+      "alt": "An open-air photo booth setup with guests, an attendant, ring light, props, and a soft event backdrop."
+    }
+  },
+  "contact": {
+    "phoneLabel": "(555) 014-6204",
+    "phoneHref": "tel:+15550146204",
+    "email": "hello@flashdash.test",
+    "emailHref": "mailto:hello@flashdash.test",
+    "serviceArea": "Open-air photo booths, backdrop rentals, props, print strips, digital galleries, weddings, birthdays, school events, corporate parties, and community nights across the metro"
+  },
+  "copy": {
+    "eyebrow": "Photo booth packages with guest-flow proof",
+    "heroTitle": "A booth your guests actually find and use.",
+    "heroText": "FlashDash brings a sharp booth setup, clean props, backdrop options, and a host-friendly arrival plan so the photo corner never becomes a mystery table.",
+    "primaryCta": "Reserve a booth",
+    "secondaryCta": "Compare booths",
+    "introTitle": "Props are fun. Guest flow is the real magic.",
+    "introText": "We match booth style, backdrop space, guest count, print or digital needs, and setup timing before the first flash.",
+    "servicesTitle": "Pick the booth setup",
+    "processTitle": "How setup stays event-ready",
+    "proofTitle": "Guest smiles need good logistics",
+    "quoteTitle": "Ready to reserve the booth?",
+    "quoteText": "Send your date, venue, guest count, backdrop preference, and event window. We will match the package and confirm setup needs."
+  },
+  "services": [
+    {
+      "title": "Open-Air Booth",
+      "text": "A clean kiosk, backdrop, prop table, attendant setup, and fast guest flow for parties and receptions."
+    },
+    {
+      "title": "Print Strip Package",
+      "text": "Classic strips, tidy prop rotation, and event-ready print timing for guests who want a keepsake."
+    },
+    {
+      "title": "Digital Gallery Booth",
+      "text": "Quick captures, share-ready gallery delivery, and a lighter setup for modern events and tight spaces."
+    }
+  ],
+  "process": [
+    {
+      "title": "Check the date",
+      "text": "Venue, event window, guest count, and booth preference help us confirm fit."
+    },
+    {
+      "title": "Plan the corner",
+      "text": "We map power, backdrop space, line flow, prop table, and arrival timing before the event."
+    },
+    {
+      "title": "Run the booth",
+      "text": "Setup, guest guidance, prop reset, and handoff stay simple while the party keeps moving."
+    }
+  ],
+  "proof": [
+    {
+      "stat": "6 x 8 ft",
+      "label": "typical booth footprint planned early"
+    },
+    {
+      "stat": "Attendant setup",
+      "label": "guest flow and props kept tidy"
+    },
+    {
+      "stat": "Print or digital",
+      "label": "package matched before deposit"
+    }
+  ],
+  "release": {
+    "status": "approved",
+    "reviewedAt": "2026-06-25",
+    "visualBaseline": "pending",
+    "reviewChecklist": {
+      "firstViewportClear": true,
+      "logoReadable": true,
+      "layoutDistinct": true,
+      "ctaClear": true,
+      "copySpecific": true,
+      "noImageArtifacts": true,
+      "heroArtDirected": true,
+      "hierarchyDistinct": true,
+      "signatureMove": true,
+      "restrainedComposition": true,
+      "screenshotCompared": true
+    }
+  }
+}

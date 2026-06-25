@@ -1,6 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import { implementedLayoutVariantSlugs } from "./layout-archetypes.mjs";
+import { validatePatternContract } from "./pattern-contracts.mjs";
 import { readSpec, specTargets } from "./spec-utils.mjs";
 
 const targets = await specTargets();
@@ -33,6 +34,7 @@ async function validateSpec(spec, target) {
     "businessName",
     "niche",
     "layoutVariant",
+    "pattern",
     "tagline",
     "themeSlug",
     "landingPage",
@@ -64,6 +66,7 @@ async function validateSpec(spec, target) {
   }
 
   validatePalette(spec.palette, errors);
+  validatePattern(spec.pattern, errors);
   await validateAssets(spec.assets, errors);
   validateAssetMeta(spec.assetMeta, errors);
   validateContact(spec.contact, errors);
@@ -78,6 +81,10 @@ async function validateSpec(spec, target) {
   }
 
   return errors;
+}
+
+function validatePattern(pattern, errors) {
+  errors.push(...validatePatternContract(pattern));
 }
 
 function validatePalette(palette, errors) {

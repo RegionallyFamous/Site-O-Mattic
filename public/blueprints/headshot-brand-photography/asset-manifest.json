@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "slug": "headshot-brand-photography",
+  "businessName": "FrameForge Headshots",
+  "layoutVariant": "headshot-proof-gallery",
+  "assets": {
+    "hero": {
+      "source": "assets/headshot-brand-photography/frameforge-hero.jpg",
+      "fileName": "hero.jpg",
+      "outputPath": "/assets/hero.jpg",
+      "mimeType": "image/jpeg",
+      "byteSize": 184224,
+      "width": 1920,
+      "height": 1080,
+      "embedded": true
+    },
+    "logo": {
+      "source": "assets/headshot-brand-photography/frameforge-logo.png",
+      "fileName": "logo.png",
+      "outputPath": "/assets/logo.png",
+      "mimeType": "image/png",
+      "byteSize": 28575,
+      "width": 1100,
+      "height": 260,
+      "embedded": true
+    },
+    "favicon": {
+      "source": "assets/headshot-brand-photography/frameforge-favicon.png",
+      "fileName": "favicon.png",
+      "outputPath": "/assets/favicon.png",
+      "mimeType": "image/png",
+      "byteSize": 16802,
+      "width": 512,
+      "height": 512,
+      "embedded": true
+    }
+  }
+}

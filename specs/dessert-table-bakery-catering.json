@@ -1,0 +1,156 @@
+{
+  "slug": "dessert-table-bakery-catering",
+  "businessName": "Sugarline Dessert Co.",
+  "niche": "dessert table and bakery catering",
+  "layoutVariant": "dessert-table-gallery",
+  "pattern": {
+    "primaryPattern": "gallery-led-portfolio-proof",
+    "secondaryPattern": "flavor-and-portion-proof",
+    "silhouette": "editorial-proof-stage",
+    "navigationPrimitive": "compact-header",
+    "mobileActionPattern": "post-hero-date-actions",
+    "imageRole": "finished-outcome",
+    "imageEvidence": "styled dessert table with tiered cake, tarts, macarons, and final placement detail",
+    "ctaRhythm": "date-check",
+    "surfaceFamily": "gallery-mosaic",
+    "surfaceModel": "dessert-style-cards-with-flavor-caption-panel",
+    "styleFamily": "editorial-proof-stage",
+    "density": "visual-first",
+    "colorRoles": {
+      "ink": "deepGreen",
+      "paper": "cream",
+      "field": "mist",
+      "line": "leaf",
+      "primary": "grass",
+      "action": "sun",
+      "proof": "leaf",
+      "muted": "soil",
+      "warning": "sun",
+      "shadowTint": "deepGreen"
+    },
+    "geometry": {
+      "radiusScale": "frosted-gallery-radius",
+      "borderRole": "flavor card dividers",
+      "shadowRole": "dessert stage only",
+      "mediaCrop": "wide dessert table crop"
+    },
+    "coreBlockPlan": [
+      "cover",
+      "image",
+      "gallery",
+      "quote",
+      "buttons"
+    ],
+    "knownRisks": [
+      "first-viewport-cta",
+      "logo-scale",
+      "mobile-crop"
+    ],
+    "styleContract": "Celebratory and polished with portion proof, styled dessert table evidence, berry-gold action accents, and flavor caption cards as the signature move."
+  },
+  "tagline": "Dessert tables with a little sparkle and a lot of plan.",
+  "themeSlug": "twentytwentyfive",
+  "landingPage": "/",
+  "palette": {
+    "grass": "#8f3d63",
+    "deepGreen": "#2a1f26",
+    "leaf": "#c6788f",
+    "sun": "#f2c86d",
+    "cream": "#fff7ef",
+    "mist": "#f2dde4",
+    "soil": "#6c5560",
+    "white": "#ffffff"
+  },
+  "assets": {
+    "hero": "assets/dessert-table-bakery-catering/sugarline-hero.jpg",
+    "logo": "assets/dessert-table-bakery-catering/sugarline-logo.png",
+    "favicon": "assets/dessert-table-bakery-catering/sugarline-favicon.png"
+  },
+  "assetMeta": {
+    "hero": {
+      "title": "Sugarline dessert table catering hero image",
+      "alt": "An elegant dessert table with tiered cake, macarons, fruit tarts, small sweets, and a bakery stylist placing final desserts."
+    }
+  },
+  "contact": {
+    "phoneLabel": "(555) 014-7742",
+    "phoneHref": "tel:+15550147742",
+    "email": "hello@sugarline.test",
+    "emailHref": "mailto:hello@sugarline.test",
+    "serviceArea": "Dessert tables, bakery catering, cake-and-mini spreads, shower sweets, birthday tables, corporate dessert bars, and celebration delivery across the metro area"
+  },
+  "copy": {
+    "eyebrow": "Dessert tables designed around the room",
+    "heroTitle": "A dessert table that gets photographed before it gets raided.",
+    "heroText": "Sugarline plans the look, quantities, flavors, setup timing, and serving details so the table feels generous, styled, and easy for guests to enjoy.",
+    "primaryCta": "Design my dessert table",
+    "secondaryCta": "Explore styles",
+    "introTitle": "Pretty has to portion correctly, too.",
+    "introText": "We balance centerpiece sweets, bite-size pieces, dietary notes, serving height, room palette, and how long the table needs to stay fresh.",
+    "servicesTitle": "Choose the sweet structure",
+    "processTitle": "How the table comes together",
+    "proofTitle": "Sweet proof, not sugar fog",
+    "quoteTitle": "Ready to design the dessert table?",
+    "quoteText": "Send your date, guest count, venue, palette, favorite flavors, and any inspiration photos. We will shape a table direction and quote path."
+  },
+  "services": [
+    {
+      "title": "Signature Dessert Table",
+      "text": "A styled spread with cake, small sweets, serving notes, risers, and flavor balance for birthdays, showers, and celebrations."
+    },
+    {
+      "title": "Mini Sweets Bar",
+      "text": "Macarons, tarts, bars, cookies, and bite-size options arranged for easy grazing and clean replenishment."
+    },
+    {
+      "title": "Cake Plus Companions",
+      "text": "A centerpiece cake with supporting desserts so the table looks full and portions make sense."
+    }
+  ],
+  "process": [
+    {
+      "title": "Share the room and guest count",
+      "text": "We plan quantities, palette, venue rules, and table size before flavor talk gets too dreamy."
+    },
+    {
+      "title": "Set the style board",
+      "text": "You get a direction for colors, heights, flavors, and serving pieces that fits the event."
+    },
+    {
+      "title": "Deliver and finish",
+      "text": "We arrive with timing notes, place final pieces, and leave simple serving guidance."
+    }
+  ],
+  "proof": [
+    {
+      "stat": "Portion plan",
+      "label": "guest count matched to table size"
+    },
+    {
+      "stat": "Flavor map",
+      "label": "rich, bright, and familiar choices balanced"
+    },
+    {
+      "stat": "Setup window",
+      "label": "delivery and freshness planned early"
+    }
+  ],
+  "release": {
+    "status": "approved",
+    "reviewedAt": "2026-06-25",
+    "visualBaseline": "pending",
+    "reviewChecklist": {
+      "firstViewportClear": true,
+      "logoReadable": true,
+      "layoutDistinct": true,
+      "ctaClear": true,
+      "copySpecific": true,
+      "noImageArtifacts": true,
+      "heroArtDirected": true,
+      "hierarchyDistinct": true,
+      "signatureMove": true,
+      "restrainedComposition": true,
+      "screenshotCompared": true
+    }
+  }
+}

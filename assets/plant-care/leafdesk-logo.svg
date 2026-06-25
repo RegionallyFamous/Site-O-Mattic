@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 260" role="img" aria-labelledby="title">
+  <title id="title">LeafDesk Plant Care logo</title>
+  <rect width="1100" height="260" fill="none"/>
+  <g transform="translate(42 38)"><circle cx="92" cy="92" r="72" fill="#f4f3e8"/><circle cx="92" cy="92" r="66" fill="#173527"/><path d="M131 52C85 56 55 83 54 119c36 4 69-16 77-67z" fill="#86b56a"/><path d="M63 127c22-23 42-39 67-68" stroke="#f4f3e8" stroke-width="10" stroke-linecap="round"/><path d="M59 145h68" stroke="#e8c866" stroke-width="12" stroke-linecap="round"/></g>
+  <g transform="translate(250 78)">
+    <text x="0" y="82" font-family="Avenir Next, Segoe UI, Arial, sans-serif" font-size="92" font-weight="850" letter-spacing="0" fill="#173527">LeafDesk</text>
+    <path d="M5 114h398" stroke="#e8c866" stroke-width="12" stroke-linecap="round"/>
+    <path d="M426 114h124" stroke="#86b56a" stroke-width="12" stroke-linecap="round"/>
+  </g>
+</svg>

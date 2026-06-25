@@ -1,0 +1,155 @@
+{
+  "slug": "mobile-knife-sharpening",
+  "businessName": "EdgeRoute Sharpening",
+  "niche": "mobile knife sharpening service",
+  "layoutVariant": "sharp-route-bench",
+  "pattern": {
+    "primaryPattern": "workshop-bench-photo-quote",
+    "secondaryPattern": "route-day-care-proof",
+    "silhouette": "route-status-board",
+    "navigationPrimitive": "split-side-top-hybrid",
+    "mobileActionPattern": "route-join-actions",
+    "imageRole": "process-closeup",
+    "imageEvidence": "sharpening bench with knives, water tray, and route bins",
+    "ctaRhythm": "route-join",
+    "surfaceFamily": "status-board",
+    "surfaceModel": "bench-ticket-scope-cards",
+    "styleFamily": "material-workbench",
+    "density": "compact-leadgen",
+    "colorRoles": {
+      "ink": "deepGreen",
+      "paper": "cream",
+      "field": "mist",
+      "line": "soil",
+      "primary": "grass",
+      "action": "sun",
+      "proof": "leaf",
+      "muted": "soil",
+      "warning": "sun",
+      "shadowTint": "deepGreen"
+    },
+    "geometry": {
+      "radiusScale": "bench-8",
+      "borderRole": "tool bench dividers",
+      "shadowRole": "bench ticket and hero photo",
+      "mediaCrop": "sharpening craft closeup"
+    },
+    "coreBlockPlan": [
+      "columns",
+      "image",
+      "list",
+      "buttons"
+    ],
+    "knownRisks": [
+      "blade-safety-tone",
+      "workshop-nav-labels",
+      "tiny-tool-photo"
+    ],
+    "styleContract": "Steady craft confidence with edge-care proof, real sharpening bench evidence, brass action accents, and a route-day bench ticket as the signature move."
+  },
+  "tagline": "Sharper kitchen tools, no drawer guilt required.",
+  "themeSlug": "twentytwentyfive",
+  "landingPage": "/",
+  "palette": {
+    "grass": "#5d6f73",
+    "deepGreen": "#1d2426",
+    "leaf": "#9aa36b",
+    "sun": "#e4b04a",
+    "cream": "#f3eadc",
+    "mist": "#d9ded8",
+    "soil": "#594a3f",
+    "white": "#ffffff"
+  },
+  "assets": {
+    "hero": "assets/mobile-knife-sharpening/edgeroute-hero.jpg",
+    "logo": "assets/mobile-knife-sharpening/edgeroute-logo.png",
+    "favicon": "assets/mobile-knife-sharpening/edgeroute-favicon.png"
+  },
+  "assetMeta": {
+    "hero": {
+      "title": "EdgeRoute mobile knife sharpening hero image",
+      "alt": "A mobile knife sharpening specialist honing a kitchen knife at an outdoor bench with a safe tool layout, water tray, and route-day bins nearby."
+    }
+  },
+  "contact": {
+    "phoneLabel": "(555) 014-7756",
+    "phoneHref": "tel:+15550147756",
+    "email": "hello@edgeroute.test",
+    "emailHref": "mailto:hello@edgeroute.test",
+    "serviceArea": "Mobile sharpening for chef knives, paring knives, serrated checks, kitchen shears, garden snips, route-day bundle pickups, and careful edge-care notes for home cooks, small kitchens, and neighborhood pickup stops"
+  },
+  "copy": {
+    "eyebrow": "Mobile sharpening with a careful bench setup",
+    "heroTitle": "Dull knives do not need a dramatic farewell.",
+    "heroText": "EdgeRoute brings a tidy sharpening bench to neighborhood route stops, refreshes hardworking kitchen edges, and sends each blade home with simple care notes.",
+    "primaryCta": "Join the next route",
+    "secondaryCta": "Check the bench list",
+    "introTitle": "Kitchen edges, garden snips, and the scissors everyone hides.",
+    "introText": "We sort by blade type, condition, serration, handle safety, and how each tool is actually used before deciding the sharpening path.",
+    "servicesTitle": "What can hit the bench",
+    "processTitle": "How the edge comes back",
+    "proofTitle": "Bench notes that matter",
+    "quoteTitle": "Ready for the next sharpening route?",
+    "quoteText": "Send a quick count, a few photos, your neighborhood, and any problem blades. We will reply with route timing, bundle advice, and what should skip the bench."
+  },
+  "services": [
+    {
+      "title": "Kitchen Knife Refresh",
+      "text": "Chef, santoku, paring, and utility knives sharpened carefully with edge checks, wipe-down, and care notes for home kitchens."
+    },
+    {
+      "title": "Shears And Snips Check",
+      "text": "Kitchen shears, light garden snips, and utility scissors reviewed for safe sharpening, cleaning needs, and hinge condition."
+    },
+    {
+      "title": "Route Bundle Pass",
+      "text": "A small household bundle sorted, sharpened, and packed with notes so the drawer stops collecting dull regrets."
+    }
+  ],
+  "process": [
+    {
+      "title": "Count the tools",
+      "text": "You send photos and a rough count; we flag serrated, damaged, or unsafe blades before route day."
+    },
+    {
+      "title": "Sharpen at the bench",
+      "text": "Each edge gets the right pass, water control, wipe-down, and a safe staging spot before it goes back in the roll."
+    },
+    {
+      "title": "Send care notes",
+      "text": "You get a simple note about storage, boards, honing, and which tool may need repair instead of more sharpening."
+    }
+  ],
+  "proof": [
+    {
+      "stat": "Edge check",
+      "label": "each blade inspected before handoff"
+    },
+    {
+      "stat": "Route bins",
+      "label": "safe staging for pickup stops"
+    },
+    {
+      "stat": "Care note",
+      "label": "plain advice to keep the edge longer"
+    }
+  ],
+  "release": {
+    "status": "approved",
+    "reviewedAt": "2026-06-25",
+    "visualBaseline": "pending",
+    "reviewChecklist": {
+      "firstViewportClear": true,
+      "logoReadable": true,
+      "layoutDistinct": true,
+      "ctaClear": true,
+      "copySpecific": true,
+      "noImageArtifacts": true,
+      "heroArtDirected": true,
+      "hierarchyDistinct": true,
+      "signatureMove": true,
+      "restrainedComposition": true,
+      "screenshotCompared": true
+    }
+  }
+}

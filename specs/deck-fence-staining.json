@@ -3,6 +3,50 @@
   "businessName": "CedarLine Stain Co.",
   "niche": "deck and fence staining service",
   "layoutVariant": "workshop-bench",
+  "pattern": {
+    "primaryPattern": "workshop-bench-photo-quote",
+    "secondaryPattern": "material-proof-process-reassurance",
+    "silhouette": "operator-console",
+    "navigationPrimitive": "split-side-top-hybrid",
+    "mobileActionPattern": "send-photo-actions",
+    "imageRole": "process-closeup",
+    "imageEvidence": "material/process closeup with craft detail",
+    "ctaRhythm": "photo-first",
+    "surfaceFamily": "outlined-repeaters",
+    "surfaceModel": "workshop-bench-panels",
+    "styleFamily": "material-workbench",
+    "density": "balanced-editorial",
+    "colorRoles": {
+      "ink": "deepGreen",
+      "paper": "cream",
+      "field": "mist",
+      "line": "soil",
+      "primary": "grass",
+      "action": "sun",
+      "proof": "leaf",
+      "muted": "soil",
+      "warning": "sun",
+      "shadowTint": "deepGreen"
+    },
+    "geometry": {
+      "radiusScale": "workbench-6",
+      "borderRole": "material card lines",
+      "shadowRole": "bench ticket and media only",
+      "mediaCrop": "close process detail crop"
+    },
+    "coreBlockPlan": [
+      "columns",
+      "image",
+      "list",
+      "buttons"
+    ],
+    "knownRisks": [
+      "wood-photo-too-abstract",
+      "care-note-too-long",
+      "craft-surfaces-too-heavy"
+    ],
+    "styleContract": "Craft-forward and material honest with stain-window proof, close wood-grain work evidence, tool-gold action accents, and a bench ticket as the signature move."
+  },
   "tagline": "Wood staining that protects the good grain.",
   "themeSlug": "twentytwentyfive",
   "landingPage": "/",

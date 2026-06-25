@@ -1,0 +1,155 @@
+{
+  "slug": "mural-window-lettering-artist",
+  "businessName": "LetterLoom Studio",
+  "niche": "mural and window lettering artist",
+  "layoutVariant": "mural-lettering-workshop",
+  "pattern": {
+    "primaryPattern": "workshop-bench-photo-quote",
+    "secondaryPattern": "surface-and-install-proof",
+    "silhouette": "operator-console",
+    "navigationPrimitive": "split-side-top-hybrid",
+    "mobileActionPattern": "send-photo-project-actions",
+    "imageRole": "work-in-progress",
+    "imageEvidence": "artist painting decorative window lettering and mural shapes on storefront glass with tools nearby",
+    "ctaRhythm": "photo-first",
+    "surfaceFamily": "outlined-repeaters",
+    "surfaceModel": "surface-scope-cards-with-project-ticket",
+    "styleFamily": "material-workbench",
+    "density": "balanced-editorial",
+    "colorRoles": {
+      "ink": "deepGreen",
+      "paper": "cream",
+      "field": "mist",
+      "line": "leaf",
+      "primary": "grass",
+      "action": "sun",
+      "proof": "leaf",
+      "muted": "soil",
+      "warning": "sun",
+      "shadowTint": "deepGreen"
+    },
+    "geometry": {
+      "radiusScale": "signmaker-6",
+      "borderRole": "surface card rails",
+      "shadowRole": "project ticket and paint proof",
+      "mediaCrop": "storefront paint process crop"
+    },
+    "coreBlockPlan": [
+      "columns",
+      "image",
+      "list",
+      "buttons"
+    ],
+    "knownRisks": [
+      "first-viewport-cta",
+      "logo-scale",
+      "mobile-crop"
+    ],
+    "styleContract": "Creative and precise with surface proof, real storefront painting evidence, signmaker-red action accents, and a project ticket as the signature move."
+  },
+  "tagline": "Walls and windows with hand-painted character.",
+  "themeSlug": "twentytwentyfive",
+  "landingPage": "/",
+  "palette": {
+    "grass": "#b24b3f",
+    "deepGreen": "#1d1b19",
+    "leaf": "#2f73b7",
+    "sun": "#f0b84d",
+    "cream": "#fbf1e4",
+    "mist": "#e7ded2",
+    "soil": "#62544a",
+    "white": "#ffffff"
+  },
+  "assets": {
+    "hero": "assets/mural-window-lettering-artist/letterloom-hero.jpg",
+    "logo": "assets/mural-window-lettering-artist/letterloom-logo.png",
+    "favicon": "assets/mural-window-lettering-artist/letterloom-favicon.png"
+  },
+  "assetMeta": {
+    "hero": {
+      "title": "LetterLoom mural and window lettering hero image",
+      "alt": "An artist painting decorative shapes on a storefront window with brushes, paint kit, ladder, and drop cloth nearby."
+    }
+  },
+  "contact": {
+    "phoneLabel": "(555) 014-1836",
+    "phoneHref": "tel:+15550141836",
+    "email": "hello@letterloom.test",
+    "emailHref": "mailto:hello@letterloom.test",
+    "serviceArea": "Window lettering, small murals, storefront graphics, menu wall accents, office murals, seasonal glass art, surface refreshes, and local hand-painted installs across town"
+  },
+  "copy": {
+    "eyebrow": "Murals and window lettering with surface-smart planning",
+    "heroTitle": "Turn a blank wall or window into a place people notice.",
+    "heroText": "LetterLoom designs and paints murals, window lettering, and storefront moments with sketches, surface prep, installation timing, and a clean handoff.",
+    "primaryCta": "Start a wall/window",
+    "secondaryCta": "See surfaces",
+    "introTitle": "Good lettering starts with the glass, wall, and viewing distance.",
+    "introText": "We ask about surface material, sun exposure, lease rules, brand colors, rough size, and whether the piece needs to be temporary or permanent.",
+    "servicesTitle": "Pick the painted surface",
+    "processTitle": "How the project gets painted",
+    "proofTitle": "Surface proof before the first stroke",
+    "quoteTitle": "Ready to start a wall or window?",
+    "quoteText": "Send surface photos, dimensions, location, timing, and the kind of message or mood you need. We will suggest a project path and next step."
+  },
+  "services": [
+    {
+      "title": "Window Lettering",
+      "text": "Hand-painted seasonal, permanent, or removable window moments planned around glass, glare, and viewing distance."
+    },
+    {
+      "title": "Small Murals",
+      "text": "Interior or exterior mural accents, brand walls, menu moments, and photo corners with sketch approval."
+    },
+    {
+      "title": "Surface Refresh",
+      "text": "Touch-ups, repainting, color updates, or a new painted layer for a tired wall or window."
+    }
+  ],
+  "process": [
+    {
+      "title": "Send surface photos",
+      "text": "Dimensions, material, sun, location, and access shape the project faster than a long brief."
+    },
+    {
+      "title": "Approve the sketch",
+      "text": "We confirm scale, color, wording or non-text forms, and installation timing before paint day."
+    },
+    {
+      "title": "Paint and hand off",
+      "text": "The surface gets prepped, painted cleanly, photographed, and handed off with care notes."
+    }
+  ],
+  "proof": [
+    {
+      "stat": "Surface check",
+      "label": "glass, wall, and light reviewed early"
+    },
+    {
+      "stat": "Sketch first",
+      "label": "scale and style approved before install"
+    },
+    {
+      "stat": "Care notes",
+      "label": "cleaning and durability guidance included"
+    }
+  ],
+  "release": {
+    "status": "approved",
+    "reviewedAt": "2026-06-25",
+    "visualBaseline": "pending",
+    "reviewChecklist": {
+      "firstViewportClear": true,
+      "logoReadable": true,
+      "layoutDistinct": true,
+      "ctaClear": true,
+      "copySpecific": true,
+      "noImageArtifacts": true,
+      "heroArtDirected": true,
+      "hierarchyDistinct": true,
+      "signatureMove": true,
+      "restrainedComposition": true,
+      "screenshotCompared": true
+    }
+  }
+}

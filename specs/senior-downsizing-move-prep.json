@@ -1,0 +1,155 @@
+{
+  "slug": "senior-downsizing-move-prep",
+  "businessName": "KindMove Downsizing",
+  "niche": "senior downsizing and move prep service",
+  "layoutVariant": "story-card-consult",
+  "pattern": {
+    "primaryPattern": "consultation-story-flow",
+    "secondaryPattern": "family-support-checklist",
+    "silhouette": "consultation-story-flow",
+    "navigationPrimitive": "compact-header",
+    "mobileActionPattern": "gentle-consult-actions",
+    "imageRole": "operator-or-founder",
+    "imageEvidence": "consultant helping older adult sort keepsakes and moving boxes",
+    "ctaRhythm": "consult-first",
+    "surfaceFamily": "single-elevated-proof",
+    "surfaceModel": "story-checklist-support-cards",
+    "styleFamily": "humanist-local-calm",
+    "density": "balanced-editorial",
+    "colorRoles": {
+      "ink": "deepGreen",
+      "paper": "cream",
+      "field": "mist",
+      "line": "soil",
+      "primary": "grass",
+      "action": "sun",
+      "proof": "leaf",
+      "muted": "soil",
+      "warning": "sun",
+      "shadowTint": "deepGreen"
+    },
+    "geometry": {
+      "radiusScale": "story-18",
+      "borderRole": "soft support card borders",
+      "shadowRole": "story proof panel only",
+      "mediaCrop": "human sorting moment crop"
+    },
+    "coreBlockPlan": [
+      "columns",
+      "image",
+      "details",
+      "buttons"
+    ],
+    "knownRisks": [
+      "tone-too-cutesy",
+      "privacy-sensitive-image",
+      "cta-pressure-too-high"
+    ],
+    "styleContract": "Gentle practical trust with family-support proof, real keepsake sorting evidence, small warm action accents, and a story checklist as the signature move."
+  },
+  "tagline": "Move prep with patience, labels, and breathing room.",
+  "themeSlug": "twentytwentyfive",
+  "landingPage": "/",
+  "palette": {
+    "grass": "#6d6f92",
+    "deepGreen": "#263047",
+    "leaf": "#b79c74",
+    "sun": "#efbd67",
+    "cream": "#f8efe7",
+    "mist": "#e5deda",
+    "soil": "#5f5553",
+    "white": "#ffffff"
+  },
+  "assets": {
+    "hero": "assets/senior-downsizing-move-prep/kindmove-hero.jpg",
+    "logo": "assets/senior-downsizing-move-prep/kindmove-logo.png",
+    "favicon": "assets/senior-downsizing-move-prep/kindmove-favicon.png"
+  },
+  "assetMeta": {
+    "hero": {
+      "title": "KindMove senior downsizing move prep hero image",
+      "alt": "A downsizing consultant sitting with an older adult at a dining table, sorting photo albums, keepsake boxes, packing paper, and labeled moving boxes in a calm home."
+    }
+  },
+  "contact": {
+    "phoneLabel": "(555) 014-8843",
+    "phoneHref": "tel:+15550148843",
+    "email": "hello@kindmove.test",
+    "emailHref": "mailto:hello@kindmove.test",
+    "serviceArea": "Senior downsizing consults, room-by-room sorting, family decision support, donation planning, packing prep, move labels, keepsake organization, and gentle transition help for apartments, condos, family homes, and retirement communities"
+  },
+  "copy": {
+    "eyebrow": "Senior downsizing with patient sorting help",
+    "heroTitle": "A smaller home should not mean a rushed goodbye.",
+    "heroText": "KindMove helps families sort, label, donate, pack, and plan the next chapter with steady hands, clear categories, and room for the stories that come with the boxes.",
+    "primaryCta": "Schedule a consult",
+    "secondaryCta": "See the checklist",
+    "introTitle": "Support for decisions, keepsakes, donations, and the hard maybe pile.",
+    "introText": "We help define what stays, what moves, what gets shared, what needs family input, and what should wait until everyone has had a breath.",
+    "servicesTitle": "Where we can help",
+    "processTitle": "A slower, clearer path",
+    "proofTitle": "Trust built into the process",
+    "quoteTitle": "Need a calm first conversation?",
+    "quoteText": "Send the move timeline, rooms involved, family decision needs, and what feels most sensitive. We will suggest a first consult path without pushing a giant package."
+  },
+  "services": [
+    {
+      "title": "Room Sorting Sessions",
+      "text": "Supportive room-by-room help for keep, gift, donate, sell, pack, and undecided items with labels that make sense later."
+    },
+    {
+      "title": "Family Decision Prep",
+      "text": "Shared notes, photo lists, keepsake grouping, and simple prompts so family members can weigh in without slowing every box."
+    },
+    {
+      "title": "Move-Ready Labeling",
+      "text": "Packing prep, priority boxes, donation staging, mover notes, and first-week essentials grouped for the new home."
+    }
+  ],
+  "process": [
+    {
+      "title": "Talk through the timeline",
+      "text": "We start with the move date, family support, sensitive areas, and which rooms need the gentlest pace."
+    },
+    {
+      "title": "Sort in small passes",
+      "text": "Sessions focus on one zone at a time so decisions stay clear and the maybe pile does not take over."
+    },
+    {
+      "title": "Prepare the handoff",
+      "text": "Donation, packing, family pickup, mover labels, and first-week boxes get staged with plain notes."
+    }
+  ],
+  "proof": [
+    {
+      "stat": "One room",
+      "label": "focused sessions reduce overwhelm"
+    },
+    {
+      "stat": "Family notes",
+      "label": "clear prompts for shared decisions"
+    },
+    {
+      "stat": "First week",
+      "label": "essentials staged for the new home"
+    }
+  ],
+  "release": {
+    "status": "approved",
+    "reviewedAt": "2026-06-25",
+    "visualBaseline": "pending",
+    "reviewChecklist": {
+      "firstViewportClear": true,
+      "logoReadable": true,
+      "layoutDistinct": true,
+      "ctaClear": true,
+      "copySpecific": true,
+      "noImageArtifacts": true,
+      "heroArtDirected": true,
+      "hierarchyDistinct": true,
+      "signatureMove": true,
+      "restrainedComposition": true,
+      "screenshotCompared": true
+    }
+  }
+}

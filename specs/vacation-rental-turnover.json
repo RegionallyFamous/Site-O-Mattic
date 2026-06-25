@@ -1,0 +1,155 @@
+{
+  "slug": "vacation-rental-turnover",
+  "businessName": "Turnkey Tidy",
+  "niche": "vacation rental turnover cleaning service",
+  "layoutVariant": "turnover-receipt-board",
+  "pattern": {
+    "primaryPattern": "service-receipt-stack",
+    "secondaryPattern": "host-readiness-checklist",
+    "silhouette": "receipt-scope-stack",
+    "navigationPrimitive": "compact-header",
+    "mobileActionPattern": "coverage-plus-inline-phone",
+    "imageRole": "finished-outcome",
+    "imageEvidence": "clean rental bedroom with linen reset and host checklist",
+    "ctaRhythm": "quote-first",
+    "surfaceFamily": "receipt-stack",
+    "surfaceModel": "turnover-table-details-stack",
+    "styleFamily": "receipt-ledger",
+    "density": "compact-leadgen",
+    "colorRoles": {
+      "ink": "deepGreen",
+      "paper": "white",
+      "field": "cream",
+      "line": "mist",
+      "primary": "grass",
+      "action": "sun",
+      "proof": "leaf",
+      "muted": "soil",
+      "warning": "sun",
+      "shadowTint": "deepGreen"
+    },
+    "geometry": {
+      "radiusScale": "linen-receipt-6",
+      "borderRole": "cleaning receipt lines",
+      "shadowRole": "single turnover receipt stack",
+      "mediaCrop": "guest-ready room crop"
+    },
+    "coreBlockPlan": [
+      "media-text",
+      "table",
+      "details",
+      "buttons"
+    ],
+    "knownRisks": [
+      "table-mobile-overflow",
+      "generic-cleaning-copy",
+      "cta-below-mobile-fold"
+    ],
+    "styleContract": "Host-ready calm with linen-reset proof, real turnover cleaning evidence, golden booking accents, and a scope receipt table as the signature move."
+  },
+  "tagline": "Guest-ready turnovers with host-friendly proof.",
+  "themeSlug": "twentytwentyfive",
+  "landingPage": "/",
+  "palette": {
+    "grass": "#3f6f8c",
+    "deepGreen": "#173044",
+    "leaf": "#7fb7a3",
+    "sun": "#f2be55",
+    "cream": "#f7f4ef",
+    "mist": "#dfe9ed",
+    "soil": "#535f67",
+    "white": "#ffffff"
+  },
+  "assets": {
+    "hero": "assets/vacation-rental-turnover/turnkeytidy-hero.jpg",
+    "logo": "assets/vacation-rental-turnover/turnkeytidy-logo.png",
+    "favicon": "assets/vacation-rental-turnover/turnkeytidy-favicon.png"
+  },
+  "assetMeta": {
+    "hero": {
+      "title": "Turnkey Tidy vacation rental turnover hero image",
+      "alt": "A vacation rental turnover cleaner finishing a bright guest bedroom with crisp linens, a restock tray, checklist clipboard, and tidy entry details."
+    }
+  },
+  "contact": {
+    "phoneLabel": "(555) 014-7190",
+    "phoneHref": "tel:+15550147190",
+    "email": "hello@turnkeytidy.test",
+    "emailHref": "mailto:hello@turnkeytidy.test",
+    "serviceArea": "Vacation rental turnovers, linen swaps, restock checks, kitchen and bath reset, entry photos, damage notes, same-day changeovers, and host coverage for guest suites, cabins, lake homes, and short-term rentals across the local booking corridor"
+  },
+  "copy": {
+    "eyebrow": "Vacation rental turnover with receipt-level proof",
+    "heroTitle": "Guest-ready before the next door code goes live.",
+    "heroText": "Turnkey Tidy resets beds, baths, kitchens, entry details, linens, and restocks with clear host notes so every turnover feels tracked, not guessed.",
+    "primaryCta": "Get turnover coverage",
+    "secondaryCta": "Review the scope",
+    "introTitle": "What gets checked between checkout and check-in",
+    "introText": "We confirm linens, supply levels, trash, dishes, surfaces, entry details, damage clues, laundry timing, and photos before marking a unit guest-ready.",
+    "servicesTitle": "Your turnover receipt",
+    "processTitle": "The reset sequence",
+    "proofTitle": "Host proof without a scavenger hunt",
+    "quoteTitle": "Need dependable turnover coverage?",
+    "quoteText": "Send property type, bed/bath count, linen setup, average checkout window, and restock expectations. We will reply with a clear coverage plan and first-turnover notes."
+  },
+  "services": [
+    {
+      "title": "Guest Room Reset",
+      "text": "Beds made, linens staged, surfaces cleaned, visible floors checked, and room details reset for the next arrival."
+    },
+    {
+      "title": "Kitchen And Bath Pass",
+      "text": "Counters, sinks, toilets, showers, mirrors, dishes, trash, and easy-to-miss guest touchpoints checked with host notes."
+    },
+    {
+      "title": "Restock And Photo Notes",
+      "text": "Supply levels, damage flags, entry details, and completion photos sent so remote hosts can see what changed."
+    }
+  ],
+  "process": [
+    {
+      "title": "Confirm the calendar",
+      "text": "We review checkout time, lock access, laundry setup, restock list, and anything guests mentioned before the visit."
+    },
+    {
+      "title": "Reset by room",
+      "text": "The clean moves through bedrooms, baths, kitchen, entry, outdoor touchpoints, trash, and final smell/visual checks."
+    },
+    {
+      "title": "Send host proof",
+      "text": "You get completion notes, restock flags, damage concerns, and photo proof before the next guest arrives."
+    }
+  ],
+  "proof": [
+    {
+      "stat": "Same day",
+      "label": "turnover windows planned around check-in"
+    },
+    {
+      "stat": "Photo notes",
+      "label": "host proof after each reset"
+    },
+    {
+      "stat": "Restock flag",
+      "label": "low supplies called out before guests do"
+    }
+  ],
+  "release": {
+    "status": "approved",
+    "reviewedAt": "2026-06-25",
+    "visualBaseline": "pending",
+    "reviewChecklist": {
+      "firstViewportClear": true,
+      "logoReadable": true,
+      "layoutDistinct": true,
+      "ctaClear": true,
+      "copySpecific": true,
+      "noImageArtifacts": true,
+      "heroArtDirected": true,
+      "hierarchyDistinct": true,
+      "signatureMove": true,
+      "restrainedComposition": true,
+      "screenshotCompared": true
+    }
+  }
+}

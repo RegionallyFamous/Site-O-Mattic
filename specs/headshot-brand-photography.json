@@ -1,0 +1,156 @@
+{
+  "slug": "headshot-brand-photography",
+  "businessName": "FrameForge Headshots",
+  "niche": "headshot and brand photography studio",
+  "layoutVariant": "headshot-proof-gallery",
+  "pattern": {
+    "primaryPattern": "gallery-led-portfolio-proof",
+    "secondaryPattern": "prep-confidence-proof",
+    "silhouette": "editorial-proof-stage",
+    "navigationPrimitive": "compact-header",
+    "mobileActionPattern": "post-hero-consult-actions",
+    "imageRole": "operator-or-founder",
+    "imageEvidence": "studio headshot session with photographer, client, lighting, and camera setup",
+    "ctaRhythm": "consult-first",
+    "surfaceFamily": "gallery-mosaic",
+    "surfaceModel": "session-package-cards-with-prep-captions",
+    "styleFamily": "editorial-proof-stage",
+    "density": "balanced-editorial",
+    "colorRoles": {
+      "ink": "deepGreen",
+      "paper": "cream",
+      "field": "mist",
+      "line": "leaf",
+      "primary": "grass",
+      "action": "sun",
+      "proof": "leaf",
+      "muted": "soil",
+      "warning": "sun",
+      "shadowTint": "deepGreen"
+    },
+    "geometry": {
+      "radiusScale": "studio-clean-8",
+      "borderRole": "session card separators",
+      "shadowRole": "studio proof image lift",
+      "mediaCrop": "wide studio headshot setup crop"
+    },
+    "coreBlockPlan": [
+      "cover",
+      "image",
+      "gallery",
+      "quote",
+      "buttons"
+    ],
+    "knownRisks": [
+      "first-viewport-cta",
+      "logo-scale",
+      "mobile-crop"
+    ],
+    "styleContract": "Polished and reassuring with prep proof, real studio headshot evidence, camera-blue action accents, and session usage cards as the signature move."
+  },
+  "tagline": "Headshots that look like you on a very good day.",
+  "themeSlug": "twentytwentyfive",
+  "landingPage": "/",
+  "palette": {
+    "grass": "#405f83",
+    "deepGreen": "#182233",
+    "leaf": "#7aa7b8",
+    "sun": "#f2bc56",
+    "cream": "#f6f1e8",
+    "mist": "#dfe7ec",
+    "soil": "#56606c",
+    "white": "#ffffff"
+  },
+  "assets": {
+    "hero": "assets/headshot-brand-photography/frameforge-hero.jpg",
+    "logo": "assets/headshot-brand-photography/frameforge-logo.png",
+    "favicon": "assets/headshot-brand-photography/frameforge-favicon.png"
+  },
+  "assetMeta": {
+    "hero": {
+      "title": "FrameForge headshot photography hero image",
+      "alt": "A photographer coaching a client during a professional headshot session with softbox lighting and camera setup."
+    }
+  },
+  "contact": {
+    "phoneLabel": "(555) 014-4495",
+    "phoneHref": "tel:+15550144495",
+    "email": "hello@frameforge.test",
+    "emailHref": "mailto:hello@frameforge.test",
+    "serviceArea": "Professional headshots, brand photography, team portraits, LinkedIn refreshes, speaker images, website portraits, and studio or on-location sessions across the city"
+  },
+  "copy": {
+    "eyebrow": "Headshots and brand photos with prep built in",
+    "heroTitle": "Look polished without looking over-produced.",
+    "heroText": "FrameForge guides wardrobe, lighting, expression, usage needs, and delivery so your headshots feel current, credible, and still recognizably you.",
+    "primaryCta": "Book a consult",
+    "secondaryCta": "See sessions",
+    "introTitle": "The best headshot starts before you sit down.",
+    "introText": "We talk about industry, usage, background, wardrobe, retouch comfort, and whether you need one strong portrait or a small brand set.",
+    "servicesTitle": "Choose the session fit",
+    "processTitle": "How prep keeps it easy",
+    "proofTitle": "Confidence before the shutter",
+    "quoteTitle": "Ready to book a headshot consult?",
+    "quoteText": "Send your role, usage needs, timeline, and any brand examples. We will recommend a session and prep path."
+  },
+  "services": [
+    {
+      "title": "Individual Headshot",
+      "text": "A guided session with lighting, posing, expression coaching, and a focused gallery for modern professional use."
+    },
+    {
+      "title": "Brand Mini Set",
+      "text": "Headshots plus a few environmental or detail frames for websites, social profiles, and speaker pages."
+    },
+    {
+      "title": "Team Portrait Day",
+      "text": "Consistent lighting, simple scheduling, and a clean handoff for small teams and offices."
+    }
+  ],
+  "process": [
+    {
+      "title": "Plan the use case",
+      "text": "We ask where the photos will live, what tone they need, and what backgrounds make sense."
+    },
+    {
+      "title": "Prep the details",
+      "text": "Wardrobe, grooming, glasses, retouch comfort, and arrival timing get handled before session day."
+    },
+    {
+      "title": "Choose and deliver",
+      "text": "You select favorites with usage guidance, retouch notes, and clean export options."
+    }
+  ],
+  "proof": [
+    {
+      "stat": "Prep guide",
+      "label": "wardrobe and expression notes included"
+    },
+    {
+      "stat": "Lighting test",
+      "label": "set checked before final frames"
+    },
+    {
+      "stat": "Usage exports",
+      "label": "web, social, and print sizes available"
+    }
+  ],
+  "release": {
+    "status": "approved",
+    "reviewedAt": "2026-06-25",
+    "visualBaseline": "pending",
+    "reviewChecklist": {
+      "firstViewportClear": true,
+      "logoReadable": true,
+      "layoutDistinct": true,
+      "ctaClear": true,
+      "copySpecific": true,
+      "noImageArtifacts": true,
+      "heroArtDirected": true,
+      "hierarchyDistinct": true,
+      "signatureMove": true,
+      "restrainedComposition": true,
+      "screenshotCompared": true
+    }
+  }
+}

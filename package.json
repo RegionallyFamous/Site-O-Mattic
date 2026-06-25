@@ -18,6 +18,7 @@
     "blueprint:validate": "node src/validate-blueprint.mjs",
     "blueprint:polish": "node src/polish-report.mjs",
     "blueprint:accessibility": "node src/accessibility-report.mjs",
+    "blueprint:sync": "node src/signature-sync-report.mjs",
     "blueprint:variety": "node src/layout-variety-report.mjs",
     "blueprint:guardrails": "node src/production-guardrails.mjs",
     "blueprint:visual": "node src/visual-qa.mjs",
@@ -25,7 +26,7 @@
     "visual:baseline": "node src/visual-baseline-report.mjs",
     "visual:baseline:capture": "node src/capture-visual-baseline.mjs",
     "validate": "npm run blueprint:validate",
-    "quality": "npm run spec:validate && npm run validate && npm run blueprint:polish && npm run blueprint:accessibility && npm run blueprint:variety && npm run blueprint:guardrails && npm run visual:baseline && npm run site:build && npm run lint",
+    "quality": "npm run spec:validate && npm run validate && npm run blueprint:polish && npm run blueprint:accessibility && npm run blueprint:sync && npm run blueprint:variety && npm run blueprint:guardrails && npm run visual:baseline && npm run site:build && npm run lint",
     "render-brand": "sh scripts/render-brand-assets.sh"
   },
   "dependencies": {

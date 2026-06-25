@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Sugarline Dessert Co. favicon</title>
+  <desc id="desc">A simplified brand mark for Sugarline Dessert Co..</desc>
+  <rect x="56" y="56" width="400" height="400" rx="112" fill="#2a1f26"/>
+  <g transform="translate(122 116) scale(1.9)"><rect x="70" y="118" width="128" height="74" rx="16" fill="#fff7ef"/><path d="M82 118c20 18 38 18 58 0 19 18 36 18 56 0" fill="none" stroke="#c6788f" stroke-width="12" stroke-linecap="round"/><rect x="92" y="80" width="86" height="44" rx="12" fill="#f2c86d"/><path d="M100 72h70" stroke="#fff7ef" stroke-width="10" stroke-linecap="round"/><circle cx="111" cy="160" r="8" fill="#f2c86d"/><circle cx="137" cy="160" r="8" fill="#c6788f"/><circle cx="163" cy="160" r="8" fill="#f2c86d"/></g>
+</svg>

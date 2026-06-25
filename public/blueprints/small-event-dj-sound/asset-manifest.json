@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "slug": "small-event-dj-sound",
+  "businessName": "SoundNest Events",
+  "layoutVariant": "soundcheck-console",
+  "assets": {
+    "hero": {
+      "source": "assets/small-event-dj-sound/soundnest-hero.jpg",
+      "fileName": "hero.jpg",
+      "outputPath": "/assets/hero.jpg",
+      "mimeType": "image/jpeg",
+      "byteSize": 193665,
+      "width": 1920,
+      "height": 1080,
+      "embedded": true
+    },
+    "logo": {
+      "source": "assets/small-event-dj-sound/soundnest-logo.png",
+      "fileName": "logo.png",
+      "outputPath": "/assets/logo.png",
+      "mimeType": "image/png",
+      "byteSize": 36260,
+      "width": 1100,
+      "height": 260,
+      "embedded": true
+    },
+    "favicon": {
+      "source": "assets/small-event-dj-sound/soundnest-favicon.png",
+      "fileName": "favicon.png",
+      "outputPath": "/assets/favicon.png",
+      "mimeType": "image/png",
+      "byteSize": 20003,
+      "width": 512,
+      "height": 512,
+      "embedded": true
+    }
+  }
+}

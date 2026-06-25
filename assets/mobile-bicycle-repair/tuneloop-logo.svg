@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 260" role="img" aria-labelledby="title">
+  <title id="title">TuneLoop Bike Repair logo</title>
+  <rect width="1100" height="260" fill="none"/>
+  <g transform="translate(42 38)"><circle cx="92" cy="92" r="72" fill="#f6f1e8"/><circle cx="92" cy="92" r="66" fill="#132126"/><circle cx="61" cy="114" r="24" fill="none" stroke="#f6c44f" stroke-width="10"/><circle cx="124" cy="114" r="24" fill="none" stroke="#f6c44f" stroke-width="10"/><path d="M61 114l27-42 20 42H76l28-28 20 28" stroke="#74c69d" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
+  <g transform="translate(250 78)">
+    <text x="0" y="82" font-family="Avenir Next, Segoe UI, Arial, sans-serif" font-size="92" font-weight="850" letter-spacing="0" fill="#132126">TuneLoop</text>
+    <path d="M5 114h398" stroke="#f6c44f" stroke-width="12" stroke-linecap="round"/>
+    <path d="M426 114h124" stroke="#74c69d" stroke-width="12" stroke-linecap="round"/>
+  </g>
+</svg>

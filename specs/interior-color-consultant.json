@@ -1,0 +1,156 @@
+{
+  "slug": "interior-color-consultant",
+  "businessName": "HueHaus Color Studio",
+  "niche": "interior color consultant",
+  "layoutVariant": "color-consult-story",
+  "pattern": {
+    "primaryPattern": "consultation-story-flow",
+    "secondaryPattern": "room-light-sample-proof",
+    "silhouette": "consultation-story-flow",
+    "navigationPrimitive": "compact-header",
+    "mobileActionPattern": "soft-palette-consult-actions",
+    "imageRole": "process-closeup",
+    "imageEvidence": "color consultant reviewing paint swatches, fan deck, and room finishes in natural light",
+    "ctaRhythm": "consult-first",
+    "surfaceFamily": "single-elevated-proof",
+    "surfaceModel": "palette-support-cards-with-room-notes",
+    "styleFamily": "humanist-local-calm",
+    "density": "balanced-editorial",
+    "colorRoles": {
+      "ink": "deepGreen",
+      "paper": "cream",
+      "field": "mist",
+      "line": "leaf",
+      "primary": "grass",
+      "action": "sun",
+      "proof": "leaf",
+      "muted": "soil",
+      "warning": "sun",
+      "shadowTint": "deepGreen"
+    },
+    "geometry": {
+      "radiusScale": "interior-soft-8",
+      "borderRole": "palette card dividers",
+      "shadowRole": "single swatch proof panel",
+      "mediaCrop": "room swatch consultation crop"
+    },
+    "coreBlockPlan": [
+      "columns",
+      "list",
+      "quote",
+      "details",
+      "buttons"
+    ],
+    "knownRisks": [
+      "first-viewport-cta",
+      "logo-scale",
+      "mobile-crop"
+    ],
+    "styleContract": "Calm and expert with room-light proof, real swatch consultation evidence, warm swatch action accents, and palette support cards as the signature move."
+  },
+  "tagline": "Paint decisions without the tiny-swatch spiral.",
+  "themeSlug": "twentytwentyfive",
+  "landingPage": "/",
+  "palette": {
+    "grass": "#66775a",
+    "deepGreen": "#24251f",
+    "leaf": "#c07f6c",
+    "sun": "#e7b85d",
+    "cream": "#f8f0e7",
+    "mist": "#e0e3da",
+    "soil": "#5f5a52",
+    "white": "#ffffff"
+  },
+  "assets": {
+    "hero": "assets/interior-color-consultant/huehaus-hero.jpg",
+    "logo": "assets/interior-color-consultant/huehaus-logo.png",
+    "favicon": "assets/interior-color-consultant/huehaus-favicon.png"
+  },
+  "assetMeta": {
+    "hero": {
+      "title": "HueHaus interior color consultant hero image",
+      "alt": "A color consultant reviewing paint swatches and fabric samples with a homeowner in a bright living room."
+    }
+  },
+  "contact": {
+    "phoneLabel": "(555) 014-2950",
+    "phoneHref": "tel:+15550142950",
+    "email": "hello@huehaus.test",
+    "emailHref": "mailto:hello@huehaus.test",
+    "serviceArea": "Interior paint palettes, room color consults, trim and cabinet color guidance, exterior accent help, sample reviews, move-in color plans, and refresh consults across the local area"
+  },
+  "copy": {
+    "eyebrow": "Interior color consulting with light, samples, and sanity",
+    "heroTitle": "Choose colors that work in your actual room.",
+    "heroText": "HueHaus helps homeowners narrow paint, trim, cabinet, and room palettes using light, finishes, samples, and how the space really gets lived in.",
+    "primaryCta": "Choose my palette",
+    "secondaryCta": "See consult steps",
+    "introTitle": "A good palette is part taste, part daylight detective work.",
+    "introText": "We look at natural light, existing finishes, furniture, undertones, room flow, and whether the color needs to calm down or wake things up.",
+    "servicesTitle": "Choose the color help",
+    "processTitle": "How the palette gets practical",
+    "proofTitle": "Room proof beats guesswork",
+    "quoteTitle": "Ready to choose your palette?",
+    "quoteText": "Send room photos, current finishes, paint questions, and your timeline. We will recommend the consult format and what samples to gather."
+  },
+  "services": [
+    {
+      "title": "Room Palette Consult",
+      "text": "Paint direction for one or more rooms using light, undertones, furnishings, and finish constraints."
+    },
+    {
+      "title": "Whole-Home Flow",
+      "text": "A practical palette map for connected spaces, trim, doors, accents, and transition points."
+    },
+    {
+      "title": "Sample Review",
+      "text": "Help reading test swatches in the room before you commit to gallons."
+    }
+  ],
+  "process": [
+    {
+      "title": "Send the room context",
+      "text": "Photos, lighting, finishes, furniture, and problem colors help us start smarter."
+    },
+    {
+      "title": "Review samples and flow",
+      "text": "We compare undertones, trim, adjacent rooms, and how the palette changes during the day."
+    },
+    {
+      "title": "Leave with direction",
+      "text": "You get a short palette plan, sample notes, and what to test before buying paint."
+    }
+  ],
+  "proof": [
+    {
+      "stat": "Light check",
+      "label": "day and evening shifts considered"
+    },
+    {
+      "stat": "Undertone notes",
+      "label": "floors, counters, and fabrics included"
+    },
+    {
+      "stat": "Sample path",
+      "label": "what to test before committing"
+    }
+  ],
+  "release": {
+    "status": "approved",
+    "reviewedAt": "2026-06-25",
+    "visualBaseline": "pending",
+    "reviewChecklist": {
+      "firstViewportClear": true,
+      "logoReadable": true,
+      "layoutDistinct": true,
+      "ctaClear": true,
+      "copySpecific": true,
+      "noImageArtifacts": true,
+      "heroArtDirected": true,
+      "hierarchyDistinct": true,
+      "signatureMove": true,
+      "restrainedComposition": true,
+      "screenshotCompared": true
+    }
+  }
+}

@@ -18,6 +18,11 @@ if (!targets.length) {
   targets.push(...await defaultTargets());
 }
 
+// At 35-site scale, broad conversion families legitimately repeat.
+// Hard visual fields below still catch recolored clones; this score guards against
+// excessive soft-taxonomy overlap without forcing fake pattern metadata.
+const MIN_SOFT_DIFFERENCE_SCORE = 14;
+
 if (targets.length < 2) {
   console.log("Layout variety report needs at least two Blueprints.");
   process.exit(1);
@@ -102,22 +107,45 @@ function compareReports(left, right) {
   checks.push(diffCheck("navigation treatment", leftSignature.navigationTreatment !== rightSignature.navigationTreatment, leftSignature.navigationTreatment, rightSignature.navigationTreatment));
   checks.push(diffCheck("typography treatment", leftSignature.typographyTreatment !== rightSignature.typographyTreatment, leftSignature.typographyTreatment, rightSignature.typographyTreatment));
   checks.push(diffCheck("color strategy", leftSignature.colorStrategy !== rightSignature.colorStrategy, leftSignature.colorStrategy, rightSignature.colorStrategy));
+  checks.push(diffCheck("primary pattern", leftSignature.primaryPattern !== rightSignature.primaryPattern, leftSignature.primaryPattern, rightSignature.primaryPattern));
+  checks.push(diffCheck("silhouette", leftSignature.silhouette !== rightSignature.silhouette, leftSignature.silhouette, rightSignature.silhouette));
+  checks.push(diffCheck("navigation primitive", leftSignature.navigationPrimitive !== rightSignature.navigationPrimitive, leftSignature.navigationPrimitive, rightSignature.navigationPrimitive));
+  checks.push(diffCheck("mobile action pattern", leftSignature.mobileActionPattern !== rightSignature.mobileActionPattern, leftSignature.mobileActionPattern, rightSignature.mobileActionPattern));
+  checks.push(diffCheck("image role", leftSignature.imageRole !== rightSignature.imageRole, leftSignature.imageRole, rightSignature.imageRole));
+  checks.push(diffCheck("image evidence", leftSignature.imageEvidence !== rightSignature.imageEvidence, leftSignature.imageEvidence, rightSignature.imageEvidence));
+  checks.push(diffCheck("CTA rhythm pattern", leftSignature.ctaRhythmPattern !== rightSignature.ctaRhythmPattern, leftSignature.ctaRhythmPattern, rightSignature.ctaRhythmPattern));
+  checks.push(diffCheck("surface family", leftSignature.surfaceFamily !== rightSignature.surfaceFamily, leftSignature.surfaceFamily, rightSignature.surfaceFamily));
+  checks.push(diffCheck("surface model", leftSignature.surfaceModel !== rightSignature.surfaceModel, leftSignature.surfaceModel, rightSignature.surfaceModel));
+  checks.push(diffCheck("style family", leftSignature.styleFamily !== rightSignature.styleFamily, leftSignature.styleFamily, rightSignature.styleFamily));
+  checks.push(diffCheck("density", leftSignature.density !== rightSignature.density, leftSignature.density, rightSignature.density));
   checks.push(diffCheck("palette fingerprint", left.palette !== right.palette, left.palette, right.palette));
   checks.push(diffCheck("service presentation", leftSignature.servicePresentation !== rightSignature.servicePresentation, leftSignature.servicePresentation, rightSignature.servicePresentation));
   checks.push(diffCheck("proof treatment", leftSignature.proofTreatment !== rightSignature.proofTreatment, leftSignature.proofTreatment, rightSignature.proofTreatment));
   checks.push(diffCheck("CTA rhythm", leftSignature.ctaRhythm !== rightSignature.ctaRhythm, leftSignature.ctaRhythm, rightSignature.ctaRhythm));
   checks.push(diffCheck("section order", !arraysEqual(leftSignature.sectionOrder || [], rightSignature.sectionOrder || []), (leftSignature.sectionOrder || []).join(" > "), (rightSignature.sectionOrder || []).join(" > ")));
+  checks.push({ name: "core block plan overlap", passed: jaccard(leftSignature.coreBlockPlan || [], rightSignature.coreBlockPlan || []) < 0.85, detail: `Jaccard ${jaccard(leftSignature.coreBlockPlan || [], rightSignature.coreBlockPlan || []).toFixed(2)}` });
   checks.push({ name: "nav label overlap", passed: navSimilarity < 0.75, detail: `Jaccard ${navSimilarity.toFixed(2)}` });
   checks.push({ name: "component class overlap", passed: classSimilarity < 0.65, detail: `Jaccard ${classSimilarity.toFixed(2)}` });
 
   const score = checks.filter((check) => check.passed).length;
+  const hardCheckNames = new Set([
+    "hero",
+    "navigation treatment",
+    "typography treatment",
+    "color strategy",
+    "palette fingerprint",
+    "service presentation",
+    "section order"
+  ]);
   return {
     left: left.target,
     right: right.target,
     score,
     total: checks.length,
     checks,
-    passed: score >= 10 && checks[1].passed && checks[2].passed && checks[3].passed && checks[4].passed && checks[6].passed && checks[9].passed
+    passed: score >= MIN_SOFT_DIFFERENCE_SCORE && checks
+      .filter((check) => hardCheckNames.has(check.name))
+      .every((check) => check.passed)
   };
 }
 
@@ -137,9 +165,34 @@ function hasSignatureShape(signature) {
   if (!signature) {
     return false;
   }
-  const strings = ["variant", "archetype", "hero", "navigationTreatment", "typographyTreatment", "colorStrategy", "servicePresentation", "proofTreatment", "ctaRhythm"];
-  const arrays = ["sectionOrder", "navLabels", "anchorOrder", "componentClassesExpected", "layoutMarkers"];
+  const strings = [
+    "variant",
+    "archetype",
+    "hero",
+    "navigationTreatment",
+    "typographyTreatment",
+    "colorStrategy",
+    "primaryPattern",
+    "secondaryPattern",
+    "silhouette",
+    "navigationPrimitive",
+    "mobileActionPattern",
+    "imageRole",
+    "imageEvidence",
+    "ctaRhythmPattern",
+    "surfaceFamily",
+    "surfaceModel",
+    "styleFamily",
+    "density",
+    "styleContract",
+    "servicePresentation",
+    "proofTreatment",
+    "ctaRhythm"
+  ];
+  const arrays = ["coreBlockPlan", "knownRisks", "sectionOrder", "navLabels", "anchorOrder", "componentClassesExpected", "layoutMarkers"];
+  const objects = ["colorRoles", "geometry"];
   return strings.every((field) => typeof signature[field] === "string" && signature[field])
+    && objects.every((field) => signature[field] && typeof signature[field] === "object" && !Array.isArray(signature[field]))
     && arrays.every((field) => Array.isArray(signature[field]) && signature[field].length);
 }
 

@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "slug": "picnic-proposal-setup",
+  "businessName": "Linen & Lantern Setups",
+  "layoutVariant": "picnic-proposal-lookbook",
+  "assets": {
+    "hero": {
+      "source": "assets/picnic-proposal-setup/linenlantern-hero.jpg",
+      "fileName": "hero.jpg",
+      "outputPath": "/assets/hero.jpg",
+      "mimeType": "image/jpeg",
+      "byteSize": 299861,
+      "width": 1920,
+      "height": 1080,
+      "embedded": true
+    },
+    "logo": {
+      "source": "assets/picnic-proposal-setup/linenlantern-logo.png",
+      "fileName": "logo.png",
+      "outputPath": "/assets/logo.png",
+      "mimeType": "image/png",
+      "byteSize": 27208,
+      "width": 1100,
+      "height": 260,
+      "embedded": true
+    },
+    "favicon": {
+      "source": "assets/picnic-proposal-setup/linenlantern-favicon.png",
+      "fileName": "favicon.png",
+      "outputPath": "/assets/favicon.png",
+      "mimeType": "image/png",
+      "byteSize": 14922,
+      "width": 512,
+      "height": 512,
+      "embedded": true
+    }
+  }
+}

@@ -3,6 +3,50 @@
   "businessName": "ClearFlow Gutter Care",
   "niche": "gutter cleaning service",
   "layoutVariant": "risk-prevention",
+  "pattern": {
+    "primaryPattern": "risk-prevention-warning-path",
+    "secondaryPattern": "warning-sign-proof",
+    "silhouette": "viewport-safe-conversion-shell",
+    "navigationPrimitive": "compact-header",
+    "mobileActionPattern": "inline-risk-phone-actions",
+    "imageRole": "process-closeup",
+    "imageEvidence": "visible home-risk mitigation work",
+    "ctaRhythm": "call-first",
+    "surfaceFamily": "single-elevated-proof",
+    "surfaceModel": "warning-rows-proof-strip",
+    "styleFamily": "operator-console",
+    "density": "balanced-editorial",
+    "colorRoles": {
+      "ink": "deepGreen",
+      "paper": "cream",
+      "field": "mist",
+      "line": "soil",
+      "primary": "grass",
+      "action": "sun",
+      "proof": "leaf",
+      "muted": "soil",
+      "warning": "sun",
+      "shadowTint": "deepGreen"
+    },
+    "geometry": {
+      "radiusScale": "utility-6",
+      "borderRole": "warning row dividers",
+      "shadowRole": "risk hero and quote only",
+      "mediaCrop": "roofline work crop"
+    },
+    "coreBlockPlan": [
+      "columns",
+      "image",
+      "list",
+      "buttons"
+    ],
+    "knownRisks": [
+      "warning-color-overuse",
+      "roofline-photo-crop",
+      "risk-copy-too-generic"
+    ],
+    "styleContract": "Protective and seasonal with overflow-prevention proof, roofline cleaning evidence, controlled amber warning accents, and warning-sign rows as the signature move."
+  },
   "tagline": "Leaves out. Rainwater behaving.",
   "themeSlug": "twentytwentyfive",
   "landingPage": "/",

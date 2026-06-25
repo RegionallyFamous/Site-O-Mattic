@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title">
+  <title id="title">KindMove Downsizing favicon</title>
+  <rect width="512" height="512" rx="108" fill="#263047"/>
+  <g transform="translate(72 72) scale(2)"><circle cx="92" cy="92" r="72" fill="#f8efe7"/><circle cx="92" cy="92" r="66" fill="#263047"/><path d="M92 137c-22-20-43-38-43-60 0-15 11-25 25-25 9 0 16 4 18 10 3-6 10-10 19-10 14 0 25 10 25 25 0 22-21 40-44 60z" fill="#efbd67"/><path d="M57 141h70" stroke="#b79c74" stroke-width="12" stroke-linecap="round"/></g>
+</svg>

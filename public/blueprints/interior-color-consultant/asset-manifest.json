@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "slug": "interior-color-consultant",
+  "businessName": "HueHaus Color Studio",
+  "layoutVariant": "color-consult-story",
+  "assets": {
+    "hero": {
+      "source": "assets/interior-color-consultant/huehaus-hero.jpg",
+      "fileName": "hero.jpg",
+      "outputPath": "/assets/hero.jpg",
+      "mimeType": "image/jpeg",
+      "byteSize": 289215,
+      "width": 1920,
+      "height": 1080,
+      "embedded": true
+    },
+    "logo": {
+      "source": "assets/interior-color-consultant/huehaus-logo.png",
+      "fileName": "logo.png",
+      "outputPath": "/assets/logo.png",
+      "mimeType": "image/png",
+      "byteSize": 24542,
+      "width": 1100,
+      "height": 260,
+      "embedded": true
+    },
+    "favicon": {
+      "source": "assets/interior-color-consultant/huehaus-favicon.png",
+      "fileName": "favicon.png",
+      "outputPath": "/assets/favicon.png",
+      "mimeType": "image/png",
+      "byteSize": 13933,
+      "width": 512,
+      "height": 512,
+      "embedded": true
+    }
+  }
+}

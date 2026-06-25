@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">HueHaus Color Studio favicon</title>
+  <desc id="desc">A simplified brand mark for HueHaus Color Studio.</desc>
+  <rect x="56" y="56" width="400" height="400" rx="112" fill="#24251f"/>
+  <g transform="translate(122 116) scale(1.9)"><rect x="70" y="76" width="70" height="118" rx="16" fill="#f8f0e7" transform="rotate(-12 105 135)"/><rect x="112" y="68" width="70" height="118" rx="16" fill="#c07f6c" transform="rotate(2 147 127)"/><rect x="154" y="84" width="70" height="118" rx="16" fill="#e7b85d" transform="rotate(14 189 143)"/><circle cx="145" cy="174" r="14" fill="#24251f"/></g>
+</svg>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">FlashDash Photo Booth favicon</title>
+  <desc id="desc">A simplified brand mark for FlashDash Photo Booth.</desc>
+  <rect x="56" y="56" width="400" height="400" rx="112" fill="#10131c"/>
+  <g transform="translate(122 116) scale(1.9)"><rect x="70" y="52" width="132" height="160" rx="18" fill="#f8f5f0"/><rect x="88" y="72" width="96" height="38" rx="8" fill="#ff6f91"/><rect x="88" y="124" width="96" height="38" rx="8" fill="#ffd166"/><rect x="88" y="176" width="96" height="18" rx="6" fill="#565969"/><circle cx="136" cy="92" r="15" fill="#10131c"/></g>
+</svg>

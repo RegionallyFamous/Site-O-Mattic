@@ -3,6 +3,50 @@
   "businessName": "ClearPath",
   "niche": "junk removal and donation hauling service",
   "layoutVariant": "side-rail-service",
+  "pattern": {
+    "primaryPattern": "operational-side-rail-console",
+    "secondaryPattern": "donation-sorting-proof",
+    "silhouette": "side-rail-service-story",
+    "navigationPrimitive": "desktop-side-rail",
+    "mobileActionPattern": "mobile-top-header-collapse",
+    "imageRole": "finished-outcome",
+    "imageEvidence": "finished clean-out outcome with donation path",
+    "ctaRhythm": "photo-first",
+    "surfaceFamily": "side-rail",
+    "surfaceModel": "side-rail-ticket-grid",
+    "styleFamily": "operator-console",
+    "density": "compact-leadgen",
+    "colorRoles": {
+      "ink": "deepGreen",
+      "paper": "cream",
+      "field": "mist",
+      "line": "soil",
+      "primary": "grass",
+      "action": "sun",
+      "proof": "leaf",
+      "muted": "soil",
+      "warning": "sun",
+      "shadowTint": "deepGreen"
+    },
+    "geometry": {
+      "radiusScale": "utility-6",
+      "borderRole": "rail and item grid separators",
+      "shadowRole": "rail ticket only",
+      "mediaCrop": "haul-away outcome crop"
+    },
+    "coreBlockPlan": [
+      "columns",
+      "navigation",
+      "buttons",
+      "list"
+    ],
+    "knownRisks": [
+      "side-rail-mobile-collapse",
+      "donation-proof-too-vague",
+      "accepted-items-grid-fatigue"
+    ],
+    "styleContract": "Organized and humane with donation-route proof, a clear haul-away outcome image, high-visibility action accents, and a side-rail dispatch console as the signature move."
+  },
   "tagline": "Junk gone, useful stuff rehomed, driveway swept.",
   "themeSlug": "twentytwentyfive",
   "landingPage": "/",

@@ -3,6 +3,50 @@
   "businessName": "BrightJet Exterior Cleaning",
   "niche": "pressure washing and soft washing service",
   "layoutVariant": "before-after-quote",
+  "pattern": {
+    "primaryPattern": "photo-quote-transformation",
+    "secondaryPattern": "method-proof-reassurance",
+    "silhouette": "split-quote-board",
+    "navigationPrimitive": "compact-header",
+    "mobileActionPattern": "inline-photo-quote-actions",
+    "imageRole": "work-in-progress",
+    "imageEvidence": "active cleaning proof with transformation context",
+    "ctaRhythm": "photo-first",
+    "surfaceFamily": "single-elevated-proof",
+    "surfaceModel": "split-proof-panels",
+    "styleFamily": "operator-console",
+    "density": "compact-leadgen",
+    "colorRoles": {
+      "ink": "deepGreen",
+      "paper": "cream",
+      "field": "mist",
+      "line": "leaf",
+      "primary": "grass",
+      "action": "sun",
+      "proof": "leaf",
+      "muted": "soil",
+      "warning": "sun",
+      "shadowTint": "deepGreen"
+    },
+    "geometry": {
+      "radiusScale": "precise-6",
+      "borderRole": "high-contrast proof panel edges",
+      "shadowRole": "hero media and quote strip",
+      "mediaCrop": "diagonal service-action crop"
+    },
+    "coreBlockPlan": [
+      "columns",
+      "image",
+      "buttons",
+      "list"
+    ],
+    "knownRisks": [
+      "fake-before-after-feel",
+      "hero-image-too-decorative",
+      "photo-quote-proof-buried"
+    ],
+    "styleContract": "Crisp transformation energy with method proof, visible exterior cleaning action, aqua proof accents, and an early photo-quote strip as the signature move."
+  },
   "tagline": "Driveways, siding, and patios with their sparkle switched back on.",
   "themeSlug": "twentytwentyfive",
   "landingPage": "/",

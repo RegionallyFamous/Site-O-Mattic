@@ -1,0 +1,156 @@
+{
+  "slug": "mobile-bicycle-repair",
+  "businessName": "TuneLoop Bike Repair",
+  "niche": "mobile bicycle repair service",
+  "layoutVariant": "bike-route-workstand",
+  "pattern": {
+    "primaryPattern": "decision-filter-route-plan",
+    "secondaryPattern": "route-day-tune-menu",
+    "silhouette": "operator-console",
+    "navigationPrimitive": "split-side-top-hybrid",
+    "mobileActionPattern": "top-booking-button-with-route-note",
+    "imageRole": "work-in-progress",
+    "imageEvidence": "mechanic tuning a bike at curbside mobile work stand",
+    "ctaRhythm": "book-first",
+    "surfaceFamily": "outlined-repeaters",
+    "surfaceModel": "workstand-ticket-with-tune-lane-cards",
+    "styleFamily": "clear-status-dashboard",
+    "density": "compact-leadgen",
+    "colorRoles": {
+      "ink": "deepGreen",
+      "paper": "cream",
+      "field": "mist",
+      "line": "soil",
+      "primary": "grass",
+      "action": "sun",
+      "proof": "leaf",
+      "muted": "soil",
+      "warning": "sun",
+      "shadowTint": "deepGreen"
+    },
+    "geometry": {
+      "radiusScale": "compact-workstand-radius",
+      "borderRole": "tune lane card rails",
+      "shadowRole": "workstand ticket and ride proof",
+      "mediaCrop": "curbside tune-up action crop"
+    },
+    "coreBlockPlan": [
+      "columns",
+      "image",
+      "buttons",
+      "list",
+      "navigation"
+    ],
+    "knownRisks": [
+      "workstand-photo-crop",
+      "bike-photo-crop",
+      "route-ticket-copy-too-long"
+    ],
+    "styleContract": "Technical and friendly with drivetrain proof, curbside workstand evidence, yellow booking accents, and a route-ticket tune bench as the signature move."
+  },
+  "tagline": "Bike tune-ups that meet the route where it rolls.",
+  "themeSlug": "twentytwentyfive",
+  "landingPage": "/",
+  "palette": {
+    "grass": "#1f6f78",
+    "deepGreen": "#132126",
+    "leaf": "#74c69d",
+    "sun": "#f6c44f",
+    "cream": "#f6f1e8",
+    "mist": "#dfe8e5",
+    "soil": "#4f5651",
+    "white": "#ffffff"
+  },
+  "assets": {
+    "hero": "assets/mobile-bicycle-repair/tuneloop-hero.jpg",
+    "logo": "assets/mobile-bicycle-repair/tuneloop-logo.png",
+    "favicon": "assets/mobile-bicycle-repair/tuneloop-favicon.png"
+  },
+  "assetMeta": {
+    "hero": {
+      "title": "TuneLoop mobile bicycle repair hero image",
+      "alt": "A mobile bicycle mechanic tuning a commuter bike on a curbside repair stand beside an open tool roll and a small service van."
+    }
+  },
+  "contact": {
+    "phoneLabel": "(555) 014-6621",
+    "phoneHref": "tel:+15550146621",
+    "email": "hello@tuneloop.test",
+    "emailHref": "mailto:hello@tuneloop.test",
+    "serviceArea": "Mobile bike tune-ups, flat fixes, brake adjustments, drivetrain cleaning, commuter checks, kids bike safety passes, and route-day repairs for neighborhoods, apartment courtyards, offices, and weekend riders across town"
+  },
+  "copy": {
+    "eyebrow": "Mobile bike repair with route-day rhythm",
+    "heroTitle": "Your bike gets tuned without a shop trip.",
+    "heroText": "TuneLoop brings the stand, tools, parts check, and friendly mechanic energy to your curb, office, or building bike room so small problems stop eating whole weekends.",
+    "primaryCta": "Book a tune-up",
+    "secondaryCta": "Compare packages",
+    "introTitle": "A mobile bench for squeaks, skips, flats, and brake drama.",
+    "introText": "We confirm bike type, symptoms, tire size, access spot, part needs, and route window before rolling over with the right tune path.",
+    "servicesTitle": "Choose your tune lane",
+    "processTitle": "How the mobile stop works",
+    "proofTitle": "Proof before the first ride back",
+    "quoteTitle": "Ready to join the next repair route?",
+    "quoteText": "Send bike photos, tire size, what feels off, and your preferred neighborhood window. We will reply with the right package and route-day option."
+  },
+  "services": [
+    {
+      "title": "Quick Roll Check",
+      "text": "Safety pass for tires, chain, brakes, shifting feel, bolts, and the little noises that make every ride suspicious."
+    },
+    {
+      "title": "Commuter Tune",
+      "text": "Brake and shift adjustment, drivetrain clean, tire pressure, bolt check, light install help, and a smooth handoff for weekday riders."
+    },
+    {
+      "title": "Flat And Fix Stop",
+      "text": "Tube swap, tire inspection, wheel check, minor adjustments, and guidance if a bigger part replacement should happen later."
+    }
+  ],
+  "process": [
+    {
+      "title": "Send bike details",
+      "text": "Photos, bike type, tire size, symptoms, and your access spot help us prep the right stand setup and parts check."
+    },
+    {
+      "title": "Meet the route stop",
+      "text": "We set up cleanly, protect the ground, tune the priority items, and flag anything that needs a shop-level repair."
+    },
+    {
+      "title": "Ride the handoff",
+      "text": "You get a quick test ride note, pressure recommendation, and what to watch before the next route day."
+    }
+  ],
+  "proof": [
+    {
+      "stat": "30 min",
+      "label": "quick checks for simple commuter issues"
+    },
+    {
+      "stat": "Brake feel",
+      "label": "tested before handoff"
+    },
+    {
+      "stat": "Route day",
+      "label": "neighborhood stops grouped for easy booking"
+    }
+  ],
+  "release": {
+    "status": "approved",
+    "reviewedAt": "2026-06-25",
+    "visualBaseline": "pending",
+    "reviewChecklist": {
+      "firstViewportClear": true,
+      "logoReadable": true,
+      "layoutDistinct": true,
+      "ctaClear": true,
+      "copySpecific": true,
+      "noImageArtifacts": true,
+      "heroArtDirected": true,
+      "hierarchyDistinct": true,
+      "signatureMove": true,
+      "restrainedComposition": true,
+      "screenshotCompared": true
+    }
+  }
+}

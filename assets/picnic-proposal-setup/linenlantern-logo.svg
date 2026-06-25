@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 260" role="img" aria-labelledby="title desc">
+  <title id="title">Linen &amp; Lantern Setups logo</title>
+  <desc id="desc">A custom brand mark beside the Linen &amp; Lantern Setups wordmark.</desc>
+  <rect width="1100" height="260" fill="none"/>
+  <g transform="translate(78 34)">
+    <rect x="0" y="0" width="192" height="192" rx="44" fill="#2b2320"/>
+    <path d="M76 122h134l-18 82H94z" fill="#fff5ea"/><path d="M94 122c0-44 98-44 98 0" fill="none" stroke="#b77b83" stroke-width="14" stroke-linecap="round"/><path d="M88 150h110M96 180h96M120 126l-12 72M164 126l12 72" stroke="#eebc6a" stroke-width="9" stroke-linecap="round"/>
+  </g>
+  <text x="304" y="150" fill="#2b2320" font-family="Avenir Next, Avenir, Segoe UI, Arial, sans-serif" font-size="88" font-weight="900" letter-spacing="0">Linen &amp; Lantern</text>
+  <path d="M310 184h830" fill="none" stroke="#eebc6a" stroke-width="12" stroke-linecap="round"/>
+</svg>

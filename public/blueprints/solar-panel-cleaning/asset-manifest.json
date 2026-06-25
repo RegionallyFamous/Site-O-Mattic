@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "slug": "solar-panel-cleaning",
+  "businessName": "SunWash Solar Care",
+  "layoutVariant": "service-receipt-stack",
+  "assets": {
+    "hero": {
+      "source": "assets/solar-panel-cleaning/sunwash-hero.jpg",
+      "fileName": "hero.jpg",
+      "outputPath": "/assets/hero.jpg",
+      "mimeType": "image/jpeg",
+      "byteSize": 274012,
+      "width": 1920,
+      "height": 1080,
+      "embedded": true
+    },
+    "logo": {
+      "source": "assets/solar-panel-cleaning/sunwash-logo.png",
+      "fileName": "logo.png",
+      "outputPath": "/assets/logo.png",
+      "mimeType": "image/png",
+      "byteSize": 35154,
+      "width": 1100,
+      "height": 260,
+      "embedded": true
+    },
+    "favicon": {
+      "source": "assets/solar-panel-cleaning/sunwash-favicon.png",
+      "fileName": "favicon.png",
+      "outputPath": "/assets/favicon.png",
+      "mimeType": "image/png",
+      "byteSize": 18882,
+      "width": 512,
+      "height": 512,
+      "embedded": true
+    }
+  }
+}

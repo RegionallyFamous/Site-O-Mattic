@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "slug": "dessert-table-bakery-catering",
+  "businessName": "Sugarline Dessert Co.",
+  "layoutVariant": "dessert-table-gallery",
+  "assets": {
+    "hero": {
+      "source": "assets/dessert-table-bakery-catering/sugarline-hero.jpg",
+      "fileName": "hero.jpg",
+      "outputPath": "/assets/hero.jpg",
+      "mimeType": "image/jpeg",
+      "byteSize": 266341,
+      "width": 1920,
+      "height": 1080,
+      "embedded": true
+    },
+    "logo": {
+      "source": "assets/dessert-table-bakery-catering/sugarline-logo.png",
+      "fileName": "logo.png",
+      "outputPath": "/assets/logo.png",
+      "mimeType": "image/png",
+      "byteSize": 25697,
+      "width": 1100,
+      "height": 260,
+      "embedded": true
+    },
+    "favicon": {
+      "source": "assets/dessert-table-bakery-catering/sugarline-favicon.png",
+      "fileName": "favicon.png",
+      "outputPath": "/assets/favicon.png",
+      "mimeType": "image/png",
+      "byteSize": 14170,
+      "width": 512,
+      "height": 512,
+      "embedded": true
+    }
+  }
+}

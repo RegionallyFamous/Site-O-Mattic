@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "slug": "smart-home-setup",
+  "businessName": "SignalNest Home Setup",
+  "layoutVariant": "side-rail-estimate",
+  "assets": {
+    "hero": {
+      "source": "assets/smart-home-setup/signalnest-hero.jpg",
+      "fileName": "hero.jpg",
+      "outputPath": "/assets/hero.jpg",
+      "mimeType": "image/jpeg",
+      "byteSize": 135690,
+      "width": 1920,
+      "height": 1080,
+      "embedded": true
+    },
+    "logo": {
+      "source": "assets/smart-home-setup/signalnest-logo.png",
+      "fileName": "logo.png",
+      "outputPath": "/assets/logo.png",
+      "mimeType": "image/png",
+      "byteSize": 43156,
+      "width": 1100,
+      "height": 260,
+      "embedded": true
+    },
+    "favicon": {
+      "source": "assets/smart-home-setup/signalnest-favicon.png",
+      "fileName": "favicon.png",
+      "outputPath": "/assets/favicon.png",
+      "mimeType": "image/png",
+      "byteSize": 22726,
+      "width": 512,
+      "height": 512,
+      "embedded": true
+    }
+  }
+}

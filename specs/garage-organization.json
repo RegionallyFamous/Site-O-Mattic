@@ -1,0 +1,154 @@
+{
+  "slug": "garage-organization",
+  "businessName": "GridNest Garage",
+  "niche": "garage organization service",
+  "layoutVariant": "zone-grid-planner",
+  "pattern": {
+    "primaryPattern": "zone-grid-planner",
+    "secondaryPattern": "service-area-confidence",
+    "silhouette": "operator-console",
+    "navigationPrimitive": "split-nav-action-header",
+    "mobileActionPattern": "photo-plan-actions",
+    "imageRole": "finished-outcome",
+    "imageEvidence": "finished organized zone outcome",
+    "ctaRhythm": "photo-plan",
+    "surfaceFamily": "grid-board",
+    "surfaceModel": "grid-map-zone-cards",
+    "styleFamily": "quiet-utility-grid",
+    "density": "compact-leadgen",
+    "colorRoles": {
+      "ink": "deepGreen",
+      "paper": "cream",
+      "field": "mist",
+      "line": "soil",
+      "primary": "grass",
+      "action": "sun",
+      "proof": "leaf",
+      "muted": "soil",
+      "warning": "sun",
+      "shadowTint": "deepGreen"
+    },
+    "geometry": {
+      "radiusScale": "grid-6",
+      "borderRole": "zone grid lines",
+      "shadowRole": "zone map and hero photo",
+      "mediaCrop": "organized outcome crop"
+    },
+    "coreBlockPlan": [
+      "columns",
+      "list",
+      "buttons"
+    ],
+    "knownRisks": [
+      "zone-map-too-decorative",
+      "mobile-grid-cramping",
+      "weak-floor-clear-proof"
+    ],
+    "styleContract": "Calm systems thinking with floor-clear proof, an organized garage wall image, safety-yellow zone accents, and a zone map as the signature move."
+  },
+  "tagline": "Garage systems that give every thing a home.",
+  "themeSlug": "twentytwentyfive",
+  "landingPage": "/",
+  "palette": {
+    "grass": "#4f6f86",
+    "deepGreen": "#20262d",
+    "leaf": "#7bbf9c",
+    "sun": "#f7c948",
+    "cream": "#f6f3eb",
+    "mist": "#d9dee2",
+    "soil": "#5b4b3f",
+    "white": "#ffffff"
+  },
+  "assets": {
+    "hero": "assets/garage-organization/gridnest-hero.jpg",
+    "logo": "assets/garage-organization/gridnest-logo.png",
+    "favicon": "assets/garage-organization/gridnest-favicon.png"
+  },
+  "assetMeta": {
+    "hero": {
+      "title": "GridNest garage organization hero image",
+      "alt": "A garage organizer placing a storage bin on a shelf beside a tidy pegboard wall, bicycles, tools, sports gear, and a clean epoxy floor."
+    }
+  },
+  "contact": {
+    "phoneLabel": "(555) 014-4412",
+    "phoneHref": "tel:+15550144412",
+    "email": "hello@gridnest.test",
+    "emailHref": "mailto:hello@gridnest.test",
+    "serviceArea": "Garage organization, wall storage, shelves, bins, pegboard zones, sports gear hooks, seasonal storage resets, workbench planning, and floor-clearing systems for attached garages across the north metro and nearby suburbs"
+  },
+  "copy": {
+    "eyebrow": "Garage organization with a real zone plan",
+    "heroTitle": "Open the garage and know exactly where things go.",
+    "heroText": "GridNest turns the mystery wall, seasonal pile, tool drift, and sports gear shuffle into a clean garage system that still works after real life walks through it.",
+    "primaryCta": "Design my garage",
+    "secondaryCta": "See the zones",
+    "introTitle": "A place for tools, bikes, bins, and the weird stuff too.",
+    "introText": "We map the garage by use, wall space, reach height, parking needs, seasonal habits, and the items that always sneak back onto the floor.",
+    "servicesTitle": "Choose your reset lane",
+    "processTitle": "From photo check to floor space",
+    "proofTitle": "Zone notes beat mystery bins",
+    "quoteTitle": "Ready to reclaim the parking spot?",
+    "quoteText": "Send wide garage photos, a rough list of what must stay, parking needs, and the zones you want first. We will reply with a clean plan path and install-ready next step."
+  },
+  "services": [
+    {
+      "title": "Wall System Reset",
+      "text": "Shelves, hooks, bins, pegboard, bike storage, and tool zones arranged around what you use often and what can live higher up."
+    },
+    {
+      "title": "Floor-Clear Garage",
+      "text": "A plan for parking lanes, bulky gear, sports baskets, garden tools, and seasonal bins so the floor stops becoming the default shelf."
+    },
+    {
+      "title": "Workbench And Utility Zone",
+      "text": "A tidy work area with tool access, charger spots, parts bins, cleaning supplies, and a sensible landing zone for quick weekend fixes."
+    }
+  ],
+  "process": [
+    {
+      "title": "Send the garage sweep",
+      "text": "Wide wall photos, ceiling height, parking goals, and the items you cannot toss tell us which zones should lead the plan."
+    },
+    {
+      "title": "Sort the zones",
+      "text": "We group by use: tools, garden, sports, bikes, seasonal, household overflow, donation, and the odd items that need a smarter home."
+    },
+    {
+      "title": "Build the grid",
+      "text": "The install places everyday items at easy reach, moves seasonal storage up, clears the floor, and leaves simple labels and reset notes."
+    }
+  ],
+  "proof": [
+    {
+      "stat": "4 zones",
+      "label": "tools, sports, seasonal, and overflow mapped before install"
+    },
+    {
+      "stat": "48 hr",
+      "label": "photo-plan reply for most standard garages"
+    },
+    {
+      "stat": "Floor first",
+      "label": "parking and walking lanes protected in the layout"
+    }
+  ],
+  "release": {
+    "status": "approved",
+    "reviewedAt": "2026-06-25",
+    "visualBaseline": "pending",
+    "reviewChecklist": {
+      "firstViewportClear": true,
+      "logoReadable": true,
+      "layoutDistinct": true,
+      "ctaClear": true,
+      "copySpecific": true,
+      "noImageArtifacts": true,
+      "heroArtDirected": true,
+      "hierarchyDistinct": true,
+      "signatureMove": true,
+      "restrainedComposition": true,
+      "screenshotCompared": true
+    }
+  }
+}

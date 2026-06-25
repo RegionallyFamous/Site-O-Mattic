@@ -1,0 +1,155 @@
+{
+  "slug": "closet-pantry-organization",
+  "businessName": "Shelfwise Organizing",
+  "niche": "closet and pantry organization service",
+  "layoutVariant": "organizing-zone-board",
+  "pattern": {
+    "primaryPattern": "consultation-story-flow",
+    "secondaryPattern": "daily-use-reset-proof",
+    "silhouette": "consultation-story-flow",
+    "navigationPrimitive": "section-anchor-strip",
+    "mobileActionPattern": "soft-reset-photo-plan-actions",
+    "imageRole": "process-closeup",
+    "imageEvidence": "organized pantry shelves with bins, baskets, and measuring plan",
+    "ctaRhythm": "consult-first",
+    "surfaceFamily": "single-elevated-proof",
+    "surfaceModel": "home-zone-grid-cards",
+    "styleFamily": "humanist-local-calm",
+    "density": "balanced-editorial",
+    "colorRoles": {
+      "ink": "deepGreen",
+      "paper": "cream",
+      "field": "mist",
+      "line": "soil",
+      "primary": "grass",
+      "action": "sun",
+      "proof": "leaf",
+      "muted": "soil",
+      "warning": "sun",
+      "shadowTint": "deepGreen"
+    },
+    "geometry": {
+      "radiusScale": "home-grid-8",
+      "borderRole": "zone board dividers",
+      "shadowRole": "zone board and shelf photo",
+      "mediaCrop": "organized shelf outcome crop"
+    },
+    "coreBlockPlan": [
+      "columns",
+      "image",
+      "list",
+      "buttons"
+    ],
+    "knownRisks": [
+      "too-perfect-stock-look",
+      "label-text-artifacts",
+      "mobile-zone-map-cramp"
+    ],
+    "styleContract": "Warm systems calm with daily-use proof, real pantry zone evidence, saffron action accents, and a storage zone board as the signature move."
+  },
+  "tagline": "Closets and pantries reset for actual daily life.",
+  "themeSlug": "twentytwentyfive",
+  "landingPage": "/",
+  "palette": {
+    "grass": "#52643a",
+    "deepGreen": "#263022",
+    "leaf": "#b58f6a",
+    "sun": "#f0c15a",
+    "cream": "#f7f0e5",
+    "mist": "#e6ded0",
+    "soil": "#5c5046",
+    "white": "#ffffff"
+  },
+  "assets": {
+    "hero": "assets/closet-pantry-organization/shelfwise-hero.jpg",
+    "logo": "assets/closet-pantry-organization/shelfwise-logo.png",
+    "favicon": "assets/closet-pantry-organization/shelfwise-favicon.png"
+  },
+  "assetMeta": {
+    "hero": {
+      "title": "Shelfwise closet and pantry organization hero image",
+      "alt": "An organizing consultant placing bins in a bright pantry with clear shelves, baskets, spice rows, a measuring tape, and a simple planning clipboard."
+    }
+  },
+  "contact": {
+    "phoneLabel": "(555) 014-5918",
+    "phoneHref": "tel:+15550145918",
+    "email": "hello@shelfwise.test",
+    "emailHref": "mailto:hello@shelfwise.test",
+    "serviceArea": "Closet resets, pantry zones, kid snack shelves, linen systems, drop zones, donation sorting, bin planning, shelf measuring, and label-light maintenance plans for busy homes across nearby neighborhoods"
+  },
+  "copy": {
+    "eyebrow": "Closet and pantry organization with real-life zones",
+    "heroTitle": "Make the shelf make sense on a Tuesday.",
+    "heroText": "Shelfwise builds closets and pantries around reach height, repeat groceries, laundry habits, morning exits, and the items that always wander back to the wrong place.",
+    "primaryCta": "Start my reset",
+    "secondaryCta": "See the zones",
+    "introTitle": "A zone for snacks, sheets, backups, and the mystery basket.",
+    "introText": "We plan by shelf depth, item frequency, household height, donation decisions, restock habits, and what needs to be visible without turning your home into a showroom.",
+    "servicesTitle": "Choose your reset zone",
+    "processTitle": "How the reset stays usable",
+    "proofTitle": "Order that survives the next grocery run",
+    "quoteTitle": "Ready to make the shelf behave?",
+    "quoteText": "Send wide photos, shelf measurements if you have them, what feels hardest, and who uses the space. We will reply with a reset path and supply notes."
+  },
+  "services": [
+    {
+      "title": "Pantry Flow Reset",
+      "text": "Shelf zones for breakfast, snacks, cans, baking, backstock, lunch packing, and the foods that vanish unless they stay visible."
+    },
+    {
+      "title": "Closet Daily System",
+      "text": "Hanging, folded, shoe, laundry, accessory, and seasonal zones arranged around the clothes you actually reach for."
+    },
+    {
+      "title": "Maintenance Mini Plan",
+      "text": "Simple reset rules, donation prompts, restock notes, and a low-label approach that does not require perfection to keep working."
+    }
+  ],
+  "process": [
+    {
+      "title": "Photo and measure",
+      "text": "Wide photos, pain points, shelf sizes, and household habits tell us which zones need the first pass."
+    },
+    {
+      "title": "Sort by use",
+      "text": "We group keep, donate, relocate, backstock, daily reach, and seasonal items before buying bins or changing shelves."
+    },
+    {
+      "title": "Install the zones",
+      "text": "The final setup keeps frequent items visible, backup items contained, and the maintenance rules short enough to use."
+    }
+  ],
+  "proof": [
+    {
+      "stat": "Zone map",
+      "label": "planned before containers take over"
+    },
+    {
+      "stat": "2 hr",
+      "label": "mini reset windows for small spaces"
+    },
+    {
+      "stat": "Daily reach",
+      "label": "most-used items live where hands already go"
+    }
+  ],
+  "release": {
+    "status": "approved",
+    "reviewedAt": "2026-06-25",
+    "visualBaseline": "pending",
+    "reviewChecklist": {
+      "firstViewportClear": true,
+      "logoReadable": true,
+      "layoutDistinct": true,
+      "ctaClear": true,
+      "copySpecific": true,
+      "noImageArtifacts": true,
+      "heroArtDirected": true,
+      "hierarchyDistinct": true,
+      "signatureMove": true,
+      "restrainedComposition": true,
+      "screenshotCompared": true
+    }
+  }
+}

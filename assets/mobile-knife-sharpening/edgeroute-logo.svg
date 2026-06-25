@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 260" role="img" aria-labelledby="title">
+  <title id="title">EdgeRoute Sharpening logo</title>
+  <rect width="1100" height="260" fill="none"/>
+  <g transform="translate(42 38)"><circle cx="92" cy="92" r="72" fill="#f3eadc"/><circle cx="92" cy="92" r="66" fill="#1d2426"/><path d="M47 124l77-77 21 21-77 77H47z" fill="#e4b04a"/><path d="M108 63l25 25" stroke="#f3eadc" stroke-width="9" stroke-linecap="round"/><path d="M46 142h53" stroke="#9aa36b" stroke-width="12" stroke-linecap="round"/></g>
+  <g transform="translate(250 78)">
+    <text x="0" y="82" font-family="Avenir Next, Segoe UI, Arial, sans-serif" font-size="92" font-weight="850" letter-spacing="0" fill="#1d2426">EdgeRoute</text>
+    <path d="M5 114h398" stroke="#e4b04a" stroke-width="12" stroke-linecap="round"/>
+    <path d="M426 114h124" stroke="#9aa36b" stroke-width="12" stroke-linecap="round"/>
+  </g>
+</svg>

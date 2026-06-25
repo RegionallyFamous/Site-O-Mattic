@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title">
+  <title id="title">SunWash Solar favicon</title>
+  <rect width="512" height="512" rx="108" fill="#10233f"/>
+  <path d="M348 100c0 51-41 92-92 92s-92-41-92-92c0-16 4-31 12-45 17 26 46 43 80 43s63-17 80-43c8 14 12 29 12 45Z" fill="#f5c84b"/>
+  <rect x="116" y="190" width="280" height="190" rx="34" fill="#f7fbff"/>
+  <path d="M154 230h204M154 278h204M154 326h204M211 210v148M280 210v148" stroke="#1f7a9a" stroke-width="20" stroke-linecap="round"/>
+  <path d="M384 384c-34 31-79 50-128 50-55 0-105-23-140-60" fill="none" stroke="#3eb489" stroke-width="34" stroke-linecap="round"/>
+</svg>

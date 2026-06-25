@@ -3,6 +3,51 @@
   "businessName": "BlueLane Pool Care",
   "niche": "pool cleaning service",
   "layoutVariant": "water-test-board",
+  "pattern": {
+    "primaryPattern": "water-test-board-route",
+    "secondaryPattern": "chemistry-proof-strip",
+    "silhouette": "operator-console",
+    "navigationPrimitive": "split-nav-action-header",
+    "mobileActionPattern": "start-service-actions",
+    "imageRole": "work-in-progress",
+    "imageEvidence": "water-care work with measurable chemistry proof",
+    "ctaRhythm": "start-service",
+    "surfaceFamily": "status-board",
+    "surfaceModel": "floating-proof-board",
+    "styleFamily": "clear-status-dashboard",
+    "density": "compact-leadgen",
+    "colorRoles": {
+      "ink": "deepGreen",
+      "paper": "cream",
+      "field": "mist",
+      "line": "leaf",
+      "primary": "grass",
+      "action": "sun",
+      "proof": "leaf",
+      "muted": "soil",
+      "warning": "sun",
+      "shadowTint": "deepGreen"
+    },
+    "geometry": {
+      "radiusScale": "dashboard-8",
+      "borderRole": "status board dividers",
+      "shadowRole": "floating water board only",
+      "mediaCrop": "water service cover crop"
+    },
+    "coreBlockPlan": [
+      "cover",
+      "columns",
+      "table",
+      "list",
+      "buttons"
+    ],
+    "knownRisks": [
+      "water-board-pushes-cta",
+      "mobile-hero-image-loss",
+      "chemistry-proof-too-decorative"
+    ],
+    "styleContract": "Clear-water dashboard calm with chemistry proof, pool service action imagery, test-strip action accents, and a floating water board as the signature move."
+  },
   "tagline": "Weekly pool care with chemistry that behaves.",
   "themeSlug": "twentytwentyfive",
   "landingPage": "/",

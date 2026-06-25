@@ -649,7 +649,6 @@ function buildRouteLedSchedulePageContent(spec) {
   const processCards = spec.process.map((item, index) => routeProcessCard(index + 1, item.title, item.text)).join("\n");
   const proof = spec.proof.map((item) => routeProofCard(item.stat, item.label)).join("\n");
   const routeAnchor = anchorAt(navLinks, 0, "routes");
-  const notesAnchor = anchorAt(navLinks, 1, "notes");
 
   return `
 <!-- wp:group {"metadata":{"name":"Route-led schedule page"},"align":"full","className":"som-route-page","backgroundColor":"cream","style":{"spacing":{"padding":{"top":"0","right":"0","bottom":"0","left":"0"}}},"layout":{"type":"default"}} -->

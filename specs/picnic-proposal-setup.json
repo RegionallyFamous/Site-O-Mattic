@@ -1,0 +1,156 @@
+{
+  "slug": "picnic-proposal-setup",
+  "businessName": "Linen & Lantern Setups",
+  "niche": "picnic and proposal setup service",
+  "layoutVariant": "picnic-proposal-lookbook",
+  "pattern": {
+    "primaryPattern": "gallery-led-portfolio-proof",
+    "secondaryPattern": "occasion-logistics-proof",
+    "silhouette": "editorial-proof-stage",
+    "navigationPrimitive": "compact-header",
+    "mobileActionPattern": "post-hero-date-location-actions",
+    "imageRole": "finished-outcome",
+    "imageEvidence": "styled picnic and proposal setup with low table, florals, cushions, and sunset location context",
+    "ctaRhythm": "date-check",
+    "surfaceFamily": "gallery-mosaic",
+    "surfaceModel": "occasion-style-cards-with-add-on-captions",
+    "styleFamily": "editorial-proof-stage",
+    "density": "visual-first",
+    "colorRoles": {
+      "ink": "deepGreen",
+      "paper": "cream",
+      "field": "mist",
+      "line": "leaf",
+      "primary": "grass",
+      "action": "sun",
+      "proof": "leaf",
+      "muted": "soil",
+      "warning": "sun",
+      "shadowTint": "deepGreen"
+    },
+    "geometry": {
+      "radiusScale": "linen-soft-12",
+      "borderRole": "occasion card dividers",
+      "shadowRole": "lookbook image lift only",
+      "mediaCrop": "wide styled setup crop"
+    },
+    "coreBlockPlan": [
+      "cover",
+      "image",
+      "gallery",
+      "quote",
+      "buttons"
+    ],
+    "knownRisks": [
+      "first-viewport-cta",
+      "logo-scale",
+      "mobile-crop"
+    ],
+    "styleContract": "Romantic and practical with timing proof, styled picnic evidence, rose-gold action accents, and occasion lookbook cards as the signature move."
+  },
+  "tagline": "Styled picnic setups with timing handled.",
+  "themeSlug": "twentytwentyfive",
+  "landingPage": "/",
+  "palette": {
+    "grass": "#8b6457",
+    "deepGreen": "#2b2320",
+    "leaf": "#b77b83",
+    "sun": "#eebc6a",
+    "cream": "#fff5ea",
+    "mist": "#eaded5",
+    "soil": "#675650",
+    "white": "#ffffff"
+  },
+  "assets": {
+    "hero": "assets/picnic-proposal-setup/linenlantern-hero.jpg",
+    "logo": "assets/picnic-proposal-setup/linenlantern-logo.png",
+    "favicon": "assets/picnic-proposal-setup/linenlantern-favicon.png"
+  },
+  "assetMeta": {
+    "hero": {
+      "title": "Linen & Lantern picnic proposal setup hero image",
+      "alt": "A stylist finishing a romantic picnic setup with low table, cushions, florals, candles, and sunset park view."
+    }
+  },
+  "contact": {
+    "phoneLabel": "(555) 014-5266",
+    "phoneHref": "tel:+15550145266",
+    "email": "hello@linenlantern.test",
+    "emailHref": "mailto:hello@linenlantern.test",
+    "serviceArea": "Luxury picnic setups, proposal scenes, anniversary picnics, birthday lounges, small shower setups, add-on florals, pickup, setup, and teardown across parks, homes, and private venues"
+  },
+  "copy": {
+    "eyebrow": "Picnic and proposal setups with soft landing logistics",
+    "heroTitle": "A beautiful setup, ready before the big little moment.",
+    "heroText": "Linen & Lantern creates styled picnic and proposal moments with linens, florals, cushions, timing notes, access planning, and a calm backup plan if weather gets theatrical.",
+    "primaryCta": "Plan a setup",
+    "secondaryCta": "View looks",
+    "introTitle": "Romantic should still be practical.",
+    "introText": "We confirm occasion, location access, timing, guest count, palette, add-ons, and what should happen before and after the reveal.",
+    "servicesTitle": "Pick the occasion style",
+    "processTitle": "How the setup lands on time",
+    "proofTitle": "Pretty needs a plan",
+    "quoteTitle": "Ready to plan the setup?",
+    "quoteText": "Send your date, location idea, guest count, occasion, color direction, and add-ons. We will suggest a setup path and timing window."
+  },
+  "services": [
+    {
+      "title": "Classic Picnic",
+      "text": "Low table, pillows, linens, tableware styling, florals, and a simple setup for birthdays, dates, or small gatherings."
+    },
+    {
+      "title": "Proposal Setup",
+      "text": "A more intentional scene with florals, candles, timing notes, and a quiet reveal plan."
+    },
+    {
+      "title": "Add-On Moment",
+      "text": "Dessert styling, extra florals, signage-free decor, sparkling water, or photo-ready finishing touches."
+    }
+  ],
+  "process": [
+    {
+      "title": "Choose the location",
+      "text": "We check access, rules, parking, timing, shade, and weather before the look gets locked."
+    },
+    {
+      "title": "Style the setup",
+      "text": "Palette, florals, seating, table details, and add-ons get translated into a practical setup plan."
+    },
+    {
+      "title": "Arrive before the moment",
+      "text": "We set, style, photograph the handoff if needed, and return for teardown on schedule."
+    }
+  ],
+  "proof": [
+    {
+      "stat": "Weather note",
+      "label": "backup timing discussed early"
+    },
+    {
+      "stat": "Setup map",
+      "label": "access and parking checked"
+    },
+    {
+      "stat": "Teardown option",
+      "label": "no awkward cleanup after the moment"
+    }
+  ],
+  "release": {
+    "status": "approved",
+    "reviewedAt": "2026-06-25",
+    "visualBaseline": "pending",
+    "reviewChecklist": {
+      "firstViewportClear": true,
+      "logoReadable": true,
+      "layoutDistinct": true,
+      "ctaClear": true,
+      "copySpecific": true,
+      "noImageArtifacts": true,
+      "heroArtDirected": true,
+      "hierarchyDistinct": true,
+      "signatureMove": true,
+      "restrainedComposition": true,
+      "screenshotCompared": true
+    }
+  }
+}

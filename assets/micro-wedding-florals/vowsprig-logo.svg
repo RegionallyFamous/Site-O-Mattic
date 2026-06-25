@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 260" role="img" aria-labelledby="title desc">
+  <title id="title">VowSprig Florals logo</title>
+  <desc id="desc">A custom brand mark beside the VowSprig Florals wordmark.</desc>
+  <rect width="1100" height="260" fill="none"/>
+  <g transform="translate(78 34)">
+    <rect x="0" y="0" width="192" height="192" rx="44" fill="#253025"/>
+    <path d="M132 214V118" stroke="#b88f8e" stroke-width="14" stroke-linecap="round"/><path d="M132 144c-40-24-50-64-19-91 31 27 25 67 19 91z" fill="#fbf2eb"/><path d="M132 144c40-24 50-64 19-91-31 27-25 67-19 91z" fill="#efb86a"/><path d="M132 141c-44 8-75-14-70-54 41-4 64 22 70 54z" fill="#b88f8e"/><circle cx="132" cy="122" r="18" fill="#253025"/>
+  </g>
+  <text x="304" y="150" fill="#253025" font-family="Avenir Next, Avenir, Segoe UI, Arial, sans-serif" font-size="94" font-weight="900" letter-spacing="0">VowSprig</text>
+  <path d="M310 184h671" fill="none" stroke="#efb86a" stroke-width="12" stroke-linecap="round"/>
+</svg>

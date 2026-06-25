@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 260" role="img" aria-labelledby="title desc">
+  <title id="title">SpritzLoop Beverage Cart logo</title>
+  <desc id="desc">A custom brand mark beside the SpritzLoop Beverage Cart wordmark.</desc>
+  <rect width="1100" height="260" fill="none"/>
+  <g transform="translate(78 34)">
+    <rect x="0" y="0" width="192" height="192" rx="44" fill="#122b2a"/>
+    <path d="M92 58h92l-12 88c-4 29-23 46-34 49v25h34" fill="none" stroke="#fff7e8" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/><path d="M104 108h66" stroke="#f4b84a" stroke-width="18" stroke-linecap="round"/><path d="M172 54l24-30" stroke="#7fc9a9" stroke-width="11" stroke-linecap="round"/><circle cx="119" cy="90" r="8" fill="#7fc9a9"/><circle cx="149" cy="89" r="8" fill="#7fc9a9"/>
+  </g>
+  <text x="304" y="150" fill="#122b2a" font-family="Avenir Next, Avenir, Segoe UI, Arial, sans-serif" font-size="94" font-weight="900" letter-spacing="0">SpritzLoop</text>
+  <path d="M310 184h761" fill="none" stroke="#f4b84a" stroke-width="12" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 260" role="img" aria-labelledby="title">
+  <title id="title">KindMove Downsizing logo</title>
+  <rect width="1100" height="260" fill="none"/>
+  <g transform="translate(42 38)"><circle cx="92" cy="92" r="72" fill="#f8efe7"/><circle cx="92" cy="92" r="66" fill="#263047"/><path d="M92 137c-22-20-43-38-43-60 0-15 11-25 25-25 9 0 16 4 18 10 3-6 10-10 19-10 14 0 25 10 25 25 0 22-21 40-44 60z" fill="#efbd67"/><path d="M57 141h70" stroke="#b79c74" stroke-width="12" stroke-linecap="round"/></g>
+  <g transform="translate(250 78)">
+    <text x="0" y="82" font-family="Avenir Next, Segoe UI, Arial, sans-serif" font-size="92" font-weight="850" letter-spacing="0" fill="#263047">KindMove</text>
+    <path d="M5 114h398" stroke="#efbd67" stroke-width="12" stroke-linecap="round"/>
+    <path d="M426 114h124" stroke="#b79c74" stroke-width="12" stroke-linecap="round"/>
+  </g>
+</svg>

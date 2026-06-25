@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "slug": "garage-organization",
+  "businessName": "GridNest Garage",
+  "layoutVariant": "zone-grid-planner",
+  "assets": {
+    "hero": {
+      "source": "assets/garage-organization/gridnest-hero.jpg",
+      "fileName": "hero.jpg",
+      "outputPath": "/assets/hero.jpg",
+      "mimeType": "image/jpeg",
+      "byteSize": 400463,
+      "width": 1920,
+      "height": 1080,
+      "embedded": true
+    },
+    "logo": {
+      "source": "assets/garage-organization/gridnest-logo.png",
+      "fileName": "logo.png",
+      "outputPath": "/assets/logo.png",
+      "mimeType": "image/png",
+      "byteSize": 34692,
+      "width": 1100,
+      "height": 260,
+      "embedded": true
+    },
+    "favicon": {
+      "source": "assets/garage-organization/gridnest-favicon.png",
+      "fileName": "favicon.png",
+      "outputPath": "/assets/favicon.png",
+      "mimeType": "image/png",
+      "byteSize": 13203,
+      "width": 512,
+      "height": 512,
+      "embedded": true
+    }
+  }
+}

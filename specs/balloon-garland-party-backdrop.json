@@ -1,0 +1,155 @@
+{
+  "slug": "balloon-garland-party-backdrop",
+  "businessName": "PopArc Party Styling",
+  "niche": "balloon garland and party backdrop styling",
+  "layoutVariant": "balloon-backdrop-gallery",
+  "pattern": {
+    "primaryPattern": "gallery-led-portfolio-proof",
+    "secondaryPattern": "install-logistics-proof",
+    "silhouette": "gallery-mosaic-proof",
+    "navigationPrimitive": "compact-header",
+    "mobileActionPattern": "post-hero-date-actions",
+    "imageRole": "work-in-progress",
+    "imageEvidence": "stylist installing a colorful balloon garland and party backdrop in an event space",
+    "ctaRhythm": "date-check",
+    "surfaceFamily": "gallery-mosaic",
+    "surfaceModel": "backdrop-package-cards-with-color-captions",
+    "styleFamily": "editorial-proof-stage",
+    "density": "visual-first",
+    "colorRoles": {
+      "ink": "deepGreen",
+      "paper": "cream",
+      "field": "mist",
+      "line": "leaf",
+      "primary": "grass",
+      "action": "sun",
+      "proof": "leaf",
+      "muted": "soil",
+      "warning": "sun",
+      "shadowTint": "deepGreen"
+    },
+    "geometry": {
+      "radiusScale": "party-rounded",
+      "borderRole": "color plan separators",
+      "shadowRole": "backdrop image lift",
+      "mediaCrop": "wide backdrop install crop"
+    },
+    "coreBlockPlan": [
+      "cover",
+      "image",
+      "gallery",
+      "buttons"
+    ],
+    "knownRisks": [
+      "first-viewport-cta",
+      "logo-scale",
+      "mobile-crop"
+    ],
+    "styleContract": "Playful and polished with install proof, colorful backdrop evidence, party-yellow action accents, and size-based backdrop cards as the signature move."
+  },
+  "tagline": "Party backdrops with color plans that behave.",
+  "themeSlug": "twentytwentyfive",
+  "landingPage": "/",
+  "palette": {
+    "grass": "#7a4f9f",
+    "deepGreen": "#241d32",
+    "leaf": "#65b9aa",
+    "sun": "#f5bf5b",
+    "cream": "#fff7ef",
+    "mist": "#eadff5",
+    "soil": "#5b5368",
+    "white": "#ffffff"
+  },
+  "assets": {
+    "hero": "assets/balloon-garland-party-backdrop/poparc-hero.jpg",
+    "logo": "assets/balloon-garland-party-backdrop/poparc-logo.png",
+    "favicon": "assets/balloon-garland-party-backdrop/poparc-favicon.png"
+  },
+  "assetMeta": {
+    "hero": {
+      "title": "PopArc party backdrop styling hero image",
+      "alt": "A party stylist adjusts a colorful balloon garland arch and fabric backdrop in a modern event space."
+    }
+  },
+  "contact": {
+    "phoneLabel": "(555) 014-9087",
+    "phoneHref": "tel:+15550149087",
+    "email": "hello@poparc.test",
+    "emailHref": "mailto:hello@poparc.test",
+    "serviceArea": "Balloon garlands, party backdrops, shower installs, birthday arches, corporate photo corners, color plans, delivery, setup, and teardown options across town"
+  },
+  "copy": {
+    "eyebrow": "Balloon installs with color, scale, and cleanup handled",
+    "heroTitle": "Your party backdrop should look planned, not panicked.",
+    "heroText": "PopArc designs balloon garlands, backdrop moments, and photo-ready party corners with clear sizing, color notes, setup timing, and teardown options.",
+    "primaryCta": "Style my party",
+    "secondaryCta": "View backdrop sizes",
+    "introTitle": "A playful install still needs grown-up logistics.",
+    "introText": "We confirm venue rules, ceiling or wall access, color references, backdrop size, install window, and what happens after the last photo.",
+    "servicesTitle": "Pick the party shape",
+    "processTitle": "How install day stays smooth",
+    "proofTitle": "Backdrop proof before the camera roll",
+    "quoteTitle": "Ready to style the party?",
+    "quoteText": "Send your date, venue, install window, palette, backdrop inspiration, and rough guest flow. We will recommend the right size and setup path."
+  },
+  "services": [
+    {
+      "title": "Mini Moment",
+      "text": "A smaller garland, plinth, or photo corner for homes, restaurants, and tight event spaces."
+    },
+    {
+      "title": "Statement Backdrop",
+      "text": "A fuller arch or wall moment with color planning, install notes, and photo-ready proportions."
+    },
+    {
+      "title": "Full Party Corner",
+      "text": "Backdrop, garland, plinth styling, optional florals, and teardown planning for bigger guest flow."
+    }
+  ],
+  "process": [
+    {
+      "title": "Send the space",
+      "text": "Photos, wall size, install window, access rules, and color references help us choose a realistic build."
+    },
+    {
+      "title": "Lock the palette",
+      "text": "We translate inspiration into balloon tones, backdrop fabric, and accent pieces that work in the room."
+    },
+    {
+      "title": "Install and hand off",
+      "text": "We arrive with the build plan, protect the space, style the final details, and confirm teardown."
+    }
+  ],
+  "proof": [
+    {
+      "stat": "Color plan",
+      "label": "palette checked before ordering"
+    },
+    {
+      "stat": "Install window",
+      "label": "arrival and teardown options mapped"
+    },
+    {
+      "stat": "Photo corner",
+      "label": "built for guest flow and camera angles"
+    }
+  ],
+  "release": {
+    "status": "approved",
+    "reviewedAt": "2026-06-25",
+    "visualBaseline": "pending",
+    "reviewChecklist": {
+      "firstViewportClear": true,
+      "logoReadable": true,
+      "layoutDistinct": true,
+      "ctaClear": true,
+      "copySpecific": true,
+      "noImageArtifacts": true,
+      "heroArtDirected": true,
+      "hierarchyDistinct": true,
+      "signatureMove": true,
+      "restrainedComposition": true,
+      "screenshotCompared": true
+    }
+  }
+}

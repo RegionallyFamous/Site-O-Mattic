@@ -7,7 +7,6 @@
     <path d="M53 116c32-8 55-20 79-41" fill="none" stroke="#ffffff" stroke-width="11" stroke-linecap="round" opacity=".92"/>
     <path d="M37 49h39" stroke="#f0a820" stroke-width="15" stroke-linecap="round"/>
   </g>
-  <text x="280" y="114" fill="#15191c" font-family="Arial, Helvetica, sans-serif" font-size="76" font-weight="900" letter-spacing="0">Blackline</text>
-  <text x="282" y="175" fill="#3f4444" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="800" letter-spacing="1.5">SEALCOATING</text>
-  <path d="M281 203h418" stroke="#f0a820" stroke-width="10" stroke-linecap="round"/>
+  <text x="280" y="156" fill="#15191c" font-family="Arial, Helvetica, sans-serif" font-size="92" font-weight="900" letter-spacing="0">Blackline</text>
+  <path d="M282 190h420" stroke="#f0a820" stroke-width="10" stroke-linecap="round"/>
 </svg>

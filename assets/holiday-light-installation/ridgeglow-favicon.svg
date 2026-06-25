@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">RidgeGlow favicon</title>
+  <desc id="desc">Roofline light mark.</desc>
+  <rect width="512" height="512" rx="112" fill="#10233f"/>
+  <path d="M96 270 256 144l160 126" fill="none" stroke="#ffffff" stroke-width="42" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M140 282h232" fill="none" stroke="#ffffff" stroke-width="42" stroke-linecap="round"/>
+  <g fill="#f7c948">
+    <circle cx="158" cy="230" r="34"/>
+    <circle cx="222" cy="178" r="34"/>
+    <circle cx="290" cy="178" r="34"/>
+    <circle cx="354" cy="230" r="34"/>
+  </g>
+  <path d="M202 320h108v80H202z" fill="#f7c948"/>
+</svg>

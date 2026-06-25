@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "slug": "mobile-bicycle-repair",
+  "businessName": "TuneLoop Bike Repair",
+  "layoutVariant": "bike-route-workstand",
+  "assets": {
+    "hero": {
+      "source": "assets/mobile-bicycle-repair/tuneloop-hero.jpg",
+      "fileName": "hero.jpg",
+      "outputPath": "/assets/hero.jpg",
+      "mimeType": "image/jpeg",
+      "byteSize": 275595,
+      "width": 1920,
+      "height": 1080,
+      "embedded": true
+    },
+    "logo": {
+      "source": "assets/mobile-bicycle-repair/tuneloop-logo.png",
+      "fileName": "logo.png",
+      "outputPath": "/assets/logo.png",
+      "mimeType": "image/png",
+      "byteSize": 41575,
+      "width": 1100,
+      "height": 260,
+      "embedded": true
+    },
+    "favicon": {
+      "source": "assets/mobile-bicycle-repair/tuneloop-favicon.png",
+      "fileName": "favicon.png",
+      "outputPath": "/assets/favicon.png",
+      "mimeType": "image/png",
+      "byteSize": 28053,
+      "width": 512,
+      "height": 512,
+      "embedded": true
+    }
+  }
+}

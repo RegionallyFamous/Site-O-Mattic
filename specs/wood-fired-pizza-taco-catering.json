@@ -1,0 +1,155 @@
+{
+  "slug": "wood-fired-pizza-taco-catering",
+  "businessName": "Ember & Masa Catering",
+  "niche": "wood-fired pizza and taco pop-up catering",
+  "layoutVariant": "street-food-menu-board",
+  "pattern": {
+    "primaryPattern": "package-menu-board",
+    "secondaryPattern": "guest-count-setup-proof",
+    "silhouette": "package-menu-board",
+    "navigationPrimitive": "menu-utility-header",
+    "mobileActionPattern": "date-check-menu-actions",
+    "imageRole": "work-in-progress",
+    "imageEvidence": "caterers preparing pizza and tacos beside a wood-fired oven and prep table",
+    "ctaRhythm": "date-check",
+    "surfaceFamily": "ticket-menu-board",
+    "surfaceModel": "sample-menu-cards-with-setup-ticket",
+    "styleFamily": "hospitality-menu",
+    "density": "compact-leadgen",
+    "colorRoles": {
+      "ink": "deepGreen",
+      "paper": "cream",
+      "field": "mist",
+      "line": "leaf",
+      "primary": "grass",
+      "action": "sun",
+      "proof": "leaf",
+      "muted": "soil",
+      "warning": "sun",
+      "shadowTint": "deepGreen"
+    },
+    "geometry": {
+      "radiusScale": "menu-ticket-8",
+      "borderRole": "menu dividers and setup notes",
+      "shadowRole": "menu ticket and hero photo",
+      "mediaCrop": "live catering action crop"
+    },
+    "coreBlockPlan": [
+      "columns",
+      "table",
+      "list",
+      "buttons"
+    ],
+    "knownRisks": [
+      "first-viewport-cta",
+      "logo-scale",
+      "mobile-crop"
+    ],
+    "styleContract": "Warm and lively with guest-count proof, live-fire catering evidence, flame-yellow action accents, and a readable menu ticket as the signature move."
+  },
+  "tagline": "Live-fire catering for hungry parties.",
+  "themeSlug": "twentytwentyfive",
+  "landingPage": "/",
+  "palette": {
+    "grass": "#a33d2e",
+    "deepGreen": "#211917",
+    "leaf": "#4f8f72",
+    "sun": "#f3b23d",
+    "cream": "#fff3df",
+    "mist": "#ead4bd",
+    "soil": "#6b4b39",
+    "white": "#ffffff"
+  },
+  "assets": {
+    "hero": "assets/wood-fired-pizza-taco-catering/embermasa-hero.jpg",
+    "logo": "assets/wood-fired-pizza-taco-catering/embermasa-logo.png",
+    "favicon": "assets/wood-fired-pizza-taco-catering/embermasa-favicon.png"
+  },
+  "assetMeta": {
+    "hero": {
+      "title": "Ember & Masa live-fire catering hero image",
+      "alt": "Two caterers preparing wood-fired pizza and tacos at an outdoor event station with oven, tortillas, and toppings."
+    }
+  },
+  "contact": {
+    "phoneLabel": "(555) 014-2678",
+    "phoneHref": "tel:+15550142678",
+    "email": "hello@embermasa.test",
+    "emailHref": "mailto:hello@embermasa.test",
+    "serviceArea": "Live-fire pizza, taco pop-ups, backyard parties, rehearsal dinners, office lunches, graduation nights, and neighborhood events across the central metro"
+  },
+  "copy": {
+    "eyebrow": "Pizza, tacos, and a tidy live-fire setup",
+    "heroTitle": "Feed the party from the flame and the comal.",
+    "heroText": "Ember & Masa brings wood-fired pies, taco boards, prep tables, and a calm crew so your party gets the theater without the kitchen panic.",
+    "primaryCta": "Feed my event",
+    "secondaryCta": "Sample the menu",
+    "introTitle": "A menu board that respects guest count, timing, and setup space.",
+    "introText": "We match the menu to guest count, dietary notes, prep footprint, service window, and whether your crowd leans pizza, tacos, or both.",
+    "servicesTitle": "Build the live menu",
+    "processTitle": "How the pop-up service works",
+    "proofTitle": "Host proof before the first slice",
+    "quoteTitle": "Ready to feed your event?",
+    "quoteText": "Send the date, location, guest count, power or outdoor access, and the kind of spread you want. We will reply with a menu path and setup notes."
+  },
+  "services": [
+    {
+      "title": "Pizza And Taco Pop-Up",
+      "text": "A flexible spread with wood-fired pizzas, tortilla rounds, salsas, toppings, and crew-paced service for mingling guests."
+    },
+    {
+      "title": "Pizza-First Party",
+      "text": "Signature pies, seasonal add-ons, salad boards, and a service rhythm that keeps the oven moving without a buffet traffic jam."
+    },
+    {
+      "title": "Taco Table Night",
+      "text": "Proteins or vegetables, tortillas, salsas, garnishes, and setup notes for yards, courtyards, offices, and casual receptions."
+    }
+  ],
+  "process": [
+    {
+      "title": "Share the event shape",
+      "text": "Guest count, location, date, timing, and food preferences help us pick a realistic service lane."
+    },
+    {
+      "title": "Confirm the footprint",
+      "text": "We check prep space, access, weather plan, and whether the service is buffet, station, or paced rounds."
+    },
+    {
+      "title": "Serve and reset cleanly",
+      "text": "The crew cooks, replenishes, keeps the station tidy, and leaves with a simple host handoff."
+    }
+  ],
+  "proof": [
+    {
+      "stat": "30-120 guests",
+      "label": "right-sized pop-up options"
+    },
+    {
+      "stat": "Setup notes",
+      "label": "access and timing confirmed early"
+    },
+    {
+      "stat": "Two menus",
+      "label": "pizza, tacos, or a mixed spread"
+    }
+  ],
+  "release": {
+    "status": "approved",
+    "reviewedAt": "2026-06-25",
+    "visualBaseline": "pending",
+    "reviewChecklist": {
+      "firstViewportClear": true,
+      "logoReadable": true,
+      "layoutDistinct": true,
+      "ctaClear": true,
+      "copySpecific": true,
+      "noImageArtifacts": true,
+      "heroArtDirected": true,
+      "hierarchyDistinct": true,
+      "signatureMove": true,
+      "restrainedComposition": true,
+      "screenshotCompared": true
+    }
+  }
+}

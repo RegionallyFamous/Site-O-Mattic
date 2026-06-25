@@ -1,0 +1,156 @@
+{
+  "slug": "small-event-dj-sound",
+  "businessName": "SoundNest Events",
+  "niche": "small-event DJ and sound service",
+  "layoutVariant": "soundcheck-console",
+  "pattern": {
+    "primaryPattern": "operational-side-rail-console",
+    "secondaryPattern": "date-and-setup-proof",
+    "silhouette": "side-rail-service-story",
+    "navigationPrimitive": "desktop-side-rail",
+    "mobileActionPattern": "rail-collapses-to-date-actions",
+    "imageRole": "work-in-progress",
+    "imageEvidence": "DJ running a soundcheck with compact speakers, mixer, and tidy cable setup",
+    "ctaRhythm": "date-check",
+    "surfaceFamily": "side-rail",
+    "surfaceModel": "sound-console-package-cards",
+    "styleFamily": "operator-console",
+    "density": "compact-leadgen",
+    "colorRoles": {
+      "ink": "deepGreen",
+      "paper": "cream",
+      "field": "mist",
+      "line": "leaf",
+      "primary": "grass",
+      "action": "sun",
+      "proof": "leaf",
+      "muted": "soil",
+      "warning": "sun",
+      "shadowTint": "deepGreen"
+    },
+    "geometry": {
+      "radiusScale": "console-4",
+      "borderRole": "sound package rails",
+      "shadowRole": "rail and setup ticket",
+      "mediaCrop": "soundcheck equipment crop"
+    },
+    "coreBlockPlan": [
+      "columns",
+      "navigation",
+      "image",
+      "list",
+      "buttons"
+    ],
+    "knownRisks": [
+      "first-viewport-cta",
+      "logo-scale",
+      "mobile-crop"
+    ],
+    "styleContract": "Energetic and controlled with setup proof, real soundcheck evidence, signal-lime action accents, and a side-rail sound console as the signature move."
+  },
+  "tagline": "Sound setups for parties that still need conversation.",
+  "themeSlug": "twentytwentyfive",
+  "landingPage": "/",
+  "palette": {
+    "grass": "#2f7d46",
+    "deepGreen": "#10131a",
+    "leaf": "#7f8cff",
+    "sun": "#f5c84b",
+    "cream": "#f4f1ea",
+    "mist": "#dfe4ea",
+    "soil": "#515967",
+    "white": "#ffffff"
+  },
+  "assets": {
+    "hero": "assets/small-event-dj-sound/soundnest-hero.jpg",
+    "logo": "assets/small-event-dj-sound/soundnest-logo.png",
+    "favicon": "assets/small-event-dj-sound/soundnest-favicon.png"
+  },
+  "assetMeta": {
+    "hero": {
+      "title": "SoundNest small-event DJ sound hero image",
+      "alt": "A professional DJ doing a soundcheck at a tidy mixer and speaker setup in a small event room."
+    }
+  },
+  "contact": {
+    "phoneLabel": "(555) 014-7118",
+    "phoneHref": "tel:+15550147118",
+    "email": "hello@soundnest.test",
+    "emailHref": "mailto:hello@soundnest.test",
+    "serviceArea": "Small weddings, birthdays, nonprofit events, community rooms, patios, private dinners, corporate mixers, microphones, compact DJ setups, and sound support across town"
+  },
+  "copy": {
+    "eyebrow": "Small-event DJ and sound without the stage drama",
+    "heroTitle": "The right sound setup for the room you actually booked.",
+    "heroText": "SoundNest handles music flow, microphones, compact speakers, clean cables, and readable volume so small events feel alive without swallowing the room.",
+    "primaryCta": "Check my date",
+    "secondaryCta": "See event fit",
+    "introTitle": "Great sound starts before the playlist.",
+    "introText": "We ask about room size, guest count, speeches, power, load-in, music tone, and whether dancing is the point or just part of the night.",
+    "servicesTitle": "Match the sound to the event",
+    "processTitle": "How the soundcheck works",
+    "proofTitle": "Proof before the first song",
+    "quoteTitle": "Ready to check your event date?",
+    "quoteText": "Send your date, venue, room size, guest count, and music needs. We will reply with the right sound package and setup notes."
+  },
+  "services": [
+    {
+      "title": "Mixer Social",
+      "text": "Background music, tasteful transitions, compact speakers, and a volume plan that still lets guests talk."
+    },
+    {
+      "title": "Dance-Ready Party",
+      "text": "DJ flow, stronger speaker coverage, dance lights used with restraint, and a clean setup for birthdays or receptions."
+    },
+    {
+      "title": "Mic And Music Support",
+      "text": "Ceremony audio, speeches, announcements, playlists, and compact sound for rooms that need clarity more than spectacle."
+    }
+  ],
+  "process": [
+    {
+      "title": "Share the room",
+      "text": "Venue, power, guest count, speeches, and music tone help us choose the right setup."
+    },
+    {
+      "title": "Confirm load-in",
+      "text": "We plan arrival, cables, speaker placement, and any venue limits before event day."
+    },
+    {
+      "title": "Soundcheck and host",
+      "text": "We test levels, cue microphones, manage transitions, and keep the setup tidy through breakdown."
+    }
+  ],
+  "proof": [
+    {
+      "stat": "Clear mics",
+      "label": "speech support tested before guests arrive"
+    },
+    {
+      "stat": "Compact setup",
+      "label": "right-sized speakers for the room"
+    },
+    {
+      "stat": "Clean cables",
+      "label": "load-in and safety planned ahead"
+    }
+  ],
+  "release": {
+    "status": "approved",
+    "reviewedAt": "2026-06-25",
+    "visualBaseline": "pending",
+    "reviewChecklist": {
+      "firstViewportClear": true,
+      "logoReadable": true,
+      "layoutDistinct": true,
+      "ctaClear": true,
+      "copySpecific": true,
+      "noImageArtifacts": true,
+      "heroArtDirected": true,
+      "hierarchyDistinct": true,
+      "signatureMove": true,
+      "restrainedComposition": true,
+      "screenshotCompared": true
+    }
+  }
+}

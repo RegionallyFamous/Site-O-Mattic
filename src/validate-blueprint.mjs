@@ -20,18 +20,24 @@ const ALLOWED_CORE_BLOCKS = new Set([
   "column",
   "columns",
   "cover",
+  "details",
+  "gallery",
   "group",
   "heading",
   "image",
   "list",
   "list-item",
+  "media-text",
   "navigation",
   "navigation-link",
   "paragraph",
   "post-content",
+  "pullquote",
+  "quote",
   "separator",
   "site-logo",
-  "spacer"
+  "spacer",
+  "table"
 ]);
 
 const targets = process.argv.slice(2);
@@ -161,11 +167,17 @@ function validateGlobalStyles(phpCode, errors) {
     "core/button",
     "core/buttons",
     "core/columns",
+    "core/details",
+    "core/gallery",
     "core/group",
     "core/heading",
     "core/image",
     "core/list",
-    "core/navigation"
+    "core/media-text",
+    "core/navigation",
+    "core/pullquote",
+    "core/quote",
+    "core/table"
   ];
   const blockStyles = styles.blocks || {};
 
@@ -234,17 +246,46 @@ function validateLayoutSignature(phpCode, pageContent, errors) {
     errors.push(`Layout signature variant is not implemented in the layout catalog: ${signature.variant}.`);
   }
 
-  const requiredStringFields = ["variant", "archetype", "hero", "navigationTreatment", "typographyTreatment", "colorStrategy", "servicePresentation", "proofTreatment", "ctaRhythm"];
+  const requiredStringFields = [
+    "variant",
+    "archetype",
+    "hero",
+    "navigationTreatment",
+    "typographyTreatment",
+    "colorStrategy",
+    "primaryPattern",
+    "secondaryPattern",
+    "silhouette",
+    "navigationPrimitive",
+    "mobileActionPattern",
+    "imageRole",
+    "imageEvidence",
+    "ctaRhythmPattern",
+    "surfaceFamily",
+    "surfaceModel",
+    "styleFamily",
+    "density",
+    "styleContract",
+    "servicePresentation",
+    "proofTreatment",
+    "ctaRhythm"
+  ];
   for (const field of requiredStringFields) {
     if (!signature[field] || typeof signature[field] !== "string") {
       errors.push(`Layout signature missing string field: ${field}.`);
     }
   }
 
-  const requiredArrayFields = ["sectionOrder", "navLabels", "anchorOrder", "componentClassesExpected", "layoutMarkers"];
+  const requiredArrayFields = ["coreBlockPlan", "knownRisks", "sectionOrder", "navLabels", "anchorOrder", "componentClassesExpected", "layoutMarkers"];
   for (const field of requiredArrayFields) {
     if (!Array.isArray(signature[field]) || !signature[field].length) {
       errors.push(`Layout signature missing array field: ${field}.`);
+    }
+  }
+
+  for (const field of ["colorRoles", "geometry"]) {
+    if (!signature[field] || typeof signature[field] !== "object" || Array.isArray(signature[field])) {
+      errors.push(`Layout signature missing object field: ${field}.`);
     }
   }
 

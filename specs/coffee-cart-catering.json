@@ -3,6 +3,50 @@
   "businessName": "Cartwright Coffee Co.",
   "niche": "coffee cart catering service",
   "layoutVariant": "package-menu-board",
+  "pattern": {
+    "primaryPattern": "package-menu-board",
+    "secondaryPattern": "event-fit-date-reassurance",
+    "silhouette": "package-menu-board",
+    "navigationPrimitive": "menu-utility-header",
+    "mobileActionPattern": "date-check-actions",
+    "imageRole": "work-in-progress",
+    "imageEvidence": "live event service moment with package context",
+    "ctaRhythm": "date-check",
+    "surfaceFamily": "ticket-menu-board",
+    "surfaceModel": "ticket-menu-board",
+    "styleFamily": "hospitality-menu",
+    "density": "balanced-editorial",
+    "colorRoles": {
+      "ink": "deepGreen",
+      "paper": "cream",
+      "field": "mist",
+      "line": "soil",
+      "primary": "grass",
+      "action": "sun",
+      "proof": "leaf",
+      "muted": "soil",
+      "warning": "sun",
+      "shadowTint": "deepGreen"
+    },
+    "geometry": {
+      "radiusScale": "ticket-6",
+      "borderRole": "menu dividers and package rows",
+      "shadowRole": "menu ticket only",
+      "mediaCrop": "live-service horizontal crop"
+    },
+    "coreBlockPlan": [
+      "columns",
+      "table",
+      "list",
+      "buttons"
+    ],
+    "knownRisks": [
+      "package-card-crowding",
+      "date-cta-buried",
+      "menu-board-overstyling"
+    ],
+    "styleContract": "Warm event hospitality with package-fit proof, a live espresso cart image, citrus action accents, and a readable menu ticket as the signature move."
+  },
   "tagline": "A tidy espresso bar that makes the room smell like yes.",
   "themeSlug": "twentytwentyfive",
   "landingPage": "/",

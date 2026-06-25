@@ -1,0 +1,155 @@
+{
+  "slug": "holiday-light-installation",
+  "businessName": "RidgeGlow Holiday Lights",
+  "niche": "holiday light installation service",
+  "layoutVariant": "urgent-checklist",
+  "pattern": {
+    "primaryPattern": "date-window-reservation",
+    "secondaryPattern": "checklist-safety-date-proof",
+    "silhouette": "viewport-safe-conversion-shell",
+    "navigationPrimitive": "viewport-safe-hero-shell",
+    "mobileActionPattern": "date-check-actions",
+    "imageRole": "environment-context",
+    "imageEvidence": "seasonal work in progress with safety context",
+    "ctaRhythm": "date-check",
+    "surfaceFamily": "single-elevated-proof",
+    "surfaceModel": "date-board-checklist-cards",
+    "styleFamily": "humanist-local-calm",
+    "density": "balanced-editorial",
+    "colorRoles": {
+      "ink": "deepGreen",
+      "paper": "cream",
+      "field": "mist",
+      "line": "soil",
+      "primary": "grass",
+      "action": "sun",
+      "proof": "leaf",
+      "muted": "soil",
+      "warning": "sun",
+      "shadowTint": "deepGreen"
+    },
+    "geometry": {
+      "radiusScale": "utility-6",
+      "borderRole": "date checklist dividers",
+      "shadowRole": "date board and hero media",
+      "mediaCrop": "seasonal action crop"
+    },
+    "coreBlockPlan": [
+      "columns",
+      "image",
+      "details",
+      "buttons"
+    ],
+    "knownRisks": [
+      "seasonal-urgency-too-loud",
+      "dark-hero-contrast",
+      "date-board-pushes-cta"
+    ],
+    "styleContract": "Crisp blue-hour urgency with ladder-safety proof, real roofline install evidence, warm-light action accents, and a reserve-date board as the signature move."
+  },
+  "tagline": "Roofline lights installed before the cold gets bossy.",
+  "themeSlug": "twentytwentyfive",
+  "landingPage": "/",
+  "palette": {
+    "grass": "#a8342f",
+    "deepGreen": "#10233f",
+    "leaf": "#2f7d62",
+    "sun": "#f7c948",
+    "cream": "#fff8ec",
+    "mist": "#e6eef7",
+    "soil": "#4d5b6e",
+    "white": "#ffffff"
+  },
+  "assets": {
+    "hero": "assets/holiday-light-installation/ridgeglow-hero.jpg",
+    "logo": "assets/holiday-light-installation/ridgeglow-logo.png",
+    "favicon": "assets/holiday-light-installation/ridgeglow-favicon.png"
+  },
+  "assetMeta": {
+    "hero": {
+      "title": "RidgeGlow holiday light installation hero image",
+      "alt": "Two holiday light installers safely placing warm white roofline lights on a suburban home at blue-hour dusk."
+    }
+  },
+  "contact": {
+    "phoneLabel": "(555) 014-1225",
+    "phoneHref": "tel:+15550141225",
+    "email": "hello@ridgeglow.test",
+    "emailHref": "mailto:hello@ridgeglow.test",
+    "serviceArea": "Holiday roofline lights, porch columns, wreaths, timers, removal, and labeled storage for homes across the north suburbs, lake neighborhoods, and nearby cul-de-sacs"
+  },
+  "copy": {
+    "eyebrow": "Holiday light installation with safe ladder energy",
+    "heroTitle": "Reserve the roofline before the freeze shows up.",
+    "heroText": "RidgeGlow installs warm, tidy holiday lights with roofline clips, timer setup, labeled removal, and a calm crew that does not make your gutters part of the drama.",
+    "primaryCta": "Reserve my roofline",
+    "secondaryCta": "See install options",
+    "introTitle": "Classic glow, tidy clips, no extension-cord mystery.",
+    "introText": "We plan the line, power access, timer location, ladder approach, clip style, removal date, and storage labels before the first strand goes up.",
+    "servicesTitle": "Pick the glow level",
+    "processTitle": "How the season stays safe",
+    "proofTitle": "Seasonal proof that matters",
+    "quoteTitle": "Ready to hold an install window?",
+    "quoteText": "Send a front-of-house photo, roofline wish list, power outlet notes, and your ideal install week. We will reply with the cleanest light plan and available dates."
+  },
+  "services": [
+    {
+      "title": "Warm White Roofline",
+      "text": "Straight, classic roofline lights with clean clips, power planning, timer setup, and a final dusk check before the ladder leaves."
+    },
+    {
+      "title": "Classic Plus Accents",
+      "text": "Roofline lighting plus porch columns, wreaths, small trees, or garage trim for homes that want a little more sparkle without going full parade float."
+    },
+    {
+      "title": "Removal And Storage",
+      "text": "Post-season takedown, strand check, clip sorting, and labeled storage notes so next year starts with fewer tangled mysteries."
+    }
+  ],
+  "process": [
+    {
+      "title": "Send the roofline",
+      "text": "A wide front photo, power outlet notes, steep areas, and the style you like help us build a real date and ladder plan."
+    },
+    {
+      "title": "Install with a checklist",
+      "text": "The crew checks clips, ladder placement, cords, timers, roof edges, and the final run before turning the glow on."
+    },
+    {
+      "title": "Remove and label",
+      "text": "After the season, we remove strands cleanly, check for repairs, and label storage so next winter does not start in a knot."
+    }
+  ],
+  "proof": [
+    {
+      "stat": "Oct-Nov",
+      "label": "best install window before weather gets rude"
+    },
+    {
+      "stat": "Clip-safe",
+      "label": "roofline planning without staple scars"
+    },
+    {
+      "stat": "Labeled",
+      "label": "removal and storage notes for next season"
+    }
+  ],
+  "release": {
+    "status": "approved",
+    "reviewedAt": "2026-06-25",
+    "visualBaseline": "pending",
+    "reviewChecklist": {
+      "firstViewportClear": true,
+      "logoReadable": true,
+      "layoutDistinct": true,
+      "ctaClear": true,
+      "copySpecific": true,
+      "noImageArtifacts": true,
+      "heroArtDirected": true,
+      "hierarchyDistinct": true,
+      "signatureMove": true,
+      "restrainedComposition": true,
+      "screenshotCompared": true
+    }
+  }
+}

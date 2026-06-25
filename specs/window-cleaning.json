@@ -3,6 +3,50 @@
   "businessName": "ClearPane Window Care",
   "niche": "window cleaning service",
   "layoutVariant": "checklist-urgency",
+  "pattern": {
+    "primaryPattern": "checklist-urgency-gate",
+    "secondaryPattern": "service-checklist-proof",
+    "silhouette": "checklist-urgency-gate",
+    "navigationPrimitive": "compact-header",
+    "mobileActionPattern": "inline-checklist-actions",
+    "imageRole": "work-in-progress",
+    "imageEvidence": "visible checklist-triggering service work",
+    "ctaRhythm": "quote-first",
+    "surfaceFamily": "outlined-repeaters",
+    "surfaceModel": "checklist-cards-proof-strip",
+    "styleFamily": "risk-control-alert",
+    "density": "compact-leadgen",
+    "colorRoles": {
+      "ink": "deepGreen",
+      "paper": "cream",
+      "field": "mist",
+      "line": "leaf",
+      "primary": "grass",
+      "action": "sun",
+      "proof": "leaf",
+      "muted": "soil",
+      "warning": "sun",
+      "shadowTint": "deepGreen"
+    },
+    "geometry": {
+      "radiusScale": "utility-6",
+      "borderRole": "checklist row separators",
+      "shadowRole": "minimal proof band lift",
+      "mediaCrop": "clean vertical work crop"
+    },
+    "coreBlockPlan": [
+      "columns",
+      "list",
+      "buttons",
+      "details"
+    ],
+    "knownRisks": [
+      "checklist-label-wrapping",
+      "glass-palette-low-contrast",
+      "nav-label-repetition"
+    ],
+    "styleContract": "Bright and exacting with edge-check proof, real squeegee work evidence, yellow checklist/action accents, and a checklist hero panel as the signature move."
+  },
   "tagline": "Glass so clear the sunshine gets cocky.",
   "themeSlug": "twentytwentyfive",
   "landingPage": "/",

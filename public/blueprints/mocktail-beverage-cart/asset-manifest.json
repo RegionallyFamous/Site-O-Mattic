@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "slug": "mocktail-beverage-cart",
+  "businessName": "SpritzLoop Beverage Cart",
+  "layoutVariant": "mocktail-cart-menu",
+  "assets": {
+    "hero": {
+      "source": "assets/mocktail-beverage-cart/spritzloop-hero.jpg",
+      "fileName": "hero.jpg",
+      "outputPath": "/assets/hero.jpg",
+      "mimeType": "image/jpeg",
+      "byteSize": 237439,
+      "width": 1920,
+      "height": 1080,
+      "embedded": true
+    },
+    "logo": {
+      "source": "assets/mocktail-beverage-cart/spritzloop-logo.png",
+      "fileName": "logo.png",
+      "outputPath": "/assets/logo.png",
+      "mimeType": "image/png",
+      "byteSize": 26859,
+      "width": 1100,
+      "height": 260,
+      "embedded": true
+    },
+    "favicon": {
+      "source": "assets/mocktail-beverage-cart/spritzloop-favicon.png",
+      "fileName": "favicon.png",
+      "outputPath": "/assets/favicon.png",
+      "mimeType": "image/png",
+      "byteSize": 14035,
+      "width": 512,
+      "height": 512,
+      "embedded": true
+    }
+  }
+}
