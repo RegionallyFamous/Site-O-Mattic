@@ -49,11 +49,13 @@ async function buildReport(target) {
   add(checks, "body type is readable", isReadableBodyStack(type.bodyFont), type.bodyFont || "missing body font");
   add(checks, "display type avoids novelty fonts", hasNoNoveltyFonts(type.displayFont), type.displayFont || "missing display font");
   add(checks, "accent type avoids novelty fonts", hasNoNoveltyFonts(type.accentFont), type.accentFont || "missing accent font");
+  add(checks, "role font voices have contrast", roleFontVoicesHaveContrast(type), describeRoleVoices(type));
   add(checks, "heading weight restraint", headingWeightPass(type), `weight ${type.headingWeight || "missing"} for ${type.displayFont || "missing display font"}`);
   add(checks, "action/nav weight restraint", actionWeightPass(type), `action ${type.actionWeight || "missing"}, nav ${type.navWeight || "missing"}`);
   add(checks, "line-height readability", lineHeightsPass(type), `heading ${type.headingLineHeight || "missing"}, body ${type.bodyLineHeight || "missing"}`);
   add(checks, "readable copy measure", measurePass(customCss, measure), `copy ${measure.copy || "missing"}, tight ${measure.tight || "missing"}`);
   add(checks, "fluid scale restraint", fluidScalePass(fontSizes), describeScale(fontSizes));
+  add(checks, "proof metric alignment rails", proofMetricAlignmentPass(customCss), "Shared CSS uses fixed stat and label rows for proof cards.");
   add(checks, "effective heading caps", headingCaps, "Shared CSS caps h1/h2/h3 size, weight, and line-height over legacy inline styles.");
   add(checks, "manual headline hyphenation", headlineHyphenationPass(customCss), "Headlines should wrap by words first; do not allow automatic mid-word hyphenation.");
   add(checks, "variant rhythm does not undercut type system", variantRhythmPass(customCss), "Variant CSS must not reintroduce cramped important line-height overrides.");
@@ -91,7 +93,30 @@ function isReadableBodyStack(stack) {
 
 function hasNoNoveltyFonts(stack) {
   return Boolean(stack)
-    && !/\b(Impact|Arial Black|Segoe UI Black|Comic Sans|Papyrus|Brush Script|Curlz|Jokerman|Chiller|Cooper Black|Arial Rounded MT Bold)\b/i.test(stack);
+    && !/\b(Impact|Arial Black|Segoe UI Black|Comic Sans|Papyrus|Brush Script|Curlz|Jokerman|Chiller|Cooper Black|Arial Rounded MT Bold|Chalkboard|Marker Felt|Noteworthy|Herculanum|Zapfino|Snell Roundhand|Mistral|Bradley Hand|Hobo|Party LET)\b/i.test(stack);
+}
+
+function roleFontVoicesHaveContrast(type) {
+  const body = primaryFamily(type.bodyFont);
+  const display = primaryFamily(type.displayFont);
+  const accent = primaryFamily(type.accentFont);
+  const voices = new Set([body, display, accent].filter(Boolean));
+  return Boolean(body && display && accent)
+    && body !== display
+    && voices.size >= 2;
+}
+
+function describeRoleVoices(type) {
+  return `body ${primaryFamily(type.bodyFont) || "missing"}, display ${primaryFamily(type.displayFont) || "missing"}, accent ${primaryFamily(type.accentFont) || "missing"}`;
+}
+
+function primaryFamily(stack) {
+  return String(stack || "")
+    .split(",")[0]
+    .replaceAll("\"", "")
+    .replaceAll("'", "")
+    .trim()
+    .toLowerCase();
 }
 
 function headingWeightPass(type) {
@@ -155,6 +180,13 @@ function measurePass(customCss, measure) {
     && customCss.includes("--wp--custom--som--measure--copy")
     && customCss.includes("max-inline-size:var(--wp--custom--som--measure--copy)")
     && customCss.includes("p.has-text-align-center");
+}
+
+function proofMetricAlignmentPass(customCss) {
+  return customCss.includes("grid-template-rows:minmax(2.1em, auto) auto")
+    && customCss.includes("[class*=\"-proof-card\"]")
+    && customCss.includes("font-family:var(--wp--preset--font-family--display)!important")
+    && customCss.includes("font-family:var(--wp--preset--font-family--accent)!important");
 }
 
 function variantRhythmPass(customCss) {
@@ -250,7 +282,8 @@ function fontWeightFromStyle(style) {
 }
 
 function isSerifStack(stack) {
-  return /\b(serif|Georgia|Cambria|Iowan|Palatino|Rockwell|Slab)\b/i.test(String(stack || ""));
+  const value = String(stack || "").replace(/\bsans-serif\b/gi, "");
+  return /\b(serif|Georgia|Cambria|Iowan|Palatino|Rockwell|Slab|Didot|Bodoni|Baskerville|Hoefler|Charter|American Typewriter|Times)\b/i.test(value);
 }
 
 function remValue(value) {

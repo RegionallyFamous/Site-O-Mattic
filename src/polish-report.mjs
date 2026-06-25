@@ -72,6 +72,7 @@ async function buildReport(target) {
   add(checks, "block-level styling", ["core/button", "core/buttons", "core/columns", "core/group", "core/heading", "core/image", "core/list", "core/navigation"].every((name) => blockStyles[name]), "Core block defaults are styled in global styles.");
   add(checks, "hover and focus", Boolean(globalStyles?.styles?.elements?.link?.[":hover"] && globalStyles?.styles?.elements?.link?.[":focus"] && customCss.includes(":focus-visible")), "Links and buttons have interactive states.");
   add(checks, "component polish classes", componentClasses.size >= 3 && customCss.includes(".som-card"), `${componentClasses.size} Site-O-Mattic component classes found.`);
+  add(checks, "proof card alignment system", proofCardAlignmentSystemPass(customCss), "Metric/proof cards use fixed stat and label rows with role-based type.");
   add(checks, "layout signature", Boolean(layoutSignature?.variant && layoutSignature?.archetype), layoutSignature ? `${layoutSignature.variant}: ${layoutSignature.archetype}` : "Missing layout signature.");
   add(checks, "valid in-page anchors", hrefTargets.every((targetId) => ids.has(targetId)), hrefTargets.length ? `${hrefTargets.length} in-page links checked.` : "No in-page links found.");
   add(checks, "no empty links", !/href=(["'])#\1/.test(pageContent), "No empty hash links.");
@@ -116,6 +117,13 @@ function contrastPairsPass(palette) {
     }
     return contrastRatio(palette[a], palette[b]) >= 4.5;
   });
+}
+
+function proofCardAlignmentSystemPass(customCss) {
+  return customCss.includes("grid-template-rows:minmax(2.1em, auto) auto")
+    && customCss.includes("[class*=\"-proof-card\"]")
+    && customCss.includes("font-family:var(--wp--preset--font-family--display)!important")
+    && customCss.includes("font-family:var(--wp--preset--font-family--accent)!important");
 }
 
 function extractBusinessName(phpCode) {

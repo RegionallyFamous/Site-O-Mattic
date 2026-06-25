@@ -5343,24 +5343,28 @@ function buildTypographyTokens(spec) {
   const archetype = layoutArchetypeFor(spec);
   const treatment = archetype.typographyTreatment || "friendly-bold-route-sans";
   const stacks = {
-    system: "system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Inter, Roboto, Arial, sans-serif",
-    rounded: "\"Avenir Next\", Avenir, \"Trebuchet MS\", \"Segoe UI\", Arial, sans-serif",
+    system: "Aptos, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Arial, sans-serif",
     humanist: "\"Avenir Next\", Avenir, \"Segoe UI\", \"Helvetica Neue\", Arial, sans-serif",
-    editorial: "Georgia, Cambria, \"Times New Roman\", serif",
-    elegant: "\"Iowan Old Style\", \"Palatino Linotype\", Palatino, Georgia, serif",
-    slab: "\"Roboto Slab\", Rockwell, Georgia, serif",
-    casual: "\"Trebuchet MS\", \"Avenir Next\", Avenir, Arial, sans-serif",
-    condensed: "\"Aptos Narrow\", \"Arial Narrow\", \"Roboto Condensed\", Arial, sans-serif",
-    sturdy: "\"Aptos Display\", \"Segoe UI\", \"Helvetica Neue\", Arial, sans-serif",
-    mono: "\"SFMono-Regular\", Consolas, \"Liberation Mono\", Menlo, monospace"
+    warmHumanist: "Optima, Candara, \"Segoe UI\", Arial, sans-serif",
+    friendly: "\"Gill Sans\", \"Trebuchet MS\", Calibri, Arial, sans-serif",
+    editorial: "\"Hoefler Text\", \"Iowan Old Style\", \"Palatino Linotype\", Palatino, Georgia, serif",
+    book: "Charter, \"Bitstream Charter\", \"Sitka Text\", Cambria, Georgia, serif",
+    fashion: "Didot, \"Bodoni 72\", \"Bodoni MT\", Baskerville, Georgia, serif",
+    slab: "Rockwell, \"American Typewriter\", Georgia, serif",
+    typewriter: "\"American Typewriter\", Rockwell, Georgia, serif",
+    geometric: "Futura, \"Century Gothic\", \"Avenir Next\", Arial, sans-serif",
+    condensed: "\"DIN Alternate\", \"Aptos Narrow\", \"Arial Narrow\", \"Roboto Condensed\", Arial, sans-serif",
+    sturdy: "\"Franklin Gothic Medium\", \"Aptos Display\", \"Segoe UI\", Arial, sans-serif",
+    mono: "\"IBM Plex Mono\", \"SFMono-Regular\", Consolas, \"Liberation Mono\", Menlo, monospace",
+    receipt: "\"Courier New\", \"SFMono-Regular\", Consolas, monospace"
   };
   const treatments = {
     "friendly-bold-route-sans": {
       body: stacks.system,
-      display: stacks.rounded,
-      accent: stacks.system,
+      display: stacks.geometric,
+      accent: stacks.sturdy,
       scale: "generous",
-      headingWeight: "900",
+      headingWeight: "780",
       actionWeight: "800",
       navWeight: "800",
       linkWeight: "800",
@@ -5368,24 +5372,24 @@ function buildTypographyTokens(spec) {
       bodyLineHeight: "1.52"
     },
     "confident-transform-grotesk": {
-      body: stacks.system,
+      body: stacks.warmHumanist,
       display: stacks.sturdy,
       accent: stacks.condensed,
       scale: "bold",
-      headingWeight: "900",
-      actionWeight: "850",
-      navWeight: "850",
-      linkWeight: "850",
+      headingWeight: "820",
+      actionWeight: "820",
+      navWeight: "800",
+      linkWeight: "800",
       headingLineHeight: "0.98",
       bodyLineHeight: "1.48"
     },
     "crisp-checklist-ui-sans": {
       body: stacks.system,
-      display: stacks.humanist,
-      accent: stacks.system,
+      display: stacks.sturdy,
+      accent: stacks.mono,
       scale: "compact",
-      headingWeight: "850",
-      actionWeight: "850",
+      headingWeight: "820",
+      actionWeight: "800",
       navWeight: "800",
       linkWeight: "800",
       headingLineHeight: "1.04",
@@ -5396,31 +5400,31 @@ function buildTypographyTokens(spec) {
       display: stacks.condensed,
       accent: stacks.sturdy,
       scale: "bold",
-      headingWeight: "900",
-      actionWeight: "900",
-      navWeight: "850",
-      linkWeight: "850",
+      headingWeight: "820",
+      actionWeight: "820",
+      navWeight: "800",
+      linkWeight: "800",
       headingLineHeight: "1",
       bodyLineHeight: "1.48"
     },
     "industrial-seasonal-condensed": {
-      body: stacks.system,
+      body: stacks.humanist,
       display: stacks.condensed,
-      accent: stacks.condensed,
+      accent: stacks.mono,
       scale: "wide",
-      headingWeight: "900",
-      actionWeight: "850",
-      navWeight: "850",
+      headingWeight: "820",
+      actionWeight: "800",
+      navWeight: "800",
       linkWeight: "800",
       headingLineHeight: "0.98",
       bodyLineHeight: "1.48"
     },
     "soft-domestic-humanist": {
-      body: stacks.humanist,
-      display: stacks.humanist,
-      accent: stacks.system,
+      body: stacks.warmHumanist,
+      display: stacks.editorial,
+      accent: stacks.friendly,
       scale: "soft",
-      headingWeight: "800",
+      headingWeight: "660",
       actionWeight: "800",
       navWeight: "750",
       linkWeight: "750",
@@ -5430,9 +5434,9 @@ function buildTypographyTokens(spec) {
     "editorial-gallery-serif-display": {
       body: stacks.humanist,
       display: stacks.editorial,
-      accent: stacks.system,
+      accent: stacks.sturdy,
       scale: "editorial",
-      headingWeight: "700",
+      headingWeight: "660",
       actionWeight: "800",
       navWeight: "750",
       linkWeight: "750",
@@ -5444,57 +5448,57 @@ function buildTypographyTokens(spec) {
       display: stacks.condensed,
       accent: stacks.mono,
       scale: "compact",
-      headingWeight: "900",
-      actionWeight: "850",
-      navWeight: "850",
+      headingWeight: "820",
+      actionWeight: "800",
+      navWeight: "800",
       linkWeight: "800",
       headingLineHeight: "0.99",
       bodyLineHeight: "1.48"
     },
     "menu-board-display-sans": {
       body: stacks.humanist,
-      display: stacks.condensed,
-      accent: stacks.mono,
+      display: stacks.geometric,
+      accent: stacks.receipt,
       scale: "wide",
-      headingWeight: "900",
-      actionWeight: "850",
-      navWeight: "850",
+      headingWeight: "780",
+      actionWeight: "800",
+      navWeight: "800",
       linkWeight: "800",
       headingLineHeight: "0.98",
       bodyLineHeight: "1.52"
     },
     "mobile-action-ui-sans": {
       body: stacks.system,
-      display: stacks.sturdy,
-      accent: stacks.system,
+      display: stacks.geometric,
+      accent: stacks.sturdy,
       scale: "bold",
-      headingWeight: "900",
-      actionWeight: "900",
-      navWeight: "850",
-      linkWeight: "850",
+      headingWeight: "780",
+      actionWeight: "820",
+      navWeight: "800",
+      linkWeight: "800",
       headingLineHeight: "0.98",
       bodyLineHeight: "1.48"
     },
     "clean-water-dashboard-sans": {
       body: stacks.system,
-      display: stacks.rounded,
+      display: stacks.geometric,
       accent: stacks.mono,
       scale: "generous",
-      headingWeight: "900",
-      actionWeight: "850",
-      navWeight: "850",
+      headingWeight: "760",
+      actionWeight: "800",
+      navWeight: "800",
       linkWeight: "800",
       headingLineHeight: "0.99",
       bodyLineHeight: "1.5"
     },
     "organized-grid-humanist-sans": {
       body: stacks.humanist,
-      display: stacks.system,
+      display: stacks.sturdy,
       accent: stacks.mono,
       scale: "compact",
-      headingWeight: "900",
-      actionWeight: "850",
-      navWeight: "850",
+      headingWeight: "780",
+      actionWeight: "800",
+      navWeight: "800",
       linkWeight: "800",
       headingLineHeight: "1",
       bodyLineHeight: "1.52"
@@ -5502,47 +5506,47 @@ function buildTypographyTokens(spec) {
     "urgent-utility-checklist": {
       body: stacks.system,
       display: stacks.condensed,
-      accent: stacks.system,
+      accent: stacks.mono,
       scale: "bold",
-      headingWeight: "900",
-      actionWeight: "900",
-      navWeight: "850",
-      linkWeight: "850",
+      headingWeight: "820",
+      actionWeight: "820",
+      navWeight: "800",
+      linkWeight: "800",
       headingLineHeight: "0.99",
       bodyLineHeight: "1.5"
     },
     "craft-bench-sturdy-serif-sans": {
-      body: stacks.humanist,
-      display: stacks.sturdy,
+      body: stacks.warmHumanist,
+      display: stacks.slab,
       accent: stacks.mono,
       scale: "compact",
-      headingWeight: "900",
-      actionWeight: "850",
-      navWeight: "850",
+      headingWeight: "700",
+      actionWeight: "800",
+      navWeight: "800",
       linkWeight: "800",
       headingLineHeight: "1",
       bodyLineHeight: "1.52"
     },
     "receipt-scope-mono-accent": {
       body: stacks.system,
-      display: stacks.humanist,
-      accent: stacks.mono,
+      display: stacks.condensed,
+      accent: stacks.receipt,
       scale: "compact",
-      headingWeight: "850",
-      actionWeight: "850",
-      navWeight: "850",
+      headingWeight: "800",
+      actionWeight: "800",
+      navWeight: "800",
       linkWeight: "800",
       headingLineHeight: "1.02",
       bodyLineHeight: "1.54"
     }
   };
   treatments["polished-consultant-editorial-sans"] = {
-    body: stacks.humanist,
-    display: stacks.humanist,
+    body: stacks.warmHumanist,
+    display: stacks.editorial,
     accent: stacks.mono,
     scale: "soft",
-    headingWeight: "800",
-    actionWeight: "850",
+    headingWeight: "660",
+    actionWeight: "800",
     navWeight: "800",
     linkWeight: "800",
     headingLineHeight: "1.03",
@@ -5550,35 +5554,35 @@ function buildTypographyTokens(spec) {
   };
   treatments["app-like-booking-ui"] = {
     body: stacks.system,
-    display: stacks.sturdy,
-    accent: stacks.system,
+    display: stacks.geometric,
+    accent: stacks.sturdy,
     scale: "bold",
-    headingWeight: "900",
-    actionWeight: "900",
-    navWeight: "850",
-    linkWeight: "850",
+    headingWeight: "780",
+    actionWeight: "820",
+    navWeight: "800",
+    linkWeight: "800",
     headingLineHeight: "0.98",
     bodyLineHeight: "1.48"
   };
   treatments["sharp-craft-route-serif-sans"] = {
     body: stacks.humanist,
-    display: stacks.sturdy,
+    display: stacks.slab,
     accent: stacks.mono,
     scale: "compact",
-    headingWeight: "900",
-    actionWeight: "850",
-    navWeight: "850",
+    headingWeight: "700",
+    actionWeight: "800",
+    navWeight: "800",
     linkWeight: "800",
     headingLineHeight: "1",
     bodyLineHeight: "1.52"
   };
   treatments["soft-systems-humanist-sans"] = {
-    body: stacks.humanist,
-    display: stacks.system,
+    body: stacks.warmHumanist,
+    display: stacks.geometric,
     accent: stacks.mono,
     scale: "soft",
-    headingWeight: "850",
-    actionWeight: "850",
+    headingWeight: "760",
+    actionWeight: "800",
     navWeight: "800",
     linkWeight: "800",
     headingLineHeight: "1.04",
@@ -5586,22 +5590,22 @@ function buildTypographyTokens(spec) {
   };
   treatments["schedule-board-service-sans"] = {
     body: stacks.system,
-    display: stacks.rounded,
+    display: stacks.condensed,
     accent: stacks.mono,
     scale: "generous",
-    headingWeight: "900",
-    actionWeight: "850",
-    navWeight: "850",
+    headingWeight: "800",
+    actionWeight: "800",
+    navWeight: "800",
     linkWeight: "800",
     headingLineHeight: "1",
     bodyLineHeight: "1.5"
   };
   treatments["warm-story-card-serif-sans"] = {
-    body: stacks.humanist,
-    display: stacks.editorial,
-    accent: stacks.system,
+    body: stacks.warmHumanist,
+    display: stacks.book,
+    accent: stacks.friendly,
     scale: "editorial",
-    headingWeight: "700",
+    headingWeight: "660",
     actionWeight: "800",
     navWeight: "750",
     linkWeight: "750",
@@ -5609,33 +5613,33 @@ function buildTypographyTokens(spec) {
     bodyLineHeight: "1.62"
   };
   treatments["hospitality-receipt-mono-accent"] = {
-    body: stacks.system,
-    display: stacks.humanist,
-    accent: stacks.mono,
+    body: stacks.humanist,
+    display: stacks.geometric,
+    accent: stacks.receipt,
     scale: "compact",
-    headingWeight: "850",
-    actionWeight: "850",
-    navWeight: "850",
+    headingWeight: "780",
+    actionWeight: "800",
+    navWeight: "800",
     linkWeight: "800",
     headingLineHeight: "1.02",
     bodyLineHeight: "1.54"
   };
   treatments["playful-event-display-with-utility-sans"] = {
-    body: stacks.humanist,
-    display: stacks.rounded,
-    accent: stacks.system,
+    body: stacks.friendly,
+    display: stacks.geometric,
+    accent: stacks.sturdy,
     scale: "soft",
-    headingWeight: "800",
-    actionWeight: "850",
+    headingWeight: "780",
+    actionWeight: "800",
     navWeight: "800",
     linkWeight: "800",
     headingLineHeight: "1",
     bodyLineHeight: "1.56"
   };
   treatments["bakery-editorial-serif-with-clean-menu-labels"] = {
-    body: stacks.system,
-    display: stacks.elegant,
-    accent: stacks.system,
+    body: stacks.warmHumanist,
+    display: stacks.fashion,
+    accent: stacks.friendly,
     scale: "editorial",
     headingWeight: "620",
     actionWeight: "760",
@@ -5645,23 +5649,23 @@ function buildTypographyTokens(spec) {
     bodyLineHeight: "1.58"
   };
   treatments["restoration-craft-serif-with-shop-sans"] = {
-    body: stacks.humanist,
-    display: stacks.slab,
+    body: stacks.warmHumanist,
+    display: stacks.typewriter,
     accent: stacks.mono,
     scale: "compact",
-    headingWeight: "760",
-    actionWeight: "840",
-    navWeight: "820",
-    linkWeight: "820",
+    headingWeight: "700",
+    actionWeight: "800",
+    navWeight: "800",
+    linkWeight: "800",
     headingLineHeight: "1.02",
     bodyLineHeight: "1.54"
   };
   treatments["polished-brand-editorial-sans"] = {
     body: stacks.system,
-    display: stacks.humanist,
+    display: stacks.book,
     accent: stacks.condensed,
     scale: "soft",
-    headingWeight: "760",
+    headingWeight: "660",
     actionWeight: "800",
     navWeight: "760",
     linkWeight: "760",
@@ -5669,9 +5673,9 @@ function buildTypographyTokens(spec) {
     bodyLineHeight: "1.58"
   };
   treatments["interior-editorial-serif-with-architectural-sans"] = {
-    body: stacks.system,
-    display: stacks.elegant,
-    accent: stacks.system,
+    body: stacks.warmHumanist,
+    display: stacks.fashion,
+    accent: stacks.condensed,
     scale: "editorial",
     headingWeight: "620",
     actionWeight: "740",
@@ -5682,20 +5686,20 @@ function buildTypographyTokens(spec) {
   };
   treatments["clear-route-dashboard-sans"] = {
     body: stacks.system,
-    display: stacks.system,
+    display: stacks.condensed,
     accent: stacks.mono,
     scale: "generous",
-    headingWeight: "860",
-    actionWeight: "850",
-    navWeight: "850",
+    headingWeight: "800",
+    actionWeight: "800",
+    navWeight: "800",
     linkWeight: "800",
     headingLineHeight: "1",
     bodyLineHeight: "1.5"
   };
   treatments["romantic-editorial-serif-with-calm-planning-sans"] = {
-    body: stacks.humanist,
-    display: stacks.elegant,
-    accent: stacks.system,
+    body: stacks.warmHumanist,
+    display: stacks.fashion,
+    accent: stacks.friendly,
     scale: "editorial",
     headingWeight: "620",
     actionWeight: "780",
@@ -5709,7 +5713,7 @@ function buildTypographyTokens(spec) {
     display: stacks.sturdy,
     accent: stacks.mono,
     scale: "compact",
-    headingWeight: "780",
+    headingWeight: "800",
     actionWeight: "760",
     navWeight: "740",
     linkWeight: "740",
@@ -5718,11 +5722,11 @@ function buildTypographyTokens(spec) {
   };
   treatments["fresh-hospitality-menu-sans-with-script-like-display"] = {
     body: stacks.humanist,
-    display: stacks.casual,
-    accent: stacks.mono,
+    display: stacks.friendly,
+    accent: stacks.receipt,
     scale: "soft",
-    headingWeight: "800",
-    actionWeight: "850",
+    headingWeight: "780",
+    actionWeight: "800",
     navWeight: "800",
     linkWeight: "800",
     headingLineHeight: "1.01",
@@ -5730,20 +5734,20 @@ function buildTypographyTokens(spec) {
   };
   treatments["handcrafted-lettering-display-with-clean-shop-sans"] = {
     body: stacks.humanist,
-    display: stacks.casual,
+    display: stacks.typewriter,
     accent: stacks.condensed,
     scale: "wide",
-    headingWeight: "820",
-    actionWeight: "840",
+    headingWeight: "700",
+    actionWeight: "800",
     navWeight: "800",
     linkWeight: "800",
     headingLineHeight: "1",
     bodyLineHeight: "1.54"
   };
   treatments["warm-portrait-serif-with-playful-labels"] = {
-    body: stacks.humanist,
-    display: stacks.editorial,
-    accent: stacks.rounded,
+    body: stacks.warmHumanist,
+    display: stacks.book,
+    accent: stacks.friendly,
     scale: "editorial",
     headingWeight: "640",
     actionWeight: "800",
@@ -5754,20 +5758,20 @@ function buildTypographyTokens(spec) {
   };
   treatments["flash-card-event-ui-sans"] = {
     body: stacks.system,
-    display: stacks.sturdy,
-    accent: stacks.system,
+    display: stacks.geometric,
+    accent: stacks.condensed,
     scale: "bold",
-    headingWeight: "900",
-    actionWeight: "900",
-    navWeight: "850",
-    linkWeight: "850",
+    headingWeight: "780",
+    actionWeight: "820",
+    navWeight: "800",
+    linkWeight: "800",
     headingLineHeight: "0.98",
     bodyLineHeight: "1.48"
   };
   treatments["airy-romantic-display-with-practical-sans"] = {
-    body: stacks.humanist,
-    display: stacks.elegant,
-    accent: stacks.system,
+    body: stacks.warmHumanist,
+    display: stacks.fashion,
+    accent: stacks.friendly,
     scale: "editorial",
     headingWeight: "600",
     actionWeight: "780",
@@ -5781,24 +5785,36 @@ function buildTypographyTokens(spec) {
     display: stacks.condensed,
     accent: stacks.mono,
     scale: "wide",
-    headingWeight: "900",
-    actionWeight: "850",
-    navWeight: "850",
-    linkWeight: "820",
+    headingWeight: "820",
+    actionWeight: "800",
+    navWeight: "800",
+    linkWeight: "800",
     headingLineHeight: "0.98",
     bodyLineHeight: "1.48"
   };
   treatments["bold-street-food-display-with-readable-menu-body"] = {
     body: stacks.humanist,
     display: stacks.sturdy,
-    accent: stacks.mono,
+    accent: stacks.receipt,
     scale: "bold",
-    headingWeight: "900",
-    actionWeight: "880",
-    navWeight: "850",
-    linkWeight: "820",
+    headingWeight: "820",
+    actionWeight: "820",
+    navWeight: "800",
+    linkWeight: "800",
     headingLineHeight: "0.98",
     bodyLineHeight: "1.5"
+  };
+  treatments["quiet-trust-consulting-sans"] = {
+    body: stacks.warmHumanist,
+    display: stacks.book,
+    accent: stacks.friendly,
+    scale: "soft",
+    headingWeight: "660",
+    actionWeight: "780",
+    navWeight: "740",
+    linkWeight: "740",
+    headingLineHeight: "1.05",
+    bodyLineHeight: "1.62"
   };
   treatments["portfolio-editorial-display"] = treatments["editorial-gallery-serif-display"];
   treatments["bold-proof-before-after"] = treatments["confident-transform-grotesk"];
@@ -5858,18 +5874,19 @@ function normalizeTypographyVoice(rawVoice) {
 
 function safeFontStack(stack, role) {
   const fallback = {
-    body: "system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Inter, Roboto, Arial, sans-serif",
+    body: "Aptos, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Arial, sans-serif",
     display: "\"Aptos Display\", \"Segoe UI\", \"Helvetica Neue\", Arial, sans-serif",
     accent: "system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Arial, sans-serif"
   }[role];
   const value = String(stack || fallback);
-  const banned = /\b(Impact|Arial Black|Segoe UI Black|Comic Sans|Papyrus|Brush Script|Curlz|Jokerman|Chiller|Cooper Black|Arial Rounded MT Bold)\b/i;
+  const banned = /\b(Impact|Arial Black|Segoe UI Black|Comic Sans|Papyrus|Brush Script|Curlz|Jokerman|Chiller|Cooper Black|Arial Rounded MT Bold|Chalkboard|Marker Felt|Noteworthy|Herculanum|Zapfino|Snell Roundhand|Mistral|Bradley Hand|Hobo|Party LET)\b/i;
   const bodyUnsafe = role === "body" && /\b(monospace|Mono|Consolas|Menlo|Arial Narrow|Roboto Condensed|Aptos Narrow)\b/i.test(value);
   return banned.test(value) || bodyUnsafe ? fallback : value;
 }
 
 function isSerifStack(stack) {
-  return /\b(serif|Georgia|Cambria|Iowan|Palatino|Rockwell|Slab)\b/i.test(stack);
+  const value = String(stack || "").replace(/\bsans-serif\b/gi, "");
+  return /\b(serif|Georgia|Cambria|Iowan|Palatino|Rockwell|Slab|Didot|Bodoni|Baskerville|Hoefler|Charter|American Typewriter|Times)\b/i.test(value);
 }
 
 function numericToken(value, fallback) {
@@ -6128,6 +6145,10 @@ ${buildSharedPolishCss(spec)}
   max-width:min(230px, 62vw);
 }
 ${variantCssBlock}@media (max-width:700px){
+  .wp-site-blocks :where(.som-proof-card,.som-route-proof-card,[class*="-proof-card"]){
+    grid-template-rows:auto auto;
+    row-gap:14px;
+  }
   .wp-block-cover{
     min-height:620px!important;
   }
@@ -6198,6 +6219,32 @@ body{
 .som-process-card,
 .som-proof-card{
   min-height:100%;
+}
+.wp-site-blocks :where(.som-proof-card,.som-route-proof-card,[class*="-proof-card"]){
+  display:grid;
+  grid-template-rows:minmax(2.1em, auto) auto;
+  align-content:space-between;
+  row-gap:clamp(14px, 2vw, 24px);
+}
+.wp-site-blocks :where(.som-proof-card,.som-route-proof-card,[class*="-proof-card"]) > :first-child{
+  align-self:start;
+  min-block-size:1.02em;
+  margin-top:0!important;
+  margin-bottom:0!important;
+  font-family:var(--wp--preset--font-family--display)!important;
+  line-height:1!important;
+  text-wrap:balance;
+}
+.wp-site-blocks :where(.som-proof-card,.som-route-proof-card,[class*="-proof-card"]) > :last-child{
+  align-self:end;
+  max-inline-size:28ch;
+  margin-top:0!important;
+  margin-bottom:0!important;
+  font-family:var(--wp--preset--font-family--accent)!important;
+  line-height:1.26!important;
+}
+.wp-site-blocks :where(.som-proof-card,.som-route-proof-card,[class*="-proof-card"]) > :only-child{
+  align-self:start;
 }
 .som-quote-card{
   border-radius:var(--wp--custom--som--radius--panel);
