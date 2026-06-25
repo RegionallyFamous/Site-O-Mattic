@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 260" role="img" aria-labelledby="title">
+  <title id="title">CedarLine logo</title>
+  <g transform="translate(78 40)">
+    <rect x="0" y="0" width="180" height="180" rx="34" fill="#2a1a12"/>
+    <path d="M46 52h86c20 0 32 12 32 30v48c0 18-12 30-32 30H46z" fill="#f8f2e7"/>
+    <path d="M65 72h78M65 96h78M65 120h78M65 144h54" stroke="#2a1a12" stroke-width="9" stroke-linecap="round"/>
+    <path d="M36 148c34-28 63-47 118-66" fill="none" stroke="#c16a2c" stroke-width="18" stroke-linecap="round"/>
+    <path d="M40 158h102" stroke="#f0b35a" stroke-width="12" stroke-linecap="round"/>
+  </g>
+  <text x="298" y="160" fill="#2a1a12" font-family="Arial, Helvetica, sans-serif" font-size="112" font-weight="900" letter-spacing="0">CedarLine</text>
+  <path d="M304 188h482" stroke="#c16a2c" stroke-width="11" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,111 @@
+{
+  "slug": "deck-fence-staining",
+  "businessName": "CedarLine Stain Co.",
+  "niche": "deck and fence staining service",
+  "layoutVariant": "workshop-bench",
+  "tagline": "Wood staining that protects the good grain.",
+  "themeSlug": "twentytwentyfive",
+  "landingPage": "/",
+  "palette": {
+    "grass": "#667a43",
+    "deepGreen": "#2a1a12",
+    "leaf": "#c16a2c",
+    "sun": "#f0b35a",
+    "cream": "#f8f2e7",
+    "mist": "#e5d4bd",
+    "soil": "#5e4637",
+    "white": "#fffaf2"
+  },
+  "assets": {
+    "hero": "assets/deck-fence-staining/cedarline-hero.jpg",
+    "logo": "assets/deck-fence-staining/cedarline-logo.png",
+    "favicon": "assets/deck-fence-staining/cedarline-favicon.png"
+  },
+  "assetMeta": {
+    "hero": {
+      "title": "CedarLine deck and fence staining hero image",
+      "alt": "A wood staining professional brushing rich stain onto cedar deck boards beside a freshly stained privacy fence in a bright backyard."
+    }
+  },
+  "contact": {
+    "phoneLabel": "(555) 014-7318",
+    "phoneHref": "tel:+15550147318",
+    "email": "hello@cedarline.test",
+    "emailHref": "mailto:hello@cedarline.test",
+    "serviceArea": "Deck and fence staining, prep, color refresh, and maintenance guidance for cedar, pine, pressure-treated wood, railings, gates, privacy fences, and backyard structures across the central metro and nearby suburbs"
+  },
+  "copy": {
+    "eyebrow": "Deck and fence staining with clean edges",
+    "heroTitle": "Bring the grain back before weather writes over it.",
+    "heroText": "CedarLine washes, preps, masks, and stains decks and fences with tidy brush work, smart dry-time planning, and color notes that make the wood feel intentional again.",
+    "primaryCta": "Send wood photos",
+    "secondaryCta": "See the bench plan",
+    "introTitle": "A wood-care bench, not a paint splash.",
+    "introText": "We check shade, moisture, loose boards, previous coatings, railing detail, fence exposure, and access before recommending a stain path.",
+    "servicesTitle": "Choose the wood reset",
+    "processTitle": "From photo check to final board",
+    "proofTitle": "Craft notes that protect the finish",
+    "quoteTitle": "Ready to line up a stain window?",
+    "quoteText": "Send photos of the deck or fence, rough dimensions, stain preference, and when the area gets shade. We will reply with prep notes, timing, and the cleanest quote path."
+  },
+  "services": [
+    {
+      "title": "Deck Grain Refresh",
+      "text": "Wash, light prep, masked edges, railing attention, semi-transparent stain, and a tidy handoff for decks that need color without hiding the wood."
+    },
+    {
+      "title": "Fence Color Reset",
+      "text": "Fence-board cleaning, gate and post detail, controlled spray or brush work, and color guidance for long runs that need a consistent finish."
+    },
+    {
+      "title": "Prep And Protection",
+      "text": "Moisture checks, problem-board notes, previous-coating review, plant protection, and dry-time planning before stain day gets on the calendar."
+    }
+  ],
+  "process": [
+    {
+      "title": "Send board photos",
+      "text": "Photos of the boards, rails, shaded areas, stairs, gates, and peeling spots help us spot prep needs before quoting."
+    },
+    {
+      "title": "Test the path",
+      "text": "We confirm access, moisture, washing needs, color family, previous coating behavior, and a weather window that makes sense."
+    },
+    {
+      "title": "Stain and tidy up",
+      "text": "The crew masks edges, works with the grain, protects nearby plants and siding, and leaves simple care notes before packing up."
+    }
+  ],
+  "proof": [
+    {
+      "stat": "48 hr",
+      "label": "weather-window planning before stain day"
+    },
+    {
+      "stat": "Brush + pad",
+      "label": "controlled application around rails and edges"
+    },
+    {
+      "stat": "Photo notes",
+      "label": "prep and color guidance before quote"
+    }
+  ],
+  "release": {
+    "status": "approved",
+    "reviewedAt": "2026-06-25",
+    "visualBaseline": "pending",
+    "reviewChecklist": {
+      "firstViewportClear": true,
+      "logoReadable": true,
+      "layoutDistinct": true,
+      "ctaClear": true,
+      "copySpecific": true,
+      "noImageArtifacts": true,
+      "heroArtDirected": true,
+      "hierarchyDistinct": true,
+      "signatureMove": true,
+      "restrainedComposition": true,
+      "screenshotCompared": true
+    }
+  }
+}

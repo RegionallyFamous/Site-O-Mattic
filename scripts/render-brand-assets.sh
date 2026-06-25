@@ -25,3 +25,6 @@ rsvg-convert -w 512 -h 512 assets/coffee-cart/cartwright-favicon.svg -o assets/c
 rsvg-convert -w 1200 -h 260 assets/mobile-detailing/shineshift-logo.svg -o assets/mobile-detailing/shineshift-logo.png
 magick assets/mobile-detailing/shineshift-logo.png -trim +repage -resize 920x220 -background none -gravity center -extent 1100x260 assets/mobile-detailing/shineshift-logo.png
 rsvg-convert -w 512 -h 512 assets/mobile-detailing/shineshift-favicon.svg -o assets/mobile-detailing/shineshift-favicon.png
+rsvg-convert -w 1200 -h 260 assets/deck-fence-staining/cedarline-logo.svg -o assets/deck-fence-staining/cedarline-logo.png
+magick assets/deck-fence-staining/cedarline-logo.png -trim +repage -resize 920x220 -background none -gravity center -extent 1100x260 assets/deck-fence-staining/cedarline-logo.png
+rsvg-convert -w 512 -h 512 assets/deck-fence-staining/cedarline-favicon.svg -o assets/deck-fence-staining/cedarline-favicon.png

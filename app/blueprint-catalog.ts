@@ -34,6 +34,22 @@ export const blueprints = [
     "releaseStatus": "approved"
   },
   {
+    "slug": "deck-fence-staining",
+    "name": "CedarLine Stain Co.",
+    "eyebrow": "Deck And Fence Staining Service",
+    "summary": "CedarLine washes, preps, masks, and stains decks and fences with tidy brush work, smart dry-time planning, and color notes that make the wood feel...",
+    "logo": "/blueprints/deck-fence-staining/assets/logo.png",
+    "logoWidth": 1100,
+    "logoHeight": 260,
+    "hero": "/blueprints/deck-fence-staining/assets/hero.jpg",
+    "heroWidth": 1920,
+    "heroHeight": 1080,
+    "alt": "A wood staining professional brushing rich stain onto cedar deck boards beside a freshly stained privacy fence in a bright backyard.",
+    "path": "/api/blueprints/deck-fence-staining/blueprint.json",
+    "layoutVariant": "workshop-bench",
+    "releaseStatus": "approved"
+  },
+  {
     "slug": "driveway-sealcoating",
     "name": "Blackline Sealcoating",
     "eyebrow": "Driveway Sealcoating Service",

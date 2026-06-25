@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "slug": "deck-fence-staining",
+  "businessName": "CedarLine Stain Co.",
+  "layoutVariant": "workshop-bench",
+  "assets": {
+    "hero": {
+      "source": "assets/deck-fence-staining/cedarline-hero.jpg",
+      "fileName": "hero.jpg",
+      "outputPath": "/assets/hero.jpg",
+      "mimeType": "image/jpeg",
+      "byteSize": 349577,
+      "width": 1920,
+      "height": 1080,
+      "embedded": true
+    },
+    "logo": {
+      "source": "assets/deck-fence-staining/cedarline-logo.png",
+      "fileName": "logo.png",
+      "outputPath": "/assets/logo.png",
+      "mimeType": "image/png",
+      "byteSize": 40670,
+      "width": 1100,
+      "height": 260,
+      "embedded": true
+    },
+    "favicon": {
+      "source": "assets/deck-fence-staining/cedarline-favicon.png",
+      "fileName": "favicon.png",
+      "outputPath": "/assets/favicon.png",
+      "mimeType": "image/png",
+      "byteSize": 16672,
+      "width": 512,
+      "height": 512,
+      "embedded": true
+    }
+  }
+}

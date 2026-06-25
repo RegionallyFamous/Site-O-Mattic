@@ -343,10 +343,40 @@ export const LAYOUT_ARCHETYPES = {
   },
   "workshop-bench": {
     label: "Workshop bench",
-    bestFor: ["furniture refinishing", "knife sharpening", "mobile bicycle repair", "mural painting", "window lettering"],
+    bestFor: ["deck staining", "fence staining", "furniture refinishing", "knife sharpening", "mobile bicycle repair", "mural painting", "window lettering"],
+    archetype: "Craft-forward workshop bench service",
+    hero: "wide-craft-photo-with-bench-ticket-and-side-labels",
+    sectionOrder: [
+      "compact-workshop-header",
+      "craft-bench-hero",
+      "material-proof-rail",
+      "wood-scope-bench",
+      "craft-process-stack",
+      "care-note-quote",
+      "footer"
+    ],
     navigationTreatment: "side-top-hybrid-with-craft-forward-work-method-quote-labels",
     typographyTreatment: "craft-bench-sturdy-serif-sans",
     colorStrategy: "workshop-material-tones-with-tool-accent",
+    servicePresentation: "wood-scope-cards-with-material-bench-note",
+    proofTreatment: "material-proof-rail-with-craft-stats",
+    ctaRhythm: "hero-send-photo-plus-final-care-note-quote",
+    navLabels: ["Wood", "Process", "Quote"],
+    anchorOrder: ["wood", "process", "quote"],
+    componentClassesExpected: [
+      "som-workshop-page",
+      "som-workshop-header",
+      "som-workshop-hero",
+      "som-workshop-photo",
+      "som-workshop-ticket",
+      "som-material-proof",
+      "som-wood-card",
+      "som-care-note",
+      "som-craft-step",
+      "som-quote-strip",
+      "som-footer"
+    ],
+    layoutMarkers: ["som-workshop-page", "som-workshop-header", "som-workshop-hero", "som-workshop-photo", "som-workshop-ticket", "som-material-proof", "som-wood-card", "som-care-note", "som-craft-step", "som-quote-strip"],
     guidance: "Use close-up craft imagery, materials/process chips, a stacked timeline, gallery/proof, care notes, and send-a-photo CTAs."
   },
   "gallery-led": {

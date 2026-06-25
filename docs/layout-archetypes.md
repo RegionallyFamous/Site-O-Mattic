@@ -20,6 +20,7 @@ Use [Pattern And Style Catalog](./pattern-style-catalog.md) before implementing 
 | `side-rail-service` | Junk removal, garage organization, closet organization, senior downsizing, smart home setup | Desktop side rail, mobile top header | Side rail with haul-away action hero and haul ticket | Accepted-items grid with donation route note | Donation sorting proof strip after hero | Persistent rail photo CTA plus final haul plan |
 | `package-menu-board` | Coffee carts, mocktail carts, photo booths, DJs, pizza/taco catering | Menu-board top nav with package/event/date anchors | Split hero with live service photo and menu ticket | Package cards styled like a readable event menu | Host detail proof strip under hero | Hero date check, package selection, final date CTA |
 | `fixed-bottom-action` | Mobile detailing, photo booths, DJs, holiday lights, coffee carts, mocktail carts | Desktop top header plus mobile fixed bottom CTA bar | Split detail hero with live service photo and kit ticket | Package cards with sticky mobile action | Compact proof strip under hero | Desktop hero quote plus mobile fixed quote/call bar |
+| `workshop-bench` | Deck staining, fence staining, furniture refinishing, knife sharpening, bike repair | Side/top hybrid with craft labels | Wide craft photo with bench ticket and side labels | Wood/craft scope cards with material note | Material proof rail with craft stats | Hero send-photo CTA plus final care-note quote |
 
 ## Cataloged For Scale
 
@@ -34,7 +35,6 @@ Use [Pattern And Style Catalog](./pattern-style-catalog.md) before implementing 
 | `urgent-checklist` | Gutter cleaning, holiday lights, vacation rental turnover, solar panel cleaning | Utility header with urgent CTA | Problem checklist, warning signs, packages, safety proof, area, and quote |
 | `story-card-consult` | Senior downsizing, color consulting, organization, micro-wedding florals | Calm top header | Warm editorial flow with next steps, support cards, packages, proof, and gentle consult CTA |
 | `service-receipt-stack` | Window cleaning, carpet cleaning, detailing, vacation turnover | Compact top nav plus phone button | Receipt-style scope summary, included services, add-ons, process, proof, and build-my-estimate CTA |
-| `workshop-bench` | Furniture refinishing, knife sharpening, bike repair, mural/window lettering | Side/top hybrid with craft labels | Craft image, materials/process chips, timeline, gallery/proof, care notes, and send-a-photo CTA |
 | `consultation-led` | Smart home setup, senior downsizing, organization, micro-wedding florals, color consulting | Calm top header with consult anchor | Trust, what to expect, consult steps, supportive language, low-friction first call |
 
 Only implemented variants should be used in `specs/*.json`; the spec validator enforces this. Cataloged variants are the roadmap for adding more layout variety. New implemented variants should set a distinct `navigationTreatment` so the variety report can catch repeated top-header compositions before scale.
