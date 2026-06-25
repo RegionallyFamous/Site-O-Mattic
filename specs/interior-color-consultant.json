@@ -7,7 +7,7 @@
     "primaryPattern": "consultation-story-flow",
     "secondaryPattern": "room-light-sample-proof",
     "silhouette": "consultation-story-flow",
-    "navigationPrimitive": "split-consultation-header",
+    "navigationPrimitive": "split-nav-action-header",
     "mobileActionPattern": "soft-palette-consult-actions",
     "imageRole": "process-closeup",
     "imageEvidence": "color consultant reviewing paint swatches, fan deck, and room finishes in natural light",

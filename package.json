@@ -20,6 +20,7 @@
     "blueprint:accessibility": "node src/accessibility-report.mjs",
     "blueprint:sync": "node src/signature-sync-report.mjs",
     "blueprint:variety": "node src/layout-variety-report.mjs",
+    "blueprint:typography": "node src/typography-guardrails.mjs",
     "blueprint:guardrails": "node src/production-guardrails.mjs",
     "blueprint:visual": "node src/visual-qa.mjs",
     "fonts:catalog": "node src/google-fonts-catalog.mjs",
@@ -28,7 +29,7 @@
     "visual:baseline:capture": "node src/capture-visual-baseline.mjs",
     "visual:sweep": "node src/visual-sweep.mjs",
     "validate": "npm run blueprint:validate",
-    "quality": "npm run spec:validate && npm run validate && npm run blueprint:polish && npm run blueprint:accessibility && npm run blueprint:sync && npm run blueprint:variety && npm run blueprint:guardrails && npm run visual:baseline && npm run site:build && npm run lint",
+    "quality": "npm run spec:validate && npm run validate && npm run blueprint:polish && npm run blueprint:accessibility && npm run blueprint:sync && npm run blueprint:variety && npm run blueprint:typography && npm run blueprint:guardrails && npm run visual:baseline && npm run site:build && npm run lint",
     "render-brand": "sh scripts/render-brand-assets.sh"
   },
   "dependencies": {

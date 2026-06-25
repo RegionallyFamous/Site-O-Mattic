@@ -7,7 +7,7 @@
     "primaryPattern": "gallery-led-portfolio-proof",
     "secondaryPattern": "flavor-and-portion-proof",
     "silhouette": "editorial-proof-stage",
-    "navigationPrimitive": "gallery-stage-header",
+    "navigationPrimitive": "compact-header",
     "mobileActionPattern": "post-hero-date-actions",
     "imageRole": "finished-outcome",
     "imageEvidence": "styled dessert table with tiered cake, tarts, macarons, and final placement detail",
@@ -81,7 +81,7 @@
   },
   "copy": {
     "eyebrow": "Dessert tables designed around the room",
-    "heroTitle": "A dessert table that gets photographed before it gets raided.",
+    "heroTitle": "Dessert tables that wow before the first bite.",
     "heroText": "Sugarline plans the look, quantities, flavors, setup timing, and serving details so the table feels generous, styled, and easy for guests to enjoy.",
     "primaryCta": "Design my dessert table",
     "secondaryCta": "Explore styles",

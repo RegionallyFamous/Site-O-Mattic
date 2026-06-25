@@ -364,7 +364,7 @@ function buildBlueprint(spec, assets) {
 }
 
 function buildSetupPhp(spec, assets) {
-  const pageContent = buildPageContent(spec);
+  const pageContent = normalizePageTypography(buildPageContent(spec), spec);
   const globalStyles = buildGlobalStyles(spec);
   const customCss = buildCustomCss(spec);
   const layoutSignature = buildLayoutSignature(spec);
@@ -575,6 +575,62 @@ flush_rewrite_rules();
 `;
 }
 
+function normalizePageTypography(markup, spec) {
+  const tokens = buildDesignTokens(spec).typography;
+  const headingProps = {
+    "font-weight": tokens.headingWeight,
+    "line-height": tokens.headingLineHeight
+  };
+
+  return markup
+    .replace(/<!-- wp:heading(\s+\{[^]*?\})?\s*-->/g, (match, rawAttributes = "") => {
+      if (!rawAttributes.trim()) {
+        return match;
+      }
+      try {
+        const attrs = JSON.parse(rawAttributes.trim());
+        attrs.style = attrs.style || {};
+        attrs.style.typography = attrs.style.typography || {};
+        attrs.style.typography.fontWeight = tokens.headingWeight;
+        attrs.style.typography.lineHeight = tokens.headingLineHeight;
+        return `<!-- wp:heading ${JSON.stringify(attrs)} -->`;
+      } catch {
+        return match;
+      }
+    })
+    .replace(/(<h[1-6]\b[^>]*\bstyle=")([^"]*)("[^>]*>)/g, (_match, before, style, after) => {
+      return `${before}${rewriteInlineStyle(style, headingProps)}${after}`;
+    });
+}
+
+function rewriteInlineStyle(style, updates) {
+  const declarations = style
+    .split(";")
+    .map((declaration) => declaration.trim())
+    .filter(Boolean);
+  const seen = new Set();
+  const rewritten = declarations.map((declaration) => {
+    const separator = declaration.indexOf(":");
+    if (separator === -1) {
+      return declaration;
+    }
+    const property = declaration.slice(0, separator).trim().toLowerCase();
+    if (!Object.hasOwn(updates, property)) {
+      return declaration;
+    }
+    seen.add(property);
+    return `${property}:${updates[property]}`;
+  });
+
+  for (const [property, value] of Object.entries(updates)) {
+    if (!seen.has(property)) {
+      rewritten.push(`${property}:${value}`);
+    }
+  }
+
+  return rewritten.join(";");
+}
+
 function buildPageContent(spec) {
   const layoutVariant = layoutVariantFor(spec);
   const variant = renderVariantForSpec(spec);
@@ -653,8 +709,8 @@ ${navigationLinkBlocks(navLinks)}
 <!-- wp:paragraph {"textColor":"grass","style":{"typography":{"fontSize":"14px","fontStyle":"normal","fontWeight":"850","textTransform":"uppercase","letterSpacing":"0px"}}} -->
 <p class="has-grass-color has-text-color" style="font-size:14px;font-style:normal;font-weight:850;letter-spacing:0px;text-transform:uppercase">${esc(copy.eyebrow)}</p>
 <!-- /wp:paragraph -->
-<!-- wp:heading {"level":1,"textColor":"deep-green","style":{"typography":{"fontSize":"clamp(40px, 5.4vw, 72px)","lineHeight":"1.02","fontStyle":"normal","fontWeight":"650"},"spacing":{"margin":{"top":"10px","bottom":"16px"}}}} -->
-<h1 class="wp-block-heading has-deep-green-color has-text-color" style="margin-top:10px;margin-bottom:16px;font-size:clamp(40px, 5.4vw, 72px);font-style:normal;font-weight:650;line-height:1.02">${esc(copy.heroTitle)}</h1>
+<!-- wp:heading {"level":1,"textColor":"deep-green","style":{"typography":{"fontSize":"clamp(36px, 4.5vw, 60px)","lineHeight":"1.08","fontStyle":"normal","fontWeight":"620"},"spacing":{"margin":{"top":"10px","bottom":"16px"}}}} -->
+<h1 class="wp-block-heading has-deep-green-color has-text-color" style="margin-top:10px;margin-bottom:16px;font-size:clamp(36px, 4.5vw, 60px);font-style:normal;font-weight:620;line-height:1.08">${esc(copy.heroTitle)}</h1>
 <!-- /wp:heading -->
 <!-- wp:paragraph {"textColor":"soil","style":{"typography":{"fontSize":"clamp(18px, 1.5vw, 22px)","lineHeight":"1.5"},"spacing":{"margin":{"bottom":"22px"}}}} -->
 <p class="has-soil-color has-text-color" style="margin-bottom:22px;font-size:clamp(18px, 1.5vw, 22px);line-height:1.5">${esc(copy.heroText)}</p>
@@ -702,8 +758,8 @@ ${proof}
 <div class="wp-block-columns alignwide are-vertically-aligned-center">
 <!-- wp:column {"verticalAlignment":"center","width":"40%"} -->
 <div class="wp-block-column is-vertically-aligned-center" style="flex-basis:40%">
-<!-- wp:heading {"level":2,"textColor":"deep-green","style":{"typography":{"fontSize":"clamp(34px, 4.8vw, 60px)","lineHeight":"1.03","fontStyle":"normal","fontWeight":"650"},"spacing":{"margin":{"bottom":"16px"}}}} -->
-<h2 class="wp-block-heading has-deep-green-color has-text-color" style="margin-bottom:16px;font-size:clamp(34px, 4.8vw, 60px);font-style:normal;font-weight:650;line-height:1.03">${esc(copy.servicesTitle)}</h2>
+<!-- wp:heading {"level":2,"textColor":"deep-green","style":{"typography":{"fontSize":"clamp(32px, 4vw, 50px)","lineHeight":"1.08","fontStyle":"normal","fontWeight":"620"},"spacing":{"margin":{"bottom":"16px"}}}} -->
+<h2 class="wp-block-heading has-deep-green-color has-text-color" style="margin-bottom:16px;font-size:clamp(32px, 4vw, 50px);font-style:normal;font-weight:620;line-height:1.08">${esc(copy.servicesTitle)}</h2>
 <!-- /wp:heading -->
 <!-- wp:quote {"className":"som-dessert-client-quote"} -->
 <blockquote class="wp-block-quote som-dessert-client-quote"><p>${esc(copy.introText)}</p><cite>${esc(spec.businessName)} event planning note</cite></blockquote>
@@ -739,8 +795,8 @@ ${styles}
 
 <!-- wp:group {"metadata":{"name":"Process"},"anchor":"process","align":"full","backgroundColor":"mist","style":{"spacing":{"padding":{"top":"72px","right":"24px","bottom":"72px","left":"24px"}}},"layout":{"type":"constrained","wideSize":"1180px"}} -->
 <div id="process" class="wp-block-group alignfull has-mist-background-color has-background" style="padding-top:72px;padding-right:24px;padding-bottom:72px;padding-left:24px">
-<!-- wp:heading {"level":2,"align":"wide","textColor":"deep-green","style":{"typography":{"fontSize":"clamp(32px, 4.8vw, 56px)","lineHeight":"1.04","fontStyle":"normal","fontWeight":"650"},"spacing":{"margin":{"bottom":"30px"}}}} -->
-<h2 class="wp-block-heading alignwide has-deep-green-color has-text-color" style="margin-bottom:30px;font-size:clamp(32px, 4.8vw, 56px);font-style:normal;font-weight:650;line-height:1.04">${esc(copy.processTitle)}</h2>
+<!-- wp:heading {"level":2,"align":"wide","textColor":"deep-green","style":{"typography":{"fontSize":"clamp(31px, 4vw, 50px)","lineHeight":"1.08","fontStyle":"normal","fontWeight":"620"},"spacing":{"margin":{"bottom":"30px"}}}} -->
+<h2 class="wp-block-heading alignwide has-deep-green-color has-text-color" style="margin-bottom:30px;font-size:clamp(31px, 4vw, 50px);font-style:normal;font-weight:620;line-height:1.08">${esc(copy.processTitle)}</h2>
 <!-- /wp:heading -->
 <!-- wp:columns {"align":"wide","style":{"spacing":{"blockGap":{"left":"22px"}}}} -->
 <div class="wp-block-columns alignwide">
@@ -756,8 +812,8 @@ ${process}
 <div class="wp-block-columns alignwide">
 <!-- wp:column {"width":"58%"} -->
 <div class="wp-block-column" style="flex-basis:58%">
-<!-- wp:heading {"level":2,"textColor":"white","style":{"typography":{"fontSize":"clamp(34px, 5vw, 62px)","lineHeight":"1.03","fontStyle":"normal","fontWeight":"650"},"spacing":{"margin":{"bottom":"18px"}}}} -->
-<h2 class="wp-block-heading has-white-color has-text-color" style="margin-bottom:18px;font-size:clamp(34px, 5vw, 62px);font-style:normal;font-weight:650;line-height:1.03">${esc(copy.quoteTitle)}</h2>
+<!-- wp:heading {"level":2,"textColor":"white","style":{"typography":{"fontSize":"clamp(32px, 4.2vw, 52px)","lineHeight":"1.08","fontStyle":"normal","fontWeight":"620"},"spacing":{"margin":{"bottom":"18px"}}}} -->
+<h2 class="wp-block-heading has-white-color has-text-color" style="margin-bottom:18px;font-size:clamp(32px, 4.2vw, 52px);font-style:normal;font-weight:620;line-height:1.08">${esc(copy.quoteTitle)}</h2>
 <!-- /wp:heading -->
 <!-- wp:paragraph {"textColor":"white","style":{"typography":{"fontSize":"20px","lineHeight":"1.5"}}} -->
 <p class="has-white-color has-text-color" style="font-size:20px;line-height:1.5">${esc(copy.quoteText)}</p>
@@ -825,8 +881,8 @@ ${navigationLinkBlocks(navLinks)}
 <!-- wp:paragraph {"textColor":"grass","style":{"typography":{"fontSize":"14px","fontStyle":"normal","fontWeight":"850","textTransform":"uppercase","letterSpacing":"0px"}}} -->
 <p class="has-grass-color has-text-color" style="font-size:14px;font-style:normal;font-weight:850;letter-spacing:0px;text-transform:uppercase">${esc(copy.eyebrow)}</p>
 <!-- /wp:paragraph -->
-<!-- wp:heading {"level":1,"textColor":"deep-green","style":{"typography":{"fontSize":"clamp(42px, 5.4vw, 76px)","lineHeight":"1.02","fontStyle":"normal","fontWeight":"620"},"spacing":{"margin":{"top":"12px","bottom":"20px"}}}} -->
-<h1 class="wp-block-heading has-deep-green-color has-text-color" style="margin-top:12px;margin-bottom:20px;font-size:clamp(42px, 5.4vw, 76px);font-style:normal;font-weight:620;line-height:1.02">${esc(copy.heroTitle)}</h1>
+<!-- wp:heading {"level":1,"textColor":"deep-green","style":{"typography":{"fontSize":"clamp(36px, 4.5vw, 62px)","lineHeight":"1.08","fontStyle":"normal","fontWeight":"620"},"spacing":{"margin":{"top":"12px","bottom":"18px"}}}} -->
+<h1 class="wp-block-heading has-deep-green-color has-text-color" style="margin-top:12px;margin-bottom:18px;font-size:clamp(36px, 4.5vw, 62px);font-style:normal;font-weight:620;line-height:1.08">${esc(copy.heroTitle)}</h1>
 <!-- /wp:heading -->
 <!-- wp:paragraph {"textColor":"soil","style":{"typography":{"fontSize":"clamp(19px, 1.7vw, 24px)","lineHeight":"1.52"},"spacing":{"margin":{"bottom":"24px"}}}} -->
 <p class="has-soil-color has-text-color" style="margin-bottom:24px;font-size:clamp(19px, 1.7vw, 24px);line-height:1.52">${esc(copy.heroText)}</p>
@@ -860,8 +916,8 @@ ${proof}
 
 <!-- wp:group {"metadata":{"name":"Palette support"},"align":"full","backgroundColor":"cream","style":{"spacing":{"padding":{"top":"74px","right":"24px","bottom":"74px","left":"24px"}}},"layout":{"type":"constrained","wideSize":"1180px"}} -->
 <div class="wp-block-group alignfull has-cream-background-color has-background" style="padding-top:74px;padding-right:24px;padding-bottom:74px;padding-left:24px">
-<!-- wp:heading {"level":2,"align":"wide","textColor":"deep-green","style":{"typography":{"fontSize":"clamp(34px, 4.8vw, 60px)","lineHeight":"1.04","fontStyle":"normal","fontWeight":"620"},"spacing":{"margin":{"bottom":"26px"}}}} -->
-<h2 class="wp-block-heading alignwide has-deep-green-color has-text-color" style="margin-bottom:26px;font-size:clamp(34px, 4.8vw, 60px);font-style:normal;font-weight:620;line-height:1.04">${esc(copy.servicesTitle)}</h2>
+<!-- wp:heading {"level":2,"align":"wide","textColor":"deep-green","style":{"typography":{"fontSize":"clamp(32px, 4vw, 50px)","lineHeight":"1.08","fontStyle":"normal","fontWeight":"620"},"spacing":{"margin":{"bottom":"26px"}}}} -->
+<h2 class="wp-block-heading alignwide has-deep-green-color has-text-color" style="margin-bottom:26px;font-size:clamp(32px, 4vw, 50px);font-style:normal;font-weight:620;line-height:1.08">${esc(copy.servicesTitle)}</h2>
 <!-- /wp:heading -->
 <!-- wp:columns {"align":"wide","style":{"spacing":{"blockGap":{"left":"20px"}}}} -->
 <div class="wp-block-columns alignwide">
@@ -877,8 +933,8 @@ ${services}
 <div class="wp-block-columns alignwide">
 <!-- wp:column {"width":"38%"} -->
 <div class="wp-block-column" style="flex-basis:38%">
-<!-- wp:heading {"level":2,"textColor":"deep-green","style":{"typography":{"fontSize":"clamp(32px, 4.5vw, 56px)","lineHeight":"1.04","fontStyle":"normal","fontWeight":"620"},"spacing":{"margin":{"bottom":"18px"}}}} -->
-<h2 class="wp-block-heading has-deep-green-color has-text-color" style="margin-bottom:18px;font-size:clamp(32px, 4.5vw, 56px);font-style:normal;font-weight:620;line-height:1.04">${esc(copy.processTitle)}</h2>
+<!-- wp:heading {"level":2,"textColor":"deep-green","style":{"typography":{"fontSize":"clamp(31px, 3.8vw, 48px)","lineHeight":"1.08","fontStyle":"normal","fontWeight":"620"},"spacing":{"margin":{"bottom":"18px"}}}} -->
+<h2 class="wp-block-heading has-deep-green-color has-text-color" style="margin-bottom:18px;font-size:clamp(31px, 3.8vw, 48px);font-style:normal;font-weight:620;line-height:1.08">${esc(copy.processTitle)}</h2>
 <!-- /wp:heading -->
 <!-- wp:quote {"className":"som-color-consult-quote"} -->
 <blockquote class="wp-block-quote som-color-consult-quote"><p>${esc(copy.introText)}</p><cite>Palette note from ${esc(spec.businessName)}</cite></blockquote>
@@ -911,8 +967,8 @@ ${process}
 <div class="wp-block-columns alignwide are-vertically-aligned-center">
 <!-- wp:column {"verticalAlignment":"center","width":"60%"} -->
 <div class="wp-block-column is-vertically-aligned-center" style="flex-basis:60%">
-<!-- wp:heading {"level":2,"textColor":"deep-green","style":{"typography":{"fontSize":"clamp(34px, 5vw, 62px)","lineHeight":"1.04","fontStyle":"normal","fontWeight":"620"},"spacing":{"margin":{"bottom":"18px"}}}} -->
-<h2 class="wp-block-heading has-deep-green-color has-text-color" style="margin-bottom:18px;font-size:clamp(34px, 5vw, 62px);font-style:normal;font-weight:620;line-height:1.04">${esc(copy.quoteTitle)}</h2>
+<!-- wp:heading {"level":2,"textColor":"deep-green","style":{"typography":{"fontSize":"clamp(32px, 4.2vw, 52px)","lineHeight":"1.08","fontStyle":"normal","fontWeight":"620"},"spacing":{"margin":{"bottom":"18px"}}}} -->
+<h2 class="wp-block-heading has-deep-green-color has-text-color" style="margin-bottom:18px;font-size:clamp(32px, 4.2vw, 52px);font-style:normal;font-weight:620;line-height:1.08">${esc(copy.quoteTitle)}</h2>
 <!-- /wp:heading -->
 <!-- wp:paragraph {"textColor":"soil","style":{"typography":{"fontSize":"20px","lineHeight":"1.55"}}} -->
 <p class="has-soil-color has-text-color" style="font-size:20px;line-height:1.55">${esc(copy.quoteText)}</p>
@@ -1064,8 +1120,8 @@ ${navigationLinkBlocks(navLinks)}
 <!-- wp:paragraph {"textColor":"white","style":{"typography":{"fontSize":"24px","lineHeight":"1","fontStyle":"normal","fontWeight":"900"},"spacing":{"margin":{"bottom":"6px"}}}} -->
 <p class="has-white-color has-text-color" style="margin-bottom:6px;font-size:24px;font-style:normal;font-weight:900;line-height:1">North + West</p>
 <!-- /wp:paragraph -->
-<!-- wp:paragraph {"textColor":"mist","style":{"typography":{"fontSize":"14px","lineHeight":"1.35","fontStyle":"normal","fontWeight":"750"}}} -->
-<p class="has-mist-color has-text-color" style="font-size:14px;font-style:normal;font-weight:750;line-height:1.35">weekly route lanes</p>
+<!-- wp:paragraph {"textColor":"mist","style":{"typography":{"fontSize":"14px","lineHeight":"1.45","fontStyle":"normal","fontWeight":"750"}}} -->
+<p class="has-mist-color has-text-color" style="font-size:14px;font-style:normal;font-weight:750;line-height:1.45">weekly route lanes</p>
 <!-- /wp:paragraph -->
 </div>
 <!-- /wp:column -->
@@ -1074,8 +1130,8 @@ ${navigationLinkBlocks(navLinks)}
 <!-- wp:paragraph {"textColor":"white","style":{"typography":{"fontSize":"24px","lineHeight":"1","fontStyle":"normal","fontWeight":"900"},"spacing":{"margin":{"bottom":"6px"}}}} -->
 <p class="has-white-color has-text-color" style="margin-bottom:6px;font-size:24px;font-style:normal;font-weight:900;line-height:1">24 hr</p>
 <!-- /wp:paragraph -->
-<!-- wp:paragraph {"textColor":"mist","style":{"typography":{"fontSize":"14px","lineHeight":"1.35","fontStyle":"normal","fontWeight":"750"}}} -->
-<p class="has-mist-color has-text-color" style="font-size:14px;font-style:normal;font-weight:750;line-height:1.35">weekday quote reply</p>
+<!-- wp:paragraph {"textColor":"mist","style":{"typography":{"fontSize":"14px","lineHeight":"1.45","fontStyle":"normal","fontWeight":"750"}}} -->
+<p class="has-mist-color has-text-color" style="font-size:14px;font-style:normal;font-weight:750;line-height:1.45">weekday quote reply</p>
 <!-- /wp:paragraph -->
 </div>
 <!-- /wp:column -->
@@ -1084,8 +1140,8 @@ ${navigationLinkBlocks(navLinks)}
 <!-- wp:paragraph {"textColor":"white","style":{"typography":{"fontSize":"24px","lineHeight":"1","fontStyle":"normal","fontWeight":"900"},"spacing":{"margin":{"bottom":"6px"}}}} -->
 <p class="has-white-color has-text-color" style="margin-bottom:6px;font-size:24px;font-style:normal;font-weight:900;line-height:1">Gate check</p>
 <!-- /wp:paragraph -->
-<!-- wp:paragraph {"textColor":"mist","style":{"typography":{"fontSize":"14px","lineHeight":"1.35","fontStyle":"normal","fontWeight":"750"}}} -->
-<p class="has-mist-color has-text-color" style="font-size:14px;font-style:normal;font-weight:750;line-height:1.35">after every visit</p>
+<!-- wp:paragraph {"textColor":"mist","style":{"typography":{"fontSize":"14px","lineHeight":"1.45","fontStyle":"normal","fontWeight":"750"}}} -->
+<p class="has-mist-color has-text-color" style="font-size:14px;font-style:normal;font-weight:750;line-height:1.45">after every visit</p>
 <!-- /wp:paragraph -->
 </div>
 <!-- /wp:column -->
@@ -1429,8 +1485,8 @@ function receiptProof(stat, label) {
 <!-- wp:paragraph {"textColor":"sun","style":{"typography":{"fontSize":"26px","fontStyle":"normal","fontWeight":"900","lineHeight":"1"}}} -->
 <p class="has-sun-color has-text-color" style="font-size:26px;font-style:normal;font-weight:900;line-height:1">${esc(stat)}</p>
 <!-- /wp:paragraph -->
-<!-- wp:paragraph {"textColor":"mist","style":{"typography":{"fontSize":"15px","lineHeight":"1.35","fontStyle":"normal","fontWeight":"700"}}} -->
-<p class="has-mist-color has-text-color" style="font-size:15px;font-style:normal;font-weight:700;line-height:1.35">${esc(label)}</p>
+<!-- wp:paragraph {"textColor":"mist","style":{"typography":{"fontSize":"15px","lineHeight":"1.45","fontStyle":"normal","fontWeight":"700"}}} -->
+<p class="has-mist-color has-text-color" style="font-size:15px;font-style:normal;font-weight:700;line-height:1.45">${esc(label)}</p>
 <!-- /wp:paragraph -->
 </div>
 <!-- /wp:column -->`;
@@ -1708,8 +1764,8 @@ function urgentBoardCell(stat, label) {
 <!-- wp:paragraph {"textColor":"deep-green","style":{"typography":{"fontSize":"25px","fontStyle":"normal","fontWeight":"900"},"spacing":{"margin":{"bottom":"4px"}}}} -->
 <p class="has-deep-green-color has-text-color" style="margin-bottom:4px;font-size:25px;font-style:normal;font-weight:900">${esc(stat)}</p>
 <!-- /wp:paragraph -->
-<!-- wp:paragraph {"textColor":"soil","style":{"typography":{"fontSize":"14px","lineHeight":"1.35"}}} -->
-<p class="has-soil-color has-text-color" style="font-size:14px;line-height:1.35">${esc(label)}</p>
+<!-- wp:paragraph {"textColor":"soil","style":{"typography":{"fontSize":"14px","lineHeight":"1.45"}}} -->
+<p class="has-soil-color has-text-color" style="font-size:14px;line-height:1.45">${esc(label)}</p>
 <!-- /wp:paragraph -->
 </div>
 <!-- /wp:column -->
@@ -3761,8 +3817,8 @@ function buildRoutePlanPageContent(spec) {
 <!-- wp:paragraph {"textColor":"deep-green","style":{"typography":{"fontSize":"18px","fontStyle":"normal","fontWeight":"800","textTransform":"uppercase","letterSpacing":"0px"}}} -->
 <p class="has-deep-green-color has-text-color" style="font-size:18px;font-style:normal;font-weight:800;letter-spacing:0px;text-transform:uppercase">Service area</p>
 <!-- /wp:paragraph -->
-<!-- wp:paragraph {"textColor":"soil","style":{"typography":{"fontSize":"22px","lineHeight":"1.35"}}} -->
-<p class="has-soil-color has-text-color" style="font-size:22px;line-height:1.35">${esc(contact.serviceArea)}</p>
+<!-- wp:paragraph {"textColor":"soil","style":{"typography":{"fontSize":"22px","lineHeight":"1.45"}}} -->
+<p class="has-soil-color has-text-color" style="font-size:22px;line-height:1.45">${esc(contact.serviceArea)}</p>
 <!-- /wp:paragraph -->
 <!-- wp:paragraph {"textColor":"grass","style":{"typography":{"fontSize":"18px","fontStyle":"normal","fontWeight":"800"}}} -->
 <p class="has-grass-color has-text-color" style="font-size:18px;font-style:normal;font-weight:800">Text photos. Get a simple plan. Watch your curb appeal perk up.</p>
@@ -4129,8 +4185,8 @@ ${cells.map(([label, color]) => `
 </div>
 <!-- /wp:columns -->
 ${items.map((item) => `
-<!-- wp:paragraph {"className":"som-ticket-line","textColor":"cream","style":{"typography":{"fontSize":"14px","lineHeight":"1.35","fontStyle":"normal","fontWeight":"850"},"spacing":{"margin":{"top":"0","bottom":"7px"}}}} -->
-<p class="som-ticket-line has-cream-color has-text-color" style="margin-top:0;margin-bottom:7px;font-size:14px;font-style:normal;font-weight:850;line-height:1.35"><strong>${esc(item.stat)}</strong> / ${esc(item.label)}</p>
+<!-- wp:paragraph {"className":"som-ticket-line","textColor":"cream","style":{"typography":{"fontSize":"14px","lineHeight":"1.45","fontStyle":"normal","fontWeight":"850"},"spacing":{"margin":{"top":"0","bottom":"7px"}}}} -->
+<p class="som-ticket-line has-cream-color has-text-color" style="margin-top:0;margin-bottom:7px;font-size:14px;font-style:normal;font-weight:850;line-height:1.45"><strong>${esc(item.stat)}</strong> / ${esc(item.label)}</p>
 <!-- /wp:paragraph -->`.trim()).join("\n")}
 </div>
 <!-- /wp:group -->`.trim();
@@ -4143,8 +4199,8 @@ function zoneProof(stat, label) {
 <!-- wp:paragraph {"textColor":"deep-green","style":{"typography":{"fontSize":"clamp(26px, 3.5vw, 42px)","lineHeight":"1","fontStyle":"normal","fontWeight":"900"},"spacing":{"margin":{"bottom":"8px"}}}} -->
 <p class="has-deep-green-color has-text-color" style="margin-bottom:8px;font-size:clamp(26px, 3.5vw, 42px);font-style:normal;font-weight:900;line-height:1">${esc(stat)}</p>
 <!-- /wp:paragraph -->
-<!-- wp:paragraph {"textColor":"soil","style":{"typography":{"fontSize":"15px","lineHeight":"1.35","fontStyle":"normal","fontWeight":"800"}}} -->
-<p class="has-soil-color has-text-color" style="font-size:15px;font-style:normal;font-weight:800;line-height:1.35">${esc(label)}</p>
+<!-- wp:paragraph {"textColor":"soil","style":{"typography":{"fontSize":"15px","lineHeight":"1.45","fontStyle":"normal","fontWeight":"800"}}} -->
+<p class="has-soil-color has-text-color" style="font-size:15px;font-style:normal;font-weight:800;line-height:1.45">${esc(label)}</p>
 <!-- /wp:paragraph -->
 </div>
 <!-- /wp:column -->`.trim();
@@ -4219,8 +4275,8 @@ function waterMiniBoard(proof) {
 <p class="has-grass-color has-text-color" style="margin-bottom:10px;font-size:13px;font-style:normal;font-weight:900;letter-spacing:0px;text-transform:uppercase">Water board</p>
 <!-- /wp:paragraph -->
 ${items.map((item) => `
-<!-- wp:paragraph {"textColor":"deep-green","className":"som-ticket-line","style":{"typography":{"fontSize":"14px","fontStyle":"normal","fontWeight":"850","lineHeight":"1.35"},"spacing":{"margin":{"bottom":"7px"}}}} -->
-<p class="som-ticket-line has-deep-green-color has-text-color" style="margin-bottom:7px;font-size:14px;font-style:normal;font-weight:850;line-height:1.35"><strong>${esc(item.stat)}</strong> / ${esc(item.label)}</p>
+<!-- wp:paragraph {"textColor":"deep-green","className":"som-ticket-line","style":{"typography":{"fontSize":"14px","fontStyle":"normal","fontWeight":"850","lineHeight":"1.45"},"spacing":{"margin":{"bottom":"7px"}}}} -->
+<p class="som-ticket-line has-deep-green-color has-text-color" style="margin-bottom:7px;font-size:14px;font-style:normal;font-weight:850;line-height:1.45"><strong>${esc(item.stat)}</strong> / ${esc(item.label)}</p>
 <!-- /wp:paragraph -->`.trim()).join("\n")}
 </div>
 <!-- /wp:group -->`.trim();
@@ -4233,8 +4289,8 @@ function waterProof(stat, label) {
 <!-- wp:paragraph {"textColor":"leaf","style":{"typography":{"fontSize":"clamp(26px, 3.6vw, 42px)","lineHeight":"1","fontStyle":"normal","fontWeight":"900"},"spacing":{"margin":{"bottom":"8px"}}}} -->
 <p class="has-leaf-color has-text-color" style="margin-bottom:8px;font-size:clamp(26px, 3.6vw, 42px);font-style:normal;font-weight:900;line-height:1">${esc(stat)}</p>
 <!-- /wp:paragraph -->
-<!-- wp:paragraph {"textColor":"deep-green","style":{"typography":{"fontSize":"15px","lineHeight":"1.35","fontStyle":"normal","fontWeight":"800"}}} -->
-<p class="has-deep-green-color has-text-color" style="font-size:15px;font-style:normal;font-weight:800;line-height:1.35">${esc(label)}</p>
+<!-- wp:paragraph {"textColor":"deep-green","style":{"typography":{"fontSize":"15px","lineHeight":"1.45","fontStyle":"normal","fontWeight":"800"}}} -->
+<p class="has-deep-green-color has-text-color" style="font-size:15px;font-style:normal;font-weight:800;line-height:1.45">${esc(label)}</p>
 <!-- /wp:paragraph -->
 </div>
 <!-- /wp:column -->`.trim();
@@ -4295,8 +4351,8 @@ function workshopTicket(proof) {
 <p class="has-sun-color has-text-color" style="margin-bottom:10px;font-size:14px;font-style:normal;font-weight:900;letter-spacing:0px;text-transform:uppercase">Bench check</p>
 <!-- /wp:paragraph -->
 ${items.map((item) => `
-<!-- wp:paragraph {"textColor":"cream","className":"som-ticket-line","style":{"typography":{"fontSize":"15px","fontStyle":"normal","fontWeight":"850","lineHeight":"1.35"},"spacing":{"margin":{"bottom":"7px"}}}} -->
-<p class="som-ticket-line has-cream-color has-text-color" style="margin-bottom:7px;font-size:15px;font-style:normal;font-weight:850;line-height:1.35"><strong>${esc(item.stat)}</strong> / ${esc(item.label)}</p>
+<!-- wp:paragraph {"textColor":"cream","className":"som-ticket-line","style":{"typography":{"fontSize":"15px","fontStyle":"normal","fontWeight":"850","lineHeight":"1.45"},"spacing":{"margin":{"bottom":"7px"}}}} -->
+<p class="som-ticket-line has-cream-color has-text-color" style="margin-bottom:7px;font-size:15px;font-style:normal;font-weight:850;line-height:1.45"><strong>${esc(item.stat)}</strong> / ${esc(item.label)}</p>
 <!-- /wp:paragraph -->`.trim()).join("\n")}
 </div>
 <!-- /wp:group -->`.trim();
@@ -4309,8 +4365,8 @@ function workshopProof(stat, label) {
 <!-- wp:paragraph {"textColor":"leaf","style":{"typography":{"fontSize":"28px","lineHeight":"1","fontStyle":"normal","fontWeight":"900"},"spacing":{"margin":{"bottom":"8px"}}}} -->
 <p class="has-leaf-color has-text-color" style="margin-bottom:8px;font-size:28px;font-style:normal;font-weight:900;line-height:1">${esc(stat)}</p>
 <!-- /wp:paragraph -->
-<!-- wp:paragraph {"textColor":"deep-green","style":{"typography":{"fontSize":"15px","lineHeight":"1.35","fontStyle":"normal","fontWeight":"800"}}} -->
-<p class="has-deep-green-color has-text-color" style="font-size:15px;font-style:normal;font-weight:800;line-height:1.35">${esc(label)}</p>
+<!-- wp:paragraph {"textColor":"deep-green","style":{"typography":{"fontSize":"15px","lineHeight":"1.45","fontStyle":"normal","fontWeight":"800"}}} -->
+<p class="has-deep-green-color has-text-color" style="font-size:15px;font-style:normal;font-weight:800;line-height:1.45">${esc(label)}</p>
 <!-- /wp:paragraph -->
 </div>
 <!-- /wp:column -->`.trim();
@@ -4442,8 +4498,8 @@ function checkCard(title, text) {
 
 function detailTicket(items) {
   const rows = items.slice(0, 3).map((item) => `
-<!-- wp:paragraph {"className":"som-ticket-line","textColor":"mist","style":{"typography":{"fontSize":"14px","lineHeight":"1.35","fontStyle":"normal","fontWeight":"800"},"spacing":{"margin":{"top":"0","bottom":"8px"}}}} -->
-<p class="som-ticket-line has-mist-color has-text-color" style="margin-top:0;margin-bottom:8px;font-size:14px;font-style:normal;font-weight:800;line-height:1.35"><strong>${esc(item.stat)}</strong> / ${esc(item.label)}</p>
+<!-- wp:paragraph {"className":"som-ticket-line","textColor":"mist","style":{"typography":{"fontSize":"14px","lineHeight":"1.45","fontStyle":"normal","fontWeight":"800"},"spacing":{"margin":{"top":"0","bottom":"8px"}}}} -->
+<p class="som-ticket-line has-mist-color has-text-color" style="margin-top:0;margin-bottom:8px;font-size:14px;font-style:normal;font-weight:800;line-height:1.45"><strong>${esc(item.stat)}</strong> / ${esc(item.label)}</p>
 <!-- /wp:paragraph -->`).join("\n");
 
   return `
@@ -4464,8 +4520,8 @@ function detailProof(stat, label) {
 <!-- wp:paragraph {"textColor":"leaf","style":{"typography":{"fontSize":"clamp(24px, 3vw, 36px)","lineHeight":"1","fontStyle":"normal","fontWeight":"900"},"spacing":{"margin":{"bottom":"8px"}}}} -->
 <p class="has-leaf-color has-text-color" style="margin-bottom:8px;font-size:clamp(24px, 3vw, 36px);font-style:normal;font-weight:900;line-height:1">${esc(stat)}</p>
 <!-- /wp:paragraph -->
-<!-- wp:paragraph {"textColor":"deep-green","style":{"typography":{"fontSize":"15px","lineHeight":"1.35","fontStyle":"normal","fontWeight":"800"}}} -->
-<p class="has-deep-green-color has-text-color" style="font-size:15px;font-style:normal;font-weight:800;line-height:1.35">${esc(label)}</p>
+<!-- wp:paragraph {"textColor":"deep-green","style":{"typography":{"fontSize":"15px","lineHeight":"1.45","fontStyle":"normal","fontWeight":"800"}}} -->
+<p class="has-deep-green-color has-text-color" style="font-size:15px;font-style:normal;font-weight:800;line-height:1.45">${esc(label)}</p>
 <!-- /wp:paragraph -->
 </div>
 <!-- /wp:column -->`.trim();
@@ -4519,8 +4575,8 @@ function detailStep(number, title, text) {
 
 function menuTicket(spec) {
   const rows = spec.services.slice(0, 3).map((item) => `
-<!-- wp:paragraph {"className":"som-ticket-line","textColor":"mist","style":{"typography":{"fontSize":"14px","lineHeight":"1.35","fontStyle":"normal","fontWeight":"800"},"spacing":{"margin":{"top":"0","bottom":"8px"}}}} -->
-<p class="som-ticket-line has-mist-color has-text-color" style="margin-top:0;margin-bottom:8px;font-size:14px;font-style:normal;font-weight:800;line-height:1.35"><strong>${esc(item.title)}</strong> / ${esc(item.text)}</p>
+<!-- wp:paragraph {"className":"som-ticket-line","textColor":"mist","style":{"typography":{"fontSize":"14px","lineHeight":"1.45","fontStyle":"normal","fontWeight":"800"},"spacing":{"margin":{"top":"0","bottom":"8px"}}}} -->
+<p class="som-ticket-line has-mist-color has-text-color" style="margin-top:0;margin-bottom:8px;font-size:14px;font-style:normal;font-weight:800;line-height:1.45"><strong>${esc(item.title)}</strong> / ${esc(item.text)}</p>
 <!-- /wp:paragraph -->`).join("\n");
 
   return `
@@ -4541,8 +4597,8 @@ function menuProof(stat, label) {
 <!-- wp:paragraph {"textColor":"sun","style":{"typography":{"fontSize":"clamp(24px, 3vw, 36px)","lineHeight":"1","fontStyle":"normal","fontWeight":"900"},"spacing":{"margin":{"bottom":"8px"}}}} -->
 <p class="has-sun-color has-text-color" style="margin-bottom:8px;font-size:clamp(24px, 3vw, 36px);font-style:normal;font-weight:900;line-height:1">${esc(stat)}</p>
 <!-- /wp:paragraph -->
-<!-- wp:paragraph {"textColor":"deep-green","style":{"typography":{"fontSize":"15px","lineHeight":"1.35","fontStyle":"normal","fontWeight":"800"}}} -->
-<p class="has-deep-green-color has-text-color" style="font-size:15px;font-style:normal;font-weight:800;line-height:1.35">${esc(label)}</p>
+<!-- wp:paragraph {"textColor":"deep-green","style":{"typography":{"fontSize":"15px","lineHeight":"1.45","fontStyle":"normal","fontWeight":"800"}}} -->
+<p class="has-deep-green-color has-text-color" style="font-size:15px;font-style:normal;font-weight:800;line-height:1.45">${esc(label)}</p>
 <!-- /wp:paragraph -->
 </div>
 <!-- /wp:column -->`.trim();
@@ -4647,8 +4703,8 @@ function surfaceBadge(stat, label) {
 <!-- wp:paragraph {"textColor":"sun","style":{"typography":{"fontSize":"clamp(24px, 3vw, 34px)","lineHeight":"1","fontStyle":"normal","fontWeight":"900"},"spacing":{"margin":{"bottom":"8px"}}}} -->
 <p class="has-sun-color has-text-color" style="margin-bottom:8px;font-size:clamp(24px, 3vw, 34px);font-style:normal;font-weight:900;line-height:1">${esc(stat)}</p>
 <!-- /wp:paragraph -->
-<!-- wp:paragraph {"textColor":"white","style":{"typography":{"fontSize":"15px","lineHeight":"1.35","fontStyle":"normal","fontWeight":"800"}}} -->
-<p class="has-white-color has-text-color" style="font-size:15px;font-style:normal;font-weight:800;line-height:1.35">${esc(label)}</p>
+<!-- wp:paragraph {"textColor":"white","style":{"typography":{"fontSize":"15px","lineHeight":"1.45","fontStyle":"normal","fontWeight":"800"}}} -->
+<p class="has-white-color has-text-color" style="font-size:15px;font-style:normal;font-weight:800;line-height:1.45">${esc(label)}</p>
 <!-- /wp:paragraph -->
 </div>
 <!-- /wp:column -->`.trim();
@@ -4678,8 +4734,8 @@ function fabricProof(stat, label) {
 <!-- wp:paragraph {"textColor":"grass","style":{"typography":{"fontSize":"clamp(25px, 3.6vw, 38px)","lineHeight":"1","fontStyle":"normal","fontWeight":"900"},"spacing":{"margin":{"bottom":"10px"}}}} -->
 <p class="has-grass-color has-text-color" style="margin-bottom:10px;font-size:clamp(25px, 3.6vw, 38px);font-style:normal;font-weight:900;line-height:1">${esc(stat)}</p>
 <!-- /wp:paragraph -->
-<!-- wp:paragraph {"textColor":"soil","style":{"typography":{"fontSize":"16px","lineHeight":"1.35","fontStyle":"normal","fontWeight":"800"}}} -->
-<p class="has-soil-color has-text-color" style="font-size:16px;font-style:normal;font-weight:800;line-height:1.35">${esc(label)}</p>
+<!-- wp:paragraph {"textColor":"soil","style":{"typography":{"fontSize":"16px","lineHeight":"1.45","fontStyle":"normal","fontWeight":"800"}}} -->
+<p class="has-soil-color has-text-color" style="font-size:16px;font-style:normal;font-weight:800;line-height:1.45">${esc(label)}</p>
 <!-- /wp:paragraph -->
 </div>
 <!-- /wp:column -->`.trim();
@@ -4709,8 +4765,8 @@ function galleryProof(stat, label) {
 <!-- wp:paragraph {"textColor":"sun","style":{"typography":{"fontSize":"clamp(26px, 4vw, 40px)","lineHeight":"1","fontStyle":"normal","fontWeight":"900"},"spacing":{"margin":{"bottom":"10px"}}}} -->
 <p class="has-sun-color has-text-color" style="margin-bottom:10px;font-size:clamp(26px, 4vw, 40px);font-style:normal;font-weight:900;line-height:1">${esc(stat)}</p>
 <!-- /wp:paragraph -->
-<!-- wp:paragraph {"textColor":"white","style":{"typography":{"fontSize":"16px","lineHeight":"1.35","fontStyle":"normal","fontWeight":"800"}}} -->
-<p class="has-white-color has-text-color" style="font-size:16px;font-style:normal;font-weight:800;line-height:1.35">${esc(label)}</p>
+<!-- wp:paragraph {"textColor":"white","style":{"typography":{"fontSize":"16px","lineHeight":"1.45","fontStyle":"normal","fontWeight":"800"}}} -->
+<p class="has-white-color has-text-color" style="font-size:16px;font-style:normal;font-weight:800;line-height:1.45">${esc(label)}</p>
 <!-- /wp:paragraph -->
 </div>
 <!-- /wp:column -->`.trim();
@@ -4740,8 +4796,8 @@ function colorProofCard(stat, label) {
 <!-- wp:paragraph {"textColor":"leaf","style":{"typography":{"fontSize":"clamp(24px, 3vw, 34px)","lineHeight":"1","fontStyle":"normal","fontWeight":"760"},"spacing":{"margin":{"bottom":"8px"}}}} -->
 <p class="has-leaf-color has-text-color" style="margin-bottom:8px;font-size:clamp(24px, 3vw, 34px);font-style:normal;font-weight:760;line-height:1">${esc(stat)}</p>
 <!-- /wp:paragraph -->
-<!-- wp:paragraph {"textColor":"deep-green","style":{"typography":{"fontSize":"15px","lineHeight":"1.35","fontStyle":"normal","fontWeight":"760"}}} -->
-<p class="has-deep-green-color has-text-color" style="font-size:15px;font-style:normal;font-weight:760;line-height:1.35">${esc(label)}</p>
+<!-- wp:paragraph {"textColor":"deep-green","style":{"typography":{"fontSize":"15px","lineHeight":"1.45","fontStyle":"normal","fontWeight":"760"}}} -->
+<p class="has-deep-green-color has-text-color" style="font-size:15px;font-style:normal;font-weight:760;line-height:1.45">${esc(label)}</p>
 <!-- /wp:paragraph -->
 </div>
 <!-- /wp:column -->`.trim();
@@ -4795,8 +4851,8 @@ function haulCard(number, title, text) {
 
 function haulTicket(items) {
   const rows = items.slice(0, 3).map((item) => `
-<!-- wp:paragraph {"className":"som-ticket-line","textColor":"cream","style":{"typography":{"fontSize":"14px","lineHeight":"1.35","fontStyle":"normal","fontWeight":"800"},"spacing":{"margin":{"top":"0","bottom":"8px"}}}} -->
-<p class="som-ticket-line has-cream-color has-text-color" style="margin-top:0;margin-bottom:8px;font-size:14px;font-style:normal;font-weight:800;line-height:1.35"><strong>${esc(item.stat)}</strong> / ${esc(item.label)}</p>
+<!-- wp:paragraph {"className":"som-ticket-line","textColor":"cream","style":{"typography":{"fontSize":"14px","lineHeight":"1.45","fontStyle":"normal","fontWeight":"800"},"spacing":{"margin":{"top":"0","bottom":"8px"}}}} -->
+<p class="som-ticket-line has-cream-color has-text-color" style="margin-top:0;margin-bottom:8px;font-size:14px;font-style:normal;font-weight:800;line-height:1.45"><strong>${esc(item.stat)}</strong> / ${esc(item.label)}</p>
 <!-- /wp:paragraph -->`).join("\n");
 
   return `
@@ -4817,8 +4873,8 @@ function haulProof(stat, label) {
 <!-- wp:paragraph {"textColor":"sun","style":{"typography":{"fontSize":"clamp(24px, 3vw, 36px)","lineHeight":"1","fontStyle":"normal","fontWeight":"900"},"spacing":{"margin":{"bottom":"8px"}}}} -->
 <p class="has-sun-color has-text-color" style="margin-bottom:8px;font-size:clamp(24px, 3vw, 36px);font-style:normal;font-weight:900;line-height:1">${esc(stat)}</p>
 <!-- /wp:paragraph -->
-<!-- wp:paragraph {"textColor":"white","style":{"typography":{"fontSize":"15px","lineHeight":"1.35","fontStyle":"normal","fontWeight":"800"}}} -->
-<p class="has-white-color has-text-color" style="font-size:15px;font-style:normal;font-weight:800;line-height:1.35">${esc(label)}</p>
+<!-- wp:paragraph {"textColor":"white","style":{"typography":{"fontSize":"15px","lineHeight":"1.45","fontStyle":"normal","fontWeight":"800"}}} -->
+<p class="has-white-color has-text-color" style="font-size:15px;font-style:normal;font-weight:800;line-height:1.45">${esc(label)}</p>
 <!-- /wp:paragraph -->
 </div>
 <!-- /wp:column -->`.trim();
@@ -4906,8 +4962,8 @@ function compactProof(stat, label) {
 <!-- wp:paragraph {"textColor":"sun","style":{"typography":{"fontSize":"clamp(26px, 4vw, 40px)","lineHeight":"1","fontStyle":"normal","fontWeight":"900"},"spacing":{"margin":{"bottom":"10px"}}}} -->
 <p class="has-sun-color has-text-color" style="margin-bottom:10px;font-size:clamp(26px, 4vw, 40px);font-style:normal;font-weight:900;line-height:1">${esc(stat)}</p>
 <!-- /wp:paragraph -->
-<!-- wp:paragraph {"textColor":"white","style":{"typography":{"fontSize":"16px","lineHeight":"1.35","fontStyle":"normal","fontWeight":"800"}}} -->
-<p class="has-white-color has-text-color" style="font-size:16px;font-style:normal;font-weight:800;line-height:1.35">${esc(label)}</p>
+<!-- wp:paragraph {"textColor":"white","style":{"typography":{"fontSize":"16px","lineHeight":"1.45","fontStyle":"normal","fontWeight":"800"}}} -->
+<p class="has-white-color has-text-color" style="font-size:16px;font-style:normal;font-weight:800;line-height:1.45">${esc(label)}</p>
 <!-- /wp:paragraph -->
 </div>
 <!-- /wp:column -->`.trim();
@@ -4937,8 +4993,8 @@ function proofStat(stat, label) {
 <!-- wp:paragraph {"align":"center","textColor":"grass","style":{"typography":{"fontSize":"clamp(38px, 5vw, 64px)","lineHeight":"1","fontStyle":"normal","fontWeight":"900"}}} -->
 <p class="has-text-align-center has-grass-color has-text-color" style="font-size:clamp(38px, 5vw, 64px);font-style:normal;font-weight:900;line-height:1">${esc(stat)}</p>
 <!-- /wp:paragraph -->
-<!-- wp:paragraph {"align":"center","textColor":"soil","style":{"typography":{"fontSize":"17px","lineHeight":"1.35","fontStyle":"normal","fontWeight":"800"}}} -->
-<p class="has-text-align-center has-soil-color has-text-color" style="font-size:17px;font-style:normal;font-weight:800;line-height:1.35">${esc(label)}</p>
+<!-- wp:paragraph {"align":"center","textColor":"soil","style":{"typography":{"fontSize":"17px","lineHeight":"1.45","fontStyle":"normal","fontWeight":"800"}}} -->
+<p class="has-text-align-center has-soil-color has-text-color" style="font-size:17px;font-style:normal;font-weight:800;line-height:1.45">${esc(label)}</p>
 <!-- /wp:paragraph -->
 </div>
 <!-- /wp:column -->`.trim();
@@ -4986,8 +5042,8 @@ function routeProofCard(stat, label) {
 <!-- wp:paragraph {"textColor":"sun","style":{"typography":{"fontSize":"clamp(28px, 4vw, 46px)","lineHeight":"1","fontStyle":"normal","fontWeight":"900"},"spacing":{"margin":{"bottom":"10px"}}}} -->
 <p class="has-sun-color has-text-color" style="margin-bottom:10px;font-size:clamp(28px, 4vw, 46px);font-style:normal;font-weight:900;line-height:1">${esc(stat)}</p>
 <!-- /wp:paragraph -->
-<!-- wp:paragraph {"textColor":"deep-green","style":{"typography":{"fontSize":"16px","lineHeight":"1.35","fontStyle":"normal","fontWeight":"800"}}} -->
-<p class="has-deep-green-color has-text-color" style="font-size:16px;font-style:normal;font-weight:800;line-height:1.35">${esc(label)}</p>
+<!-- wp:paragraph {"textColor":"deep-green","style":{"typography":{"fontSize":"16px","lineHeight":"1.45","fontStyle":"normal","fontWeight":"800"}}} -->
+<p class="has-deep-green-color has-text-color" style="font-size:16px;font-style:normal;font-weight:800;line-height:1.45">${esc(label)}</p>
 <!-- /wp:paragraph -->
 </div>
 <!-- /wp:column -->`.trim();
@@ -5287,15 +5343,15 @@ function buildTypographyTokens(spec) {
   const archetype = layoutArchetypeFor(spec);
   const treatment = archetype.typographyTreatment || "friendly-bold-route-sans";
   const stacks = {
-    system: "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Inter, Roboto, Arial, sans-serif",
-    rounded: "\"Arial Rounded MT Bold\", \"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
-    humanist: "\"Avenir Next\", Avenir, \"Trebuchet MS\", \"Segoe UI\", Arial, sans-serif",
+    system: "system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Inter, Roboto, Arial, sans-serif",
+    rounded: "\"Avenir Next\", Avenir, \"Trebuchet MS\", \"Segoe UI\", Arial, sans-serif",
+    humanist: "\"Avenir Next\", Avenir, \"Segoe UI\", \"Helvetica Neue\", Arial, sans-serif",
     editorial: "Georgia, Cambria, \"Times New Roman\", serif",
-    elegant: "Baskerville, \"Iowan Old Style\", \"Palatino Linotype\", Palatino, Georgia, serif",
-    slab: "Rockwell, \"Roboto Slab\", \"Courier New\", Georgia, serif",
-    casual: "\"Trebuchet MS\", \"Gill Sans\", \"Avenir Next\", Arial, sans-serif",
-    condensed: "\"Arial Narrow\", \"Roboto Condensed\", \"Aptos Narrow\", Arial, sans-serif",
-    sturdy: "\"Arial Black\", \"Segoe UI Black\", Impact, Arial, sans-serif",
+    elegant: "\"Iowan Old Style\", \"Palatino Linotype\", Palatino, Georgia, serif",
+    slab: "\"Roboto Slab\", Rockwell, Georgia, serif",
+    casual: "\"Trebuchet MS\", \"Avenir Next\", Avenir, Arial, sans-serif",
+    condensed: "\"Aptos Narrow\", \"Arial Narrow\", \"Roboto Condensed\", Arial, sans-serif",
+    sturdy: "\"Aptos Display\", \"Segoe UI\", \"Helvetica Neue\", Arial, sans-serif",
     mono: "\"SFMono-Regular\", Consolas, \"Liberation Mono\", Menlo, monospace"
   };
   const treatments = {
@@ -5577,16 +5633,16 @@ function buildTypographyTokens(spec) {
     bodyLineHeight: "1.56"
   };
   treatments["bakery-editorial-serif-with-clean-menu-labels"] = {
-    body: stacks.humanist,
+    body: stacks.system,
     display: stacks.elegant,
     accent: stacks.system,
     scale: "editorial",
-    headingWeight: "650",
-    actionWeight: "800",
-    navWeight: "760",
-    linkWeight: "760",
-    headingLineHeight: "1.03",
-    bodyLineHeight: "1.6"
+    headingWeight: "620",
+    actionWeight: "760",
+    navWeight: "720",
+    linkWeight: "720",
+    headingLineHeight: "1.08",
+    bodyLineHeight: "1.58"
   };
   treatments["restoration-craft-serif-with-shop-sans"] = {
     body: stacks.humanist,
@@ -5613,16 +5669,16 @@ function buildTypographyTokens(spec) {
     bodyLineHeight: "1.58"
   };
   treatments["interior-editorial-serif-with-architectural-sans"] = {
-    body: stacks.humanist,
+    body: stacks.system,
     display: stacks.elegant,
-    accent: stacks.condensed,
+    accent: stacks.system,
     scale: "editorial",
     headingWeight: "620",
-    actionWeight: "760",
-    navWeight: "740",
-    linkWeight: "740",
-    headingLineHeight: "1.04",
-    bodyLineHeight: "1.62"
+    actionWeight: "740",
+    navWeight: "700",
+    linkWeight: "700",
+    headingLineHeight: "1.08",
+    bodyLineHeight: "1.58"
   };
   treatments["clear-route-dashboard-sans"] = {
     body: stacks.system,
@@ -5747,7 +5803,7 @@ function buildTypographyTokens(spec) {
   treatments["portfolio-editorial-display"] = treatments["editorial-gallery-serif-display"];
   treatments["bold-proof-before-after"] = treatments["confident-transform-grotesk"];
   treatments["event-menu-board-sans"] = treatments["menu-board-display-sans"];
-  const voice = treatments[treatment] || treatments["friendly-bold-route-sans"];
+  const voice = normalizeTypographyVoice(treatments[treatment] || treatments["friendly-bold-route-sans"]);
 
   return {
     treatment,
@@ -5780,6 +5836,51 @@ function buildTypographyTokens(spec) {
   };
 }
 
+function normalizeTypographyVoice(rawVoice) {
+  const body = safeFontStack(rawVoice.body, "body");
+  const display = safeFontStack(rawVoice.display, "display");
+  const accent = safeFontStack(rawVoice.accent, "accent");
+  const serifDisplay = isSerifStack(display);
+
+  return {
+    ...rawVoice,
+    body,
+    display,
+    accent,
+    headingWeight: String(clampNumber(numericToken(rawVoice.headingWeight, serifDisplay ? 660 : 760), serifDisplay ? 600 : 620, serifDisplay ? 720 : 820)),
+    actionWeight: String(clampNumber(numericToken(rawVoice.actionWeight, 760), 650, 820)),
+    navWeight: String(clampNumber(numericToken(rawVoice.navWeight, 740), 650, 800)),
+    linkWeight: String(clampNumber(numericToken(rawVoice.linkWeight, 740), 650, 800)),
+    headingLineHeight: String(clampNumber(numericToken(rawVoice.headingLineHeight, serifDisplay ? 1.06 : 1.04), serifDisplay ? 1.04 : 1.02, serifDisplay ? 1.12 : 1.08)),
+    bodyLineHeight: String(clampNumber(numericToken(rawVoice.bodyLineHeight, 1.58), 1.52, 1.66))
+  };
+}
+
+function safeFontStack(stack, role) {
+  const fallback = {
+    body: "system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Inter, Roboto, Arial, sans-serif",
+    display: "\"Aptos Display\", \"Segoe UI\", \"Helvetica Neue\", Arial, sans-serif",
+    accent: "system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Arial, sans-serif"
+  }[role];
+  const value = String(stack || fallback);
+  const banned = /\b(Impact|Arial Black|Segoe UI Black|Comic Sans|Papyrus|Brush Script|Curlz|Jokerman|Chiller|Cooper Black|Arial Rounded MT Bold)\b/i;
+  const bodyUnsafe = role === "body" && /\b(monospace|Mono|Consolas|Menlo|Arial Narrow|Roboto Condensed|Aptos Narrow)\b/i.test(value);
+  return banned.test(value) || bodyUnsafe ? fallback : value;
+}
+
+function isSerifStack(stack) {
+  return /\b(serif|Georgia|Cambria|Iowan|Palatino|Rockwell|Slab)\b/i.test(stack);
+}
+
+function numericToken(value, fallback) {
+  const number = Number.parseFloat(String(value));
+  return Number.isFinite(number) ? number : fallback;
+}
+
+function clampNumber(value, min, max) {
+  return Math.min(max, Math.max(min, value));
+}
+
 function buildFluidFontSizes(scaleName) {
   const scales = {
     compact: {
@@ -5787,48 +5888,48 @@ function buildFluidFontSizes(scaleName) {
       body: ["1.02rem", "0.98rem", "1.08rem"],
       lead: ["1.2rem", "1.08rem", "1.34rem"],
       card: ["1.52rem", "1.28rem", "1.76rem"],
-      section: ["3rem", "2.1rem", "3.8rem"],
-      hero: ["5.1rem", "2.9rem", "5.8rem"]
+      section: ["2.85rem", "2rem", "3.35rem"],
+      hero: ["4.25rem", "2.55rem", "4.85rem"]
     },
     soft: {
       small: ["0.94rem", "0.88rem", "1rem"],
       body: ["1.08rem", "1rem", "1.16rem"],
       lead: ["1.26rem", "1.12rem", "1.42rem"],
       card: ["1.58rem", "1.32rem", "1.78rem"],
-      section: ["3.1rem", "2.18rem", "4rem"],
-      hero: ["5.25rem", "2.95rem", "5.95rem"]
+      section: ["2.95rem", "2.05rem", "3.45rem"],
+      hero: ["4.35rem", "2.58rem", "4.95rem"]
     },
     editorial: {
       small: ["0.95rem", "0.88rem", "1rem"],
       body: ["1.09rem", "1rem", "1.17rem"],
       lead: ["1.35rem", "1.14rem", "1.52rem"],
       card: ["1.7rem", "1.38rem", "1.94rem"],
-      section: ["3.55rem", "2.35rem", "4.7rem"],
-      hero: ["5.85rem", "3rem", "6.65rem"]
+      section: ["3.2rem", "2.18rem", "3.8rem"],
+      hero: ["4.75rem", "2.65rem", "5.25rem"]
     },
     bold: {
       small: ["0.93rem", "0.87rem", "0.99rem"],
       body: ["1.05rem", "1rem", "1.12rem"],
       lead: ["1.3rem", "1.12rem", "1.48rem"],
       card: ["1.72rem", "1.38rem", "1.98rem"],
-      section: ["3.45rem", "2.35rem", "4.5rem"],
-      hero: ["5.9rem", "3.1rem", "6.65rem"]
+      section: ["3.05rem", "2.15rem", "3.55rem"],
+      hero: ["4.55rem", "2.65rem", "5.05rem"]
     },
     wide: {
       small: ["0.92rem", "0.87rem", "0.98rem"],
       body: ["1.04rem", "0.98rem", "1.1rem"],
       lead: ["1.28rem", "1.1rem", "1.44rem"],
       card: ["1.68rem", "1.35rem", "1.9rem"],
-      section: ["3.35rem", "2.25rem", "4.35rem"],
-      hero: ["5.7rem", "3rem", "6.45rem"]
+      section: ["3rem", "2.08rem", "3.5rem"],
+      hero: ["4.45rem", "2.6rem", "5rem"]
     },
     generous: {
       small: ["0.94rem", "0.88rem", "0.98rem"],
       body: ["1.06rem", "1rem", "1.12rem"],
       lead: ["1.28rem", "1.12rem", "1.42rem"],
       card: ["1.65rem", "1.35rem", "1.85rem"],
-      section: ["3.25rem", "2.25rem", "4.25rem"],
-      hero: ["5.6rem", "3.1rem", "6.25rem"]
+      section: ["3rem", "2.12rem", "3.5rem"],
+      hero: ["4.5rem", "2.7rem", "5rem"]
     }
   };
   const scale = scales[scaleName] || scales.generous;
@@ -5990,6 +6091,15 @@ body{
   font-weight:var(--wp--custom--som--type--heading-weight)!important;
   line-height:var(--wp--custom--som--type--heading-line-height)!important;
 }
+.wp-site-blocks h1.wp-block-heading{
+  font-size:clamp(2.25rem, 5vw, var(--wp--preset--font-size--hero))!important;
+}
+.wp-site-blocks h2.wp-block-heading{
+  font-size:clamp(1.95rem, 4vw, var(--wp--preset--font-size--section-title))!important;
+}
+.wp-site-blocks h3.wp-block-heading{
+  font-size:clamp(1.25rem, 2vw, var(--wp--preset--font-size--card-title))!important;
+}
 .wp-block-navigation a,
 .wp-block-button__link{
   font-family:var(--wp--preset--font-family--accent)!important;
@@ -6047,6 +6157,16 @@ body{
 }
 .wp-site-blocks :where(p,li){
   text-wrap:pretty;
+}
+.wp-site-blocks p{
+  max-inline-size:var(--wp--custom--som--measure--copy);
+}
+.wp-site-blocks p.has-text-align-center{
+  margin-left:auto;
+  margin-right:auto;
+}
+.wp-site-blocks :where(.som-chip,.som-method-pill,.som-ticket-line,.som-rail-note,.som-date-cell,.som-route-card-number,.som-haul-number,.som-timeline-number,.som-water-step-number,.som-zone-step-number,.som-craft-step-number,.som-row-number,.som-detail-step-number,.som-menu-step-number,.som-warning-number,.som-urgent-step-number){
+  max-inline-size:none;
 }
 .wp-block-button__link{
   box-shadow:var(--wp--custom--som--shadow--button);
@@ -6138,7 +6258,8 @@ body{
     gap:var(--wp--preset--spacing--50);
   }
   .wp-site-blocks :where(h1,h2){
-    overflow-wrap:anywhere;
+    hyphens:manual;
+    overflow-wrap:break-word;
   }
 }
 `.trim();
@@ -6543,13 +6664,13 @@ function buildVariantCustomCss(spec) {
   }
   .som-risk-hero h1{
     font-size:clamp(34px, 10vw, 44px)!important;
-    line-height:.96!important;
+    line-height:1.04!important;
     margin-top:8px!important;
     margin-bottom:12px!important;
   }
   .som-risk-hero p{
     font-size:16px!important;
-    line-height:1.34!important;
+    line-height:1.48!important;
   }
   .som-risk-hero .wp-block-buttons{
     gap:10px!important;
@@ -6810,13 +6931,13 @@ function buildVariantCustomCss(spec) {
   }
   .som-haul-hero h1{
     font-size:clamp(32px, 9vw, 44px)!important;
-    line-height:.96!important;
+    line-height:1.04!important;
     margin-top:8px!important;
     margin-bottom:12px!important;
   }
   .som-haul-hero p{
     font-size:16px!important;
-    line-height:1.34!important;
+    line-height:1.48!important;
   }
   .som-haul-hero .wp-block-buttons{
     gap:10px!important;
@@ -7564,13 +7685,13 @@ function buildVariantCustomCss(spec) {
   }
   .som-gallery-copy h1{
     font-size:clamp(30px, 8.8vw, 40px)!important;
-    line-height:.98!important;
+    line-height:1.04!important;
     margin-top:7px!important;
     margin-bottom:11px!important;
   }
   .som-gallery-copy p{
     font-size:16px!important;
-    line-height:1.34!important;
+    line-height:1.48!important;
   }
   .som-gallery-copy .wp-block-buttons{
     gap:9px!important;
@@ -7737,13 +7858,13 @@ function buildVariantCustomCss(spec) {
   }
   .som-receipt-hero h1{
     font-size:clamp(34px, 9.4vw, 40px)!important;
-    line-height:.98!important;
+    line-height:1.04!important;
     margin-top:10px!important;
     margin-bottom:12px!important;
   }
   .som-receipt-hero p{
     font-size:16px!important;
-    line-height:1.38!important;
+    line-height:1.48!important;
     margin-bottom:14px!important;
   }
   .som-receipt-hero .wp-block-buttons{
@@ -7783,7 +7904,7 @@ function buildVariantCustomCss(spec) {
     grid-template-columns:minmax(82px, 32%) minmax(0, 1fr);
     gap:12px;
     padding:6px 14px;
-    overflow-wrap:anywhere;
+    overflow-wrap:break-word;
   }
   .som-receipt-table td::before{
     color:${spec.palette.grass};
@@ -7880,13 +8001,13 @@ function buildVariantCustomCss(spec) {
   }
   .som-split-hero h1{
     font-size:clamp(34px, 9.6vw, 46px)!important;
-    line-height:.96!important;
+    line-height:1.04!important;
     margin-top:8px!important;
     margin-bottom:12px!important;
   }
   .som-split-hero p{
     font-size:16px!important;
-    line-height:1.34!important;
+    line-height:1.48!important;
   }
   .som-split-hero .wp-block-buttons{
     gap:10px!important;
@@ -7968,7 +8089,7 @@ function buildAliasVisualCss(spec) {
   }
   .som-pet-gallery-copy h1{
     font-size:clamp(31px, 8.4vw, 38px)!important;
-    line-height:.96!important;
+    line-height:1.04!important;
   }
   .som-pet-gallery-note{
     transform:none;
@@ -8000,7 +8121,7 @@ function buildAliasVisualCss(spec) {
   border:1px solid color-mix(in srgb, ${p.white} 70%, transparent);
 }
 .som-dessert-gallery-copy h1{
-  font-size:clamp(38px, 4.8vw, 62px)!important;
+  font-size:clamp(36px, 4.4vw, 58px)!important;
 }
 .som-dessert-gallery-proof{
   background:color-mix(in srgb, ${p.white} 8%, transparent)!important;
@@ -8041,22 +8162,54 @@ function buildAliasVisualCss(spec) {
 }
 @media (max-width:700px){
   .som-dessert-gallery-hero{
+    box-sizing:border-box;
     min-height:auto!important;
-    padding-top:220px!important;
+    max-width:100vw!important;
+    padding-top:118px!important;
+    width:100vw!important;
+  }
+  .som-dessert-gallery-hero *{
+    box-sizing:border-box;
+  }
+  .som-dessert-gallery-hero .wp-block-cover__inner-container{
+    max-width:100%!important;
+    overflow:hidden;
   }
   .som-dessert-gallery-hero .som-gallery-copy-row{
     min-height:0;
     gap:12px!important;
+    margin-left:0!important;
+    margin-right:0!important;
+    max-width:100%!important;
+    width:100%!important;
   }
   .som-dessert-gallery-copy,
   .som-dessert-gallery-note{
-    padding:20px!important;
+    flex-basis:100%!important;
+    max-width:calc(100vw - 32px)!important;
+    padding:16px!important;
+    width:100%!important;
   }
   .som-dessert-gallery-note{
     border-radius:8px 24px!important;
   }
   .som-dessert-gallery-copy h1{
-    font-size:clamp(30px, 8.4vw, 38px)!important;
+    font-size:clamp(28px, 7.2vw, 34px)!important;
+    hyphens:none;
+    line-height:1.08!important;
+    overflow-wrap:break-word;
+    word-break:normal;
+  }
+  .som-dessert-gallery-copy p{
+    font-size:15px!important;
+    line-height:1.46!important;
+  }
+  .som-dessert-gallery-copy p:first-child{
+    font-size:12px!important;
+    line-height:1.25!important;
+  }
+  .som-dessert-gallery-copy .wp-block-buttons{
+    margin-top:10px!important;
   }
   .som-dessert-proof-gallery{
     grid-template-columns:1fr!important;
@@ -8377,7 +8530,7 @@ function buildAliasVisualCss(spec) {
 }
 .som-floral-story-hero h1{
   font-size:clamp(38px, 5vw, 64px)!important;
-  line-height:.98!important;
+  line-height:1.04!important;
 }
 .som-floral-support-card{
   border-left:0!important;
@@ -8410,7 +8563,7 @@ function buildAliasVisualCss(spec) {
   }
   .som-floral-story-hero p{
     font-size:16px!important;
-    line-height:1.35!important;
+    line-height:1.45!important;
   }
   .som-floral-story-hero .wp-block-button__link{
     padding-top:12px!important;
@@ -8440,13 +8593,13 @@ function buildAliasVisualCss(spec) {
   }
   .som-story-hero h1{
     font-size:clamp(31px, 9vw, 40px)!important;
-    line-height:.98!important;
+    line-height:1.04!important;
     margin-top:8px!important;
     margin-bottom:12px!important;
   }
   .som-story-hero p{
     font-size:16px!important;
-    line-height:1.35!important;
+    line-height:1.45!important;
   }
 }`.trim(),
     "color-consult-story": `
@@ -8527,7 +8680,7 @@ function buildAliasVisualCss(spec) {
 }
 .som-color-process-step .wp-block-column{
   min-width:0;
-  overflow-wrap:anywhere;
+  overflow-wrap:break-word;
 }
 .som-color-process-step .wp-block-column:first-child{
   flex:0 0 60px!important;
@@ -8595,14 +8748,14 @@ function buildAliasVisualCss(spec) {
 }
 @media (max-width:700px){
   .som-color-story-hero h1{
-    font-size:clamp(30px, 8.3vw, 38px)!important;
-    line-height:1.02!important;
+    font-size:clamp(30px, 7.8vw, 36px)!important;
+    line-height:1.04!important;
     margin-top:8px!important;
     margin-bottom:12px!important;
   }
   .som-color-story-hero p{
     font-size:16px!important;
-    line-height:1.38!important;
+    line-height:1.48!important;
     margin-bottom:14px!important;
   }
   .som-color-room-list li{
