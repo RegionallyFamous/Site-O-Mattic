@@ -13,11 +13,21 @@ if (!targets.length) {
 }
 
 let hasFailure = false;
+const reports = [];
 
 for (const target of targets) {
   const report = await buildReport(target);
+  reports.push(report);
   printReport(report);
   if (report.checks.some((check) => !check.passed)) {
+    hasFailure = true;
+  }
+}
+
+const batchReport = buildBatchTypographyReport(reports);
+if (batchReport) {
+  printReport(batchReport);
+  if (batchReport.checks.some((check) => !check.passed)) {
     hasFailure = true;
   }
 }
@@ -32,7 +42,8 @@ async function buildReport(target) {
   if (!phpStep) {
     return {
       target,
-      checks: [{ name: "runPHP setup", passed: false, detail: "Missing setup step." }]
+      checks: [{ name: "runPHP setup", passed: false, detail: "Missing setup step." }],
+      type: {}
     };
   }
 
@@ -63,7 +74,7 @@ async function buildReport(target) {
   add(checks, "paragraph rhythm", paragraphRhythmPass(pageContent), "Readable body copy should not use cramped line-height.");
   add(checks, "uppercase label restraint", uppercaseLabelsPass(pageContent), "Small uppercase labels must be large enough and not black-weight.");
 
-  return { target, checks };
+  return { target, checks, type };
 }
 
 async function loadBlueprintForTarget(target) {
@@ -83,6 +94,75 @@ async function loadBlueprintForTarget(target) {
 
 function add(checks, name, passed, detail) {
   checks.push({ name, passed: Boolean(passed), detail });
+}
+
+function buildBatchTypographyReport(reports) {
+  const usableReports = reports.filter((report) => report.type?.bodyFont && report.type?.displayFont && report.type?.accentFont);
+  if (usableReports.length < 10) {
+    return null;
+  }
+
+  const checks = [];
+  const displayCounts = countBy(usableReports, (report) => primaryFamily(report.type.displayFont));
+  const tripletCounts = countBy(usableReports, (report) => [
+    primaryFamily(report.type.bodyFont),
+    primaryFamily(report.type.displayFont),
+    primaryFamily(report.type.accentFont)
+  ].join(" / "));
+  const categoryCounts = countBy(usableReports, (report) => displayCategory(report.type.displayFont));
+  const maxDisplay = maxCount(displayCounts);
+  const maxTriplet = maxCount(tripletCounts);
+  const total = usableReports.length;
+
+  add(checks, "batch display variety", displayCounts.size >= Math.min(6, Math.ceil(total / 6)), describeCounts(displayCounts));
+  add(checks, "batch display concentration", maxDisplay.count <= Math.ceil(total * 0.25), `${maxDisplay.key || "missing"} used ${maxDisplay.count}/${total}`);
+  add(checks, "batch exact pairing concentration", maxTriplet.count <= Math.ceil(total * 0.16), `${maxTriplet.key || "missing"} used ${maxTriplet.count}/${total}`);
+  add(checks, "batch display category mix", categoryCounts.size >= 3, describeCounts(categoryCounts));
+
+  return { target: "batch typography distribution", checks, type: {} };
+}
+
+function countBy(items, keyFn) {
+  const counts = new Map();
+  for (const item of items) {
+    const key = keyFn(item) || "missing";
+    counts.set(key, (counts.get(key) || 0) + 1);
+  }
+  return counts;
+}
+
+function maxCount(counts) {
+  let winner = { key: "", count: 0 };
+  for (const [key, count] of counts) {
+    if (count > winner.count) {
+      winner = { key, count };
+    }
+  }
+  return winner;
+}
+
+function describeCounts(counts) {
+  return [...counts.entries()]
+    .sort((left, right) => right[1] - left[1] || left[0].localeCompare(right[0]))
+    .map(([key, count]) => `${key}:${count}`)
+    .join(", ");
+}
+
+function displayCategory(stack) {
+  const family = primaryFamily(stack);
+  if (/\b(didot|bodoni|baskerville|hoefler|charter|iowan|palatino|georgia|cambria)\b/i.test(family)) {
+    return "editorial-serif";
+  }
+  if (/\b(rockwell|american typewriter)\b/i.test(family)) {
+    return "slab-or-workbench";
+  }
+  if (/\b(din|aptos narrow|arial narrow|roboto condensed)\b/i.test(family)) {
+    return "condensed-utility";
+  }
+  if (/\b(futura|century gothic)\b/i.test(family)) {
+    return "geometric-sans";
+  }
+  return "sturdy-humanist-sans";
 }
 
 function isReadableBodyStack(stack) {

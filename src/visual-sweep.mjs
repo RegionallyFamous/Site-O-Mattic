@@ -248,6 +248,7 @@ async function inspectScenario(browser, url, scenario, screenshot) {
       const text = document.body.innerText || "";
       const logo = rectFor(document.querySelector(".wp-block-site-logo img"));
       const h1 = rectFor(document.querySelector("h1"));
+      const navigation = rectFor(document.querySelector(".wp-block-navigation"));
       const ctas = [...document.querySelectorAll(".wp-block-button__link")]
         .map((element) => ({ text: element.textContent?.trim(), rect: rectFor(element) }))
         .filter((item) => item.rect);
@@ -262,6 +263,15 @@ async function inspectScenario(browser, url, scenario, screenshot) {
 
       const visible = (rect) => Boolean(rect && rect.width > 0 && rect.height > 0 && rect.top < viewport.height && rect.bottom > 0);
       const firstViewportCta = ctas.find((cta) => visible(cta.rect));
+      const keyOverlaps = keyOverlapFailures([
+        { name: "logo", rect: logo },
+        { name: "navigation", rect: navigation },
+        { name: "h1", rect: h1 },
+        ...ctas
+          .filter((cta) => visible(cta.rect))
+          .map((cta, index) => ({ name: `cta:${cta.text || index + 1}`, rect: cta.rect }))
+      ]);
+      const proofAlignment = proofAlignmentReport();
 
       return {
         bodyTextLength: text.length,
@@ -276,8 +286,74 @@ async function inspectScenario(browser, url, scenario, screenshot) {
         firstSection,
         bodyRect,
         viewport,
-        overflowers
+        overflowers,
+        keyOverlaps,
+        proofAlignment
       };
+
+      function keyOverlapFailures(items) {
+        const visibleItems = items.filter((item) => visible(item.rect));
+        const failures = [];
+        for (let left = 0; left < visibleItems.length; left += 1) {
+          for (let right = left + 1; right < visibleItems.length; right += 1) {
+            const overlap = overlapArea(visibleItems[left].rect, visibleItems[right].rect);
+            if (overlap > 24) {
+              failures.push(`${visibleItems[left].name} overlaps ${visibleItems[right].name} by ${Math.round(overlap)}px`);
+            }
+          }
+        }
+        return failures.slice(0, 8);
+      }
+
+      function proofAlignmentReport() {
+        const cards = [...document.querySelectorAll(".som-proof-card,.som-route-proof-card,[class*='-proof-card']")]
+          .map((card) => {
+            const children = [...card.children]
+              .map((child) => ({ element: child, rect: rectFor(child), text: child.textContent?.trim() || "" }))
+              .filter((child) => child.text && child.rect && child.rect.width > 20 && child.rect.height > 8);
+            return {
+              rect: rectFor(card),
+              stat: children[0]?.rect || null,
+              label: children.at(-1)?.rect || null,
+              directTextChildren: children.length
+            };
+          })
+          .filter((card) => card.rect && card.rect.width > 80 && card.rect.height > 40 && card.stat && card.label && card.directTextChildren === 2)
+          .sort((left, right) => left.rect.top - right.rect.top || left.rect.left - right.rect.left);
+        const rows = [];
+        for (const card of cards) {
+          const row = rows.find((candidate) => Math.abs(candidate.top - card.rect.top) <= 18);
+          if (row) {
+            row.cards.push(card);
+            row.top = Math.round((row.top + card.rect.top) / 2);
+          } else {
+            rows.push({ top: card.rect.top, cards: [card] });
+          }
+        }
+        const failures = rows
+          .filter((row) => row.cards.length >= 2)
+          .map((row) => {
+            const statSpread = spread(row.cards.map((card) => card.stat.top));
+            const labelSpread = spread(row.cards.map((card) => card.label.bottom));
+            return { top: row.top, count: row.cards.length, statSpread, labelSpread };
+          })
+          .filter((row) => row.statSpread > 16 || row.labelSpread > 16)
+          .map((row) => `proof row y=${row.top} (${row.count} cards) stat spread ${row.statSpread}px, label spread ${row.labelSpread}px`);
+        return {
+          checkedRows: rows.filter((row) => row.cards.length >= 2).length,
+          failures: failures.slice(0, 8)
+        };
+      }
+
+      function overlapArea(left, right) {
+        const width = Math.max(0, Math.min(left.right, right.right) - Math.max(left.left, right.left));
+        const height = Math.max(0, Math.min(left.bottom, right.bottom) - Math.max(left.top, right.top));
+        return width * height;
+      }
+
+      function spread(values) {
+        return Math.round(Math.max(...values) - Math.min(...values));
+      }
 
       function rectFor(element) {
         if (!element) {
@@ -321,6 +397,12 @@ function failuresFor(result) {
   }
   if (result.overflowers.length) {
     failures.push(`Potential horizontal overflow: ${result.overflowers.join(", ")}`);
+  }
+  if (result.keyOverlaps?.length) {
+    failures.push(`Key element overlap: ${result.keyOverlaps.join("; ")}`);
+  }
+  if (result.proofAlignment?.failures?.length) {
+    failures.push(`Proof card alignment drift: ${result.proofAlignment.failures.join("; ")}`);
   }
   return failures;
 }

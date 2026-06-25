@@ -2564,7 +2564,7 @@ ${process.map((step, index) => detailStep(index + 1, step.title, step.text)).joi
 <div class="wp-block-button has-custom-width wp-block-button__width-60"><a class="wp-block-button__link has-deep-green-color has-sun-background-color has-text-color has-background wp-element-button" href="#quote" style="border-radius:999px;padding-top:12px;padding-right:16px;padding-bottom:12px;padding-left:16px">${esc(copy.primaryCta)}</a></div>
 <!-- /wp:button -->
 <!-- wp:button {"backgroundColor":"white","textColor":"deep-green","width":40,"style":{"border":{"radius":"999px"},"spacing":{"padding":{"top":"12px","right":"16px","bottom":"12px","left":"16px"}}}} -->
-<div class="wp-block-button has-custom-width wp-block-button__width-40"><a class="wp-block-button__link has-deep-green-color has-white-background-color has-text-color has-background wp-element-button" href="${esc(contact.phoneHref)}" style="border-radius:999px;padding-top:12px;padding-right:16px;padding-bottom:12px;padding-left:16px">Call</a></div>
+<div class="wp-block-button has-custom-width wp-block-button__width-40"><a class="wp-block-button__link has-deep-green-color has-white-background-color has-text-color has-background wp-element-button" href="${esc(contact.phoneHref)}" style="border-radius:999px;padding-top:12px;padding-right:16px;padding-bottom:12px;padding-left:16px">Call to book</a></div>
 <!-- /wp:button -->
 </div>
 <!-- /wp:buttons -->

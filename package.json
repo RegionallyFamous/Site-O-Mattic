@@ -18,6 +18,7 @@
     "blueprint:validate": "node src/validate-blueprint.mjs",
     "blueprint:polish": "node src/polish-report.mjs",
     "blueprint:accessibility": "node src/accessibility-report.mjs",
+    "blueprint:conversion": "node src/conversion-guardrails.mjs",
     "blueprint:sync": "node src/signature-sync-report.mjs",
     "blueprint:variety": "node src/layout-variety-report.mjs",
     "blueprint:typography": "node src/typography-guardrails.mjs",
@@ -35,7 +36,7 @@
     "playground:smoke": "node src/public-playground-smoke.mjs",
     "spec:polish-fields": "node src/production-polish-fields.mjs",
     "validate": "npm run blueprint:validate",
-    "quality": "npm run spec:validate && npm run validate && npm run blueprint:polish && npm run blueprint:accessibility && npm run blueprint:sync && npm run blueprint:variety && npm run blueprint:typography && npm run blueprint:guardrails && npm run blueprint:asset-qa && npm run blueprint:copy-realism && npm run blueprint:premium && npm run visual:baseline && npm run site:build && npm run lint",
+    "quality": "npm run spec:validate && npm run validate && npm run blueprint:polish && npm run blueprint:accessibility && npm run blueprint:conversion && npm run blueprint:sync && npm run blueprint:variety && npm run blueprint:typography && npm run blueprint:guardrails && npm run blueprint:asset-qa && npm run blueprint:copy-realism && npm run blueprint:premium && npm run visual:baseline && npm run site:build && npm run lint",
     "render-brand": "sh scripts/render-brand-assets.sh"
   },
   "dependencies": {
