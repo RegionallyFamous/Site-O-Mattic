@@ -58,7 +58,7 @@ export const LAYOUT_ARCHETYPES = {
   },
   "checklist-urgency": {
     label: "Checklist and urgency",
-    bestFor: ["gutter cleaning", "vacation rental turnover", "holiday lights", "move prep"],
+    bestFor: ["window cleaning", "vacation rental turnover", "holiday lights", "move prep"],
     archetype: "Checklist-first service with urgency band",
     hero: "stacked-hero-with-checklist-panel",
     sectionOrder: [
@@ -76,6 +76,27 @@ export const LAYOUT_ARCHETYPES = {
     anchorOrder: ["checklist", "proof", "quote"],
     componentClassesExpected: ["som-checklist-hero", "som-urgency-band", "som-check-card", "som-proof-card", "som-quote-strip", "som-footer"],
     layoutMarkers: ["som-checklist-hero", "som-urgency-band", "som-check-card", "som-quote-strip"]
+  },
+  "risk-prevention": {
+    label: "Risk prevention",
+    bestFor: ["gutter cleaning", "roof moss removal", "dryer vent cleaning", "chimney sweeping"],
+    archetype: "Warning-sign risk prevention service",
+    hero: "roofline-photo-left-with-risk-copy-panel",
+    sectionOrder: [
+      "navigation",
+      "risk-hero",
+      "risk-proof-band",
+      "warning-sign-rows",
+      "prevention-plan",
+      "quote-footer"
+    ],
+    servicePresentation: "warning-sign-rows-with-home-risk-panel",
+    proofTreatment: "prevention-badges-before-plan",
+    ctaRhythm: "hero-phone-plus-seasonal-risk-band",
+    navLabels: ["Warning signs", "Plan", "Quote"],
+    anchorOrder: ["signs", "plan", "quote"],
+    componentClassesExpected: ["som-risk-hero", "som-risk-band", "som-warning-row", "som-plan-step", "som-proof-card", "som-quote-strip", "som-footer"],
+    layoutMarkers: ["som-risk-hero", "som-risk-band", "som-warning-row", "som-plan-step", "som-quote-strip"]
   },
   "package-comparison": {
     label: "Package comparison",

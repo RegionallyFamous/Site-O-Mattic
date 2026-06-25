@@ -1,0 +1,106 @@
+{
+  "slug": "gutter-cleaning",
+  "businessName": "ClearFlow Gutter Care",
+  "niche": "gutter cleaning service",
+  "layoutVariant": "risk-prevention",
+  "tagline": "Leaves out. Rainwater behaving.",
+  "themeSlug": "twentytwentyfive",
+  "landingPage": "/",
+  "palette": {
+    "grass": "#216d45",
+    "deepGreen": "#17351f",
+    "leaf": "#86c13f",
+    "sun": "#f2b84b",
+    "cream": "#fff7e8",
+    "mist": "#e5f0dc",
+    "soil": "#4f5d50",
+    "white": "#ffffff"
+  },
+  "assets": {
+    "hero": "assets/gutter-cleaning/clearflow-hero.jpg",
+    "logo": "assets/gutter-cleaning/clearflow-logo.png",
+    "favicon": "assets/gutter-cleaning/clearflow-favicon.png"
+  },
+  "assetMeta": {
+    "hero": {
+      "title": "ClearFlow gutter cleaning hero image",
+      "alt": "A professional gutter cleaner removing leaves from a residential gutter on a bright autumn day."
+    }
+  },
+  "contact": {
+    "phoneLabel": "(555) 014-7738",
+    "phoneHref": "tel:+15550147738",
+    "email": "hello@clearflow.test",
+    "emailHref": "mailto:hello@clearflow.test",
+    "serviceArea": "Seasonal gutter cleaning for homes across the west hills, older tree-lined streets, and nearby suburbs"
+  },
+  "copy": {
+    "eyebrow": "Seasonal gutter cleaning before the downpour drama",
+    "heroTitle": "Keep water where it belongs.",
+    "heroText": "ClearFlow clears packed leaves, roof grit, seed pods, and surprise sludge so rainwater moves through the gutters instead of auditioning for your foundation.",
+    "primaryCta": "Call for gutter help",
+    "secondaryCta": "Check warning signs",
+    "introTitle": "Small clogs become loud problems.",
+    "introText": "If water is spilling over the edge, pooling near the house, or turning one downspout into a sad little fountain, it is time for a cleanout with a real flow check.",
+    "servicesTitle": "Warning signs we fix",
+    "processTitle": "The prevention plan",
+    "proofTitle": "Clean gutters, calmer storms",
+    "quoteTitle": "Ready for gutters that do their one job?",
+    "quoteText": "Call or send photos of the roofline, downspouts, and any overflow spots. We will confirm access, timing, and a clean estimate before the next rain gets ideas."
+  },
+  "services": [
+    {
+      "title": "Overflowing edges",
+      "text": "Water pouring over the gutter lip usually means leaves, roof grit, or seed pods are blocking the path."
+    },
+    {
+      "title": "Downspout trickles",
+      "text": "A weak or silent downspout during rain can point to a packed elbow, buried clog, or debris jam."
+    },
+    {
+      "title": "Foundation splash zones",
+      "text": "Pooling near walks, beds, or basement walls gets handled with clean gutters and a real discharge check."
+    }
+  ],
+  "process": [
+    {
+      "title": "Check access",
+      "text": "We review photos, roof height, ladder setup, and any tricky gates or slopes before scheduling."
+    },
+    {
+      "title": "Clear and bag",
+      "text": "Leaves and debris are removed, bagged, and kept out of garden beds, patios, and neighbor territory."
+    },
+    {
+      "title": "Flush the flow",
+      "text": "Downspouts get a flow check so the water has a clear route away from the house."
+    }
+  ],
+  "proof": [
+    {
+      "stat": "2-story",
+      "label": "ladder-ready residential service"
+    },
+    {
+      "stat": "Flow test",
+      "label": "downspout check after cleaning"
+    },
+    {
+      "stat": "Bagged",
+      "label": "debris removed from beds and walks"
+    }
+  ],
+  "release": {
+    "status": "approved",
+    "reviewedAt": "2026-06-25",
+    "visualBaseline": "pending",
+    "reviewChecklist": {
+      "firstViewportClear": true,
+      "logoReadable": true,
+      "layoutDistinct": true,
+      "ctaClear": true,
+      "copySpecific": true,
+      "noImageArtifacts": true
+    }
+  }
+}

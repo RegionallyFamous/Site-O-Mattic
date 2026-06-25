@@ -2,6 +2,22 @@
 
 export const blueprints = [
   {
+    "slug": "gutter-cleaning",
+    "name": "ClearFlow Gutter Care",
+    "eyebrow": "Gutter Cleaning Service",
+    "summary": "ClearFlow clears packed leaves, roof grit, seed pods, and surprise sludge so rainwater moves through the gutters instead of auditioning for your foundation.",
+    "logo": "/blueprints/gutter-cleaning/assets/logo.png",
+    "logoWidth": 1200,
+    "logoHeight": 260,
+    "hero": "/blueprints/gutter-cleaning/assets/hero.jpg",
+    "heroWidth": 1672,
+    "heroHeight": 941,
+    "alt": "A professional gutter cleaner removing leaves from a residential gutter on a bright autumn day.",
+    "path": "/api/blueprints/gutter-cleaning/blueprint.json",
+    "layoutVariant": "risk-prevention",
+    "releaseStatus": "approved"
+  },
+  {
     "slug": "lawn-care-service",
     "name": "GreenStripe Lawn Care",
     "eyebrow": "Lawn Care Service",

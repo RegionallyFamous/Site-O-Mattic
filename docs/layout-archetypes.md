@@ -8,7 +8,8 @@ Site-O-Mattic layouts are named production patterns. Every generated Blueprint e
 | --- | --- | --- | --- | --- | --- |
 | `route-plan` | Lawn care, pool cleaning, plant care, knife sharpening, mobile bicycle repair | Full-bleed cover with left copy | Three equal service cards | Large stat cards | Hero buttons plus centered final quote card |
 | `before-after-quote` | Pressure washing, driveway sealing, carpet cleaning, junk removal, furniture refinishing | Split editorial copy and hero photo | Numbered surface rows | Compact proof grid inside final CTA | Early photo quote strip plus final proof CTA |
-| `checklist-urgency` | Window cleaning, gutter cleaning, vacation rental turnover, holiday lights, move prep | Stacked hero with checklist panel | Checklist cards plus service-area panel | Compact proof strip before services | Hero buttons plus midpage urgency band |
+| `checklist-urgency` | Window cleaning, vacation rental turnover, holiday lights, move prep | Stacked hero with checklist panel | Checklist cards plus service-area panel | Compact proof strip before services | Hero buttons plus midpage urgency band |
+| `risk-prevention` | Gutter cleaning, roof moss removal, dryer vent cleaning, chimney sweeping | Roofline photo left with risk copy panel | Warning-sign rows with home-risk panel | Prevention badges before the plan | Hero phone CTA plus seasonal risk band |
 
 ## Cataloged For Scale
 

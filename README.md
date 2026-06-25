@@ -2,7 +2,7 @@
 
 Site-O-Mattic creates WordPress Studio / WordPress Playground Blueprints that turn the default WordPress theme into niche-specific one-page sites.
 
-The repo currently includes Blueprints for GreenStripe Lawn Care, BrightJet Exterior Cleaning, and ClearPane Window Care. Each one uses:
+The repo currently includes Blueprints for GreenStripe Lawn Care, BrightJet Exterior Cleaning, ClearPane Window Care, and ClearFlow Gutter Care. Each one uses:
 
 - the default WordPress theme when available, with Twenty Twenty-Five selected if present;
 - only core blocks and WordPress settings;
@@ -39,6 +39,7 @@ The generated Blueprint files are written to:
 public/blueprints/lawn-care-service/
 public/blueprints/pressure-washing-service/
 public/blueprints/window-cleaning/
+public/blueprints/gutter-cleaning/
 ```
 
 Use each `public/blueprints/<slug>/blueprint.json` as the Studio-ready Blueprint file. It is self-contained, with the generated hero image, logo, and favicon embedded into the setup step. Once deployed, the Playground links point at `/api/blueprints/<slug>/blueprint.json`, which serves the same Blueprint with CORS headers.
@@ -59,6 +60,11 @@ The host app catalog and API routes are generated from `specs/*.json`, so new pr
 
 - Playground: <https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fwindow-cleaning%2Fblueprint.json>
 - Raw Blueprint JSON: <https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/window-cleaning/blueprint.json>
+
+## Gutter Cleaning Playground
+
+- Playground: <https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fgutter-cleaning%2Fblueprint.json>
+- Raw Blueprint JSON: <https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/gutter-cleaning/blueprint.json>
 
 ## Structure
 

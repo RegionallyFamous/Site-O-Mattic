@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "slug": "gutter-cleaning",
+  "businessName": "ClearFlow Gutter Care",
+  "layoutVariant": "risk-prevention",
+  "assets": {
+    "hero": {
+      "source": "assets/gutter-cleaning/clearflow-hero.jpg",
+      "fileName": "hero.jpg",
+      "outputPath": "/assets/hero.jpg",
+      "mimeType": "image/jpeg",
+      "byteSize": 448038,
+      "width": 1672,
+      "height": 941,
+      "embedded": true
+    },
+    "logo": {
+      "source": "assets/gutter-cleaning/clearflow-logo.png",
+      "fileName": "logo.png",
+      "outputPath": "/assets/logo.png",
+      "mimeType": "image/png",
+      "byteSize": 22737,
+      "width": 1200,
+      "height": 260,
+      "embedded": true
+    },
+    "favicon": {
+      "source": "assets/gutter-cleaning/clearflow-favicon.png",
+      "fileName": "favicon.png",
+      "outputPath": "/assets/favicon.png",
+      "mimeType": "image/png",
+      "byteSize": 23937,
+      "width": 512,
+      "height": 512,
+      "embedded": true
+    }
+  }
+}
