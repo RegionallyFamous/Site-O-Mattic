@@ -16,3 +16,6 @@ rsvg-convert -w 512 -h 512 assets/driveway-sealcoating/blackline-favicon.svg -o 
 rsvg-convert -w 1200 -h 260 assets/carpet-upholstery/freshthread-logo.svg -o assets/carpet-upholstery/freshthread-logo.png
 magick assets/carpet-upholstery/freshthread-logo.png -trim +repage -resize 920x220 -background none -gravity center -extent 1100x260 assets/carpet-upholstery/freshthread-logo.png
 rsvg-convert -w 512 -h 512 assets/carpet-upholstery/freshthread-favicon.svg -o assets/carpet-upholstery/freshthread-favicon.png
+rsvg-convert -w 1200 -h 260 assets/junk-removal/clearpath-logo.svg -o assets/junk-removal/clearpath-logo.png
+magick assets/junk-removal/clearpath-logo.png -trim +repage -resize 920x220 -background none -gravity center -extent 1100x260 assets/junk-removal/clearpath-logo.png
+rsvg-convert -w 512 -h 512 assets/junk-removal/clearpath-favicon.svg -o assets/junk-removal/clearpath-favicon.png

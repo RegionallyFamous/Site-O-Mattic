@@ -4,6 +4,8 @@ Site-O-Mattic layouts are named production patterns. Every generated Blueprint e
 
 Each archetype also carries a design voice. The generator records a `typographyTreatment` and `colorStrategy` in the layout signature, writes matching local/system font stacks into `wp_global_styles`, and compares actual palette fingerprints in the variety report. Fonts must stay self-contained: no external font URLs.
 
+Use [Pattern And Style Catalog](./pattern-style-catalog.md) before implementing or assigning additional archetypes. It defines the conversion-job patterns, navigation rules, style dimensions, and production implications that should shape the next full-scale batch.
+
 ## Implemented
 
 | Variant | Best for | Navigation | Hero | Service presentation | Proof treatment | CTA rhythm |
@@ -15,13 +17,13 @@ Each archetype also carries a design voice. The generator records a `typographyT
 | `gallery-led` | Pollinator gardens, photography, murals, florals, balloon styling, dessert tables, color consulting | Top header with gallery anchors | Editorial image header with overlapping copy | Visual style cards with caption panel | Testimonial-style proof strip before gallery | Hero consult button plus final style brief |
 | `surface-seasonal` | Driveway sealcoating, deck staining, fence staining, asphalt repair | Top header with seasonal anchors | Dark copy-left hero with wide service-action photo | Prep and scope cards with a season note | Seasonal readiness badges under hero | Hero estimate buttons plus final photo quote |
 | `stain-care` | Carpet cleaning, upholstery cleaning, area rugs, mattress cleaning | Top header with fabric-care anchors | Soft home hero with fabric service photo | Stain and fabric care cards with a care note | Trust proof badges after the hero | Hero estimate buttons plus final fabric quote |
+| `side-rail-service` | Junk removal, garage organization, closet organization, senior downsizing, smart home setup | Desktop side rail, mobile top header | Side rail with haul-away action hero and haul ticket | Accepted-items grid with donation route note | Donation sorting proof strip after hero | Persistent rail photo CTA plus final haul plan |
 
 ## Cataloged For Scale
 
 | Variant | Best for | Navigation | Production direction |
 | --- | --- | --- | --- |
 | `package-comparison` | Mobile detailing, photo booths, DJs, coffee carts, catering | Menu-style top header with date-check anchor | Event fit, package columns, add-ons, date-check CTAs, package selection |
-| `side-rail-service` | Junk removal, garage organization, closet organization, senior downsizing, smart home setup | Desktop side rail, mobile top header | Persistent desktop side rail with logo, anchors, and quote CTA; collapses to compact top header on mobile |
 | `fixed-bottom-action` | Mobile detailing, photo booths, DJs, holiday lights, coffee carts, mocktail carts | Desktop top header, mobile fixed bottom CTA bar | Quote, call, or date-check actions stay thumb-friendly on mobile |
 | `side-rail-estimate` | Smart home setup, senior downsizing, color consulting, furniture refinishing | Desktop fixed left rail with phone CTA | Full-height right-side hero image, trust cues, consult steps, services, and final soft CTA |
 | `bottom-dock-booking` | Mobile auto detailing, mobile bike repair, knife sharpening, pool cleaning | Mobile fixed bottom dock | App-like service dashboard, packages, route/service area, process, reviews, and quote |
@@ -44,3 +46,5 @@ Only implemented variants should be used in `specs/*.json`; the spec validator e
 - Treat color as a strategy: decide what the accent does, which surfaces are quiet, and where contrast should spike.
 - Keep semantic palette keys stable in specs so the builder works, but make the actual hex palette niche-specific.
 - Let `npm run blueprint:variety` fail when typography treatment, color strategy, or palette are too similar to recent Blueprints.
+- Add one memorable, niche-appropriate signature move to each archetype so screenshots read as different products before the business name is read.
+- Select archetypes by conversion job first, then niche. A service can reuse a category only when its hero, proof, navigation, CTA rhythm, and style voice remain structurally distinct.

@@ -100,7 +100,12 @@
       "layoutDistinct": true,
       "ctaClear": true,
       "copySpecific": true,
-      "noImageArtifacts": true
+      "noImageArtifacts": true,
+      "heroArtDirected": true,
+      "hierarchyDistinct": true,
+      "signatureMove": true,
+      "restrainedComposition": true,
+      "screenshotCompared": true
     }
   }
 }

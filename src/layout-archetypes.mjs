@@ -169,9 +169,38 @@ export const LAYOUT_ARCHETYPES = {
   "side-rail-service": {
     label: "Side rail service console",
     bestFor: ["junk removal", "garage organization", "closet organization", "senior downsizing", "smart home setup"],
+    archetype: "Operational side-rail haul-away service console",
+    hero: "desktop-side-rail-with-haul-away-action-hero",
+    sectionOrder: [
+      "side-rail-navigation",
+      "haul-away-hero",
+      "donation-proof-strip",
+      "accepted-items-grid",
+      "sort-path-process",
+      "quote-footer"
+    ],
     navigationTreatment: "desktop-left-side-rail-collapsing-to-mobile-top-header",
     typographyTreatment: "compact-operator-console",
     colorStrategy: "grounded-utility-neutrals-with-high-visibility-accent",
+    servicePresentation: "accepted-items-grid-with-donation-route-note",
+    proofTreatment: "donation-sorting-proof-strip-after-hero",
+    ctaRhythm: "persistent-rail-photo-cta-plus-final-haul-plan",
+    navLabels: ["We take", "Sort path", "Quote"],
+    anchorOrder: ["take", "sort", "quote"],
+    componentClassesExpected: [
+      "som-side-rail-shell",
+      "som-side-rail",
+      "som-side-main",
+      "som-haul-hero",
+      "som-haul-photo",
+      "som-haul-ticket",
+      "som-donation-strip",
+      "som-haul-card",
+      "som-haul-step",
+      "som-quote-strip",
+      "som-footer"
+    ],
+    layoutMarkers: ["som-side-rail-shell", "som-side-rail", "som-haul-hero", "som-haul-photo", "som-haul-ticket", "som-donation-strip", "som-haul-card", "som-haul-step", "som-quote-strip"],
     guidance: "Use a persistent desktop side rail with logo, section anchors, and a quote CTA, then collapse to a compact top header on mobile. Best for operational, checklist-heavy services where the page should feel like a useful service console."
   },
   "fixed-bottom-action": {

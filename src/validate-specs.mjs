@@ -203,7 +203,12 @@ function validateRelease(release, errors) {
     "layoutDistinct",
     "ctaClear",
     "copySpecific",
-    "noImageArtifacts"
+    "noImageArtifacts",
+    "heroArtDirected",
+    "hierarchyDistinct",
+    "signatureMove",
+    "restrainedComposition",
+    "screenshotCompared"
   ];
   for (const key of requiredChecks) {
     if (typeof checklist[key] !== "boolean") {

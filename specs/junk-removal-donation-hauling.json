@@ -1,0 +1,111 @@
+{
+  "slug": "junk-removal-donation-hauling",
+  "businessName": "ClearPath",
+  "niche": "junk removal and donation hauling service",
+  "layoutVariant": "side-rail-service",
+  "tagline": "Junk gone, useful stuff rehomed, driveway swept.",
+  "themeSlug": "twentytwentyfive",
+  "landingPage": "/",
+  "palette": {
+    "grass": "#1f6f5d",
+    "deepGreen": "#20262d",
+    "leaf": "#48b38e",
+    "sun": "#ffbf3f",
+    "cream": "#fbf4e7",
+    "mist": "#e7ece7",
+    "soil": "#5f5145",
+    "white": "#ffffff"
+  },
+  "assets": {
+    "hero": "assets/junk-removal/clearpath-hero.jpg",
+    "logo": "assets/junk-removal/clearpath-logo.png",
+    "favicon": "assets/junk-removal/clearpath-favicon.png"
+  },
+  "assetMeta": {
+    "hero": {
+      "title": "ClearPath junk removal and donation hauling hero image",
+      "alt": "Two hauling crew members carrying a loveseat from a clean garage driveway toward a box truck with donation boxes nearby."
+    }
+  },
+  "contact": {
+    "phoneLabel": "(555) 014-5826",
+    "phoneHref": "tel:+15550145826",
+    "email": "hello@clearpath.test",
+    "emailHref": "mailto:hello@clearpath.test",
+    "serviceArea": "Garage cleanouts, basement piles, apartment move-outs, donation runs, and curbside pickups across the central metro and close-in suburbs"
+  },
+  "copy": {
+    "eyebrow": "Junk removal with a donation-first habit",
+    "heroTitle": "Send the pile. Get your space back.",
+    "heroText": "ClearPath hauls bulky items, garage leftovers, move-out piles, and donation-worthy goods with fast photo estimates, tidy crews, and a sweep-up finish.",
+    "primaryCta": "Send junk photos",
+    "secondaryCta": "What we take",
+    "introTitle": "The useful stuff gets a second chance.",
+    "introText": "We separate donate, recycle, and disposal items before the truck fills up, then leave the usable room feeling like it can breathe again.",
+    "servicesTitle": "What leaves with us",
+    "processTitle": "How the haul stays simple",
+    "proofTitle": "Fast, tidy, and donation-aware",
+    "quoteTitle": "Ready to clear the pile?",
+    "quoteText": "Send a few photos, your pickup address, stairs or elevator notes, and any items that should be donated first. We will reply with a clear haul plan and arrival window."
+  },
+  "services": [
+    {
+      "title": "Garage and room cleanouts",
+      "text": "Boxes, shelves, old rugs, awkward corners, and the mystery pile that has been promoted to furniture."
+    },
+    {
+      "title": "Bulky item pickup",
+      "text": "Sofas, mattresses, tables, dressers, exercise gear, and other two-person items loaded safely and politely."
+    },
+    {
+      "title": "Donation and recycle runs",
+      "text": "Usable items get sorted for donation options, while metal, cardboard, and recyclables avoid the dump when possible."
+    }
+  ],
+  "process": [
+    {
+      "title": "Photo estimate",
+      "text": "Text or email wide photos of the pile, close-ups of bulky items, and access notes like stairs or tight turns."
+    },
+    {
+      "title": "Sort the route",
+      "text": "We plan truck space, donation stops, disposal needs, and the right crew size before we knock."
+    },
+    {
+      "title": "Load and sweep",
+      "text": "The crew protects walls, loads cleanly, sweeps the pickup area, and sends a quick wrap-up note."
+    }
+  ],
+  "proof": [
+    {
+      "stat": "Photo-first",
+      "label": "estimates before you drag everything to the curb"
+    },
+    {
+      "stat": "Donation-aware",
+      "label": "usable furniture and goods routed with care"
+    },
+    {
+      "stat": "Sweep finish",
+      "label": "pickup areas left tidy after loading"
+    }
+  ],
+  "release": {
+    "status": "approved",
+    "reviewedAt": "2026-06-25",
+    "visualBaseline": "pending",
+    "reviewChecklist": {
+      "firstViewportClear": true,
+      "logoReadable": true,
+      "layoutDistinct": true,
+      "ctaClear": true,
+      "copySpecific": true,
+      "noImageArtifacts": true,
+      "heroArtDirected": true,
+      "hierarchyDistinct": true,
+      "signatureMove": true,
+      "restrainedComposition": true,
+      "screenshotCompared": true
+    }
+  }
+}

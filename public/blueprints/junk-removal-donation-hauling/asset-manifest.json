@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "slug": "junk-removal-donation-hauling",
+  "businessName": "ClearPath",
+  "layoutVariant": "side-rail-service",
+  "assets": {
+    "hero": {
+      "source": "assets/junk-removal/clearpath-hero.jpg",
+      "fileName": "hero.jpg",
+      "outputPath": "/assets/hero.jpg",
+      "mimeType": "image/jpeg",
+      "byteSize": 309021,
+      "width": 1920,
+      "height": 1080,
+      "embedded": true
+    },
+    "logo": {
+      "source": "assets/junk-removal/clearpath-logo.png",
+      "fileName": "logo.png",
+      "outputPath": "/assets/logo.png",
+      "mimeType": "image/png",
+      "byteSize": 42587,
+      "width": 1100,
+      "height": 260,
+      "embedded": true
+    },
+    "favicon": {
+      "source": "assets/junk-removal/clearpath-favicon.png",
+      "fileName": "favicon.png",
+      "outputPath": "/assets/favicon.png",
+      "mimeType": "image/png",
+      "byteSize": 16946,
+      "width": 512,
+      "height": 512,
+      "embedded": true
+    }
+  }
+}

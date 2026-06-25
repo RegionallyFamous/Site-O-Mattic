@@ -2,6 +2,8 @@
 
 Use this checklist before scaling Site-O-Mattic beyond hand-built Blueprints.
 
+Before creating additional niche specs, choose patterns from [Pattern And Style Catalog](./pattern-style-catalog.md). Production should scale from conversion-job patterns, not by cloning the last niche with new copy and colors.
+
 ## Release States
 
 | State | Meaning | Gates |
@@ -28,7 +30,7 @@ npm run quality
 - Polish report for token quality, focus states, contrast, anchors, component classes, layout signatures, and logo metadata.
 - Accessibility report for headings, safe links, CTA text, media metadata, duplicate IDs, and navigation labels.
 - Layout variety comparison across current Blueprints.
-- Asset, Blueprint size, ZIP size, prompt-note, manifest, and release-state guardrails.
+- Asset, Blueprint size, ZIP size, prompt-note, manifest, premium-review, and release-state guardrails.
 - Visual baseline gate for published specs.
 - Production host build and lint.
 
@@ -58,3 +60,23 @@ Budgets live in `config/production-guardrails.json`.
 - Logo PNGs should be large enough for crisp scaling.
 - Favicons should be square simplified marks.
 - Blueprint JSON and ZIP output are capped so base64 media does not quietly balloon.
+
+## Premium Review
+
+Every approved or published spec must mark the full human review checklist true, including:
+
+- first viewport clarity, logo readability, CTA clarity, copy specificity, and image artifact checks.
+- art-directed hero imagery with a specific service moment or outcome.
+- distinct hierarchy, type, color, and spacing compared with recent Blueprints.
+- one memorable signature layout move beyond generic service cards.
+- restrained composition without awkward overlaps or decorative clutter.
+- screenshot comparison against recent desktop and mobile previews.
+
+## Pattern Gate
+
+Before a new spec is approved, record the intended pattern family in the layout archetype decision:
+
+- primary conversion job, such as quote panel, package/menu board, gallery proof, side rail, route/schedule, receipt stack, or consultation flow.
+- secondary support pattern, such as proof bar, service-area strip, FAQ accordion, process timeline, or mobile action bar.
+- one signature move visible in screenshots.
+- image direction and CTA rhythm.

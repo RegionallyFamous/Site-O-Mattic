@@ -50,6 +50,22 @@ export const blueprints = [
     "releaseStatus": "approved"
   },
   {
+    "slug": "junk-removal-donation-hauling",
+    "name": "ClearPath",
+    "eyebrow": "Junk Removal And Donation Hauling Service",
+    "summary": "ClearPath hauls bulky items, garage leftovers, move-out piles, and donation-worthy goods with fast photo estimates, tidy crews, and a sweep-up finish.",
+    "logo": "/blueprints/junk-removal-donation-hauling/assets/logo.png",
+    "logoWidth": 1100,
+    "logoHeight": 260,
+    "hero": "/blueprints/junk-removal-donation-hauling/assets/hero.jpg",
+    "heroWidth": 1920,
+    "heroHeight": 1080,
+    "alt": "Two hauling crew members carrying a loveseat from a clean garage driveway toward a box truck with donation boxes nearby.",
+    "path": "/api/blueprints/junk-removal-donation-hauling/blueprint.json",
+    "layoutVariant": "side-rail-service",
+    "releaseStatus": "approved"
+  },
+  {
     "slug": "lawn-care-service",
     "name": "GreenStripe Lawn Care",
     "eyebrow": "Lawn Care Service",
