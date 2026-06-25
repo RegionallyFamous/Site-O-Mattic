@@ -97,8 +97,17 @@ const summary = {
   nearestNeighbors,
   reports
 };
+const reviewEvidence = {
+  generatedAt: summary.generatedAt,
+  outputRoot: OUTPUT_ROOT,
+  total: summary.total,
+  failed: summary.failed,
+  nearestNeighbors,
+  items: reports.map(buildReviewEvidence)
+};
 
 await fs.writeFile(path.join(OUTPUT_ROOT, "report.json"), `${JSON.stringify(summary, null, 2)}\n`);
+await fs.writeFile(path.join(OUTPUT_ROOT, "review-evidence.json"), `${JSON.stringify(reviewEvidence, null, 2)}\n`);
 await writeContactSheet(summary);
 await browser.close();
 
@@ -106,6 +115,7 @@ console.log("\nVisual sweep summary");
 console.log(`- Total: ${summary.total}`);
 console.log(`- Failed: ${summary.failed}`);
 console.log(`- Report: ${path.join(OUTPUT_ROOT, "report.json")}`);
+console.log(`- Review evidence: ${path.join(OUTPUT_ROOT, "review-evidence.json")}`);
 console.log(`- Contact sheet: ${path.join(OUTPUT_ROOT, "contact-sheet.png")}`);
 console.log("- Closest desktop layout neighbors:");
 for (const item of nearestNeighbors.slice(0, 10)) {
@@ -244,7 +254,7 @@ async function inspectScenario(browser, url, scenario, screenshot) {
     await frame.waitForSelector(".wp-site-blocks, body", { timeout: 60_000 });
     await page.screenshot({ path: screenshot, fullPage: false });
 
-    return await frame.evaluate(() => {
+    return await frame.evaluate(async () => {
       const text = document.body.innerText || "";
       const logo = rectFor(document.querySelector(".wp-block-site-logo img"));
       const h1 = rectFor(document.querySelector("h1"));
@@ -272,6 +282,9 @@ async function inspectScenario(browser, url, scenario, screenshot) {
           .map((cta, index) => ({ name: `cta:${cta.text || index + 1}`, rect: cta.rect }))
       ]);
       const proofAlignment = proofAlignmentReport();
+      disableSmoothScrolling();
+      const anchorNavigation = await anchorNavigationReport();
+      const focusWalk = await focusWalkReport();
 
       return {
         bodyTextLength: text.length,
@@ -288,8 +301,105 @@ async function inspectScenario(browser, url, scenario, screenshot) {
         viewport,
         overflowers,
         keyOverlaps,
-        proofAlignment
+        proofAlignment,
+        anchorNavigation,
+        focusWalk
       };
+
+      async function anchorNavigationReport() {
+        const links = [...document.querySelectorAll('a[href^="#"]')]
+          .map((link) => ({
+            href: link.getAttribute("href") || "",
+            text: link.textContent?.trim() || link.getAttribute("aria-label") || "anchor"
+          }))
+          .filter((link) => link.href.length > 1);
+        const seen = new Set();
+        const checked = [];
+        const failures = [];
+
+        for (const link of links) {
+          const rawId = link.href.slice(1);
+          const id = decodeHash(rawId);
+          if (!id || seen.has(id)) {
+            continue;
+          }
+          seen.add(id);
+          const target = document.getElementById(id) || document.querySelector(`[name="${cssAttrValue(id)}"]`);
+          if (!target) {
+            failures.push(`Missing target #${id} for "${link.text}"`);
+            continue;
+          }
+
+          target.scrollIntoView({ block: "start", inline: "nearest", behavior: "auto" });
+          await nextPaint();
+          const rect = rectFor(target);
+          checked.push({ id, text: link.text, rect });
+          if (!rect) {
+            failures.push(`#${id} did not produce a measurable target.`);
+            continue;
+          }
+          if (rect.top < -2) {
+            failures.push(`#${id} scrolled above the viewport (${rect.top}px).`);
+          }
+          if (rect.top > viewport.height - 80) {
+            failures.push(`#${id} landed too low in the viewport (${rect.top}px).`);
+          }
+
+          const cover = fixedOverlap(target, anchorProbeRect(rect));
+          if (cover) {
+            failures.push(`#${id} is covered by ${cover.name} (${cover.area}px overlap).`);
+          }
+        }
+
+        window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+        await nextPaint();
+        return {
+          checked: checked.length,
+          targets: checked.slice(0, 12),
+          failures: failures.slice(0, 12)
+        };
+      }
+
+      async function focusWalkReport() {
+        const focusable = [...document.querySelectorAll('a[href], button, summary, [tabindex]:not([tabindex="-1"])')]
+          .filter((element) => visibleElement(element))
+          .slice(0, 24);
+        const checked = [];
+        const failures = [];
+
+        for (const element of focusable) {
+          const label = element.textContent?.trim() || element.getAttribute("aria-label") || element.tagName.toLowerCase();
+          element.scrollIntoView({ block: "center", inline: "nearest", behavior: "auto" });
+          await nextPaint();
+          element.focus({ preventScroll: true });
+          await nextPaint();
+          const active = document.activeElement;
+          const rect = rectFor(element);
+          const activeOk = active === element || element.contains(active);
+          const inViewport = rect && rect.bottom > 0 && rect.top < viewport.height && rect.right > 0 && rect.left < viewport.width;
+          checked.push({ label: label.slice(0, 80), rect, active: activeOk });
+
+          if (!activeOk) {
+            failures.push(`Focus did not land on "${label}".`);
+            continue;
+          }
+          if (!inViewport) {
+            failures.push(`Focused element "${label}" is outside the viewport.`);
+            continue;
+          }
+
+          const cover = fixedOverlap(element, rect);
+          if (cover) {
+            failures.push(`Focused element "${label}" is covered by ${cover.name} (${cover.area}px overlap).`);
+          }
+        }
+
+        return {
+          checked: checked.length,
+          targets: checked.slice(0, 12),
+          failures: failures.slice(0, 12)
+        };
+      }
 
       function keyOverlapFailures(items) {
         const visibleItems = items.filter((item) => visible(item.rect));
@@ -343,6 +453,101 @@ async function inspectScenario(browser, url, scenario, screenshot) {
           checkedRows: rows.filter((row) => row.cards.length >= 2).length,
           failures: failures.slice(0, 8)
         };
+      }
+
+      function fixedOverlap(element, rect) {
+        if (!rect) {
+          return null;
+        }
+        const areaLimit = Math.max(160, Math.min(1600, rect.width * rect.height * 0.12));
+        const overlays = fixedOrStickyElements()
+          .filter((item) => item.element !== element && !item.element.contains(element) && !element.contains(item.element))
+          .map((item) => ({ ...item, area: Math.round(overlapArea(item.rect, rect)) }))
+          .filter((item) => item.area > areaLimit)
+          .sort((left, right) => right.area - left.area);
+        const overlay = overlays[0];
+        if (!overlay) {
+          return null;
+        }
+        return {
+          name: overlay.name,
+          area: overlay.area,
+          rect: overlay.rect
+        };
+      }
+
+      function anchorProbeRect(rect) {
+        const height = Math.min(96, Math.max(32, rect.height));
+        return {
+          ...rect,
+          bottom: Math.round(Math.min(rect.bottom, rect.top + height)),
+          height: Math.round(height)
+        };
+      }
+
+      function fixedOrStickyElements() {
+        return [...document.querySelectorAll("body *")]
+          .map((element) => {
+            const style = window.getComputedStyle(element);
+            return {
+              element,
+              position: style.position,
+              name: elementDescriptor(element),
+              rect: rectFor(element)
+            };
+          })
+          .filter((item) => (item.position === "fixed" || item.position === "sticky")
+            && item.rect
+            && item.rect.width > 24
+            && item.rect.height > 12
+            && item.rect.bottom > 0
+            && item.rect.top < viewport.height
+            && item.rect.right > 0
+            && item.rect.left < viewport.width);
+      }
+
+      function visibleElement(element) {
+        const style = window.getComputedStyle(element);
+        const rect = rectFor(element);
+        return Boolean(rect
+          && style.visibility !== "hidden"
+          && style.display !== "none"
+          && rect.width > 0
+          && rect.height > 0);
+      }
+
+      async function nextPaint() {
+        await new Promise((resolve) => requestAnimationFrame(resolve));
+        await new Promise((resolve) => requestAnimationFrame(resolve));
+      }
+
+      function disableSmoothScrolling() {
+        document.documentElement.style.scrollBehavior = "auto";
+        document.body.style.scrollBehavior = "auto";
+      }
+
+      function decodeHash(value) {
+        try {
+          return decodeURIComponent(value);
+        } catch {
+          return value;
+        }
+      }
+
+      function cssAttrValue(value) {
+        return String(value).replaceAll("\\", "\\\\").replaceAll('"', '\\"');
+      }
+
+      function elementDescriptor(element) {
+        const tag = element.tagName.toLowerCase();
+        const id = element.id ? `#${element.id}` : "";
+        const className = String(element.className || "")
+          .split(/\s+/)
+          .filter(Boolean)
+          .slice(0, 2)
+          .map((item) => `.${item}`)
+          .join("");
+        return `${tag}${id}${className}`;
       }
 
       function overlapArea(left, right) {
@@ -404,6 +609,12 @@ function failuresFor(result) {
   if (result.proofAlignment?.failures?.length) {
     failures.push(`Proof card alignment drift: ${result.proofAlignment.failures.join("; ")}`);
   }
+  if (result.anchorNavigation?.failures?.length) {
+    failures.push(`Anchor navigation issue: ${result.anchorNavigation.failures.join("; ")}`);
+  }
+  if (result.focusWalk?.failures?.length) {
+    failures.push(`Focus walk issue: ${result.focusWalk.failures.join("; ")}`);
+  }
   return failures;
 }
 
@@ -442,6 +653,44 @@ function summarizeScenarioShape(scenarios) {
     desktopMedia: desktop?.media,
     mobile390H1: scenarios.find((scenario) => scenario.name === "mobile-390")?.h1,
     mobile360H1: scenarios.find((scenario) => scenario.name === "mobile-360")?.h1
+  };
+}
+
+function buildReviewEvidence(report) {
+  return {
+    slug: report.slug,
+    name: report.name,
+    specPath: report.specPath,
+    blueprintPath: report.blueprintPath,
+    layoutVariant: report.layoutVariant,
+    primaryPattern: report.pattern?.primaryPattern || null,
+    secondaryPattern: report.pattern?.secondaryPattern || null,
+    silhouette: report.pattern?.silhouette || null,
+    navigationPrimitive: report.pattern?.navigationPrimitive || null,
+    mobileActionPattern: report.pattern?.mobileActionPattern || null,
+    styleFamily: report.pattern?.styleFamily || null,
+    ctaRhythm: report.pattern?.ctaRhythm || null,
+    imageEvidence: report.pattern?.imageEvidence || null,
+    coreBlockPlan: report.pattern?.coreBlockPlan || [],
+    status: report.failures.length ? "fail" : "ok",
+    failures: report.failures,
+    scenarios: report.scenarios.map((scenario) => ({
+      name: scenario.name,
+      viewport: scenario.viewport,
+      screenshot: path.relative(OUTPUT_ROOT, scenario.screenshot),
+      bodyTextLength: scenario.bodyTextLength,
+      defaultWrapperLeak: scenario.defaultWrapperLeak,
+      firstViewportCtaText: scenario.firstViewportCtaText,
+      logo: scenario.logo,
+      h1: scenario.h1,
+      media: scenario.media,
+      overflowers: scenario.overflowers,
+      keyOverlaps: scenario.keyOverlaps,
+      proofAlignment: scenario.proofAlignment,
+      anchorNavigation: scenario.anchorNavigation,
+      focusWalk: scenario.focusWalk,
+      failures: scenario.failures
+    }))
   };
 }
 

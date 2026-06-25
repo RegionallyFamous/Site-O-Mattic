@@ -26,6 +26,8 @@
     "blueprint:asset-qa": "node src/asset-qa-report.mjs",
     "blueprint:copy-realism": "node src/copy-realism-report.mjs",
     "blueprint:premium": "node src/premium-review-report.mjs",
+    "blueprint:manifest": "node src/production-redo-manifest.mjs",
+    "blueprint:manifest:write": "node src/production-redo-manifest.mjs --write",
     "blueprint:visual": "node src/visual-qa.mjs",
     "fonts:catalog": "node src/google-fonts-catalog.mjs",
     "app:sync": "node src/sync-app-blueprints.mjs",
@@ -36,7 +38,7 @@
     "playground:smoke": "node src/public-playground-smoke.mjs",
     "spec:polish-fields": "node src/production-polish-fields.mjs",
     "validate": "npm run blueprint:validate",
-    "quality": "npm run spec:validate && npm run validate && npm run blueprint:polish && npm run blueprint:accessibility && npm run blueprint:conversion && npm run blueprint:sync && npm run blueprint:variety && npm run blueprint:typography && npm run blueprint:guardrails && npm run blueprint:asset-qa && npm run blueprint:copy-realism && npm run blueprint:premium && npm run visual:baseline && npm run site:build && npm run lint",
+    "quality": "npm run spec:validate && npm run blueprint:manifest && npm run validate && npm run blueprint:polish && npm run blueprint:accessibility && npm run blueprint:conversion && npm run blueprint:sync && npm run blueprint:variety && npm run blueprint:typography && npm run blueprint:guardrails && npm run blueprint:asset-qa && npm run blueprint:copy-realism && npm run blueprint:premium && npm run visual:baseline && npm run site:build && npm run lint",
     "render-brand": "sh scripts/render-brand-assets.sh"
   },
   "dependencies": {
