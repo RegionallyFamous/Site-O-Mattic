@@ -175,6 +175,9 @@ function validateGlobalStyles(phpCode, errors) {
   if ((settings.typography?.fontSizes || []).length < 6 || settings.typography?.fluid !== true) {
     errors.push("Global styles should define a fluid type scale with at least six font sizes.");
   }
+  if ((settings.typography?.fontFamilies || []).length < 3) {
+    errors.push("Global styles should define body, display, and accent font-family stacks.");
+  }
   if ((settings.spacing?.spacingSizes || []).length < 7 || settings.spacing?.blockGap !== true) {
     errors.push("Global styles should define a spacing scale and enable block gap controls.");
   }
@@ -186,6 +189,9 @@ function validateGlobalStyles(phpCode, errors) {
   }
   if (!settings.custom?.som?.radius || !settings.custom?.som?.shadow) {
     errors.push("Global styles should define Site-O-Mattic custom radius and shadow tokens.");
+  }
+  if (!settings.custom?.som?.type?.treatment || !settings.custom?.som?.colorStrategy?.name) {
+    errors.push("Global styles should record the Site-O-Mattic typography treatment and color strategy.");
   }
   for (const blockName of requiredBlockStyles) {
     if (!blockStyles[blockName]) {
@@ -202,6 +208,9 @@ function validateGlobalStyles(phpCode, errors) {
   const customCss = extractCustomCss(phpCode);
   if (!customCss.includes("--wp--preset--spacing--70") || !customCss.includes("--wp--custom--som--shadow--card")) {
     errors.push("Custom CSS fallback should define spacing and Site-O-Mattic shadow variables.");
+  }
+  if (!customCss.includes("--wp--preset--font-family--body") || !customCss.includes("--wp--custom--som--type--heading-weight")) {
+    errors.push("Custom CSS fallback should define font-family and type-weight variables.");
   }
   if (!customCss.includes(":focus-visible") || !customCss.includes(".som-card")) {
     errors.push("Custom CSS fallback should include focus-visible and component polish classes.");
@@ -225,7 +234,7 @@ function validateLayoutSignature(phpCode, pageContent, errors) {
     errors.push(`Layout signature variant is not implemented in the layout catalog: ${signature.variant}.`);
   }
 
-  const requiredStringFields = ["variant", "archetype", "hero", "servicePresentation", "proofTreatment", "ctaRhythm"];
+  const requiredStringFields = ["variant", "archetype", "hero", "navigationTreatment", "typographyTreatment", "colorStrategy", "servicePresentation", "proofTreatment", "ctaRhythm"];
   for (const field of requiredStringFields) {
     if (!signature[field] || typeof signature[field] !== "string") {
       errors.push(`Layout signature missing string field: ${field}.`);

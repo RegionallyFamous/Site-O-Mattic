@@ -1,4 +1,5 @@
 import {
+  extractGlobalStyles,
   extractLayoutSignature,
   extractPageContent,
   getRunPhpStep,
@@ -75,6 +76,8 @@ async function inspectBlueprint(target) {
   const navigationLinks = extractNavigationLinks(pageContent);
   const navLabels = navigationLinks.map((link) => link.label);
   const navTargets = navigationLinks.map((link) => link.target);
+  const globalStyles = extractGlobalStyles(phpStep.code);
+  const palette = paletteFingerprint(globalStyles);
 
   add(checks, "embedded signature", Boolean(signature?.variant), signature?.variant || "Missing layout variant.");
   add(checks, "cataloged layout variant", Boolean(LAYOUT_ARCHETYPES[signature?.variant]?.archetype), signature?.variant || "Missing layout variant.");
@@ -84,7 +87,7 @@ async function inspectBlueprint(target) {
   add(checks, "navigation matches signature", arraysEqual(navLabels, signature?.navLabels || []), navLabels.join(" / ") || "No nav labels found.");
   add(checks, "navigation anchors match signature", arraysEqual(navTargets, signature?.anchorOrder || []), navTargets.join(" / ") || "No navigation anchors found.");
 
-  return { target, signature, pageContent, componentClasses, navLabels, checks };
+  return { target, signature, pageContent, componentClasses, navLabels, palette, checks };
 }
 
 function compareReports(left, right) {
@@ -96,6 +99,10 @@ function compareReports(left, right) {
 
   checks.push(diffCheck("variant family", leftSignature.variant !== rightSignature.variant, leftSignature.variant, rightSignature.variant));
   checks.push(diffCheck("hero", leftSignature.hero !== rightSignature.hero, leftSignature.hero, rightSignature.hero));
+  checks.push(diffCheck("navigation treatment", leftSignature.navigationTreatment !== rightSignature.navigationTreatment, leftSignature.navigationTreatment, rightSignature.navigationTreatment));
+  checks.push(diffCheck("typography treatment", leftSignature.typographyTreatment !== rightSignature.typographyTreatment, leftSignature.typographyTreatment, rightSignature.typographyTreatment));
+  checks.push(diffCheck("color strategy", leftSignature.colorStrategy !== rightSignature.colorStrategy, leftSignature.colorStrategy, rightSignature.colorStrategy));
+  checks.push(diffCheck("palette fingerprint", left.palette !== right.palette, left.palette, right.palette));
   checks.push(diffCheck("service presentation", leftSignature.servicePresentation !== rightSignature.servicePresentation, leftSignature.servicePresentation, rightSignature.servicePresentation));
   checks.push(diffCheck("proof treatment", leftSignature.proofTreatment !== rightSignature.proofTreatment, leftSignature.proofTreatment, rightSignature.proofTreatment));
   checks.push(diffCheck("CTA rhythm", leftSignature.ctaRhythm !== rightSignature.ctaRhythm, leftSignature.ctaRhythm, rightSignature.ctaRhythm));
@@ -110,7 +117,7 @@ function compareReports(left, right) {
     score,
     total: checks.length,
     checks,
-    passed: score >= 6 && checks[1].passed && checks[2].passed && checks[5].passed
+    passed: score >= 10 && checks[1].passed && checks[2].passed && checks[3].passed && checks[4].passed && checks[6].passed && checks[9].passed
   };
 }
 
@@ -130,10 +137,16 @@ function hasSignatureShape(signature) {
   if (!signature) {
     return false;
   }
-  const strings = ["variant", "archetype", "hero", "servicePresentation", "proofTreatment", "ctaRhythm"];
+  const strings = ["variant", "archetype", "hero", "navigationTreatment", "typographyTreatment", "colorStrategy", "servicePresentation", "proofTreatment", "ctaRhythm"];
   const arrays = ["sectionOrder", "navLabels", "anchorOrder", "componentClassesExpected", "layoutMarkers"];
   return strings.every((field) => typeof signature[field] === "string" && signature[field])
     && arrays.every((field) => Array.isArray(signature[field]) && signature[field].length);
+}
+
+function paletteFingerprint(globalStyles) {
+  return (globalStyles?.settings?.color?.palette || [])
+    .map((item) => `${item.slug}:${String(item.color).toLowerCase()}`)
+    .join("|") || "missing";
 }
 
 function hasExpectedClasses(signature, componentClasses) {

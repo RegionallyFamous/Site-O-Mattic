@@ -5,6 +5,7 @@ import { promisify } from "node:util";
 import { imageInfo } from "./image-size.mjs";
 import {
   buildLayoutSignature,
+  layoutArchetypeFor,
   layoutVariantFor
 } from "./layout-archetypes.mjs";
 
@@ -1916,13 +1917,7 @@ function buildGlobalStyles(spec) {
       typography: {
         customFontSize: false,
         fluid: true,
-        fontFamilies: [
-          {
-            fontFamily: "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Inter, Roboto, Arial, sans-serif",
-            name: "System Sans",
-            slug: "system-sans"
-          }
-        ],
+        fontFamilies: tokens.fontFamilies,
         fontSizes: tokens.fontSizes,
         fontStyle: true,
         fontWeight: true,
@@ -1938,7 +1933,9 @@ function buildGlobalStyles(spec) {
             copy: "66ch"
           },
           radius: tokens.radii,
-          shadow: tokens.shadows
+          shadow: tokens.shadows,
+          colorStrategy: tokens.colorStrategy,
+          type: tokens.typography.custom
         }
       }
     },
@@ -1952,9 +1949,9 @@ function buildGlobalStyles(spec) {
         blockGap: "var:preset|spacing|40"
       },
       typography: {
-        fontFamily: "var:preset|font-family|system-sans",
+        fontFamily: `var:preset|font-family|${tokens.typography.bodyFontSlug}`,
         fontSize: "var:preset|font-size|body",
-        lineHeight: "1.5"
+        lineHeight: tokens.typography.bodyLineHeight
       },
       elements: {
         link: {
@@ -1963,7 +1960,8 @@ function buildGlobalStyles(spec) {
           },
           typography: {
             textDecoration: "none",
-            fontWeight: "800"
+            fontFamily: `var:preset|font-family|${tokens.typography.accentFontSlug}`,
+            fontWeight: tokens.typography.linkWeight
           },
           ":hover": {
             color: {
@@ -1991,14 +1989,16 @@ function buildGlobalStyles(spec) {
             text: p.deepGreen
           },
           typography: {
-            fontWeight: "800"
+            fontFamily: `var:preset|font-family|${tokens.typography.accentFontSlug}`,
+            fontWeight: tokens.typography.actionWeight
           }
         }
       },
       blocks: {
         "core/button": {
           typography: {
-            fontWeight: "800"
+            fontFamily: `var:preset|font-family|${tokens.typography.accentFontSlug}`,
+            fontWeight: tokens.typography.actionWeight
           }
         },
         "core/buttons": {
@@ -2018,8 +2018,9 @@ function buildGlobalStyles(spec) {
         },
         "core/heading": {
           typography: {
-            fontWeight: "900",
-            lineHeight: "1.05"
+            fontFamily: `var:preset|font-family|${tokens.typography.displayFontSlug}`,
+            fontWeight: tokens.typography.headingWeight,
+            lineHeight: tokens.typography.headingLineHeight
           }
         },
         "core/image": {
@@ -2036,8 +2037,9 @@ function buildGlobalStyles(spec) {
         },
         "core/navigation": {
           typography: {
+            fontFamily: `var:preset|font-family|${tokens.typography.accentFontSlug}`,
             fontSize: "var:preset|font-size|small",
-            fontWeight: "800"
+            fontWeight: tokens.typography.navWeight
           }
         }
       }
@@ -2047,6 +2049,8 @@ function buildGlobalStyles(spec) {
 
 function buildDesignTokens(spec) {
   const p = spec.palette;
+  const typography = buildTypographyTokens(spec);
+  const colorStrategy = buildColorStrategyTokens(spec);
   return {
     palette: [
       ["grass", "Grass", p.grass],
@@ -2062,22 +2066,16 @@ function buildDesignTokens(spec) {
       {
         slug: "brand-sheen",
         name: "Brand Sheen",
-        gradient: `linear-gradient(135deg, ${p.deepGreen} 0%, ${p.grass} 56%, ${p.leaf} 100%)`
+        gradient: colorStrategy.brandGradient
       },
       {
         slug: "warm-flash",
         name: "Warm Flash",
-        gradient: `linear-gradient(135deg, ${p.sun} 0%, ${p.cream} 100%)`
+        gradient: colorStrategy.highlightGradient
       }
     ],
-    fontSizes: [
-      { slug: "small", name: "Small", size: "0.94rem", fluid: { min: "0.88rem", max: "0.98rem" } },
-      { slug: "body", name: "Body", size: "1.06rem", fluid: { min: "1rem", max: "1.12rem" } },
-      { slug: "lead", name: "Lead", size: "1.28rem", fluid: { min: "1.12rem", max: "1.42rem" } },
-      { slug: "card-title", name: "Card Title", size: "1.65rem", fluid: { min: "1.35rem", max: "1.85rem" } },
-      { slug: "section-title", name: "Section Title", size: "3.25rem", fluid: { min: "2.25rem", max: "4.25rem" } },
-      { slug: "hero", name: "Hero", size: "5.6rem", fluid: { min: "3.1rem", max: "6.25rem" } }
-    ],
+    fontFamilies: typography.fontFamilies,
+    fontSizes: typography.fontSizes,
     spacingSizes: [
       { slug: "20", name: "2XS", size: "0.5rem" },
       { slug: "30", name: "XS", size: "0.75rem" },
@@ -2102,7 +2100,246 @@ function buildDesignTokens(spec) {
       { slug: "card", name: "Card", shadow: "0 16px 50px rgba(5,45,63,.08)" },
       { slug: "lift", name: "Lift", shadow: "0 28px 80px rgba(5,45,63,.18)" },
       { slug: "button", name: "Button", shadow: "0 10px 24px rgba(5,45,63,.14)" }
-    ]
+    ],
+    typography,
+    colorStrategy: {
+      name: layoutArchetypeFor(spec).colorStrategy,
+      brandGradient: colorStrategy.brandGradient,
+      highlightGradient: colorStrategy.highlightGradient
+    }
+  };
+}
+
+function buildTypographyTokens(spec) {
+  const archetype = layoutArchetypeFor(spec);
+  const treatment = archetype.typographyTreatment || "friendly-bold-route-sans";
+  const stacks = {
+    system: "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Inter, Roboto, Arial, sans-serif",
+    rounded: "\"Arial Rounded MT Bold\", \"Avenir Next\", Avenir, \"Segoe UI\", Arial, sans-serif",
+    humanist: "\"Avenir Next\", Avenir, \"Trebuchet MS\", \"Segoe UI\", Arial, sans-serif",
+    editorial: "Georgia, Cambria, \"Times New Roman\", serif",
+    condensed: "\"Arial Narrow\", \"Roboto Condensed\", \"Aptos Narrow\", Arial, sans-serif",
+    sturdy: "\"Arial Black\", \"Segoe UI Black\", Impact, Arial, sans-serif",
+    mono: "\"SFMono-Regular\", Consolas, \"Liberation Mono\", Menlo, monospace"
+  };
+  const treatments = {
+    "friendly-bold-route-sans": {
+      body: stacks.system,
+      display: stacks.rounded,
+      accent: stacks.system,
+      scale: "generous",
+      headingWeight: "900",
+      actionWeight: "800",
+      navWeight: "800",
+      linkWeight: "800",
+      headingLineHeight: "1.03",
+      bodyLineHeight: "1.52"
+    },
+    "confident-transform-grotesk": {
+      body: stacks.system,
+      display: stacks.sturdy,
+      accent: stacks.condensed,
+      scale: "bold",
+      headingWeight: "900",
+      actionWeight: "850",
+      navWeight: "850",
+      linkWeight: "850",
+      headingLineHeight: "0.98",
+      bodyLineHeight: "1.48"
+    },
+    "crisp-checklist-ui-sans": {
+      body: stacks.system,
+      display: stacks.humanist,
+      accent: stacks.system,
+      scale: "compact",
+      headingWeight: "850",
+      actionWeight: "850",
+      navWeight: "800",
+      linkWeight: "800",
+      headingLineHeight: "1.04",
+      bodyLineHeight: "1.5"
+    },
+    "sturdy-safety-sans": {
+      body: stacks.system,
+      display: stacks.condensed,
+      accent: stacks.sturdy,
+      scale: "bold",
+      headingWeight: "900",
+      actionWeight: "900",
+      navWeight: "850",
+      linkWeight: "850",
+      headingLineHeight: "1",
+      bodyLineHeight: "1.48"
+    },
+    "industrial-seasonal-condensed": {
+      body: stacks.system,
+      display: stacks.condensed,
+      accent: stacks.condensed,
+      scale: "wide",
+      headingWeight: "900",
+      actionWeight: "850",
+      navWeight: "850",
+      linkWeight: "800",
+      headingLineHeight: "0.98",
+      bodyLineHeight: "1.48"
+    },
+    "soft-domestic-humanist": {
+      body: stacks.humanist,
+      display: stacks.humanist,
+      accent: stacks.system,
+      scale: "soft",
+      headingWeight: "800",
+      actionWeight: "800",
+      navWeight: "750",
+      linkWeight: "750",
+      headingLineHeight: "1.06",
+      bodyLineHeight: "1.58"
+    },
+    "editorial-gallery-serif-display": {
+      body: stacks.humanist,
+      display: stacks.editorial,
+      accent: stacks.system,
+      scale: "editorial",
+      headingWeight: "700",
+      actionWeight: "800",
+      navWeight: "750",
+      linkWeight: "750",
+      headingLineHeight: "1.02",
+      bodyLineHeight: "1.58"
+    }
+  };
+  const voice = treatments[treatment] || treatments["friendly-bold-route-sans"];
+
+  return {
+    treatment,
+    bodyFontSlug: "body",
+    displayFontSlug: "display",
+    accentFontSlug: "accent",
+    bodyLineHeight: voice.bodyLineHeight,
+    headingLineHeight: voice.headingLineHeight,
+    headingWeight: voice.headingWeight,
+    actionWeight: voice.actionWeight,
+    navWeight: voice.navWeight,
+    linkWeight: voice.linkWeight,
+    fontFamilies: [
+      { slug: "body", name: "Body", fontFamily: voice.body },
+      { slug: "display", name: "Display", fontFamily: voice.display },
+      { slug: "accent", name: "Accent", fontFamily: voice.accent }
+    ],
+    fontSizes: buildFluidFontSizes(voice.scale),
+    custom: {
+      treatment,
+      bodyFont: voice.body,
+      displayFont: voice.display,
+      accentFont: voice.accent,
+      headingWeight: voice.headingWeight,
+      actionWeight: voice.actionWeight,
+      navWeight: voice.navWeight,
+      headingLineHeight: voice.headingLineHeight,
+      bodyLineHeight: voice.bodyLineHeight
+    }
+  };
+}
+
+function buildFluidFontSizes(scaleName) {
+  const scales = {
+    compact: {
+      small: ["0.9rem", "0.86rem", "0.96rem"],
+      body: ["1.02rem", "0.98rem", "1.08rem"],
+      lead: ["1.2rem", "1.08rem", "1.34rem"],
+      card: ["1.52rem", "1.28rem", "1.76rem"],
+      section: ["3rem", "2.1rem", "3.8rem"],
+      hero: ["5.1rem", "2.9rem", "5.8rem"]
+    },
+    soft: {
+      small: ["0.94rem", "0.88rem", "1rem"],
+      body: ["1.08rem", "1rem", "1.16rem"],
+      lead: ["1.26rem", "1.12rem", "1.42rem"],
+      card: ["1.58rem", "1.32rem", "1.78rem"],
+      section: ["3.1rem", "2.18rem", "4rem"],
+      hero: ["5.25rem", "2.95rem", "5.95rem"]
+    },
+    editorial: {
+      small: ["0.95rem", "0.88rem", "1rem"],
+      body: ["1.09rem", "1rem", "1.17rem"],
+      lead: ["1.35rem", "1.14rem", "1.52rem"],
+      card: ["1.7rem", "1.38rem", "1.94rem"],
+      section: ["3.55rem", "2.35rem", "4.7rem"],
+      hero: ["5.85rem", "3rem", "6.65rem"]
+    },
+    bold: {
+      small: ["0.93rem", "0.87rem", "0.99rem"],
+      body: ["1.05rem", "1rem", "1.12rem"],
+      lead: ["1.3rem", "1.12rem", "1.48rem"],
+      card: ["1.72rem", "1.38rem", "1.98rem"],
+      section: ["3.45rem", "2.35rem", "4.5rem"],
+      hero: ["5.9rem", "3.1rem", "6.65rem"]
+    },
+    wide: {
+      small: ["0.92rem", "0.87rem", "0.98rem"],
+      body: ["1.04rem", "0.98rem", "1.1rem"],
+      lead: ["1.28rem", "1.1rem", "1.44rem"],
+      card: ["1.68rem", "1.35rem", "1.9rem"],
+      section: ["3.35rem", "2.25rem", "4.35rem"],
+      hero: ["5.7rem", "3rem", "6.45rem"]
+    },
+    generous: {
+      small: ["0.94rem", "0.88rem", "0.98rem"],
+      body: ["1.06rem", "1rem", "1.12rem"],
+      lead: ["1.28rem", "1.12rem", "1.42rem"],
+      card: ["1.65rem", "1.35rem", "1.85rem"],
+      section: ["3.25rem", "2.25rem", "4.25rem"],
+      hero: ["5.6rem", "3.1rem", "6.25rem"]
+    }
+  };
+  const scale = scales[scaleName] || scales.generous;
+  return [
+    { slug: "small", name: "Small", size: scale.small[0], fluid: { min: scale.small[1], max: scale.small[2] } },
+    { slug: "body", name: "Body", size: scale.body[0], fluid: { min: scale.body[1], max: scale.body[2] } },
+    { slug: "lead", name: "Lead", size: scale.lead[0], fluid: { min: scale.lead[1], max: scale.lead[2] } },
+    { slug: "card-title", name: "Card Title", size: scale.card[0], fluid: { min: scale.card[1], max: scale.card[2] } },
+    { slug: "section-title", name: "Section Title", size: scale.section[0], fluid: { min: scale.section[1], max: scale.section[2] } },
+    { slug: "hero", name: "Hero", size: scale.hero[0], fluid: { min: scale.hero[1], max: scale.hero[2] } }
+  ];
+}
+
+function buildColorStrategyTokens(spec) {
+  const p = spec.palette;
+  const variant = layoutVariantFor(spec);
+  const strategies = {
+    "route-plan": {
+      brandGradient: `linear-gradient(135deg, ${p.deepGreen} 0%, ${p.grass} 56%, ${p.leaf} 100%)`,
+      highlightGradient: `linear-gradient(135deg, ${p.sun} 0%, ${p.cream} 100%)`
+    },
+    "before-after-quote": {
+      brandGradient: `linear-gradient(135deg, ${p.deepGreen} 0%, ${p.soil} 48%, ${p.grass} 100%)`,
+      highlightGradient: `linear-gradient(135deg, ${p.white} 0%, ${p.mist} 48%, ${p.sun} 100%)`
+    },
+    "checklist-urgency": {
+      brandGradient: `linear-gradient(135deg, ${p.white} 0%, ${p.mist} 46%, ${p.leaf} 100%)`,
+      highlightGradient: `linear-gradient(135deg, ${p.sun} 0%, ${p.white} 100%)`
+    },
+    "risk-prevention": {
+      brandGradient: `linear-gradient(135deg, ${p.deepGreen} 0%, ${p.soil} 62%, ${p.grass} 100%)`,
+      highlightGradient: `linear-gradient(135deg, ${p.sun} 0%, ${p.leaf} 100%)`
+    },
+    "surface-seasonal": {
+      brandGradient: `linear-gradient(135deg, ${p.deepGreen} 0%, ${p.soil} 58%, ${p.sun} 100%)`,
+      highlightGradient: `linear-gradient(135deg, ${p.sun} 0%, ${p.mist} 100%)`
+    },
+    "stain-care": {
+      brandGradient: `linear-gradient(135deg, ${p.deepGreen} 0%, ${p.grass} 54%, ${p.mist} 100%)`,
+      highlightGradient: `linear-gradient(135deg, ${p.white} 0%, ${p.cream} 42%, ${p.sun} 100%)`
+    },
+    "gallery-led": {
+      brandGradient: `linear-gradient(135deg, ${p.cream} 0%, ${p.mist} 46%, ${p.sun} 100%)`,
+      highlightGradient: `linear-gradient(135deg, ${p.grass} 0%, ${p.leaf} 100%)`
+    }
+  };
+
+  return strategies[variant] || {
+    brandGradient: `linear-gradient(135deg, ${p.deepGreen} 0%, ${p.grass} 56%, ${p.leaf} 100%)`,
+    highlightGradient: `linear-gradient(135deg, ${p.sun} 0%, ${p.cream} 100%)`
   };
 }
 
@@ -2128,9 +2365,17 @@ function buildCustomCss(spec) {
   const fontSizeVariables = tokens.fontSizes
     .map((item) => `  --wp--preset--font-size--${item.slug}: ${item.size};`)
     .join("\n");
+  const fontFamilyVariables = tokens.fontFamilies
+    .map((item) => `  --wp--preset--font-family--${item.slug}: ${item.fontFamily};`)
+    .join("\n");
   const customVariables = [
     "  --wp--custom--som--measure--tight: 52ch;",
     "  --wp--custom--som--measure--copy: 66ch;",
+    `  --wp--custom--som--type--heading-weight: ${tokens.typography.headingWeight};`,
+    `  --wp--custom--som--type--action-weight: ${tokens.typography.actionWeight};`,
+    `  --wp--custom--som--type--nav-weight: ${tokens.typography.navWeight};`,
+    `  --wp--custom--som--type--heading-line-height: ${tokens.typography.headingLineHeight};`,
+    `  --wp--custom--som--type--body-line-height: ${tokens.typography.bodyLineHeight};`,
     ...Object.entries(tokens.radii).map(([slug, value]) => `  --wp--custom--som--radius--${slug}: ${value};`),
     ...Object.entries(tokens.shadows).map(([slug, value]) => `  --wp--custom--som--shadow--${slug}: ${value};`)
   ].join("\n");
@@ -2148,14 +2393,32 @@ function buildCustomCss(spec) {
 ${variables}
 ${spacingVariables}
 ${fontSizeVariables}
+${fontFamilyVariables}
 ${customVariables}
 }
 body{
   background:${p.cream};
+  font-family:var(--wp--preset--font-family--body);
+  line-height:var(--wp--custom--som--type--body-line-height);
 }
 .wp-site-blocks{
   padding-top:0;
   padding-bottom:0;
+}
+.wp-block-heading{
+  font-family:var(--wp--preset--font-family--display);
+  font-weight:var(--wp--custom--som--type--heading-weight);
+  line-height:var(--wp--custom--som--type--heading-line-height);
+}
+.wp-block-navigation a,
+.wp-block-button__link{
+  font-family:var(--wp--preset--font-family--accent);
+}
+.wp-block-navigation a{
+  font-weight:var(--wp--custom--som--type--nav-weight);
+}
+.wp-block-button__link{
+  font-weight:var(--wp--custom--som--type--action-weight);
 }
 ${colorUtilities}
 ${shadowUtilities}

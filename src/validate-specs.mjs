@@ -1,10 +1,10 @@
 import fs from "node:fs/promises";
 import path from "node:path";
-import { layoutVariantSlugs } from "./layout-archetypes.mjs";
+import { implementedLayoutVariantSlugs } from "./layout-archetypes.mjs";
 import { readSpec, specTargets } from "./spec-utils.mjs";
 
 const targets = await specTargets();
-const allowedLayoutVariants = new Set(layoutVariantSlugs());
+const allowedLayoutVariants = new Set(implementedLayoutVariantSlugs());
 let hasFailures = false;
 
 for (const target of targets) {

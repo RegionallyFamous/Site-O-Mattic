@@ -63,10 +63,12 @@ async function buildReport(target) {
   add(checks, "self-contained Blueprint", blueprint.features?.networking === false && phpStep.code.includes("base64_decode"), "Networking is off and media is embedded.");
   add(checks, "front-page ownership", phpStep.code.includes("'post_type' => 'wp_template'") && phpStep.code.includes("'post_name' => 'front-page'"), "Custom front-page template removes default theme wrapper.");
   add(checks, "fluid type scale", (globalStyles?.settings?.typography?.fontSizes || []).length >= 6 && globalStyles?.settings?.typography?.fluid === true, "At least six fluid font sizes.");
+  add(checks, "font-family voices", hasFontFamilyVoices(globalStyles), "Body, display, and accent font stacks are defined.");
   add(checks, "spacing scale", (globalStyles?.settings?.spacing?.spacingSizes || []).length >= 7 && globalStyles?.settings?.spacing?.blockGap === true, "Seven spacing presets and block gap support.");
   add(checks, "surface tokens", Boolean(globalStyles?.settings?.custom?.som?.radius && globalStyles?.settings?.custom?.som?.shadow), "Custom radius and shadow variables.");
   add(checks, "shadow presets", (globalStyles?.settings?.shadow?.presets || []).length >= 3, "Card, lift, and button shadows.");
   add(checks, "gradient presets", (globalStyles?.settings?.color?.gradients || []).length >= 2, "Brand and highlight gradients.");
+  add(checks, "design voice signature", Boolean(layoutSignature?.typographyTreatment && layoutSignature?.colorStrategy && globalStyles?.settings?.custom?.som?.type?.treatment && globalStyles?.settings?.custom?.som?.colorStrategy?.name), layoutSignature ? `${layoutSignature.typographyTreatment || "missing type"} / ${layoutSignature.colorStrategy || "missing color"}` : "Missing design voice.");
   add(checks, "block-level styling", ["core/button", "core/buttons", "core/columns", "core/group", "core/heading", "core/image", "core/list", "core/navigation"].every((name) => blockStyles[name]), "Core block defaults are styled in global styles.");
   add(checks, "hover and focus", Boolean(globalStyles?.styles?.elements?.link?.[":hover"] && globalStyles?.styles?.elements?.link?.[":focus"] && customCss.includes(":focus-visible")), "Links and buttons have interactive states.");
   add(checks, "component polish classes", componentClasses.size >= 3 && customCss.includes(".som-card"), `${componentClasses.size} Site-O-Mattic component classes found.`);
@@ -79,6 +81,7 @@ async function buildReport(target) {
   info.push(`inline style attributes: ${inlineStyleCount}`);
   if (layoutSignature) {
     info.push(`layout signature: ${layoutSignature.variant} / ${layoutSignature.hero}`);
+    info.push(`design voice: ${layoutSignature.typographyTreatment} / ${layoutSignature.colorStrategy}`);
   }
   info.push(`component classes: ${[...componentClasses].sort().join(", ")}`);
 
@@ -87,6 +90,16 @@ async function buildReport(target) {
 
 function add(checks, name, passed, detail, critical = true) {
   checks.push({ name, passed: Boolean(passed), detail, critical });
+}
+
+function hasFontFamilyVoices(globalStyles) {
+  const families = new Set((globalStyles?.settings?.typography?.fontFamilies || []).map((item) => item.slug));
+  const blockStyles = globalStyles?.styles?.blocks || {};
+  return ["body", "display", "accent"].every((slug) => families.has(slug))
+    && globalStyles?.styles?.typography?.fontFamily?.includes("font-family|body")
+    && blockStyles["core/heading"]?.typography?.fontFamily?.includes("font-family|display")
+    && blockStyles["core/button"]?.typography?.fontFamily?.includes("font-family|accent")
+    && blockStyles["core/navigation"]?.typography?.fontFamily?.includes("font-family|accent");
 }
 
 function contrastPairsPass(palette) {

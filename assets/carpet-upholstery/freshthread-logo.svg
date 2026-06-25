@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 260" role="img" aria-labelledby="title">
-  <title id="title">FreshThread Fabric Care logo</title>
+  <title id="title">FreshThread logo</title>
   <g transform="translate(82 48)">
     <rect x="0" y="0" width="154" height="154" rx="34" fill="#113a4d"/>
     <path d="M39 107c36-49 73-70 111-63" fill="none" stroke="#38b7a4" stroke-width="18" stroke-linecap="round"/>
@@ -7,7 +7,6 @@
     <circle cx="47" cy="51" r="11" fill="#f8d97a"/>
     <circle cx="121" cy="120" r="9" fill="#f8d97a"/>
   </g>
-  <text x="280" y="124" fill="#113a4d" font-family="Arial, Helvetica, sans-serif" font-size="78" font-weight="900" letter-spacing="0">FreshThread</text>
-  <text x="284" y="178" fill="#4c5a5c" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="800" letter-spacing="1.4">FABRIC CARE</text>
-  <path d="M283 204h476" stroke="#f47f68" stroke-width="10" stroke-linecap="round"/>
+  <text x="280" y="151" fill="#113a4d" font-family="Arial, Helvetica, sans-serif" font-size="96" font-weight="900" letter-spacing="0">FreshThread</text>
+  <path d="M284 184h420" stroke="#f47f68" stroke-width="10" stroke-linecap="round"/>
 </svg>
