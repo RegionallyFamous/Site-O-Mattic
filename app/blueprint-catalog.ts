@@ -34,6 +34,22 @@ export const blueprints = [
     "releaseStatus": "approved"
   },
   {
+    "slug": "pollinator-garden-refresh",
+    "name": "BloomRoute Garden Studio",
+    "eyebrow": "Pollinator Garden Refresh Service",
+    "summary": "BloomRoute refreshes front-yard beds with native flowers, soft grasses, tidy edges, and planting plans that make bees happy without making your walkway...",
+    "logo": "/blueprints/pollinator-garden-refresh/assets/logo.png",
+    "logoWidth": 1200,
+    "logoHeight": 260,
+    "hero": "/blueprints/pollinator-garden-refresh/assets/hero.jpg",
+    "heroWidth": 1672,
+    "heroHeight": 941,
+    "alt": "A garden designer planting colorful native flowers in a sunny front-yard pollinator garden.",
+    "path": "/api/blueprints/pollinator-garden-refresh/blueprint.json",
+    "layoutVariant": "gallery-led",
+    "releaseStatus": "approved"
+  },
+  {
     "slug": "pressure-washing-service",
     "name": "BrightJet Exterior Cleaning",
     "eyebrow": "Pressure Washing And Soft Washing Service",

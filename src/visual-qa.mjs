@@ -21,37 +21,82 @@ const browser = await chromium.launch({
 });
 
 try {
-  const page = await browser.newPage({ viewport: { width: 1440, height: 1000 } });
-  await page.goto(url, { waitUntil: "networkidle", timeout: 120_000 });
-  const frame = await findWordPressFrame(page);
-  await frame.waitForSelector(".wp-site-blocks, body", { timeout: 60_000 });
-  await page.screenshot({ path: "/tmp/site-o-mattic-visual-qa.png", fullPage: false });
+  const results = [];
+  for (const scenario of scenarios()) {
+    const page = await browser.newPage({
+      viewport: scenario.viewport,
+      isMobile: scenario.isMobile || false
+    });
+    await page.goto(url, { waitUntil: "networkidle", timeout: 120_000 });
+    const frame = await findWordPressFrame(page);
+    await frame.waitForSelector(".wp-site-blocks, body", { timeout: 60_000 });
+    await page.screenshot({ path: scenario.screenshot, fullPage: false });
 
-  const result = await frame.evaluate(() => {
-    const text = document.body.innerText || "";
-    const logo = document.querySelector(".wp-block-site-logo img")?.getBoundingClientRect();
-    const ctas = [...document.querySelectorAll(".wp-block-button__link")]
-      .map((element) => {
-        const rect = element.getBoundingClientRect();
-        return {
-          text: element.textContent?.trim(),
-          visible: rect.width > 0 && rect.height > 0 && rect.top < window.innerHeight && rect.bottom > 0
-        };
-      });
-    const overflowers = [...document.querySelectorAll("body *")]
-      .filter((element) => element.scrollWidth > element.clientWidth + 2)
-      .slice(0, 10)
-      .map((element) => element.className || element.tagName.toLowerCase());
+    const result = await frame.evaluate(() => {
+      const text = document.body.innerText || "";
+      const logo = document.querySelector(".wp-block-site-logo img")?.getBoundingClientRect();
+      const ctas = [...document.querySelectorAll(".wp-block-button__link")]
+        .map((element) => {
+          const rect = element.getBoundingClientRect();
+          return {
+            text: element.textContent?.trim(),
+            visible: rect.width > 0 && rect.height > 0 && rect.top < window.innerHeight && rect.bottom > 0
+          };
+        });
+      const overflowers = [...document.querySelectorAll("body *")]
+        .filter((element) => element.scrollWidth > element.clientWidth + 2)
+        .slice(0, 10)
+        .map((element) => element.className || element.tagName.toLowerCase());
 
-    return {
-      bodyTextLength: text.length,
-      defaultWrapperLeak: /Twenty Twenty|Designed with WordPress|^Home$/m.test(text),
-      firstViewportCtaVisible: ctas.some((cta) => cta.visible),
-      logo: logo ? { width: Math.round(logo.width), height: Math.round(logo.height) } : null,
-      overflowers
-    };
-  });
+      return {
+        bodyTextLength: text.length,
+        defaultWrapperLeak: /Twenty Twenty|Designed with WordPress|^Home$/m.test(text),
+        firstViewportCtaVisible: ctas.some((cta) => cta.visible),
+        logo: logo ? { width: Math.round(logo.width), height: Math.round(logo.height) } : null,
+        overflowers
+      };
+    });
 
+    results.push({
+      name: scenario.name,
+      screenshot: scenario.screenshot,
+      result,
+      failures: failuresFor(result).map((failure) => `${scenario.name}: ${failure}`)
+    });
+    await page.close();
+  }
+
+  const failures = results.flatMap((item) => item.failures);
+  console.log(JSON.stringify({
+    url,
+    screenshots: Object.fromEntries(results.map((item) => [item.name, item.screenshot])),
+    results,
+    failures
+  }, null, 2));
+  if (failures.length) {
+    process.exit(1);
+  }
+} finally {
+  await browser.close();
+}
+
+function scenarios() {
+  return [
+    {
+      name: "desktop",
+      viewport: { width: 1440, height: 1000 },
+      screenshot: "/tmp/site-o-mattic-visual-qa.png"
+    },
+    {
+      name: "mobile",
+      viewport: { width: 390, height: 844 },
+      isMobile: true,
+      screenshot: "/tmp/site-o-mattic-visual-qa-mobile.png"
+    }
+  ];
+}
+
+function failuresFor(result) {
   const failures = [];
   if (result.bodyTextLength < 400) {
     failures.push("Rendered page text is unexpectedly short.");
@@ -68,13 +113,7 @@ try {
   if (result.overflowers.length) {
     failures.push(`Potential horizontal overflow: ${result.overflowers.join(", ")}`);
   }
-
-  console.log(JSON.stringify({ url, screenshot: "/tmp/site-o-mattic-visual-qa.png", result, failures }, null, 2));
-  if (failures.length) {
-    process.exit(1);
-  }
-} finally {
-  await browser.close();
+  return failures;
 }
 
 async function findWordPressFrame(page) {

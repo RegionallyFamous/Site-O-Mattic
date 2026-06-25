@@ -1,0 +1,106 @@
+{
+  "slug": "pollinator-garden-refresh",
+  "businessName": "BloomRoute Garden Studio",
+  "niche": "pollinator garden refresh service",
+  "layoutVariant": "gallery-led",
+  "tagline": "Native blooms with excellent neighborhood manners.",
+  "themeSlug": "twentytwentyfive",
+  "landingPage": "/",
+  "palette": {
+    "grass": "#356b2f",
+    "deepGreen": "#173b2d",
+    "leaf": "#87b94a",
+    "sun": "#f5b84b",
+    "cream": "#fff8ed",
+    "mist": "#e7f2d8",
+    "soil": "#5b5849",
+    "white": "#ffffff"
+  },
+  "assets": {
+    "hero": "assets/pollinator-garden/bloomroute-hero.jpg",
+    "logo": "assets/pollinator-garden/bloomroute-logo.png",
+    "favicon": "assets/pollinator-garden/bloomroute-favicon.png"
+  },
+  "assetMeta": {
+    "hero": {
+      "title": "BloomRoute pollinator garden hero image",
+      "alt": "A garden designer planting colorful native flowers in a sunny front-yard pollinator garden."
+    }
+  },
+  "contact": {
+    "phoneLabel": "(555) 014-8842",
+    "phoneHref": "tel:+15550148842",
+    "email": "hello@bloomroute.test",
+    "emailHref": "mailto:hello@bloomroute.test",
+    "serviceArea": "Front-yard beds, sidewalk strips, cottage gardens, and sunny corners across the river neighborhoods and nearby suburbs"
+  },
+  "copy": {
+    "eyebrow": "Pollinator garden refreshes with color and manners",
+    "heroTitle": "Plant a tiny habitat.",
+    "heroText": "BloomRoute refreshes front-yard beds with native flowers, soft grasses, tidy edges, and planting plans that make bees happy without making your walkway disappear.",
+    "primaryCta": "Plan my garden refresh",
+    "secondaryCta": "Browse refresh styles",
+    "introTitle": "Pretty, useful, and not secretly chaos.",
+    "introText": "We blend pollinator-friendly plants with clean edging, seasonal color, and practical maintenance notes so your garden feels lush on purpose.",
+    "servicesTitle": "Refresh styles",
+    "processTitle": "How the bloom plan happens",
+    "proofTitle": "Garden proof without the lecture",
+    "quoteTitle": "Ready for a bed that buzzes politely?",
+    "quoteText": "Send a few photos, sun exposure, bed dimensions, and what is already growing. We will suggest a native-forward refresh plan with color, timing, and a simple install path."
+  },
+  "services": [
+    {
+      "title": "Sunny native color",
+      "text": "Coneflower, black-eyed Susan, salvia, and grasses arranged for long bloom windows and tidy curb appeal."
+    },
+    {
+      "title": "Pocket pollinator beds",
+      "text": "Small front-yard corners, mailbox beds, and sidewalk strips refreshed with plants that earn their square footage."
+    },
+    {
+      "title": "Seasonal soft reset",
+      "text": "We edit tired plants, add texture, refresh mulch, and make the whole bed look intentional again."
+    }
+  ],
+  "process": [
+    {
+      "title": "Read the site",
+      "text": "We check sun, soil, existing plants, water access, and how polished or wild you want the bed to feel."
+    },
+    {
+      "title": "Map the bloom route",
+      "text": "You get a simple plant mix, color rhythm, maintenance notes, and install timing."
+    },
+    {
+      "title": "Refresh the bed",
+      "text": "We plant, edge, mulch, water in, and leave the care notes so the garden keeps the plot."
+    }
+  ],
+  "proof": [
+    {
+      "stat": "3-season",
+      "label": "color plans for spring through fall"
+    },
+    {
+      "stat": "Native-first",
+      "label": "plant mixes for local pollinators"
+    },
+    {
+      "stat": "Tidy edge",
+      "label": "habitat that still looks neighborly"
+    }
+  ],
+  "release": {
+    "status": "approved",
+    "reviewedAt": "2026-06-25",
+    "visualBaseline": "pending",
+    "reviewChecklist": {
+      "firstViewportClear": true,
+      "logoReadable": true,
+      "layoutDistinct": true,
+      "ctaClear": true,
+      "copySpecific": true,
+      "noImageArtifacts": true
+    }
+  }
+}

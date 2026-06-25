@@ -94,7 +94,7 @@ function compareReports(left, right) {
   const navSimilarity = jaccard(left.navLabels, right.navLabels);
   const classSimilarity = jaccard([...left.componentClasses], [...right.componentClasses]);
 
-  checks.push(diffCheck("variant", leftSignature.variant !== rightSignature.variant, leftSignature.variant, rightSignature.variant));
+  checks.push(diffCheck("variant family", leftSignature.variant !== rightSignature.variant, leftSignature.variant, rightSignature.variant));
   checks.push(diffCheck("hero", leftSignature.hero !== rightSignature.hero, leftSignature.hero, rightSignature.hero));
   checks.push(diffCheck("service presentation", leftSignature.servicePresentation !== rightSignature.servicePresentation, leftSignature.servicePresentation, rightSignature.servicePresentation));
   checks.push(diffCheck("proof treatment", leftSignature.proofTreatment !== rightSignature.proofTreatment, leftSignature.proofTreatment, rightSignature.proofTreatment));
@@ -110,7 +110,7 @@ function compareReports(left, right) {
     score,
     total: checks.length,
     checks,
-    passed: score >= 6 && checks[0].passed && checks[1].passed && checks[2].passed
+    passed: score >= 6 && checks[1].passed && checks[2].passed && checks[5].passed
   };
 }
 

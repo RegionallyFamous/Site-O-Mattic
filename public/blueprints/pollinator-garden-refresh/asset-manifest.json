@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "slug": "pollinator-garden-refresh",
+  "businessName": "BloomRoute Garden Studio",
+  "layoutVariant": "gallery-led",
+  "assets": {
+    "hero": {
+      "source": "assets/pollinator-garden/bloomroute-hero.jpg",
+      "fileName": "hero.jpg",
+      "outputPath": "/assets/hero.jpg",
+      "mimeType": "image/jpeg",
+      "byteSize": 576237,
+      "width": 1672,
+      "height": 941,
+      "embedded": true
+    },
+    "logo": {
+      "source": "assets/pollinator-garden/bloomroute-logo.png",
+      "fileName": "logo.png",
+      "outputPath": "/assets/logo.png",
+      "mimeType": "image/png",
+      "byteSize": 24637,
+      "width": 1200,
+      "height": 260,
+      "embedded": true
+    },
+    "favicon": {
+      "source": "assets/pollinator-garden/bloomroute-favicon.png",
+      "fileName": "favicon.png",
+      "outputPath": "/assets/favicon.png",
+      "mimeType": "image/png",
+      "byteSize": 23941,
+      "width": 512,
+      "height": 512,
+      "embedded": true
+    }
+  }
+}

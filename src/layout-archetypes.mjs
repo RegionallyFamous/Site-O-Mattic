@@ -105,8 +105,24 @@ export const LAYOUT_ARCHETYPES = {
   },
   "gallery-led": {
     label: "Gallery or portfolio led",
-    bestFor: ["photography", "murals", "florals", "balloon styling", "dessert tables", "color consulting"],
-    guidance: "Put visual proof early, then use concise process, style notes, package cues, and contact prompts."
+    bestFor: ["pollinator gardens", "photography", "murals", "florals", "balloon styling", "dessert tables", "color consulting"],
+    archetype: "Visual style gallery lead generator",
+    hero: "editorial-image-header-with-overlapping-copy",
+    sectionOrder: [
+      "navigation",
+      "gallery-hero",
+      "style-proof-strip",
+      "style-gallery-cards",
+      "process-panel",
+      "quote-footer"
+    ],
+    servicePresentation: "visual-style-cards-with-caption-panel",
+    proofTreatment: "testimonial-style-proof-strip-before-gallery",
+    ctaRhythm: "hero-consult-button-plus-final-style-brief",
+    navLabels: ["Styles", "Process", "Quote"],
+    anchorOrder: ["styles", "process", "quote"],
+    componentClassesExpected: ["som-gallery-hero", "som-gallery-image", "som-style-card", "som-gallery-proof", "som-process-card", "som-quote-strip", "som-footer"],
+    layoutMarkers: ["som-gallery-hero", "som-gallery-image", "som-style-card", "som-gallery-proof", "som-quote-strip"]
   },
   "consultation-led": {
     label: "Consultation led",
