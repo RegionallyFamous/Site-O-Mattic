@@ -2,6 +2,22 @@
 
 export const blueprints = [
   {
+    "slug": "carpet-upholstery-cleaning",
+    "name": "FreshThread Fabric Care",
+    "eyebrow": "Carpet And Upholstery Cleaning Service",
+    "summary": "FreshThread cleans sofas, rugs, stairs, and carpets with fabric-smart extraction, tidy setup, and drying notes that keep the room usable instead of mysterious.",
+    "logo": "/blueprints/carpet-upholstery-cleaning/assets/logo.png",
+    "logoWidth": 1100,
+    "logoHeight": 260,
+    "hero": "/blueprints/carpet-upholstery-cleaning/assets/hero.jpg",
+    "heroWidth": 1920,
+    "heroHeight": 1080,
+    "alt": "A fabric cleaning technician using an extractor wand on a light sofa and nearby area rug in a bright living room.",
+    "path": "/api/blueprints/carpet-upholstery-cleaning/blueprint.json",
+    "layoutVariant": "stain-care",
+    "releaseStatus": "approved"
+  },
+  {
     "slug": "driveway-sealcoating",
     "name": "Blackline Sealcoating",
     "eyebrow": "Driveway Sealcoating Service",

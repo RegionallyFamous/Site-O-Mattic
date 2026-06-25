@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "slug": "carpet-upholstery-cleaning",
+  "businessName": "FreshThread Fabric Care",
+  "layoutVariant": "stain-care",
+  "assets": {
+    "hero": {
+      "source": "assets/carpet-upholstery/freshthread-hero.jpg",
+      "fileName": "hero.jpg",
+      "outputPath": "/assets/hero.jpg",
+      "mimeType": "image/jpeg",
+      "byteSize": 242004,
+      "width": 1920,
+      "height": 1080,
+      "embedded": true
+    },
+    "logo": {
+      "source": "assets/carpet-upholstery/freshthread-logo.png",
+      "fileName": "logo.png",
+      "outputPath": "/assets/logo.png",
+      "mimeType": "image/png",
+      "byteSize": 54485,
+      "width": 1100,
+      "height": 260,
+      "embedded": true
+    },
+    "favicon": {
+      "source": "assets/carpet-upholstery/freshthread-favicon.png",
+      "fileName": "favicon.png",
+      "outputPath": "/assets/favicon.png",
+      "mimeType": "image/png",
+      "byteSize": 20080,
+      "width": 512,
+      "height": 512,
+      "embedded": true
+    }
+  }
+}

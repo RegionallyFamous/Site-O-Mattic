@@ -12,6 +12,7 @@ Site-O-Mattic layouts are named production patterns. Every generated Blueprint e
 | `risk-prevention` | Gutter cleaning, roof moss removal, dryer vent cleaning, chimney sweeping | Roofline photo left with risk copy panel | Warning-sign rows with home-risk panel | Prevention badges before the plan | Hero phone CTA plus seasonal risk band |
 | `gallery-led` | Pollinator gardens, photography, murals, florals, balloon styling, dessert tables, color consulting | Editorial image header with overlapping copy | Visual style cards with caption panel | Testimonial-style proof strip before gallery | Hero consult button plus final style brief |
 | `surface-seasonal` | Driveway sealcoating, deck staining, fence staining, asphalt repair | Dark copy-left hero with wide service-action photo | Prep and scope cards with a season note | Seasonal readiness badges under hero | Hero estimate buttons plus final photo quote |
+| `stain-care` | Carpet cleaning, upholstery cleaning, area rugs, mattress cleaning | Soft home hero with fabric service photo | Stain and fabric care cards with a care note | Trust proof badges after the hero | Hero estimate buttons plus final fabric quote |
 
 ## Cataloged For Scale
 

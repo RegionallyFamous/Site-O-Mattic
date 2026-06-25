@@ -13,3 +13,6 @@ rsvg-convert -w 1200 -h 260 assets/pollinator-garden/bloomroute-logo.svg -o asse
 rsvg-convert -w 512 -h 512 assets/pollinator-garden/bloomroute-favicon.svg -o assets/pollinator-garden/bloomroute-favicon.png
 rsvg-convert -w 1200 -h 260 assets/driveway-sealcoating/blackline-logo.svg -o assets/driveway-sealcoating/blackline-logo.png
 rsvg-convert -w 512 -h 512 assets/driveway-sealcoating/blackline-favicon.svg -o assets/driveway-sealcoating/blackline-favicon.png
+rsvg-convert -w 1200 -h 260 assets/carpet-upholstery/freshthread-logo.svg -o assets/carpet-upholstery/freshthread-logo.png
+magick assets/carpet-upholstery/freshthread-logo.png -trim +repage -resize 920x220 -background none -gravity center -extent 1100x260 assets/carpet-upholstery/freshthread-logo.png
+rsvg-convert -w 512 -h 512 assets/carpet-upholstery/freshthread-favicon.svg -o assets/carpet-upholstery/freshthread-favicon.png

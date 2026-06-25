@@ -119,6 +119,27 @@ export const LAYOUT_ARCHETYPES = {
     componentClassesExpected: ["som-surface-hero", "som-surface-photo", "som-surface-badge", "som-seal-card", "som-season-note", "som-process-card", "som-quote-strip", "som-footer"],
     layoutMarkers: ["som-surface-hero", "som-surface-photo", "som-surface-badge", "som-seal-card", "som-season-note", "som-quote-strip"]
   },
+  "stain-care": {
+    label: "Stain treatment fabric care",
+    bestFor: ["carpet cleaning", "upholstery cleaning", "area rug cleaning", "mattress cleaning"],
+    archetype: "Indoor stain treatment care plan",
+    hero: "soft-home-hero-with-fabric-service-photo",
+    sectionOrder: [
+      "navigation",
+      "fabric-hero",
+      "trust-proof-band",
+      "stain-treatment-cards",
+      "drying-process",
+      "quote-footer"
+    ],
+    servicePresentation: "stain-and-fabric-care-cards-with-care-note",
+    proofTreatment: "trust-proof-badges-after-hero",
+    ctaRhythm: "hero-estimate-buttons-plus-final-fabric-quote",
+    navLabels: ["Stains", "Drying", "Quote"],
+    anchorOrder: ["stains", "drying", "quote"],
+    componentClassesExpected: ["som-fabric-hero", "som-fabric-photo", "som-fabric-proof", "som-stain-card", "som-care-note", "som-process-card", "som-quote-strip", "som-footer"],
+    layoutMarkers: ["som-fabric-hero", "som-fabric-photo", "som-fabric-proof", "som-stain-card", "som-care-note", "som-quote-strip"]
+  },
   "package-comparison": {
     label: "Package comparison",
     bestFor: ["mobile detailing", "photo booth rental", "DJ service", "coffee cart", "mocktail cart", "catering"],

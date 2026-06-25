@@ -1,0 +1,106 @@
+{
+  "slug": "carpet-upholstery-cleaning",
+  "businessName": "FreshThread Fabric Care",
+  "niche": "carpet and upholstery cleaning service",
+  "layoutVariant": "stain-care",
+  "tagline": "Sofas, rugs, and carpets reset without the mystery damp smell.",
+  "themeSlug": "twentytwentyfive",
+  "landingPage": "/",
+  "palette": {
+    "grass": "#0d766f",
+    "deepGreen": "#10384a",
+    "leaf": "#33b6a6",
+    "sun": "#f8d97a",
+    "cream": "#f7fbf8",
+    "mist": "#dff4ef",
+    "soil": "#465a5d",
+    "white": "#ffffff"
+  },
+  "assets": {
+    "hero": "assets/carpet-upholstery/freshthread-hero.jpg",
+    "logo": "assets/carpet-upholstery/freshthread-logo.png",
+    "favicon": "assets/carpet-upholstery/freshthread-favicon.png"
+  },
+  "assetMeta": {
+    "hero": {
+      "title": "FreshThread carpet and upholstery cleaning hero image",
+      "alt": "A fabric cleaning technician using an extractor wand on a light sofa and nearby area rug in a bright living room."
+    }
+  },
+  "contact": {
+    "phoneLabel": "(555) 014-6412",
+    "phoneHref": "tel:+15550146412",
+    "email": "hello@freshthread.test",
+    "emailHref": "mailto:hello@freshthread.test",
+    "serviceArea": "Sofas, sectionals, area rugs, stairs, bedrooms, and favorite living room paths across the east metro and nearby suburbs"
+  },
+  "copy": {
+    "eyebrow": "Carpet and upholstery cleaning with calm chemistry",
+    "heroTitle": "Make the soft stuff feel fresh again.",
+    "heroText": "FreshThread cleans sofas, rugs, stairs, and carpets with fabric-smart extraction, tidy setup, and drying notes that keep the room usable instead of mysterious.",
+    "primaryCta": "Book a free estimate",
+    "secondaryCta": "See stain care",
+    "introTitle": "Stains have stories. We prefer endings.",
+    "introText": "We match the cleaner, dwell time, and extraction pass to the fiber so spots lift without over-wetting the cushion or rug.",
+    "servicesTitle": "Fabric care menu",
+    "processTitle": "How the clean dries right",
+    "proofTitle": "Clean you can plan around",
+    "quoteTitle": "Ready for fabric that feels less lived-in?",
+    "quoteText": "Send room photos, fabric type if you know it, stain close-ups, and the best day to clean. We will reply with the right method, timing, and a clear estimate."
+  },
+  "services": [
+    {
+      "title": "Sofas and sectionals",
+      "text": "Cushions, arms, backs, and favorite seats cleaned with fabric-safe extraction and careful moisture control."
+    },
+    {
+      "title": "Carpets and stairs",
+      "text": "Traffic lanes, bedroom carpets, stairs, and landings refreshed with pre-treatment where the path gets obvious."
+    },
+    {
+      "title": "Area rugs and spots",
+      "text": "Small rugs, coffee marks, pet-adjacent accidents, and mystery spots tested before we promise miracles."
+    }
+  ],
+  "process": [
+    {
+      "title": "Fiber check",
+      "text": "We identify fabric type, colorfastness, soil level, and any stain that needs a gentler conversation."
+    },
+    {
+      "title": "Pre-treat and extract",
+      "text": "Cleaner, dwell time, agitation, and extraction are matched to the surface instead of blasted at everything."
+    },
+    {
+      "title": "Drying notes",
+      "text": "We groom fibers, set airflow advice, and leave simple timing so cushions and rugs come back politely."
+    }
+  ],
+  "proof": [
+    {
+      "stat": "Fabric-safe",
+      "label": "methods matched to upholstery, rugs, and carpet fibers"
+    },
+    {
+      "stat": "Low-moisture",
+      "label": "extraction passes that avoid the swampy sofa problem"
+    },
+    {
+      "stat": "Room-ready",
+      "label": "clear drying notes before the furniture goes back to work"
+    }
+  ],
+  "release": {
+    "status": "approved",
+    "reviewedAt": "2026-06-25",
+    "visualBaseline": "pending",
+    "reviewChecklist": {
+      "firstViewportClear": true,
+      "logoReadable": true,
+      "layoutDistinct": true,
+      "ctaClear": true,
+      "copySpecific": true,
+      "noImageArtifacts": true
+    }
+  }
+}
