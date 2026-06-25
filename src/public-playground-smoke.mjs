@@ -222,19 +222,20 @@ function failuresFor(result) {
 async function findWordPressFrame(page) {
   for (let attempt = 0; attempt < 120; attempt += 1) {
     const frames = page.frames();
-    const frame = frames.find((candidate) => {
-      const urlValue = candidate.url();
-      return urlValue.includes("/wp-admin") || urlValue.includes("wordpress") || urlValue.includes("playground");
-    });
-    if (frame && await hasWordPressContent(frame)) {
-      return frame;
+    for (const frame of frames) {
+      if (frame === page.mainFrame()) {
+        continue;
+      }
+      if (await hasWordPressContent(frame)) {
+        return frame;
+      }
     }
     if (await hasWordPressContent(page.mainFrame())) {
       return page.mainFrame();
     }
     await page.waitForTimeout(500);
   }
-  return page.mainFrame();
+  throw new Error("Timed out waiting for WordPress content in the Playground frame.");
 }
 
 async function hasWordPressContent(frame) {
