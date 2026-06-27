@@ -8,9 +8,9 @@
   <style>
     :root {
       color-scheme: light;
-      --paper: #ffe65a;
-      --page: #f7f1df;
-      --surface: #fffdf4;
+      --paper: #ffe85a;
+      --page: #eef5ff;
+      --surface: #fffefa;
       --ink: #111628;
       --muted: #4e5366;
       --line: #171b2b;
@@ -23,14 +23,14 @@
       --scarlet: #ef6259;
       --violet: #1646f5;
       --shadow-blue: rgba(17, 22, 40, .14);
-      --shadow-hard: 8px 8px 0 var(--ink);
+      --shadow-hard: 6px 6px 0 var(--ink);
     }
     * {
       box-sizing: border-box;
     }
     body {
       margin: 0;
-      background: linear-gradient(180deg, #fff4ca 0, var(--page) 440px);
+      background: linear-gradient(180deg, #fff7a7 0, var(--page) 480px);
       color: var(--ink);
       font-family: "Avenir Next", Avenir, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       line-height: 1.5;
@@ -58,23 +58,23 @@
     }
     .masthead {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(280px, 360px);
-      gap: clamp(22px, 4vw, 44px);
+      grid-template-columns: minmax(0, .95fr) minmax(290px, 350px);
+      gap: clamp(20px, 3.4vw, 40px);
       position: relative;
       overflow: hidden;
-      min-height: clamp(560px, 74vh, 780px);
+      min-height: clamp(540px, 71vh, 760px);
       align-items: end;
       border: 2px solid var(--ink);
       background: var(--paper);
       box-shadow: var(--shadow-hard);
       isolation: isolate;
-      padding: clamp(22px, 5vw, 72px);
+      padding: clamp(22px, 4.4vw, 64px);
     }
     .masthead::before {
       position: absolute;
       inset: 0;
       z-index: 1;
-      background: linear-gradient(90deg, rgba(255, 230, 90, .98) 0 38%, rgba(255, 230, 90, .68) 56%, rgba(255, 230, 90, .14) 76%, transparent 100%);
+      background: linear-gradient(90deg, rgba(255, 232, 90, .9) 0 36%, rgba(255, 232, 90, .5) 54%, rgba(255, 232, 90, .08) 72%, transparent 100%);
       content: "";
     }
     .masthead::after {
@@ -94,21 +94,21 @@
       height: 100%;
       object-fit: cover;
       object-position: center center;
-      filter: saturate(1.03) contrast(1.02);
+      filter: saturate(1.05) contrast(1.03);
     }
     .hero-copy {
       position: relative;
       z-index: 2;
-      max-width: 760px;
+      max-width: 690px;
     }
     .hero-ticket {
       position: relative;
       z-index: 2;
       align-self: center;
-      max-width: 380px;
+      max-width: 360px;
       border: 2px solid var(--ink);
-      background: rgba(255, 253, 244, .92);
-      box-shadow: 6px 6px 0 var(--ink);
+      background: rgba(255, 254, 250, .94);
+      box-shadow: 5px 5px 0 var(--ink);
       padding: clamp(14px, 1.7vw, 20px);
     }
     .hero-ticket::before {
@@ -124,10 +124,10 @@
     }
     .hero-ticket h2 {
       margin: 0;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(24px, 2.2vw, 34px);
-      font-weight: 800;
-      line-height: 1;
+      font-family: Charter, "Iowan Old Style", Georgia, "Times New Roman", serif;
+      font-size: clamp(23px, 2vw, 31px);
+      font-weight: 760;
+      line-height: 1.02;
       text-wrap: balance;
     }
     .ticket-shot {
@@ -218,29 +218,29 @@
       background: var(--mint);
     }
     h1 {
-      max-width: 850px;
+      max-width: 760px;
       margin: 0;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(46px, 5.1vw, 82px);
-      font-weight: 800;
-      line-height: .94;
+      font-family: Charter, "Iowan Old Style", Georgia, "Times New Roman", serif;
+      font-size: clamp(44px, 4.65vw, 76px);
+      font-weight: 760;
+      line-height: .98;
       letter-spacing: 0;
       text-wrap: balance;
     }
     .lede {
-      max-width: 720px;
+      max-width: 680px;
       margin: 14px 0 0;
       color: #241c38;
-      font-size: clamp(17px, 1.5vw, 21px);
-      font-weight: 680;
+      font-size: clamp(17px, 1.38vw, 20px);
+      font-weight: 700;
     }
     .hero-note {
       display: block;
-      max-width: 680px;
+      max-width: 650px;
       margin-top: 16px;
-      padding: 10px 12px 10px 14px;
+      padding: 11px 13px 11px 15px;
       border-left: 5px solid var(--blue);
-      background: rgba(255, 253, 244, .86);
+      background: rgba(255, 254, 250, .82);
       color: var(--blue-dark);
       font-size: 14px;
       font-weight: 760;
@@ -253,7 +253,7 @@
       grid-template-columns: repeat(6, minmax(0, 1fr));
       gap: 10px;
       align-self: end;
-      margin-top: clamp(8px, 2vw, 18px);
+      margin-top: clamp(4px, 1.6vw, 14px);
     }
     .hero-shelf a {
       position: relative;
@@ -264,7 +264,7 @@
       background: var(--surface);
       color: var(--ink);
       text-decoration: none;
-      box-shadow: 4px 4px 0 var(--ink);
+      box-shadow: 3px 3px 0 var(--ink);
     }
     .hero-shelf a:nth-child(2n) {
       transform: translateY(-8px);
@@ -275,7 +275,7 @@
     .hero-shelf img {
       display: block;
       width: 100%;
-      height: 92px;
+      height: 88px;
       object-fit: cover;
       object-position: top center;
       border-bottom: 2px solid var(--ink);
@@ -305,7 +305,7 @@
       padding: 18px;
       border: 2px solid var(--ink);
       background: var(--surface);
-      box-shadow: 5px 5px 0 var(--ink);
+      box-shadow: 4px 4px 0 var(--ink);
     }
     .stat:nth-child(2) {
       box-shadow: 5px 5px 0 var(--pink-dark);
@@ -321,9 +321,9 @@
       display: block;
       margin: 0;
       color: var(--pink-dark);
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(31px, 3.6vw, 56px);
-      font-weight: 800;
+      font-family: Charter, "Iowan Old Style", Georgia, "Times New Roman", serif;
+      font-size: clamp(30px, 3.3vw, 52px);
+      font-weight: 760;
       line-height: .9;
     }
     .stat dt {
@@ -376,7 +376,7 @@
     }
     .closing-board h2 {
       max-width: 760px;
-      font-family: Georgia, "Times New Roman", serif;
+      font-family: Charter, "Iowan Old Style", Georgia, "Times New Roman", serif;
       font-size: clamp(31px, 4vw, 62px);
       line-height: .96;
       text-wrap: balance;
@@ -433,7 +433,7 @@
     }
     .proof-strip h2 {
       max-width: 680px;
-      font-family: Georgia, "Times New Roman", serif;
+      font-family: Charter, "Iowan Old Style", Georgia, "Times New Roman", serif;
       font-size: clamp(25px, 3vw, 47px);
       line-height: .98;
       font-weight: 800;
@@ -597,7 +597,7 @@
     }
     .toolbar h2 {
       margin: 0;
-      font-family: Georgia, "Times New Roman", serif;
+      font-family: Charter, "Iowan Old Style", Georgia, "Times New Roman", serif;
       font-size: clamp(28px, 3.6vw, 54px);
       line-height: 1;
       font-weight: 800;
@@ -963,14 +963,14 @@
         </ul>
         <p class="hero-note">Use it like a meeting artifact: point at a niche, launch the live site, show the proof trail, and ask for the next production lane.</p>
         <div class="actions">
-          <a class="button primary" href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fheadshot-brand-photography%2Fblueprint.json">Open featured demo</a>
+          <a class="button primary" href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fpicnic-proposal-setup%2Fblueprint.json" aria-label="Open Linen &amp; Lantern Setups in WordPress Playground">Open featured demo</a>
           <a class="button" href="#catalog">Browse screenshot wall</a>
         </div>
       </div>
       <aside class="hero-ticket" aria-label="90-second meeting script">
         <p class="eyebrow">90-second room script</p>
         <h2>Open the site. Show the receipts. Close the lane.</h2>
-        <img class="ticket-shot" src="previews/headshot-brand-photography-desktop.png" alt="" loading="eager">
+        <img class="ticket-shot" src="previews/picnic-proposal-setup-desktop.png" alt="Screenshot of the featured Linen &amp; Lantern Setups demo" loading="eager">
         <ol class="ticket-list">
           <li><strong>1</strong><span>Pick a niche the room understands instantly.</span></li>
           <li><strong>2</strong><span>Launch the live Playground site.</span></li>
@@ -980,9 +980,9 @@
         <p class="ticket-ask">Ask: approve the next lane of inspectable WordPress sales demos.</p>
       </aside>
       <nav class="hero-shelf" aria-label="Featured live demo screenshots">
-        <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fheadshot-brand-photography%2Fblueprint.json" aria-label="Open FrameForge Headshots live demo in WordPress Playground">
-          <img src="catalog-assets/headshot-brand-photography-screenshot.jpg" alt="" loading="eager">
-          <span>FrameForge Headshots</span>
+        <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fpicnic-proposal-setup%2Fblueprint.json" aria-label="Open Linen &amp; Lantern Setups live demo in WordPress Playground">
+          <img src="catalog-assets/picnic-proposal-setup-screenshot.jpg" alt="" loading="eager">
+          <span>Linen &amp; Lantern Setups</span>
         </a>
         <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fgarage-organization%2Fblueprint.json" aria-label="Open GridNest Garage live demo in WordPress Playground">
           <img src="catalog-assets/garage-organization-screenshot.jpg" alt="" loading="eager">
@@ -1010,7 +1010,7 @@
     <dl class="stats" aria-label="Catalog counts">
       <div class="stat"><dt>Live demo links</dt><dd>35</dd></div>
       <div class="stat"><dt>Approved proofs</dt><dd>35</dd></div>
-      <div class="stat"><dt>Layout lanes</dt><dd>35</dd></div>
+      <div class="stat"><dt>Screenshot cards</dt><dd>35</dd></div>
       <div class="stat"><dt>Visual sweep</dt><dd>35/35</dd></div>
     </dl>
 
@@ -1024,18 +1024,18 @@
     </section>
 
     <section class="latest" aria-labelledby="featured-heading">
-      <a class="latest-preview" href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fheadshot-brand-photography%2Fblueprint.json" aria-label="Open FrameForge Headshots in WordPress Playground">
-        <img class="desktop-shot" src="previews/headshot-brand-photography-desktop.png" alt="FrameForge Headshots desktop preview" loading="eager">
-        <img class="mobile-shot" src="previews/headshot-brand-photography-mobile-390.png" alt="FrameForge Headshots mobile preview" loading="eager">
+      <a class="latest-preview" href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fpicnic-proposal-setup%2Fblueprint.json" aria-label="Open Linen &amp; Lantern Setups in WordPress Playground">
+        <img class="desktop-shot" src="previews/picnic-proposal-setup-desktop.png" alt="Linen &amp; Lantern Setups desktop preview" loading="eager">
+        <img class="mobile-shot" src="previews/picnic-proposal-setup-mobile-390.png" alt="Linen &amp; Lantern Setups mobile preview" loading="eager">
       </a>
       <div>
         <p class="eyebrow">Featured proof</p>
-        <h2 id="featured-heading">FrameForge Headshots</h2>
-        <p>FrameForge guides wardrobe, lighting, expression, usage needs, proof selection, and delivery so the final portraits feel current, credible, and recognizably human.</p>
+        <h2 id="featured-heading">Linen &amp; Lantern Setups</h2>
+        <p>Linen &amp; Lantern creates styled picnic and proposal moments with linens, florals, cushions, timing notes, access planning, and a calm backup plan if weather gets theatrical.</p>
         <div class="actions">
-          <a class="button primary" href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fheadshot-brand-photography%2Fblueprint.json" aria-label="Launch FrameForge Headshots in WordPress Playground">Launch in Playground</a>
-          <a class="button" href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/headshot-brand-photography/blueprint.json" aria-label="Open FrameForge Headshots Blueprint JSON">Blueprint JSON</a>
-          <a class="button" href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/headshot-brand-photography/headshot-brand-photography-blueprint.zip" aria-label="Download FrameForge Headshots Blueprint ZIP">Download ZIP</a>
+          <a class="button primary" href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fpicnic-proposal-setup%2Fblueprint.json" aria-label="Launch Linen &amp; Lantern Setups in WordPress Playground">Launch in Playground</a>
+          <a class="button" href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/picnic-proposal-setup/blueprint.json" aria-label="Open Linen &amp; Lantern Setups Blueprint JSON">Blueprint JSON</a>
+          <a class="button" href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/picnic-proposal-setup/picnic-proposal-setup-blueprint.zip" aria-label="Download Linen &amp; Lantern Setups Blueprint ZIP">Download ZIP</a>
         </div>
       </div>
     </section>
@@ -1336,7 +1336,7 @@
             <img src="catalog-assets/headshot-brand-photography-logo.png" alt="FrameForge Headshots logo" loading="lazy" decoding="async">
             <div class="meta">
               <span class="pill">Status: Approved</span>
-              <span class="pill">Pattern: Gallery Mosaic Proof</span>
+              <span class="pill">Pattern: Receipt Scope Stack</span>
             </div>
           </div>
           <div class="signals"><span class="signal">Visual sweep OK</span><span class="signal">CTA: Book a headshot slot</span></div>
@@ -1622,10 +1622,10 @@
             <img src="catalog-assets/pet-portrait-photography-logo.png" alt="BrightPaw Portraits logo" loading="lazy" decoding="async">
             <div class="meta">
               <span class="pill">Status: Approved</span>
-              <span class="pill">Pattern: Gallery Mosaic Proof</span>
+              <span class="pill">Pattern: Mobile Action Dock</span>
             </div>
           </div>
-          <div class="signals"><span class="signal">Visual sweep OK</span><span class="signal">CTA: Book a session</span></div>
+          <div class="signals"><span class="signal">Visual sweep OK</span><span class="signal">CTA: Plan portrait day</span></div>
           <h2 id="card-pet-portrait-photography-title">BrightPaw Portraits</h2>
           <p class="card-kicker">Pet Portrait Photography Studio sales demo</p>
           <p class="card-summary"><strong>Pitch angle:</strong> Slow, treat-friendly studio sessions turn expressive pets into framed prints, proof sheets, and images that still feel unmistakably theirs.</p>
@@ -1674,10 +1674,10 @@
             <img src="catalog-assets/picnic-proposal-setup-logo.png" alt="Linen &amp; Lantern Setups logo" loading="lazy" decoding="async">
             <div class="meta">
               <span class="pill">Status: Approved</span>
-              <span class="pill">Pattern: Editorial Proof Stage</span>
+              <span class="pill">Pattern: Receipt Scope Stack</span>
             </div>
           </div>
-          <div class="signals"><span class="signal">Visual sweep OK</span><span class="signal">CTA: Plan a setup</span></div>
+          <div class="signals"><span class="signal">Visual sweep OK</span><span class="signal">CTA: Check proposal date</span></div>
           <h2 id="card-picnic-proposal-setup-title">Linen &amp; Lantern Setups</h2>
           <p class="card-kicker">Picnic And Proposal Setup Service sales demo</p>
           <p class="card-summary"><strong>Pitch angle:</strong> Linen &amp; Lantern creates styled picnic and proposal moments with linens, florals, cushions, timing notes, access planning, and a calm backup plan if weather gets theatrical.</p>
@@ -1700,10 +1700,10 @@
             <img src="catalog-assets/plant-care-logo.png" alt="LeafDesk Plant Care logo" loading="lazy" decoding="async">
             <div class="meta">
               <span class="pill">Status: Approved</span>
-              <span class="pill">Pattern: Consultation Story Flow</span>
+              <span class="pill">Pattern: Route Status Board</span>
             </div>
           </div>
-          <div class="signals"><span class="signal">Visual sweep OK</span><span class="signal">CTA: Plan plant care</span></div>
+          <div class="signals"><span class="signal">Visual sweep OK</span><span class="signal">CTA: Join the plant route</span></div>
           <h2 id="card-plant-care-title">LeafDesk Plant Care</h2>
           <p class="card-kicker">Houseplant And Office Plant Care Service sales demo</p>
           <p class="card-summary"><strong>Pitch angle:</strong> LeafDesk reads light, soil feel, drainage, pruning needs, and plant stress before setting a care rhythm for calmer homes and offices.</p>
@@ -1991,7 +1991,7 @@
     </details>
 
     <footer>
-      Generated 2026-06-27T22:30:06Z from RegionallyFamous/Site-O-Mattic on main.
+      Generated 2026-06-27T22:49:37Z from RegionallyFamous/Site-O-Mattic on main.
     </footer>
   </main>
 </body>

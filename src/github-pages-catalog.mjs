@@ -159,7 +159,6 @@ function renderPage(items, featured, pitchHeroUrl = "") {
   const approvedCount = items.filter((item) => item.status === "approved").length;
   const sweepPassed = reviewEvidence ? Math.max(0, reviewEvidence.total - reviewEvidence.failed) : null;
   const sweepStat = reviewEvidence ? `${sweepPassed}/${reviewEvidence.total}` : "n/a";
-  const layoutCount = new Set(items.map((item) => item.variant)).size;
   const featuredImage = featured.desktopPreview || featured.heroUrl;
   const featuredMobile = featured.mobilePreview || "";
   const heroIllustration = pitchHeroUrl || featuredImage;
@@ -176,9 +175,9 @@ function renderPage(items, featured, pitchHeroUrl = "") {
   <style>
     :root {
       color-scheme: light;
-      --paper: #ffe65a;
-      --page: #f7f1df;
-      --surface: #fffdf4;
+      --paper: #ffe85a;
+      --page: #eef5ff;
+      --surface: #fffefa;
       --ink: #111628;
       --muted: #4e5366;
       --line: #171b2b;
@@ -191,14 +190,14 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       --scarlet: #ef6259;
       --violet: #1646f5;
       --shadow-blue: rgba(17, 22, 40, .14);
-      --shadow-hard: 8px 8px 0 var(--ink);
+      --shadow-hard: 6px 6px 0 var(--ink);
     }
     * {
       box-sizing: border-box;
     }
     body {
       margin: 0;
-      background: linear-gradient(180deg, #fff4ca 0, var(--page) 440px);
+      background: linear-gradient(180deg, #fff7a7 0, var(--page) 480px);
       color: var(--ink);
       font-family: "Avenir Next", Avenir, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       line-height: 1.5;
@@ -226,23 +225,23 @@ function renderPage(items, featured, pitchHeroUrl = "") {
     }
     .masthead {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(280px, 360px);
-      gap: clamp(22px, 4vw, 44px);
+      grid-template-columns: minmax(0, .95fr) minmax(290px, 350px);
+      gap: clamp(20px, 3.4vw, 40px);
       position: relative;
       overflow: hidden;
-      min-height: clamp(560px, 74vh, 780px);
+      min-height: clamp(540px, 71vh, 760px);
       align-items: end;
       border: 2px solid var(--ink);
       background: var(--paper);
       box-shadow: var(--shadow-hard);
       isolation: isolate;
-      padding: clamp(22px, 5vw, 72px);
+      padding: clamp(22px, 4.4vw, 64px);
     }
     .masthead::before {
       position: absolute;
       inset: 0;
       z-index: 1;
-      background: linear-gradient(90deg, rgba(255, 230, 90, .98) 0 38%, rgba(255, 230, 90, .68) 56%, rgba(255, 230, 90, .14) 76%, transparent 100%);
+      background: linear-gradient(90deg, rgba(255, 232, 90, .9) 0 36%, rgba(255, 232, 90, .5) 54%, rgba(255, 232, 90, .08) 72%, transparent 100%);
       content: "";
     }
     .masthead::after {
@@ -262,21 +261,21 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       height: 100%;
       object-fit: cover;
       object-position: center center;
-      filter: saturate(1.03) contrast(1.02);
+      filter: saturate(1.05) contrast(1.03);
     }
     .hero-copy {
       position: relative;
       z-index: 2;
-      max-width: 760px;
+      max-width: 690px;
     }
     .hero-ticket {
       position: relative;
       z-index: 2;
       align-self: center;
-      max-width: 380px;
+      max-width: 360px;
       border: 2px solid var(--ink);
-      background: rgba(255, 253, 244, .92);
-      box-shadow: 6px 6px 0 var(--ink);
+      background: rgba(255, 254, 250, .94);
+      box-shadow: 5px 5px 0 var(--ink);
       padding: clamp(14px, 1.7vw, 20px);
     }
     .hero-ticket::before {
@@ -292,10 +291,10 @@ function renderPage(items, featured, pitchHeroUrl = "") {
     }
     .hero-ticket h2 {
       margin: 0;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(24px, 2.2vw, 34px);
-      font-weight: 800;
-      line-height: 1;
+      font-family: Charter, "Iowan Old Style", Georgia, "Times New Roman", serif;
+      font-size: clamp(23px, 2vw, 31px);
+      font-weight: 760;
+      line-height: 1.02;
       text-wrap: balance;
     }
     .ticket-shot {
@@ -386,29 +385,29 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       background: var(--mint);
     }
     h1 {
-      max-width: 850px;
+      max-width: 760px;
       margin: 0;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(46px, 5.1vw, 82px);
-      font-weight: 800;
-      line-height: .94;
+      font-family: Charter, "Iowan Old Style", Georgia, "Times New Roman", serif;
+      font-size: clamp(44px, 4.65vw, 76px);
+      font-weight: 760;
+      line-height: .98;
       letter-spacing: 0;
       text-wrap: balance;
     }
     .lede {
-      max-width: 720px;
+      max-width: 680px;
       margin: 14px 0 0;
       color: #241c38;
-      font-size: clamp(17px, 1.5vw, 21px);
-      font-weight: 680;
+      font-size: clamp(17px, 1.38vw, 20px);
+      font-weight: 700;
     }
     .hero-note {
       display: block;
-      max-width: 680px;
+      max-width: 650px;
       margin-top: 16px;
-      padding: 10px 12px 10px 14px;
+      padding: 11px 13px 11px 15px;
       border-left: 5px solid var(--blue);
-      background: rgba(255, 253, 244, .86);
+      background: rgba(255, 254, 250, .82);
       color: var(--blue-dark);
       font-size: 14px;
       font-weight: 760;
@@ -421,7 +420,7 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       grid-template-columns: repeat(6, minmax(0, 1fr));
       gap: 10px;
       align-self: end;
-      margin-top: clamp(8px, 2vw, 18px);
+      margin-top: clamp(4px, 1.6vw, 14px);
     }
     .hero-shelf a {
       position: relative;
@@ -432,7 +431,7 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       background: var(--surface);
       color: var(--ink);
       text-decoration: none;
-      box-shadow: 4px 4px 0 var(--ink);
+      box-shadow: 3px 3px 0 var(--ink);
     }
     .hero-shelf a:nth-child(2n) {
       transform: translateY(-8px);
@@ -443,7 +442,7 @@ function renderPage(items, featured, pitchHeroUrl = "") {
     .hero-shelf img {
       display: block;
       width: 100%;
-      height: 92px;
+      height: 88px;
       object-fit: cover;
       object-position: top center;
       border-bottom: 2px solid var(--ink);
@@ -473,7 +472,7 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       padding: 18px;
       border: 2px solid var(--ink);
       background: var(--surface);
-      box-shadow: 5px 5px 0 var(--ink);
+      box-shadow: 4px 4px 0 var(--ink);
     }
     .stat:nth-child(2) {
       box-shadow: 5px 5px 0 var(--pink-dark);
@@ -489,9 +488,9 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       display: block;
       margin: 0;
       color: var(--pink-dark);
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(31px, 3.6vw, 56px);
-      font-weight: 800;
+      font-family: Charter, "Iowan Old Style", Georgia, "Times New Roman", serif;
+      font-size: clamp(30px, 3.3vw, 52px);
+      font-weight: 760;
       line-height: .9;
     }
     .stat dt {
@@ -544,7 +543,7 @@ function renderPage(items, featured, pitchHeroUrl = "") {
     }
     .closing-board h2 {
       max-width: 760px;
-      font-family: Georgia, "Times New Roman", serif;
+      font-family: Charter, "Iowan Old Style", Georgia, "Times New Roman", serif;
       font-size: clamp(31px, 4vw, 62px);
       line-height: .96;
       text-wrap: balance;
@@ -601,7 +600,7 @@ function renderPage(items, featured, pitchHeroUrl = "") {
     }
     .proof-strip h2 {
       max-width: 680px;
-      font-family: Georgia, "Times New Roman", serif;
+      font-family: Charter, "Iowan Old Style", Georgia, "Times New Roman", serif;
       font-size: clamp(25px, 3vw, 47px);
       line-height: .98;
       font-weight: 800;
@@ -765,7 +764,7 @@ function renderPage(items, featured, pitchHeroUrl = "") {
     }
     .toolbar h2 {
       margin: 0;
-      font-family: Georgia, "Times New Roman", serif;
+      font-family: Charter, "Iowan Old Style", Georgia, "Times New Roman", serif;
       font-size: clamp(28px, 3.6vw, 54px);
       line-height: 1;
       font-weight: 800;
@@ -1131,14 +1130,14 @@ function renderPage(items, featured, pitchHeroUrl = "") {
         </ul>
         <p class="hero-note">Use it like a meeting artifact: point at a niche, launch the live site, show the proof trail, and ask for the next production lane.</p>
         <div class="actions">
-          <a class="button primary" href="${escapeAttr(featured.playgroundUrl)}">Open featured demo</a>
+          <a class="button primary" href="${escapeAttr(featured.playgroundUrl)}" aria-label="Open ${escapeAttr(featured.name)} in WordPress Playground">Open featured demo</a>
           <a class="button" href="#catalog">Browse screenshot wall</a>
         </div>
       </div>
       <aside class="hero-ticket" aria-label="90-second meeting script">
         <p class="eyebrow">90-second room script</p>
         <h2>Open the site. Show the receipts. Close the lane.</h2>
-        <img class="ticket-shot" src="${escapeAttr(featuredImage)}" alt="" loading="eager">
+        <img class="ticket-shot" src="${escapeAttr(featuredImage)}" alt="Screenshot of the featured ${escapeAttr(featured.name)} demo" loading="eager">
         <ol class="ticket-list">
           <li><strong>1</strong><span>Pick a niche the room understands instantly.</span></li>
           <li><strong>2</strong><span>Launch the live Playground site.</span></li>
@@ -1153,7 +1152,7 @@ function renderPage(items, featured, pitchHeroUrl = "") {
     <dl class="stats" aria-label="Catalog counts">
       <div class="stat"><dt>Live demo links</dt><dd>${items.length}</dd></div>
       <div class="stat"><dt>Approved proofs</dt><dd>${approvedCount}</dd></div>
-      <div class="stat"><dt>Layout lanes</dt><dd>${layoutCount}</dd></div>
+      <div class="stat"><dt>Screenshot cards</dt><dd>${items.length}</dd></div>
       <div class="stat"><dt>Visual sweep</dt><dd>${escapeHtml(sweepStat)}</dd></div>
     </dl>
 
