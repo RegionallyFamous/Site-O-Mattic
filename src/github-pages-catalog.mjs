@@ -171,14 +171,14 @@ function renderPage(items, featured, pitchHeroUrl = "") {
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Site-O-Mattic Demo Catalog</title>
-  <meta name="description" content="A bold riso-style internal sales catalog for Playground-ready WordPress Blueprint demos.">
+  <meta name="description" content="A riso-bright internal pitch catalog for live, Playground-ready WordPress Blueprint demos.">
   <style>
     :root {
       color-scheme: light;
-      --paper: #ffe85a;
-      --page: #eef5ff;
-      --surface: #fffefa;
-      --ink: #111628;
+      --paper: #ffe65a;
+      --page: #eef6ff;
+      --surface: #fffdf7;
+      --ink: #101626;
       --muted: #4e5366;
       --line: #171b2b;
       --blue: #1646f5;
@@ -190,14 +190,14 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       --scarlet: #ef6259;
       --violet: #1646f5;
       --shadow-blue: rgba(17, 22, 40, .14);
-      --shadow-hard: 6px 6px 0 var(--ink);
+      --shadow-hard: 5px 5px 0 var(--ink);
     }
     * {
       box-sizing: border-box;
     }
     body {
       margin: 0;
-      background: linear-gradient(180deg, #fff7a7 0, var(--page) 480px);
+      background: linear-gradient(180deg, #fff59d 0, var(--page) 520px);
       color: var(--ink);
       font-family: "Avenir Next", Avenir, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       line-height: 1.5;
@@ -225,23 +225,23 @@ function renderPage(items, featured, pitchHeroUrl = "") {
     }
     .masthead {
       display: grid;
-      grid-template-columns: minmax(0, .95fr) minmax(290px, 350px);
+      grid-template-columns: minmax(0, .92fr) minmax(280px, 330px);
       gap: clamp(20px, 3.4vw, 40px);
       position: relative;
       overflow: hidden;
-      min-height: clamp(540px, 71vh, 760px);
+      min-height: clamp(560px, 74vh, 800px);
       align-items: end;
       border: 2px solid var(--ink);
       background: var(--paper);
       box-shadow: var(--shadow-hard);
       isolation: isolate;
-      padding: clamp(22px, 4.4vw, 64px);
+      padding: clamp(24px, 4.2vw, 60px);
     }
     .masthead::before {
       position: absolute;
       inset: 0;
       z-index: 1;
-      background: linear-gradient(90deg, rgba(255, 232, 90, .9) 0 36%, rgba(255, 232, 90, .5) 54%, rgba(255, 232, 90, .08) 72%, transparent 100%);
+      background: linear-gradient(90deg, rgba(255, 243, 135, .92) 0 31%, rgba(255, 243, 135, .58) 49%, rgba(255, 243, 135, .14) 68%, transparent 100%);
       content: "";
     }
     .masthead::after {
@@ -261,12 +261,12 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       height: 100%;
       object-fit: cover;
       object-position: center center;
-      filter: saturate(1.05) contrast(1.03);
+      filter: saturate(1.08) contrast(1.04);
     }
     .hero-copy {
       position: relative;
       z-index: 2;
-      max-width: 690px;
+      max-width: 660px;
     }
     .hero-ticket {
       position: relative;
@@ -274,8 +274,8 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       align-self: center;
       max-width: 360px;
       border: 2px solid var(--ink);
-      background: rgba(255, 254, 250, .94);
-      box-shadow: 5px 5px 0 var(--ink);
+      background: rgba(255, 253, 247, .95);
+      box-shadow: 4px 4px 0 var(--ink);
       padding: clamp(14px, 1.7vw, 20px);
     }
     .hero-ticket::before {
@@ -292,9 +292,9 @@ function renderPage(items, featured, pitchHeroUrl = "") {
     .hero-ticket h2 {
       margin: 0;
       font-family: Charter, "Iowan Old Style", Georgia, "Times New Roman", serif;
-      font-size: clamp(23px, 2vw, 31px);
-      font-weight: 760;
-      line-height: 1.02;
+      font-size: clamp(22px, 1.9vw, 30px);
+      font-weight: 720;
+      line-height: 1.04;
       text-wrap: balance;
     }
     .ticket-shot {
@@ -322,8 +322,8 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       align-items: start;
       color: var(--muted);
       font-size: 13px;
-      font-weight: 680;
-      line-height: 1.3;
+      font-weight: 640;
+      line-height: 1.34;
     }
     .ticket-list strong {
       display: inline-grid;
@@ -341,8 +341,8 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       background: var(--ink);
       color: #ffffff;
       font-size: 13px;
-      font-weight: 780;
-      line-height: 1.28;
+      font-weight: 720;
+      line-height: 1.32;
     }
     .eyebrow {
       display: inline-flex;
@@ -354,7 +354,7 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       background: var(--mint);
       color: var(--ink);
       font-size: 12px;
-      font-weight: 850;
+      font-weight: 780;
       letter-spacing: 0;
       text-transform: uppercase;
     }
@@ -375,8 +375,8 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       background: var(--surface);
       color: var(--ink);
       font-size: 13px;
-      font-weight: 820;
-      line-height: 1;
+      font-weight: 760;
+      line-height: 1.08;
     }
     .hero-badges li:nth-child(2) {
       background: var(--surface);
@@ -385,21 +385,22 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       background: var(--mint);
     }
     h1 {
-      max-width: 760px;
+      max-width: 720px;
       margin: 0;
       font-family: Charter, "Iowan Old Style", Georgia, "Times New Roman", serif;
-      font-size: clamp(44px, 4.65vw, 76px);
-      font-weight: 760;
-      line-height: .98;
+      font-size: clamp(43px, 4.45vw, 72px);
+      font-weight: 720;
+      line-height: 1.01;
       letter-spacing: 0;
       text-wrap: balance;
     }
     .lede {
       max-width: 680px;
       margin: 14px 0 0;
-      color: #241c38;
-      font-size: clamp(17px, 1.38vw, 20px);
-      font-weight: 700;
+      color: #20243d;
+      font-size: clamp(17px, 1.28vw, 20px);
+      font-weight: 620;
+      line-height: 1.42;
     }
     .hero-note {
       display: block;
@@ -407,10 +408,11 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       margin-top: 16px;
       padding: 11px 13px 11px 15px;
       border-left: 5px solid var(--blue);
-      background: rgba(255, 254, 250, .82);
+      background: rgba(255, 253, 247, .84);
       color: var(--blue-dark);
       font-size: 14px;
-      font-weight: 760;
+      font-weight: 680;
+      line-height: 1.38;
     }
     .hero-shelf {
       position: relative;
@@ -431,7 +433,7 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       background: var(--surface);
       color: var(--ink);
       text-decoration: none;
-      box-shadow: 3px 3px 0 var(--ink);
+      box-shadow: 2px 2px 0 var(--ink);
     }
     .hero-shelf a:nth-child(2n) {
       transform: translateY(-8px);
@@ -453,8 +455,8 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       padding: 7px 8px 8px;
       background: rgba(255, 253, 244, .96);
       font-size: 11px;
-      font-weight: 860;
-      line-height: 1.12;
+      font-weight: 760;
+      line-height: 1.16;
     }
     .stats {
       display: grid;
@@ -472,16 +474,16 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       padding: 18px;
       border: 2px solid var(--ink);
       background: var(--surface);
-      box-shadow: 4px 4px 0 var(--ink);
+      box-shadow: 3px 3px 0 var(--ink);
     }
     .stat:nth-child(2) {
-      box-shadow: 5px 5px 0 var(--pink-dark);
+      box-shadow: 3px 3px 0 var(--pink-dark);
     }
     .stat:nth-child(3) {
-      box-shadow: 5px 5px 0 #11866d;
+      box-shadow: 3px 3px 0 #11866d;
     }
     .stat:nth-child(4) {
-      box-shadow: 5px 5px 0 var(--blue-dark);
+      box-shadow: 3px 3px 0 var(--blue-dark);
     }
     .stat dd {
       order: 1;
@@ -499,7 +501,7 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       margin-top: 10px;
       color: var(--muted);
       font-size: 12px;
-      font-weight: 850;
+      font-weight: 760;
       text-transform: uppercase;
     }
     .proof-strip {
@@ -524,13 +526,13 @@ function renderPage(items, featured, pitchHeroUrl = "") {
     .closing-board article {
       border: 2px solid var(--ink);
       background: var(--surface);
-      box-shadow: 5px 5px 0 var(--ink);
+      box-shadow: 4px 4px 0 var(--ink);
       padding: clamp(16px, 2vw, 24px);
     }
     .closing-board > div {
       background: var(--ink);
       color: #ffffff;
-      box-shadow: 6px 6px 0 var(--blue);
+      box-shadow: 4px 4px 0 var(--blue);
     }
     .closing-board > div .eyebrow {
       background: var(--mint);
@@ -544,14 +546,15 @@ function renderPage(items, featured, pitchHeroUrl = "") {
     .closing-board h2 {
       max-width: 760px;
       font-family: Charter, "Iowan Old Style", Georgia, "Times New Roman", serif;
-      font-size: clamp(31px, 4vw, 62px);
-      line-height: .96;
+      font-size: clamp(31px, 3.7vw, 58px);
+      line-height: 1;
       text-wrap: balance;
     }
     .closing-board p {
       margin-top: 12px;
       color: inherit;
-      font-weight: 760;
+      font-weight: 640;
+      line-height: 1.42;
     }
     .closing-points {
       display: grid;
@@ -601,9 +604,9 @@ function renderPage(items, featured, pitchHeroUrl = "") {
     .proof-strip h2 {
       max-width: 680px;
       font-family: Charter, "Iowan Old Style", Georgia, "Times New Roman", serif;
-      font-size: clamp(25px, 3vw, 47px);
-      line-height: .98;
-      font-weight: 800;
+      font-size: clamp(25px, 2.8vw, 44px);
+      line-height: 1.02;
+      font-weight: 740;
       text-wrap: balance;
     }
     .proof-strip h3 {
@@ -694,7 +697,7 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       background: var(--surface);
       color: var(--ink);
       font-size: 14px;
-      font-weight: 820;
+      font-weight: 780;
       line-height: 1.1;
       text-decoration: none;
       box-shadow: 0 4px 0 var(--ink);
@@ -746,8 +749,8 @@ function renderPage(items, featured, pitchHeroUrl = "") {
     }
     .pitch-points h2 {
       margin: 12px 0 0;
-      font-size: clamp(24px, 3vw, 42px);
-      line-height: 1.05;
+      font-size: clamp(24px, 2.8vw, 39px);
+      line-height: 1.08;
     }
     .pitch-points p {
       color: var(--muted);
@@ -767,7 +770,7 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       font-family: Charter, "Iowan Old Style", Georgia, "Times New Roman", serif;
       font-size: clamp(28px, 3.6vw, 54px);
       line-height: 1;
-      font-weight: 800;
+      font-weight: 740;
       text-wrap: balance;
     }
     .toolbar a {
@@ -945,7 +948,7 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       grid-column: 1 / -1;
       background: var(--scarlet);
       color: var(--ink);
-      font-weight: 880;
+      font-weight: 820;
     }
     .card:nth-child(3n+2) .links a:first-child {
       background: var(--blue);
@@ -1022,10 +1025,10 @@ function renderPage(items, featured, pitchHeroUrl = "") {
         order: 3;
       }
       .masthead::before {
-        background: linear-gradient(180deg, rgba(255, 241, 95, .98) 0 56%, rgba(255, 241, 95, .62) 76%, rgba(255, 241, 95, .12) 100%);
+        background: linear-gradient(180deg, rgba(255, 241, 95, .94) 0 38%, rgba(255, 241, 95, .76) 58%, rgba(255, 241, 95, .2) 100%);
       }
       .hero-bg {
-        object-position: 58% center;
+        object-position: 70% center;
       }
       h1 {
         font-size: clamp(35px, 10.8vw, 52px);
@@ -1120,15 +1123,15 @@ function renderPage(items, featured, pitchHeroUrl = "") {
     <header class="masthead">
       <img class="hero-bg" src="${escapeAttr(heroIllustration)}" alt="" loading="eager">
       <div class="hero-copy">
-        <p class="eyebrow">Site-O-Mattic sales wall</p>
-        <h1>Sell the idea with live WordPress.</h1>
-        <p class="lede">${items.length} inspectable niche demos with ImageGen-made brand energy, screenshot proof on every card, and one-click Playground launches for the room.</p>
+        <p class="eyebrow">Site-O-Mattic pitch wall</p>
+        <h1>Win the room with live WordPress demos.</h1>
+        <p class="lede">${items.length} inspectable niche sites with ImageGen-led brand energy, screenshot proof on every card, and one-click Playground launches for the meeting.</p>
         <ul class="hero-badges" aria-label="Demo proof points">
           <li>ImageGen-led</li>
           <li>Screenshot-first</li>
           <li>Playground-ready</li>
         </ul>
-        <p class="hero-note">Use it like a meeting artifact: point at a niche, launch the live site, show the proof trail, and ask for the next production lane.</p>
+        <p class="hero-note">Use it like a meeting artifact: point at a niche, launch the site, show the proof trail, and make the next production lane feel obvious.</p>
         <div class="actions">
           <a class="button primary" href="${escapeAttr(featured.playgroundUrl)}" aria-label="Open ${escapeAttr(featured.name)} in WordPress Playground">Open featured demo</a>
           <a class="button" href="#catalog">Browse screenshot wall</a>
@@ -1136,7 +1139,7 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       </div>
       <aside class="hero-ticket" aria-label="90-second meeting script">
         <p class="eyebrow">90-second room script</p>
-        <h2>Open the site. Show the receipts. Close the lane.</h2>
+        <h2>Open the site. Show the receipts. Ask for the lane.</h2>
         <img class="ticket-shot" src="${escapeAttr(featuredImage)}" alt="Screenshot of the featured ${escapeAttr(featured.name)} demo" loading="eager">
         <ol class="ticket-list">
           <li><strong>1</strong><span>Pick a niche the room understands instantly.</span></li>
@@ -1144,7 +1147,7 @@ function renderPage(items, featured, pitchHeroUrl = "") {
           <li><strong>3</strong><span>Show the screenshot, JSON, and spec.</span></li>
           <li><strong>4</strong><span>Ask for the next production lane.</span></li>
         </ol>
-        <p class="ticket-ask">Ask: approve the next lane of inspectable WordPress sales demos.</p>
+        <p class="ticket-ask">Ask: fund the next lane of inspectable WordPress sales demos.</p>
       </aside>
       ${heroShelf}
     </header>
