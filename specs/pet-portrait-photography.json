@@ -48,19 +48,19 @@
       "gallery-hero-mobile-height",
       "pet-crop"
     ],
-    "styleContract": "Cool lavender portrait proof with pet-comfort cues, real studio session evidence, aubergine ink, marine blue fields, mint action, raspberry proof accents, and a portrait gallery hero as the signature move."
+    "styleContract": "Expressive portrait-studio warmth with pet-comfort cues, real studio session evidence, aubergine ink, marine proof fields, mint action, coral detail accents, and a portrait gallery hero as the signature move."
   },
   "tagline": "Portrait days for pets with big personality.",
   "themeSlug": "twentytwentyfive",
   "landingPage": "/",
   "palette": {
-    "grass": "#315f88",
+    "grass": "#286f9f",
     "deepGreen": "#28162e",
-    "leaf": "#b53662",
-    "sun": "#b9f6dd",
-    "cream": "#f4f0fb",
-    "mist": "#e5eef8",
-    "soil": "#5f596d",
+    "leaf": "#e05067",
+    "sun": "#aef5dc",
+    "cream": "#fff8f2",
+    "mist": "#eaf3ff",
+    "soil": "#5c586a",
     "white": "#ffffff"
   },
   "assets": {
@@ -139,7 +139,7 @@
   ],
   "release": {
     "status": "approved",
-    "reviewedAt": "2026-06-25",
+    "reviewedAt": "2026-06-27",
     "visualBaseline": "pending",
     "reviewChecklist": {
       "firstViewportClear": true,
@@ -156,7 +156,7 @@
     },
     "premiumReview": {
       "version": 2,
-      "reviewedAt": "2026-06-25",
+      "reviewedAt": "2026-06-27",
       "score": 100,
       "categories": {
         "firstViewport": true,
@@ -179,9 +179,9 @@
     }
   },
   "brandBrief": {
-    "mood": "Cool lavender portrait proof.",
+    "mood": "Expressive portrait-studio warmth.",
     "trustCue": "pet-comfort cues.",
-    "accentBehavior": "sun stays reserved for Book a session, active proof cues, and key booking moments.",
+    "accentBehavior": "sun stays reserved for Book a session and booking moments, while leaf punctuates small pet-expression proof.",
     "imageProof": "dog portrait studio session with photographer, softbox, and calm posing platform.",
     "signatureMove": "a portrait gallery hero.",
     "avoidLookingLike": "Avoid a generic gallery-led recolor; do not repeat stock hero framing, copied card rhythm, or vague local-service claims."

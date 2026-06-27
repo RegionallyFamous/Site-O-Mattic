@@ -47,19 +47,19 @@
       "privacy-sensitive-image",
       "cta-pressure-too-high"
     ],
-    "styleContract": "Gentle practical trust with family-support proof, real keepsake sorting evidence, small warm action accents, and a story checklist as the signature move."
+    "styleContract": "Dignified clear-step calm with family-support proof, real keepsake sorting evidence, saffron action accents, slate support fields, and a story checklist as the signature move."
   },
   "tagline": "Move prep with patience, labels, and breathing room.",
   "themeSlug": "twentytwentyfive",
   "landingPage": "/",
   "palette": {
-    "grass": "#6d6f92",
-    "deepGreen": "#263047",
-    "leaf": "#b79c74",
-    "sun": "#efbd67",
-    "cream": "#f8efe7",
-    "mist": "#e5deda",
-    "soil": "#5f5553",
+    "grass": "#4b6f91",
+    "deepGreen": "#202b44",
+    "leaf": "#65a89d",
+    "sun": "#f0bf5f",
+    "cream": "#f5f8fb",
+    "mist": "#e4eef6",
+    "soil": "#5a6172",
     "white": "#ffffff"
   },
   "assets": {
@@ -138,7 +138,7 @@
   ],
   "release": {
     "status": "approved",
-    "reviewedAt": "2026-06-25",
+    "reviewedAt": "2026-06-27",
     "visualBaseline": "pending",
     "reviewChecklist": {
       "firstViewportClear": true,
@@ -155,7 +155,7 @@
     },
     "premiumReview": {
       "version": 2,
-      "reviewedAt": "2026-06-25",
+      "reviewedAt": "2026-06-27",
       "score": 100,
       "categories": {
         "firstViewport": true,
@@ -178,9 +178,9 @@
     }
   },
   "brandBrief": {
-    "mood": "Gentle practical trust.",
+    "mood": "Dignified clear-step calm.",
     "trustCue": "family-support proof.",
-    "accentBehavior": "sun stays reserved for Schedule a consult, active proof cues, and key booking moments.",
+    "accentBehavior": "sun stays reserved for Schedule a consult and key booking moments, while leaf supports calm proof cues.",
     "imageProof": "consultant helping older adult sort keepsakes and moving boxes.",
     "signatureMove": "a story checklist.",
     "avoidLookingLike": "Avoid a generic checklist-urgency recolor; do not repeat stock hero framing, copied card rhythm, or vague local-service claims."

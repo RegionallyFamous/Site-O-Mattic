@@ -46,19 +46,19 @@
       "mobile-grid-cramping",
       "palette-too-green"
     ],
-    "styleContract": "Ecological and practical with native-season proof, finished garden evidence, pollen-gold action accents, and a bloom-season board as the signature move."
+    "styleContract": "Meadow-bright and practical with native-season proof, finished garden evidence, marigold action accents, magenta bloom proof, and a season path board as the signature move."
   },
   "tagline": "Native blooms with excellent neighborhood manners.",
   "themeSlug": "twentytwentyfive",
   "landingPage": "/",
   "palette": {
-    "grass": "#2f6b45",
-    "deepGreen": "#26143b",
-    "leaf": "#c68adf",
-    "sun": "#d88714",
-    "cream": "#fff9ec",
-    "mist": "#f2e7f5",
-    "soil": "#5e5248",
+    "grass": "#23704f",
+    "deepGreen": "#24143d",
+    "leaf": "#b63f93",
+    "sun": "#f0a400",
+    "cream": "#f8fff0",
+    "mist": "#e3f7d7",
+    "soil": "#4d5a42",
     "white": "#ffffff"
   },
   "assets": {
@@ -137,7 +137,7 @@
   ],
   "release": {
     "status": "approved",
-    "reviewedAt": "2026-06-25",
+    "reviewedAt": "2026-06-27",
     "visualBaseline": "pending",
     "reviewChecklist": {
       "firstViewportClear": true,
@@ -154,7 +154,7 @@
     },
     "premiumReview": {
       "version": 2,
-      "reviewedAt": "2026-06-25",
+      "reviewedAt": "2026-06-27",
       "score": 100,
       "categories": {
         "firstViewport": true,
@@ -170,18 +170,18 @@
         "brandBrief": true
       },
       "notes": [
-        "Works: a bloom-season board. gives the page a memorable shape.",
+        "Works: a season path board. gives the page a memorable shape.",
         "Proof: finished front-yard pollinator bed with native flowers, clean edging, and seasonal planting proof. anchors the niche in the first viewport.",
         "Action: Send photos is the main conversion path."
       ]
     }
   },
   "brandBrief": {
-    "mood": "Ecological and practical.",
+    "mood": "Meadow-bright and practical.",
     "trustCue": "native-season proof.",
-    "accentBehavior": "sun stays reserved for Send photos, active proof cues, and key booking moments.",
+    "accentBehavior": "sun stays reserved for Send photos and booking moments, while leaf marks bloom proof and seasonal field notes.",
     "imageProof": "finished front-yard pollinator bed with native flowers, clean edging, and seasonal planting proof.",
-    "signatureMove": "a bloom-season board.",
+    "signatureMove": "a season path board.",
     "avoidLookingLike": "Avoid a generic zone-grid-planner recolor; do not repeat stock hero framing, copied card rhythm, or vague local-service claims."
   },
   "serviceDetails": {

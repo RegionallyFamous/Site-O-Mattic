@@ -3862,19 +3862,19 @@ function buildAliasVisualCss(spec) {
 .wp-block-image.som-pet-gallery-image{
   margin-right:0;
   margin-left:auto;
-  width:min(560px, 54%)!important;
+  width:min(650px, 58%)!important;
 }
 .wp-block-image.som-pet-gallery-image img{
   aspect-ratio:4/3;
   display:block;
-  height:390px!important;
+  height:430px!important;
   min-height:0;
-  object-position:46% 50%;
+  object-position:62% 48%;
   width:100%!important;
   border-radius:8px;
 }
 .som-pet-gallery-hero .som-gallery-copy-row{
-  margin-top:-198px!important;
+  margin-top:-218px!important;
 }
 .som-pet-gallery-note{
   transform:none;
