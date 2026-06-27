@@ -4911,14 +4911,16 @@ function buildAliasVisualCss(spec) {
     "photo-booth-strip-packages": `
 .som-booth-hero{
   background:
-    repeating-linear-gradient(90deg, color-mix(in srgb, ${p.white} 8%, transparent) 0 18px, transparent 18px 36px),
+    radial-gradient(circle at 78% 14%, color-mix(in srgb, ${p.leaf} 16%, transparent), transparent 30%),
+    repeating-linear-gradient(90deg, color-mix(in srgb, ${p.white} 6%, transparent) 0 14px, transparent 14px 32px),
     ${p.deepGreen};
 }
 .som-booth-photo img{
-  aspect-ratio:3/4;
-  min-height:560px;
-  border-radius:4px;
-  box-shadow:12px 12px 0 ${p.white}, 0 28px 80px rgba(0,0,0,.24);
+  aspect-ratio:4/3;
+  min-height:520px;
+  object-position:68% 50%;
+  border-radius:6px;
+  box-shadow:8px 8px 0 ${p.white}, 0 28px 80px rgba(0,0,0,.24);
 }
 .som-booth-ticket{
   border-radius:4px!important;
@@ -4929,12 +4931,61 @@ function buildAliasVisualCss(spec) {
   border-left:10px solid ${p.sun};
   border-radius:4px!important;
 }
+@media (min-width:701px){
+  .som-booth-hero .wp-block-columns{
+    flex-direction:row-reverse;
+  }
+}
 @media (max-width:700px){
+  .som-booth-page{
+    --som-mobile-action-reserve:calc(104px + env(safe-area-inset-bottom));
+  }
+  .som-booth-hero{
+    padding-top:34px!important;
+    padding-bottom:34px!important;
+  }
+  .som-booth-hero .wp-block-columns{
+    gap:22px!important;
+  }
+  .som-booth-hero h1{
+    font-size:clamp(34px, 10vw, 46px)!important;
+    margin-bottom:16px!important;
+  }
+  .som-booth-hero p{
+    line-height:1.42!important;
+  }
+  .som-booth-hero .wp-block-buttons{
+    gap:8px!important;
+  }
+  .som-booth-hero .wp-block-button__link{
+    padding-top:13px!important;
+    padding-right:16px!important;
+    padding-bottom:13px!important;
+    padding-left:16px!important;
+    font-size:14px;
+  }
   .som-booth-photo img{
-    min-height:320px;
+    aspect-ratio:16/9;
+    min-height:210px;
+    max-height:260px;
+    object-position:70% 50%;
+    box-shadow:6px 6px 0 ${p.white}, 0 18px 44px rgba(0,0,0,.22);
   }
   .som-booth-ticket{
     transform:none;
+  }
+  .som-booth-action-dock{
+    right:14px;
+    left:14px;
+    border-radius:20px;
+    padding-top:8px!important;
+    padding-right:10px!important;
+    padding-bottom:8px!important;
+    padding-left:10px!important;
+  }
+  .som-booth-action-dock .wp-block-button__link{
+    min-height:42px;
+    font-size:12.5px;
   }
 }`.trim(),
     "pet-portrait-booking-dock": `
