@@ -46,19 +46,19 @@
       "logo-scale",
       "mobile-crop"
     ],
-    "styleContract": "Celebratory and polished with portion proof, styled dessert table evidence, berry-gold action accents, and flavor caption cards as the signature move."
+    "styleContract": "Celebratory and polished with portion proof, styled dessert table evidence, raspberry action, butter divider accents, powder-blue support fields, and flavor caption cards as the signature move."
   },
   "tagline": "Dessert tables with a little sparkle and a lot of plan.",
   "themeSlug": "twentytwentyfive",
   "landingPage": "/",
   "palette": {
-    "grass": "#8f3d63",
-    "deepGreen": "#2a1f26",
-    "leaf": "#c6788f",
-    "sun": "#f2c86d",
-    "cream": "#fff7ef",
-    "mist": "#f2dde4",
-    "soil": "#6c5560",
+    "grass": "#a8205f",
+    "deepGreen": "#2d1b36",
+    "leaf": "#f05e95",
+    "sun": "#ffd86b",
+    "cream": "#f0fbff",
+    "mist": "#fff4d6",
+    "soil": "#5f4862",
     "white": "#ffffff"
   },
   "assets": {
@@ -137,7 +137,7 @@
   ],
   "release": {
     "status": "approved",
-    "reviewedAt": "2026-06-25",
+    "reviewedAt": "2026-06-27",
     "visualBaseline": "pending",
     "reviewChecklist": {
       "firstViewportClear": true,
@@ -154,7 +154,7 @@
     },
     "premiumReview": {
       "version": 2,
-      "reviewedAt": "2026-06-25",
+      "reviewedAt": "2026-06-27",
       "score": 100,
       "categories": {
         "firstViewport": true,
@@ -179,7 +179,7 @@
   "brandBrief": {
     "mood": "Celebratory and polished.",
     "trustCue": "portion proof.",
-    "accentBehavior": "leaf stays reserved for Design sweets, active proof cues, and key booking moments.",
+    "accentBehavior": "leaf stays reserved for Design sweets, while sun handles butter dividers and final booking moments.",
     "imageProof": "styled dessert table with tiered cake, tarts, macarons, and final placement detail.",
     "signatureMove": "flavor caption cards.",
     "avoidLookingLike": "Avoid a generic gallery-led recolor; do not repeat stock hero framing, copied card rhythm, or vague local-service claims."

@@ -47,19 +47,19 @@
       "logo-scale",
       "mobile-crop"
     ],
-    "styleContract": "Calm and expert with room-light proof, real swatch consultation evidence, warm swatch action accents, and palette support cards as the signature move."
+    "styleContract": "Prismatic studio calm with room-light proof, real swatch consultation evidence, coral action accents, and steel-blue palette support cards as the signature move."
   },
   "tagline": "Paint decisions without the tiny-swatch spiral.",
   "themeSlug": "twentytwentyfive",
   "landingPage": "/",
   "palette": {
-    "grass": "#66775a",
-    "deepGreen": "#24251f",
-    "leaf": "#c07f6c",
-    "sun": "#e7b85d",
-    "cream": "#f8f0e7",
-    "mist": "#e0e3da",
-    "soil": "#5f5a52",
+    "grass": "#496a8f",
+    "deepGreen": "#24223a",
+    "leaf": "#617842",
+    "sun": "#ff7a59",
+    "cream": "#f7f5fb",
+    "mist": "#e7edf5",
+    "soil": "#5e566c",
     "white": "#ffffff"
   },
   "assets": {
@@ -138,7 +138,7 @@
   ],
   "release": {
     "status": "approved",
-    "reviewedAt": "2026-06-25",
+    "reviewedAt": "2026-06-27",
     "visualBaseline": "pending",
     "reviewChecklist": {
       "firstViewportClear": true,
@@ -155,7 +155,7 @@
     },
     "premiumReview": {
       "version": 2,
-      "reviewedAt": "2026-06-25",
+      "reviewedAt": "2026-06-27",
       "score": 100,
       "categories": {
         "firstViewport": true,
@@ -171,18 +171,18 @@
         "brandBrief": true
       },
       "notes": [
-        "Works: palette support cards. gives the page a memorable shape.",
+        "Works: steel-blue palette support cards. gives the page a memorable shape.",
         "Proof: color consultant reviewing paint swatches, fan deck, and room finishes in natural light. anchors the niche in the first viewport.",
         "Action: Choose my palette is the main conversion path."
       ]
     }
   },
   "brandBrief": {
-    "mood": "Calm and expert.",
+    "mood": "Prismatic studio calm.",
     "trustCue": "room-light proof.",
     "accentBehavior": "sun stays reserved for Choose my palette, active proof cues, and key booking moments.",
     "imageProof": "color consultant reviewing paint swatches, fan deck, and room finishes in natural light.",
-    "signatureMove": "palette support cards.",
+    "signatureMove": "steel-blue palette support cards.",
     "avoidLookingLike": "Avoid a generic checklist-urgency recolor; do not repeat stock hero framing, copied card rhythm, or vague local-service claims."
   },
   "serviceDetails": {
