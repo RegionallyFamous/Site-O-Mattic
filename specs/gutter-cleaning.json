@@ -13,7 +13,7 @@
     "imageEvidence": "visible home-risk mitigation work",
     "ctaRhythm": "call-first",
     "surfaceFamily": "single-elevated-proof",
-    "surfaceModel": "warning-rows-proof-strip",
+    "surfaceModel": "cover-warning-board-proof-strip",
     "styleFamily": "operator-console",
     "density": "balanced-editorial",
     "colorRoles": {
@@ -32,11 +32,11 @@
       "radiusScale": "utility-6",
       "borderRole": "warning row dividers",
       "shadowRole": "risk hero and quote only",
-      "mediaCrop": "roofline work crop"
+      "mediaCrop": "roofline cover crop"
     },
     "coreBlockPlan": [
+      "cover",
       "columns",
-      "image",
       "list",
       "buttons"
     ],
@@ -45,7 +45,7 @@
       "roofline-photo-crop",
       "risk-copy-too-generic"
     ],
-    "styleContract": "Protective and seasonal with overflow-prevention proof, roofline cleaning evidence, controlled amber warning accents, and warning-sign rows as the signature move."
+    "styleContract": "Protective and seasonal with overflow-prevention proof, roofline cleaning evidence, controlled amber warning accents, and a storm-check warning board as the signature move."
   },
   "tagline": "Leaves out. Rainwater behaving.",
   "themeSlug": "twentytwentyfive",
@@ -82,7 +82,7 @@
     "eyebrow": "Seasonal gutter cleaning before the downpour drama",
     "heroTitle": "Keep water where it belongs.",
     "heroText": "ClearFlow clears packed leaves, roof grit, seed pods, and surprise sludge so rainwater moves through the gutters instead of auditioning for your foundation.",
-    "primaryCta": "Call for gutter help",
+    "primaryCta": "Clear clogged gutters",
     "secondaryCta": "Check warning signs",
     "introTitle": "Small clogs become loud problems.",
     "introText": "If water is spilling over the edge, pooling near the house, or turning one downspout into a sad little fountain, it is time for a cleanout with a real flow check.",
@@ -90,7 +90,7 @@
     "processTitle": "The prevention plan",
     "proofTitle": "Clean gutters, calmer storms",
     "quoteTitle": "Ready for gutters that do their one job?",
-    "quoteText": "Call or send photos of the roofline, downspouts, and any overflow spots. We will confirm access, timing, and a clean estimate before the next rain gets ideas."
+    "quoteText": "Call first, or text photos of the roofline, downspouts, and any overflow spots. We will confirm access, timing, and a clean estimate before the next rain gets ideas."
   },
   "services": [
     {
@@ -152,13 +152,14 @@
       "screenshotCompared": true
     },
     "premiumReview": {
-      "version": 1,
+      "version": 2,
       "reviewedAt": "2026-06-25",
       "score": 100,
       "categories": {
         "firstViewport": true,
         "logoScale": true,
         "typography": true,
+        "polishContract": true,
         "imageProof": true,
         "ctaClarity": true,
         "mobilePolish": true,
@@ -168,9 +169,9 @@
         "brandBrief": true
       },
       "notes": [
-        "Works: warning-sign rows. gives the page a memorable shape.",
+        "Works: the storm-check warning board and warning-sign rows give the page a memorable shape.",
         "Proof: visible home-risk mitigation work. anchors the niche in the first viewport.",
-        "Action: Call for gutter help is the main conversion path."
+        "Action: Clear clogged gutters is the main conversion path."
       ]
     }
   },
@@ -179,14 +180,14 @@
     "trustCue": "overflow-prevention proof.",
     "accentBehavior": "sun stays reserved for Call for gutter help, active proof cues, and key booking moments.",
     "imageProof": "visible home-risk mitigation work.",
-    "signatureMove": "warning-sign rows.",
+    "signatureMove": "storm-check warning board.",
     "avoidLookingLike": "Avoid a generic risk-prevention recolor; do not repeat stock hero framing, copied card rhythm, or vague local-service claims."
   },
   "serviceDetails": {
     "turnaround": "2-story: ladder-ready residential service.",
-    "whatToSend": "Call or send photos of the roofline, downspouts, and any overflow spots. We will confirm access, timing, and a clean estimate before the next rain gets ideas.",
+    "whatToSend": "Send photos from the ground, access notes, weather or date constraints, and the warning signs you noticed so the visit starts safely.",
     "prepNote": "We review photos, roof height, ladder setup, and any tricky gates or slopes before scheduling.",
-    "serviceRhythm": "call first for Seasonal gutter cleaning for homes across the west hills, older tree-lined streets, and nearby suburbs.",
-    "objectionAnswer": "Scope, access, timing, and fit are confirmed before booking so the next step is clear and low-pressure."
+    "serviceRhythm": "Risk-check flow for Seasonal gutter cleaning for homes across the west hills, older tree-lined streets, and nearby suburbs: photos, weather, access, and no-go conditions shape the safe visit plan.",
+    "objectionAnswer": "For gutter cleaning service, roof height, gutter runs, downspout locations, ladder reach, and debris level shape the quote before a crew is scheduled."
   }
 }

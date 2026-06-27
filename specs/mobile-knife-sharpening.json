@@ -37,6 +37,8 @@
     "coreBlockPlan": [
       "columns",
       "image",
+      "table",
+      "details",
       "list",
       "buttons"
     ],
@@ -53,7 +55,7 @@
   "palette": {
     "grass": "#5d6f73",
     "deepGreen": "#1d2426",
-    "leaf": "#9aa36b",
+    "leaf": "#63703a",
     "sun": "#e4b04a",
     "cream": "#f3eadc",
     "mist": "#d9ded8",
@@ -80,17 +82,17 @@
   },
   "copy": {
     "eyebrow": "Mobile sharpening with a careful bench setup",
-    "heroTitle": "Dull knives do not need a dramatic farewell.",
-    "heroText": "EdgeRoute brings a tidy sharpening bench to neighborhood route stops, refreshes hardworking kitchen edges, and sends each blade home with simple care notes.",
-    "primaryCta": "Join the next route",
-    "secondaryCta": "Check the bench list",
+    "heroTitle": "Dull knives deserve a reset.",
+    "heroText": "EdgeRoute brings a tidy bench to route stops, refreshes hardworking kitchen edges, and sends every blade home with simple care notes.",
+    "primaryCta": "Book knife route",
+    "secondaryCta": "See blades",
     "introTitle": "Kitchen edges, garden snips, and the scissors everyone hides.",
     "introText": "We sort by blade type, condition, serration, handle safety, and how each tool is actually used before deciding the sharpening path.",
     "servicesTitle": "What can hit the bench",
     "processTitle": "How the edge comes back",
     "proofTitle": "Bench notes that matter",
     "quoteTitle": "Ready for the next sharpening route?",
-    "quoteText": "Send a quick count, a few photos, your neighborhood, and any problem blades. We will reply with route timing, bundle advice, and what should skip the bench."
+    "quoteText": "Join the route with quick count, a few photos, your neighborhood, and any problem blades. We will reply with route timing, bundle advice, and what should skip the bench."
   },
   "services": [
     {
@@ -152,13 +154,14 @@
       "screenshotCompared": true
     },
     "premiumReview": {
-      "version": 1,
+      "version": 2,
       "reviewedAt": "2026-06-25",
       "score": 100,
       "categories": {
         "firstViewport": true,
         "logoScale": true,
         "typography": true,
+        "polishContract": true,
         "imageProof": true,
         "ctaClarity": true,
         "mobilePolish": true,
@@ -170,23 +173,23 @@
       "notes": [
         "Works: a route-day bench ticket. gives the page a memorable shape.",
         "Proof: sharpening bench with knives, water tray, and route bins. anchors the niche in the first viewport.",
-        "Action: Join the next route is the main conversion path."
+        "Action: Book knife route is the main conversion path."
       ]
     }
   },
   "brandBrief": {
     "mood": "Steady craft confidence.",
     "trustCue": "edge-care proof.",
-    "accentBehavior": "sun stays reserved for Join the next route, active proof cues, and key booking moments.",
+    "accentBehavior": "sun stays reserved for Book knife route, active proof cues, and key booking moments.",
     "imageProof": "sharpening bench with knives, water tray, and route bins.",
     "signatureMove": "a route-day bench ticket.",
     "avoidLookingLike": "Avoid a generic workshop-bench recolor; do not repeat stock hero framing, copied card rhythm, or vague local-service claims."
   },
   "serviceDetails": {
     "turnaround": "Edge check: each blade inspected before handoff.",
-    "whatToSend": "Send a quick count, a few photos, your neighborhood, and any problem blades. We will reply with route timing, bundle advice, and what should skip the bench.",
+    "whatToSend": "Send your address or neighborhood, access notes, preferred cadence, photos when useful, and any skip conditions before joining the route.",
     "prepNote": "You send photos and a rough count; we flag serrated, damaged, or unsafe blades before route day.",
-    "serviceRhythm": "route join for Mobile sharpening for chef knives, paring knives, serrated checks, kitchen shears, garden snips, route-day bundle pickups, and careful edge-care notes for home cooks, small kitchens, and neighborhood pickup stops.",
-    "objectionAnswer": "Scope, access, timing, and fit are confirmed before booking so the next step is clear and low-pressure."
+    "serviceRhythm": "Route-fit flow for Mobile sharpening for chef knives, paring knives, serrated checks, kitchen shears, garden snips, route-day bundle pickups, and careful edge-care notes for home cooks, small kitchens, and neighborhood pickup stops: cadence, access, skip rules, and first-visit notes make the route realistic.",
+    "objectionAnswer": "For mobile knife sharpening service, item count, blade condition, pickup access, and what should skip the bench are confirmed before the route stop is booked."
   }
 }

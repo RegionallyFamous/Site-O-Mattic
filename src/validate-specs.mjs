@@ -2,6 +2,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { implementedLayoutVariantSlugs } from "./layout-archetypes.mjs";
 import { validatePatternContract } from "./pattern-contracts.mjs";
+import { POLISH_REVIEW_VERSION } from "./production-polish-matrix.mjs";
 import { validateProductionPolishFields } from "./production-polish-fields.mjs";
 import { readSpec, specTargets } from "./spec-utils.mjs";
 
@@ -70,6 +71,7 @@ async function validateSpec(spec, target) {
 
   validatePalette(spec.palette, errors);
   validatePattern(spec.pattern, errors);
+  validateColorRoleResolution(spec, errors);
   await validateAssets(spec.assets, errors);
   validateAssetMeta(spec.assetMeta, errors);
   validateContact(spec.contact, errors);
@@ -89,6 +91,15 @@ async function validateSpec(spec, target) {
 
 function validatePattern(pattern, errors) {
   errors.push(...validatePatternContract(pattern));
+}
+
+function validateColorRoleResolution(spec, errors) {
+  const paletteKeys = new Set(Object.keys(spec.palette || {}));
+  for (const [role, token] of Object.entries(spec.pattern?.colorRoles || {})) {
+    if (!paletteKeys.has(token)) {
+      errors.push(`pattern.colorRoles.${role} references missing palette token: ${token}.`);
+    }
+  }
 }
 
 function validatePalette(palette, errors) {
@@ -238,8 +249,8 @@ function validateRelease(release, errors) {
     errors.push("release.premiumReview is required.");
     return;
   }
-  if (premium.version !== 1) {
-    errors.push("release.premiumReview.version must be 1.");
+  if (premium.version !== POLISH_REVIEW_VERSION) {
+    errors.push(`release.premiumReview.version must be ${POLISH_REVIEW_VERSION}.`);
   }
   if (!/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/.test(premium.reviewedAt || "")) {
     errors.push("release.premiumReview.reviewedAt must use YYYY-MM-DD.");
@@ -251,6 +262,7 @@ function validateRelease(release, errors) {
     "firstViewport",
     "logoScale",
     "typography",
+    "polishContract",
     "imageProof",
     "ctaClarity",
     "mobilePolish",

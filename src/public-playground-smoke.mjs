@@ -9,6 +9,8 @@ const outputRoot = process.env.PUBLIC_SMOKE_DIR || path.join("qa", "reports", "p
 const ref = process.env.SITE_O_MATTIC_REF || await gitRef();
 const rawBase = process.env.PUBLIC_BLUEPRINT_BASE
   || `https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/${ref}/public/blueprints`;
+const requireApiHeaders = Boolean(process.env.PUBLIC_BLUEPRINT_BASE);
+const publicSiteOrigin = process.env.PUBLIC_SITE_ORIGIN || inferSiteOrigin(rawBase);
 const pageTimeout = Number(process.env.PUBLIC_SMOKE_PAGE_TIMEOUT_MS || 150_000);
 const targets = await specTargets(process.argv.slice(2));
 
@@ -25,26 +27,43 @@ if (!targets.length) {
   process.exit(1);
 }
 
+const targetItems = [];
+for (const target of targets) {
+  targetItems.push({ target, spec: await readSpec(target) });
+}
+
 await fs.mkdir(outputRoot, { recursive: true });
 const executablePath = process.env.CHROME_PATH || await findChrome();
 const browser = await chromium.launch({ executablePath, headless: true });
 const reports = [];
 let hasFailure = false;
+const homepageCheck = publicSiteOrigin
+  ? await checkHomepageCatalog(publicSiteOrigin, targetItems.map((item) => item.spec))
+  : null;
 
 console.log(`Public Playground smoke output: ${outputRoot}`);
 console.log(`Blueprint ref: ${ref}`);
+console.log(`Blueprint base: ${rawBase}`);
+if (requireApiHeaders) {
+  console.log("API header checks: enabled");
+}
+if (homepageCheck) {
+  console.log(`Homepage catalog check: ${homepageCheck.ok ? "OK" : "FAIL"} ${homepageCheck.detail}`);
+  if (!homepageCheck.ok) {
+    hasFailure = true;
+  }
+}
 console.log(`Sweeping ${targets.length} public Playground URL${targets.length === 1 ? "" : "s"}.`);
 
 try {
-  for (const [index, target] of targets.entries()) {
-    const spec = await readSpec(target);
-    const rawBlueprintUrl = `${rawBase}/${spec.slug}/blueprint.json`;
+  for (const [index, { target, spec }] of targetItems.entries()) {
+    const rawBlueprintUrl = blueprintUrlFor(rawBase, spec.slug);
     const playgroundUrl = `https://playground.wordpress.net/?blueprint-url=${encodeURIComponent(rawBlueprintUrl)}`;
     const slugDir = path.join(outputRoot, spec.slug);
     await fs.mkdir(slugDir, { recursive: true });
     console.log(`\n[${index + 1}/${targets.length}] ${spec.slug}`);
 
-    const rawCheck = await checkRawBlueprint(rawBlueprintUrl);
+    const rawCheck = await checkRawBlueprint(rawBlueprintUrl, { requireApiHeaders });
     const scenarios = [];
     if (!rawCheck.ok) {
       hasFailure = true;
@@ -96,6 +115,8 @@ const summary = {
   generatedAt: new Date().toISOString(),
   ref,
   rawBase,
+  requireApiHeaders,
+  homepageCheck,
   total: reports.length,
   failed: reports.filter((report) => report.failures.length).length,
   reports
@@ -111,20 +132,126 @@ if (hasFailure) {
   process.exit(1);
 }
 
-async function checkRawBlueprint(url) {
+async function checkRawBlueprint(url, options = {}) {
   try {
     const response = await fetch(url, { redirect: "follow" });
     if (!response.ok) {
       return { ok: false, detail: `HTTP ${response.status}` };
     }
+    const headers = headerSnapshot(response.headers);
     const json = await response.json();
+    const headerFailures = options.requireApiHeaders ? apiHeaderFailures(headers) : [];
+    const optionsCheck = options.requireApiHeaders ? await checkOptions(url) : null;
+    if (optionsCheck && !optionsCheck.ok) {
+      headerFailures.push(optionsCheck.detail);
+    }
+    const schemaOk = json?.$schema === "https://playground.wordpress.net/blueprint-schema.json";
     return {
-      ok: json?.$schema === "https://playground.wordpress.net/blueprint-schema.json",
-      detail: json?.$schema || "missing schema"
+      ok: schemaOk && headerFailures.length === 0,
+      detail: [
+        schemaOk ? json.$schema : "missing schema",
+        ...headerFailures
+      ].join("; "),
+      headers,
+      optionsCheck
     };
   } catch (error) {
     return { ok: false, detail: error.message };
   }
+}
+
+async function checkOptions(url) {
+  try {
+    const response = await fetch(url, { method: "OPTIONS", redirect: "follow" });
+    const headers = headerSnapshot(response.headers);
+    const failures = [];
+    if (response.status !== 204 && !response.ok) {
+      failures.push(`OPTIONS HTTP ${response.status}`);
+    }
+    if (!headers.accessControlAllowOrigin) {
+      failures.push("OPTIONS missing access-control-allow-origin");
+    }
+    if (!/\bGET\b/i.test(headers.accessControlAllowMethods)) {
+      failures.push("OPTIONS missing GET in access-control-allow-methods");
+    }
+    return {
+      ok: failures.length === 0,
+      detail: failures.join("; ") || "OPTIONS headers OK",
+      headers,
+      status: response.status
+    };
+  } catch (error) {
+    return { ok: false, detail: `OPTIONS failed: ${error.message}` };
+  }
+}
+
+async function checkHomepageCatalog(origin, specs) {
+  const url = new URL("/", origin).href;
+  try {
+    const response = await fetch(url, { redirect: "follow" });
+    if (!response.ok) {
+      return { ok: false, url, detail: `HTTP ${response.status}` };
+    }
+    const html = await response.text();
+    const missing = specs
+      .map((spec) => `/api/blueprints/${spec.slug}/blueprint.json`)
+      .filter((expectedPath) => !html.includes(expectedPath));
+    return {
+      ok: missing.length === 0,
+      url,
+      checked: specs.length,
+      missing,
+      detail: missing.length ? `Missing catalog links: ${missing.slice(0, 5).join(", ")}` : `${specs.length} API links present`
+    };
+  } catch (error) {
+    return { ok: false, url, detail: error.message };
+  }
+}
+
+function headerSnapshot(headers) {
+  return {
+    accessControlAllowOrigin: headers.get("access-control-allow-origin") || "",
+    accessControlAllowMethods: headers.get("access-control-allow-methods") || "",
+    accessControlAllowHeaders: headers.get("access-control-allow-headers") || "",
+    cacheControl: headers.get("cache-control") || "",
+    contentType: headers.get("content-type") || ""
+  };
+}
+
+function apiHeaderFailures(headers) {
+  const failures = [];
+  if (headers.accessControlAllowOrigin !== "*") {
+    failures.push(`missing wildcard CORS header (${headers.accessControlAllowOrigin || "none"})`);
+  }
+  if (!/\bGET\b/i.test(headers.accessControlAllowMethods)) {
+    failures.push(`access-control-allow-methods missing GET (${headers.accessControlAllowMethods || "none"})`);
+  }
+  if (!/content-type/i.test(headers.accessControlAllowHeaders)) {
+    failures.push(`access-control-allow-headers missing content-type (${headers.accessControlAllowHeaders || "none"})`);
+  }
+  if (!/application\/json/i.test(headers.contentType)) {
+    failures.push(`content-type is not application/json (${headers.contentType || "none"})`);
+  }
+  if (!/\bmax-age=\d+/i.test(headers.cacheControl)) {
+    failures.push(`cache-control missing max-age (${headers.cacheControl || "none"})`);
+  }
+  return failures;
+}
+
+function blueprintUrlFor(base, slug) {
+  return `${base.replace(/\/+$/, "")}/${slug}/blueprint.json`;
+}
+
+function inferSiteOrigin(base) {
+  try {
+    const url = new URL(base);
+    if (url.pathname.includes("/api/blueprints")) {
+      return url.origin;
+    }
+  } catch {
+    return "";
+  }
+  return "";
 }
 
 async function inspectScenario(browser, url, scenario, screenshot) {

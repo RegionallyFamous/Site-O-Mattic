@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
-  <title id="title">BlueLane favicon</title>
-  <desc id="desc">A pool tile icon with water lanes.</desc>
-  <rect width="512" height="512" rx="112" fill="#07233d"/>
-  <rect x="58" y="58" width="396" height="396" rx="78" fill="#f5fbff"/>
-  <path d="M118 202c58-54 125-54 198 0 43 32 82 32 118 0" fill="none" stroke="#23b6c8" stroke-width="42" stroke-linecap="round"/>
-  <path d="M96 292c66-50 137-50 212 0 43 28 82 28 124 0" fill="none" stroke="#007c89" stroke-width="42" stroke-linecap="round"/>
-  <path d="M132 372h242" fill="none" stroke="#f7d35a" stroke-width="34" stroke-linecap="round"/>
-</svg>

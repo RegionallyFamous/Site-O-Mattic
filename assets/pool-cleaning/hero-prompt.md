@@ -14,3 +14,14 @@ Color palette: clear aqua water, white stone, soft sun highlights, controlled na
 Materials/textures: water ripples, tile line, net mesh, test strips or small bottles, realistic pool deck texture.
 Constraints: no readable text, no signage, no logos, no watermark, no distorted hands, no extra people, no branded uniforms, no exaggerated lens flare, no fake UI, no before/after collage.
 ```
+
+## Site-O-Mattic Image Style Contract
+
+Use this contract for regeneration and visual review:
+
+- Photorealistic, realistic editorial service photography for a premium local-service website hero.
+- The actual service, visible outcome, or service evidence must be clear at a glance; avoid vague atmosphere.
+- Use a 16:9 wide horizontal landscape crop with copy-friendly negative space for a headline overlay.
+- Show a believable environment, natural light, useful tools/materials, and restrained local-business polish.
+- Avoid generic stock-photo gloss, exaggerated smiles, fake uniforms, fake review/rating props, and over-staged showroom perfection.
+- No readable text, no fake signage, no visible brand names, no logos, no watermarks, no distorted hands, and no broken tools or impossible anatomy.

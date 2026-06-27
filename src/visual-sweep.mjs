@@ -1,4 +1,5 @@
 import fs from "node:fs/promises";
+import os from "node:os";
 import path from "node:path";
 import { spawn } from "node:child_process";
 import { pathToFileURL } from "node:url";
@@ -9,6 +10,10 @@ const OUTPUT_ROOT = process.env.VISUAL_SWEEP_DIR || "/tmp/site-o-mattic-visual-s
 const START_PORT = Number(process.env.VISUAL_SWEEP_PORT || 9540);
 const SERVER_TIMEOUT_MS = Number(process.env.VISUAL_SWEEP_SERVER_TIMEOUT_MS || 90_000);
 const PAGE_TIMEOUT_MS = Number(process.env.VISUAL_SWEEP_PAGE_TIMEOUT_MS || 120_000);
+const FOCUS_WALK_LIMIT = Number(process.env.VISUAL_SWEEP_FOCUS_WALK_LIMIT || 80);
+const MOBILE_MEDIA_PROOF_MIN_VISIBLE_RATIO = Number(process.env.VISUAL_SWEEP_MOBILE_MEDIA_PROOF_MIN_RATIO || 0.25);
+const NEAR_NEIGHBOR_TASTE_DISTANCE = Number(process.env.VISUAL_SWEEP_NEAR_NEIGHBOR_TASTE_DISTANCE || 48);
+const PLAYGROUND_NODE_BIN_DIR = await findPlaygroundNodeBinDir();
 
 let chromium;
 try {
@@ -34,6 +39,9 @@ let hasFailure = false;
 
 console.log(`Visual sweep output: ${OUTPUT_ROOT}`);
 console.log(`Sweeping ${specPaths.length} Blueprint${specPaths.length === 1 ? "" : "s"} through local Playground renders.`);
+if (PLAYGROUND_NODE_BIN_DIR) {
+  console.log(`Playground CLI child PATH prefers Node 22: ${PLAYGROUND_NODE_BIN_DIR}`);
+}
 
 for (const [index, specPath] of specPaths.entries()) {
     const spec = await readSpec(specPath);
@@ -49,19 +57,29 @@ for (const [index, specPath] of specPaths.entries()) {
     try {
       const startup = await waitForReady(server, SERVER_TIMEOUT_MS);
       if (startup.warnings.length) {
-        console.log(`  startup warnings: ${startup.warnings.length} non-fatal line${startup.warnings.length === 1 ? "" : "s"}`);
+        console.log(`  startup warnings: ${startup.warnings.length} line${startup.warnings.length === 1 ? "" : "s"}`);
+      }
+      const startupFailures = startupFailuresFor(startup.warnings);
+      for (const failure of startupFailures) {
+        console.log(`  FAIL ${failure}`);
       }
 
       const scenarioReports = [];
       for (const scenario of scenarios()) {
         const screenshot = path.join(slugDir, `${scenario.name}.png`);
-        const result = await inspectScenario(browser, url, scenario, screenshot);
+        const result = await inspectScenario(browser, url, scenario, screenshot, spec);
         const failures = failuresFor(result).map((failure) => `${scenario.name}: ${failure}`);
         scenarioReports.push({ ...result, name: scenario.name, screenshot, failures });
       }
 
       const signature = summarizeScenarioShape(scenarioReports);
-      const failures = scenarioReports.flatMap((scenario) => scenario.failures);
+      const failures = [
+        ...startupFailures,
+        ...scenarioReports.flatMap((scenario) => scenario.failures)
+      ];
+      const tasteWarnings = scenarioReports.flatMap((scenario) =>
+        (scenario.tasteWarnings || []).map((warning) => `${scenario.name}: ${warning}`)
+      );
       if (failures.length) {
         hasFailure = true;
         for (const failure of failures) {
@@ -69,6 +87,12 @@ for (const [index, specPath] of specPaths.entries()) {
         }
       } else {
         console.log(`  OK rendered viewports: ${scenarioReports.map((scenario) => scenario.name).join(", ")}`);
+      }
+      for (const warning of tasteWarnings.slice(0, 6)) {
+        console.log(`  TASTE ${warning}`);
+      }
+      if (tasteWarnings.length > 6) {
+        console.log(`  TASTE +${tasteWarnings.length - 6} more taste warning${tasteWarnings.length - 6 === 1 ? "" : "s"}`);
       }
 
       reports.push({
@@ -79,8 +103,10 @@ for (const [index, specPath] of specPaths.entries()) {
         url,
         layoutVariant: spec.layoutVariant,
         pattern: spec.pattern,
+        startupWarnings: startup.warnings,
         signature,
         scenarios: scenarioReports,
+        tasteWarnings,
         failures
       });
     } finally {
@@ -89,11 +115,13 @@ for (const [index, specPath] of specPaths.entries()) {
 }
 
 const nearestNeighbors = nearestNeighborSummary(reports);
+applyNearestNeighborTasteWarnings(reports, nearestNeighbors);
 const summary = {
   generatedAt: new Date().toISOString(),
   outputRoot: OUTPUT_ROOT,
   total: reports.length,
   failed: reports.filter((report) => report.failures.length).length,
+  tasteWarningCount: reports.reduce((sum, report) => sum + report.tasteWarnings.length, 0),
   nearestNeighbors,
   reports
 };
@@ -102,6 +130,7 @@ const reviewEvidence = {
   outputRoot: OUTPUT_ROOT,
   total: summary.total,
   failed: summary.failed,
+  tasteWarningCount: summary.tasteWarningCount,
   nearestNeighbors,
   items: reports.map(buildReviewEvidence)
 };
@@ -114,6 +143,7 @@ await browser.close();
 console.log("\nVisual sweep summary");
 console.log(`- Total: ${summary.total}`);
 console.log(`- Failed: ${summary.failed}`);
+console.log(`- Taste warnings: ${summary.tasteWarningCount}`);
 console.log(`- Report: ${path.join(OUTPUT_ROOT, "report.json")}`);
 console.log(`- Review evidence: ${path.join(OUTPUT_ROOT, "review-evidence.json")}`);
 console.log(`- Contact sheet: ${path.join(OUTPUT_ROOT, "contact-sheet.png")}`);
@@ -138,9 +168,22 @@ function scenarios() {
       isMobile: true
     },
     {
+      name: "mobile-430",
+      viewport: { width: 430, height: 932 },
+      isMobile: true
+    },
+    {
       name: "mobile-360",
       viewport: { width: 360, height: 780 },
       isMobile: true
+    },
+    {
+      name: "tablet-768",
+      viewport: { width: 768, height: 1024 }
+    },
+    {
+      name: "tablet-1024",
+      viewport: { width: 1024, height: 900 }
     }
   ];
 }
@@ -158,7 +201,7 @@ function startPlaygroundServer(blueprintPath, port) {
   const command = playgroundCommand(cliArgs);
   return spawn(command.bin, command.args, {
     cwd: ROOT,
-    env: process.env,
+    env: playgroundChildEnv(),
     stdio: ["ignore", "pipe", "pipe"]
   });
 }
@@ -177,6 +220,80 @@ function playgroundCommand(cliArgs) {
     bin: "npx",
     args: ["--yes", "--package", "@wp-playground/cli@latest", "--", "wp-playground-cli", ...cliArgs]
   };
+}
+
+function playgroundChildEnv() {
+  if (!PLAYGROUND_NODE_BIN_DIR) {
+    return process.env;
+  }
+  return {
+    ...process.env,
+    PATH: `${PLAYGROUND_NODE_BIN_DIR}${path.delimiter}${process.env.PATH || ""}`
+  };
+}
+
+async function findPlaygroundNodeBinDir() {
+  if (process.env.VISUAL_SWEEP_DISABLE_NODE22_SHIM === "1") {
+    return null;
+  }
+
+  if (process.env.VISUAL_SWEEP_NODE_BIN_DIR) {
+    const requested = process.env.VISUAL_SWEEP_NODE_BIN_DIR;
+    if (await pathExists(path.join(requested, "node"))) {
+      return requested;
+    }
+    console.warn(`VISUAL_SWEEP_NODE_BIN_DIR does not contain node: ${requested}`);
+    return null;
+  }
+
+  const candidates = [];
+  const nvmDir = process.env.NVM_DIR || path.join(os.homedir(), ".nvm");
+  const nvmVersionsDir = path.join(nvmDir, "versions", "node");
+
+  try {
+    const entries = await fs.readdir(nvmVersionsDir, { withFileTypes: true });
+    const node22Dirs = entries
+      .filter((entry) => entry.isDirectory() && /^v22\./.test(entry.name))
+      .map((entry) => path.join(nvmVersionsDir, entry.name, "bin"))
+      .sort((left, right) => compareNodeVersionDirs(right, left));
+    candidates.push(...node22Dirs);
+  } catch {
+    // No nvm install is fine; fall through to common Homebrew paths.
+  }
+
+  candidates.push(
+    "/opt/homebrew/opt/node@22/bin",
+    "/usr/local/opt/node@22/bin"
+  );
+
+  for (const candidate of candidates) {
+    if (await pathExists(path.join(candidate, "node"))) {
+      return candidate;
+    }
+  }
+
+  return null;
+}
+
+function compareNodeVersionDirs(left, right) {
+  const leftParts = path.basename(path.dirname(left)).replace(/^v/, "").split(".").map(Number);
+  const rightParts = path.basename(path.dirname(right)).replace(/^v/, "").split(".").map(Number);
+  for (let index = 0; index < Math.max(leftParts.length, rightParts.length); index += 1) {
+    const diff = (leftParts[index] || 0) - (rightParts[index] || 0);
+    if (diff !== 0) {
+      return diff;
+    }
+  }
+  return 0;
+}
+
+async function pathExists(filePath) {
+  try {
+    await fs.access(filePath);
+    return true;
+  } catch {
+    return false;
+  }
 }
 
 function waitForReady(child, timeoutMs) {
@@ -243,7 +360,7 @@ async function stopServer(child) {
   });
 }
 
-async function inspectScenario(browser, url, scenario, screenshot) {
+async function inspectScenario(browser, url, scenario, screenshot, spec) {
   const page = await browser.newPage({
     viewport: scenario.viewport,
     isMobile: scenario.isMobile || false
@@ -254,13 +371,16 @@ async function inspectScenario(browser, url, scenario, screenshot) {
     await frame.waitForSelector(".wp-site-blocks, body", { timeout: 60_000 });
     await page.screenshot({ path: screenshot, fullPage: false });
 
-    return await frame.evaluate(async () => {
+    return await frame.evaluate(async ({ expectedCtaTexts, focusWalkLimit, scenarioName, isMobileViewport, mobileMediaProofMinVisibleRatio }) => {
       const text = document.body.innerText || "";
       const logo = rectFor(document.querySelector(".wp-block-site-logo img"));
-      const h1 = rectFor(document.querySelector("h1"));
-      const navigation = rectFor(document.querySelector(".wp-block-navigation"));
+      const h1Element = document.querySelector("h1");
+      const h1 = rectFor(h1Element);
+      const h1Contrast = contrastReport(h1Element);
+      const navigationElement = document.querySelector(".wp-block-navigation");
+      const navigation = rectFor(navigationElement);
       const ctas = [...document.querySelectorAll(".wp-block-button__link")]
-        .map((element) => ({ text: element.textContent?.trim(), rect: rectFor(element) }))
+        .map((element) => ({ text: element.textContent?.trim(), rect: rectFor(element), lineCount: textLineCount(element) }))
         .filter((item) => item.rect);
       const media = rectFor(document.querySelector(".wp-block-cover__image-background, .wp-block-image img, .wp-block-media-text__media"));
       const firstSection = rectFor(document.querySelector(".wp-site-blocks > *"));
@@ -272,7 +392,12 @@ async function inspectScenario(browser, url, scenario, screenshot) {
         .map((element) => String(element.className || element.tagName.toLowerCase()));
 
       const visible = (rect) => Boolean(rect && rect.width > 0 && rect.height > 0 && rect.top < viewport.height && rect.bottom > 0);
-      const firstViewportCta = ctas.find((cta) => visible(cta.rect));
+      const visibleCtas = ctas.filter((cta) => visible(cta.rect));
+      const firstViewportCta = visibleCtas[0];
+      const expectedCtas = expectedCtaTexts.map(normalizeCtaText).filter(Boolean);
+      const firstViewportExpectedCta = expectedCtas.length
+        ? visibleCtas.find((cta) => expectedCtas.includes(normalizeCtaText(cta.text)))
+        : firstViewportCta;
       const keyOverlaps = keyOverlapFailures([
         { name: "logo", rect: logo },
         { name: "navigation", rect: navigation },
@@ -281,6 +406,11 @@ async function inspectScenario(browser, url, scenario, screenshot) {
           .filter((cta) => visible(cta.rect))
           .map((cta, index) => ({ name: `cta:${cta.text || index + 1}`, rect: cta.rect }))
       ]);
+      const mediaProof = mediaProofReport(media);
+      const ctaTypography = ctaTypographyReport(visibleCtas);
+      const h1Typography = h1TypographyReport(h1Element, h1);
+      const navigationTypography = navigationTypographyReport(navigationElement);
+      const tasteWarnings = tasteWarningReport({ mediaProof, ctaTypography, h1Typography, navigationTypography });
       const proofAlignment = proofAlignmentReport();
       disableSmoothScrolling();
       const anchorNavigation = await anchorNavigationReport();
@@ -291,11 +421,21 @@ async function inspectScenario(browser, url, scenario, screenshot) {
         defaultWrapperLeak: /Twenty Twenty|Designed with WordPress|^Home$/m.test(text),
         firstViewportCtaVisible: Boolean(firstViewportCta),
         firstViewportCtaText: firstViewportCta?.text || null,
+        firstViewportExpectedCtaVisible: Boolean(firstViewportExpectedCta),
+        firstViewportExpectedCtaText: firstViewportExpectedCta?.text || null,
+        expectedCtaTexts,
+        visibleCtaTexts: visibleCtas.map((cta) => cta.text).filter(Boolean),
+        ctaTypography,
+        h1Typography,
+        navigationTypography,
         logo,
         h1,
+        h1Contrast,
         h1Visible: visible(h1),
         media,
+        mediaProof,
         mediaVisible: visible(media),
+        tasteWarnings,
         firstSection,
         bodyRect,
         viewport,
@@ -363,7 +503,7 @@ async function inspectScenario(browser, url, scenario, screenshot) {
       async function focusWalkReport() {
         const focusable = [...document.querySelectorAll('a[href], button, summary, [tabindex]:not([tabindex="-1"])')]
           .filter((element) => visibleElement(element))
-          .slice(0, 24);
+          .slice(0, focusWalkLimit);
         const checked = [];
         const failures = [];
 
@@ -452,6 +592,133 @@ async function inspectScenario(browser, url, scenario, screenshot) {
         return {
           checkedRows: rows.filter((row) => row.cards.length >= 2).length,
           failures: failures.slice(0, 8)
+        };
+      }
+
+      function mediaProofReport(rect) {
+        if (!rect) {
+          return null;
+        }
+        const totalArea = Math.max(0, rect.width) * Math.max(0, rect.height);
+        const visibleLeft = Math.max(0, rect.left);
+        const visibleRight = Math.min(viewport.width, rect.right);
+        const visibleTop = Math.max(0, rect.top);
+        const visibleBottom = Math.min(viewport.height, rect.bottom);
+        const visibleWidth = Math.max(0, visibleRight - visibleLeft);
+        const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+        const visibleArea = visibleWidth * visibleHeight;
+        return {
+          visibleArea: Math.round(visibleArea),
+          totalArea: Math.round(totalArea),
+          visibleRatio: totalArea ? roundRatio(visibleArea / totalArea) : 0,
+          visibleHeightRatio: rect.height ? roundRatio(visibleHeight / rect.height) : 0,
+          visibleWidthRatio: rect.width ? roundRatio(visibleWidth / rect.width) : 0,
+          visibleHeight: Math.round(visibleHeight),
+          totalHeight: Math.round(rect.height),
+          top: Math.round(rect.top),
+          bottom: Math.round(rect.bottom),
+          viewportHeight: viewport.height
+        };
+      }
+
+      function tasteWarningReport({ mediaProof: proof, ctaTypography: ctaType, h1Typography: h1Type, navigationTypography: navType }) {
+        const warnings = [];
+        if (isMobileViewport && proof && proof.visibleArea > 0 && proof.visibleRatio < mobileMediaProofMinVisibleRatio) {
+          warnings.push(`Primary media proof is thin in first viewport: ${formatPercent(proof.visibleRatio)} visible on ${scenarioName} (top ${proof.top}px, ${proof.visibleHeight}/${proof.totalHeight}px height visible).`);
+        }
+        for (const failure of ctaType?.failures || []) {
+          warnings.push(failure);
+        }
+        for (const failure of h1Type?.failures || []) {
+          warnings.push(failure);
+        }
+        for (const failure of navType?.failures || []) {
+          warnings.push(failure);
+        }
+        return warnings;
+      }
+
+      function h1TypographyReport(element, rect) {
+        if (!element || !rect) {
+          return { checked: false, failures: [] };
+        }
+        const lineCount = textLineCount(element);
+        const heightRatio = viewport.height ? roundRatio(rect.height / viewport.height) : 0;
+        const lineLimit = isMobileViewport ? 4 : viewport.width >= 1180 ? 3 : 4;
+        const heightLimit = isMobileViewport ? 0.34 : 0.3;
+        const failures = [];
+        if (lineCount > lineLimit) {
+          failures.push(`H1 wraps across ${lineCount} lines on ${scenarioName}; limit ${lineLimit}.`);
+        }
+        if (heightRatio > heightLimit) {
+          failures.push(`H1 consumes ${formatPercent(heightRatio)} of viewport height on ${scenarioName}; limit ${formatPercent(heightLimit)}.`);
+        }
+        return {
+          checked: true,
+          text: element.textContent?.trim() || "",
+          lineCount,
+          heightRatio,
+          lineLimit,
+          heightLimit,
+          rect,
+          failures
+        };
+      }
+
+      function navigationTypographyReport(element) {
+        if (!element || !visibleElement(element)) {
+          return { checked: false, failures: [] };
+        }
+        const rect = rectFor(element);
+        const controls = [...element.querySelectorAll("a, button")]
+          .filter(visibleElement)
+          .map((control) => ({
+            text: control.textContent?.trim() || control.getAttribute("aria-label") || "",
+            rect: rectFor(control),
+            lineCount: textLineCount(control)
+          }))
+          .filter((control) => control.rect);
+        const textControls = controls.filter((control) => control.text);
+        const rowCount = new Set(textControls.map((control) => Math.round(control.rect.top / 4) * 4)).size;
+        const overflow = element.scrollWidth > element.clientWidth + 2;
+        const navigationContainer = element.querySelector(".wp-block-navigation__container") || element;
+        const navigationStyle = getComputedStyle(navigationContainer);
+        const isVerticalNavigation = navigationStyle.flexDirection?.startsWith("column")
+          || element.classList.contains("som-rail-nav")
+          || Boolean(element.closest(".som-side-rail"));
+        const failures = [];
+        if (overflow) {
+          failures.push(`Navigation overflows its container on ${scenarioName}: ${element.scrollWidth}px content in ${element.clientWidth}px box.`);
+        }
+        if (!isMobileViewport && textControls.length > 1 && rowCount > 1 && !isVerticalNavigation) {
+          failures.push(`Navigation wraps into ${rowCount} rows on ${scenarioName}.`);
+        }
+        for (const control of textControls.filter((item) => item.text.length <= 20 && item.lineCount > 1)) {
+          failures.push(`Short navigation label wraps across ${control.lineCount} lines on ${scenarioName}: "${control.text}".`);
+        }
+        return {
+          checked: true,
+          overflow,
+          rowCount,
+          rect,
+          items: textControls.slice(0, 8),
+          failures: failures.slice(0, 8)
+        };
+      }
+
+      function ctaTypographyReport(buttons) {
+        const failures = buttons
+          .filter((button) => button.text && button.text.length <= 26 && button.lineCount > 1)
+          .map((button) => `Short CTA label wraps across ${button.lineCount} lines on ${scenarioName}: "${button.text}".`);
+        return {
+          checked: buttons.length,
+          maxLineCount: Math.max(0, ...buttons.map((button) => button.lineCount || 0)),
+          failures: failures.slice(0, 8),
+          items: buttons.slice(0, 8).map((button) => ({
+            text: button.text,
+            lineCount: button.lineCount,
+            rect: button.rect
+          }))
         };
       }
 
@@ -574,6 +841,112 @@ async function inspectScenario(browser, url, scenario, screenshot) {
           height: Math.round(rect.height)
         };
       }
+
+      function textLineCount(element) {
+        try {
+          const range = document.createRange();
+          range.selectNodeContents(element);
+          const tops = [...range.getClientRects()]
+            .filter((rect) => rect.width > 1 && rect.height > 1)
+            .map((rect) => Math.round(rect.top / 2) * 2);
+          range.detach();
+          return new Set(tops).size || 1;
+        } catch {
+          return 1;
+        }
+      }
+
+      function contrastReport(element) {
+        if (!element) {
+          return null;
+        }
+        const foreground = parseCssColor(window.getComputedStyle(element).color);
+        if (!foreground) {
+          return null;
+        }
+
+        let backgroundImageAncestor = false;
+        let current = element;
+        while (current) {
+          const style = window.getComputedStyle(current);
+          if (style.backgroundImage && /\burl\(/i.test(style.backgroundImage)) {
+            backgroundImageAncestor = true;
+          }
+          if (current.classList?.contains("wp-block-cover") && current.querySelector(".wp-block-cover__image-background")) {
+            backgroundImageAncestor = true;
+          }
+          const background = parseCssColor(style.backgroundColor);
+          if (background && background.a > 0.05) {
+            return {
+              ratio: Number(contrastRatio(foreground, background).toFixed(2)),
+              foreground: colorString(foreground),
+              background: colorString(background),
+              backgroundImageAncestor
+            };
+          }
+          current = current.parentElement;
+        }
+        const fallback = { r: 255, g: 255, b: 255, a: 1 };
+        return {
+          ratio: Number(contrastRatio(foreground, fallback).toFixed(2)),
+          foreground: colorString(foreground),
+          background: "rgb(255, 255, 255)",
+          backgroundImageAncestor
+        };
+      }
+
+      function parseCssColor(value) {
+        const match = String(value || "").match(/rgba?\(([^)]+)\)/i);
+        if (!match) {
+          return null;
+        }
+        const parts = match[1].split(",").map((part) => part.trim());
+        const [r, g, b] = parts.slice(0, 3).map(Number);
+        const a = parts[3] === undefined ? 1 : Number(parts[3]);
+        if ([r, g, b, a].some((part) => Number.isNaN(part))) {
+          return null;
+        }
+        return { r, g, b, a };
+      }
+
+      function contrastRatio(left, right) {
+        const leftLuminance = relativeLuminance(left);
+        const rightLuminance = relativeLuminance(right);
+        const light = Math.max(leftLuminance, rightLuminance);
+        const dark = Math.min(leftLuminance, rightLuminance);
+        return (light + 0.05) / (dark + 0.05);
+      }
+
+      function relativeLuminance(color) {
+        const [r, g, b] = [color.r, color.g, color.b]
+          .map((channel) => {
+            const value = channel / 255;
+            return value <= 0.03928 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4;
+          });
+        return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+      }
+
+      function colorString(color) {
+        return `rgb(${Math.round(color.r)}, ${Math.round(color.g)}, ${Math.round(color.b)})`;
+      }
+
+      function normalizeCtaText(value) {
+        return String(value || "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+      }
+
+      function roundRatio(value) {
+        return Math.round(value * 1000) / 1000;
+      }
+
+      function formatPercent(value) {
+        return `${Math.round(value * 100)}%`;
+      }
+    }, {
+      expectedCtaTexts: expectedFirstViewportCtaTexts(spec),
+      focusWalkLimit: FOCUS_WALK_LIMIT,
+      scenarioName: scenario.name,
+      isMobileViewport: Boolean(scenario.isMobile),
+      mobileMediaProofMinVisibleRatio: MOBILE_MEDIA_PROOF_MIN_VISIBLE_RATIO
     });
   } finally {
     await page.close();
@@ -597,6 +970,12 @@ function failuresFor(result) {
   if (!result.firstViewportCtaVisible) {
     failures.push("No CTA button is visible in the first viewport.");
   }
+  if (result.firstViewportCtaVisible && !result.firstViewportExpectedCtaVisible) {
+    failures.push(`No spec primary/secondary CTA is visible in the first viewport. Expected ${result.expectedCtaTexts.join(" / ")}; saw ${result.visibleCtaTexts.join(" / ") || "none"}.`);
+  }
+  if (result.h1Contrast && !result.h1Contrast.backgroundImageAncestor && result.h1Contrast.ratio < 4.5) {
+    failures.push(`H1 contrast is low on its computed background (${result.h1Contrast.ratio}:1, ${result.h1Contrast.foreground} on ${result.h1Contrast.background}).`);
+  }
   if (result.defaultWrapperLeak) {
     failures.push("Default theme wrapper text appears in the render.");
   }
@@ -616,6 +995,20 @@ function failuresFor(result) {
     failures.push(`Focus walk issue: ${result.focusWalk.failures.join("; ")}`);
   }
   return failures;
+}
+
+function startupFailuresFor(warnings) {
+  if (!warnings.length || process.env.VISUAL_SWEEP_ALLOW_STARTUP_WARNINGS === "1") {
+    return [];
+  }
+  return warnings.map((warning) => `Unexpected Playground startup warning: ${warning}`);
+}
+
+function expectedFirstViewportCtaTexts(spec) {
+  return [...new Set([
+    spec.copy?.primaryCta,
+    spec.copy?.secondaryCta
+  ].filter(Boolean))];
 }
 
 async function findWordPressFrame(page) {
@@ -652,7 +1045,10 @@ function summarizeScenarioShape(scenarios) {
     desktopCtaText: desktop?.firstViewportCtaText,
     desktopMedia: desktop?.media,
     mobile390H1: scenarios.find((scenario) => scenario.name === "mobile-390")?.h1,
-    mobile360H1: scenarios.find((scenario) => scenario.name === "mobile-360")?.h1
+    mobile430H1: scenarios.find((scenario) => scenario.name === "mobile-430")?.h1,
+    mobile360H1: scenarios.find((scenario) => scenario.name === "mobile-360")?.h1,
+    tablet768H1: scenarios.find((scenario) => scenario.name === "tablet-768")?.h1,
+    tablet1024H1: scenarios.find((scenario) => scenario.name === "tablet-1024")?.h1
   };
 }
 
@@ -672,8 +1068,10 @@ function buildReviewEvidence(report) {
     ctaRhythm: report.pattern?.ctaRhythm || null,
     imageEvidence: report.pattern?.imageEvidence || null,
     coreBlockPlan: report.pattern?.coreBlockPlan || [],
+    startupWarnings: report.startupWarnings,
     status: report.failures.length ? "fail" : "ok",
     failures: report.failures,
+    tasteWarnings: report.tasteWarnings,
     scenarios: report.scenarios.map((scenario) => ({
       name: scenario.name,
       viewport: scenario.viewport,
@@ -681,9 +1079,18 @@ function buildReviewEvidence(report) {
       bodyTextLength: scenario.bodyTextLength,
       defaultWrapperLeak: scenario.defaultWrapperLeak,
       firstViewportCtaText: scenario.firstViewportCtaText,
+      firstViewportExpectedCtaText: scenario.firstViewportExpectedCtaText,
+      expectedCtaTexts: scenario.expectedCtaTexts,
+      visibleCtaTexts: scenario.visibleCtaTexts,
+      ctaTypography: scenario.ctaTypography,
+      h1Typography: scenario.h1Typography,
+      navigationTypography: scenario.navigationTypography,
       logo: scenario.logo,
       h1: scenario.h1,
+      h1Contrast: scenario.h1Contrast,
       media: scenario.media,
+      mediaProof: scenario.mediaProof,
+      tasteWarnings: scenario.tasteWarnings,
       overflowers: scenario.overflowers,
       keyOverlaps: scenario.keyOverlaps,
       proofAlignment: scenario.proofAlignment,
@@ -707,6 +1114,26 @@ function nearestNeighborSummary(reports) {
     }
   }
   return pairs.sort((left, right) => left.distance - right.distance).slice(0, 20);
+}
+
+function applyNearestNeighborTasteWarnings(reports, pairs) {
+  const bySlug = new Map(reports.map((report) => [report.slug, report]));
+  for (const pair of pairs) {
+    if (pair.distance > NEAR_NEIGHBOR_TASTE_DISTANCE) {
+      continue;
+    }
+    const left = bySlug.get(pair.left);
+    const right = bySlug.get(pair.right);
+    if (!left || !right) {
+      continue;
+    }
+    left.tasteWarnings.push(nearestNeighborTasteWarning(right.slug, pair.distance));
+    right.tasteWarnings.push(nearestNeighborTasteWarning(left.slug, pair.distance));
+  }
+}
+
+function nearestNeighborTasteWarning(slug, distance) {
+  return `Visual nearest-neighbor is too close to ${slug}: distance ${distance} below ${NEAR_NEIGHBOR_TASTE_DISTANCE}.`;
 }
 
 function layoutDistance(left, right) {

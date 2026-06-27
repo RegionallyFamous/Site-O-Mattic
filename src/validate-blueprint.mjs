@@ -12,6 +12,7 @@ import {
   readBlueprint
 } from "./blueprint-inspect.mjs";
 import { LAYOUT_ARCHETYPES } from "./layout-archetypes.mjs";
+import { RICH_CORE_BLOCKS, normalizeCoreBlockPlan } from "./production-polish-matrix.mjs";
 import { blueprintPathForSpec, readSpec, specTargets } from "./spec-utils.mjs";
 
 const ALLOWED_CORE_BLOCKS = new Set([
@@ -39,6 +40,8 @@ const ALLOWED_CORE_BLOCKS = new Set([
   "spacer",
   "table"
 ]);
+
+const BLOCKS_WITH_CORE_ID_ATTRS = new Set(["cover", "gallery", "image"]);
 
 const targets = process.argv.slice(2);
 if (!targets.length) {
@@ -128,6 +131,7 @@ if (!phpStep) {
   if (/href=(["'])#\1/.test(phpStep.code)) {
     errors.push("Empty anchor links are not allowed.");
   }
+  validateCoreAnchorAttributes(pageContent, errors);
   for (const hrefTarget of extractHrefTargets(pageContent)) {
     if (!extractElementIds(pageContent).has(hrefTarget)) {
       errors.push(`In-page link points to missing anchor: #${hrefTarget}`);
@@ -166,7 +170,9 @@ function validateGlobalStyles(phpCode, errors) {
   const requiredBlockStyles = [
     "core/button",
     "core/buttons",
+    "core/column",
     "core/columns",
+    "core/cover",
     "core/details",
     "core/gallery",
     "core/group",
@@ -175,8 +181,11 @@ function validateGlobalStyles(phpCode, errors) {
     "core/list",
     "core/media-text",
     "core/navigation",
+    "core/paragraph",
     "core/pullquote",
     "core/quote",
+    "core/separator",
+    "core/spacer",
     "core/table"
   ];
   const blockStyles = styles.blocks || {};
@@ -189,6 +198,12 @@ function validateGlobalStyles(phpCode, errors) {
   }
   if ((settings.typography?.fontFamilies || []).length < 3) {
     errors.push("Global styles should define body, display, and accent font-family stacks.");
+  }
+  if ((settings.border?.radiusSizes || []).length < 4) {
+    errors.push("Global styles should define border radius presets for card, panel, image, and pill geometry.");
+  }
+  if ((settings.dimensions?.aspectRatios || []).length < 4) {
+    errors.push("Global styles should define aspect ratio presets for media crop control.");
   }
   if ((settings.spacing?.spacingSizes || []).length < 7 || settings.spacing?.blockGap !== true) {
     errors.push("Global styles should define a spacing scale and enable block gap controls.");
@@ -226,6 +241,24 @@ function validateGlobalStyles(phpCode, errors) {
   }
   if (!customCss.includes(":focus-visible") || !customCss.includes(".som-card")) {
     errors.push("Custom CSS fallback should include focus-visible and component polish classes.");
+  }
+}
+
+function validateCoreAnchorAttributes(pageContent, errors) {
+  for (const match of pageContent.matchAll(/<!--\s+wp:([a-z0-9-]+)\s+({[^\n]*?})\s+-->/g)) {
+    const blockName = match[1];
+    if (BLOCKS_WITH_CORE_ID_ATTRS.has(blockName)) {
+      continue;
+    }
+    let attrs;
+    try {
+      attrs = JSON.parse(match[2]);
+    } catch {
+      continue;
+    }
+    if (Object.hasOwn(attrs, "id")) {
+      errors.push(`core/${blockName} uses nonstandard id attr "${attrs.id}"; use the Core anchor attr for section targets.`);
+    }
   }
 }
 
@@ -289,6 +322,23 @@ function validateLayoutSignature(phpCode, pageContent, errors) {
     }
   }
 
+  const pageBlocks = new Set(extractBlockNames(pageContent));
+  const plannedRichBlocks = normalizeCoreBlockPlan(signature.coreBlockPlan || [])
+    .filter((block) => RICH_CORE_BLOCKS.includes(block));
+  const plannedRichBlockSet = new Set(plannedRichBlocks);
+  for (const block of plannedRichBlocks) {
+    if (!pageBlocks.has(block)) {
+      errors.push(`Layout signature coreBlockPlan promises ${block}, but page markup does not include core/${block}.`);
+    }
+  }
+  for (const block of RICH_CORE_BLOCKS) {
+    if (pageBlocks.has(block) && !plannedRichBlockSet.has(block)) {
+      errors.push(`Page markup includes core/${block}, but layout signature coreBlockPlan does not declare ${block}.`);
+    }
+  }
+
+  validateNavigationPrimitiveEvidence(signature, pageContent, errors);
+
   const componentClasses = new Set([...pageContent.matchAll(/\bsom-[a-z0-9-]+/g)].map((match) => match[0]));
   for (const className of signature.componentClassesExpected || []) {
     if (!componentClasses.has(className)) {
@@ -299,6 +349,25 @@ function validateLayoutSignature(phpCode, pageContent, errors) {
   for (const marker of signature.layoutMarkers || []) {
     if (!pageContent.includes(marker)) {
       errors.push(`Layout signature expects missing layout marker: ${marker}.`);
+    }
+  }
+}
+
+function validateNavigationPrimitiveEvidence(signature, pageContent, errors) {
+  const evidence = {
+    "section-anchor-strip": ["som-section-anchor-strip", "som-section-anchor-nav"],
+    "desktop-side-rail": ["som-side-rail-shell", "som-side-rail", "som-rail-nav"],
+    "fixed-bottom-mobile-cta": ["som-mobile-action-bar"],
+    "menu-utility-header": ["som-menu-header"],
+    "split-side-top-hybrid": ["som-workshop-header", "som-material-proof-rail"],
+    "split-nav-action-header": ["header-action"],
+    "viewport-safe-hero-shell": ["hero"],
+    "floating-proof-action": ["floating"]
+  };
+
+  for (const marker of evidence[signature.navigationPrimitive] || []) {
+    if (!pageContent.includes(marker)) {
+      errors.push(`Layout signature navigationPrimitive ${signature.navigationPrimitive} expects missing markup evidence: ${marker}.`);
     }
   }
 }

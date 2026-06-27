@@ -20,3 +20,14 @@ Selected source image:
 ```text
 /Users/nick/.codex/generated_images/019ef99b-6393-72a2-abae-52fc87e0f90d/ig_0106e898a42ae620016a3c9306d68081909d1c68faf4c00448.png
 ```
+
+## Site-O-Mattic Image Style Contract
+
+Use this contract for regeneration and visual review:
+
+- Photorealistic, realistic editorial service photography for a premium local-service website hero.
+- The actual service, visible outcome, or service evidence must be clear at a glance; avoid vague atmosphere.
+- Use a 16:9 wide horizontal landscape crop with copy-friendly negative space for a headline overlay.
+- Show a believable environment, natural light, useful tools/materials, and restrained local-business polish.
+- Avoid generic stock-photo gloss, exaggerated smiles, fake uniforms, fake review/rating props, and over-staged showroom perfection.
+- No readable text, no fake signage, no visible brand names, no logos, no watermarks, no distorted hands, and no broken tools or impossible anatomy.

@@ -4,39 +4,19 @@
   "source": "structural-blueprint-signatures",
   "nearest": [
     {
-      "left": "mocktail-beverage-cart",
-      "right": "wood-fired-pizza-taco-catering",
+      "left": "lawn-care-service",
+      "right": "plant-care",
+      "distance": 245
+    },
+    {
+      "left": "headshot-brand-photography",
+      "right": "pet-portrait-photography",
       "distance": 250
-    },
-    {
-      "left": "mobile-auto-detailing",
-      "right": "photo-booth-rental",
-      "distance": 259
-    },
-    {
-      "left": "dessert-table-bakery-catering",
-      "right": "pollinator-garden-refresh",
-      "distance": 267
-    },
-    {
-      "left": "picnic-proposal-setup",
-      "right": "pollinator-garden-refresh",
-      "distance": 267
     },
     {
       "left": "dessert-table-bakery-catering",
       "right": "picnic-proposal-setup",
-      "distance": 268
-    },
-    {
-      "left": "deck-fence-staining",
-      "right": "mural-window-lettering-artist",
-      "distance": 272
-    },
-    {
-      "left": "lawn-care-service",
-      "right": "plant-care",
-      "distance": 273
+      "distance": 271
     },
     {
       "left": "coffee-cart-catering",
@@ -49,64 +29,44 @@
       "distance": 277
     },
     {
-      "left": "coffee-cart-catering",
-      "right": "mocktail-beverage-cart",
-      "distance": 280
+      "left": "mobile-auto-detailing",
+      "right": "photo-booth-rental",
+      "distance": 277
     },
     {
-      "left": "pet-portrait-photography",
-      "right": "pollinator-garden-refresh",
-      "distance": 285
+      "left": "deck-fence-staining",
+      "right": "mural-window-lettering-artist",
+      "distance": 281
+    },
+    {
+      "left": "balloon-garland-party-backdrop",
+      "right": "headshot-brand-photography",
+      "distance": 286
+    },
+    {
+      "left": "balloon-garland-party-backdrop",
+      "right": "pet-portrait-photography",
+      "distance": 286
+    },
+    {
+      "left": "mocktail-beverage-cart",
+      "right": "wood-fired-pizza-taco-catering",
+      "distance": 286
     },
     {
       "left": "balloon-garland-party-backdrop",
       "right": "dessert-table-bakery-catering",
-      "distance": 286
-    },
-    {
-      "left": "balloon-garland-party-backdrop",
-      "right": "pet-portrait-photography",
-      "distance": 286
-    },
-    {
-      "left": "dessert-table-bakery-catering",
-      "right": "pet-portrait-photography",
-      "distance": 286
-    },
-    {
-      "left": "interior-color-consultant",
-      "right": "micro-wedding-florals",
-      "distance": 286
-    },
-    {
-      "left": "pet-portrait-photography",
-      "right": "picnic-proposal-setup",
-      "distance": 286
-    },
-    {
-      "left": "micro-wedding-florals",
-      "right": "senior-downsizing-move-prep",
-      "distance": 287
-    },
-    {
-      "left": "solar-panel-cleaning",
-      "right": "vacation-rental-turnover",
-      "distance": 288
+      "distance": 289
     },
     {
       "left": "mobile-bicycle-repair",
-      "right": "mural-window-lettering-artist",
-      "distance": 300
+      "right": "mobile-knife-sharpening",
+      "distance": 297
     },
     {
-      "left": "balloon-garland-party-backdrop",
-      "right": "pollinator-garden-refresh",
-      "distance": 303
-    },
-    {
-      "left": "headshot-brand-photography",
-      "right": "pollinator-garden-refresh",
-      "distance": 303
+      "left": "coffee-cart-catering",
+      "right": "mocktail-beverage-cart",
+      "distance": 298
     },
     {
       "left": "balloon-garland-party-backdrop",
@@ -114,22 +74,17 @@
       "distance": 304
     },
     {
-      "left": "deck-fence-staining",
-      "right": "mobile-knife-sharpening",
-      "distance": 304
-    },
-    {
-      "left": "dessert-table-bakery-catering",
-      "right": "headshot-brand-photography",
+      "left": "furniture-refinishing-repair",
+      "right": "window-cleaning",
       "distance": 304
     },
     {
       "left": "headshot-brand-photography",
-      "right": "pet-portrait-photography",
+      "right": "picnic-proposal-setup",
       "distance": 304
     },
     {
-      "left": "headshot-brand-photography",
+      "left": "pet-portrait-photography",
       "right": "picnic-proposal-setup",
       "distance": 304
     },
@@ -139,14 +94,14 @@
       "distance": 304
     },
     {
-      "left": "interior-color-consultant",
-      "right": "senior-downsizing-move-prep",
-      "distance": 305
+      "left": "dessert-table-bakery-catering",
+      "right": "headshot-brand-photography",
+      "distance": 307
     },
     {
-      "left": "deck-fence-staining",
-      "right": "mobile-bicycle-repair",
-      "distance": 306
+      "left": "dessert-table-bakery-catering",
+      "right": "pet-portrait-photography",
+      "distance": 307
     },
     {
       "left": "junk-removal-donation-hauling",
@@ -154,34 +109,34 @@
       "distance": 309
     },
     {
-      "left": "carpet-upholstery-cleaning",
-      "right": "driveway-sealcoating",
-      "distance": 316
+      "left": "pressure-washing-service",
+      "right": "window-cleaning",
+      "distance": 313
     },
     {
-      "left": "balloon-garland-party-backdrop",
-      "right": "headshot-brand-photography",
-      "distance": 322
+      "left": "deck-fence-staining",
+      "right": "mobile-knife-sharpening",
+      "distance": 317
+    },
+    {
+      "left": "carpet-upholstery-cleaning",
+      "right": "driveway-sealcoating",
+      "distance": 319
     },
     {
       "left": "closet-pantry-organization",
       "right": "interior-color-consultant",
-      "distance": 322
+      "distance": 323
     },
     {
-      "left": "closet-pantry-organization",
+      "left": "interior-color-consultant",
+      "right": "senior-downsizing-move-prep",
+      "distance": 325
+    },
+    {
+      "left": "interior-color-consultant",
       "right": "micro-wedding-florals",
-      "distance": 322
-    },
-    {
-      "left": "closet-pantry-organization",
-      "right": "garage-organization",
-      "distance": 330
-    },
-    {
-      "left": "driveway-sealcoating",
-      "right": "pressure-washing-service",
-      "distance": 330
+      "distance": 328
     },
     {
       "left": "furniture-refinishing-repair",
@@ -189,58 +144,48 @@
       "distance": 331
     },
     {
-      "left": "mobile-bicycle-repair",
-      "right": "mobile-knife-sharpening",
-      "distance": 333
-    },
-    {
-      "left": "mobile-bicycle-repair",
-      "right": "pool-cleaning",
-      "distance": 333
-    },
-    {
-      "left": "gutter-cleaning",
-      "right": "micro-wedding-florals",
-      "distance": 334
-    },
-    {
       "left": "mobile-knife-sharpening",
       "right": "mural-window-lettering-artist",
       "distance": 335
     },
     {
-      "left": "carpet-upholstery-cleaning",
-      "right": "window-cleaning",
-      "distance": 338
+      "left": "closet-pantry-organization",
+      "right": "micro-wedding-florals",
+      "distance": 337
     },
     {
-      "left": "closet-pantry-organization",
+      "left": "carpet-upholstery-cleaning",
       "right": "senior-downsizing-move-prep",
       "distance": 338
     },
     {
       "left": "carpet-upholstery-cleaning",
-      "right": "gutter-cleaning",
-      "distance": 339
+      "right": "window-cleaning",
+      "distance": 340
     },
     {
       "left": "driveway-sealcoating",
       "right": "gutter-cleaning",
-      "distance": 339
+      "distance": 340
     },
     {
       "left": "deck-fence-staining",
       "right": "furniture-refinishing-repair",
-      "distance": 340
+      "distance": 341
     },
     {
-      "left": "pressure-washing-service",
-      "right": "window-cleaning",
+      "left": "carpet-upholstery-cleaning",
+      "right": "gutter-cleaning",
       "distance": 342
     },
     {
-      "left": "gutter-cleaning",
-      "right": "pressure-washing-service",
+      "left": "micro-wedding-florals",
+      "right": "senior-downsizing-move-prep",
+      "distance": 342
+    },
+    {
+      "left": "closet-pantry-organization",
+      "right": "garage-organization",
       "distance": 343
     },
     {
@@ -249,59 +194,114 @@
       "distance": 344
     },
     {
-      "left": "senior-downsizing-move-prep",
-      "right": "window-cleaning",
-      "distance": 345
+      "left": "driveway-sealcoating",
+      "right": "pressure-washing-service",
+      "distance": 349
     },
     {
-      "left": "carpet-upholstery-cleaning",
-      "right": "senior-downsizing-move-prep",
-      "distance": 348
-    },
-    {
-      "left": "gutter-cleaning",
-      "right": "senior-downsizing-move-prep",
-      "distance": 348
-    },
-    {
-      "left": "micro-wedding-florals",
-      "right": "window-cleaning",
+      "left": "mobile-bicycle-repair",
+      "right": "pool-cleaning",
       "distance": 351
+    },
+    {
+      "left": "coffee-cart-catering",
+      "right": "holiday-light-installation",
+      "distance": 354
+    },
+    {
+      "left": "deck-fence-staining",
+      "right": "mobile-bicycle-repair",
+      "distance": 354
+    },
+    {
+      "left": "mobile-bicycle-repair",
+      "right": "mural-window-lettering-artist",
+      "distance": 354
+    },
+    {
+      "left": "closet-pantry-organization",
+      "right": "pollinator-garden-refresh",
+      "distance": 355
     },
     {
       "left": "gutter-cleaning",
       "right": "interior-color-consultant",
-      "distance": 352
+      "distance": 355
     },
     {
       "left": "carpet-upholstery-cleaning",
-      "right": "holiday-light-installation",
-      "distance": 353
+      "right": "mural-window-lettering-artist",
+      "distance": 356
     },
     {
       "left": "carpet-upholstery-cleaning",
-      "right": "plant-care",
-      "distance": 353
+      "right": "smart-home-setup",
+      "distance": 356
+    },
+    {
+      "left": "carpet-upholstery-cleaning",
+      "right": "vacation-rental-turnover",
+      "distance": 356
+    },
+    {
+      "left": "senior-downsizing-move-prep",
+      "right": "vacation-rental-turnover",
+      "distance": 356
+    },
+    {
+      "left": "closet-pantry-organization",
+      "right": "gutter-cleaning",
+      "distance": 357
+    },
+    {
+      "left": "closet-pantry-organization",
+      "right": "senior-downsizing-move-prep",
+      "distance": 357
+    },
+    {
+      "left": "senior-downsizing-move-prep",
+      "right": "window-cleaning",
+      "distance": 357
+    },
+    {
+      "left": "dessert-table-bakery-catering",
+      "right": "vacation-rental-turnover",
+      "distance": 358
     },
     {
       "left": "driveway-sealcoating",
-      "right": "plant-care",
-      "distance": 353
+      "right": "window-cleaning",
+      "distance": 358
     },
     {
-      "left": "gutter-cleaning",
-      "right": "holiday-light-installation",
-      "distance": 353
+      "left": "picnic-proposal-setup",
+      "right": "vacation-rental-turnover",
+      "distance": 358
     },
     {
-      "left": "headshot-brand-photography",
-      "right": "senior-downsizing-move-prep",
-      "distance": 353
+      "left": "pressure-washing-service",
+      "right": "small-event-dj-sound",
+      "distance": 358
     },
     {
-      "left": "holiday-light-installation",
-      "right": "senior-downsizing-move-prep",
-      "distance": 354
+      "left": "furniture-refinishing-repair",
+      "right": "mural-window-lettering-artist",
+      "distance": 359
+    },
+    {
+      "left": "mobile-bicycle-repair",
+      "right": "pollinator-garden-refresh",
+      "distance": 359
+    },
+    {
+      "left": "mural-window-lettering-artist",
+      "right": "window-cleaning",
+      "distance": 359
+    },
+    {
+      "left": "smart-home-setup",
+      "right": "window-cleaning",
+      "distance": 359
     }
   ],
   "reports": [
@@ -344,7 +344,7 @@
           "shadowTint": "deepGreen"
         },
         "geometry": {
-          "radiusScale": "party-rounded",
+          "radiusScale": "party-8",
           "borderRole": "color plan separators",
           "shadowRole": "backdrop image lift",
           "mediaCrop": "wide backdrop install crop"
@@ -353,6 +353,7 @@
           "cover",
           "image",
           "gallery",
+          "quote",
           "buttons"
         ],
         "styleContract": "Playful and polished with install proof, colorful backdrop evidence, party-yellow action accents, and size-based backdrop cards as the signature move.",
@@ -393,6 +394,10 @@
           "som-balloon-gallery-note",
           "som-style-card",
           "som-balloon-style-card",
+          "som-proof-gallery",
+          "som-balloon-proof-gallery",
+          "som-gallery-quote",
+          "som-balloon-gallery-quote",
           "som-gallery-proof",
           "som-balloon-gallery-proof",
           "som-process-card",
@@ -403,6 +408,8 @@
         "layoutMarkers": [
           "som-balloon-gallery-hero",
           "som-balloon-gallery-image",
+          "som-balloon-proof-gallery",
+          "som-balloon-gallery-quote",
           "som-balloon-style-card",
           "som-balloon-gallery-proof",
           "som-balloon-quote-strip"
@@ -414,10 +421,11 @@
         "Watch: compare gallery-led neighbors for hero geometry, CTA rhythm, and proof treatment.",
         "Fix next: no mechanical visual-sweep failures; judge taste from first viewport screenshots."
       ],
+      "tasteWarnings": [],
       "nearest": [
         {
           "left": "balloon-garland-party-backdrop",
-          "right": "dessert-table-bakery-catering",
+          "right": "headshot-brand-photography",
           "distance": 286
         },
         {
@@ -427,8 +435,8 @@
         },
         {
           "left": "balloon-garland-party-backdrop",
-          "right": "pollinator-garden-refresh",
-          "distance": 303
+          "right": "dessert-table-bakery-catering",
+          "distance": 289
         }
       ]
     },
@@ -440,9 +448,9 @@
         "version": 1,
         "variant": "stain-care",
         "renderFamily": "stain-care",
-        "visualDifferentiator": "soft-home-hero-with-fabric-service-photo; stain-and-fabric-care-cards-with-care-note; trust-proof-badges-after-hero",
+        "visualDifferentiator": "soft-home-hero-with-media-left-fabric-care-board; stain-and-fabric-care-cards-with-hero-care-board; trust-proof-badges-after-hero",
         "archetype": "Indoor stain treatment care plan",
-        "hero": "soft-home-hero-with-fabric-service-photo",
+        "hero": "soft-home-hero-with-media-left-fabric-care-board",
         "navigationTreatment": "top-horizontal-header-with-fabric-care-anchors",
         "typographyTreatment": "soft-domestic-humanist",
         "colorStrategy": "fresh-fabric-teal-with-quiet-cream-air",
@@ -480,9 +488,10 @@
           "columns",
           "image",
           "buttons",
+          "details",
           "list"
         ],
-        "styleContract": "Soft domestic calm with fabric-safe extraction proof, a visible upholstery cleaning moment, teal proof accents, and a fabric care note as the signature move.",
+        "styleContract": "Soft domestic calm with fabric-safe extraction proof, a visible upholstery cleaning moment, teal proof accents, and a first-screen fabric care board as the signature move.",
         "knownRisks": [
           "soft-palette-contrast",
           "generic-cleaning-proof",
@@ -496,7 +505,7 @@
           "drying-process",
           "quote-footer"
         ],
-        "servicePresentation": "stain-and-fabric-care-cards-with-care-note",
+        "servicePresentation": "stain-and-fabric-care-cards-with-hero-care-board",
         "proofTreatment": "trust-proof-badges-after-hero",
         "ctaRhythm": "hero-estimate-buttons-plus-final-fabric-quote",
         "navLabels": [
@@ -511,44 +520,55 @@
         ],
         "componentClassesExpected": [
           "som-fabric-hero",
+          "som-fabric-copy",
+          "som-fabric-media",
           "som-fabric-photo",
           "som-fabric-proof",
           "som-stain-card",
           "som-care-note",
+          "som-fabric-care-list",
+          "som-fabric-detail",
           "som-process-card",
           "som-quote-strip",
           "som-footer"
         ],
         "layoutMarkers": [
           "som-fabric-hero",
+          "som-fabric-copy",
+          "som-fabric-media",
           "som-fabric-photo",
           "som-fabric-proof",
           "som-stain-card",
           "som-care-note",
+          "som-fabric-care-list",
+          "som-fabric-detail",
+          "wp:list",
+          "wp:details",
           "som-quote-strip"
         ]
       },
       "notes": [
-        "Works: soft-home-hero-with-fabric-service-photo; stain-and-fabric-care-cards-with-care-note; trust-proof-badges-after-hero should separate this from nearby patterns.",
+        "Works: soft-home-hero-with-media-left-fabric-care-board; stain-and-fabric-care-cards-with-hero-care-board; trust-proof-badges-after-hero should separate this from nearby patterns.",
         "Proof: fabric-safe cleaning process in a real room. carries the niche-specific read.",
         "Watch: compare stain-care neighbors for hero geometry, CTA rhythm, and proof treatment.",
         "Fix next: no mechanical visual-sweep failures; judge taste from first viewport screenshots."
       ],
+      "tasteWarnings": [],
       "nearest": [
         {
           "left": "carpet-upholstery-cleaning",
           "right": "driveway-sealcoating",
-          "distance": 316
+          "distance": 319
         },
         {
           "left": "carpet-upholstery-cleaning",
-          "right": "window-cleaning",
+          "right": "senior-downsizing-move-prep",
           "distance": 338
         },
         {
           "left": "carpet-upholstery-cleaning",
-          "right": "gutter-cleaning",
-          "distance": 339
+          "right": "window-cleaning",
+          "distance": 340
         }
       ]
     },
@@ -563,7 +583,7 @@
         "visualDifferentiator": "Use a split hero with a real organized shelf photo, zone-board proof, home-use package cards, and photo-plan quote flow.",
         "archetype": "Home storage zone board and reset plan",
         "hero": "split-copy-with-organized-shelf-photo-and-zone-board",
-        "navigationTreatment": "split-nav-action-header-with-zone-reset-quote-anchors",
+        "navigationTreatment": "split-header-plus-post-hero-zone-anchor-strip",
         "typographyTreatment": "soft-systems-humanist-sans",
         "colorStrategy": "warm-home-order-with-clear-label-accent",
         "primaryPattern": "consultation-story-flow",
@@ -611,6 +631,7 @@
         "sectionOrder": [
           "split-action-header",
           "storage-zone-hero",
+          "storage-anchor-strip",
           "reset-proof-strip",
           "zone-plan-cards",
           "install-process-board",
@@ -639,6 +660,15 @@
           "som-organizing-hero",
           "som-zone-photo",
           "som-organizing-photo",
+          "som-section-anchor-strip",
+          "som-zone-anchor-strip",
+          "som-organizing-anchor-strip",
+          "som-section-anchor-nav",
+          "som-zone-anchor-nav",
+          "som-organizing-anchor-nav",
+          "som-section-anchor-action",
+          "som-zone-anchor-action",
+          "som-organizing-anchor-action",
           "som-zone-map",
           "som-shelf-map",
           "som-zone-proof",
@@ -657,6 +687,8 @@
           "som-organizing-header",
           "som-organizing-hero",
           "som-organizing-photo",
+          "som-organizing-anchor-strip",
+          "som-organizing-anchor-nav",
           "som-shelf-map",
           "som-reset-proof",
           "som-shelf-card",
@@ -671,21 +703,22 @@
         "Watch: compare zone-grid-planner neighbors for hero geometry, CTA rhythm, and proof treatment.",
         "Fix next: no mechanical visual-sweep failures; judge taste from first viewport screenshots."
       ],
+      "tasteWarnings": [],
       "nearest": [
         {
           "left": "closet-pantry-organization",
           "right": "interior-color-consultant",
-          "distance": 322
+          "distance": 323
         },
         {
           "left": "closet-pantry-organization",
           "right": "micro-wedding-florals",
-          "distance": 322
+          "distance": 337
         },
         {
           "left": "closet-pantry-organization",
           "right": "garage-organization",
-          "distance": 330
+          "distance": 343
         }
       ]
     },
@@ -708,8 +741,8 @@
         "silhouette": "package-menu-board",
         "navigationPrimitive": "menu-utility-header",
         "mobileActionPattern": "date-check-actions",
-        "imageRole": "work-in-progress",
-        "imageEvidence": "live event service moment with package context",
+        "imageRole": "environment-context",
+        "imageEvidence": "espresso cart service in a bright event room with guests, barista, cart equipment, and menu setup visible",
         "ctaRhythmPattern": "date-check",
         "surfaceFamily": "ticket-menu-board",
         "surfaceModel": "ticket-menu-board",
@@ -739,7 +772,7 @@
           "list",
           "buttons"
         ],
-        "styleContract": "Warm event hospitality with package-fit proof, a live espresso cart image, citrus action accents, and a readable menu ticket as the signature move.",
+        "styleContract": "Warm event hospitality with package-fit proof, a bright event-room espresso cart scene, citrus action accents, and a readable menu ticket as the signature move.",
         "knownRisks": [
           "package-card-crowding",
           "date-cta-buried",
@@ -773,6 +806,7 @@
           "som-menu-ticket",
           "som-menu-proof",
           "som-menu-package",
+          "som-menu-table",
           "som-menu-event",
           "som-menu-step",
           "som-quote-strip",
@@ -784,6 +818,8 @@
           "som-menu-photo",
           "som-menu-ticket",
           "som-menu-package",
+          "som-menu-table",
+          "wp:table",
           "som-menu-event",
           "som-menu-step",
           "som-quote-strip"
@@ -791,10 +827,11 @@
       },
       "notes": [
         "Works: Present event packages like a readable menu board, include add-ons and event-fit sections, and frame the primary action as checking the date. should separate this from nearby patterns.",
-        "Proof: live event service moment with package context. carries the niche-specific read.",
+        "Proof: espresso cart service in a bright event room with guests, barista, cart equipment, and menu setup visible. carries the niche-specific read.",
         "Watch: compare package-menu-board neighbors for hero geometry, CTA rhythm, and proof treatment.",
         "Fix next: no mechanical visual-sweep failures; judge taste from first viewport screenshots."
       ],
+      "tasteWarnings": [],
       "nearest": [
         {
           "left": "coffee-cart-catering",
@@ -804,24 +841,29 @@
         {
           "left": "coffee-cart-catering",
           "right": "mocktail-beverage-cart",
-          "distance": 280
+          "distance": 298
+        },
+        {
+          "left": "coffee-cart-catering",
+          "right": "holiday-light-installation",
+          "distance": 354
         }
       ]
     },
     {
       "slug": "deck-fence-staining",
       "name": "CedarLine Stain Co.",
-      "layoutVariant": "workshop-bench",
+      "layoutVariant": "deck-finish-sample-board",
       "signature": {
         "version": 1,
-        "variant": "workshop-bench",
+        "variant": "deck-finish-sample-board",
         "renderFamily": "workshop-bench",
-        "visualDifferentiator": "Use close-up craft imagery, materials/process chips, a stacked timeline, gallery/proof, care notes, and send-a-photo CTAs.",
-        "archetype": "Craft-forward workshop bench service",
-        "hero": "wide-craft-photo-with-bench-ticket-and-side-labels",
-        "navigationTreatment": "side-top-hybrid-with-craft-forward-work-method-quote-labels",
+        "visualDifferentiator": "Lead with the deck or fence material photo and a compact finish-sample table so the page reads as board inspection, not seasonal date urgency.",
+        "archetype": "Deck and fence finish sample board",
+        "hero": "image-first-material-photo-with-finish-sample-table",
+        "navigationTreatment": "side-top-hybrid-with-board-prep-quote-labels",
         "typographyTreatment": "craft-bench-sturdy-serif-sans",
-        "colorStrategy": "workshop-material-tones-with-tool-accent",
+        "colorStrategy": "cedar-material-board-with-copper-sample-action",
         "primaryPattern": "workshop-bench-photo-quote",
         "secondaryPattern": "material-proof-process-reassurance",
         "silhouette": "operator-console",
@@ -831,7 +873,7 @@
         "imageEvidence": "material/process closeup with craft detail",
         "ctaRhythmPattern": "photo-first",
         "surfaceFamily": "outlined-repeaters",
-        "surfaceModel": "workshop-bench-panels",
+        "surfaceModel": "finish-sample-table-with-material-scope-cards",
         "styleFamily": "material-workbench",
         "density": "balanced-editorial",
         "colorRoles": {
@@ -839,11 +881,11 @@
           "paper": "cream",
           "field": "mist",
           "line": "soil",
-          "primary": "grass",
+          "primary": "leaf",
           "action": "sun",
           "proof": "leaf",
           "muted": "soil",
-          "warning": "sun",
+          "warning": "leaf",
           "shadowTint": "deepGreen"
         },
         "geometry": {
@@ -855,10 +897,12 @@
         "coreBlockPlan": [
           "columns",
           "image",
+          "table",
+          "details",
           "list",
           "buttons"
         ],
-        "styleContract": "Craft-forward and material honest with stain-window proof, close wood-grain work evidence, tool-gold action accents, and a bench ticket as the signature move.",
+        "styleContract": "Craft-forward and material honest with stain-window proof, close wood-grain work evidence, amber action accents, and a finish-sample table as the signature move.",
         "knownRisks": [
           "wood-photo-too-abstract",
           "care-note-too-long",
@@ -866,19 +910,19 @@
         ],
         "sectionOrder": [
           "compact-workshop-header",
-          "craft-bench-hero",
+          "image-first-finish-sample-hero",
           "material-proof-rail",
           "wood-scope-bench",
           "craft-process-stack",
           "care-note-quote",
           "footer"
         ],
-        "servicePresentation": "wood-scope-cards-with-material-bench-note",
-        "proofTreatment": "material-proof-rail-with-craft-stats",
-        "ctaRhythm": "hero-send-photo-plus-final-care-note-quote",
+        "servicePresentation": "finish-sample-cards-with-material-scope-table",
+        "proofTreatment": "wood-condition-proof-rail-with-weather-window",
+        "ctaRhythm": "hero-send-board-photos-plus-final-stain-window-quote",
         "navLabels": [
-          "Wood",
-          "Process",
+          "Boards",
+          "Prep",
           "Quote"
         ],
         "anchorOrder": [
@@ -888,51 +932,59 @@
         ],
         "componentClassesExpected": [
           "som-workshop-page",
+          "som-deck-page",
           "som-workshop-header",
+          "som-deck-header",
           "som-workshop-hero",
+          "som-deck-hero",
           "som-workshop-photo",
+          "som-deck-photo",
           "som-workshop-ticket",
+          "som-deck-ticket",
           "som-material-proof",
+          "som-deck-proof",
           "som-wood-card",
+          "som-deck-card",
           "som-care-note",
+          "som-deck-care-note",
           "som-craft-step",
+          "som-deck-step",
           "som-quote-strip",
-          "som-footer"
+          "som-deck-quote-strip"
         ],
         "layoutMarkers": [
-          "som-workshop-page",
-          "som-workshop-header",
-          "som-workshop-hero",
-          "som-workshop-photo",
-          "som-workshop-ticket",
-          "som-material-proof",
-          "som-wood-card",
-          "som-care-note",
-          "som-craft-step",
-          "som-quote-strip"
+          "som-deck-page",
+          "som-deck-header",
+          "som-deck-hero",
+          "som-deck-photo",
+          "som-deck-ticket",
+          "som-deck-proof",
+          "som-deck-card",
+          "som-deck-quote-strip"
         ]
       },
       "notes": [
-        "Works: Use close-up craft imagery, materials/process chips, a stacked timeline, gallery/proof, care notes, and send-a-photo CTAs. should separate this from nearby patterns.",
+        "Works: Lead with the deck or fence material photo and a compact finish-sample table so the page reads as board inspection, not seasonal date urgency. should separate this from nearby patterns.",
         "Proof: material/process closeup with craft detail. carries the niche-specific read.",
         "Watch: compare workshop-bench neighbors for hero geometry, CTA rhythm, and proof treatment.",
         "Fix next: no mechanical visual-sweep failures; judge taste from first viewport screenshots."
       ],
+      "tasteWarnings": [],
       "nearest": [
         {
           "left": "deck-fence-staining",
           "right": "mural-window-lettering-artist",
-          "distance": 272
+          "distance": 281
         },
         {
           "left": "deck-fence-staining",
           "right": "mobile-knife-sharpening",
-          "distance": 304
+          "distance": 317
         },
         {
           "left": "deck-fence-staining",
-          "right": "mobile-bicycle-repair",
-          "distance": 306
+          "right": "furniture-refinishing-repair",
+          "distance": 341
         }
       ]
     },
@@ -944,9 +996,9 @@
         "version": 1,
         "variant": "dessert-table-gallery",
         "renderFamily": "gallery-led",
-        "visualDifferentiator": "Use the dessert table as the first proof moment, then flavor/style cards, design steps, serving notes, and a date inquiry.",
+        "visualDifferentiator": "Use the dessert table as the first proof moment, with portion/flavor proof in a hero menu board, then style cards, design steps, serving notes, and a date inquiry.",
         "archetype": "Celebration dessert table gallery",
-        "hero": "dessert-table-proof-hero-with-flavor-gallery-note",
+        "hero": "dessert-table-proof-hero-with-flavor-menu-board",
         "navigationTreatment": "soft-gallery-nav-with-flavors-process-date-anchors",
         "typographyTreatment": "bakery-editorial-serif-with-clean-menu-labels",
         "colorStrategy": "frosted-paper-with-berry-and-gold-action",
@@ -968,14 +1020,14 @@
           "field": "mist",
           "line": "leaf",
           "primary": "grass",
-          "action": "sun",
+          "action": "leaf",
           "proof": "leaf",
           "muted": "soil",
           "warning": "sun",
           "shadowTint": "deepGreen"
         },
         "geometry": {
-          "radiusScale": "frosted-gallery-radius",
+          "radiusScale": "frosted-gallery-8",
           "borderRole": "flavor card dividers",
           "shadowRole": "dessert stage only",
           "mediaCrop": "wide dessert table crop"
@@ -996,13 +1048,12 @@
         "sectionOrder": [
           "sweet-gallery-header",
           "dessert-gallery-hero",
-          "flavor-proof-strip",
           "table-style-cards",
           "design-process-panel",
           "dessert-inquiry-footer"
         ],
         "servicePresentation": "dessert-style-cards-with-flavor-caption-panel",
-        "proofTreatment": "celebration-proof-strip-before-style-cards",
+        "proofTreatment": "portion-and-flavor-menu-board-inside-hero",
         "ctaRhythm": "hero-design-table-plus-final-flavor-brief",
         "navLabels": [
           "Styles",
@@ -1025,42 +1076,51 @@
           "som-dessert-gallery-note",
           "som-style-card",
           "som-dessert-style-card",
-          "som-gallery-proof",
-          "som-dessert-gallery-proof",
+          "som-proof-gallery",
+          "som-dessert-proof-gallery",
+          "som-gallery-quote",
+          "som-dessert-gallery-quote",
           "som-process-card",
           "som-dessert-process-card",
           "som-quote-strip",
-          "som-dessert-quote-strip"
+          "som-dessert-quote-strip",
+          "som-dessert-menu-board",
+          "som-dessert-menu-line",
+          "som-dessert-menu-number"
         ],
         "layoutMarkers": [
           "som-dessert-gallery-hero",
           "som-dessert-gallery-image",
+          "som-dessert-proof-gallery",
+          "som-dessert-gallery-quote",
           "som-dessert-style-card",
-          "som-dessert-gallery-proof",
-          "som-dessert-quote-strip"
+          "som-dessert-quote-strip",
+          "som-dessert-menu-board",
+          "som-dessert-menu-line"
         ]
       },
       "notes": [
-        "Works: Use the dessert table as the first proof moment, then flavor/style cards, design steps, serving notes, and a date inquiry. should separate this from nearby patterns.",
+        "Works: Use the dessert table as the first proof moment, with portion/flavor proof in a hero menu board, then style cards, design steps, serving notes, and a date inquiry. should separate this from nearby patterns.",
         "Proof: styled dessert table with tiered cake, tarts, macarons, and final placement detail. carries the niche-specific read.",
         "Watch: compare gallery-led neighbors for hero geometry, CTA rhythm, and proof treatment.",
         "Fix next: no mechanical visual-sweep failures; judge taste from first viewport screenshots."
       ],
+      "tasteWarnings": [],
       "nearest": [
         {
           "left": "dessert-table-bakery-catering",
-          "right": "pollinator-garden-refresh",
-          "distance": 267
-        },
-        {
-          "left": "dessert-table-bakery-catering",
           "right": "picnic-proposal-setup",
-          "distance": 268
+          "distance": 271
         },
         {
           "left": "balloon-garland-party-backdrop",
           "right": "dessert-table-bakery-catering",
-          "distance": 286
+          "distance": 289
+        },
+        {
+          "left": "dessert-table-bakery-catering",
+          "right": "headshot-brand-photography",
+          "distance": 307
         }
       ]
     },
@@ -1111,6 +1171,7 @@
         "coreBlockPlan": [
           "columns",
           "image",
+          "table",
           "buttons",
           "list"
         ],
@@ -1166,21 +1227,22 @@
         "Watch: compare surface-seasonal neighbors for hero geometry, CTA rhythm, and proof treatment.",
         "Fix next: no mechanical visual-sweep failures; judge taste from first viewport screenshots."
       ],
+      "tasteWarnings": [],
       "nearest": [
         {
           "left": "carpet-upholstery-cleaning",
           "right": "driveway-sealcoating",
-          "distance": 316
-        },
-        {
-          "left": "driveway-sealcoating",
-          "right": "pressure-washing-service",
-          "distance": 330
+          "distance": 319
         },
         {
           "left": "driveway-sealcoating",
           "right": "gutter-cleaning",
-          "distance": 339
+          "distance": 340
+        },
+        {
+          "left": "driveway-sealcoating",
+          "right": "pressure-washing-service",
+          "distance": 349
         }
       ]
     },
@@ -1195,32 +1257,32 @@
         "visualDifferentiator": "Use before/after proof for worn pieces, then repair rows, finish methods, care notes, and a send-a-furniture-photo CTA.",
         "archetype": "Furniture restoration before-and-after proof",
         "hero": "split-restoration-hero-with-detail-photo-and-estimate-card",
-        "navigationTreatment": "top-header-with-send-photo-and-finish-method-anchors",
+        "navigationTreatment": "top-header-plus-floating-send-photo-proof-action",
         "typographyTreatment": "restoration-craft-serif-with-shop-sans",
         "colorStrategy": "warm-wood-neutrals-with-brass-repair-action",
         "primaryPattern": "photo-quote-transformation",
         "secondaryPattern": "material-care-proof",
         "silhouette": "split-quote-board",
-        "navigationPrimitive": "compact-header",
-        "mobileActionPattern": "send-photo-estimate-actions",
+        "navigationPrimitive": "floating-proof-action",
+        "mobileActionPattern": "floating-proof-plus-send-photo-actions",
         "imageRole": "process-closeup",
         "imageEvidence": "craftsperson refinishing a wooden furniture piece in a tidy workshop with tools and finish samples",
         "ctaRhythmPattern": "photo-first",
         "surfaceFamily": "outlined-repeaters",
-        "surfaceModel": "repair-surface-rows-with-finish-pills",
+        "surfaceModel": "floating-restoration-proof-action-panel",
         "styleFamily": "material-workbench",
         "density": "balanced-editorial",
         "colorRoles": {
           "ink": "deepGreen",
           "paper": "cream",
           "field": "mist",
-          "line": "leaf",
+          "line": "soil",
           "primary": "grass",
           "action": "sun",
-          "proof": "leaf",
+          "proof": "grass",
           "muted": "soil",
           "warning": "sun",
-          "shadowTint": "deepGreen"
+          "shadowTint": "soil"
         },
         "geometry": {
           "radiusScale": "woodshop-8",
@@ -1231,14 +1293,16 @@
         "coreBlockPlan": [
           "columns",
           "image",
+          "table",
+          "details",
           "list",
           "buttons"
         ],
-        "styleContract": "Patient and tactile with material proof, real refinishing evidence, brass action accents, and a send-photo estimate strip as the signature move.",
+        "styleContract": "Patient and tactile with material proof, real refinishing evidence, brass accent behavior, and a floating send-photo proof action panel as the signature move.",
         "knownRisks": [
           "first-viewport-cta",
           "logo-scale",
-          "mobile-crop"
+          "floating-proof-panel-crowding"
         ],
         "sectionOrder": [
           "restoration-header",
@@ -1271,12 +1335,18 @@
           "som-furniture-before-after",
           "som-evidence-card",
           "som-furniture-evidence-card",
+          "som-floating-proof-action",
+          "som-furniture-floating-proof-action",
           "som-quote-strip",
           "som-furniture-quote-strip",
           "som-surface-row",
           "som-furniture-surface-row",
           "som-method-pill",
           "som-furniture-method-pill",
+          "som-method-table",
+          "som-furniture-method-table",
+          "som-method-detail",
+          "som-furniture-method-detail",
           "som-timeline-step",
           "som-furniture-timeline-step",
           "som-proof-grid",
@@ -1288,7 +1358,10 @@
           "som-furniture-split-hero",
           "som-furniture-hero-photo",
           "som-furniture-before-after",
+          "som-furniture-floating-proof-action",
           "som-furniture-surface-row",
+          "som-furniture-method-table",
+          "som-furniture-method-detail",
           "som-furniture-quote-strip"
         ]
       },
@@ -1298,7 +1371,13 @@
         "Watch: compare before-after-quote neighbors for hero geometry, CTA rhythm, and proof treatment.",
         "Fix next: no mechanical visual-sweep failures; judge taste from first viewport screenshots."
       ],
+      "tasteWarnings": [],
       "nearest": [
+        {
+          "left": "furniture-refinishing-repair",
+          "right": "window-cleaning",
+          "distance": 304
+        },
         {
           "left": "furniture-refinishing-repair",
           "right": "pressure-washing-service",
@@ -1307,7 +1386,7 @@
         {
           "left": "deck-fence-staining",
           "right": "furniture-refinishing-repair",
-          "distance": 340
+          "distance": 341
         }
       ]
     },
@@ -1420,11 +1499,12 @@
         "Watch: compare zone-grid-planner neighbors for hero geometry, CTA rhythm, and proof treatment.",
         "Fix next: no mechanical visual-sweep failures; judge taste from first viewport screenshots."
       ],
+      "tasteWarnings": [],
       "nearest": [
         {
           "left": "closet-pantry-organization",
           "right": "garage-organization",
-          "distance": 330
+          "distance": 343
         },
         {
           "left": "garage-organization",
@@ -1441,9 +1521,9 @@
         "version": 1,
         "variant": "risk-prevention",
         "renderFamily": "risk-prevention",
-        "visualDifferentiator": "roofline-photo-left-with-risk-copy-panel; warning-sign-rows-with-home-risk-panel; prevention-badges-before-plan",
+        "visualDifferentiator": "roofline-cover-with-storm-warning-board; hero-warning-list-plus-warning-sign-rows; compact-prevention-status-strip-before-plan",
         "archetype": "Warning-sign risk prevention service",
-        "hero": "roofline-photo-left-with-risk-copy-panel",
+        "hero": "roofline-cover-with-storm-warning-board",
         "navigationTreatment": "top-horizontal-header-with-risk-anchors",
         "typographyTreatment": "sturdy-safety-sans",
         "colorStrategy": "deep-protection-contrast-with-warning-accent",
@@ -1456,7 +1536,7 @@
         "imageEvidence": "visible home-risk mitigation work",
         "ctaRhythmPattern": "call-first",
         "surfaceFamily": "single-elevated-proof",
-        "surfaceModel": "warning-rows-proof-strip",
+        "surfaceModel": "cover-warning-board-proof-strip",
         "styleFamily": "operator-console",
         "density": "balanced-editorial",
         "colorRoles": {
@@ -1475,15 +1555,15 @@
           "radiusScale": "utility-6",
           "borderRole": "warning row dividers",
           "shadowRole": "risk hero and quote only",
-          "mediaCrop": "roofline work crop"
+          "mediaCrop": "roofline cover crop"
         },
         "coreBlockPlan": [
+          "cover",
           "columns",
-          "image",
           "list",
           "buttons"
         ],
-        "styleContract": "Protective and seasonal with overflow-prevention proof, roofline cleaning evidence, controlled amber warning accents, and warning-sign rows as the signature move.",
+        "styleContract": "Protective and seasonal with overflow-prevention proof, roofline cleaning evidence, controlled amber warning accents, and a storm-check warning board as the signature move.",
         "knownRisks": [
           "warning-color-overuse",
           "roofline-photo-crop",
@@ -1491,14 +1571,14 @@
         ],
         "sectionOrder": [
           "navigation",
-          "risk-hero",
+          "risk-cover-warning-board",
           "risk-proof-band",
           "warning-sign-rows",
           "prevention-plan",
           "quote-footer"
         ],
-        "servicePresentation": "warning-sign-rows-with-home-risk-panel",
-        "proofTreatment": "prevention-badges-before-plan",
+        "servicePresentation": "hero-warning-list-plus-warning-sign-rows",
+        "proofTreatment": "compact-prevention-status-strip-before-plan",
         "ctaRhythm": "hero-phone-plus-seasonal-risk-band",
         "navLabels": [
           "Warning signs",
@@ -1512,7 +1592,9 @@
         ],
         "componentClassesExpected": [
           "som-risk-hero",
+          "som-risk-panel",
           "som-risk-band",
+          "som-risk-status",
           "som-warning-row",
           "som-plan-step",
           "som-proof-card",
@@ -1520,34 +1602,38 @@
           "som-footer"
         ],
         "layoutMarkers": [
+          "wp:cover",
           "som-risk-hero",
+          "som-risk-checklist",
           "som-risk-band",
+          "som-risk-status",
           "som-warning-row",
           "som-plan-step",
           "som-quote-strip"
         ]
       },
       "notes": [
-        "Works: roofline-photo-left-with-risk-copy-panel; warning-sign-rows-with-home-risk-panel; prevention-badges-before-plan should separate this from nearby patterns.",
+        "Works: roofline-cover-with-storm-warning-board; hero-warning-list-plus-warning-sign-rows; compact-prevention-status-strip-before-plan should separate this from nearby patterns.",
         "Proof: visible home-risk mitigation work. carries the niche-specific read.",
         "Watch: compare risk-prevention neighbors for hero geometry, CTA rhythm, and proof treatment.",
         "Fix next: no mechanical visual-sweep failures; judge taste from first viewport screenshots."
       ],
+      "tasteWarnings": [],
       "nearest": [
         {
-          "left": "gutter-cleaning",
-          "right": "micro-wedding-florals",
-          "distance": 334
+          "left": "driveway-sealcoating",
+          "right": "gutter-cleaning",
+          "distance": 340
         },
         {
           "left": "carpet-upholstery-cleaning",
           "right": "gutter-cleaning",
-          "distance": 339
+          "distance": 342
         },
         {
-          "left": "driveway-sealcoating",
-          "right": "gutter-cleaning",
-          "distance": 339
+          "left": "gutter-cleaning",
+          "right": "interior-color-consultant",
+          "distance": 355
         }
       ]
     },
@@ -1567,46 +1653,48 @@
         "colorStrategy": "studio-neutral-paper-with-camera-blue-action",
         "primaryPattern": "gallery-led-portfolio-proof",
         "secondaryPattern": "prep-confidence-proof",
-        "silhouette": "editorial-proof-stage",
+        "silhouette": "gallery-mosaic-proof",
         "navigationPrimitive": "compact-header",
-        "mobileActionPattern": "post-hero-consult-actions",
+        "mobileActionPattern": "section-anchor-plus-inline-phone",
         "imageRole": "operator-or-founder",
         "imageEvidence": "studio headshot session with photographer, client, lighting, and camera setup",
-        "ctaRhythmPattern": "consult-first",
+        "ctaRhythmPattern": "book-first",
         "surfaceFamily": "gallery-mosaic",
-        "surfaceModel": "session-package-cards-with-prep-captions",
+        "surfaceModel": "studio-proof-gallery-with-session-package-cards",
         "styleFamily": "editorial-proof-stage",
-        "density": "balanced-editorial",
+        "density": "visual-first",
         "colorRoles": {
           "ink": "deepGreen",
           "paper": "cream",
           "field": "mist",
-          "line": "leaf",
+          "line": "mist",
           "primary": "grass",
           "action": "sun",
-          "proof": "leaf",
+          "proof": "grass",
           "muted": "soil",
           "warning": "sun",
-          "shadowTint": "deepGreen"
+          "shadowTint": "grass"
         },
         "geometry": {
-          "radiusScale": "studio-clean-8",
-          "borderRole": "session card separators",
-          "shadowRole": "studio proof image lift",
-          "mediaCrop": "wide studio headshot setup crop"
+          "radiusScale": "studio-ledger-8",
+          "borderRole": "ledger rows and session receipt separators",
+          "shadowRole": "studio media lift only",
+          "mediaCrop": "studio session proof crop"
         },
         "coreBlockPlan": [
-          "cover",
           "image",
           "gallery",
+          "columns",
           "quote",
+          "navigation",
           "buttons"
         ],
-        "styleContract": "Polished and reassuring with prep proof, real studio headshot evidence, camera-blue action accents, and session usage cards as the signature move.",
+        "styleContract": "Polished and precise with prep proof, real studio headshot evidence, camera-blue proof accents, amber booking action, and a studio proof gallery as the signature move.",
         "knownRisks": [
           "first-viewport-cta",
           "logo-scale",
-          "mobile-crop"
+          "gallery-card-mobile",
+          "prep-proof-too-soft"
         ],
         "sectionOrder": [
           "studio-proof-header",
@@ -1640,6 +1728,10 @@
           "som-headshot-gallery-note",
           "som-style-card",
           "som-headshot-style-card",
+          "som-proof-gallery",
+          "som-headshot-proof-gallery",
+          "som-gallery-quote",
+          "som-headshot-gallery-quote",
           "som-gallery-proof",
           "som-headshot-gallery-proof",
           "som-process-card",
@@ -1650,6 +1742,8 @@
         "layoutMarkers": [
           "som-headshot-gallery-hero",
           "som-headshot-gallery-image",
+          "som-headshot-proof-gallery",
+          "som-headshot-gallery-quote",
           "som-headshot-style-card",
           "som-headshot-gallery-proof",
           "som-headshot-quote-strip"
@@ -1661,20 +1755,21 @@
         "Watch: compare gallery-led neighbors for hero geometry, CTA rhythm, and proof treatment.",
         "Fix next: no mechanical visual-sweep failures; judge taste from first viewport screenshots."
       ],
+      "tasteWarnings": [],
       "nearest": [
         {
           "left": "headshot-brand-photography",
-          "right": "pollinator-garden-refresh",
-          "distance": 303
+          "right": "pet-portrait-photography",
+          "distance": 250
         },
         {
-          "left": "dessert-table-bakery-catering",
+          "left": "balloon-garland-party-backdrop",
           "right": "headshot-brand-photography",
-          "distance": 304
+          "distance": 286
         },
         {
           "left": "headshot-brand-photography",
-          "right": "pet-portrait-photography",
+          "right": "picnic-proposal-setup",
           "distance": 304
         }
       ]
@@ -1691,8 +1786,8 @@
         "archetype": "Seasonal checklist service with date pressure",
         "hero": "dusk-install-photo-with-reserve-date-board",
         "navigationTreatment": "utility-header-with-urgent-cta-and-short-anchors",
-        "typographyTreatment": "urgent-utility-checklist",
-        "colorStrategy": "alert-ready-contrast-with-controlled-warning-color",
+        "typographyTreatment": "holiday-editorial-proof-serif-with-date-sans",
+        "colorStrategy": "black-cherry-editorial-urgency-with-warm-proof-color",
         "primaryPattern": "date-window-reservation",
         "secondaryPattern": "checklist-safety-date-proof",
         "silhouette": "viewport-safe-conversion-shell",
@@ -1701,9 +1796,9 @@
         "imageRole": "environment-context",
         "imageEvidence": "seasonal work in progress with safety context",
         "ctaRhythmPattern": "date-check",
-        "surfaceFamily": "single-elevated-proof",
+        "surfaceFamily": "receipt-stack",
         "surfaceModel": "date-board-checklist-cards",
-        "styleFamily": "humanist-local-calm",
+        "styleFamily": "editorial-proof-stage",
         "density": "balanced-editorial",
         "colorRoles": {
           "ink": "deepGreen",
@@ -1714,7 +1809,7 @@
           "action": "sun",
           "proof": "leaf",
           "muted": "soil",
-          "warning": "sun",
+          "warning": "grass",
           "shadowTint": "deepGreen"
         },
         "geometry": {
@@ -1729,7 +1824,7 @@
           "details",
           "buttons"
         ],
-        "styleContract": "Crisp blue-hour urgency with ladder-safety proof, real roofline install evidence, warm-light action accents, and a reserve-date board as the signature move.",
+        "styleContract": "Black-cherry seasonal urgency with warmer editorial proof staging, ladder-safety evidence, restrained warm-light action accents, and a reserve-date board as the signature move.",
         "knownRisks": [
           "seasonal-urgency-too-loud",
           "dark-hero-contrast",
@@ -1789,20 +1884,11 @@
         "Watch: compare urgent-checklist neighbors for hero geometry, CTA rhythm, and proof treatment.",
         "Fix next: no mechanical visual-sweep failures; judge taste from first viewport screenshots."
       ],
+      "tasteWarnings": [],
       "nearest": [
         {
-          "left": "carpet-upholstery-cleaning",
+          "left": "coffee-cart-catering",
           "right": "holiday-light-installation",
-          "distance": 353
-        },
-        {
-          "left": "gutter-cleaning",
-          "right": "holiday-light-installation",
-          "distance": 353
-        },
-        {
-          "left": "holiday-light-installation",
-          "right": "senior-downsizing-move-prep",
           "distance": 354
         }
       ]
@@ -1893,16 +1979,24 @@
           "som-color-proof-band",
           "som-check-card",
           "som-color-support-card",
+          "som-check-detail",
+          "som-color-detail",
+          "som-check-quote",
+          "som-color-quote",
           "som-proof-card",
           "som-color-proof-card",
           "som-quote-strip",
-          "som-color-consult-strip"
+          "som-color-consult-strip",
+          "som-color-header-action"
         ],
         "layoutMarkers": [
           "som-color-story-hero",
           "som-color-proof-band",
           "som-color-support-card",
-          "som-color-consult-strip"
+          "som-color-detail",
+          "som-color-quote",
+          "som-color-consult-strip",
+          "som-color-header-action"
         ]
       },
       "notes": [
@@ -1911,21 +2005,22 @@
         "Watch: compare checklist-urgency neighbors for hero geometry, CTA rhythm, and proof treatment.",
         "Fix next: no mechanical visual-sweep failures; judge taste from first viewport screenshots."
       ],
+      "tasteWarnings": [],
       "nearest": [
         {
-          "left": "interior-color-consultant",
-          "right": "micro-wedding-florals",
-          "distance": 286
+          "left": "closet-pantry-organization",
+          "right": "interior-color-consultant",
+          "distance": 323
         },
         {
           "left": "interior-color-consultant",
           "right": "senior-downsizing-move-prep",
-          "distance": 305
+          "distance": 325
         },
         {
-          "left": "closet-pantry-organization",
-          "right": "interior-color-consultant",
-          "distance": 322
+          "left": "interior-color-consultant",
+          "right": "micro-wedding-florals",
+          "distance": 328
         }
       ]
     },
@@ -1976,6 +2071,7 @@
         "coreBlockPlan": [
           "columns",
           "navigation",
+          "quote",
           "buttons",
           "list"
         ],
@@ -2037,6 +2133,7 @@
         "Watch: compare side-rail-service neighbors for hero geometry, CTA rhythm, and proof treatment.",
         "Fix next: no mechanical visual-sweep failures; judge taste from first viewport screenshots."
       ],
+      "tasteWarnings": [],
       "nearest": [
         {
           "left": "junk-removal-donation-hauling",
@@ -2161,11 +2258,12 @@
         "Watch: compare lawn-route-status-board neighbors for hero geometry, CTA rhythm, and proof treatment.",
         "Fix next: no mechanical visual-sweep failures; judge taste from first viewport screenshots."
       ],
+      "tasteWarnings": [],
       "nearest": [
         {
           "left": "lawn-care-service",
           "right": "plant-care",
-          "distance": 273
+          "distance": 245
         }
       ]
     },
@@ -2180,20 +2278,20 @@
         "visualDifferentiator": "Use a calm consult flow for bouquets, personals, and small installations with date, palette, venue, and setup proof.",
         "archetype": "Intimate floral consultation flow",
         "hero": "romantic-floral-story-hero-with-date-checklist",
-        "navigationTreatment": "quiet-top-header-with-floral-date-action",
+        "navigationTreatment": "post-hero-floral-section-anchor-strip-with-quiet-header",
         "typographyTreatment": "romantic-editorial-serif-with-calm-planning-sans",
         "colorStrategy": "soft-petal-neutrals-with-stem-green-and-coral-action",
         "primaryPattern": "consultation-story-flow",
         "secondaryPattern": "date-and-style-proof",
         "silhouette": "consultation-story-flow",
-        "navigationPrimitive": "compact-header",
-        "mobileActionPattern": "soft-date-check-actions",
+        "navigationPrimitive": "section-anchor-strip",
+        "mobileActionPattern": "post-hero-floral-anchor-actions",
         "imageRole": "process-closeup",
         "imageEvidence": "florist arranging micro-wedding bouquet and small ceremony florals on a prep table",
-        "ctaRhythmPattern": "date-check",
-        "surfaceFamily": "single-elevated-proof",
-        "surfaceModel": "floral-support-cards-with-date-proof",
-        "styleFamily": "humanist-local-calm",
+        "ctaRhythmPattern": "consult-first",
+        "surfaceFamily": "mostly-flat",
+        "surfaceModel": "flat-floral-brief-anchor-strip-with-outlined-support-cards",
+        "styleFamily": "editorial-proof-stage",
         "density": "balanced-editorial",
         "colorRoles": {
           "ink": "deepGreen",
@@ -2209,18 +2307,19 @@
         },
         "geometry": {
           "radiusScale": "petal-soft-8",
-          "borderRole": "floral support card borders",
-          "shadowRole": "single proof panel",
+          "borderRole": "outlined floral brief and support card borders",
+          "shadowRole": "hero media only with flat consult surfaces",
           "mediaCrop": "floral prep closeup crop"
         },
         "coreBlockPlan": [
           "columns",
+          "navigation",
           "list",
           "quote",
           "details",
           "buttons"
         ],
-        "styleContract": "Romantic and calm with date proof, real bouquet prep evidence, coral action accents, and floral path support cards as the signature move.",
+        "styleContract": "Romantic editorial calm with bouquet prep proof, coral accent reserved for the consult action, and a post-hero floral brief anchor strip as the signature move.",
         "knownRisks": [
           "first-viewport-cta",
           "logo-scale",
@@ -2229,22 +2328,23 @@
         "sectionOrder": [
           "quiet-floral-header",
           "floral-story-hero",
+          "floral-anchor-strip",
           "date-trust-proof-band",
           "bouquet-support-cards",
           "floral-process-steps",
-          "date-consult-footer"
+          "consult-footer"
         ],
         "servicePresentation": "bouquet-and-installation-cards-with-date-notes",
-        "proofTreatment": "date-and-style-proof-strip-before-packages",
-        "ctaRhythm": "hero-ask-date-plus-midpage-style-proof",
+        "proofTreatment": "date-and-style-proof-strip-after-floral-brief-anchor",
+        "ctaRhythm": "hero-consult-brief-plus-anchor-strip-prompt",
         "navLabels": [
-          "Florals",
+          "Palette",
           "Process",
-          "Date"
+          "Consult"
         ],
         "anchorOrder": [
           "checklist",
-          "proof",
+          "process",
           "quote"
         ],
         "componentClassesExpected": [
@@ -2254,16 +2354,35 @@
           "som-floral-proof-band",
           "som-check-card",
           "som-floral-support-card",
+          "som-check-detail",
+          "som-floral-detail",
+          "som-check-quote",
+          "som-floral-quote",
           "som-proof-card",
           "som-floral-proof-card",
           "som-quote-strip",
-          "som-floral-consult-strip"
+          "som-floral-consult-strip",
+          "som-story-anchor-strip",
+          "som-section-anchor-strip",
+          "som-floral-anchor-strip",
+          "som-story-anchor-nav",
+          "som-section-anchor-nav",
+          "som-floral-anchor-nav",
+          "som-story-anchor-action",
+          "som-section-anchor-action",
+          "som-floral-anchor-action"
         ],
         "layoutMarkers": [
           "som-floral-story-hero",
           "som-floral-proof-band",
           "som-floral-support-card",
-          "som-floral-consult-strip"
+          "som-floral-detail",
+          "som-floral-quote",
+          "som-floral-consult-strip",
+          "som-section-anchor-strip",
+          "som-floral-anchor-strip",
+          "som-section-anchor-nav",
+          "som-floral-anchor-nav"
         ]
       },
       "notes": [
@@ -2272,21 +2391,22 @@
         "Watch: compare checklist-urgency neighbors for hero geometry, CTA rhythm, and proof treatment.",
         "Fix next: no mechanical visual-sweep failures; judge taste from first viewport screenshots."
       ],
+      "tasteWarnings": [],
       "nearest": [
         {
           "left": "interior-color-consultant",
           "right": "micro-wedding-florals",
-          "distance": 286
-        },
-        {
-          "left": "micro-wedding-florals",
-          "right": "senior-downsizing-move-prep",
-          "distance": 287
+          "distance": 328
         },
         {
           "left": "closet-pantry-organization",
           "right": "micro-wedding-florals",
-          "distance": 322
+          "distance": 337
+        },
+        {
+          "left": "micro-wedding-florals",
+          "right": "senior-downsizing-move-prep",
+          "distance": 342
         }
       ]
     },
@@ -2329,13 +2449,15 @@
           "shadowTint": "deepGreen"
         },
         "geometry": {
-          "radiusScale": "gloss-pill",
+          "radiusScale": "gloss-8-with-pill-actions",
           "borderRole": "package card borders",
           "shadowRole": "mobile dock strongest",
           "mediaCrop": "tight glossy service crop"
         },
         "coreBlockPlan": [
           "columns",
+          "table",
+          "details",
           "buttons",
           "list"
         ],
@@ -2398,11 +2520,12 @@
         "Watch: compare fixed-bottom-action neighbors for hero geometry, CTA rhythm, and proof treatment.",
         "Fix next: no mechanical visual-sweep failures; judge taste from first viewport screenshots."
       ],
+      "tasteWarnings": [],
       "nearest": [
         {
           "left": "mobile-auto-detailing",
           "right": "photo-booth-rental",
-          "distance": 259
+          "distance": 277
         }
       ]
     },
@@ -2414,22 +2537,22 @@
         "version": 1,
         "variant": "bike-route-workstand",
         "renderFamily": "workshop-bench",
-        "visualDifferentiator": "Use the portable stand as the visual anchor, pair route-day proof with tune-lane cards, and keep booking language focused on bike photos, tire size, symptoms, and a clean curbside handoff.",
+        "visualDifferentiator": "Use a light portable workstand bay as the visual anchor, pair route-day proof with tune-lane cards, and keep booking language focused on bike photos, tire size, symptoms, and a clean curbside handoff.",
         "archetype": "Curbside bike workstand and route stop",
-        "hero": "curbside-workstand-photo-with-route-ticket-and-ride-check",
+        "hero": "light-workstand-bay-with-curbside-photo-and-route-docket",
         "navigationTreatment": "side-top-hybrid-with-tune-route-booking-labels",
         "typographyTreatment": "technical-bike-service-sans-with-compact-utility-labels",
-        "colorStrategy": "commuter-teal-cream-with-chain-lube-yellow-action",
+        "colorStrategy": "light-commuter-workstand-grid-with-teal-proof-and-yellow-action",
         "primaryPattern": "decision-filter-route-plan",
         "secondaryPattern": "route-day-tune-menu",
-        "silhouette": "operator-console",
+        "silhouette": "route-status-board",
         "navigationPrimitive": "split-side-top-hybrid",
         "mobileActionPattern": "top-booking-button-with-route-note",
-        "imageRole": "work-in-progress",
-        "imageEvidence": "mechanic tuning a bike at curbside mobile work stand",
+        "imageRole": "local-context",
+        "imageEvidence": "curbside mobile bike repair route stop with commuter bike in a workstand, open tool roll, and service van",
         "ctaRhythmPattern": "book-first",
-        "surfaceFamily": "outlined-repeaters",
-        "surfaceModel": "workstand-ticket-with-tune-lane-cards",
+        "surfaceFamily": "status-board",
+        "surfaceModel": "light-workstand-bay-with-route-docket-and-ride-readiness-rail",
         "styleFamily": "clear-status-dashboard",
         "density": "compact-leadgen",
         "colorRoles": {
@@ -2438,29 +2561,31 @@
           "field": "mist",
           "line": "soil",
           "primary": "grass",
-          "action": "sun",
-          "proof": "leaf",
+          "action": "leaf",
+          "proof": "grass",
           "muted": "soil",
           "warning": "sun",
           "shadowTint": "deepGreen"
         },
         "geometry": {
-          "radiusScale": "compact-workstand-radius",
-          "borderRole": "tune lane card rails",
-          "shadowRole": "workstand ticket and ride proof",
-          "mediaCrop": "curbside tune-up action crop"
+          "radiusScale": "compact-workstand-6",
+          "borderRole": "route ticket and ride-readiness status rails",
+          "shadowRole": "hero media and route docket only",
+          "mediaCrop": "curbside workstand context crop"
         },
         "coreBlockPlan": [
           "columns",
           "image",
+          "table",
+          "quote",
           "buttons",
           "list",
           "navigation"
         ],
-        "styleContract": "Technical and friendly with drivetrain proof, curbside workstand evidence, yellow booking accents, and a route-ticket tune bench as the signature move.",
+        "styleContract": "Technical and friendly with a light workstand bay, curbside route proof, mobile workstand context, green booking accents, yellow caution cues, and a route docket as the signature move.",
         "knownRisks": [
-          "workstand-photo-crop",
-          "bike-photo-crop",
+          "curbside-context-crop",
+          "status-rail-overcrowding",
           "route-ticket-copy-too-long"
         ],
         "sectionOrder": [
@@ -2473,7 +2598,7 @@
           "footer"
         ],
         "servicePresentation": "tune-lane-cards-with-ride-readiness-note",
-        "proofTreatment": "ride-readiness-proof-rail-with-route-day-stats",
+        "proofTreatment": "route-docket-plus-ride-readiness-proof-rail",
         "ctaRhythm": "hero-book-tune-plus-final-route-note-quote",
         "navLabels": [
           "Tune lanes",
@@ -2522,26 +2647,27 @@
         ]
       },
       "notes": [
-        "Works: Use the portable stand as the visual anchor, pair route-day proof with tune-lane cards, and keep booking language focused on bike photos, tire size, symptoms, and a clean curbside handoff. should separate this from nearby patterns.",
-        "Proof: mechanic tuning a bike at curbside mobile work stand. carries the niche-specific read.",
+        "Works: Use a light portable workstand bay as the visual anchor, pair route-day proof with tune-lane cards, and keep booking language focused on bike photos, tire size, symptoms, and a clean curbside handoff. should separate this from nearby patterns.",
+        "Proof: curbside mobile bike repair route stop with commuter bike in a workstand, open tool roll, and service van. carries the niche-specific read.",
         "Watch: compare workshop-bench neighbors for hero geometry, CTA rhythm, and proof treatment.",
         "Fix next: no mechanical visual-sweep failures; judge taste from first viewport screenshots."
       ],
+      "tasteWarnings": [],
       "nearest": [
         {
           "left": "mobile-bicycle-repair",
-          "right": "mural-window-lettering-artist",
-          "distance": 300
+          "right": "mobile-knife-sharpening",
+          "distance": 297
+        },
+        {
+          "left": "mobile-bicycle-repair",
+          "right": "pool-cleaning",
+          "distance": 351
         },
         {
           "left": "deck-fence-staining",
           "right": "mobile-bicycle-repair",
-          "distance": 306
-        },
-        {
-          "left": "mobile-bicycle-repair",
-          "right": "mobile-knife-sharpening",
-          "distance": 333
+          "distance": 354
         }
       ]
     },
@@ -2592,6 +2718,8 @@
         "coreBlockPlan": [
           "columns",
           "image",
+          "table",
+          "details",
           "list",
           "buttons"
         ],
@@ -2664,16 +2792,17 @@
         "Watch: compare workshop-bench neighbors for hero geometry, CTA rhythm, and proof treatment.",
         "Fix next: no mechanical visual-sweep failures; judge taste from first viewport screenshots."
       ],
+      "tasteWarnings": [],
       "nearest": [
-        {
-          "left": "deck-fence-staining",
-          "right": "mobile-knife-sharpening",
-          "distance": 304
-        },
         {
           "left": "mobile-bicycle-repair",
           "right": "mobile-knife-sharpening",
-          "distance": 333
+          "distance": 297
+        },
+        {
+          "left": "deck-fence-staining",
+          "right": "mobile-knife-sharpening",
+          "distance": 317
         },
         {
           "left": "mobile-knife-sharpening",
@@ -2712,10 +2841,10 @@
           "ink": "deepGreen",
           "paper": "cream",
           "field": "mist",
-          "line": "leaf",
+          "line": "soil",
           "primary": "grass",
           "action": "sun",
-          "proof": "leaf",
+          "proof": "grass",
           "muted": "soil",
           "warning": "sun",
           "shadowTint": "deepGreen"
@@ -2774,6 +2903,8 @@
           "som-mocktail-menu-proof",
           "som-menu-package",
           "som-mocktail-menu-package",
+          "som-menu-table",
+          "som-mocktail-menu-table",
           "som-menu-event",
           "som-mocktail-menu-event",
           "som-menu-step",
@@ -2788,6 +2919,7 @@
           "som-mocktail-menu-photo",
           "som-mocktail-menu-ticket",
           "som-mocktail-menu-package",
+          "som-mocktail-menu-table",
           "som-mocktail-menu-event",
           "som-mocktail-quote-strip"
         ]
@@ -2798,16 +2930,17 @@
         "Watch: compare package-menu-board neighbors for hero geometry, CTA rhythm, and proof treatment.",
         "Fix next: no mechanical visual-sweep failures; judge taste from first viewport screenshots."
       ],
+      "tasteWarnings": [],
       "nearest": [
         {
           "left": "mocktail-beverage-cart",
           "right": "wood-fired-pizza-taco-catering",
-          "distance": 250
+          "distance": 286
         },
         {
           "left": "coffee-cart-catering",
           "right": "mocktail-beverage-cart",
-          "distance": 280
+          "distance": 298
         }
       ]
     },
@@ -2841,13 +2974,13 @@
           "ink": "deepGreen",
           "paper": "cream",
           "field": "mist",
-          "line": "leaf",
+          "line": "soil",
           "primary": "grass",
           "action": "sun",
-          "proof": "leaf",
+          "proof": "grass",
           "muted": "soil",
           "warning": "sun",
-          "shadowTint": "deepGreen"
+          "shadowTint": "soil"
         },
         "geometry": {
           "radiusScale": "signmaker-6",
@@ -2858,10 +2991,12 @@
         "coreBlockPlan": [
           "columns",
           "image",
+          "table",
+          "quote",
           "list",
           "buttons"
         ],
-        "styleContract": "Creative and precise with surface proof, real storefront painting evidence, signmaker-red action accents, and a project ticket as the signature move.",
+        "styleContract": "Creative and precise with surface proof, real storefront painting evidence, signmaker-red proof accents, brass action, and a project ticket as the signature move.",
         "knownRisks": [
           "first-viewport-cta",
           "logo-scale",
@@ -2928,21 +3063,22 @@
         "Watch: compare workshop-bench neighbors for hero geometry, CTA rhythm, and proof treatment.",
         "Fix next: no mechanical visual-sweep failures; judge taste from first viewport screenshots."
       ],
+      "tasteWarnings": [],
       "nearest": [
         {
           "left": "deck-fence-staining",
           "right": "mural-window-lettering-artist",
-          "distance": 272
-        },
-        {
-          "left": "mobile-bicycle-repair",
-          "right": "mural-window-lettering-artist",
-          "distance": 300
+          "distance": 281
         },
         {
           "left": "mobile-knife-sharpening",
           "right": "mural-window-lettering-artist",
           "distance": 335
+        },
+        {
+          "left": "mobile-bicycle-repair",
+          "right": "mural-window-lettering-artist",
+          "distance": 354
         }
       ]
     },
@@ -2962,14 +3098,14 @@
         "colorStrategy": "studio-paper-neutrals-with-collar-color-action",
         "primaryPattern": "gallery-led-portfolio-proof",
         "secondaryPattern": "pet-comfort-session-prep",
-        "silhouette": "editorial-proof-stage",
+        "silhouette": "gallery-mosaic-proof",
         "navigationPrimitive": "compact-header",
-        "mobileActionPattern": "post-hero-session-actions",
-        "imageRole": "work-in-progress",
+        "mobileActionPattern": "section-anchor-plus-inline-phone",
+        "imageRole": "operator-or-founder",
         "imageEvidence": "dog portrait studio session with photographer, softbox, and calm posing platform",
-        "ctaRhythmPattern": "consult-first",
+        "ctaRhythmPattern": "book-first",
         "surfaceFamily": "gallery-mosaic",
-        "surfaceModel": "portrait-session-cards-with-comfort-proof",
+        "surfaceModel": "portrait-session-gallery-with-comfort-proof",
         "styleFamily": "editorial-proof-stage",
         "density": "visual-first",
         "colorRoles": {
@@ -2985,23 +3121,25 @@
           "shadowTint": "deepGreen"
         },
         "geometry": {
-          "radiusScale": "soft-studio-portrait",
-          "borderRole": "caption separators",
-          "shadowRole": "hero portrait stage only",
-          "mediaCrop": "wide portrait studio crop"
+          "radiusScale": "portrait-gallery-8",
+          "borderRole": "session cards and comfort proof separators",
+          "shadowRole": "portrait media and proof note only",
+          "mediaCrop": "portrait studio platform crop"
         },
         "coreBlockPlan": [
-          "cover",
           "image",
           "gallery",
+          "navigation",
+          "columns",
           "quote",
           "buttons"
         ],
-        "styleContract": "Warm and polished with pet-comfort proof, real studio portrait evidence, collar-gold action accents, and personality session cards as the signature move.",
+        "styleContract": "Warm editorial portrait proof with pet-comfort cues, real studio session evidence, collar-gold action accents, and a portrait gallery hero as the signature move.",
         "knownRisks": [
           "first-viewport-cta",
           "logo-scale",
-          "mobile-crop"
+          "gallery-hero-mobile-height",
+          "pet-crop"
         ],
         "sectionOrder": [
           "portrait-header",
@@ -3017,7 +3155,7 @@
         "navLabels": [
           "Sessions",
           "Prep",
-          "Date"
+          "Book"
         ],
         "anchorOrder": [
           "styles",
@@ -3035,6 +3173,10 @@
           "som-pet-gallery-note",
           "som-style-card",
           "som-pet-style-card",
+          "som-proof-gallery",
+          "som-pet-proof-gallery",
+          "som-gallery-quote",
+          "som-pet-gallery-quote",
           "som-gallery-proof",
           "som-pet-gallery-proof",
           "som-process-card",
@@ -3045,6 +3187,8 @@
         "layoutMarkers": [
           "som-pet-gallery-hero",
           "som-pet-gallery-image",
+          "som-pet-proof-gallery",
+          "som-pet-gallery-quote",
           "som-pet-style-card",
           "som-pet-gallery-proof",
           "som-pet-quote-strip"
@@ -3056,11 +3200,12 @@
         "Watch: compare gallery-led neighbors for hero geometry, CTA rhythm, and proof treatment.",
         "Fix next: no mechanical visual-sweep failures; judge taste from first viewport screenshots."
       ],
+      "tasteWarnings": [],
       "nearest": [
         {
-          "left": "pet-portrait-photography",
-          "right": "pollinator-garden-refresh",
-          "distance": 285
+          "left": "headshot-brand-photography",
+          "right": "pet-portrait-photography",
+          "distance": 250
         },
         {
           "left": "balloon-garland-party-backdrop",
@@ -3068,9 +3213,9 @@
           "distance": 286
         },
         {
-          "left": "dessert-table-bakery-catering",
-          "right": "pet-portrait-photography",
-          "distance": 286
+          "left": "pet-portrait-photography",
+          "right": "picnic-proposal-setup",
+          "distance": 304
         }
       ]
     },
@@ -3092,10 +3237,10 @@
         "secondaryPattern": "package-comparison-proof",
         "silhouette": "mobile-action-dock",
         "navigationPrimitive": "fixed-bottom-mobile-cta",
-        "mobileActionPattern": "reserve-date-bottom-dock",
-        "imageRole": "work-in-progress",
-        "imageEvidence": "open-air photo booth kiosk with attendant, guests, props, and event backdrop",
-        "ctaRhythmPattern": "date-check",
+        "mobileActionPattern": "package-reserve-bottom-dock",
+        "imageRole": "environment-context",
+        "imageEvidence": "open-air photo booth in use with attendant, guests, props table, lit kiosk, and event backdrop",
+        "ctaRhythmPattern": "package-select",
         "surfaceFamily": "mobile-dock",
         "surfaceModel": "booth-package-cards-fixed-reserve-bar",
         "styleFamily": "mobile-action-gloss",
@@ -3113,7 +3258,7 @@
           "shadowTint": "deepGreen"
         },
         "geometry": {
-          "radiusScale": "flash-pill",
+          "radiusScale": "flash-8-with-pill-actions",
           "borderRole": "photo-strip package rails",
           "shadowRole": "mobile reserve dock strongest",
           "mediaCrop": "event booth setup crop"
@@ -3121,11 +3266,13 @@
         "coreBlockPlan": [
           "columns",
           "image",
+          "table",
+          "details",
           "buttons",
           "list",
           "navigation"
         ],
-        "styleContract": "Bright and event-ready with guest-flow proof, real photo booth evidence, flash-yellow action accents, and a mobile reserve dock as the signature move.",
+        "styleContract": "Bright and event-ready with guest-flow proof, a real photo booth environment in use, flash-yellow action accents, and a mobile reserve dock as the signature move.",
         "knownRisks": [
           "first-viewport-cta",
           "logo-scale",
@@ -3188,15 +3335,16 @@
       },
       "notes": [
         "Works: Make the mobile action dock feel like a reserve-date tool while desktop emphasizes packages, props, setup needs, and guest flow. should separate this from nearby patterns.",
-        "Proof: open-air photo booth kiosk with attendant, guests, props, and event backdrop. carries the niche-specific read.",
+        "Proof: open-air photo booth in use with attendant, guests, props table, lit kiosk, and event backdrop. carries the niche-specific read.",
         "Watch: compare fixed-bottom-action neighbors for hero geometry, CTA rhythm, and proof treatment.",
         "Fix next: no mechanical visual-sweep failures; judge taste from first viewport screenshots."
       ],
+      "tasteWarnings": [],
       "nearest": [
         {
           "left": "mobile-auto-detailing",
           "right": "photo-booth-rental",
-          "distance": 259
+          "distance": 277
         }
       ]
     },
@@ -3239,7 +3387,7 @@
           "shadowTint": "deepGreen"
         },
         "geometry": {
-          "radiusScale": "linen-soft-12",
+          "radiusScale": "linen-soft-8",
           "borderRole": "occasion card dividers",
           "shadowRole": "lookbook image lift only",
           "mediaCrop": "wide styled setup crop"
@@ -3289,6 +3437,10 @@
           "som-picnic-gallery-note",
           "som-style-card",
           "som-picnic-style-card",
+          "som-proof-gallery",
+          "som-picnic-proof-gallery",
+          "som-gallery-quote",
+          "som-picnic-gallery-quote",
           "som-gallery-proof",
           "som-picnic-gallery-proof",
           "som-process-card",
@@ -3299,6 +3451,8 @@
         "layoutMarkers": [
           "som-picnic-gallery-hero",
           "som-picnic-gallery-image",
+          "som-picnic-proof-gallery",
+          "som-picnic-gallery-quote",
           "som-picnic-style-card",
           "som-picnic-gallery-proof",
           "som-picnic-quote-strip"
@@ -3310,21 +3464,22 @@
         "Watch: compare gallery-led neighbors for hero geometry, CTA rhythm, and proof treatment.",
         "Fix next: no mechanical visual-sweep failures; judge taste from first viewport screenshots."
       ],
+      "tasteWarnings": [],
       "nearest": [
-        {
-          "left": "picnic-proposal-setup",
-          "right": "pollinator-garden-refresh",
-          "distance": 267
-        },
         {
           "left": "dessert-table-bakery-catering",
           "right": "picnic-proposal-setup",
-          "distance": 268
+          "distance": 271
         },
         {
-          "left": "pet-portrait-photography",
+          "left": "balloon-garland-party-backdrop",
           "right": "picnic-proposal-setup",
-          "distance": 286
+          "distance": 304
+        },
+        {
+          "left": "headshot-brand-photography",
+          "right": "picnic-proposal-setup",
+          "distance": 304
         }
       ]
     },
@@ -3335,14 +3490,14 @@
       "signature": {
         "version": 1,
         "variant": "route-led-schedule",
-        "renderFamily": "route-plan",
-        "visualDifferentiator": "Lead with route days and schedule confidence, show a CSS-styled service-area panel instead of an external map, then use plan and proof sections around a join-the-route CTA.",
+        "renderFamily": "lawn-route-status-board",
+        "visualDifferentiator": "Lead with a plant-care route/status board, real service photo evidence, visit-note table, care-route cards, and a join-the-route CTA.",
         "archetype": "Recurring care route schedule board",
-        "hero": "cover-left-copy-with-route-status-board",
+        "hero": "split-copy-photo-with-floating-plant-care-status-board",
         "navigationTreatment": "horizontal-route-header-with-care-routes-notes-plan-anchors",
-        "typographyTreatment": "schedule-board-service-sans",
+        "typographyTreatment": "living-route-humanist-field-guide",
         "colorStrategy": "route-map-colors-with-readable-plan-contrast",
-        "primaryPattern": "decision-filter-route-plan",
+        "primaryPattern": "route-schedule-board",
         "secondaryPattern": "living-plant-health-proof",
         "silhouette": "route-status-board",
         "navigationPrimitive": "compact-header",
@@ -3367,14 +3522,16 @@
           "shadowTint": "deepGreen"
         },
         "geometry": {
-          "radiusScale": "living-route-18",
+          "radiusScale": "living-route-8",
           "borderRole": "care route dividers",
           "shadowRole": "route plan card only",
           "mediaCrop": "plant shelf service crop"
         },
         "coreBlockPlan": [
-          "cover",
+          "image",
           "columns",
+          "table",
+          "details",
           "list",
           "buttons"
         ],
@@ -3402,24 +3559,49 @@
           "Plan"
         ],
         "anchorOrder": [
-          "services",
-          "process",
+          "routes",
+          "notes",
           "quote"
         ],
         "componentClassesExpected": [
-          "som-card",
+          "som-route-page",
+          "som-plant-route-page",
+          "som-route-header",
+          "som-plant-route-header",
+          "som-route-hero",
+          "som-plant-route-hero",
+          "som-route-hero-photo",
+          "som-plant-route-photo",
+          "som-route-status-board",
+          "som-plant-care-board",
           "som-route-plan-card",
-          "som-process-card",
+          "som-plant-plan-card",
           "som-route-process-card",
+          "som-plant-process-card",
           "som-proof-card",
+          "som-plant-proof-card",
           "som-route-proof-card",
-          "som-quote-card",
+          "som-plant-route-proof-card",
+          "som-route-table",
+          "som-plant-note-table",
+          "som-route-detail",
+          "som-plant-route-detail",
           "som-route-quote-card",
-          "som-footer",
-          "som-route-footer"
+          "som-plant-quote-card",
+          "som-route-footer",
+          "som-plant-route-footer"
         ],
         "layoutMarkers": [
-          "wp:cover",
+          "som-route-hero",
+          "som-plant-route-hero",
+          "som-route-status-board",
+          "som-plant-care-board",
+          "wp:table",
+          "som-route-table",
+          "som-plant-note-table",
+          "wp:details",
+          "som-route-detail",
+          "som-plant-route-detail",
           "som-route-plan-card",
           "som-route-process-card",
           "som-route-proof-card",
@@ -3427,145 +3609,162 @@
         ]
       },
       "notes": [
-        "Works: Lead with route days and schedule confidence, show a CSS-styled service-area panel instead of an external map, then use plan and proof sections around a join-the-route CTA. should separate this from nearby patterns.",
+        "Works: Lead with a plant-care route/status board, real service photo evidence, visit-note table, care-route cards, and a join-the-route CTA. should separate this from nearby patterns.",
         "Proof: plant care specialist pruning and checking soil moisture on plant shelf. carries the niche-specific read.",
-        "Watch: compare route-plan neighbors for hero geometry, CTA rhythm, and proof treatment.",
+        "Watch: compare lawn-route-status-board neighbors for hero geometry, CTA rhythm, and proof treatment.",
         "Fix next: no mechanical visual-sweep failures; judge taste from first viewport screenshots."
       ],
+      "tasteWarnings": [],
       "nearest": [
         {
           "left": "lawn-care-service",
           "right": "plant-care",
-          "distance": 273
-        },
-        {
-          "left": "carpet-upholstery-cleaning",
-          "right": "plant-care",
-          "distance": 353
-        },
-        {
-          "left": "driveway-sealcoating",
-          "right": "plant-care",
-          "distance": 353
+          "distance": 245
         }
       ]
     },
     {
       "slug": "pollinator-garden-refresh",
       "name": "BloomRoute Garden Studio",
-      "layoutVariant": "gallery-led",
+      "layoutVariant": "pollinator-season-board",
       "signature": {
         "version": 1,
-        "variant": "gallery-led",
-        "renderFamily": "gallery-led",
-        "visualDifferentiator": "editorial-image-header-with-overlapping-copy; visual-style-cards-with-caption-panel; testimonial-style-proof-strip-before-gallery",
-        "archetype": "Visual style gallery lead generator",
-        "hero": "editorial-image-header-with-overlapping-copy",
-        "navigationTreatment": "top-horizontal-header-with-gallery-anchors",
-        "typographyTreatment": "editorial-gallery-serif-display",
-        "colorStrategy": "botanical-gallery-color-with-soft-cream-stage",
-        "primaryPattern": "gallery-led-portfolio-proof",
+        "variant": "pollinator-season-board",
+        "renderFamily": "zone-grid-planner",
+        "visualDifferentiator": "Treat the garden like a practical bloom board: show sun/soil/edge zones, seasonal proof, native mix notes, and a photo-plan CTA.",
+        "archetype": "Pollinator garden season board",
+        "hero": "image-first-native-bed-hero-with-bloom-season-map",
+        "navigationTreatment": "post-hero-bloom-season-anchor-strip-with-quiet-header",
+        "typographyTreatment": "botanical-field-guide-serif-with-utility-labels",
+        "colorStrategy": "field-guide-cream-with-purple-bloom-and-pollen-action",
+        "primaryPattern": "decision-filter-route-plan",
         "secondaryPattern": "seasonal-style-proof",
-        "silhouette": "editorial-proof-stage",
-        "navigationPrimitive": "compact-header",
-        "mobileActionPattern": "post-hero-anchor-actions",
-        "imageRole": "finished-outcome",
-        "imageEvidence": "finished visual result with proof-ready composition",
-        "ctaRhythmPattern": "consult-first",
-        "surfaceFamily": "gallery-mosaic",
-        "surfaceModel": "editorial-gallery-captions",
-        "styleFamily": "editorial-proof-stage",
+        "silhouette": "route-status-board",
+        "navigationPrimitive": "section-anchor-strip",
+        "mobileActionPattern": "bloom-board-anchor-actions",
+        "imageRole": "environment-context",
+        "imageEvidence": "finished front-yard pollinator bed with native flowers, clean edging, and seasonal planting proof",
+        "ctaRhythmPattern": "photo-first",
+        "surfaceFamily": "status-board",
+        "surfaceModel": "season-path-table-with-bed-zone-cards",
+        "styleFamily": "clear-status-dashboard",
         "density": "visual-first",
         "colorRoles": {
           "ink": "deepGreen",
           "paper": "cream",
           "field": "mist",
-          "line": "leaf",
+          "line": "soil",
           "primary": "grass",
           "action": "sun",
           "proof": "leaf",
           "muted": "soil",
-          "warning": "sun",
+          "warning": "soil",
           "shadowTint": "deepGreen"
         },
         "geometry": {
-          "radiusScale": "editorial-8",
-          "borderRole": "caption and proof separators",
-          "shadowRole": "image stage sparingly",
-          "mediaCrop": "large editorial outcome crop"
+          "radiusScale": "field-guide-8",
+          "borderRole": "bloom board and bed card separators",
+          "shadowRole": "garden image lift only",
+          "mediaCrop": "front-yard bed with edge and blooms"
         },
         "coreBlockPlan": [
-          "cover",
           "image",
-          "gallery",
-          "quote",
+          "table",
+          "navigation",
+          "columns",
           "buttons"
         ],
-        "styleContract": "Ecological and editorial with native-season proof, colorful finished garden evidence, pollen-gold action accents, and gallery captions as the signature move.",
+        "styleContract": "Ecological and practical with native-season proof, finished garden evidence, pollen-gold action accents, and a bloom-season board as the signature move.",
         "knownRisks": [
-          "cta-below-gallery-fold",
-          "decorative-plant-photo",
+          "garden-photo-too-decorative",
+          "mobile-grid-cramping",
           "palette-too-green"
         ],
         "sectionOrder": [
-          "navigation",
-          "gallery-hero",
-          "style-proof-strip",
-          "style-gallery-cards",
-          "process-panel",
-          "quote-footer"
+          "quiet-garden-header",
+          "image-first-bloom-route-hero",
+          "season-anchor-strip",
+          "bloom-window-proof-strip",
+          "bed-plan-cards",
+          "garden-process-board",
+          "photo-plan-footer"
         ],
-        "servicePresentation": "visual-style-cards-with-caption-panel",
-        "proofTreatment": "testimonial-style-proof-strip-before-gallery",
-        "ctaRhythm": "hero-consult-button-plus-final-style-brief",
+        "servicePresentation": "bed-zone-cards-with-sun-soil-and-edge-notes",
+        "proofTreatment": "three-season-proof-strip-with-native-fit-cues",
+        "ctaRhythm": "photo-plan-first-with-bloom-board-anchor-strip",
         "navLabels": [
-          "Styles",
-          "Process",
-          "Quote"
+          "Beds",
+          "Seasons",
+          "Plan"
         ],
         "anchorOrder": [
-          "styles",
+          "zones",
           "process",
           "quote"
         ],
         "componentClassesExpected": [
-          "som-gallery-hero",
-          "som-gallery-image",
-          "som-style-card",
-          "som-gallery-proof",
-          "som-process-card",
+          "som-zone-page",
+          "som-pollinator-page",
+          "som-zone-header",
+          "som-pollinator-header",
+          "som-zone-hero",
+          "som-pollinator-hero",
+          "som-zone-photo",
+          "som-pollinator-photo",
+          "som-zone-anchor-strip",
+          "som-pollinator-anchor-strip",
+          "som-zone-anchor-nav",
+          "som-pollinator-anchor-nav",
+          "som-zone-anchor-action",
+          "som-pollinator-anchor-action",
+          "som-zone-map",
+          "som-pollinator-map",
+          "som-zone-proof",
+          "som-pollinator-proof",
+          "som-zone-card",
+          "som-pollinator-card",
+          "som-zone-step",
+          "som-pollinator-step",
+          "som-zone-note",
+          "som-pollinator-note",
           "som-quote-strip",
-          "som-footer"
+          "som-pollinator-quote-strip",
+          "som-section-anchor-strip",
+          "som-section-anchor-nav",
+          "som-section-anchor-action"
         ],
         "layoutMarkers": [
-          "som-gallery-hero",
-          "som-gallery-image",
-          "som-style-card",
-          "som-gallery-proof",
-          "som-quote-strip"
+          "som-pollinator-page",
+          "som-pollinator-header",
+          "som-pollinator-hero",
+          "som-pollinator-photo",
+          "som-pollinator-anchor-strip",
+          "som-pollinator-anchor-nav",
+          "som-pollinator-map",
+          "som-pollinator-proof",
+          "som-pollinator-card",
+          "som-pollinator-quote-strip",
+          "som-section-anchor-strip",
+          "som-section-anchor-nav"
         ]
       },
       "notes": [
-        "Works: editorial-image-header-with-overlapping-copy; visual-style-cards-with-caption-panel; testimonial-style-proof-strip-before-gallery should separate this from nearby patterns.",
-        "Proof: finished visual result with proof-ready composition. carries the niche-specific read.",
-        "Watch: compare gallery-led neighbors for hero geometry, CTA rhythm, and proof treatment.",
+        "Works: Treat the garden like a practical bloom board: show sun/soil/edge zones, seasonal proof, native mix notes, and a photo-plan CTA. should separate this from nearby patterns.",
+        "Proof: finished front-yard pollinator bed with native flowers, clean edging, and seasonal planting proof. carries the niche-specific read.",
+        "Watch: compare zone-grid-planner neighbors for hero geometry, CTA rhythm, and proof treatment.",
         "Fix next: no mechanical visual-sweep failures; judge taste from first viewport screenshots."
       ],
+      "tasteWarnings": [],
       "nearest": [
         {
-          "left": "dessert-table-bakery-catering",
+          "left": "closet-pantry-organization",
           "right": "pollinator-garden-refresh",
-          "distance": 267
+          "distance": 355
         },
         {
-          "left": "picnic-proposal-setup",
+          "left": "mobile-bicycle-repair",
           "right": "pollinator-garden-refresh",
-          "distance": 267
-        },
-        {
-          "left": "pet-portrait-photography",
-          "right": "pollinator-garden-refresh",
-          "distance": 285
+          "distance": 359
         }
       ]
     },
@@ -3656,6 +3855,7 @@
           "som-water-mini-board",
           "som-water-proof",
           "som-water-plan",
+          "som-water-table",
           "som-water-route-step",
           "som-water-note",
           "som-quote-strip",
@@ -3669,6 +3869,8 @@
           "som-water-mini-board",
           "som-water-proof",
           "som-water-plan",
+          "som-water-table",
+          "wp:table",
           "som-water-route-step",
           "som-water-note",
           "som-quote-strip"
@@ -3680,16 +3882,17 @@
         "Watch: compare water-test-board neighbors for hero geometry, CTA rhythm, and proof treatment.",
         "Fix next: no mechanical visual-sweep failures; judge taste from first viewport screenshots."
       ],
+      "tasteWarnings": [],
       "nearest": [
-        {
-          "left": "mobile-bicycle-repair",
-          "right": "pool-cleaning",
-          "distance": 333
-        },
         {
           "left": "garage-organization",
           "right": "pool-cleaning",
           "distance": 344
+        },
+        {
+          "left": "mobile-bicycle-repair",
+          "right": "pool-cleaning",
+          "distance": 351
         }
       ]
     },
@@ -3704,19 +3907,19 @@
         "visualDifferentiator": "split-copy-with-hero-photo-and-evidence-cards; numbered-surface-rows-with-method-pills; compact-proof-grid-inside-final-cta",
         "archetype": "Photo quote before-and-after service story",
         "hero": "split-copy-with-hero-photo-and-evidence-cards",
-        "navigationTreatment": "top-horizontal-header-with-early-photo-quote-anchor",
+        "navigationTreatment": "top-header-plus-floating-photo-proof-action",
         "typographyTreatment": "confident-transform-grotesk",
         "colorStrategy": "high-contrast-clean-surface-with-electric-accent",
         "primaryPattern": "photo-quote-transformation",
         "secondaryPattern": "method-proof-reassurance",
         "silhouette": "split-quote-board",
-        "navigationPrimitive": "compact-header",
-        "mobileActionPattern": "inline-photo-quote-actions",
+        "navigationPrimitive": "floating-proof-action",
+        "mobileActionPattern": "floating-proof-plus-photo-actions",
         "imageRole": "work-in-progress",
         "imageEvidence": "active cleaning proof with transformation context",
         "ctaRhythmPattern": "photo-first",
         "surfaceFamily": "single-elevated-proof",
-        "surfaceModel": "split-proof-panels",
+        "surfaceModel": "floating-photo-proof-action-panel",
         "styleFamily": "operator-console",
         "density": "compact-leadgen",
         "colorRoles": {
@@ -3741,13 +3944,15 @@
           "columns",
           "image",
           "buttons",
+          "table",
+          "details",
           "list"
         ],
-        "styleContract": "Crisp transformation energy with method proof, visible exterior cleaning action, aqua proof accents, and an early photo-quote strip as the signature move.",
+        "styleContract": "Crisp transformation energy with method proof, visible exterior cleaning action, aqua proof accent behavior, and a floating photo-quote proof action panel as the signature move.",
         "knownRisks": [
           "fake-before-after-feel",
           "hero-image-too-decorative",
-          "photo-quote-proof-buried"
+          "floating-proof-panel-crowding"
         ],
         "sectionOrder": [
           "navigation",
@@ -3776,9 +3981,12 @@
           "som-hero-photo",
           "som-before-after",
           "som-evidence-card",
+          "som-floating-proof-action",
           "som-quote-strip",
           "som-surface-row",
           "som-method-pill",
+          "som-method-table",
+          "som-method-detail",
           "som-timeline-step",
           "som-proof-grid",
           "som-proof-card",
@@ -3787,9 +3995,13 @@
         "layoutMarkers": [
           "som-split-hero",
           "som-before-after",
+          "som-floating-proof-action",
           "som-quote-strip",
           "som-surface-row",
-          "som-method-list",
+          "som-method-table",
+          "som-method-detail",
+          "wp:table",
+          "wp:details",
           "som-timeline-step",
           "som-proof-grid"
         ]
@@ -3800,11 +4012,12 @@
         "Watch: compare before-after-quote neighbors for hero geometry, CTA rhythm, and proof treatment.",
         "Fix next: no mechanical visual-sweep failures; judge taste from first viewport screenshots."
       ],
+      "tasteWarnings": [],
       "nearest": [
         {
-          "left": "driveway-sealcoating",
-          "right": "pressure-washing-service",
-          "distance": 330
+          "left": "pressure-washing-service",
+          "right": "window-cleaning",
+          "distance": 313
         },
         {
           "left": "furniture-refinishing-repair",
@@ -3812,9 +4025,9 @@
           "distance": 331
         },
         {
-          "left": "pressure-washing-service",
-          "right": "window-cleaning",
-          "distance": 342
+          "left": "driveway-sealcoating",
+          "right": "pressure-washing-service",
+          "distance": 349
         }
       ]
     },
@@ -3826,9 +4039,9 @@
         "version": 1,
         "variant": "story-card-consult",
         "renderFamily": "checklist-urgency",
-        "visualDifferentiator": "Use warmer editorial pacing: what happens next, support cards, packages, proof, and gentle consult CTAs at the hero, midpoint, and close.",
+        "visualDifferentiator": "Use warmer editorial pacing with a true Media & Text story hero, one gentle hero CTA, support cards, consult details, and a final low-pressure contact panel.",
         "archetype": "Warm consultation story card flow",
-        "hero": "stacked-trust-hero-with-story-checklist-panel",
+        "hero": "image-left-media-text-with-story-checklist",
         "navigationTreatment": "calm-top-header-with-low-pressure-consult-action",
         "typographyTreatment": "warm-story-card-serif-sans",
         "colorStrategy": "gentle-human-neutrals-with-small-confident-accent",
@@ -3840,7 +4053,7 @@
         "imageRole": "operator-or-founder",
         "imageEvidence": "consultant helping older adult sort keepsakes and moving boxes",
         "ctaRhythmPattern": "consult-first",
-        "surfaceFamily": "single-elevated-proof",
+        "surfaceFamily": "outlined-repeaters",
         "surfaceModel": "story-checklist-support-cards",
         "styleFamily": "humanist-local-calm",
         "density": "balanced-editorial",
@@ -3857,14 +4070,16 @@
           "shadowTint": "deepGreen"
         },
         "geometry": {
-          "radiusScale": "story-18",
+          "radiusScale": "story-8",
           "borderRole": "soft support card borders",
           "shadowRole": "story proof panel only",
           "mediaCrop": "human sorting moment crop"
         },
         "coreBlockPlan": [
+          "media-text",
           "columns",
-          "image",
+          "list",
+          "quote",
           "details",
           "buttons"
         ],
@@ -3876,66 +4091,78 @@
         ],
         "sectionOrder": [
           "calm-consult-header",
-          "story-card-hero",
-          "trust-proof-band",
+          "media-text-story-hero",
+          "family-proof-band",
           "support-checklist",
           "gentle-process-steps",
           "consult-footer"
         ],
-        "servicePresentation": "support-checklist-cards-with-family-notes",
-        "proofTreatment": "trust-proof-strip-before-support-cards",
-        "ctaRhythm": "hero-consult-plus-midpage-trust-band",
+        "servicePresentation": "support-checklist-cards-with-consult-details",
+        "proofTreatment": "family-proof-strip-after-media-text-hero",
+        "ctaRhythm": "single-hero-consult-action-plus-final-contact",
         "navLabels": [
-          "Checklist",
-          "Proof",
-          "Quote"
+          "Support",
+          "Steps",
+          "Consult"
         ],
         "anchorOrder": [
-          "checklist",
-          "proof",
+          "support",
+          "steps",
           "quote"
         ],
         "componentClassesExpected": [
           "som-checklist-hero",
           "som-story-hero",
+          "som-story-phone-line",
+          "som-story-check-list",
           "som-urgency-band",
           "som-story-proof-band",
           "som-check-card",
           "som-support-card",
           "som-proof-card",
           "som-family-proof-card",
+          "som-story-process-step",
+          "som-story-step-number",
+          "som-check-detail",
+          "som-check-quote",
           "som-quote-strip",
           "som-consult-quote-strip",
           "som-footer"
         ],
         "layoutMarkers": [
+          "wp:media-text",
           "som-story-hero",
+          "som-story-check-list",
           "som-story-proof-band",
           "som-support-card",
+          "som-story-process-step",
+          "wp:quote",
+          "wp:details",
           "som-consult-quote-strip"
         ]
       },
       "notes": [
-        "Works: Use warmer editorial pacing: what happens next, support cards, packages, proof, and gentle consult CTAs at the hero, midpoint, and close. should separate this from nearby patterns.",
+        "Works: Use warmer editorial pacing with a true Media & Text story hero, one gentle hero CTA, support cards, consult details, and a final low-pressure contact panel. should separate this from nearby patterns.",
         "Proof: consultant helping older adult sort keepsakes and moving boxes. carries the niche-specific read.",
         "Watch: compare checklist-urgency neighbors for hero geometry, CTA rhythm, and proof treatment.",
         "Fix next: no mechanical visual-sweep failures; judge taste from first viewport screenshots."
       ],
+      "tasteWarnings": [],
       "nearest": [
-        {
-          "left": "micro-wedding-florals",
-          "right": "senior-downsizing-move-prep",
-          "distance": 287
-        },
         {
           "left": "interior-color-consultant",
           "right": "senior-downsizing-move-prep",
-          "distance": 305
+          "distance": 325
         },
         {
-          "left": "closet-pantry-organization",
+          "left": "carpet-upholstery-cleaning",
           "right": "senior-downsizing-move-prep",
           "distance": 338
+        },
+        {
+          "left": "micro-wedding-florals",
+          "right": "senior-downsizing-move-prep",
+          "distance": 342
         }
       ]
     },
@@ -3987,6 +4214,7 @@
           "columns",
           "navigation",
           "image",
+          "quote",
           "list",
           "buttons"
         ],
@@ -4056,6 +4284,7 @@
         "Watch: compare side-rail-service neighbors for hero geometry, CTA rhythm, and proof treatment.",
         "Fix next: no mechanical visual-sweep failures; judge taste from first viewport screenshots."
       ],
+      "tasteWarnings": [],
       "nearest": [
         {
           "left": "junk-removal-donation-hauling",
@@ -4066,6 +4295,11 @@
           "left": "small-event-dj-sound",
           "right": "smart-home-setup",
           "distance": 304
+        },
+        {
+          "left": "pressure-washing-service",
+          "right": "small-event-dj-sound",
+          "distance": 358
         }
       ]
     },
@@ -4077,9 +4311,9 @@
         "version": 1,
         "variant": "side-rail-estimate",
         "renderFamily": "side-rail-service",
-        "visualDifferentiator": "Use a full-height desktop rail for logo, anchors, and phone/estimate CTA, paired with a right-side hero image and consult steps. Mobile should collapse to a compact header.",
+        "visualDifferentiator": "Use a full-height desktop rail for logo, anchors, and phone/estimate CTA, paired with an image-led consult hero and setup steps. Mobile should collapse to a compact header.",
         "archetype": "Consultative side-rail estimate console",
-        "hero": "desktop-side-rail-with-consult-action-hero",
+        "hero": "desktop-side-rail-with-image-led-consult-action-hero",
         "navigationTreatment": "desktop-fixed-left-rail-with-phone-cta-collapsing-to-mobile-top-header",
         "typographyTreatment": "polished-consultant-editorial-sans",
         "colorStrategy": "calm-consulting-neutrals-with-assured-accent",
@@ -4108,7 +4342,7 @@
           "shadowTint": "deepGreen"
         },
         "geometry": {
-          "radiusScale": "consult-rail-18",
+          "radiusScale": "consult-rail-8",
           "borderRole": "quiet setup dividers",
           "shadowRole": "hero device photo and rail card",
           "mediaCrop": "home theater setup crop"
@@ -4117,6 +4351,7 @@
           "columns",
           "image",
           "navigation",
+          "quote",
           "buttons"
         ],
         "styleContract": "Calm room-ready confidence with signal-check proof, real home theater setup evidence, warm-gold action accents, and a desktop consult rail as the signature move.",
@@ -4181,11 +4416,12 @@
         ]
       },
       "notes": [
-        "Works: Use a full-height desktop rail for logo, anchors, and phone/estimate CTA, paired with a right-side hero image and consult steps. Mobile should collapse to a compact header. should separate this from nearby patterns.",
+        "Works: Use a full-height desktop rail for logo, anchors, and phone/estimate CTA, paired with an image-led consult hero and setup steps. Mobile should collapse to a compact header. should separate this from nearby patterns.",
         "Proof: technician configuring home theater cables and app controls. carries the niche-specific read.",
         "Watch: compare side-rail-service neighbors for hero geometry, CTA rhythm, and proof treatment.",
         "Fix next: no mechanical visual-sweep failures; judge taste from first viewport screenshots."
       ],
+      "tasteWarnings": [],
       "nearest": [
         {
           "left": "small-event-dj-sound",
@@ -4196,6 +4432,11 @@
           "left": "junk-removal-donation-hauling",
           "right": "smart-home-setup",
           "distance": 309
+        },
+        {
+          "left": "carpet-upholstery-cleaning",
+          "right": "smart-home-setup",
+          "distance": 356
         }
       ]
     },
@@ -4210,7 +4451,7 @@
         "visualDifferentiator": "Frame the hero around a receipt-style scope summary, then included services, add-ons, process, proof, and a build-my-estimate CTA.",
         "archetype": "Receipt-led service scope and safety plan",
         "hero": "media-text-hero-with-estimate-receipt-stack",
-        "navigationTreatment": "compact-top-nav-with-phone-button",
+        "navigationTreatment": "compact-phone-header-plus-post-hero-scope-anchor-strip",
         "typographyTreatment": "receipt-scope-mono-accent",
         "colorStrategy": "clean-paper-receipt-with-service-color-stamps",
         "primaryPattern": "service-receipt-stack",
@@ -4259,6 +4500,7 @@
         "sectionOrder": [
           "receipt-action-header",
           "media-text-receipt-hero",
+          "scope-anchor-strip",
           "proof-ledger-strip",
           "scope-table-and-receipts",
           "safety-process-with-quote",
@@ -4281,6 +4523,12 @@
         "componentClassesExpected": [
           "som-receipt-page",
           "som-receipt-header",
+          "som-section-anchor-strip",
+          "som-receipt-anchor-strip",
+          "som-section-anchor-nav",
+          "som-receipt-anchor-nav",
+          "som-section-anchor-action",
+          "som-receipt-anchor-action",
           "som-receipt-hero",
           "som-receipt-card",
           "som-receipt-proof",
@@ -4296,6 +4544,8 @@
           "som-receipt-header",
           "wp:media-text",
           "som-receipt-hero",
+          "som-receipt-anchor-strip",
+          "som-receipt-anchor-nav",
           "som-receipt-card",
           "wp:table",
           "som-receipt-table",
@@ -4311,13 +4561,8 @@
         "Watch: compare service-receipt-stack neighbors for hero geometry, CTA rhythm, and proof treatment.",
         "Fix next: no mechanical visual-sweep failures; judge taste from first viewport screenshots."
       ],
-      "nearest": [
-        {
-          "left": "solar-panel-cleaning",
-          "right": "vacation-rental-turnover",
-          "distance": 288
-        }
-      ]
+      "tasteWarnings": [],
+      "nearest": []
     },
     {
       "slug": "vacation-rental-turnover",
@@ -4326,25 +4571,25 @@
       "signature": {
         "version": 1,
         "variant": "turnover-receipt-board",
-        "renderFamily": "service-receipt-stack",
-        "visualDifferentiator": "Frame rental turnover as a receipt-style coverage board with linens, restock notes, host proof, and coverage CTAs.",
-        "archetype": "Hospitality turnover scope receipt",
-        "hero": "media-text-hero-with-turnover-receipt-stack",
+        "renderFamily": "turnover-receipt-board",
+        "visualDifferentiator": "Frame rental turnover as a check-in readiness board with linens, restock notes, room reset proof, access details, and coverage CTAs.",
+        "archetype": "Hospitality turnover handoff board",
+        "hero": "cover-hero-with-host-readiness-board",
         "navigationTreatment": "compact-top-nav-with-coverage-phone-button",
-        "typographyTreatment": "hospitality-receipt-mono-accent",
-        "colorStrategy": "clean-linen-receipt-with-ready-room-stamps",
-        "primaryPattern": "service-receipt-stack",
+        "typographyTreatment": "host-readiness-board-humanist-accent",
+        "colorStrategy": "fresh-linen-field-with-sun-check-in-accents",
+        "primaryPattern": "date-window-reservation",
         "secondaryPattern": "host-readiness-checklist",
-        "silhouette": "receipt-scope-stack",
+        "silhouette": "editorial-proof-stage",
         "navigationPrimitive": "compact-header",
         "mobileActionPattern": "coverage-plus-inline-phone",
         "imageRole": "finished-outcome",
         "imageEvidence": "clean rental bedroom with linen reset and host checklist",
         "ctaRhythmPattern": "quote-first",
-        "surfaceFamily": "receipt-stack",
-        "surfaceModel": "turnover-table-details-stack",
-        "styleFamily": "receipt-ledger",
-        "density": "compact-leadgen",
+        "surfaceFamily": "status-board",
+        "surfaceModel": "host-readiness-board-room-reset-table",
+        "styleFamily": "humanist-local-calm",
+        "density": "balanced-editorial",
         "colorRoles": {
           "ink": "deepGreen",
           "paper": "white",
@@ -4358,34 +4603,38 @@
           "shadowTint": "deepGreen"
         },
         "geometry": {
-          "radiusScale": "linen-receipt-6",
-          "borderRole": "cleaning receipt lines",
-          "shadowRole": "single turnover receipt stack",
-          "mediaCrop": "guest-ready room crop"
+          "radiusScale": "linen-board-8",
+          "borderRole": "check-in board dividers",
+          "shadowRole": "single host readiness board",
+          "mediaCrop": "guest-ready room cover"
         },
         "coreBlockPlan": [
-          "media-text",
+          "cover",
+          "columns",
+          "list",
           "table",
           "details",
+          "quote",
           "buttons"
         ],
-        "styleContract": "Host-ready calm with linen-reset proof, real turnover cleaning evidence, golden booking accents, and a scope receipt table as the signature move.",
+        "styleContract": "Host-ready calm with linen-reset proof, real turnover cleaning evidence, golden booking accents, and a host readiness board with room reset table as the signature move.",
         "knownRisks": [
           "table-mobile-overflow",
           "generic-cleaning-copy",
-          "cta-below-mobile-fold"
+          "cover-text-contrast",
+          "readiness-board-mobile-height"
         ],
         "sectionOrder": [
-          "receipt-action-header",
-          "turnover-receipt-hero",
-          "hospitality-proof-ledger",
-          "scope-table-and-reset-cards",
-          "linen-process-with-quote",
-          "details-objection-stack",
+          "compact-host-header",
+          "cover-readiness-hero",
+          "check-in-proof-strip",
+          "room-reset-table",
+          "handoff-process-with-quote",
+          "access-linen-restock-details",
           "coverage-instructions"
         ],
-        "servicePresentation": "turnover-receipt-cards-plus-readable-scope-table",
-        "proofTreatment": "ledger-proof-strip-and-cleaning-quote",
+        "servicePresentation": "host-readiness-list-plus-room-reset-table",
+        "proofTreatment": "check-in-proof-strip-and-handoff-quote",
         "ctaRhythm": "hero-get-coverage-plus-phone-header-and-final-instructions",
         "navLabels": [
           "Checklist",
@@ -4393,93 +4642,101 @@
           "Coverage"
         ],
         "anchorOrder": [
-          "scope",
-          "safety",
+          "checklist",
+          "readiness",
           "quote"
         ],
         "componentClassesExpected": [
-          "som-receipt-page",
           "som-turnover-page",
-          "som-receipt-header",
           "som-turnover-header",
           "som-turnover-header-action",
-          "som-turnover-hero-shell",
-          "som-receipt-hero",
           "som-turnover-hero",
-          "som-receipt-card",
-          "som-turnover-card",
+          "som-turnover-hero-copy",
+          "som-turnover-readiness-board",
+          "som-turnover-board-list",
           "som-host-proof-strip",
-          "som-receipt-proof",
           "som-host-proof",
-          "som-receipt-scope",
-          "som-turnover-scope",
-          "som-receipt-table",
+          "som-turnover-checklist",
           "som-turnover-table",
-          "som-turnover-safety",
-          "som-receipt-step",
+          "som-turnover-readiness",
           "som-turnover-step",
           "som-turnover-details",
-          "som-receipt-detail",
           "som-turnover-detail",
+          "som-turnover-quote",
           "som-quote-strip",
           "som-footer"
         ],
         "layoutMarkers": [
           "som-turnover-page",
           "som-turnover-header",
-          "som-turnover-hero-shell",
-          "wp:media-text",
+          "wp:cover",
           "som-turnover-hero",
-          "som-turnover-card",
+          "som-turnover-readiness-board",
+          "wp:list",
+          "som-turnover-board-list",
           "som-host-proof-strip",
+          "som-turnover-checklist",
           "wp:table",
           "som-turnover-table",
+          "som-turnover-readiness",
           "wp:quote",
+          "som-turnover-quote",
           "wp:details",
           "som-turnover-detail",
           "som-quote-strip"
         ]
       },
       "notes": [
-        "Works: Frame rental turnover as a receipt-style coverage board with linens, restock notes, host proof, and coverage CTAs. should separate this from nearby patterns.",
+        "Works: Frame rental turnover as a check-in readiness board with linens, restock notes, room reset proof, access details, and coverage CTAs. should separate this from nearby patterns.",
         "Proof: clean rental bedroom with linen reset and host checklist. carries the niche-specific read.",
-        "Watch: compare service-receipt-stack neighbors for hero geometry, CTA rhythm, and proof treatment.",
+        "Watch: compare turnover-receipt-board neighbors for hero geometry, CTA rhythm, and proof treatment.",
         "Fix next: no mechanical visual-sweep failures; judge taste from first viewport screenshots."
       ],
+      "tasteWarnings": [],
       "nearest": [
         {
-          "left": "solar-panel-cleaning",
+          "left": "carpet-upholstery-cleaning",
           "right": "vacation-rental-turnover",
-          "distance": 288
+          "distance": 356
+        },
+        {
+          "left": "senior-downsizing-move-prep",
+          "right": "vacation-rental-turnover",
+          "distance": 356
+        },
+        {
+          "left": "dessert-table-bakery-catering",
+          "right": "vacation-rental-turnover",
+          "distance": 358
         }
       ]
     },
     {
       "slug": "window-cleaning",
       "name": "ClearPane Window Care",
-      "layoutVariant": "checklist-urgency",
+      "layoutVariant": "window-scope-ledger",
       "signature": {
         "version": 1,
-        "variant": "checklist-urgency",
-        "renderFamily": "checklist-urgency",
-        "visualDifferentiator": "stacked-hero-with-checklist-panel; checklist-cards-with-service-area-panel; compact-proof-strip-before-services",
-        "archetype": "Checklist-first service with urgency band",
-        "hero": "stacked-hero-with-checklist-panel",
-        "navigationTreatment": "top-horizontal-header-with-checklist-anchors",
-        "typographyTreatment": "crisp-checklist-ui-sans",
-        "colorStrategy": "bright-glass-clarity-with-cool-utility-contrast",
-        "primaryPattern": "checklist-urgency-gate",
-        "secondaryPattern": "service-checklist-proof",
-        "silhouette": "checklist-urgency-gate",
-        "navigationPrimitive": "compact-header",
-        "mobileActionPattern": "inline-checklist-actions",
+        "variant": "window-scope-ledger",
+        "renderFamily": "before-after-quote",
+        "visualDifferentiator": "Frame window cleaning as an image-first glass proof page with pane count, inside/outside scope, screen and track details, and a shine photo quote CTA.",
+        "archetype": "Pane-count photo quote and edge-check proof",
+        "hero": "image-first-window-proof-hero-with-pane-photo-quote",
+        "navigationTreatment": "top-header-plus-floating-shine-photo-proof-action",
+        "typographyTreatment": "glass-proof-humanist-photo-quote",
+        "colorStrategy": "cool-glass-field-with-gold-shine-action",
+        "primaryPattern": "photo-quote-transformation",
+        "secondaryPattern": "pane-count-edge-check-proof",
+        "silhouette": "split-quote-board",
+        "navigationPrimitive": "floating-proof-action",
+        "mobileActionPattern": "floating-proof-plus-shine-photo-actions",
         "imageRole": "work-in-progress",
-        "imageEvidence": "visible checklist-triggering service work",
-        "ctaRhythmPattern": "quote-first",
+        "imageEvidence": "visible squeegee work and window-count scope evidence",
+        "ctaRhythmPattern": "photo-first",
         "surfaceFamily": "outlined-repeaters",
-        "surfaceModel": "checklist-cards-proof-strip",
-        "styleFamily": "risk-control-alert",
-        "density": "compact-leadgen",
+        "surfaceModel": "floating-window-proof-action-panel",
+        "styleFamily": "humanist-local-calm",
+        "density": "balanced-editorial",
         "colorRoles": {
           "ink": "deepGreen",
           "paper": "cream",
@@ -4487,86 +4744,114 @@
           "line": "leaf",
           "primary": "grass",
           "action": "sun",
-          "proof": "leaf",
+          "proof": "grass",
           "muted": "soil",
           "warning": "sun",
           "shadowTint": "deepGreen"
         },
         "geometry": {
-          "radiusScale": "utility-6",
-          "borderRole": "checklist row separators",
-          "shadowRole": "minimal proof band lift",
-          "mediaCrop": "clean vertical work crop"
+          "radiusScale": "glass-8",
+          "borderRole": "glass row dividers and pane method table",
+          "shadowRole": "hero photo and floating shine proof panel",
+          "mediaCrop": "wide glass service proof crop"
         },
         "coreBlockPlan": [
           "columns",
+          "image",
           "list",
-          "buttons",
-          "details"
+          "table",
+          "details",
+          "buttons"
         ],
-        "styleContract": "Bright and exacting with edge-check proof, real squeegee work evidence, yellow checklist/action accents, and a checklist hero panel as the signature move.",
+        "styleContract": "Crisp glass-local calm with pane-count proof, restrained gold shine accents, and a floating photo-quote proof panel as the signature move.",
         "knownRisks": [
-          "checklist-label-wrapping",
-          "glass-palette-low-contrast",
-          "nav-label-repetition"
+          "mobile-table-overflow",
+          "first-viewport-cta",
+          "glass-photo-crop"
         ],
         "sectionOrder": [
-          "navigation",
-          "checklist-hero",
-          "urgency-proof-band",
-          "service-checklist",
-          "process-steps",
-          "quote-footer"
+          "glass-photo-header",
+          "image-first-window-proof-hero",
+          "shine-photo-quote-strip",
+          "glass-surface-rows",
+          "pane-method-table-and-details",
+          "edge-check-timeline",
+          "shine-proof-footer"
         ],
-        "servicePresentation": "checklist-cards-with-service-area-panel",
-        "proofTreatment": "compact-proof-strip-before-services",
-        "ctaRhythm": "hero-buttons-plus-midpage-urgency-band",
+        "servicePresentation": "glass-surface-rows-with-pane-method-table",
+        "proofTreatment": "edge-check-proof-grid-inside-final-shine-cta",
+        "ctaRhythm": "early-shine-photo-strip-plus-final-pane-proof-quote",
         "navLabels": [
-          "Checklist",
-          "Proof",
-          "Quote"
+          "Photo quote",
+          "Glass",
+          "Method"
         ],
         "anchorOrder": [
-          "checklist",
-          "proof",
-          "quote"
+          "quote",
+          "surfaces",
+          "method"
         ],
         "componentClassesExpected": [
-          "som-checklist-hero",
-          "som-urgency-band",
-          "som-check-card",
-          "som-proof-card",
+          "som-split-hero",
+          "som-window-split-hero",
+          "som-hero-photo",
+          "som-window-hero-photo",
+          "som-before-after",
+          "som-window-before-after",
+          "som-evidence-card",
+          "som-window-evidence-card",
+          "som-floating-proof-action",
+          "som-window-floating-proof-action",
           "som-quote-strip",
-          "som-footer"
+          "som-window-quote-strip",
+          "som-surface-row",
+          "som-window-surface-row",
+          "som-method-pill",
+          "som-window-method-pill",
+          "som-method-table",
+          "som-window-method-table",
+          "som-method-detail",
+          "som-window-method-detail",
+          "som-timeline-step",
+          "som-window-timeline-step",
+          "som-proof-grid",
+          "som-window-proof-grid",
+          "som-proof-card",
+          "som-window-proof-card"
         ],
         "layoutMarkers": [
-          "som-checklist-hero",
-          "som-urgency-band",
-          "som-check-card",
-          "som-quote-strip"
+          "som-window-split-hero",
+          "som-window-hero-photo",
+          "som-window-before-after",
+          "som-window-floating-proof-action",
+          "som-window-surface-row",
+          "som-window-method-table",
+          "som-window-method-detail",
+          "som-window-quote-strip"
         ]
       },
       "notes": [
-        "Works: stacked-hero-with-checklist-panel; checklist-cards-with-service-area-panel; compact-proof-strip-before-services should separate this from nearby patterns.",
-        "Proof: visible checklist-triggering service work. carries the niche-specific read.",
-        "Watch: compare checklist-urgency neighbors for hero geometry, CTA rhythm, and proof treatment.",
+        "Works: Frame window cleaning as an image-first glass proof page with pane count, inside/outside scope, screen and track details, and a shine photo quote CTA. should separate this from nearby patterns.",
+        "Proof: visible squeegee work and window-count scope evidence. carries the niche-specific read.",
+        "Watch: compare before-after-quote neighbors for hero geometry, CTA rhythm, and proof treatment.",
         "Fix next: no mechanical visual-sweep failures; judge taste from first viewport screenshots."
       ],
+      "tasteWarnings": [],
       "nearest": [
         {
-          "left": "carpet-upholstery-cleaning",
+          "left": "furniture-refinishing-repair",
           "right": "window-cleaning",
-          "distance": 338
+          "distance": 304
         },
         {
           "left": "pressure-washing-service",
           "right": "window-cleaning",
-          "distance": 342
+          "distance": 313
         },
         {
-          "left": "senior-downsizing-move-prep",
+          "left": "carpet-upholstery-cleaning",
           "right": "window-cleaning",
-          "distance": 345
+          "distance": 340
         }
       ]
     },
@@ -4588,10 +4873,10 @@
         "secondaryPattern": "guest-count-setup-proof",
         "silhouette": "package-menu-board",
         "navigationPrimitive": "menu-utility-header",
-        "mobileActionPattern": "date-check-menu-actions",
-        "imageRole": "work-in-progress",
-        "imageEvidence": "caterers preparing pizza and tacos beside a wood-fired oven and prep table",
-        "ctaRhythmPattern": "date-check",
+        "mobileActionPattern": "menu-package-actions",
+        "imageRole": "environment-context",
+        "imageEvidence": "outdoor live-fire catering station with wood oven, prep table, finished pizza, tacos, toppings, and crew visible",
+        "ctaRhythmPattern": "package-select",
         "surfaceFamily": "ticket-menu-board",
         "surfaceModel": "sample-menu-cards-with-setup-ticket",
         "styleFamily": "hospitality-menu",
@@ -4620,7 +4905,7 @@
           "list",
           "buttons"
         ],
-        "styleContract": "Warm and lively with guest-count proof, live-fire catering evidence, flame-yellow action accents, and a readable menu ticket as the signature move.",
+        "styleContract": "Warm and lively with guest-count proof, an outdoor live-fire catering station, flame-yellow action accents, and a readable menu ticket as the signature move.",
         "knownRisks": [
           "first-viewport-cta",
           "logo-scale",
@@ -4662,6 +4947,8 @@
           "som-streetfood-menu-proof",
           "som-menu-package",
           "som-streetfood-menu-package",
+          "som-menu-table",
+          "som-streetfood-menu-table",
           "som-menu-event",
           "som-streetfood-menu-event",
           "som-menu-step",
@@ -4676,26 +4963,28 @@
           "som-streetfood-menu-photo",
           "som-streetfood-menu-ticket",
           "som-streetfood-menu-package",
+          "som-streetfood-menu-table",
           "som-streetfood-menu-event",
           "som-streetfood-quote-strip"
         ]
       },
       "notes": [
         "Works: Frame catering around a live setup photo, menu samples, service footprint, guest-count notes, and date-check CTAs. should separate this from nearby patterns.",
-        "Proof: caterers preparing pizza and tacos beside a wood-fired oven and prep table. carries the niche-specific read.",
+        "Proof: outdoor live-fire catering station with wood oven, prep table, finished pizza, tacos, toppings, and crew visible. carries the niche-specific read.",
         "Watch: compare package-menu-board neighbors for hero geometry, CTA rhythm, and proof treatment.",
         "Fix next: no mechanical visual-sweep failures; judge taste from first viewport screenshots."
       ],
+      "tasteWarnings": [],
       "nearest": [
-        {
-          "left": "mocktail-beverage-cart",
-          "right": "wood-fired-pizza-taco-catering",
-          "distance": 250
-        },
         {
           "left": "coffee-cart-catering",
           "right": "wood-fired-pizza-taco-catering",
           "distance": 275
+        },
+        {
+          "left": "mocktail-beverage-cart",
+          "right": "wood-fired-pizza-taco-catering",
+          "distance": 286
         }
       ]
     }

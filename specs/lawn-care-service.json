@@ -81,7 +81,7 @@
   },
   "copy": {
     "eyebrow": "Weekly mowing routes with gate-check notes",
-    "heroTitle": "Route-day lawns with crisp Friday energy.",
+    "heroTitle": "Friday-ready route lawns.",
     "heroText": "GreenStripe runs tidy neighborhood routes for mowing, edging, bed touch-ups, and post-visit gate checks, so your yard looks handled before the weekend shows up.",
     "primaryCta": "Join the route",
     "secondaryCta": "View route plans",
@@ -91,7 +91,7 @@
     "processTitle": "How the route stays on track",
     "proofTitle": "The small checks make the stripes feel premium",
     "quoteTitle": "Want a cleaner lawn route?",
-    "quoteText": "Send your address, a few yard photos, gate or access notes, and your ideal mowing rhythm. We will reply with the best route fit and a clear first-visit plan."
+    "quoteText": "Join the route with address, a few yard photos, gate or access notes, and your ideal mowing rhythm. We will reply with the best route fit and a clear first-visit plan."
   },
   "services": [
     {
@@ -153,13 +153,14 @@
       "screenshotCompared": true
     },
     "premiumReview": {
-      "version": 1,
+      "version": 2,
       "reviewedAt": "2026-06-25",
       "score": 100,
       "categories": {
         "firstViewport": true,
         "logoScale": true,
         "typography": true,
+        "polishContract": true,
         "imageProof": true,
         "ctaClarity": true,
         "mobilePolish": true,
@@ -185,9 +186,9 @@
   },
   "serviceDetails": {
     "turnaround": "Friday-ready: route planning that protects weekend curb appeal.",
-    "whatToSend": "Send your address, a few yard photos, gate or access notes, and your ideal mowing rhythm. We will reply with the best route fit and a clear first-visit plan.",
+    "whatToSend": "Send your address or neighborhood, access notes, preferred cadence, photos when useful, and any skip conditions before joining the route.",
     "prepNote": "Send yard photos, address, slope or gate notes, and any trouble spots so we can match the right route lane.",
-    "serviceRhythm": "route join for Northside, Oak Hill, Westbrook, Maple Bend, and nearby weekly mowing routes with room for one-time cleanup passes when the calendar allows.",
-    "objectionAnswer": "Scope, access, timing, and fit are confirmed before booking so the next step is clear and low-pressure."
+    "serviceRhythm": "Route-fit flow for Northside, Oak Hill, Westbrook, Maple Bend, and nearby weekly mowing routes with room for one-time cleanup passes when the calendar allows: cadence, access, skip rules, and first-visit notes make the route realistic.",
+    "objectionAnswer": "For lawn care service, yard size, gate access, mowing cadence, edging needs, clippings, and weather windows are checked before the first route day is set."
   }
 }

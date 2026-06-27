@@ -9,8 +9,8 @@
     "silhouette": "package-menu-board",
     "navigationPrimitive": "menu-utility-header",
     "mobileActionPattern": "date-check-actions",
-    "imageRole": "work-in-progress",
-    "imageEvidence": "live event service moment with package context",
+    "imageRole": "environment-context",
+    "imageEvidence": "espresso cart service in a bright event room with guests, barista, cart equipment, and menu setup visible",
     "ctaRhythm": "date-check",
     "surfaceFamily": "ticket-menu-board",
     "surfaceModel": "ticket-menu-board",
@@ -45,7 +45,7 @@
       "date-cta-buried",
       "menu-board-overstyling"
     ],
-    "styleContract": "Warm event hospitality with package-fit proof, a live espresso cart image, citrus action accents, and a readable menu ticket as the signature move."
+    "styleContract": "Warm event hospitality with package-fit proof, a bright event-room espresso cart scene, citrus action accents, and a readable menu ticket as the signature move."
   },
   "tagline": "A tidy espresso bar that makes the room smell like yes.",
   "themeSlug": "twentytwentyfive",
@@ -80,7 +80,7 @@
   },
   "copy": {
     "eyebrow": "Mobile espresso bar for event hosts",
-    "heroTitle": "Coffee service with a little line-around-the-cart energy.",
+    "heroTitle": "Coffee worth the line.",
     "heroText": "Cartwright rolls in with a polished espresso cart, friendly baristas, and a tight drink menu that keeps guests moving, caffeinated, and gently impressed.",
     "primaryCta": "Check your date",
     "secondaryCta": "See packages",
@@ -90,7 +90,7 @@
     "processTitle": "How booking stays smooth",
     "proofTitle": "Built for hosts who notice details",
     "quoteTitle": "Want the cart at your event?",
-    "quoteText": "Send the date, venue, guest count, service window, and whether you want espresso only or a fuller pastry-and-cold-drink spread. We will reply with the best-fit package."
+    "quoteText": "Check availability with date, venue, guest count, service window, and whether you want espresso only or a fuller pastry-and-cold-drink spread. We will reply with the best-fit package."
   },
   "services": [
     {
@@ -152,13 +152,14 @@
       "screenshotCompared": true
     },
     "premiumReview": {
-      "version": 1,
+      "version": 2,
       "reviewedAt": "2026-06-25",
       "score": 100,
       "categories": {
         "firstViewport": true,
         "logoScale": true,
         "typography": true,
+        "polishContract": true,
         "imageProof": true,
         "ctaClarity": true,
         "mobilePolish": true,
@@ -169,7 +170,7 @@
       },
       "notes": [
         "Works: a readable menu ticket. gives the page a memorable shape.",
-        "Proof: live event service moment with package context. anchors the niche in the first viewport.",
+        "Proof: espresso cart service in a bright event room with guests, barista, cart equipment, and menu setup visible. anchors the niche in the first viewport.",
         "Action: Check your date is the main conversion path."
       ]
     }
@@ -178,15 +179,15 @@
     "mood": "Warm event hospitality.",
     "trustCue": "package-fit proof.",
     "accentBehavior": "sun stays reserved for Check your date, active proof cues, and key booking moments.",
-    "imageProof": "live event service moment with package context.",
+    "imageProof": "espresso cart service in a bright event room with guests, barista, cart equipment, and menu setup visible.",
     "signatureMove": "a readable menu ticket.",
     "avoidLookingLike": "Avoid a generic package-menu-board recolor; do not repeat stock hero framing, copied card rhythm, or vague local-service claims."
   },
   "serviceDetails": {
     "turnaround": "90 min: minimum service window for small private events.",
-    "whatToSend": "Send the date, venue, guest count, service window, and whether you want espresso only or a fuller pastry-and-cold-drink spread. We will reply with the best-fit package.",
+    "whatToSend": "Share the event date, venue or address, guest count, setup window, power/water rules, and the package style you are considering.",
     "prepNote": "Share the date, location, guest count, service window, power access, and any dietary notes we should plan around.",
-    "serviceRhythm": "date check for Espresso cart service for weddings, offices, open houses, showers, markets, and private events across the central metro and nearby suburbs.",
-    "objectionAnswer": "Scope, access, timing, and fit are confirmed before booking so the next step is clear and low-pressure."
+    "serviceRhythm": "Date-window flow for Espresso cart service for weddings, offices, open houses, showers, markets, and private events across the central metro and nearby suburbs: date fit, setup rules, guest flow, and hold status come before package pressure.",
+    "objectionAnswer": "For coffee cart catering service, guest count, menu pace, service footprint, prep access, and cleanup timing are matched before the package is recommended."
   }
 }

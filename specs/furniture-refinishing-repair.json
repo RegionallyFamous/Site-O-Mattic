@@ -7,26 +7,26 @@
     "primaryPattern": "photo-quote-transformation",
     "secondaryPattern": "material-care-proof",
     "silhouette": "split-quote-board",
-    "navigationPrimitive": "compact-header",
-    "mobileActionPattern": "send-photo-estimate-actions",
+    "navigationPrimitive": "floating-proof-action",
+    "mobileActionPattern": "floating-proof-plus-send-photo-actions",
     "imageRole": "process-closeup",
     "imageEvidence": "craftsperson refinishing a wooden furniture piece in a tidy workshop with tools and finish samples",
     "ctaRhythm": "photo-first",
     "surfaceFamily": "outlined-repeaters",
-    "surfaceModel": "repair-surface-rows-with-finish-pills",
+    "surfaceModel": "hero-photo-before-after-proof-plus-floating-action-panel",
     "styleFamily": "material-workbench",
     "density": "balanced-editorial",
     "colorRoles": {
       "ink": "deepGreen",
       "paper": "cream",
       "field": "mist",
-      "line": "leaf",
+      "line": "soil",
       "primary": "grass",
       "action": "sun",
-      "proof": "leaf",
+      "proof": "grass",
       "muted": "soil",
       "warning": "sun",
-      "shadowTint": "deepGreen"
+      "shadowTint": "soil"
     },
     "geometry": {
       "radiusScale": "woodshop-8",
@@ -37,15 +37,17 @@
     "coreBlockPlan": [
       "columns",
       "image",
+      "table",
+      "details",
       "list",
       "buttons"
     ],
     "knownRisks": [
       "first-viewport-cta",
       "logo-scale",
-      "mobile-crop"
+      "floating-proof-panel-crowding"
     ],
-    "styleContract": "Patient and tactile with material proof, real refinishing evidence, brass action accents, and a send-photo estimate strip as the signature move."
+    "styleContract": "Patient and tactile with material proof, real refinishing evidence, brass accent behavior, and a hero photo proof pair plus floating send-photo panel as the signature move."
   },
   "tagline": "Furniture repair with grain, care, and receipts.",
   "themeSlug": "twentytwentyfive",
@@ -76,7 +78,7 @@
     "phoneHref": "tel:+15550146744",
     "email": "hello@grainmend.test",
     "emailHref": "mailto:hello@grainmend.test",
-    "serviceArea": "Furniture refinishing, chair repair, table restoration, finish refreshes, small cabinet repair, heirloom care, photo estimates, and local pickup or drop-off guidance across the area"
+    "serviceArea": "Furniture refinishing, chair repair, table restoration, finish refreshes, small cabinet repair, heirloom care, photo estimates, and pickup or drop-off guidance for River Market, Northside, Oak Hill, Westbrook, and Maple Bend"
   },
   "copy": {
     "eyebrow": "Furniture refinishing with photo-first estimates",
@@ -90,7 +92,7 @@
     "processTitle": "How the repair path works",
     "proofTitle": "Wood proof before the quote",
     "quoteTitle": "Ready to send a furniture photo?",
-    "quoteText": "Send clear photos, dimensions, damage notes, and what you hope the piece becomes. We will reply with the likely repair path and next step."
+    "quoteText": "Start with clear photos, dimensions, damage notes, and what you hope the piece becomes. We will reply with the likely repair path and next step."
   },
   "services": [
     {
@@ -152,13 +154,14 @@
       "screenshotCompared": true
     },
     "premiumReview": {
-      "version": 1,
+      "version": 2,
       "reviewedAt": "2026-06-25",
       "score": 100,
       "categories": {
         "firstViewport": true,
         "logoScale": true,
         "typography": true,
+        "polishContract": true,
         "imageProof": true,
         "ctaClarity": true,
         "mobilePolish": true,
@@ -168,7 +171,7 @@
         "brandBrief": true
       },
       "notes": [
-        "Works: a send-photo estimate strip. gives the page a memorable shape.",
+        "Works: a hero photo proof pair plus floating send-photo panel gives the page a memorable shape.",
         "Proof: craftsperson refinishing a wooden furniture piece in a tidy workshop with tools and finish samples. anchors the niche in the first viewport.",
         "Action: Send a furniture photo is the main conversion path."
       ]
@@ -179,14 +182,14 @@
     "trustCue": "material proof.",
     "accentBehavior": "sun stays reserved for Send a furniture photo, active proof cues, and key booking moments.",
     "imageProof": "craftsperson refinishing a wooden furniture piece in a tidy workshop with tools and finish samples.",
-    "signatureMove": "a send-photo estimate strip.",
+    "signatureMove": "a hero photo proof pair plus floating send-photo panel.",
     "avoidLookingLike": "Avoid a generic before-after-quote recolor; do not repeat stock hero framing, copied card rhythm, or vague local-service claims."
   },
   "serviceDetails": {
     "turnaround": "Photo estimate: repair path scoped before pickup.",
-    "whatToSend": "Send clear photos, dimensions, damage notes, and what you hope the piece becomes. We will reply with the likely repair path and next step.",
+    "whatToSend": "Send 3 to 5 photos of the furniture refinishing and repair service item, dimensions, close-up damage, finish goals, loose-joint notes, pickup or drop-off needs, and timing window.",
     "prepNote": "Clear photos, dimensions, damage, finish goals, and any sentimental constraints help us triage.",
-    "serviceRhythm": "photo first for Furniture refinishing, chair repair, table restoration, finish refreshes, small cabinet repair, heirloom care, photo estimates, and local pickup or drop-off guidance across the area.",
-    "objectionAnswer": "Scope, access, timing, and fit are confirmed before booking so the next step is clear and low-pressure."
+    "serviceRhythm": "Photo-to-plan flow for Furniture refinishing, chair repair, table restoration, finish refreshes, small cabinet repair, heirloom care, photo estimates, and pickup or drop-off guidance for River Market, Northside, Oak Hill, Westbrook, and Maple Bend: first the condition evidence, then material risk, finish goals, timing, and pickup or drop-off notes.",
+    "objectionAnswer": "For furniture refinishing and repair service, condition photos, dimensions, finish goals, loose joints, and sentimental constraints decide whether the repair path is simple or needs a closer look."
   }
 }

@@ -21,6 +21,8 @@
     "services",
     "process",
     "proof",
+    "brandBrief",
+    "serviceDetails",
     "release"
   ],
   "properties": {
@@ -51,6 +53,7 @@
         "fixed-bottom-action",
         "bottom-dock-booking",
         "workshop-bench",
+        "deck-finish-sample-board",
         "sharp-route-bench",
         "bike-route-workstand",
         "water-test-board",
@@ -62,6 +65,7 @@
         "story-card-consult",
         "turnover-receipt-board",
         "service-receipt-stack",
+        "window-scope-ledger",
         "pet-portrait-gallery",
         "street-food-menu-board",
         "dessert-table-gallery",
@@ -103,6 +107,7 @@
         "primaryPattern": {
           "enum": [
             "decision-filter-route-plan",
+            "route-schedule-board",
             "photo-quote-transformation",
             "checklist-urgency-gate",
             "risk-prevention-warning-path",
@@ -523,6 +528,77 @@
         }
       }
     },
+    "brandBrief": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mood",
+        "trustCue",
+        "accentBehavior",
+        "imageProof",
+        "signatureMove",
+        "avoidLookingLike"
+      ],
+      "properties": {
+        "mood": {
+          "type": "string",
+          "minLength": 12
+        },
+        "trustCue": {
+          "type": "string",
+          "minLength": 10
+        },
+        "accentBehavior": {
+          "type": "string",
+          "minLength": 18
+        },
+        "imageProof": {
+          "type": "string",
+          "minLength": 18
+        },
+        "signatureMove": {
+          "type": "string",
+          "minLength": 10
+        },
+        "avoidLookingLike": {
+          "type": "string",
+          "minLength": 18
+        }
+      }
+    },
+    "serviceDetails": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "turnaround",
+        "whatToSend",
+        "prepNote",
+        "serviceRhythm",
+        "objectionAnswer"
+      ],
+      "properties": {
+        "turnaround": {
+          "type": "string",
+          "minLength": 28
+        },
+        "whatToSend": {
+          "type": "string",
+          "minLength": 28
+        },
+        "prepNote": {
+          "type": "string",
+          "minLength": 28
+        },
+        "serviceRhythm": {
+          "type": "string",
+          "minLength": 28
+        },
+        "objectionAnswer": {
+          "type": "string",
+          "minLength": 28
+        }
+      }
+    },
     "release": {
       "type": "object",
       "additionalProperties": false,
@@ -530,7 +606,8 @@
         "status",
         "reviewedAt",
         "visualBaseline",
-        "reviewChecklist"
+        "reviewChecklist",
+        "premiumReview"
       ],
       "properties": {
         "status": {
@@ -599,6 +676,91 @@
             },
             "screenshotCompared": {
               "type": "boolean"
+            }
+          }
+        },
+        "premiumReview": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "version",
+            "reviewedAt",
+            "score",
+            "categories",
+            "notes"
+          ],
+          "properties": {
+            "version": {
+              "const": 2
+            },
+            "reviewedAt": {
+              "type": "string",
+              "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+            },
+            "score": {
+              "type": "number",
+              "minimum": 90,
+              "maximum": 100
+            },
+            "categories": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "firstViewport",
+                "logoScale",
+                "typography",
+                "polishContract",
+                "imageProof",
+                "ctaClarity",
+                "mobilePolish",
+                "layoutDistinctness",
+                "copySpecificity",
+                "assetQa",
+                "brandBrief"
+              ],
+              "properties": {
+                "firstViewport": {
+                  "type": "boolean"
+                },
+                "logoScale": {
+                  "type": "boolean"
+                },
+                "typography": {
+                  "type": "boolean"
+                },
+                "polishContract": {
+                  "type": "boolean"
+                },
+                "imageProof": {
+                  "type": "boolean"
+                },
+                "ctaClarity": {
+                  "type": "boolean"
+                },
+                "mobilePolish": {
+                  "type": "boolean"
+                },
+                "layoutDistinctness": {
+                  "type": "boolean"
+                },
+                "copySpecificity": {
+                  "type": "boolean"
+                },
+                "assetQa": {
+                  "type": "boolean"
+                },
+                "brandBrief": {
+                  "type": "boolean"
+                }
+              }
+            },
+            "notes": {
+              "type": "array",
+              "minItems": 3,
+              "items": {
+                "type": "string",
+                "minLength": 8
+              }
             }
           }
         }

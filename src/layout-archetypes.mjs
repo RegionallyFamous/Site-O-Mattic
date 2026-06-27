@@ -10,32 +10,83 @@ function withPrefixedClasses(baseClasses, prefix, classSuffixes, markerSuffixes 
 
 function galleryAlias(config) {
   const classes = withPrefixedClasses(
-    ["som-gallery-hero", "som-gallery-image", "som-gallery-copy", "som-gallery-note", "som-style-card", "som-gallery-proof", "som-process-card", "som-quote-strip"],
+    ["som-gallery-hero", "som-gallery-image", "som-gallery-copy", "som-gallery-note", "som-style-card", "som-proof-gallery", "som-gallery-quote", "som-gallery-proof", "som-process-card", "som-quote-strip"],
     config.prefix,
-    ["gallery-hero", "gallery-image", "gallery-copy", "gallery-note", "style-card", "gallery-proof", "process-card", "quote-strip"],
-    ["gallery-hero", "gallery-image", "style-card", "gallery-proof", "quote-strip"]
+    ["gallery-hero", "gallery-image", "gallery-copy", "gallery-note", "style-card", "proof-gallery", "gallery-quote", "gallery-proof", "process-card", "quote-strip"],
+    ["gallery-hero", "gallery-image", "proof-gallery", "gallery-quote", "style-card", "gallery-proof", "quote-strip"]
   );
   return { ...config, ...classes };
 }
 
+function headshotGalleryAlias(config) {
+  const base = galleryAlias(config);
+  return {
+    ...base,
+    componentClassesExpected: [
+      ...base.componentClassesExpected,
+      "som-headshot-cover-hero",
+      "som-contact-sheet",
+      "som-headshot-shot-plan",
+      "som-headshot-shot-list"
+    ],
+    layoutMarkers: [
+      ...base.layoutMarkers,
+      "wp:cover",
+      "som-headshot-cover-hero",
+      "som-contact-sheet",
+      "som-headshot-shot-plan"
+    ]
+  };
+}
+
+function dessertGalleryAlias(config) {
+  const base = galleryAlias(config);
+  const removedProofClasses = new Set(["som-gallery-proof", "som-dessert-gallery-proof"]);
+  const removedProofMarkers = new Set(["som-gallery-proof", "som-dessert-gallery-proof"]);
+  return {
+    ...base,
+    componentClassesExpected: [
+      ...base.componentClassesExpected.filter((className) => !removedProofClasses.has(className)),
+      "som-dessert-menu-board",
+      "som-dessert-menu-line",
+      "som-dessert-menu-number"
+    ],
+    layoutMarkers: [
+      ...base.layoutMarkers.filter((marker) => !removedProofMarkers.has(marker)),
+      "som-dessert-menu-board",
+      "som-dessert-menu-line"
+    ]
+  };
+}
+
 function menuAlias(config) {
   const classes = withPrefixedClasses(
-    ["som-menu-page", "som-menu-header", "som-menu-hero", "som-menu-photo", "som-menu-ticket", "som-menu-proof", "som-menu-package", "som-menu-event", "som-menu-step", "som-quote-strip"],
+    ["som-menu-page", "som-menu-header", "som-menu-hero", "som-menu-photo", "som-menu-ticket", "som-menu-proof", "som-menu-package", "som-menu-table", "som-menu-event", "som-menu-step", "som-quote-strip"],
     config.prefix,
-    ["menu-page", "menu-header", "menu-hero", "menu-photo", "menu-ticket", "menu-proof", "menu-package", "menu-event", "menu-step", "quote-strip"],
-    ["menu-page", "menu-header", "menu-hero", "menu-photo", "menu-ticket", "menu-package", "menu-event", "quote-strip"]
+    ["menu-page", "menu-header", "menu-hero", "menu-photo", "menu-ticket", "menu-proof", "menu-package", "menu-table", "menu-event", "menu-step", "quote-strip"],
+    ["menu-page", "menu-header", "menu-hero", "menu-photo", "menu-ticket", "menu-package", "menu-table", "menu-event", "quote-strip"]
   );
   return { ...config, ...classes };
 }
 
 function storyAlias(config) {
   const classes = withPrefixedClasses(
-    ["som-checklist-hero", "som-urgency-band", "som-check-card", "som-proof-card", "som-quote-strip"],
+    ["som-checklist-hero", "som-urgency-band", "som-check-card", "som-check-detail", "som-check-quote", "som-proof-card", "som-quote-strip"],
     config.prefix,
-    ["story-hero", "proof-band", "support-card", "proof-card", "consult-strip"],
-    ["story-hero", "proof-band", "support-card", "consult-strip"]
+    ["story-hero", "proof-band", "support-card", "detail", "quote", "proof-card", "consult-strip"],
+    ["story-hero", "proof-band", "support-card", "detail", "quote", "consult-strip"]
   );
-  return { ...config, ...classes };
+  return {
+    ...config,
+    componentClassesExpected: [
+      ...classes.componentClassesExpected,
+      ...(config.extraComponentClasses || [])
+    ],
+    layoutMarkers: [
+      ...classes.layoutMarkers,
+      ...(config.extraLayoutMarkers || [])
+    ]
+  };
 }
 
 function fixedActionAlias(config) {
@@ -46,6 +97,56 @@ function fixedActionAlias(config) {
     ["page", "header", "hero", "photo", "ticket", "package", "action-dock", "quote-strip"]
   );
   return { ...config, ...classes };
+}
+
+function zoneAlias(config) {
+  const classes = withPrefixedClasses(
+    ["som-zone-page", "som-zone-header", "som-zone-hero", "som-zone-photo", "som-zone-anchor-strip", "som-zone-anchor-nav", "som-zone-anchor-action", "som-zone-map", "som-zone-proof", "som-zone-card", "som-zone-step", "som-zone-note", "som-quote-strip"],
+    config.prefix,
+    ["page", "header", "hero", "photo", "anchor-strip", "anchor-nav", "anchor-action", "map", "proof", "card", "step", "note", "quote-strip"],
+    ["page", "header", "hero", "photo", "anchor-strip", "anchor-nav", "map", "proof", "card", "quote-strip"]
+  );
+  return {
+    ...config,
+    componentClassesExpected: [
+      ...classes.componentClassesExpected,
+      "som-section-anchor-strip",
+      "som-section-anchor-nav",
+      "som-section-anchor-action"
+    ],
+    layoutMarkers: [
+      ...classes.layoutMarkers,
+      "som-section-anchor-strip",
+      "som-section-anchor-nav"
+    ]
+  };
+}
+
+function receiptAlias(config) {
+  const classes = withPrefixedClasses(
+    ["som-receipt-page", "som-receipt-header", "som-receipt-header-action", "som-receipt-hero-shell", "som-receipt-hero", "som-receipt-card", "som-receipt-proof-strip", "som-receipt-proof", "som-receipt-scope", "som-receipt-table", "som-receipt-safety", "som-receipt-step", "som-receipt-details", "som-receipt-detail", "som-quote-strip", "som-footer", "som-receipt-anchor-strip", "som-receipt-anchor-nav", "som-receipt-anchor-action"],
+    config.prefix,
+    ["page", "header", "header-action", "hero-shell", "hero", "card", "proof-strip", "proof", "scope", "table", "safety", "step", "details", "detail", "quote-strip", "footer", "anchor-strip", "anchor-nav", "anchor-action"],
+    ["page", "header", "hero-shell", "hero", "card", "proof-strip", "scope", "table", "detail", "quote-strip", "anchor-strip", "anchor-nav"]
+  );
+  return {
+    ...config,
+    componentClassesExpected: [
+      ...classes.componentClassesExpected,
+      "som-section-anchor-strip",
+      "som-section-anchor-nav",
+      "som-section-anchor-action"
+    ],
+    layoutMarkers: [
+      ...classes.layoutMarkers,
+      "wp:media-text",
+      "wp:table",
+      "wp:quote",
+      "wp:details",
+      "som-section-anchor-strip",
+      "som-section-anchor-nav"
+    ]
+  };
 }
 
 function sideRailAlias(config) {
@@ -70,10 +171,10 @@ function workshopAlias(config) {
 
 function beforeAfterAlias(config) {
   const classes = withPrefixedClasses(
-    ["som-split-hero", "som-hero-photo", "som-before-after", "som-evidence-card", "som-quote-strip", "som-surface-row", "som-method-pill", "som-timeline-step", "som-proof-grid", "som-proof-card"],
+    ["som-split-hero", "som-hero-photo", "som-before-after", "som-evidence-card", "som-floating-proof-action", "som-quote-strip", "som-surface-row", "som-method-pill", "som-method-table", "som-method-detail", "som-timeline-step", "som-proof-grid", "som-proof-card"],
     config.prefix,
-    ["split-hero", "hero-photo", "before-after", "evidence-card", "quote-strip", "surface-row", "method-pill", "timeline-step", "proof-grid", "proof-card"],
-    ["split-hero", "hero-photo", "before-after", "surface-row", "quote-strip"]
+    ["split-hero", "hero-photo", "before-after", "evidence-card", "floating-proof-action", "quote-strip", "surface-row", "method-pill", "method-table", "method-detail", "timeline-step", "proof-grid", "proof-card"],
+    ["split-hero", "hero-photo", "before-after", "floating-proof-action", "surface-row", "method-table", "method-detail", "quote-strip"]
   );
   return { ...config, ...classes };
 }
@@ -81,13 +182,16 @@ function beforeAfterAlias(config) {
 const RENDER_FAMILY_BY_LAYOUT = {
   "side-rail-estimate": "side-rail-service",
   "bottom-dock-booking": "fixed-bottom-action",
+  "deck-finish-sample-board": "workshop-bench",
   "sharp-route-bench": "workshop-bench",
   "bike-route-workstand": "workshop-bench",
   "organizing-zone-board": "zone-grid-planner",
-  "route-led-schedule": "route-plan",
+  "route-led-schedule": "lawn-route-status-board",
   "story-card-consult": "checklist-urgency",
-  "turnover-receipt-board": "service-receipt-stack",
+  "window-scope-ledger": "before-after-quote",
   "pet-portrait-gallery": "gallery-led",
+  "pet-portrait-booking-dock": "fixed-bottom-action",
+  "pollinator-season-board": "zone-grid-planner",
   "street-food-menu-board": "package-menu-board",
   "dessert-table-gallery": "gallery-led",
   "balloon-backdrop-gallery": "gallery-led",
@@ -97,6 +201,7 @@ const RENDER_FAMILY_BY_LAYOUT = {
   "picnic-proposal-lookbook": "gallery-led",
   "mocktail-cart-menu": "package-menu-board",
   "headshot-proof-gallery": "gallery-led",
+  "headshot-prep-ledger": "service-receipt-stack",
   "mural-lettering-workshop": "workshop-bench",
   "color-consult-story": "checklist-urgency",
   "furniture-refinish-proof": "before-after-quote"
@@ -143,7 +248,7 @@ export const LAYOUT_ARCHETYPES = {
       "timeline",
       "proof-grid-footer"
     ],
-    navigationTreatment: "top-horizontal-header-with-early-photo-quote-anchor",
+    navigationTreatment: "top-header-plus-floating-photo-proof-action",
     typographyTreatment: "confident-transform-grotesk",
     colorStrategy: "high-contrast-clean-surface-with-electric-accent",
     servicePresentation: "numbered-surface-rows-with-method-pills",
@@ -156,15 +261,18 @@ export const LAYOUT_ARCHETYPES = {
       "som-hero-photo",
       "som-before-after",
       "som-evidence-card",
+      "som-floating-proof-action",
       "som-quote-strip",
       "som-surface-row",
       "som-method-pill",
+      "som-method-table",
+      "som-method-detail",
       "som-timeline-step",
       "som-proof-grid",
       "som-proof-card",
       "som-footer"
     ],
-    layoutMarkers: ["som-split-hero", "som-before-after", "som-quote-strip", "som-surface-row", "som-method-list", "som-timeline-step", "som-proof-grid"]
+    layoutMarkers: ["som-split-hero", "som-before-after", "som-floating-proof-action", "som-quote-strip", "som-surface-row", "som-method-table", "som-method-detail", "wp:table", "wp:details", "som-timeline-step", "som-proof-grid"]
   },
   "checklist-urgency": {
     label: "Checklist and urgency",
@@ -187,17 +295,17 @@ export const LAYOUT_ARCHETYPES = {
     ctaRhythm: "hero-buttons-plus-midpage-urgency-band",
     navLabels: ["Checklist", "Proof", "Quote"],
     anchorOrder: ["checklist", "proof", "quote"],
-    componentClassesExpected: ["som-checklist-hero", "som-urgency-band", "som-check-card", "som-proof-card", "som-quote-strip", "som-footer"],
-    layoutMarkers: ["som-checklist-hero", "som-urgency-band", "som-check-card", "som-quote-strip"]
+    componentClassesExpected: ["som-checklist-hero", "som-urgency-band", "som-check-card", "som-check-detail", "som-check-quote", "som-proof-card", "som-quote-strip", "som-footer"],
+    layoutMarkers: ["som-checklist-hero", "som-urgency-band", "som-check-card", "som-check-detail", "som-check-quote", "wp:details", "wp:quote", "som-quote-strip"]
   },
   "risk-prevention": {
     label: "Risk prevention",
     bestFor: ["gutter cleaning", "roof moss removal", "dryer vent cleaning", "chimney sweeping"],
     archetype: "Warning-sign risk prevention service",
-    hero: "roofline-photo-left-with-risk-copy-panel",
+    hero: "roofline-cover-with-storm-warning-board",
     sectionOrder: [
       "navigation",
-      "risk-hero",
+      "risk-cover-warning-board",
       "risk-proof-band",
       "warning-sign-rows",
       "prevention-plan",
@@ -206,13 +314,13 @@ export const LAYOUT_ARCHETYPES = {
     navigationTreatment: "top-horizontal-header-with-risk-anchors",
     typographyTreatment: "sturdy-safety-sans",
     colorStrategy: "deep-protection-contrast-with-warning-accent",
-    servicePresentation: "warning-sign-rows-with-home-risk-panel",
-    proofTreatment: "prevention-badges-before-plan",
+    servicePresentation: "hero-warning-list-plus-warning-sign-rows",
+    proofTreatment: "compact-prevention-status-strip-before-plan",
     ctaRhythm: "hero-phone-plus-seasonal-risk-band",
     navLabels: ["Warning signs", "Plan", "Quote"],
     anchorOrder: ["signs", "plan", "quote"],
-    componentClassesExpected: ["som-risk-hero", "som-risk-band", "som-warning-row", "som-plan-step", "som-proof-card", "som-quote-strip", "som-footer"],
-    layoutMarkers: ["som-risk-hero", "som-risk-band", "som-warning-row", "som-plan-step", "som-quote-strip"]
+    componentClassesExpected: ["som-risk-hero", "som-risk-panel", "som-risk-band", "som-risk-status", "som-warning-row", "som-plan-step", "som-proof-card", "som-quote-strip", "som-footer"],
+    layoutMarkers: ["wp:cover", "som-risk-hero", "som-risk-checklist", "som-risk-band", "som-risk-status", "som-warning-row", "som-plan-step", "som-quote-strip"]
   },
   "surface-seasonal": {
     label: "Seasonal surface restoration",
@@ -242,7 +350,7 @@ export const LAYOUT_ARCHETYPES = {
     label: "Stain treatment fabric care",
     bestFor: ["carpet cleaning", "upholstery cleaning", "area rug cleaning", "mattress cleaning"],
     archetype: "Indoor stain treatment care plan",
-    hero: "soft-home-hero-with-fabric-service-photo",
+    hero: "soft-home-hero-with-media-left-fabric-care-board",
     sectionOrder: [
       "navigation",
       "fabric-hero",
@@ -254,13 +362,13 @@ export const LAYOUT_ARCHETYPES = {
     navigationTreatment: "top-horizontal-header-with-fabric-care-anchors",
     typographyTreatment: "soft-domestic-humanist",
     colorStrategy: "fresh-fabric-teal-with-quiet-cream-air",
-    servicePresentation: "stain-and-fabric-care-cards-with-care-note",
+    servicePresentation: "stain-and-fabric-care-cards-with-hero-care-board",
     proofTreatment: "trust-proof-badges-after-hero",
     ctaRhythm: "hero-estimate-buttons-plus-final-fabric-quote",
     navLabels: ["Stains", "Drying", "Quote"],
     anchorOrder: ["stains", "drying", "quote"],
-    componentClassesExpected: ["som-fabric-hero", "som-fabric-photo", "som-fabric-proof", "som-stain-card", "som-care-note", "som-process-card", "som-quote-strip", "som-footer"],
-    layoutMarkers: ["som-fabric-hero", "som-fabric-photo", "som-fabric-proof", "som-stain-card", "som-care-note", "som-quote-strip"]
+    componentClassesExpected: ["som-fabric-hero", "som-fabric-copy", "som-fabric-media", "som-fabric-photo", "som-fabric-proof", "som-stain-card", "som-care-note", "som-fabric-care-list", "som-fabric-detail", "som-process-card", "som-quote-strip", "som-footer"],
+    layoutMarkers: ["som-fabric-hero", "som-fabric-copy", "som-fabric-media", "som-fabric-photo", "som-fabric-proof", "som-stain-card", "som-care-note", "som-fabric-care-list", "som-fabric-detail", "wp:list", "wp:details", "som-quote-strip"]
   },
   "package-comparison": {
     label: "Package comparison",
@@ -387,7 +495,7 @@ export const LAYOUT_ARCHETYPES = {
     label: "Side rail estimate",
     bestFor: ["smart home setup", "senior downsizing", "interior color consulting", "furniture refinishing"],
     archetype: "Consultative side-rail estimate console",
-    hero: "desktop-side-rail-with-consult-action-hero",
+    hero: "desktop-side-rail-with-image-led-consult-action-hero",
     sectionOrder: [
       "desktop-estimate-rail",
       "consult-hero",
@@ -427,7 +535,7 @@ export const LAYOUT_ARCHETYPES = {
       "som-footer"
     ],
     layoutMarkers: ["som-estimate-rail-shell", "som-estimate-rail", "som-consult-hero", "som-consult-photo", "som-consult-ticket", "som-consult-proof-strip", "som-consult-card", "som-consult-step", "som-quote-strip"],
-    guidance: "Use a full-height desktop rail for logo, anchors, and phone/estimate CTA, paired with a right-side hero image and consult steps. Mobile should collapse to a compact header."
+    guidance: "Use a full-height desktop rail for logo, anchors, and phone/estimate CTA, paired with an image-led consult hero and setup steps. Mobile should collapse to a compact header."
   },
   "bottom-dock-booking": {
     label: "Bottom dock booking",
@@ -527,7 +635,7 @@ export const LAYOUT_ARCHETYPES = {
     label: "Bike route workstand",
     bestFor: ["mobile bicycle repair", "commuter bike tune-ups", "bike room service days"],
     archetype: "Curbside bike workstand and route stop",
-    hero: "curbside-workstand-photo-with-route-ticket-and-ride-check",
+    hero: "light-workstand-bay-with-curbside-photo-and-route-docket",
     sectionOrder: [
       "compact-workstand-header",
       "curbside-bike-hero",
@@ -539,9 +647,9 @@ export const LAYOUT_ARCHETYPES = {
     ],
     navigationTreatment: "side-top-hybrid-with-tune-route-booking-labels",
     typographyTreatment: "technical-bike-service-sans-with-compact-utility-labels",
-    colorStrategy: "commuter-teal-cream-with-chain-lube-yellow-action",
+    colorStrategy: "light-commuter-workstand-grid-with-teal-proof-and-yellow-action",
     servicePresentation: "tune-lane-cards-with-ride-readiness-note",
-    proofTreatment: "ride-readiness-proof-rail-with-route-day-stats",
+    proofTreatment: "route-docket-plus-ride-readiness-proof-rail",
     ctaRhythm: "hero-book-tune-plus-final-route-note-quote",
     navLabels: ["Tune lanes", "Route stop", "Book"],
     anchorOrder: ["wood", "process", "quote"],
@@ -569,7 +677,7 @@ export const LAYOUT_ARCHETYPES = {
       "som-footer"
     ],
     layoutMarkers: ["som-bike-page", "som-bike-header", "som-bike-hero", "som-workstand-photo", "som-route-ticket", "som-ride-proof", "som-tune-card", "som-ride-care-note", "som-bike-route-step", "som-bike-booking-strip"],
-    guidance: "Use the portable stand as the visual anchor, pair route-day proof with tune-lane cards, and keep booking language focused on bike photos, tire size, symptoms, and a clean curbside handoff."
+    guidance: "Use a light portable workstand bay as the visual anchor, pair route-day proof with tune-lane cards, and keep booking language focused on bike photos, tire size, symptoms, and a clean curbside handoff."
   },
   "organizing-zone-board": {
     label: "Organizing zone board",
@@ -579,13 +687,14 @@ export const LAYOUT_ARCHETYPES = {
     sectionOrder: [
       "split-action-header",
       "storage-zone-hero",
+      "storage-anchor-strip",
       "reset-proof-strip",
       "zone-plan-cards",
       "install-process-board",
       "photo-plan-quote",
       "footer"
     ],
-    navigationTreatment: "split-nav-action-header-with-zone-reset-quote-anchors",
+    navigationTreatment: "split-header-plus-post-hero-zone-anchor-strip",
     typographyTreatment: "soft-systems-humanist-sans",
     colorStrategy: "warm-home-order-with-clear-label-accent",
     servicePresentation: "storage-zone-cards-with-grid-map-note",
@@ -602,6 +711,15 @@ export const LAYOUT_ARCHETYPES = {
       "som-organizing-hero",
       "som-zone-photo",
       "som-organizing-photo",
+      "som-section-anchor-strip",
+      "som-zone-anchor-strip",
+      "som-organizing-anchor-strip",
+      "som-section-anchor-nav",
+      "som-zone-anchor-nav",
+      "som-organizing-anchor-nav",
+      "som-section-anchor-action",
+      "som-zone-anchor-action",
+      "som-organizing-anchor-action",
       "som-zone-map",
       "som-shelf-map",
       "som-zone-proof",
@@ -615,7 +733,7 @@ export const LAYOUT_ARCHETYPES = {
       "som-quote-strip",
       "som-footer"
     ],
-    layoutMarkers: ["som-organizing-page", "som-organizing-header", "som-organizing-hero", "som-organizing-photo", "som-shelf-map", "som-reset-proof", "som-shelf-card", "som-reset-step", "som-shelf-note", "som-quote-strip"],
+    layoutMarkers: ["som-organizing-page", "som-organizing-header", "som-organizing-hero", "som-organizing-photo", "som-organizing-anchor-strip", "som-organizing-anchor-nav", "som-shelf-map", "som-reset-proof", "som-shelf-card", "som-reset-step", "som-shelf-note", "som-quote-strip"],
     guidance: "Use a split hero with a real organized shelf photo, zone-board proof, home-use package cards, and photo-plan quote flow."
   },
   "split-proof-transform": {
@@ -638,7 +756,7 @@ export const LAYOUT_ARCHETYPES = {
     label: "Route led schedule",
     bestFor: ["lawn care", "plant care", "pool cleaning", "knife sharpening", "mobile bicycle repair"],
     archetype: "Recurring care route schedule board",
-    hero: "cover-left-copy-with-route-status-board",
+    hero: "split-copy-photo-with-floating-plant-care-status-board",
     sectionOrder: [
       "route-header",
       "route-hero",
@@ -649,27 +767,43 @@ export const LAYOUT_ARCHETYPES = {
       "join-route-quote"
     ],
     navigationTreatment: "horizontal-route-header-with-care-routes-notes-plan-anchors",
-    typographyTreatment: "schedule-board-service-sans",
+    typographyTreatment: "living-route-humanist-field-guide",
     colorStrategy: "route-map-colors-with-readable-plan-contrast",
     servicePresentation: "plan-cards-with-route-area-note",
     proofTreatment: "route-proof-cards-on-status-field",
     ctaRhythm: "hero-join-route-plus-centered-final-route-card",
     navLabels: ["Care routes", "Plant notes", "Plan"],
-    anchorOrder: ["services", "process", "quote"],
+    anchorOrder: ["routes", "notes", "quote"],
     componentClassesExpected: [
-      "som-card",
+      "som-route-page",
+      "som-plant-route-page",
+      "som-route-header",
+      "som-plant-route-header",
+      "som-route-hero",
+      "som-plant-route-hero",
+      "som-route-hero-photo",
+      "som-plant-route-photo",
+      "som-route-status-board",
+      "som-plant-care-board",
       "som-route-plan-card",
-      "som-process-card",
+      "som-plant-plan-card",
       "som-route-process-card",
+      "som-plant-process-card",
       "som-proof-card",
+      "som-plant-proof-card",
       "som-route-proof-card",
-      "som-quote-card",
+      "som-plant-route-proof-card",
+      "som-route-table",
+      "som-plant-note-table",
+      "som-route-detail",
+      "som-plant-route-detail",
       "som-route-quote-card",
-      "som-footer",
-      "som-route-footer"
+      "som-plant-quote-card",
+      "som-route-footer",
+      "som-plant-route-footer"
     ],
-    layoutMarkers: ["wp:cover", "som-route-plan-card", "som-route-process-card", "som-route-proof-card", "som-route-quote-card"],
-    guidance: "Lead with route days and schedule confidence, show a CSS-styled service-area panel instead of an external map, then use plan and proof sections around a join-the-route CTA."
+    layoutMarkers: ["som-route-hero", "som-plant-route-hero", "som-route-status-board", "som-plant-care-board", "wp:table", "som-route-table", "som-plant-note-table", "wp:details", "som-route-detail", "som-plant-route-detail", "som-route-plan-card", "som-route-process-card", "som-route-proof-card", "som-route-quote-card"],
+    guidance: "Lead with a plant-care route/status board, real service photo evidence, visit-note table, care-route cards, and a join-the-route CTA."
   },
   "lawn-route-status-board": {
     label: "Lawn route status board",
@@ -740,12 +874,13 @@ export const LAYOUT_ARCHETYPES = {
       "som-water-mini-board",
       "som-water-proof",
       "som-water-plan",
+      "som-water-table",
       "som-water-route-step",
       "som-water-note",
       "som-quote-strip",
       "som-footer"
     ],
-    layoutMarkers: ["som-water-page", "som-water-header", "som-water-hero", "som-water-board", "som-water-mini-board", "som-water-proof", "som-water-plan", "som-water-route-step", "som-water-note", "som-quote-strip"],
+    layoutMarkers: ["som-water-page", "som-water-header", "som-water-hero", "som-water-board", "som-water-mini-board", "som-water-proof", "som-water-plan", "som-water-table", "wp:table", "som-water-route-step", "som-water-note", "som-quote-strip"],
     guidance: "Use a pool-photo cover hero with a floating water test board, chemistry proof strip, recurring service lanes, route-day notes, and a start-weekly-service CTA."
   },
   "package-menu-board": {
@@ -776,12 +911,13 @@ export const LAYOUT_ARCHETYPES = {
       "som-menu-ticket",
       "som-menu-proof",
       "som-menu-package",
+      "som-menu-table",
       "som-menu-event",
       "som-menu-step",
       "som-quote-strip",
       "som-footer"
     ],
-    layoutMarkers: ["som-menu-header", "som-menu-hero", "som-menu-photo", "som-menu-ticket", "som-menu-package", "som-menu-event", "som-menu-step", "som-quote-strip"],
+    layoutMarkers: ["som-menu-header", "som-menu-hero", "som-menu-photo", "som-menu-ticket", "som-menu-package", "som-menu-table", "wp:table", "som-menu-event", "som-menu-step", "som-quote-strip"],
     guidance: "Present event packages like a readable menu board, include add-ons and event-fit sections, and frame the primary action as checking the date."
   },
   "urgent-checklist": {
@@ -799,8 +935,8 @@ export const LAYOUT_ARCHETYPES = {
       "reserve-date-footer"
     ],
     navigationTreatment: "utility-header-with-urgent-cta-and-short-anchors",
-    typographyTreatment: "urgent-utility-checklist",
-    colorStrategy: "alert-ready-contrast-with-controlled-warning-color",
+    typographyTreatment: "holiday-editorial-proof-serif-with-date-sans",
+    colorStrategy: "black-cherry-editorial-urgency-with-warm-proof-color",
     servicePresentation: "install-checklist-cards-with-reserve-date-board",
     proofTreatment: "seasonal-safety-proof-strip-before-scope",
     ctaRhythm: "hero-reserve-date-plus-final-removal-plan-quote",
@@ -826,11 +962,11 @@ export const LAYOUT_ARCHETYPES = {
     label: "Story card consult",
     bestFor: ["senior downsizing", "interior color consulting", "home organization", "micro-wedding florals"],
     archetype: "Warm consultation story card flow",
-    hero: "stacked-trust-hero-with-story-checklist-panel",
+    hero: "image-left-media-text-with-story-checklist",
     sectionOrder: [
       "calm-consult-header",
-      "story-card-hero",
-      "trust-proof-band",
+      "media-text-story-hero",
+      "family-proof-band",
       "support-checklist",
       "gentle-process-steps",
       "consult-footer"
@@ -838,66 +974,77 @@ export const LAYOUT_ARCHETYPES = {
     navigationTreatment: "calm-top-header-with-low-pressure-consult-action",
     typographyTreatment: "warm-story-card-serif-sans",
     colorStrategy: "gentle-human-neutrals-with-small-confident-accent",
-    servicePresentation: "support-checklist-cards-with-family-notes",
-    proofTreatment: "trust-proof-strip-before-support-cards",
-    ctaRhythm: "hero-consult-plus-midpage-trust-band",
-    navLabels: ["Checklist", "Proof", "Quote"],
-    anchorOrder: ["checklist", "proof", "quote"],
-    componentClassesExpected: ["som-checklist-hero", "som-story-hero", "som-urgency-band", "som-story-proof-band", "som-check-card", "som-support-card", "som-proof-card", "som-family-proof-card", "som-quote-strip", "som-consult-quote-strip", "som-footer"],
-    layoutMarkers: ["som-story-hero", "som-story-proof-band", "som-support-card", "som-consult-quote-strip"],
-    guidance: "Use warmer editorial pacing: what happens next, support cards, packages, proof, and gentle consult CTAs at the hero, midpoint, and close."
+    servicePresentation: "support-checklist-cards-with-consult-details",
+    proofTreatment: "family-proof-strip-after-media-text-hero",
+    ctaRhythm: "single-hero-consult-action-plus-final-contact",
+    navLabels: ["Support", "Steps", "Consult"],
+    anchorOrder: ["support", "steps", "quote"],
+    componentClassesExpected: [
+      "som-checklist-hero",
+      "som-story-hero",
+      "som-story-phone-line",
+      "som-story-check-list",
+      "som-urgency-band",
+      "som-story-proof-band",
+      "som-check-card",
+      "som-support-card",
+      "som-proof-card",
+      "som-family-proof-card",
+      "som-story-process-step",
+      "som-story-step-number",
+      "som-check-detail",
+      "som-check-quote",
+      "som-quote-strip",
+      "som-consult-quote-strip",
+      "som-footer"
+    ],
+    layoutMarkers: ["wp:media-text", "som-story-hero", "som-story-check-list", "som-story-proof-band", "som-support-card", "som-story-process-step", "wp:quote", "wp:details", "som-consult-quote-strip"],
+    guidance: "Use warmer editorial pacing with a true Media & Text story hero, one gentle hero CTA, support cards, consult details, and a final low-pressure contact panel."
   },
   "turnover-receipt-board": {
     label: "Turnover receipt board",
     bestFor: ["vacation rental turnover", "move-out cleaning", "rental reset"],
-    archetype: "Hospitality turnover scope receipt",
-    hero: "media-text-hero-with-turnover-receipt-stack",
+    archetype: "Hospitality turnover handoff board",
+    hero: "cover-hero-with-host-readiness-board",
     sectionOrder: [
-      "receipt-action-header",
-      "turnover-receipt-hero",
-      "hospitality-proof-ledger",
-      "scope-table-and-reset-cards",
-      "linen-process-with-quote",
-      "details-objection-stack",
+      "compact-host-header",
+      "cover-readiness-hero",
+      "check-in-proof-strip",
+      "room-reset-table",
+      "handoff-process-with-quote",
+      "access-linen-restock-details",
       "coverage-instructions"
     ],
     navigationTreatment: "compact-top-nav-with-coverage-phone-button",
-    typographyTreatment: "hospitality-receipt-mono-accent",
-    colorStrategy: "clean-linen-receipt-with-ready-room-stamps",
-    servicePresentation: "turnover-receipt-cards-plus-readable-scope-table",
-    proofTreatment: "ledger-proof-strip-and-cleaning-quote",
+    typographyTreatment: "host-readiness-board-humanist-accent",
+    colorStrategy: "fresh-linen-field-with-sun-check-in-accents",
+    servicePresentation: "host-readiness-list-plus-room-reset-table",
+    proofTreatment: "check-in-proof-strip-and-handoff-quote",
     ctaRhythm: "hero-get-coverage-plus-phone-header-and-final-instructions",
     navLabels: ["Checklist", "Readiness", "Coverage"],
-    anchorOrder: ["scope", "safety", "quote"],
+    anchorOrder: ["checklist", "readiness", "quote"],
     componentClassesExpected: [
-      "som-receipt-page",
       "som-turnover-page",
-      "som-receipt-header",
       "som-turnover-header",
       "som-turnover-header-action",
-      "som-turnover-hero-shell",
-      "som-receipt-hero",
       "som-turnover-hero",
-      "som-receipt-card",
-      "som-turnover-card",
+      "som-turnover-hero-copy",
+      "som-turnover-readiness-board",
+      "som-turnover-board-list",
       "som-host-proof-strip",
-      "som-receipt-proof",
       "som-host-proof",
-      "som-receipt-scope",
-      "som-turnover-scope",
-      "som-receipt-table",
+      "som-turnover-checklist",
       "som-turnover-table",
-      "som-turnover-safety",
-      "som-receipt-step",
+      "som-turnover-readiness",
       "som-turnover-step",
       "som-turnover-details",
-      "som-receipt-detail",
       "som-turnover-detail",
+      "som-turnover-quote",
       "som-quote-strip",
       "som-footer"
     ],
-    layoutMarkers: ["som-turnover-page", "som-turnover-header", "som-turnover-hero-shell", "wp:media-text", "som-turnover-hero", "som-turnover-card", "som-host-proof-strip", "wp:table", "som-turnover-table", "wp:quote", "wp:details", "som-turnover-detail", "som-quote-strip"],
-    guidance: "Frame rental turnover as a receipt-style coverage board with linens, restock notes, host proof, and coverage CTAs."
+    layoutMarkers: ["som-turnover-page", "som-turnover-header", "wp:cover", "som-turnover-hero", "som-turnover-readiness-board", "wp:list", "som-turnover-board-list", "som-host-proof-strip", "som-turnover-checklist", "wp:table", "som-turnover-table", "som-turnover-readiness", "wp:quote", "som-turnover-quote", "wp:details", "som-turnover-detail", "som-quote-strip"],
+    guidance: "Frame rental turnover as a check-in readiness board with linens, restock notes, room reset proof, access details, and coverage CTAs."
   },
   "service-receipt-stack": {
     label: "Service receipt stack",
@@ -907,13 +1054,14 @@ export const LAYOUT_ARCHETYPES = {
     sectionOrder: [
       "receipt-action-header",
       "media-text-receipt-hero",
+      "scope-anchor-strip",
       "proof-ledger-strip",
       "scope-table-and-receipts",
       "safety-process-with-quote",
       "details-objection-stack",
       "final-estimate-instructions"
     ],
-    navigationTreatment: "compact-top-nav-with-phone-button",
+    navigationTreatment: "compact-phone-header-plus-post-hero-scope-anchor-strip",
     typographyTreatment: "receipt-scope-mono-accent",
     colorStrategy: "clean-paper-receipt-with-service-color-stamps",
     servicePresentation: "receipt-cards-plus-readable-scope-table",
@@ -924,6 +1072,12 @@ export const LAYOUT_ARCHETYPES = {
     componentClassesExpected: [
       "som-receipt-page",
       "som-receipt-header",
+      "som-section-anchor-strip",
+      "som-receipt-anchor-strip",
+      "som-section-anchor-nav",
+      "som-receipt-anchor-nav",
+      "som-section-anchor-action",
+      "som-receipt-anchor-action",
       "som-receipt-hero",
       "som-receipt-card",
       "som-receipt-proof",
@@ -934,9 +1088,34 @@ export const LAYOUT_ARCHETYPES = {
       "som-quote-strip",
       "som-footer"
     ],
-    layoutMarkers: ["som-receipt-page", "som-receipt-header", "wp:media-text", "som-receipt-hero", "som-receipt-card", "wp:table", "som-receipt-table", "wp:quote", "wp:details", "som-receipt-detail", "som-quote-strip"],
+    layoutMarkers: ["som-receipt-page", "som-receipt-header", "wp:media-text", "som-receipt-hero", "som-receipt-anchor-strip", "som-receipt-anchor-nav", "som-receipt-card", "wp:table", "som-receipt-table", "wp:quote", "wp:details", "som-receipt-detail", "som-quote-strip"],
     guidance: "Frame the hero around a receipt-style scope summary, then included services, add-ons, process, proof, and a build-my-estimate CTA."
   },
+  "window-scope-ledger": beforeAfterAlias({
+    prefix: "window",
+    label: "Window light proof quote",
+    bestFor: ["window cleaning", "storefront glass", "screen and track cleaning"],
+    archetype: "Pane-count photo quote and edge-check proof",
+    hero: "image-first-window-proof-hero-with-pane-photo-quote",
+    sectionOrder: [
+      "glass-photo-header",
+      "image-first-window-proof-hero",
+      "shine-photo-quote-strip",
+      "glass-surface-rows",
+      "pane-method-table-and-details",
+      "edge-check-timeline",
+      "shine-proof-footer"
+    ],
+    navigationTreatment: "top-header-plus-floating-shine-photo-proof-action",
+    typographyTreatment: "glass-light-utility-sans",
+    colorStrategy: "cool-glass-field-with-aqua-shine-action",
+    servicePresentation: "glass-surface-rows-with-pane-method-table",
+    proofTreatment: "edge-check-proof-grid-inside-final-shine-cta",
+    ctaRhythm: "early-shine-photo-strip-plus-final-pane-proof-quote",
+    navLabels: ["Photo quote", "Glass", "Method"],
+    anchorOrder: ["quote", "surfaces", "method"],
+    guidance: "Frame window cleaning as a light glass utility page: pane count, inside/outside scope, screen and track details, and a cool aqua photo-quote CTA."
+  }),
   "workshop-bench": {
     label: "Workshop bench",
     bestFor: ["deck staining", "fence staining", "furniture refinishing", "knife sharpening", "mobile bicycle repair", "mural painting", "window lettering"],
@@ -975,6 +1154,23 @@ export const LAYOUT_ARCHETYPES = {
     layoutMarkers: ["som-workshop-page", "som-workshop-header", "som-workshop-hero", "som-workshop-photo", "som-workshop-ticket", "som-material-proof", "som-wood-card", "som-care-note", "som-craft-step", "som-quote-strip"],
     guidance: "Use close-up craft imagery, materials/process chips, a stacked timeline, gallery/proof, care notes, and send-a-photo CTAs."
   },
+  "deck-finish-sample-board": workshopAlias({
+    prefix: "deck",
+    label: "Deck finish sample board",
+    bestFor: ["deck staining", "fence staining", "wood finish refresh"],
+    archetype: "Deck and fence finish sample board",
+    hero: "image-first-material-photo-with-finish-sample-table",
+    sectionOrder: ["compact-workshop-header", "image-first-finish-sample-hero", "material-proof-rail", "wood-scope-bench", "craft-process-stack", "care-note-quote", "footer"],
+    navigationTreatment: "side-top-hybrid-with-board-prep-quote-labels",
+    typographyTreatment: "craft-bench-sturdy-serif-sans",
+    colorStrategy: "cedar-material-board-with-copper-sample-action",
+    servicePresentation: "finish-sample-cards-with-material-scope-table",
+    proofTreatment: "wood-condition-proof-rail-with-weather-window",
+    ctaRhythm: "hero-send-board-photos-plus-final-stain-window-quote",
+    navLabels: ["Boards", "Prep", "Quote"],
+    anchorOrder: ["wood", "process", "quote"],
+    guidance: "Lead with the deck or fence material photo and a compact finish-sample table so the page reads as board inspection, not seasonal date urgency."
+  }),
   "gallery-led": {
     label: "Gallery or portfolio led",
     bestFor: ["pollinator gardens", "photography", "murals", "florals", "balloon styling", "dessert tables", "color consulting"],
@@ -996,8 +1192,8 @@ export const LAYOUT_ARCHETYPES = {
     ctaRhythm: "hero-consult-button-plus-final-style-brief",
     navLabels: ["Styles", "Process", "Quote"],
     anchorOrder: ["styles", "process", "quote"],
-    componentClassesExpected: ["som-gallery-hero", "som-gallery-image", "som-style-card", "som-gallery-proof", "som-process-card", "som-quote-strip", "som-footer"],
-    layoutMarkers: ["som-gallery-hero", "som-gallery-image", "som-style-card", "som-gallery-proof", "som-quote-strip"]
+    componentClassesExpected: ["som-gallery-hero", "som-gallery-image", "som-style-card", "som-proof-gallery", "som-gallery-quote", "som-gallery-proof", "som-process-card", "som-quote-strip", "som-footer"],
+    layoutMarkers: ["som-gallery-hero", "som-gallery-image", "som-proof-gallery", "wp:gallery", "som-gallery-quote", "wp:quote", "som-style-card", "som-gallery-proof", "som-quote-strip"]
   },
   "pet-portrait-gallery": galleryAlias({
     prefix: "pet",
@@ -1012,9 +1208,43 @@ export const LAYOUT_ARCHETYPES = {
     servicePresentation: "session-style-cards-with-personality-captions",
     proofTreatment: "portrait-proof-strip-with-pet-comfort-cues",
     ctaRhythm: "hero-plan-portrait-plus-final-session-inquiry",
-    navLabels: ["Sessions", "Prep", "Date"],
+    navLabels: ["Sessions", "Prep", "Book"],
     anchorOrder: ["styles", "process", "quote"],
     guidance: "Use a portrait-led gallery hero, personality-based session cards, pet-comfort proof, prep steps, and a plan-a-portrait-day CTA."
+  }),
+  "pet-portrait-booking-dock": fixedActionAlias({
+    prefix: "pet",
+    label: "Pet portrait booking dock",
+    bestFor: ["pet portrait photography", "animal studio portraits"],
+    archetype: "Pet portrait mobile booking dock",
+    hero: "studio-pet-session-hero-with-bottom-booking-dock",
+    sectionOrder: ["portrait-booking-header", "pet-session-hero", "comfort-proof-strip", "session-package-cards", "pet-day-process", "portrait-inquiry-footer", "mobile-session-dock"],
+    navigationTreatment: "desktop-session-nav-with-mobile-portrait-day-dock",
+    typographyTreatment: "pet-editorial-dock-serif-with-friendly-labels",
+    colorStrategy: "warm-studio-paper-with-mustard-booking-dock",
+    servicePresentation: "session-package-cards-with-comfort-and-personality-cues",
+    proofTreatment: "comfort-proof-strip-under-studio-hero",
+    ctaRhythm: "hero-plan-portrait-plus-mobile-fixed-session-dock",
+    navLabels: ["Sessions", "Prep", "Plan"],
+    anchorOrder: ["packages", "process", "quote"],
+    guidance: "Make portrait booking feel thumb-friendly and low-stress: studio proof first, session packages next, prep notes, then a persistent mobile plan-a-portrait action."
+  }),
+  "pollinator-season-board": zoneAlias({
+    prefix: "pollinator",
+    label: "Pollinator season board",
+    bestFor: ["pollinator garden refresh", "native garden editing", "front-yard bed refresh"],
+    archetype: "Pollinator garden season board",
+    hero: "image-first-native-bed-hero-with-bloom-season-map",
+    sectionOrder: ["quiet-garden-header", "image-first-bloom-route-hero", "season-anchor-strip", "bloom-window-proof-strip", "bed-plan-cards", "garden-process-board", "photo-plan-footer"],
+    navigationTreatment: "post-hero-bloom-season-anchor-strip-with-quiet-header",
+    typographyTreatment: "botanical-field-guide-serif-with-utility-labels",
+    colorStrategy: "field-guide-cream-with-purple-bloom-and-pollen-action",
+    servicePresentation: "bed-zone-cards-with-sun-soil-and-edge-notes",
+    proofTreatment: "three-season-proof-strip-with-native-fit-cues",
+    ctaRhythm: "photo-plan-first-with-bloom-board-anchor-strip",
+    navLabels: ["Beds", "Seasons", "Plan"],
+    anchorOrder: ["zones", "process", "quote"],
+    guidance: "Treat the garden like a practical bloom board: show sun/soil/edge zones, seasonal proof, native mix notes, and a photo-plan CTA."
   }),
   "street-food-menu-board": menuAlias({
     prefix: "streetfood",
@@ -1033,22 +1263,22 @@ export const LAYOUT_ARCHETYPES = {
     anchorOrder: ["packages", "events", "quote"],
     guidance: "Frame catering around a live setup photo, menu samples, service footprint, guest-count notes, and date-check CTAs."
   }),
-  "dessert-table-gallery": galleryAlias({
+  "dessert-table-gallery": dessertGalleryAlias({
     prefix: "dessert",
     label: "Dessert table gallery",
     bestFor: ["dessert table catering", "bakery catering"],
     archetype: "Celebration dessert table gallery",
-    hero: "dessert-table-proof-hero-with-flavor-gallery-note",
-    sectionOrder: ["sweet-gallery-header", "dessert-gallery-hero", "flavor-proof-strip", "table-style-cards", "design-process-panel", "dessert-inquiry-footer"],
+    hero: "dessert-table-proof-hero-with-flavor-menu-board",
+    sectionOrder: ["sweet-gallery-header", "dessert-gallery-hero", "table-style-cards", "design-process-panel", "dessert-inquiry-footer"],
     navigationTreatment: "soft-gallery-nav-with-flavors-process-date-anchors",
     typographyTreatment: "bakery-editorial-serif-with-clean-menu-labels",
     colorStrategy: "frosted-paper-with-berry-and-gold-action",
     servicePresentation: "dessert-style-cards-with-flavor-caption-panel",
-    proofTreatment: "celebration-proof-strip-before-style-cards",
+    proofTreatment: "portion-and-flavor-menu-board-inside-hero",
     ctaRhythm: "hero-design-table-plus-final-flavor-brief",
     navLabels: ["Styles", "Flavors", "Date"],
     anchorOrder: ["styles", "process", "quote"],
-    guidance: "Use the dessert table as the first proof moment, then flavor/style cards, design steps, serving notes, and a date inquiry."
+    guidance: "Use the dessert table as the first proof moment, with portion/flavor proof in a hero menu board, then style cards, design steps, serving notes, and a date inquiry."
   }),
   "balloon-backdrop-gallery": galleryAlias({
     prefix: "balloon",
@@ -1073,15 +1303,17 @@ export const LAYOUT_ARCHETYPES = {
     bestFor: ["micro-wedding florals", "small wedding flowers"],
     archetype: "Intimate floral consultation flow",
     hero: "romantic-floral-story-hero-with-date-checklist",
-    sectionOrder: ["quiet-floral-header", "floral-story-hero", "date-trust-proof-band", "bouquet-support-cards", "floral-process-steps", "date-consult-footer"],
-    navigationTreatment: "quiet-top-header-with-floral-date-action",
+    sectionOrder: ["quiet-floral-header", "floral-story-hero", "floral-anchor-strip", "date-trust-proof-band", "bouquet-support-cards", "floral-process-steps", "consult-footer"],
+    navigationTreatment: "post-hero-floral-section-anchor-strip-with-quiet-header",
     typographyTreatment: "romantic-editorial-serif-with-calm-planning-sans",
     colorStrategy: "soft-petal-neutrals-with-stem-green-and-coral-action",
     servicePresentation: "bouquet-and-installation-cards-with-date-notes",
-    proofTreatment: "date-and-style-proof-strip-before-packages",
-    ctaRhythm: "hero-ask-date-plus-midpage-style-proof",
-    navLabels: ["Florals", "Process", "Date"],
-    anchorOrder: ["checklist", "proof", "quote"],
+    proofTreatment: "date-and-style-proof-strip-after-floral-brief-anchor",
+    ctaRhythm: "hero-consult-brief-plus-anchor-strip-prompt",
+    navLabels: ["Palette", "Process", "Consult"],
+    anchorOrder: ["checklist", "process", "quote"],
+    extraComponentClasses: ["som-story-anchor-strip", "som-section-anchor-strip", "som-floral-anchor-strip", "som-story-anchor-nav", "som-section-anchor-nav", "som-floral-anchor-nav", "som-story-anchor-action", "som-section-anchor-action", "som-floral-anchor-action"],
+    extraLayoutMarkers: ["som-section-anchor-strip", "som-floral-anchor-strip", "som-section-anchor-nav", "som-floral-anchor-nav"],
     guidance: "Use a calm consult flow for bouquets, personals, and small installations with date, palette, venue, and setup proof."
   }),
   "photo-booth-strip-packages": fixedActionAlias({
@@ -1152,22 +1384,39 @@ export const LAYOUT_ARCHETYPES = {
     anchorOrder: ["packages", "events", "quote"],
     guidance: "Make the cart, citrus, garnish, and guest flow visible, then use drink package cards and a date/build-my-bar CTA."
   }),
-  "headshot-proof-gallery": galleryAlias({
+  "headshot-proof-gallery": headshotGalleryAlias({
     prefix: "headshot",
     label: "Headshot proof gallery",
     bestFor: ["headshot photography", "brand photography"],
     archetype: "Professional headshot proof gallery",
-    hero: "studio-headshot-hero-with-brand-proof-card",
-    sectionOrder: ["studio-proof-header", "headshot-gallery-hero", "confidence-proof-strip", "session-package-cards", "prep-process-panel", "consult-footer"],
+    hero: "studio-cover-hero-with-contact-sheet-prep-strip",
+    sectionOrder: ["studio-proof-header", "headshot-cover-hero", "contact-sheet-proof", "confidence-proof-strip", "session-package-cards", "prep-process-panel", "consult-footer"],
     navigationTreatment: "studio-gallery-nav-with-sessions-prep-consult-anchors",
-    typographyTreatment: "polished-brand-editorial-sans",
+    typographyTreatment: "warm-portrait-serif-with-playful-labels",
     colorStrategy: "studio-neutral-paper-with-camera-blue-action",
     servicePresentation: "session-package-cards-with-usage-captions",
-    proofTreatment: "confidence-proof-strip-before-prep",
-    ctaRhythm: "hero-book-consult-plus-final-session-prep",
+    proofTreatment: "contact-sheet-proof-and-prep-strip-before-sessions",
+    ctaRhythm: "single-hero-booking-cta-with-quiet-prep-anchor",
     navLabels: ["Sessions", "Prep", "Consult"],
     anchorOrder: ["styles", "process", "quote"],
-    guidance: "Lead with credible studio portrait proof, then packages, usage cases, prep notes, and a consult booking CTA."
+    guidance: "Lead with a studio cover image, editorial portrait copy, a slim prep strip, contact-sheet proof, session packages, prep notes, and a consult booking CTA."
+  }),
+  "headshot-prep-ledger": receiptAlias({
+    prefix: "headshot",
+    label: "Headshot prep ledger",
+    bestFor: ["headshot photography", "brand photography", "team portrait day"],
+    archetype: "Professional headshot prep ledger",
+    hero: "studio-media-text-hero-with-session-prep-receipt",
+    sectionOrder: ["studio-ledger-header", "media-text-headshot-hero", "session-anchor-strip", "confidence-proof-ledger", "session-scope-table", "prep-process-with-quote", "objection-details", "book-session-footer"],
+    navigationTreatment: "compact-phone-header-plus-post-hero-session-anchor-strip",
+    typographyTreatment: "headshot-ledger-condensed-with-bookish-display",
+    colorStrategy: "studio-ink-ledger-with-camera-blue-and-amber-action",
+    servicePresentation: "session-scope-receipts-plus-usage-table",
+    proofTreatment: "prep-ledger-proof-strip-and-studio-confidence-quote",
+    ctaRhythm: "book-first-with-session-prep-anchor-strip",
+    navLabels: ["Session", "Prep", "Book"],
+    anchorOrder: ["scope", "safety", "quote"],
+    guidance: "Move headshots away from generic gallery polish by making prep, usage, delivery, and retouch comfort feel like a precise session ledger."
   }),
   "mural-lettering-workshop": workshopAlias({
     prefix: "mural",
@@ -1201,6 +1450,8 @@ export const LAYOUT_ARCHETYPES = {
     ctaRhythm: "hero-choose-palette-plus-final-room-brief",
     navLabels: ["Rooms", "Process", "Palette"],
     anchorOrder: ["checklist", "proof", "quote"],
+    extraComponentClasses: ["som-color-header-action"],
+    extraLayoutMarkers: ["som-color-header-action"],
     guidance: "Use a calm story flow around rooms, light, samples, finishes, and what the client should send before a palette consult."
   }),
   "furniture-refinish-proof": beforeAfterAlias({
@@ -1208,17 +1459,17 @@ export const LAYOUT_ARCHETYPES = {
     label: "Furniture refinish proof",
     bestFor: ["furniture refinishing", "furniture repair"],
     archetype: "Furniture restoration before-and-after proof",
-    hero: "split-restoration-hero-with-detail-photo-and-estimate-card",
-    sectionOrder: ["restoration-header", "split-restoration-hero", "send-photo-estimate-strip", "repair-surface-rows", "finish-method-panel", "care-timeline", "restoration-proof-footer"],
-    navigationTreatment: "top-header-with-send-photo-and-finish-method-anchors",
+    hero: "split-restoration-hero-with-detail-photo-and-before-after-proof",
+    sectionOrder: ["restoration-header", "split-restoration-hero-with-photo-proof", "send-photo-estimate-strip", "repair-surface-rows", "finish-method-panel", "care-timeline", "restoration-proof-footer"],
+    navigationTreatment: "top-header-plus-floating-send-photo-proof-action",
     typographyTreatment: "restoration-craft-serif-with-shop-sans",
     colorStrategy: "warm-wood-neutrals-with-brass-repair-action",
     servicePresentation: "repair-and-finish-rows-with-material-pills",
-    proofTreatment: "detail-proof-grid-inside-final-restoration-cta",
+    proofTreatment: "before-after-proof-pair-under-hero-photo-plus-final-detail-grid",
     ctaRhythm: "early-send-photo-strip-plus-final-care-proof-quote",
     navLabels: ["Photo quote", "Repairs", "Finish"],
     anchorOrder: ["quote", "surfaces", "method"],
-    guidance: "Use before/after proof for worn pieces, then repair rows, finish methods, care notes, and a send-a-furniture-photo CTA."
+    guidance: "Use the hero photo and adjacent before/after proof pair as the first restoration evidence, then repair rows, finish methods, care notes, and a send-a-furniture-photo CTA."
   }),
   "consultation-led": {
     label: "Consultation led",

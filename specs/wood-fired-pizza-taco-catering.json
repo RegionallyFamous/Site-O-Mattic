@@ -8,10 +8,10 @@
     "secondaryPattern": "guest-count-setup-proof",
     "silhouette": "package-menu-board",
     "navigationPrimitive": "menu-utility-header",
-    "mobileActionPattern": "date-check-menu-actions",
-    "imageRole": "work-in-progress",
-    "imageEvidence": "caterers preparing pizza and tacos beside a wood-fired oven and prep table",
-    "ctaRhythm": "date-check",
+    "mobileActionPattern": "menu-package-actions",
+    "imageRole": "environment-context",
+    "imageEvidence": "outdoor live-fire catering station with wood oven, prep table, finished pizza, tacos, toppings, and crew visible",
+    "ctaRhythm": "package-select",
     "surfaceFamily": "ticket-menu-board",
     "surfaceModel": "sample-menu-cards-with-setup-ticket",
     "styleFamily": "hospitality-menu",
@@ -45,7 +45,7 @@
       "logo-scale",
       "mobile-crop"
     ],
-    "styleContract": "Warm and lively with guest-count proof, live-fire catering evidence, flame-yellow action accents, and a readable menu ticket as the signature move."
+    "styleContract": "Warm and lively with guest-count proof, an outdoor live-fire catering station, flame-yellow action accents, and a readable menu ticket as the signature move."
   },
   "tagline": "Live-fire catering for hungry parties.",
   "themeSlug": "twentytwentyfive",
@@ -90,7 +90,7 @@
     "processTitle": "How the pop-up service works",
     "proofTitle": "Host proof before the first slice",
     "quoteTitle": "Ready to feed your event?",
-    "quoteText": "Send the date, location, guest count, power or outdoor access, and the kind of spread you want. We will reply with a menu path and setup notes."
+    "quoteText": "Compare packages with date, location, guest count, power or outdoor access, and the kind of spread you want. We will reply with a menu path and setup notes."
   },
   "services": [
     {
@@ -152,13 +152,14 @@
       "screenshotCompared": true
     },
     "premiumReview": {
-      "version": 1,
+      "version": 2,
       "reviewedAt": "2026-06-25",
       "score": 100,
       "categories": {
         "firstViewport": true,
         "logoScale": true,
         "typography": true,
+        "polishContract": true,
         "imageProof": true,
         "ctaClarity": true,
         "mobilePolish": true,
@@ -169,7 +170,7 @@
       },
       "notes": [
         "Works: a readable menu ticket. gives the page a memorable shape.",
-        "Proof: caterers preparing pizza and tacos beside a wood-fired oven and prep table. anchors the niche in the first viewport.",
+        "Proof: outdoor live-fire catering station with wood oven, prep table, finished pizza, tacos, toppings, and crew visible. anchors the niche in the first viewport.",
         "Action: Feed my event is the main conversion path."
       ]
     }
@@ -178,15 +179,15 @@
     "mood": "Warm and lively.",
     "trustCue": "guest-count proof.",
     "accentBehavior": "sun stays reserved for Feed my event, active proof cues, and key booking moments.",
-    "imageProof": "caterers preparing pizza and tacos beside a wood-fired oven and prep table.",
+    "imageProof": "outdoor live-fire catering station with wood oven, prep table, finished pizza, tacos, toppings, and crew visible.",
     "signatureMove": "a readable menu ticket.",
     "avoidLookingLike": "Avoid a generic package-menu-board recolor; do not repeat stock hero framing, copied card rhythm, or vague local-service claims."
   },
   "serviceDetails": {
     "turnaround": "30-120 guests: right-sized pop-up options.",
-    "whatToSend": "Send the date, location, guest count, power or outdoor access, and the kind of spread you want. We will reply with a menu path and setup notes.",
+    "whatToSend": "Share the event date, venue or address, guest count, setup window, power/water rules, and the package style you are considering.",
     "prepNote": "Guest count, location, date, timing, and food preferences help us pick a realistic service lane.",
-    "serviceRhythm": "date check for Live-fire pizza, taco pop-ups, backyard parties, rehearsal dinners, office lunches, graduation nights, and neighborhood events across the central metro.",
-    "objectionAnswer": "Scope, access, timing, and fit are confirmed before booking so the next step is clear and low-pressure."
+    "serviceRhythm": "Date-window flow for Live-fire pizza, taco pop-ups, backyard parties, rehearsal dinners, office lunches, graduation nights, and neighborhood events across the central metro: date fit, setup rules, guest flow, and hold status come before package pressure.",
+    "objectionAnswer": "For wood-fired pizza and taco pop-up catering, guest count, menu pace, service footprint, prep access, and cleanup timing are matched before the package is recommended."
   }
 }

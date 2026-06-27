@@ -20,13 +20,13 @@
       "ink": "deepGreen",
       "paper": "cream",
       "field": "mist",
-      "line": "leaf",
+      "line": "soil",
       "primary": "grass",
       "action": "sun",
-      "proof": "leaf",
+      "proof": "grass",
       "muted": "soil",
       "warning": "sun",
-      "shadowTint": "deepGreen"
+      "shadowTint": "soil"
     },
     "geometry": {
       "radiusScale": "signmaker-6",
@@ -37,6 +37,8 @@
     "coreBlockPlan": [
       "columns",
       "image",
+      "table",
+      "quote",
       "list",
       "buttons"
     ],
@@ -45,7 +47,7 @@
       "logo-scale",
       "mobile-crop"
     ],
-    "styleContract": "Creative and precise with surface proof, real storefront painting evidence, signmaker-red action accents, and a project ticket as the signature move."
+    "styleContract": "Creative and precise with surface proof, real storefront painting evidence, signmaker-red proof accents, brass action, and a project ticket as the signature move."
   },
   "tagline": "Walls and windows with hand-painted character.",
   "themeSlug": "twentytwentyfive",
@@ -76,13 +78,13 @@
     "phoneHref": "tel:+15550141836",
     "email": "hello@letterloom.test",
     "emailHref": "mailto:hello@letterloom.test",
-    "serviceArea": "Window lettering, small murals, storefront graphics, menu wall accents, office murals, seasonal glass art, surface refreshes, and local hand-painted installs across town"
+    "serviceArea": "Window lettering, small murals, storefront graphics, menu wall accents, office murals, seasonal glass art, surface refreshes, and hand-painted installs for River Market, North Loop, Oak Hill, Westbrook, and Maple Bend storefronts"
   },
   "copy": {
     "eyebrow": "Murals and window lettering with surface-smart planning",
-    "heroTitle": "Turn a blank wall or window into a place people notice.",
-    "heroText": "LetterLoom designs and paints murals, window lettering, and storefront moments with sketches, surface prep, installation timing, and a clean handoff.",
-    "primaryCta": "Start a wall/window",
+    "heroTitle": "Storefronts get noticed.",
+    "heroText": "LetterLoom turns surface photos, scale notes, and brand color into painted storefront moments with clean install timing.",
+    "primaryCta": "Start lettering",
     "secondaryCta": "See surfaces",
     "introTitle": "Good lettering starts with the glass, wall, and viewing distance.",
     "introText": "We ask about surface material, sun exposure, lease rules, brand colors, rough size, and whether the piece needs to be temporary or permanent.",
@@ -90,7 +92,7 @@
     "processTitle": "How the project gets painted",
     "proofTitle": "Surface proof before the first stroke",
     "quoteTitle": "Ready to start a wall or window?",
-    "quoteText": "Send surface photos, dimensions, location, timing, and the kind of message or mood you need. We will suggest a project path and next step."
+    "quoteText": "Start with surface photos, dimensions, location, timing, and the kind of message or mood you need. We will suggest a project path and next step."
   },
   "services": [
     {
@@ -152,13 +154,14 @@
       "screenshotCompared": true
     },
     "premiumReview": {
-      "version": 1,
+      "version": 2,
       "reviewedAt": "2026-06-25",
       "score": 100,
       "categories": {
         "firstViewport": true,
         "logoScale": true,
         "typography": true,
+        "polishContract": true,
         "imageProof": true,
         "ctaClarity": true,
         "mobilePolish": true,
@@ -170,23 +173,23 @@
       "notes": [
         "Works: a project ticket. gives the page a memorable shape.",
         "Proof: artist painting decorative window lettering and mural shapes on storefront glass with tools nearby. anchors the niche in the first viewport.",
-        "Action: Start a wall/window is the main conversion path."
+        "Action: Start lettering is the main conversion path."
       ]
     }
   },
   "brandBrief": {
     "mood": "Creative and precise.",
     "trustCue": "surface proof.",
-    "accentBehavior": "sun stays reserved for Start a wall/window, active proof cues, and key booking moments.",
+    "accentBehavior": "sun stays reserved for Start lettering, active proof cues, and key booking moments.",
     "imageProof": "artist painting decorative window lettering and mural shapes on storefront glass with tools nearby.",
     "signatureMove": "a project ticket.",
     "avoidLookingLike": "Avoid a generic workshop-bench recolor; do not repeat stock hero framing, copied card rhythm, or vague local-service claims."
   },
   "serviceDetails": {
     "turnaround": "Surface check: glass, wall, and light reviewed early.",
-    "whatToSend": "Send surface photos, dimensions, location, timing, and the kind of message or mood you need. We will suggest a project path and next step.",
+    "whatToSend": "Send 3 to 5 photos of the mural and window lettering artist surface, dimensions, viewing distance, access point, message needs, brand colors, and the timing window you are hoping for.",
     "prepNote": "Dimensions, material, sun, location, and access shape the project faster than a long brief.",
-    "serviceRhythm": "photo first for Window lettering, small murals, storefront graphics, menu wall accents, office murals, seasonal glass art, surface refreshes, and local hand-painted installs across town.",
-    "objectionAnswer": "Scope, access, timing, and fit are confirmed before booking so the next step is clear and low-pressure."
+    "serviceRhythm": "Photo-to-plan flow for Window lettering, small murals, storefront graphics, menu wall accents, office murals, seasonal glass art, surface refreshes, and hand-painted installs for River Market, North Loop, Oak Hill, Westbrook, and Maple Bend storefronts: first the surface evidence, then dimensions, visibility, concept direction, access, and install timing.",
+    "objectionAnswer": "For mural and window lettering artist, surface photos, dimensions, visibility, install timing, and message needs shape the concept before paint or vinyl-style expectations creep in."
   }
 }

@@ -22,14 +22,14 @@
       "field": "mist",
       "line": "leaf",
       "primary": "grass",
-      "action": "sun",
+      "action": "leaf",
       "proof": "leaf",
       "muted": "soil",
       "warning": "sun",
       "shadowTint": "deepGreen"
     },
     "geometry": {
-      "radiusScale": "frosted-gallery-radius",
+      "radiusScale": "frosted-gallery-8",
       "borderRole": "flavor card dividers",
       "shadowRole": "dessert stage only",
       "mediaCrop": "wide dessert table crop"
@@ -77,21 +77,21 @@
     "phoneHref": "tel:+15550147742",
     "email": "hello@sugarline.test",
     "emailHref": "mailto:hello@sugarline.test",
-    "serviceArea": "Dessert tables, bakery catering, cake-and-mini spreads, shower sweets, birthday tables, corporate dessert bars, and celebration delivery across the metro area"
+    "serviceArea": "Dessert tables, bakery catering, cake-and-mini spreads, shower sweets, birthday tables, corporate dessert bars, and celebration delivery for River Market, Oak Hill, Westbrook, Maple Bend, and nearby event rooms"
   },
   "copy": {
     "eyebrow": "Dessert tables designed around the room",
     "heroTitle": "Dessert tables that wow before the first bite.",
     "heroText": "Sugarline plans the look, quantities, flavors, setup timing, and serving details so the table feels generous, styled, and easy for guests to enjoy.",
-    "primaryCta": "Design my dessert table",
-    "secondaryCta": "Explore styles",
+    "primaryCta": "Design sweets",
+    "secondaryCta": "Plan portions",
     "introTitle": "Pretty has to portion correctly, too.",
     "introText": "We balance centerpiece sweets, bite-size pieces, dietary notes, serving height, room palette, and how long the table needs to stay fresh.",
     "servicesTitle": "Choose the sweet structure",
     "processTitle": "How the table comes together",
     "proofTitle": "Sweet proof, not sugar fog",
     "quoteTitle": "Ready to design the dessert table?",
-    "quoteText": "Send your date, guest count, venue, palette, favorite flavors, and any inspiration photos. We will shape a table direction and quote path."
+    "quoteText": "Check availability with date, guest count, venue, palette, favorite flavors, and any inspiration photos. We will shape a table direction and quote path."
   },
   "services": [
     {
@@ -153,13 +153,14 @@
       "screenshotCompared": true
     },
     "premiumReview": {
-      "version": 1,
+      "version": 2,
       "reviewedAt": "2026-06-25",
       "score": 100,
       "categories": {
         "firstViewport": true,
         "logoScale": true,
         "typography": true,
+        "polishContract": true,
         "imageProof": true,
         "ctaClarity": true,
         "mobilePolish": true,
@@ -171,23 +172,23 @@
       "notes": [
         "Works: flavor caption cards. gives the page a memorable shape.",
         "Proof: styled dessert table with tiered cake, tarts, macarons, and final placement detail. anchors the niche in the first viewport.",
-        "Action: Design my dessert table is the main conversion path."
+        "Action: Design sweets is the main conversion path."
       ]
     }
   },
   "brandBrief": {
     "mood": "Celebratory and polished.",
     "trustCue": "portion proof.",
-    "accentBehavior": "sun stays reserved for Design my dessert table, active proof cues, and key booking moments.",
+    "accentBehavior": "leaf stays reserved for Design sweets, active proof cues, and key booking moments.",
     "imageProof": "styled dessert table with tiered cake, tarts, macarons, and final placement detail.",
     "signatureMove": "flavor caption cards.",
     "avoidLookingLike": "Avoid a generic gallery-led recolor; do not repeat stock hero framing, copied card rhythm, or vague local-service claims."
   },
   "serviceDetails": {
     "turnaround": "Portion plan: guest count matched to table size.",
-    "whatToSend": "Send your date, guest count, venue, palette, favorite flavors, and any inspiration photos. We will shape a table direction and quote path.",
+    "whatToSend": "Share the event date, guest count, venue table size, setup window, palette, favorite flavors, dietary notes, and whether service or delivery-only support is needed.",
     "prepNote": "We plan quantities, palette, venue rules, and table size before flavor talk gets too dreamy.",
-    "serviceRhythm": "date check for Dessert tables, bakery catering, cake-and-mini spreads, shower sweets, birthday tables, corporate dessert bars, and celebration delivery across the metro area.",
-    "objectionAnswer": "Scope, access, timing, and fit are confirmed before booking so the next step is clear and low-pressure."
+    "serviceRhythm": "Date-window flow for Dessert tables, bakery catering, cake-and-mini spreads, shower sweets, birthday tables, corporate dessert bars, and celebration delivery for River Market, Oak Hill, Westbrook, Maple Bend, and nearby event rooms: guest count, table size, palette, flavors, setup timing, and freshness window come before package pressure.",
+    "objectionAnswer": "For dessert table and bakery catering, guest count, table size, menu pace, freshness window, dietary notes, and cleanup timing are matched before the package is recommended."
   }
 }

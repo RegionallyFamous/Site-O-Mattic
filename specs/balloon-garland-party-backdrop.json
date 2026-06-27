@@ -29,7 +29,7 @@
       "shadowTint": "deepGreen"
     },
     "geometry": {
-      "radiusScale": "party-rounded",
+      "radiusScale": "party-8",
       "borderRole": "color plan separators",
       "shadowRole": "backdrop image lift",
       "mediaCrop": "wide backdrop install crop"
@@ -38,6 +38,7 @@
       "cover",
       "image",
       "gallery",
+      "quote",
       "buttons"
     ],
     "knownRisks": [
@@ -76,11 +77,11 @@
     "phoneHref": "tel:+15550149087",
     "email": "hello@poparc.test",
     "emailHref": "mailto:hello@poparc.test",
-    "serviceArea": "Balloon garlands, party backdrops, shower installs, birthday arches, corporate photo corners, color plans, delivery, setup, and teardown options across town"
+    "serviceArea": "Balloon garlands, party backdrops, shower installs, birthday arches, corporate photo corners, color plans, delivery, setup, and teardown for River Market, Oak Hill, Maple Bend, Westbrook, and nearby event rooms"
   },
   "copy": {
     "eyebrow": "Balloon installs with color, scale, and cleanup handled",
-    "heroTitle": "Your party backdrop should look planned, not panicked.",
+    "heroTitle": "Party backdrops, styled.",
     "heroText": "PopArc designs balloon garlands, backdrop moments, and photo-ready party corners with clear sizing, color notes, setup timing, and teardown options.",
     "primaryCta": "Style my party",
     "secondaryCta": "View backdrop sizes",
@@ -90,7 +91,7 @@
     "processTitle": "How install day stays smooth",
     "proofTitle": "Backdrop proof before the camera roll",
     "quoteTitle": "Ready to style the party?",
-    "quoteText": "Send your date, venue, install window, palette, backdrop inspiration, and rough guest flow. We will recommend the right size and setup path."
+    "quoteText": "Check availability with date, venue, install window, palette, backdrop inspiration, and rough guest flow. We will recommend the right size and setup path."
   },
   "services": [
     {
@@ -152,13 +153,14 @@
       "screenshotCompared": true
     },
     "premiumReview": {
-      "version": 1,
+      "version": 2,
       "reviewedAt": "2026-06-25",
       "score": 100,
       "categories": {
         "firstViewport": true,
         "logoScale": true,
         "typography": true,
+        "polishContract": true,
         "imageProof": true,
         "ctaClarity": true,
         "mobilePolish": true,
@@ -184,9 +186,9 @@
   },
   "serviceDetails": {
     "turnaround": "Color plan: palette checked before ordering.",
-    "whatToSend": "Send your date, venue, install window, palette, backdrop inspiration, and rough guest flow. We will recommend the right size and setup path.",
+    "whatToSend": "Share the event date, venue, wall or ceiling width, attachment rules, setup window, palette references, guest flow, and whether teardown is needed.",
     "prepNote": "Photos, wall size, install window, access rules, and color references help us choose a realistic build.",
-    "serviceRhythm": "date check for Balloon garlands, party backdrops, shower installs, birthday arches, corporate photo corners, color plans, delivery, setup, and teardown options across town.",
-    "objectionAnswer": "Scope, access, timing, and fit are confirmed before booking so the next step is clear and low-pressure."
+    "serviceRhythm": "Date-window flow for Balloon garlands, party backdrops, shower installs, birthday arches, corporate photo corners, color plans, delivery, setup, and teardown for River Market, Oak Hill, Maple Bend, Westbrook, and nearby event rooms: wall width, venue rules, install timing, guest flow, and teardown come before package pressure.",
+    "objectionAnswer": "For balloon garland and party backdrop styling, attachment rules, ceiling or wall access, backdrop width, guest-photo flow, and teardown timing are checked before the date is held."
   }
 }

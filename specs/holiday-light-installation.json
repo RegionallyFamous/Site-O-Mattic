@@ -12,9 +12,9 @@
     "imageRole": "environment-context",
     "imageEvidence": "seasonal work in progress with safety context",
     "ctaRhythm": "date-check",
-    "surfaceFamily": "single-elevated-proof",
+    "surfaceFamily": "receipt-stack",
     "surfaceModel": "date-board-checklist-cards",
-    "styleFamily": "humanist-local-calm",
+    "styleFamily": "editorial-proof-stage",
     "density": "balanced-editorial",
     "colorRoles": {
       "ink": "deepGreen",
@@ -25,7 +25,7 @@
       "action": "sun",
       "proof": "leaf",
       "muted": "soil",
-      "warning": "sun",
+      "warning": "grass",
       "shadowTint": "deepGreen"
     },
     "geometry": {
@@ -45,19 +45,19 @@
       "dark-hero-contrast",
       "date-board-pushes-cta"
     ],
-    "styleContract": "Crisp blue-hour urgency with ladder-safety proof, real roofline install evidence, warm-light action accents, and a reserve-date board as the signature move."
+    "styleContract": "Black-cherry seasonal urgency with warmer editorial proof staging, ladder-safety evidence, restrained warm-light action accents, and a reserve-date board as the signature move."
   },
   "tagline": "Roofline lights installed before the cold gets bossy.",
   "themeSlug": "twentytwentyfive",
   "landingPage": "/",
   "palette": {
-    "grass": "#a8342f",
-    "deepGreen": "#10233f",
-    "leaf": "#2f7d62",
-    "sun": "#f7c948",
+    "grass": "#b92e35",
+    "deepGreen": "#35111d",
+    "leaf": "#245f4d",
+    "sun": "#ffd34d",
     "cream": "#fff8ec",
-    "mist": "#e6eef7",
-    "soil": "#4d5b6e",
+    "mist": "#f4e8e1",
+    "soil": "#6b5660",
     "white": "#ffffff"
   },
   "assets": {
@@ -79,18 +79,18 @@
     "serviceArea": "Holiday roofline lights, porch columns, wreaths, timers, removal, and labeled storage for homes across the north suburbs, lake neighborhoods, and nearby cul-de-sacs"
   },
   "copy": {
-    "eyebrow": "Holiday light installation with safe ladder energy",
-    "heroTitle": "Reserve the roofline before the freeze shows up.",
-    "heroText": "RidgeGlow installs warm, tidy holiday lights with roofline clips, timer setup, labeled removal, and a calm crew that does not make your gutters part of the drama.",
-    "primaryCta": "Reserve my roofline",
-    "secondaryCta": "See install options",
-    "introTitle": "Classic glow, tidy clips, no extension-cord mystery.",
+    "eyebrow": "Holiday lights with clip-safe roofline planning",
+    "heroTitle": "Reserve the roofline slot.",
+    "heroText": "RidgeGlow maps rooflines, clips, outlets, timers, ladder access, install week, and takedown labels before the first strand goes up.",
+    "primaryCta": "Check dates",
+    "secondaryCta": "View glow levels",
+    "introTitle": "Reserve dates, clips, timers, and takedown in one plan.",
     "introText": "We plan the line, power access, timer location, ladder approach, clip style, removal date, and storage labels before the first strand goes up.",
     "servicesTitle": "Pick the glow level",
     "processTitle": "How the season stays safe",
-    "proofTitle": "Seasonal proof that matters",
-    "quoteTitle": "Ready to hold an install window?",
-    "quoteText": "Send a front-of-house photo, roofline wish list, power outlet notes, and your ideal install week. We will reply with the cleanest light plan and available dates."
+    "proofTitle": "Date and ladder checks before the glow",
+    "quoteTitle": "Ready to hold your install week?",
+    "quoteText": "Send a front-of-house photo, roofline wish list, outlet notes, and ideal install week. We reply with available dates, ladder notes, clip plan, and removal timing."
   },
   "services": [
     {
@@ -152,13 +152,14 @@
       "screenshotCompared": true
     },
     "premiumReview": {
-      "version": 1,
+      "version": 2,
       "reviewedAt": "2026-06-25",
       "score": 100,
       "categories": {
         "firstViewport": true,
         "logoScale": true,
         "typography": true,
+        "polishContract": true,
         "imageProof": true,
         "ctaClarity": true,
         "mobilePolish": true,
@@ -170,23 +171,23 @@
       "notes": [
         "Works: a reserve-date board. gives the page a memorable shape.",
         "Proof: seasonal work in progress with safety context. anchors the niche in the first viewport.",
-        "Action: Reserve my roofline is the main conversion path."
+        "Action: Check dates is the main conversion path."
       ]
     }
   },
   "brandBrief": {
-    "mood": "Crisp blue-hour urgency.",
-    "trustCue": "ladder-safety proof.",
-    "accentBehavior": "sun stays reserved for Reserve my roofline, active proof cues, and key booking moments.",
+    "mood": "Black-cherry seasonal urgency.",
+    "trustCue": "warmer editorial proof staging.",
+    "accentBehavior": "sun stays reserved for Check dates, active proof cues, and key booking moments.",
     "imageProof": "seasonal work in progress with safety context.",
     "signatureMove": "a reserve-date board.",
     "avoidLookingLike": "Avoid a generic urgent-checklist recolor; do not repeat stock hero framing, copied card rhythm, or vague local-service claims."
   },
   "serviceDetails": {
     "turnaround": "Oct-Nov: best install window before weather gets rude.",
-    "whatToSend": "Send a front-of-house photo, roofline wish list, power outlet notes, and your ideal install week. We will reply with the cleanest light plan and available dates.",
+    "whatToSend": "Send photos from the ground, access notes, weather or date constraints, and the warning signs you noticed so the visit starts safely.",
     "prepNote": "A wide front photo, power outlet notes, steep areas, and the style you like help us build a real date and ladder plan.",
-    "serviceRhythm": "date check for Holiday roofline lights, porch columns, wreaths, timers, removal, and labeled storage for homes across the north suburbs, lake neighborhoods, and nearby cul-de-sacs.",
-    "objectionAnswer": "Scope, access, timing, and fit are confirmed before booking so the next step is clear and low-pressure."
+    "serviceRhythm": "Risk-check flow for Holiday roofline lights, porch columns, wreaths, timers, removal, and labeled storage for homes across the north suburbs, lake neighborhoods, and nearby cul-de-sacs: photos, weather, access, and no-go conditions shape the safe visit plan.",
+    "objectionAnswer": "For holiday light installation service, roofline photos, outlet locations, ladder reach, timers, and takedown timing shape the plan before a date is promised."
   }
 }

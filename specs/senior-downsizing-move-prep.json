@@ -12,7 +12,7 @@
     "imageRole": "operator-or-founder",
     "imageEvidence": "consultant helping older adult sort keepsakes and moving boxes",
     "ctaRhythm": "consult-first",
-    "surfaceFamily": "single-elevated-proof",
+    "surfaceFamily": "outlined-repeaters",
     "surfaceModel": "story-checklist-support-cards",
     "styleFamily": "humanist-local-calm",
     "density": "balanced-editorial",
@@ -29,14 +29,16 @@
       "shadowTint": "deepGreen"
     },
     "geometry": {
-      "radiusScale": "story-18",
+      "radiusScale": "story-8",
       "borderRole": "soft support card borders",
       "shadowRole": "story proof panel only",
       "mediaCrop": "human sorting moment crop"
     },
     "coreBlockPlan": [
+      "media-text",
       "columns",
-      "image",
+      "list",
+      "quote",
       "details",
       "buttons"
     ],
@@ -80,17 +82,17 @@
   },
   "copy": {
     "eyebrow": "Senior downsizing with patient sorting help",
-    "heroTitle": "A smaller home should not mean a rushed goodbye.",
+    "heroTitle": "A calmer smaller move.",
     "heroText": "KindMove helps families sort, label, donate, pack, and plan the next chapter with steady hands, clear categories, and room for the stories that come with the boxes.",
     "primaryCta": "Schedule a consult",
-    "secondaryCta": "See the checklist",
+    "secondaryCta": "Review support steps",
     "introTitle": "Support for decisions, keepsakes, donations, and the hard maybe pile.",
     "introText": "We help define what stays, what moves, what gets shared, what needs family input, and what should wait until everyone has had a breath.",
     "servicesTitle": "Where we can help",
     "processTitle": "A slower, clearer path",
     "proofTitle": "Trust built into the process",
     "quoteTitle": "Need a calm first conversation?",
-    "quoteText": "Send the move timeline, rooms involved, family decision needs, and what feels most sensitive. We will suggest a first consult path without pushing a giant package."
+    "quoteText": "Plan the consult with move timeline, rooms involved, family decision needs, and what feels most sensitive. We will suggest a first consult path without pushing a giant package."
   },
   "services": [
     {
@@ -152,13 +154,14 @@
       "screenshotCompared": true
     },
     "premiumReview": {
-      "version": 1,
+      "version": 2,
       "reviewedAt": "2026-06-25",
       "score": 100,
       "categories": {
         "firstViewport": true,
         "logoScale": true,
         "typography": true,
+        "polishContract": true,
         "imageProof": true,
         "ctaClarity": true,
         "mobilePolish": true,
@@ -184,9 +187,9 @@
   },
   "serviceDetails": {
     "turnaround": "One room: focused sessions reduce overwhelm.",
-    "whatToSend": "Send the move timeline, rooms involved, family decision needs, and what feels most sensitive. We will suggest a first consult path without pushing a giant package.",
+    "whatToSend": "Share the move timeline, rooms involved, family decision makers, keepsake boundaries, donation or packing needs, access notes, and the first area that feels hardest.",
     "prepNote": "We start with the move date, family support, sensitive areas, and which rooms need the gentlest pace.",
-    "serviceRhythm": "consult first for Senior downsizing consults, room-by-room sorting, family decision support, donation planning, packing prep, move labels, keepsake organization, and gentle transition help for apartments, condos, family homes, and retirement communities.",
-    "objectionAnswer": "Scope, access, timing, and fit are confirmed before booking so the next step is clear and low-pressure."
+    "serviceRhythm": "Calm-consult flow for Senior downsizing consults, room-by-room sorting, family decision support, donation planning, packing prep, move labels, keepsake organization, and gentle transition help for apartments, condos, family homes, and retirement communities: timeline, sensitive rooms, family decision pace, donation boundaries, and packing needs set the first useful step.",
+    "objectionAnswer": "For senior downsizing and move prep, timeline, family decision pace, sensitive rooms, keepsake boundaries, and donation or packing needs set the first step before any large package is suggested."
   }
 }

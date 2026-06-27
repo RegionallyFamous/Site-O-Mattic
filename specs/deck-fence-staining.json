@@ -2,7 +2,7 @@
   "slug": "deck-fence-staining",
   "businessName": "CedarLine Stain Co.",
   "niche": "deck and fence staining service",
-  "layoutVariant": "workshop-bench",
+  "layoutVariant": "deck-finish-sample-board",
   "pattern": {
     "primaryPattern": "workshop-bench-photo-quote",
     "secondaryPattern": "material-proof-process-reassurance",
@@ -13,7 +13,7 @@
     "imageEvidence": "material/process closeup with craft detail",
     "ctaRhythm": "photo-first",
     "surfaceFamily": "outlined-repeaters",
-    "surfaceModel": "workshop-bench-panels",
+    "surfaceModel": "finish-sample-table-with-material-scope-cards",
     "styleFamily": "material-workbench",
     "density": "balanced-editorial",
     "colorRoles": {
@@ -21,11 +21,11 @@
       "paper": "cream",
       "field": "mist",
       "line": "soil",
-      "primary": "grass",
+      "primary": "leaf",
       "action": "sun",
       "proof": "leaf",
       "muted": "soil",
-      "warning": "sun",
+      "warning": "leaf",
       "shadowTint": "deepGreen"
     },
     "geometry": {
@@ -37,6 +37,8 @@
     "coreBlockPlan": [
       "columns",
       "image",
+      "table",
+      "details",
       "list",
       "buttons"
     ],
@@ -45,19 +47,19 @@
       "care-note-too-long",
       "craft-surfaces-too-heavy"
     ],
-    "styleContract": "Craft-forward and material honest with stain-window proof, close wood-grain work evidence, tool-gold action accents, and a bench ticket as the signature move."
+    "styleContract": "Craft-forward and material honest with stain-window proof, close wood-grain work evidence, amber action accents, and a finish-sample table as the signature move."
   },
   "tagline": "Wood staining that protects the good grain.",
   "themeSlug": "twentytwentyfive",
   "landingPage": "/",
   "palette": {
-    "grass": "#667a43",
-    "deepGreen": "#2a1a12",
-    "leaf": "#c16a2c",
-    "sun": "#f0b35a",
-    "cream": "#f8f2e7",
-    "mist": "#e5d4bd",
-    "soil": "#5e4637",
+    "grass": "#4f6b3c",
+    "deepGreen": "#24160f",
+    "leaf": "#9f4d2f",
+    "sun": "#d98236",
+    "cream": "#f7efe2",
+    "mist": "#dcc4a5",
+    "soil": "#3f2c22",
     "white": "#fffaf2"
   },
   "assets": {
@@ -79,18 +81,18 @@
     "serviceArea": "Deck and fence staining, prep, color refresh, and maintenance guidance for cedar, pine, pressure-treated wood, railings, gates, privacy fences, and backyard structures across the central metro and nearby suburbs"
   },
   "copy": {
-    "eyebrow": "Deck and fence staining with clean edges",
-    "heroTitle": "Bring the grain back before weather writes over it.",
-    "heroText": "CedarLine washes, preps, masks, and stains decks and fences with tidy brush work, smart dry-time planning, and color notes that make the wood feel intentional again.",
-    "primaryCta": "Send wood photos",
-    "secondaryCta": "See the bench plan",
-    "introTitle": "A wood-care bench, not a paint splash.",
+    "eyebrow": "Deck and fence stain planning, board by board",
+    "heroTitle": "Deck and fence stain plans.",
+    "heroText": "Send rail, picket, shade, peeling, and old-finish photos. CedarLine turns them into prep notes, color direction, and a clean stain window.",
+    "primaryCta": "Send photos",
+    "secondaryCta": "Review prep",
+    "introTitle": "Prep, weather, and finish matter before stain day.",
     "introText": "We check shade, moisture, loose boards, previous coatings, railing detail, fence exposure, and access before recommending a stain path.",
     "servicesTitle": "Choose the wood reset",
     "processTitle": "From photo check to final board",
-    "proofTitle": "Craft notes that protect the finish",
-    "quoteTitle": "Ready to line up a stain window?",
-    "quoteText": "Send photos of the deck or fence, rough dimensions, stain preference, and when the area gets shade. We will reply with prep notes, timing, and the cleanest quote path."
+    "proofTitle": "Material checks before the first coat",
+    "quoteTitle": "Send the boards, not a guess.",
+    "quoteText": "Send wide shots, close-ups of peeling or gray boards, approximate length, color preference, and shade timing. We reply with prep needs, finish options, and the cleanest stain window."
   },
   "services": [
     {
@@ -152,13 +154,14 @@
       "screenshotCompared": true
     },
     "premiumReview": {
-      "version": 1,
+      "version": 2,
       "reviewedAt": "2026-06-25",
       "score": 100,
       "categories": {
         "firstViewport": true,
         "logoScale": true,
         "typography": true,
+        "polishContract": true,
         "imageProof": true,
         "ctaClarity": true,
         "mobilePolish": true,
@@ -168,25 +171,25 @@
         "brandBrief": true
       },
       "notes": [
-        "Works: a bench ticket. gives the page a memorable shape.",
+        "Works: a finish-sample table. gives the page a memorable shape.",
         "Proof: material/process closeup with craft detail. anchors the niche in the first viewport.",
-        "Action: Send wood photos is the main conversion path."
+        "Action: Send photos is the main conversion path."
       ]
     }
   },
   "brandBrief": {
     "mood": "Craft-forward and material honest.",
     "trustCue": "stain-window proof.",
-    "accentBehavior": "sun stays reserved for Send wood photos, active proof cues, and key booking moments.",
+    "accentBehavior": "sun stays reserved for Send photos, active proof cues, and key booking moments.",
     "imageProof": "material/process closeup with craft detail.",
-    "signatureMove": "a bench ticket.",
+    "signatureMove": "a finish-sample table.",
     "avoidLookingLike": "Avoid a generic workshop-bench recolor; do not repeat stock hero framing, copied card rhythm, or vague local-service claims."
   },
   "serviceDetails": {
     "turnaround": "48 hr: weather-window planning before stain day.",
-    "whatToSend": "Send photos of the deck or fence, rough dimensions, stain preference, and when the area gets shade. We will reply with prep notes, timing, and the cleanest quote path.",
+    "whatToSend": "Send 3 to 5 photos of the deck and fence staining service surface or item, the access point, close-up problem spots, and the timing window you are hoping for.",
     "prepNote": "Photos of the boards, rails, shaded areas, stairs, gates, and peeling spots help us spot prep needs before quoting.",
-    "serviceRhythm": "photo first for Deck and fence staining, prep, color refresh, and maintenance guidance for cedar, pine, pressure-treated wood, railings, gates, privacy fences, and backyard structures across the central metro and nearby suburbs.",
-    "objectionAnswer": "Scope, access, timing, and fit are confirmed before booking so the next step is clear and low-pressure."
+    "serviceRhythm": "Photo-to-plan flow for Deck and fence staining, prep, color refresh, and maintenance guidance for cedar, pine, pressure-treated wood, railings, gates, privacy fences, and backyard structures across the central metro and nearby suburbs: first the evidence, then method, timing, and risk notes.",
+    "objectionAnswer": "For deck and fence staining service, wood condition, board or picket length, previous finish, plant protection, and dry-weather window decide the stain plan before the quote is set."
   }
 }

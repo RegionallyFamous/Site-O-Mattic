@@ -29,7 +29,7 @@
       "shadowTint": "deepGreen"
     },
     "geometry": {
-      "radiusScale": "consult-rail-18",
+      "radiusScale": "consult-rail-8",
       "borderRole": "quiet setup dividers",
       "shadowRole": "hero device photo and rail card",
       "mediaCrop": "home theater setup crop"
@@ -38,6 +38,7 @@
       "columns",
       "image",
       "navigation",
+      "quote",
       "buttons"
     ],
     "knownRisks": [
@@ -80,7 +81,7 @@
   },
   "copy": {
     "eyebrow": "Smart home setup without cable chaos",
-    "heroTitle": "Make the room work before movie night gets weird.",
+    "heroTitle": "Movie night, already working.",
     "heroText": "SignalNest turns TVs, soundbars, streaming boxes, remotes, speakers, and mystery cables into a clean setup that your whole household can actually use.",
     "primaryCta": "Plan my setup",
     "secondaryCta": "See the scope",
@@ -90,7 +91,7 @@
     "processTitle": "From device pile to simple controls",
     "proofTitle": "Room-ready proof",
     "quoteTitle": "Ready to make the living room behave?",
-    "quoteText": "Send room photos, device names, TV size, Wi-Fi notes, and what feels annoying right now. We will reply with a simple setup plan and clean next step."
+    "quoteText": "Plan the consult with room photos, device names, TV size, Wi-Fi notes, and what feels annoying right now. We will reply with a simple setup plan and clean next step."
   },
   "services": [
     {
@@ -152,13 +153,14 @@
       "screenshotCompared": true
     },
     "premiumReview": {
-      "version": 1,
+      "version": 2,
       "reviewedAt": "2026-06-25",
       "score": 100,
       "categories": {
         "firstViewport": true,
         "logoScale": true,
         "typography": true,
+        "polishContract": true,
         "imageProof": true,
         "ctaClarity": true,
         "mobilePolish": true,
@@ -184,9 +186,9 @@
   },
   "serviceDetails": {
     "turnaround": "1 remote: goal for most TV rooms after setup.",
-    "whatToSend": "Send room photos, device names, TV size, Wi-Fi notes, and what feels annoying right now. We will reply with a simple setup plan and clean next step.",
+    "whatToSend": "Send room photos, TV size, device names, Wi-Fi notes, app access needs, cable paths, and the controls that should feel simpler.",
     "prepNote": "Wide photos, device list, Wi-Fi notes, outlet locations, and what you want the room to do help us spot the right setup path.",
-    "serviceRhythm": "consult first for Smart TV mounting support, home theater setup, soundbar tuning, streaming device cleanup, Wi-Fi device pairing, cable labeling, remote simplification, and tidy room-ready walkthroughs for homes, condos, and townhomes across the central suburbs.",
-    "objectionAnswer": "Scope, access, timing, and fit are confirmed before booking so the next step is clear and low-pressure."
+    "serviceRhythm": "Receipt-scope flow for Smart TV mounting support, home theater setup, soundbar tuning, streaming device cleanup, Wi-Fi device pairing, cable labeling, remote simplification, and tidy room-ready walkthroughs for homes, condos, and townhomes across the central suburbs: included work, access, add-ons, and proof notes stay visible before handoff.",
+    "objectionAnswer": "For smart home and home theater setup service, device names, room photos, Wi-Fi notes, cable paths, and what should be simplified are scoped before setup day."
   }
 }

@@ -20,11 +20,11 @@ Use this lane for production batches:
 
 1. **Generate or refresh specs**: choose the pattern recipe, generate assets, then run `node src/production-polish-fields.mjs --write`.
 2. **Store the premium snapshot**: run `node src/premium-review-report.mjs --write` after build-relevant copy, assets, layout, or release-checklist changes.
-3. **Build and gate**: run `npm run blueprint:build && npm run quality`.
-4. **Run screenshot comparison**: run `VISUAL_SWEEP_DIR=qa/reports/visual-sweep npm run visual:sweep`, then `npm run visual:compare -- --input qa/reports/visual-sweep/report.json --out qa/reports/visual-sweep/dashboard`. If local Node is too new for the Playground CLI native dependency, use `VISUAL_SWEEP_DIR=qa/reports/visual-sweep PLAYGROUND_CLI_USE_NPM_EXEC=1 npx -y -p node@22 -p npm@10 npm run visual:sweep`.
+3. **Build and gate**: run `npm run blueprint:build && npm run quality`, or run `npm run quality:catalog` for the full rebuild, determinism, visual sweep, and comparison lane.
+4. **Run screenshot comparison**: run `npm run quality:release`, which includes the full static quality suite, `visual:sweep`, and `visual:compare`. The visual sweep automatically prefers an installed Node 22 binary for the Playground CLI child process; use `VISUAL_SWEEP_NODE_BIN_DIR=/path/to/node22/bin` only when detection needs help.
 5. **Human taste pass**: review the contact sheet/dashboard and ask whether each site feels trustworthy, premium, niche-specific, readable on mobile, and meaningfully different from nearby patterns.
 6. **Commit and push**: commit the accepted state, push it, then use the pushed commit SHA for public Playground smoke tests.
-7. **Public smoke**: run `SITE_O_MATTIC_REF=<commit-sha> npm run playground:smoke` for all specs, or pass a representative batch of `specs/*.json` paths first when checking deployment health.
+7. **Public smoke**: run `SITE_O_MATTIC_REF=<commit-sha> npm run quality:public` for raw commit-specific Playground smoke. For deployed app/API health, run `PUBLIC_BLUEPRINT_BASE=https://<deployed-origin>/api/blueprints npm run quality:public`; this checks schema, CORS/content-type/cache headers, `OPTIONS`, homepage catalog links, and Playground rendering.
 8. **Publish only after baselines**: capture approved baselines with `SLUG=<slug> PLAYGROUND_URL=<url> npm run visual:baseline:capture`, set `reviewed` to `true`, set `release.visualBaseline` to `approved`, and then move the spec to `published`.
 
 ## Quality Command
@@ -50,6 +50,16 @@ npm run quality
 - Premium review verification for first viewport, logo scale, typography, image proof, CTA clarity, mobile polish, layout distinctness, copy specificity, asset QA, and brand brief.
 - Visual baseline gate for published specs.
 - Production host build and lint.
+
+## Scale Hardening
+
+The six-agent review added these production guardrails for full-catalog work:
+
+- Hero prompts must pass on their unique art direction, not the shared boilerplate. The prompt body should name the service moment, visible proof/outcome, believable environment, composition/crop, copy-safe negative space, lighting, tools/materials/textures, and artifact negatives.
+- Catalog uniqueness tracks render family and actual rendered display/accent font families, not only `layoutVariant` and `typographyTreatment` labels.
+- Copy QA checks batch-level repetition: quote instructions should not all start the same way, and `serviceDetails.objectionAnswer` must be pattern-specific.
+- Full-scale review should treat `docs/catalog-uniqueness-report.md` pressure points as redesign candidates even when they still pass the budget.
+- Future scale gates should add commit-specific public Playground smoke, visual sweep screenshot gates, reviewed baseline metadata checks, and asset fingerprint/perceptual duplicate checks before promotion.
 
 ## Reports Policy
 
@@ -98,7 +108,7 @@ Budgets live in `config/production-guardrails.json`.
 Every approved or published spec must mark the full human review checklist true, including:
 
 - first viewport clarity, logo readability, CTA clarity, copy specificity, and image artifact checks.
-- art-directed hero imagery with a specific service moment or outcome.
+- art-directed hero imagery with a specific service moment or outcome, plus the Site-O-Mattic image style contract in `assets/<niche>/hero-prompt.md`: premium realistic/editorial service photography, visible proof, believable environment, 16:9 copy-safe composition, and explicit anti-artifact negatives.
 - distinct hierarchy, type, color, and spacing compared with recent Blueprints.
 - one memorable signature layout move beyond generic service cards.
 - restrained composition without awkward overlaps or decorative clutter.

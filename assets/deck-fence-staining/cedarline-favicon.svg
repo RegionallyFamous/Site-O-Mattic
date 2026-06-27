@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title">
-  <title id="title">CedarLine favicon</title>
-  <rect width="512" height="512" rx="96" fill="#2a1a12"/>
-  <path d="M126 136h220c54 0 78 28 78 74v126c0 46-24 74-78 74H126z" fill="#f8f2e7"/>
-  <path d="M174 190h190M174 254h190M174 318h148" stroke="#2a1a12" stroke-width="28" stroke-linecap="round"/>
-  <path d="M96 382c86-74 176-132 310-174" fill="none" stroke="#c16a2c" stroke-width="44" stroke-linecap="round"/>
-  <path d="M112 416h258" stroke="#f0b35a" stroke-width="30" stroke-linecap="round"/>
-</svg>

@@ -5,21 +5,22 @@ Site-O-Mattic creates WordPress Studio / WordPress Playground Blueprints that tu
 The repo currently includes 35 single-page service-business Blueprints. Each one uses:
 
 - the default WordPress theme when available, with Twenty Twenty-Five selected if present;
-- only core blocks and WordPress settings;
+- core blocks and WordPress settings first, with generated CSS reserved for shared polish, accessibility, and responsive edge-case fixes;
 - a generated hero image;
-- a custom logo and favicon;
+- custom ImageGen raster logo and favicon assets;
 - a professional but fun one-page service-site voice.
 
 ## Build
 
 ```bash
-npm run render-brand
 npm run blueprint:build
 npm run quality
 npm run build
 ```
 
 `npm run quality` runs spec validation, Blueprint validation, the polish report, accessibility checks, layout variety, typography guardrails, production guardrails, asset QA, copy realism, premium review, the visual baseline gate, the production host build, and lint. The polish report checks the token stack, block-level styles, focus states, contrast pairs, anchors, component polish classes, layout signatures, and logo metadata. The variety and premium reports compare Blueprints so different niches cannot quietly reuse the same hero structure, service presentation, proof treatment, CTA rhythm, navigation, typography, palette behavior, and component class mix.
+
+Use `npm run quality:catalog` for a full local release lane. It rebuilds the catalog, checks repeated-build determinism for generated Blueprint files and ZIPs, runs the static quality suite, refreshes the local screenshot sweep, and writes the visual comparison dashboard.
 
 For a local Playground visual smoke test, start the Playground CLI for a Blueprint and run:
 
@@ -32,23 +33,24 @@ The visual smoke test checks desktop and mobile first viewports for readable log
 For a full local screenshot sweep across specs:
 
 ```bash
-VISUAL_SWEEP_DIR=qa/reports/visual-sweep npm run visual:sweep
-npm run visual:compare -- --input qa/reports/visual-sweep/report.json --out qa/reports/visual-sweep/dashboard
+npm run quality:release
 ```
 
-If the Playground CLI hits a local Node/native-module mismatch, run the sweep through Node 22:
+The visual sweep launches the Playground CLI child process with an installed Node 22 binary when one is available through `.nvmrc`/NVM or Homebrew. To override detection, set `VISUAL_SWEEP_NODE_BIN_DIR=/path/to/node22/bin`; to disable it, set `VISUAL_SWEEP_DISABLE_NODE22_SHIM=1`.
+
+For public Playground smoke tests after pushing a commit, use a commit SHA or branch ref:
 
 ```bash
-VISUAL_SWEEP_DIR=qa/reports/visual-sweep PLAYGROUND_CLI_USE_NPM_EXEC=1 npx -y -p node@22 -p npm@10 npm run visual:sweep
+SITE_O_MATTIC_REF=<commit-sha-or-branch> npm run quality:public
 ```
 
-For public Playground smoke tests after pushing a commit:
+To smoke a deployed app/API route instead of raw GitHub files:
 
 ```bash
-SITE_O_MATTIC_REF=<commit-sha-or-branch> npm run playground:smoke
+PUBLIC_BLUEPRINT_BASE=https://<deployed-origin>/api/blueprints npm run quality:public
 ```
 
-Pass specific `specs/*.json` paths to smoke test a representative batch.
+When `PUBLIC_BLUEPRINT_BASE` is set, public smoke asserts the API JSON schema, CORS headers, content type, cache header, `OPTIONS` response, and homepage catalog links. Set `PUBLIC_SITE_ORIGIN=https://<deployed-origin>` if the API base is not enough to infer the homepage origin. Pass specific `specs/*.json` paths to smoke test a representative batch.
 
 For published releases, capture approved desktop/mobile baselines:
 
@@ -62,40 +64,17 @@ Use each `public/blueprints/<slug>/blueprint.json` as the Studio-ready Blueprint
 
 The host app catalog and API routes are generated from `specs/*.json`, so new production blueprints should not require hand-editing the homepage or route files.
 
-## Lawn Care Playground
+## Catalog Links
 
-- Playground: <https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Flawn-care-service%2Fblueprint.json>
-- Raw Blueprint JSON: <https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/lawn-care-service/blueprint.json>
+The deployed homepage is the source for Playground links because it builds each URL from `/api/blueprints/<slug>/blueprint.json`. For commit-specific raw smoke tests, generate Playground URLs from the matching pushed ref rather than copying raw `main` links into the README.
 
-## Pressure Washing Playground
+For a static GitHub Pages catalog with preview images, Playground links, raw Blueprint JSON, ZIP downloads, and spec links, run:
 
-- Playground: <https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fpressure-washing-service%2Fblueprint.json>
-- Raw Blueprint JSON: <https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/pressure-washing-service/blueprint.json>
+```bash
+npm run pages:catalog
+```
 
-## Window Cleaning Playground
-
-- Playground: <https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fwindow-cleaning%2Fblueprint.json>
-- Raw Blueprint JSON: <https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/window-cleaning/blueprint.json>
-
-## Gutter Cleaning Playground
-
-- Playground: <https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fgutter-cleaning%2Fblueprint.json>
-- Raw Blueprint JSON: <https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/gutter-cleaning/blueprint.json>
-
-## Pollinator Garden Playground
-
-- Playground: <https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fpollinator-garden-refresh%2Fblueprint.json>
-- Raw Blueprint JSON: <https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/pollinator-garden-refresh/blueprint.json>
-
-## Driveway Sealcoating Playground
-
-- Playground: <https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fdriveway-sealcoating%2Fblueprint.json>
-- Raw Blueprint JSON: <https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/driveway-sealcoating/blueprint.json>
-
-## Carpet And Upholstery Cleaning Playground
-
-- Playground: <https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fcarpet-upholstery-cleaning%2Fblueprint.json>
-- Raw Blueprint JSON: <https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/carpet-upholstery-cleaning/blueprint.json>
+This writes `docs/index.html` and `docs/.nojekyll`. Configure GitHub Pages to publish from the `docs/` folder on the branch you push.
 
 ## Structure
 
@@ -109,6 +88,7 @@ The host app catalog and API routes are generated from `specs/*.json`, so new pr
 - `qa/reports/`: lightweight release review dashboards; raw visual sweep and public smoke screenshots are local by default.
 - `docs/layout-archetypes.md`: implemented and planned one-page layout archetypes.
 - `docs/production-readiness.md`: release states and production checklist.
+- `docs/taste-layer-backlog.md`: taste review lanes, current gates, and block-first design debt.
 - `docs/niche-shortlist.md`: candidate niche backlog for future single-page Blueprints.
 
 ## Notes

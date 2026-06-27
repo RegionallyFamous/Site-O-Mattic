@@ -29,6 +29,7 @@ const dashboard = {
     layoutVariant: report.layoutVariant,
     signature: report.signature,
     notes: report.notes,
+    tasteWarnings: report.tasteWarnings,
     nearest: nearest.filter((item) => item.left === report.slug || item.right === report.slug).slice(0, 3)
   }))
 };
@@ -59,7 +60,8 @@ async function inspectSpec(target, sweep) {
     heroImage: screenshotOrAsset(spec, sweepReport, "desktop", manifest),
     mobileImage: screenshotOrAsset(spec, sweepReport, "mobile-390", manifest),
     notes: buildVisualNotes(spec, signature, sweepReport),
-    failures: sweepReport?.failures || []
+    failures: sweepReport?.failures || [],
+    tasteWarnings: sweepReport?.tasteWarnings || []
   };
 }
 
@@ -116,6 +118,7 @@ function structuralDistance(left, right) {
 
 function buildVisualNotes(spec, signature, sweepReport) {
   const failures = sweepReport?.failures || [];
+  const tasteWarnings = sweepReport?.tasteWarnings || [];
   const notes = [
     `Works: ${signature?.visualDifferentiator || spec.brandBrief?.signatureMove || "signature move"} should separate this from nearby patterns.`,
     `Proof: ${spec.brandBrief?.imageProof || spec.pattern?.imageEvidence || "hero evidence"} carries the niche-specific read.`,
@@ -123,6 +126,8 @@ function buildVisualNotes(spec, signature, sweepReport) {
   ];
   if (failures.length) {
     notes.push(`Fix next: ${failures.join("; ")}`);
+  } else if (tasteWarnings.length) {
+    notes.push(`Taste next: ${tasteWarnings.join("; ")}`);
   } else {
     notes.push("Fix next: no mechanical visual-sweep failures; judge taste from first viewport screenshots.");
   }
@@ -145,7 +150,7 @@ function buildHtml(reports, nearest, sweep) {
             <p>${escapeHtml(report.layoutVariant)}</p>
             <h2>${escapeHtml(report.name)}</h2>
           </div>
-          <span>${report.failures.length ? "Review" : "OK"}</span>
+          <span>${report.failures.length ? "Review" : report.tasteWarnings.length ? "Taste" : "OK"}</span>
         </header>
         <div class="shots">
           <img src="${escapeHtml(report.heroImage)}" alt="${escapeHtml(report.name)} desktop or hero">

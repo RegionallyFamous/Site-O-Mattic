@@ -2,7 +2,7 @@
   "version": 1,
   "slug": "window-cleaning",
   "businessName": "ClearPane Window Care",
-  "layoutVariant": "checklist-urgency",
+  "layoutVariant": "window-scope-ledger",
   "assets": {
     "hero": {
       "source": "assets/window-cleaning/clearpane-hero.jpg",
@@ -19,7 +19,7 @@
       "fileName": "logo.png",
       "outputPath": "/assets/logo.png",
       "mimeType": "image/png",
-      "byteSize": 21007,
+      "byteSize": 122663,
       "width": 1200,
       "height": 260,
       "embedded": true
@@ -29,7 +29,7 @@
       "fileName": "favicon.png",
       "outputPath": "/assets/favicon.png",
       "mimeType": "image/png",
-      "byteSize": 16046,
+      "byteSize": 132701,
       "width": 512,
       "height": 512,
       "embedded": true

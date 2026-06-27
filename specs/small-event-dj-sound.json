@@ -38,6 +38,7 @@
       "columns",
       "navigation",
       "image",
+      "quote",
       "list",
       "buttons"
     ],
@@ -77,21 +78,21 @@
     "phoneHref": "tel:+15550147118",
     "email": "hello@soundnest.test",
     "emailHref": "mailto:hello@soundnest.test",
-    "serviceArea": "Small weddings, birthdays, nonprofit events, community rooms, patios, private dinners, corporate mixers, microphones, compact DJ setups, and sound support across town"
+    "serviceArea": "Small weddings, birthdays, nonprofit events, community rooms, patios, private dinners, corporate mixers, microphones, compact DJ setups, and sound support in Eastbank, Oak Hill, Westbrook, Maple Bend, and nearby event rooms"
   },
   "copy": {
     "eyebrow": "Small-event DJ and sound without the stage drama",
-    "heroTitle": "The right sound setup for the room you actually booked.",
+    "heroTitle": "Sound that fits the room.",
     "heroText": "SoundNest handles music flow, microphones, compact speakers, clean cables, and readable volume so small events feel alive without swallowing the room.",
     "primaryCta": "Check my date",
-    "secondaryCta": "See event fit",
+    "secondaryCta": "Compare packages",
     "introTitle": "Great sound starts before the playlist.",
     "introText": "We ask about room size, guest count, speeches, power, load-in, music tone, and whether dancing is the point or just part of the night.",
     "servicesTitle": "Match the sound to the event",
     "processTitle": "How the soundcheck works",
     "proofTitle": "Proof before the first song",
     "quoteTitle": "Ready to check your event date?",
-    "quoteText": "Send your date, venue, room size, guest count, and music needs. We will reply with the right sound package and setup notes."
+    "quoteText": "Check availability with date, venue, room size, guest count, and music needs. We will reply with the right sound package and setup notes."
   },
   "services": [
     {
@@ -153,13 +154,14 @@
       "screenshotCompared": true
     },
     "premiumReview": {
-      "version": 1,
+      "version": 2,
       "reviewedAt": "2026-06-25",
       "score": 100,
       "categories": {
         "firstViewport": true,
         "logoScale": true,
         "typography": true,
+        "polishContract": true,
         "imageProof": true,
         "ctaClarity": true,
         "mobilePolish": true,
@@ -185,9 +187,9 @@
   },
   "serviceDetails": {
     "turnaround": "Clear mics: speech support tested before guests arrive.",
-    "whatToSend": "Send your date, venue, room size, guest count, and music needs. We will reply with the right sound package and setup notes.",
+    "whatToSend": "Share the event date, venue, room shape, guest count, load-in window, outlet or circuit access, microphone count, playlist tone, and any noise-limit rules.",
     "prepNote": "Venue, power, guest count, speeches, and music tone help us choose the right setup.",
-    "serviceRhythm": "date check for Small weddings, birthdays, nonprofit events, community rooms, patios, private dinners, corporate mixers, microphones, compact DJ setups, and sound support across town.",
-    "objectionAnswer": "Scope, access, timing, and fit are confirmed before booking so the next step is clear and low-pressure."
+    "serviceRhythm": "Date-window flow for Small weddings, birthdays, nonprofit events, community rooms, patios, private dinners, corporate mixers, microphones, compact DJ setups, and sound support in Eastbank, Oak Hill, Westbrook, Maple Bend, and nearby event rooms: room shape, power, mic count, load-in, volume limits, and music flow come before package pressure.",
+    "objectionAnswer": "For small-event DJ and sound service, outlet or circuit access, load-in route, speaker placement, microphone count, room shape, playlist boundaries, and noise limits are checked before the date is held."
   }
 }

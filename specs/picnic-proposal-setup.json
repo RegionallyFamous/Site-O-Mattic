@@ -29,7 +29,7 @@
       "shadowTint": "deepGreen"
     },
     "geometry": {
-      "radiusScale": "linen-soft-12",
+      "radiusScale": "linen-soft-8",
       "borderRole": "occasion card dividers",
       "shadowRole": "lookbook image lift only",
       "mediaCrop": "wide styled setup crop"
@@ -81,17 +81,17 @@
   },
   "copy": {
     "eyebrow": "Picnic and proposal setups with soft landing logistics",
-    "heroTitle": "A beautiful setup, ready before the big little moment.",
+    "heroTitle": "Proposal setup, ready early.",
     "heroText": "Linen & Lantern creates styled picnic and proposal moments with linens, florals, cushions, timing notes, access planning, and a calm backup plan if weather gets theatrical.",
     "primaryCta": "Plan a setup",
-    "secondaryCta": "View looks",
+    "secondaryCta": "View setups",
     "introTitle": "Romantic should still be practical.",
     "introText": "We confirm occasion, location access, timing, guest count, palette, add-ons, and what should happen before and after the reveal.",
     "servicesTitle": "Pick the occasion style",
     "processTitle": "How the setup lands on time",
     "proofTitle": "Pretty needs a plan",
     "quoteTitle": "Ready to plan the setup?",
-    "quoteText": "Send your date, location idea, guest count, occasion, color direction, and add-ons. We will suggest a setup path and timing window."
+    "quoteText": "Check availability with date, location idea, guest count, occasion, color direction, and add-ons. We will suggest a setup path and timing window."
   },
   "services": [
     {
@@ -153,13 +153,14 @@
       "screenshotCompared": true
     },
     "premiumReview": {
-      "version": 1,
+      "version": 2,
       "reviewedAt": "2026-06-25",
       "score": 100,
       "categories": {
         "firstViewport": true,
         "logoScale": true,
         "typography": true,
+        "polishContract": true,
         "imageProof": true,
         "ctaClarity": true,
         "mobilePolish": true,
@@ -185,9 +186,9 @@
   },
   "serviceDetails": {
     "turnaround": "Weather note: backup timing discussed early.",
-    "whatToSend": "Send your date, location idea, guest count, occasion, color direction, and add-ons. We will suggest a setup path and timing window.",
+    "whatToSend": "Share the date, location idea, guest count, occasion, color direction, access rules, setup window, weather concerns, and add-ons you are considering.",
     "prepNote": "We check access, rules, parking, timing, shade, and weather before the look gets locked.",
-    "serviceRhythm": "date check for Luxury picnic setups, proposal scenes, anniversary picnics, birthday lounges, small shower setups, add-on florals, pickup, setup, and teardown across parks, homes, and private venues.",
-    "objectionAnswer": "Scope, access, timing, and fit are confirmed before booking so the next step is clear and low-pressure."
+    "serviceRhythm": "Date-window flow for Luxury picnic setups, proposal scenes, anniversary picnics, birthday lounges, small shower setups, add-on florals, pickup, setup, and teardown across parks, homes, and private venues: date fit, location rules, access, shade, weather backup, guest movement, and reveal timing come before package pressure.",
+    "objectionAnswer": "For picnic and proposal setup service, date fit, location rules, access, shade, weather backup, palette direction, guest movement, and setup window are confirmed before the look gets locked."
   }
 }

@@ -79,17 +79,17 @@
   },
   "copy": {
     "eyebrow": "Garage organization with a real zone plan",
-    "heroTitle": "Open the garage and know exactly where things go.",
+    "heroTitle": "Garage zones that work.",
     "heroText": "GridNest turns the mystery wall, seasonal pile, tool drift, and sports gear shuffle into a clean garage system that still works after real life walks through it.",
-    "primaryCta": "Design my garage",
-    "secondaryCta": "See the zones",
+    "primaryCta": "Plan garage",
+    "secondaryCta": "View zones",
     "introTitle": "A place for tools, bikes, bins, and the weird stuff too.",
     "introText": "We map the garage by use, wall space, reach height, parking needs, seasonal habits, and the items that always sneak back onto the floor.",
     "servicesTitle": "Choose your reset lane",
     "processTitle": "From photo check to floor space",
     "proofTitle": "Zone notes beat mystery bins",
     "quoteTitle": "Ready to reclaim the parking spot?",
-    "quoteText": "Send wide garage photos, a rough list of what must stay, parking needs, and the zones you want first. We will reply with a clean plan path and install-ready next step."
+    "quoteText": "Map the plan with wide garage photos, a rough list of what must stay, parking needs, and the zones you want first. We will reply with a clean plan path and install-ready next step."
   },
   "services": [
     {
@@ -151,13 +151,14 @@
       "screenshotCompared": true
     },
     "premiumReview": {
-      "version": 1,
+      "version": 2,
       "reviewedAt": "2026-06-25",
       "score": 100,
       "categories": {
         "firstViewport": true,
         "logoScale": true,
         "typography": true,
+        "polishContract": true,
         "imageProof": true,
         "ctaClarity": true,
         "mobilePolish": true,
@@ -169,23 +170,23 @@
       "notes": [
         "Works: a zone map. gives the page a memorable shape.",
         "Proof: finished organized zone outcome. anchors the niche in the first viewport.",
-        "Action: Design my garage is the main conversion path."
+        "Action: Plan garage is the main conversion path."
       ]
     }
   },
   "brandBrief": {
     "mood": "Calm systems thinking.",
     "trustCue": "floor-clear proof.",
-    "accentBehavior": "sun stays reserved for Design my garage, active proof cues, and key booking moments.",
+    "accentBehavior": "sun stays reserved for Plan garage, active proof cues, and key booking moments.",
     "imageProof": "finished organized zone outcome.",
     "signatureMove": "a zone map.",
     "avoidLookingLike": "Avoid a generic zone-grid-planner recolor; do not repeat stock hero framing, copied card rhythm, or vague local-service claims."
   },
   "serviceDetails": {
     "turnaround": "4 zones: tools, sports, seasonal, and overflow mapped before install.",
-    "whatToSend": "Send wide garage photos, a rough list of what must stay, parking needs, and the zones you want first. We will reply with a clean plan path and install-ready next step.",
+    "whatToSend": "Send wide wall photos, ceiling height, parking goals, bulky gear notes, keep or donate boundaries, and the zones that need floor space first.",
     "prepNote": "Wide wall photos, ceiling height, parking goals, and the items you cannot toss tell us which zones should lead the plan.",
-    "serviceRhythm": "photo plan for Garage organization, wall storage, shelves, bins, pegboard zones, sports gear hooks, seasonal storage resets, workbench planning, and floor-clearing systems for attached garages across the north metro and nearby suburbs.",
-    "objectionAnswer": "Scope, access, timing, and fit are confirmed before booking so the next step is clear and low-pressure."
+    "serviceRhythm": "Calm-consult flow for Garage organization, wall storage, shelves, bins, pegboard zones, sports gear hooks, seasonal storage resets, workbench planning, and floor-clearing systems for attached garages across the north metro and nearby suburbs: wall photos, ceiling height, parking lanes, bulky gear, and storage habits decide the first useful zone.",
+    "objectionAnswer": "For garage organization service, wall photos, ceiling height, parking lanes, bulky gear, keep or donate boundaries, and install appetite define the first useful zone instead of a giant reset."
   }
 }

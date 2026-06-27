@@ -81,17 +81,17 @@
   },
   "copy": {
     "eyebrow": "Weekly pool care with a clean test board",
-    "heroTitle": "Clear water should feel boring in the best way.",
+    "heroTitle": "Clear water, no drama.",
     "heroText": "BlueLane keeps the skim, brush, baskets, and chemistry on a simple route so the pool is ready before anyone asks if it is safe to jump in.",
-    "primaryCta": "Start weekly service",
-    "secondaryCta": "Check the water plan",
+    "primaryCta": "Start service",
+    "secondaryCta": "View plan",
     "introTitle": "A weekly route with visible chemistry notes.",
     "introText": "We balance the basics, watch the equipment clues, note weather swings, and send plain-language service updates after each visit.",
     "servicesTitle": "Pick the pool lane",
     "processTitle": "What happens on route day",
     "proofTitle": "The water board stays honest",
     "quoteTitle": "Want the pool off your mental checklist?",
-    "quoteText": "Send the pool size, gate details, equipment photos, and the current water mood. We will reply with a route-day option, first-visit notes, and a simple weekly plan."
+    "quoteText": "Start service with pool size, gate details, equipment photos, and the current water mood. We will reply with a route-day option, first-visit notes, and a simple weekly plan."
   },
   "services": [
     {
@@ -153,13 +153,14 @@
       "screenshotCompared": true
     },
     "premiumReview": {
-      "version": 1,
+      "version": 2,
       "reviewedAt": "2026-06-25",
       "score": 100,
       "categories": {
         "firstViewport": true,
         "logoScale": true,
         "typography": true,
+        "polishContract": true,
         "imageProof": true,
         "ctaClarity": true,
         "mobilePolish": true,
@@ -171,23 +172,23 @@
       "notes": [
         "Works: a floating water board. gives the page a memorable shape.",
         "Proof: water-care work with measurable chemistry proof. anchors the niche in the first viewport.",
-        "Action: Start weekly service is the main conversion path."
+        "Action: Start service is the main conversion path."
       ]
     }
   },
   "brandBrief": {
     "mood": "Clear-water dashboard calm.",
     "trustCue": "chemistry proof.",
-    "accentBehavior": "sun stays reserved for Start weekly service, active proof cues, and key booking moments.",
+    "accentBehavior": "sun stays reserved for Start service, active proof cues, and key booking moments.",
     "imageProof": "water-care work with measurable chemistry proof.",
     "signatureMove": "a floating water board.",
     "avoidLookingLike": "Avoid a generic water-test-board recolor; do not repeat stock hero framing, copied card rhythm, or vague local-service claims."
   },
   "serviceDetails": {
     "turnaround": "7 day: weekly route rhythm for steady water.",
-    "whatToSend": "Send the pool size, gate details, equipment photos, and the current water mood. We will reply with a route-day option, first-visit notes, and a simple weekly plan.",
+    "whatToSend": "Send your address or neighborhood, access notes, preferred cadence, photos when useful, and any skip conditions before joining the route.",
     "prepNote": "Photos of the pool, gate, pump area, filter label, and current water color help us plan the first visit without making you decode equipment names.",
-    "serviceRhythm": "start service for Weekly pool cleaning, water testing, skimming, basket checks, brush work, filter attention, green-to-clean help, vacation checks, and opening support for backyard pools across the west metro and lakeside suburbs.",
-    "objectionAnswer": "Scope, access, timing, and fit are confirmed before booking so the next step is clear and low-pressure."
+    "serviceRhythm": "Route-fit flow for Weekly pool cleaning, water testing, skimming, basket checks, brush work, filter attention, green-to-clean help, vacation checks, and opening support for backyard pools across the west metro and lakeside suburbs: cadence, access, skip rules, and first-visit notes make the route realistic.",
+    "objectionAnswer": "For pool cleaning service, gate access, water condition, equipment photos, route cadence, and storm/debris notes are checked before weekly service starts."
   }
 }

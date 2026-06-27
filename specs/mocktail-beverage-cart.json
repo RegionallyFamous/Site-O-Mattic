@@ -20,10 +20,10 @@
       "ink": "deepGreen",
       "paper": "cream",
       "field": "mist",
-      "line": "leaf",
+      "line": "soil",
       "primary": "grass",
       "action": "sun",
-      "proof": "leaf",
+      "proof": "grass",
       "muted": "soil",
       "warning": "sun",
       "shadowTint": "deepGreen"
@@ -76,21 +76,21 @@
     "phoneHref": "tel:+15550143580",
     "email": "hello@spritzloop.test",
     "emailHref": "mailto:hello@spritzloop.test",
-    "serviceArea": "Mocktail carts, zero-proof bars, citrus spritz service, shower beverages, corporate refreshment carts, graduation parties, weddings, birthdays, and private events across the metro"
+    "serviceArea": "Mocktail carts, zero-proof bars, citrus spritz service, shower beverages, corporate refreshment carts, graduation parties, weddings, birthdays, and private events in River Market, North Loop, Oak Hill, Westbrook, and Maple Bend"
   },
   "copy": {
     "eyebrow": "Mocktail carts with garnish-level planning",
-    "heroTitle": "A bar cart that keeps every guest in the toast.",
-    "heroText": "SpritzLoop brings zero-proof drinks, citrus, herbs, glassware, garnish prep, and a tidy cart setup for events that want the fun without leaning on alcohol.",
-    "primaryCta": "Build my bar",
-    "secondaryCta": "View drink styles",
+    "heroTitle": "Zero-proof drinks for every toast.",
+    "heroText": "SpritzLoop brings zero-proof drinks, citrus, herbs, glassware, and a tidy cart setup for events that want the fun without alcohol.",
+    "primaryCta": "Plan mocktails",
+    "secondaryCta": "See drinks",
     "introTitle": "The garnish is cute. The service plan matters.",
     "introText": "We match drink styles, guest count, glassware needs, service timing, power or water access, and whether the cart is hosted or self-serve.",
     "servicesTitle": "Choose the sip setup",
     "processTitle": "How the cart rolls in",
     "proofTitle": "Fresh proof before the first pour",
     "quoteTitle": "Ready to build your bar?",
-    "quoteText": "Send the date, location, guest count, drink vibe, and service window. We will suggest the right cart package and garnish plan."
+    "quoteText": "Compare packages with date, location, guest count, drink vibe, and service window. We will suggest the right cart package and garnish plan."
   },
   "services": [
     {
@@ -152,13 +152,14 @@
       "screenshotCompared": true
     },
     "premiumReview": {
-      "version": 1,
+      "version": 2,
       "reviewedAt": "2026-06-25",
       "score": 100,
       "categories": {
         "firstViewport": true,
         "logoScale": true,
         "typography": true,
+        "polishContract": true,
         "imageProof": true,
         "ctaClarity": true,
         "mobilePolish": true,
@@ -170,23 +171,23 @@
       "notes": [
         "Works: garnish menu cards. gives the page a memorable shape.",
         "Proof: beverage attendant garnishing mocktails at a citrus cart with glassware and herbs. anchors the niche in the first viewport.",
-        "Action: Build my bar is the main conversion path."
+        "Action: Plan mocktails is the main conversion path."
       ]
     }
   },
   "brandBrief": {
     "mood": "Fresh and inclusive.",
     "trustCue": "guest-service proof.",
-    "accentBehavior": "sun stays reserved for Build my bar, active proof cues, and key booking moments.",
+    "accentBehavior": "sun stays reserved for Plan mocktails, active proof cues, and key booking moments.",
     "imageProof": "beverage attendant garnishing mocktails at a citrus cart with glassware and herbs.",
     "signatureMove": "garnish menu cards.",
     "avoidLookingLike": "Avoid a generic package-menu-board recolor; do not repeat stock hero framing, copied card rhythm, or vague local-service claims."
   },
   "serviceDetails": {
     "turnaround": "Zero-proof: built for every guest.",
-    "whatToSend": "Send the date, location, guest count, drink vibe, and service window. We will suggest the right cart package and garnish plan.",
+    "whatToSend": "Share the event date, venue or address, guest count, setup window, power/water rules, and the package style you are considering.",
     "prepNote": "Fresh, herbal, bright, cozy, or celebratory notes help us shape the menu.",
-    "serviceRhythm": "package select for Mocktail carts, zero-proof bars, citrus spritz service, shower beverages, corporate refreshment carts, graduation parties, weddings, birthdays, and private events across the metro.",
-    "objectionAnswer": "Scope, access, timing, and fit are confirmed before booking so the next step is clear and low-pressure."
+    "serviceRhythm": "Date-window flow for Mocktail carts, zero-proof bars, citrus spritz service, shower beverages, corporate refreshment carts, graduation parties, weddings, birthdays, and private events in River Market, North Loop, Oak Hill, Westbrook, and Maple Bend: date fit, setup rules, guest flow, and hold status come before package pressure.",
+    "objectionAnswer": "For mocktail and beverage cart service, guest count, menu pace, service footprint, prep access, and cleanup timing are matched before the package is recommended."
   }
 }

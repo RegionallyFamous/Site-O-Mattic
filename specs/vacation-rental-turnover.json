@@ -4,18 +4,18 @@
   "niche": "vacation rental turnover cleaning service",
   "layoutVariant": "turnover-receipt-board",
   "pattern": {
-    "primaryPattern": "service-receipt-stack",
+    "primaryPattern": "date-window-reservation",
     "secondaryPattern": "host-readiness-checklist",
-    "silhouette": "receipt-scope-stack",
+    "silhouette": "editorial-proof-stage",
     "navigationPrimitive": "compact-header",
     "mobileActionPattern": "coverage-plus-inline-phone",
     "imageRole": "finished-outcome",
     "imageEvidence": "clean rental bedroom with linen reset and host checklist",
     "ctaRhythm": "quote-first",
-    "surfaceFamily": "receipt-stack",
-    "surfaceModel": "turnover-table-details-stack",
-    "styleFamily": "receipt-ledger",
-    "density": "compact-leadgen",
+    "surfaceFamily": "status-board",
+    "surfaceModel": "host-readiness-board-room-reset-table",
+    "styleFamily": "humanist-local-calm",
+    "density": "balanced-editorial",
     "colorRoles": {
       "ink": "deepGreen",
       "paper": "white",
@@ -29,23 +29,27 @@
       "shadowTint": "deepGreen"
     },
     "geometry": {
-      "radiusScale": "linen-receipt-6",
-      "borderRole": "cleaning receipt lines",
-      "shadowRole": "single turnover receipt stack",
-      "mediaCrop": "guest-ready room crop"
+      "radiusScale": "linen-board-8",
+      "borderRole": "check-in board dividers",
+      "shadowRole": "single host readiness board",
+      "mediaCrop": "guest-ready room cover"
     },
     "coreBlockPlan": [
-      "media-text",
+      "cover",
+      "columns",
+      "list",
       "table",
       "details",
+      "quote",
       "buttons"
     ],
     "knownRisks": [
       "table-mobile-overflow",
       "generic-cleaning-copy",
-      "cta-below-mobile-fold"
+      "cover-text-contrast",
+      "readiness-board-mobile-height"
     ],
-    "styleContract": "Host-ready calm with linen-reset proof, real turnover cleaning evidence, golden booking accents, and a scope receipt table as the signature move."
+    "styleContract": "Host-ready calm with linen-reset proof, real turnover cleaning evidence, golden booking accents, and a host readiness board with room reset table as the signature move."
   },
   "tagline": "Guest-ready turnovers with host-friendly proof.",
   "themeSlug": "twentytwentyfive",
@@ -79,18 +83,18 @@
     "serviceArea": "Vacation rental turnovers, linen swaps, restock checks, kitchen and bath reset, entry photos, damage notes, same-day changeovers, and host coverage for guest suites, cabins, lake homes, and short-term rentals across the local booking corridor"
   },
   "copy": {
-    "eyebrow": "Vacation rental turnover with receipt-level proof",
-    "heroTitle": "Guest-ready before the next door code goes live.",
+    "eyebrow": "Vacation rental turnover with check-in proof",
+    "heroTitle": "Guest-ready by check-in.",
     "heroText": "Turnkey Tidy resets beds, baths, kitchens, entry details, linens, and restocks with clear host notes so every turnover feels tracked, not guessed.",
-    "primaryCta": "Get turnover coverage",
-    "secondaryCta": "Review the scope",
+    "primaryCta": "Get coverage",
+    "secondaryCta": "Review the checklist",
     "introTitle": "What gets checked between checkout and check-in",
     "introText": "We confirm linens, supply levels, trash, dishes, surfaces, entry details, damage clues, laundry timing, and photos before marking a unit guest-ready.",
     "servicesTitle": "Your turnover receipt",
     "processTitle": "The reset sequence",
     "proofTitle": "Host proof without a scavenger hunt",
     "quoteTitle": "Need dependable turnover coverage?",
-    "quoteText": "Send property type, bed/bath count, linen setup, average checkout window, and restock expectations. We will reply with a clear coverage plan and first-turnover notes."
+    "quoteText": "Request a quote with property type, bed/bath count, linen setup, average checkout window, and restock expectations. We will reply with a clear coverage plan and first-turnover notes."
   },
   "services": [
     {
@@ -152,13 +156,14 @@
       "screenshotCompared": true
     },
     "premiumReview": {
-      "version": 1,
+      "version": 2,
       "reviewedAt": "2026-06-25",
       "score": 100,
       "categories": {
         "firstViewport": true,
         "logoScale": true,
         "typography": true,
+        "polishContract": true,
         "imageProof": true,
         "ctaClarity": true,
         "mobilePolish": true,
@@ -168,25 +173,25 @@
         "brandBrief": true
       },
       "notes": [
-        "Works: a scope receipt table. gives the page a memorable shape.",
+        "Works: a host readiness board with room reset table. gives the page a memorable shape.",
         "Proof: clean rental bedroom with linen reset and host checklist. anchors the niche in the first viewport.",
-        "Action: Get turnover coverage is the main conversion path."
+        "Action: Get coverage is the main conversion path."
       ]
     }
   },
   "brandBrief": {
     "mood": "Host-ready calm.",
     "trustCue": "linen-reset proof.",
-    "accentBehavior": "sun stays reserved for Get turnover coverage, active proof cues, and key booking moments.",
+    "accentBehavior": "sun stays reserved for Get coverage, active proof cues, and key booking moments.",
     "imageProof": "clean rental bedroom with linen reset and host checklist.",
-    "signatureMove": "a scope receipt table.",
+    "signatureMove": "a host readiness board with room reset table.",
     "avoidLookingLike": "Avoid a generic service-receipt-stack recolor; do not repeat stock hero framing, copied card rhythm, or vague local-service claims."
   },
   "serviceDetails": {
     "turnaround": "Same day: turnover windows planned around check-in.",
-    "whatToSend": "Send property type, bed/bath count, linen setup, average checkout window, and restock expectations. We will reply with a clear coverage plan and first-turnover notes.",
+    "whatToSend": "Share the address or room context, access rules, must-include items, optional add-ons, and where the finished report or handoff should go.",
     "prepNote": "We review checkout time, lock access, laundry setup, restock list, and anything guests mentioned before the visit.",
-    "serviceRhythm": "quote first for Vacation rental turnovers, linen swaps, restock checks, kitchen and bath reset, entry photos, damage notes, same-day changeovers, and host coverage for guest suites, cabins, lake homes, and short-term rentals across the local booking corridor.",
-    "objectionAnswer": "Scope, access, timing, and fit are confirmed before booking so the next step is clear and low-pressure."
+    "serviceRhythm": "Receipt-scope flow for Vacation rental turnovers, linen swaps, restock checks, kitchen and bath reset, entry photos, damage notes, same-day changeovers, and host coverage for guest suites, cabins, lake homes, and short-term rentals across the local booking corridor: included work, access, add-ons, and proof notes stay visible before handoff.",
+    "objectionAnswer": "For vacation rental turnover cleaning service, checkout time, lock access, linen rules, restock list, add-ons, and photo proof are written into the handoff before coverage starts."
   }
 }

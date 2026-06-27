@@ -2,63 +2,63 @@
   "slug": "pollinator-garden-refresh",
   "businessName": "BloomRoute Garden Studio",
   "niche": "pollinator garden refresh service",
-  "layoutVariant": "gallery-led",
+  "layoutVariant": "pollinator-season-board",
   "pattern": {
-    "primaryPattern": "gallery-led-portfolio-proof",
+    "primaryPattern": "decision-filter-route-plan",
     "secondaryPattern": "seasonal-style-proof",
-    "silhouette": "editorial-proof-stage",
-    "navigationPrimitive": "compact-header",
-    "mobileActionPattern": "post-hero-anchor-actions",
-    "imageRole": "finished-outcome",
-    "imageEvidence": "finished visual result with proof-ready composition",
-    "ctaRhythm": "consult-first",
-    "surfaceFamily": "gallery-mosaic",
-    "surfaceModel": "editorial-gallery-captions",
-    "styleFamily": "editorial-proof-stage",
+    "silhouette": "route-status-board",
+    "navigationPrimitive": "section-anchor-strip",
+    "mobileActionPattern": "bloom-board-anchor-actions",
+    "imageRole": "environment-context",
+    "imageEvidence": "finished front-yard pollinator bed with native flowers, clean edging, and seasonal planting proof",
+    "ctaRhythm": "photo-first",
+    "surfaceFamily": "status-board",
+    "surfaceModel": "season-path-table-with-bed-zone-cards",
+    "styleFamily": "clear-status-dashboard",
     "density": "visual-first",
     "colorRoles": {
       "ink": "deepGreen",
       "paper": "cream",
       "field": "mist",
-      "line": "leaf",
+      "line": "soil",
       "primary": "grass",
       "action": "sun",
       "proof": "leaf",
       "muted": "soil",
-      "warning": "sun",
+      "warning": "soil",
       "shadowTint": "deepGreen"
     },
     "geometry": {
-      "radiusScale": "editorial-8",
-      "borderRole": "caption and proof separators",
-      "shadowRole": "image stage sparingly",
-      "mediaCrop": "large editorial outcome crop"
+      "radiusScale": "field-guide-8",
+      "borderRole": "bloom board and bed card separators",
+      "shadowRole": "garden image lift only",
+      "mediaCrop": "front-yard bed with edge and blooms"
     },
     "coreBlockPlan": [
-      "cover",
       "image",
-      "gallery",
-      "quote",
+      "table",
+      "navigation",
+      "columns",
       "buttons"
     ],
     "knownRisks": [
-      "cta-below-gallery-fold",
-      "decorative-plant-photo",
+      "garden-photo-too-decorative",
+      "mobile-grid-cramping",
       "palette-too-green"
     ],
-    "styleContract": "Ecological and editorial with native-season proof, colorful finished garden evidence, pollen-gold action accents, and gallery captions as the signature move."
+    "styleContract": "Ecological and practical with native-season proof, finished garden evidence, pollen-gold action accents, and a bloom-season board as the signature move."
   },
   "tagline": "Native blooms with excellent neighborhood manners.",
   "themeSlug": "twentytwentyfive",
   "landingPage": "/",
   "palette": {
-    "grass": "#356b2f",
-    "deepGreen": "#173b2d",
-    "leaf": "#87b94a",
-    "sun": "#f5b84b",
-    "cream": "#fff8ed",
-    "mist": "#e7f2d8",
-    "soil": "#5b5849",
+    "grass": "#2f6b45",
+    "deepGreen": "#26143b",
+    "leaf": "#c68adf",
+    "sun": "#d88714",
+    "cream": "#fff9ec",
+    "mist": "#f2e7f5",
+    "soil": "#5e5248",
     "white": "#ffffff"
   },
   "assets": {
@@ -81,17 +81,17 @@
   },
   "copy": {
     "eyebrow": "Pollinator garden refreshes with color and manners",
-    "heroTitle": "Plant a tiny habitat.",
+    "heroTitle": "Native blooms, spring to fall.",
     "heroText": "BloomRoute refreshes front-yard beds with native flowers, soft grasses, tidy edges, and planting plans that make bees happy without making your walkway disappear.",
-    "primaryCta": "Plan my garden refresh",
-    "secondaryCta": "Browse refresh styles",
+    "primaryCta": "Send photos",
+    "secondaryCta": "View color",
     "introTitle": "Pretty, useful, and not secretly chaos.",
     "introText": "We blend pollinator-friendly plants with clean edging, seasonal color, and practical maintenance notes so your garden feels lush on purpose.",
-    "servicesTitle": "Refresh styles",
-    "processTitle": "How the bloom plan happens",
+    "servicesTitle": "Bloom zones",
+    "processTitle": "How the season board happens",
     "proofTitle": "Garden proof without the lecture",
     "quoteTitle": "Ready for a bed that buzzes politely?",
-    "quoteText": "Send a few photos, sun exposure, bed dimensions, and what is already growing. We will suggest a native-forward refresh plan with color, timing, and a simple install path."
+    "quoteText": "Map the plan with a few photos, sun exposure, bed dimensions, and what is already growing. We will suggest a native-forward refresh plan with color, timing, and a simple install path."
   },
   "services": [
     {
@@ -153,13 +153,14 @@
       "screenshotCompared": true
     },
     "premiumReview": {
-      "version": 1,
+      "version": 2,
       "reviewedAt": "2026-06-25",
       "score": 100,
       "categories": {
         "firstViewport": true,
         "logoScale": true,
         "typography": true,
+        "polishContract": true,
         "imageProof": true,
         "ctaClarity": true,
         "mobilePolish": true,
@@ -169,25 +170,25 @@
         "brandBrief": true
       },
       "notes": [
-        "Works: gallery captions. gives the page a memorable shape.",
-        "Proof: finished visual result with proof-ready composition. anchors the niche in the first viewport.",
-        "Action: Plan my garden refresh is the main conversion path."
+        "Works: a bloom-season board. gives the page a memorable shape.",
+        "Proof: finished front-yard pollinator bed with native flowers, clean edging, and seasonal planting proof. anchors the niche in the first viewport.",
+        "Action: Send photos is the main conversion path."
       ]
     }
   },
   "brandBrief": {
-    "mood": "Ecological and editorial.",
+    "mood": "Ecological and practical.",
     "trustCue": "native-season proof.",
-    "accentBehavior": "sun stays reserved for Plan my garden refresh, active proof cues, and key booking moments.",
-    "imageProof": "finished visual result with proof-ready composition.",
-    "signatureMove": "gallery captions.",
-    "avoidLookingLike": "Avoid a generic gallery-led recolor; do not repeat stock hero framing, copied card rhythm, or vague local-service claims."
+    "accentBehavior": "sun stays reserved for Send photos, active proof cues, and key booking moments.",
+    "imageProof": "finished front-yard pollinator bed with native flowers, clean edging, and seasonal planting proof.",
+    "signatureMove": "a bloom-season board.",
+    "avoidLookingLike": "Avoid a generic zone-grid-planner recolor; do not repeat stock hero framing, copied card rhythm, or vague local-service claims."
   },
   "serviceDetails": {
     "turnaround": "3-season: color plans for spring through fall.",
-    "whatToSend": "Send a few photos, sun exposure, bed dimensions, and what is already growing. We will suggest a native-forward refresh plan with color, timing, and a simple install path.",
+    "whatToSend": "Send bed photos from a few angles, sun hours, rough dimensions, soil or drainage notes, watering access, existing plants, and any colors or maintenance limits.",
     "prepNote": "We check sun, soil, existing plants, water access, and how polished or wild you want the bed to feel.",
-    "serviceRhythm": "consult first for Front-yard beds, sidewalk strips, cottage gardens, and sunny corners across the river neighborhoods and nearby suburbs.",
-    "objectionAnswer": "Scope, access, timing, and fit are confirmed before booking so the next step is clear and low-pressure."
+    "serviceRhythm": "Calm-consult flow for Front-yard beds, sidewalk strips, cottage gardens, and sunny corners across the river neighborhoods and nearby suburbs: sun, soil, bed size, existing plants, watering reality, and maintenance appetite shape a small first plan.",
+    "objectionAnswer": "For pollinator garden refresh service, sun exposure, bed size, soil or drainage notes, bloom timing, watering reality, and existing plants shape the first refresh plan."
   }
 }

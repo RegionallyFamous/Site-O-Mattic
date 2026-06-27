@@ -4,7 +4,7 @@
   "niche": "houseplant and office plant care service",
   "layoutVariant": "route-led-schedule",
   "pattern": {
-    "primaryPattern": "decision-filter-route-plan",
+    "primaryPattern": "route-schedule-board",
     "secondaryPattern": "living-plant-health-proof",
     "silhouette": "route-status-board",
     "navigationPrimitive": "compact-header",
@@ -29,14 +29,16 @@
       "shadowTint": "deepGreen"
     },
     "geometry": {
-      "radiusScale": "living-route-18",
+      "radiusScale": "living-route-8",
       "borderRole": "care route dividers",
       "shadowRole": "route plan card only",
       "mediaCrop": "plant shelf service crop"
     },
     "coreBlockPlan": [
-      "cover",
+      "image",
       "columns",
+      "table",
+      "details",
       "list",
       "buttons"
     ],
@@ -80,7 +82,7 @@
   },
   "copy": {
     "eyebrow": "Houseplant and office plant care on route",
-    "heroTitle": "Healthy plants, fewer “what happened?” leaves.",
+    "heroTitle": "Healthy plants, fewer mystery leaves.",
     "heroText": "LeafDesk keeps watering, pruning, soil checks, rotations, and plant rescue notes on a simple care route for homes and offices that want greenery without guesswork.",
     "primaryCta": "Get a plant plan",
     "secondaryCta": "See care routes",
@@ -90,7 +92,7 @@
     "processTitle": "How the plants stay understood",
     "proofTitle": "Plant notes beat panic watering",
     "quoteTitle": "Ready for calmer plant care?",
-    "quoteText": "Send plant photos, room light notes, watering history, and any sad-leaf situations. We will reply with a care rhythm and first-visit plan."
+    "quoteText": "Join the route with plant photos, room light notes, watering history, and any sad-leaf situations. We will reply with a care rhythm and first-visit plan."
   },
   "services": [
     {
@@ -152,13 +154,14 @@
       "screenshotCompared": true
     },
     "premiumReview": {
-      "version": 1,
+      "version": 2,
       "reviewedAt": "2026-06-25",
       "score": 100,
       "categories": {
         "firstViewport": true,
         "logoScale": true,
         "typography": true,
+        "polishContract": true,
         "imageProof": true,
         "ctaClarity": true,
         "mobilePolish": true,
@@ -180,13 +183,13 @@
     "accentBehavior": "sun stays reserved for Get a plant plan, active proof cues, and key booking moments.",
     "imageProof": "plant care specialist pruning and checking soil moisture on plant shelf.",
     "signatureMove": "a route status board.",
-    "avoidLookingLike": "Avoid a generic route-plan recolor; do not repeat stock hero framing, copied card rhythm, or vague local-service claims."
+    "avoidLookingLike": "Avoid a generic lawn-route-status-board recolor; do not repeat stock hero framing, copied card rhythm, or vague local-service claims."
   },
   "serviceDetails": {
     "turnaround": "Moisture check: soil feel before watering decisions.",
-    "whatToSend": "Send plant photos, room light notes, watering history, and any sad-leaf situations. We will reply with a care rhythm and first-visit plan.",
+    "whatToSend": "Send your address or neighborhood, access notes, preferred cadence, photos when useful, and any skip conditions before joining the route.",
     "prepNote": "Room photos, plant count, window direction, watering habits, and problem leaves help us sketch the first route.",
-    "serviceRhythm": "route join for Recurring houseplant and office plant care, watering routes, pruning, soil moisture checks, yellow leaf cleanup, plant rescue triage, lobby plant refreshes, and vacation plant visits for homes, studios, offices, and sunny apartments.",
-    "objectionAnswer": "Scope, access, timing, and fit are confirmed before booking so the next step is clear and low-pressure."
+    "serviceRhythm": "Route-fit flow for Recurring houseplant and office plant care, watering routes, pruning, soil moisture checks, yellow leaf cleanup, plant rescue triage, lobby plant refreshes, and vacation plant visits for homes, studios, offices, and sunny apartments: cadence, access, skip rules, and first-visit notes make the route realistic.",
+    "objectionAnswer": "For houseplant and office plant care service, plant count, room light, watering history, access, and skip dates shape the first route before a care cadence is set."
   }
 }

@@ -164,6 +164,7 @@ Record these in the layout signature where practical, and verify them in screens
 
 - `styleContract`: one sentence naming mood, trust cue, image evidence, accent behavior, and signature move.
 - `typographyTreatment`: `single-system-weighted`, `editorial-serif-display`, `warm-humanist-sans`, `industrial-condensed-display`, `dark-neo-grotesque`, plus existing repo treatments.
+- `actualTypeDistribution`: track the rendered primary display and accent font families across the catalog. Treatment names do not count as variety if the browser keeps using the same family.
 - `fontPairingRule`: use no more than two text families in normal sites; reserve mono for small metrics, tickets, receipts, or labels.
 - `typeScale`: hero 56-84px desktop and 40-52px mobile; section heads 32-44px; card/list heads 20-26px; body 16-18px with 1.5-1.65 line-height.
 - `colorStrategy`: `quiet-neutral-plus-accent`, `dark-editorial-plus-bright-cta`, `image-led-muted-palette`, `two-tone-corporate-grid`, `high-contrast-action`.
@@ -171,6 +172,9 @@ Record these in the layout signature where practical, and verify them in screens
 - `surfaceModel`: `mostly-flat`, `outlined-repeaters`, `single-elevated-proof`, `dark-panels`, `receipt-stack`, or `ticket-menu-board`. Do not put cards inside cards.
 - `density`: `compact-leadgen`, `balanced-editorial`, or `visual-first`. Most one-page service sites should stay within 6-8 sections and 3-5 anchors.
 - `imageDirection`: `operator-or-founder`, `finished-outcome`, `work-in-progress`, `process-closeup`, `environment-context`, or `proof-collage`. The image must prove the service or result.
+- `imagePromptArtDirection`: each hero prompt body should name the service moment, visible proof/outcome, environment, composition/crop, negative space, light, tools/materials/textures, and artifact negatives before the shared Site-O-Mattic contract.
+- `renderFamily`: use the shared builder family as a scale metric. Alias variants need a true composition difference, not only different class prefixes.
+- `copyRhythm`: quote instructions, objection answers, and final contact copy should vary by CTA rhythm and niche-specific visitor instructions.
 - `brandSignal`: first viewport should include logo, literal service promise, CTA, and image/proof cue.
 - `ctaRhythm`: call-first, quote-first, photo-first, date-check, package-select, consult, route-join, or final-only-soft-close. Use one visually dominant action color.
 - `cardGeometry`: card radius stays at 8px or less; use 2px for precise, 4px for utilitarian, 6px for friendly, and 8px for premium-soft. Pills are for compact labels and CTA affordances, not whole sections.

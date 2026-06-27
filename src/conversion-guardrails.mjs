@@ -98,7 +98,7 @@ function actionTextPass(text) {
     return true;
   }
 
-  const hasAction = /\b(book|check|send|request|call|ask|plan|start|join|compare|see|explore|reserve|email|get|build|choose|schedule|review|sample|feed|order|quote|price|visit|fix|clean|style|design|view|browse|text)\b/i.test(normalized);
+  const hasAction = /\b(book|check|send|request|call|ask|plan|map|start|join|compare|see|explore|reserve|email|get|build|choose|schedule|review|sample|feed|order|quote|price|estimate|visit|fix|clean|clear|style|design|view|browse|text)\b/i.test(normalized);
   const hasContext = normalized.split(/\s+/).length >= 2;
   const hasNicheQuestion = /^what (?:we|you|it|they) (?:take|clean|cover|bring|do|need|set|install|repair|haul)\b/i.test(normalized);
   return (hasAction && hasContext) || hasNicheQuestion;

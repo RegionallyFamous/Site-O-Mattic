@@ -9,14 +9,21 @@ import {
   readBlueprint
 } from "./blueprint-inspect.mjs";
 import { imageInfo } from "./image-size.mjs";
+import {
+  POLISH_REVIEW_VERSION,
+  silhouetteContract,
+  styleFamilyContract,
+  validatePatternMatrixFit
+} from "./production-polish-matrix.mjs";
 import { requiredBrandBriefFields, requiredServiceDetailFields, validateProductionPolishFields } from "./production-polish-fields.mjs";
 import { blueprintDirForSpec, blueprintPathForSpec, readSpec, specTargets } from "./spec-utils.mjs";
 
-const REVIEW_VERSION = 1;
+const REVIEW_VERSION = POLISH_REVIEW_VERSION;
 const REVIEW_CATEGORIES = [
   "firstViewport",
   "logoScale",
   "typography",
+  "polishContract",
   "imageProof",
   "ctaClarity",
   "mobilePolish",
@@ -67,6 +74,7 @@ export async function buildPremiumReview(spec) {
   const favicon = await imageInfo(spec.assets.favicon);
   const prompt = await fs.readFile(path.join(path.dirname(spec.assets.hero), "hero-prompt.md"), "utf8").catch(() => "");
   const fieldErrors = validateProductionPolishFields(spec);
+  const matrixErrors = validatePatternMatrixFit(spec.pattern);
   const heroEvidenceText = `${spec.assetMeta?.hero?.alt || ""} ${prompt}`;
   const hasContactPath = pageContent.includes(spec.contact?.phoneHref || "tel:")
     || pageContent.includes(spec.contact?.emailHref || "mailto:")
@@ -95,6 +103,14 @@ export async function buildPremiumReview(spec) {
       customCss.includes("hyphens:manual"),
       Boolean(spec.release?.reviewChecklist?.hierarchyDistinct)
     ],
+    polishContract: [
+      !matrixErrors.length,
+      Boolean(silhouetteContract(spec.pattern?.silhouette)),
+      Boolean(styleFamilyContract(spec.pattern?.styleFamily)),
+      Boolean(globalStyles?.settings?.custom?.som?.pattern?.styleContract),
+      Boolean(globalStyles?.settings?.custom?.som?.pattern?.colorRoles?.action),
+      Boolean(globalStyles?.settings?.custom?.som?.pattern?.geometry?.radiusScale)
+    ],
     imageProof: [
       String(spec.assetMeta?.hero?.alt || "").length >= 60,
       String(spec.pattern?.imageEvidence || "").length >= 25,
@@ -108,7 +124,7 @@ export async function buildPremiumReview(spec) {
       actionText(spec.copy?.primaryCta),
       actionText(spec.copy?.secondaryCta),
       hasContactPath,
-      /\b(send|share|include|date|photo|photos|call|email|venue|access|size|window|colors|symptoms|address|room|scope|count|guest|guests|palette|timing|checkout|lock|laundry|menu|headcount|event|surface|project|bike|vehicle|yard|home)\b/i.test(`${spec.copy?.quoteText || ""} ${spec.serviceDetails?.whatToSend || ""}`)
+      /\b(send|share|include|date|photo|photos|call|email|venue|access|size|window|colors|symptoms|address|room|scope|count|guest|guests|palette|timing|timeline|checkout|lock|laundry|menu|headcount|event|surface|project|bike|vehicle|yard|home|role|usage|decision|family|package|consult|session|device|wifi|wi-fi)\b/i.test(`${spec.copy?.quoteText || ""} ${spec.serviceDetails?.whatToSend || ""}`)
     ],
     mobilePolish: [
       customCss.includes("@media (max-width:700px)"),
@@ -215,7 +231,7 @@ function siteLogoWidthFromMarkup(markup) {
 }
 
 function actionText(value) {
-  return /\b(book|check|send|request|call|ask|plan|start|join|compare|see|explore|reserve|email|get|build|choose|schedule|review|sample|feed|order|quote|price|visit|fix|clean|style|design|view|browse|what)\b/i.test(String(value || ""));
+  return /\b(book|check|send|request|call|ask|plan|map|start|join|compare|see|explore|reserve|email|get|build|choose|schedule|review|sample|feed|order|quote|price|estimate|visit|fix|clean|clear|style|design|view|browse|what|text)\b/i.test(String(value || ""));
 }
 
 function significantOverlap(left, right) {

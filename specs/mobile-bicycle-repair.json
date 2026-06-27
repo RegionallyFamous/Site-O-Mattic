@@ -6,14 +6,14 @@
   "pattern": {
     "primaryPattern": "decision-filter-route-plan",
     "secondaryPattern": "route-day-tune-menu",
-    "silhouette": "operator-console",
+    "silhouette": "route-status-board",
     "navigationPrimitive": "split-side-top-hybrid",
     "mobileActionPattern": "top-booking-button-with-route-note",
-    "imageRole": "work-in-progress",
-    "imageEvidence": "mechanic tuning a bike at curbside mobile work stand",
+    "imageRole": "local-context",
+    "imageEvidence": "curbside mobile bike repair route stop with commuter bike in a workstand, open tool roll, and service van",
     "ctaRhythm": "book-first",
-    "surfaceFamily": "outlined-repeaters",
-    "surfaceModel": "workstand-ticket-with-tune-lane-cards",
+    "surfaceFamily": "status-board",
+    "surfaceModel": "light-workstand-bay-with-route-docket-and-ride-readiness-rail",
     "styleFamily": "clear-status-dashboard",
     "density": "compact-leadgen",
     "colorRoles": {
@@ -22,31 +22,33 @@
       "field": "mist",
       "line": "soil",
       "primary": "grass",
-      "action": "sun",
-      "proof": "leaf",
+      "action": "leaf",
+      "proof": "grass",
       "muted": "soil",
       "warning": "sun",
       "shadowTint": "deepGreen"
     },
     "geometry": {
-      "radiusScale": "compact-workstand-radius",
-      "borderRole": "tune lane card rails",
-      "shadowRole": "workstand ticket and ride proof",
-      "mediaCrop": "curbside tune-up action crop"
+      "radiusScale": "compact-workstand-6",
+      "borderRole": "route ticket and ride-readiness status rails",
+      "shadowRole": "hero media and route docket only",
+      "mediaCrop": "curbside workstand context crop"
     },
     "coreBlockPlan": [
       "columns",
       "image",
+      "table",
+      "quote",
       "buttons",
       "list",
       "navigation"
     ],
     "knownRisks": [
-      "workstand-photo-crop",
-      "bike-photo-crop",
+      "curbside-context-crop",
+      "status-rail-overcrowding",
       "route-ticket-copy-too-long"
     ],
-    "styleContract": "Technical and friendly with drivetrain proof, curbside workstand evidence, yellow booking accents, and a route-ticket tune bench as the signature move."
+    "styleContract": "Technical and friendly with a light workstand bay, curbside route proof, mobile workstand context, green booking accents, yellow caution cues, and a route docket as the signature move."
   },
   "tagline": "Bike tune-ups that meet the route where it rolls.",
   "themeSlug": "twentytwentyfive",
@@ -77,21 +79,21 @@
     "phoneHref": "tel:+15550146621",
     "email": "hello@tuneloop.test",
     "emailHref": "mailto:hello@tuneloop.test",
-    "serviceArea": "Mobile bike tune-ups, flat fixes, brake adjustments, drivetrain cleaning, commuter checks, kids bike safety passes, and route-day repairs for neighborhoods, apartment courtyards, offices, and weekend riders across town"
+    "serviceArea": "Mobile bike tune-ups, flat fixes, brake adjustments, drivetrain cleaning, commuter checks, kids bike safety passes, and route-day repairs for Northside, Oak Hill, Westbrook, Maple Bend, apartment courtyards, offices, and weekend riders"
   },
   "copy": {
     "eyebrow": "Mobile bike repair with route-day rhythm",
-    "heroTitle": "Bike tune-ups at your curb, not across town.",
+    "heroTitle": "Tune-ups from a mobile workstand.",
     "heroText": "TuneLoop brings the stand, tools, parts check, and calm mechanic energy to your curb, office, or building bike room so small problems stop stealing whole weekends.",
     "primaryCta": "Book tune-up",
-    "secondaryCta": "See tune lanes",
+    "secondaryCta": "Compare tune lanes",
     "introTitle": "A route-day bench for squeaks, skips, flats, and brake drama.",
     "introText": "We confirm bike type, symptoms, tire size, access spot, part needs, and route window before rolling over with the right tune lane.",
     "servicesTitle": "Choose your tune lane",
     "processTitle": "How the mobile stop works",
     "proofTitle": "Proof before the first ride back",
     "quoteTitle": "Ready to join the next repair route?",
-    "quoteText": "Send bike photos, tire size, what feels off, and your preferred neighborhood window. We will reply with the right package and route-day option."
+    "quoteText": "Book the next step with bike photos, tire size, what feels off, and your preferred neighborhood window. We will reply with the right package and route-day option."
   },
   "services": [
     {
@@ -153,13 +155,14 @@
       "screenshotCompared": true
     },
     "premiumReview": {
-      "version": 1,
+      "version": 2,
       "reviewedAt": "2026-06-25",
       "score": 100,
       "categories": {
         "firstViewport": true,
         "logoScale": true,
         "typography": true,
+        "polishContract": true,
         "imageProof": true,
         "ctaClarity": true,
         "mobilePolish": true,
@@ -169,25 +172,25 @@
         "brandBrief": true
       },
       "notes": [
-        "Works: a route-ticket tune bench. gives the page a memorable shape.",
-        "Proof: mechanic tuning a bike at curbside mobile work stand. anchors the niche in the first viewport.",
+        "Works: a route docket. gives the page a memorable shape.",
+        "Proof: curbside mobile bike repair route stop with commuter bike in a workstand, open tool roll, and service van. anchors the niche in the first viewport.",
         "Action: Book tune-up is the main conversion path."
       ]
     }
   },
   "brandBrief": {
     "mood": "Technical and friendly.",
-    "trustCue": "drivetrain proof.",
-    "accentBehavior": "sun stays reserved for Book tune-up, active proof cues, and key booking moments.",
-    "imageProof": "mechanic tuning a bike at curbside mobile work stand.",
-    "signatureMove": "a route-ticket tune bench.",
+    "trustCue": "a light workstand bay.",
+    "accentBehavior": "leaf stays reserved for Book tune-up, active proof cues, and key booking moments.",
+    "imageProof": "curbside mobile bike repair route stop with commuter bike in a workstand, open tool roll, and service van.",
+    "signatureMove": "a route docket.",
     "avoidLookingLike": "Avoid a generic workshop-bench recolor; do not repeat stock hero framing, copied card rhythm, or vague local-service claims."
   },
   "serviceDetails": {
     "turnaround": "30 min: quick checks for simple commuter issues.",
-    "whatToSend": "Send bike photos, tire size, what feels off, and your preferred neighborhood window. We will reply with the right package and route-day option.",
+    "whatToSend": "Send your address or neighborhood, access notes, preferred cadence, photos when useful, and any skip conditions before joining the route.",
     "prepNote": "Photos, bike type, tire size, symptoms, and your access spot help us prep the right stand setup and parts check.",
-    "serviceRhythm": "book first for Mobile bike tune-ups, flat fixes, brake adjustments, drivetrain cleaning, commuter checks, kids bike safety passes, and route-day repairs for neighborhoods, apartment courtyards, offices, and weekend riders across town.",
-    "objectionAnswer": "Scope, access, timing, and fit are confirmed before booking so the next step is clear and low-pressure."
+    "serviceRhythm": "Route-fit flow for Mobile bike tune-ups, flat fixes, brake adjustments, drivetrain cleaning, commuter checks, kids bike safety passes, and route-day repairs for Northside, Oak Hill, Westbrook, Maple Bend, apartment courtyards, offices, and weekend riders: cadence, access, skip rules, and first-visit notes make the route realistic.",
+    "objectionAnswer": "For mobile bicycle repair service, bike photos, tire size, symptoms, access spot, and route window are confirmed before the mobile stand gets added to the day."
   }
 }

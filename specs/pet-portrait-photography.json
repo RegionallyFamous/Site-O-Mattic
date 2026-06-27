@@ -6,14 +6,14 @@
   "pattern": {
     "primaryPattern": "gallery-led-portfolio-proof",
     "secondaryPattern": "pet-comfort-session-prep",
-    "silhouette": "editorial-proof-stage",
+    "silhouette": "gallery-mosaic-proof",
     "navigationPrimitive": "compact-header",
-    "mobileActionPattern": "post-hero-session-actions",
-    "imageRole": "work-in-progress",
+    "mobileActionPattern": "section-anchor-plus-inline-phone",
+    "imageRole": "operator-or-founder",
     "imageEvidence": "dog portrait studio session with photographer, softbox, and calm posing platform",
-    "ctaRhythm": "consult-first",
+    "ctaRhythm": "book-first",
     "surfaceFamily": "gallery-mosaic",
-    "surfaceModel": "portrait-session-cards-with-comfort-proof",
+    "surfaceModel": "portrait-session-gallery-with-comfort-proof",
     "styleFamily": "editorial-proof-stage",
     "density": "visual-first",
     "colorRoles": {
@@ -29,24 +29,26 @@
       "shadowTint": "deepGreen"
     },
     "geometry": {
-      "radiusScale": "soft-studio-portrait",
-      "borderRole": "caption separators",
-      "shadowRole": "hero portrait stage only",
-      "mediaCrop": "wide portrait studio crop"
+      "radiusScale": "portrait-gallery-8",
+      "borderRole": "session cards and comfort proof separators",
+      "shadowRole": "portrait media and proof note only",
+      "mediaCrop": "portrait studio platform crop"
     },
     "coreBlockPlan": [
-      "cover",
       "image",
       "gallery",
+      "navigation",
+      "columns",
       "quote",
       "buttons"
     ],
     "knownRisks": [
       "first-viewport-cta",
       "logo-scale",
-      "mobile-crop"
+      "gallery-hero-mobile-height",
+      "pet-crop"
     ],
-    "styleContract": "Warm and polished with pet-comfort proof, real studio portrait evidence, collar-gold action accents, and personality session cards as the signature move."
+    "styleContract": "Warm editorial portrait proof with pet-comfort cues, real studio session evidence, collar-gold action accents, and a portrait gallery hero as the signature move."
   },
   "tagline": "Portrait days for pets with big personality.",
   "themeSlug": "twentytwentyfive",
@@ -77,21 +79,21 @@
     "phoneHref": "tel:+15550148124",
     "email": "hello@brightpaw.test",
     "emailHref": "mailto:hello@brightpaw.test",
-    "serviceArea": "Pet portrait sessions, senior pet keepsakes, puppy milestones, multi-pet portraits, holiday card portraits, and small brand sessions for pets across nearby neighborhoods"
+    "serviceArea": "Pet portrait sessions, senior pet keepsakes, puppy milestones, multi-pet portraits, holiday card portraits, and pet-forward brand sessions in Northside, Oak Hill, Westbrook, Maple Bend, and nearby homes or studios"
   },
   "copy": {
-    "eyebrow": "Pet portraits with treat-level patience",
+    "eyebrow": "Patient pet portraits",
     "heroTitle": "Studio portraits for the pet who runs the house.",
-    "heroText": "BrightPaw builds relaxed studio sessions around treats, breaks, favorite toys, and the tiny expressions that make your pet unmistakably yours.",
-    "primaryCta": "Plan a portrait day",
-    "secondaryCta": "See session styles",
-    "introTitle": "Comfort first, portraits second, tail wags throughout.",
-    "introText": "We ask about personality, mobility, coat color, favorite sounds, and patience level before building a session that feels easy instead of staged.",
-    "servicesTitle": "Pick the portrait mood",
+    "heroText": "Calm Northside studio appointments built around treats, breaks, favorite toys, and the tiny expressions that make your pet unmistakably yours.",
+    "primaryCta": "Book a session",
+    "secondaryCta": "View packages",
+    "introTitle": "Calm studio sessions for nervous pets.",
+    "introText": "We plan for treats, breaks, favorite sounds, and the little head tilt your pet saves for people they trust.",
+    "servicesTitle": "Pick the session fit",
     "processTitle": "A calmer path to camera-ready pets",
     "proofTitle": "Proof your pet can relax here",
     "quoteTitle": "Ready to plan a portrait day?",
-    "quoteText": "Send your pet type, age, personality notes, and a few favorite photo examples. We will suggest a session style and the easiest date window."
+    "quoteText": "Book the next step with pet type, age, personality notes, and a few favorite photo examples. We will suggest the gentlest session style and the easiest date window."
   },
   "services": [
     {
@@ -153,13 +155,14 @@
       "screenshotCompared": true
     },
     "premiumReview": {
-      "version": 1,
+      "version": 2,
       "reviewedAt": "2026-06-25",
       "score": 100,
       "categories": {
         "firstViewport": true,
         "logoScale": true,
         "typography": true,
+        "polishContract": true,
         "imageProof": true,
         "ctaClarity": true,
         "mobilePolish": true,
@@ -169,25 +172,25 @@
         "brandBrief": true
       },
       "notes": [
-        "Works: personality session cards. gives the page a memorable shape.",
+        "Works: a portrait gallery hero gives the page a memorable shape.",
         "Proof: dog portrait studio session with photographer, softbox, and calm posing platform. anchors the niche in the first viewport.",
-        "Action: Plan a portrait day is the main conversion path."
+        "Action: Book a session is the main conversion path."
       ]
     }
   },
   "brandBrief": {
-    "mood": "Warm and polished.",
+    "mood": "Warm editorial portrait proof.",
     "trustCue": "pet-comfort proof.",
-    "accentBehavior": "sun stays reserved for Plan a portrait day, active proof cues, and key booking moments.",
+    "accentBehavior": "sun stays reserved for Book a session, active proof cues, and key booking moments.",
     "imageProof": "dog portrait studio session with photographer, softbox, and calm posing platform.",
-    "signatureMove": "personality session cards.",
-    "avoidLookingLike": "Avoid a generic gallery-led recolor; do not repeat stock hero framing, copied card rhythm, or vague local-service claims."
+    "signatureMove": "a portrait gallery hero.",
+    "avoidLookingLike": "Avoid a generic gallery-led recolor or mobile-service dock; do not repeat stock hero framing, copied card rhythm, or vague local-service claims."
   },
   "serviceDetails": {
     "turnaround": "Treat breaks: built into every session.",
-    "whatToSend": "Send your pet type, age, personality notes, and a few favorite photo examples. We will suggest a session style and the easiest date window.",
+    "whatToSend": "Share pet type, age, temperament, mobility or handling notes, favorite rewards, family grouping needs, location preference, and a few portrait examples you like.",
     "prepNote": "Tell us personality, age, energy, coat color, favorite rewards, and any handling needs before the session.",
-    "serviceRhythm": "consult first for Pet portrait sessions, senior pet keepsakes, puppy milestones, multi-pet portraits, holiday card portraits, and small brand sessions for pets across nearby neighborhoods.",
-    "objectionAnswer": "Scope, access, timing, and fit are confirmed before booking so the next step is clear and low-pressure."
+    "serviceRhythm": "Gallery-proof flow for pet portrait sessions, senior pet keepsakes, puppy milestones, multi-pet portraits, holiday card portraits, and pet-forward brand sessions in Northside, Oak Hill, Westbrook, Maple Bend, and nearby homes or studios: temperament, comfort, rewards, groupings, and location fit shape the portrait day.",
+    "objectionAnswer": "For pet portrait photography studio, pet temperament, mobility, favorite rewards, location comfort, family groupings, session pace, and proof timing are set before a portrait path is picked."
   }
 }

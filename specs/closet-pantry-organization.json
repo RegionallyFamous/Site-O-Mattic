@@ -76,11 +76,11 @@
     "phoneHref": "tel:+15550145918",
     "email": "hello@shelfwise.test",
     "emailHref": "mailto:hello@shelfwise.test",
-    "serviceArea": "Closet resets, pantry zones, kid snack shelves, linen systems, drop zones, donation sorting, bin planning, shelf measuring, and label-light maintenance plans for busy homes across nearby neighborhoods"
+    "serviceArea": "Closet resets, pantry zones, kid snack shelves, linen systems, drop zones, donation sorting, bin planning, shelf measuring, and label-light maintenance plans for busy homes in Northside, Oak Hill, Westbrook, Maple Bend, and River Market"
   },
   "copy": {
     "eyebrow": "Closet and pantry organization with real-life zones",
-    "heroTitle": "Make the shelf make sense on a Tuesday.",
+    "heroTitle": "Shelves that make sense.",
     "heroText": "Shelfwise builds closets and pantries around reach height, repeat groceries, laundry habits, morning exits, and the items that always wander back to the wrong place.",
     "primaryCta": "Start my reset",
     "secondaryCta": "See the zones",
@@ -90,7 +90,7 @@
     "processTitle": "How the reset stays usable",
     "proofTitle": "Order that survives the next grocery run",
     "quoteTitle": "Ready to make the shelf behave?",
-    "quoteText": "Send wide photos, shelf measurements if you have them, what feels hardest, and who uses the space. We will reply with a reset path and supply notes."
+    "quoteText": "Plan the consult with wide photos, shelf measurements if you have them, what feels hardest, and who uses the space. We will reply with a reset path and supply notes."
   },
   "services": [
     {
@@ -152,13 +152,14 @@
       "screenshotCompared": true
     },
     "premiumReview": {
-      "version": 1,
+      "version": 2,
       "reviewedAt": "2026-06-25",
       "score": 100,
       "categories": {
         "firstViewport": true,
         "logoScale": true,
         "typography": true,
+        "polishContract": true,
         "imageProof": true,
         "ctaClarity": true,
         "mobilePolish": true,
@@ -184,9 +185,9 @@
   },
   "serviceDetails": {
     "turnaround": "Zone map: planned before containers take over.",
-    "whatToSend": "Send wide photos, shelf measurements if you have them, what feels hardest, and who uses the space. We will reply with a reset path and supply notes.",
+    "whatToSend": "Send wide photos, shelf or closet measurements, pain points, household habits, donation boundaries, container preferences, and who uses the space most.",
     "prepNote": "Wide photos, pain points, shelf sizes, and household habits tell us which zones need the first pass.",
-    "serviceRhythm": "consult first for Closet resets, pantry zones, kid snack shelves, linen systems, drop zones, donation sorting, bin planning, shelf measuring, and label-light maintenance plans for busy homes across nearby neighborhoods.",
-    "objectionAnswer": "Scope, access, timing, and fit are confirmed before booking so the next step is clear and low-pressure."
+    "serviceRhythm": "Calm-consult flow for Closet resets, pantry zones, kid snack shelves, linen systems, drop zones, donation sorting, bin planning, shelf measuring, and label-light maintenance plans for busy homes in Northside, Oak Hill, Westbrook, Maple Bend, and River Market: photos, shelf measurements, habits, keep or donate boundaries, and maintenance appetite keep the first reset useful.",
+    "objectionAnswer": "For closet and pantry organization service, photos, shelf measurements, storage priorities, keep or donate boundaries, and install appetite define the first useful zone instead of a giant reset."
   }
 }

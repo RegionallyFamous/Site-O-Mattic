@@ -8,10 +8,10 @@
     "secondaryPattern": "package-comparison-proof",
     "silhouette": "mobile-action-dock",
     "navigationPrimitive": "fixed-bottom-mobile-cta",
-    "mobileActionPattern": "reserve-date-bottom-dock",
-    "imageRole": "work-in-progress",
-    "imageEvidence": "open-air photo booth kiosk with attendant, guests, props, and event backdrop",
-    "ctaRhythm": "date-check",
+    "mobileActionPattern": "package-reserve-bottom-dock",
+    "imageRole": "environment-context",
+    "imageEvidence": "open-air photo booth in use with attendant, guests, props table, lit kiosk, and event backdrop",
+    "ctaRhythm": "package-select",
     "surfaceFamily": "mobile-dock",
     "surfaceModel": "booth-package-cards-fixed-reserve-bar",
     "styleFamily": "mobile-action-gloss",
@@ -29,7 +29,7 @@
       "shadowTint": "deepGreen"
     },
     "geometry": {
-      "radiusScale": "flash-pill",
+      "radiusScale": "flash-8-with-pill-actions",
       "borderRole": "photo-strip package rails",
       "shadowRole": "mobile reserve dock strongest",
       "mediaCrop": "event booth setup crop"
@@ -37,6 +37,8 @@
     "coreBlockPlan": [
       "columns",
       "image",
+      "table",
+      "details",
       "buttons",
       "list",
       "navigation"
@@ -46,7 +48,7 @@
       "logo-scale",
       "mobile-crop"
     ],
-    "styleContract": "Bright and event-ready with guest-flow proof, real photo booth evidence, flash-yellow action accents, and a mobile reserve dock as the signature move."
+    "styleContract": "Bright and event-ready with guest-flow proof, a real photo booth environment in use, flash-yellow action accents, and a mobile reserve dock as the signature move."
   },
   "tagline": "Photo booth rentals that keep the line moving.",
   "themeSlug": "twentytwentyfive",
@@ -77,21 +79,21 @@
     "phoneHref": "tel:+15550146204",
     "email": "hello@flashdash.test",
     "emailHref": "mailto:hello@flashdash.test",
-    "serviceArea": "Open-air photo booths, backdrop rentals, props, print strips, digital galleries, weddings, birthdays, school events, corporate parties, and community nights across the metro"
+    "serviceArea": "Open-air photo booths, backdrop rentals, props, print strips, digital galleries, weddings, school events, corporate parties, and community nights in North Loop, Oak Hill, Westbrook, Maple Bend, and nearby venues"
   },
   "copy": {
     "eyebrow": "Photo booth packages with guest-flow proof",
-    "heroTitle": "A booth your guests actually find and use.",
+    "heroTitle": "The booth guests use.",
     "heroText": "FlashDash brings a sharp booth setup, clean props, backdrop options, and a host-friendly arrival plan so the photo corner never becomes a mystery table.",
     "primaryCta": "Reserve a booth",
-    "secondaryCta": "Compare booths",
+    "secondaryCta": "Compare booth packages",
     "introTitle": "Props are fun. Guest flow is the real magic.",
     "introText": "We match booth style, backdrop space, guest count, print or digital needs, and setup timing before the first flash.",
     "servicesTitle": "Pick the booth setup",
     "processTitle": "How setup stays event-ready",
     "proofTitle": "Guest smiles need good logistics",
     "quoteTitle": "Ready to reserve the booth?",
-    "quoteText": "Send your date, venue, guest count, backdrop preference, and event window. We will match the package and confirm setup needs."
+    "quoteText": "Compare packages with date, venue, guest count, backdrop preference, and event window. We will match the package and confirm setup needs."
   },
   "services": [
     {
@@ -153,13 +155,14 @@
       "screenshotCompared": true
     },
     "premiumReview": {
-      "version": 1,
+      "version": 2,
       "reviewedAt": "2026-06-25",
       "score": 100,
       "categories": {
         "firstViewport": true,
         "logoScale": true,
         "typography": true,
+        "polishContract": true,
         "imageProof": true,
         "ctaClarity": true,
         "mobilePolish": true,
@@ -170,7 +173,7 @@
       },
       "notes": [
         "Works: a mobile reserve dock. gives the page a memorable shape.",
-        "Proof: open-air photo booth kiosk with attendant, guests, props, and event backdrop. anchors the niche in the first viewport.",
+        "Proof: open-air photo booth in use with attendant, guests, props table, lit kiosk, and event backdrop. anchors the niche in the first viewport.",
         "Action: Reserve a booth is the main conversion path."
       ]
     }
@@ -179,15 +182,15 @@
     "mood": "Bright and event-ready.",
     "trustCue": "guest-flow proof.",
     "accentBehavior": "sun stays reserved for Reserve a booth, active proof cues, and key booking moments.",
-    "imageProof": "open-air photo booth kiosk with attendant, guests, props, and event backdrop.",
+    "imageProof": "open-air photo booth in use with attendant, guests, props table, lit kiosk, and event backdrop.",
     "signatureMove": "a mobile reserve dock.",
     "avoidLookingLike": "Avoid a generic fixed-bottom-action recolor; do not repeat stock hero framing, copied card rhythm, or vague local-service claims."
   },
   "serviceDetails": {
     "turnaround": "6 x 8 ft: typical booth footprint planned early.",
-    "whatToSend": "Send your date, venue, guest count, backdrop preference, and event window. We will match the package and confirm setup needs.",
+    "whatToSend": "Share the event date, venue, guest count, setup window, outlet access, 6-by-8-foot booth corner, backdrop preference, prop needs, and print or digital delivery choice.",
     "prepNote": "Venue, event window, guest count, and booth preference help us confirm fit.",
-    "serviceRhythm": "date check for Open-air photo booths, backdrop rentals, props, print strips, digital galleries, weddings, birthdays, school events, corporate parties, and community nights across the metro.",
-    "objectionAnswer": "Scope, access, timing, and fit are confirmed before booking so the next step is clear and low-pressure."
+    "serviceRhythm": "Date-window flow for Open-air photo booths, backdrop rentals, props, print strips, digital galleries, weddings, school events, corporate parties, and community nights in North Loop, Oak Hill, Westbrook, Maple Bend, and nearby venues: date fit, outlet access, booth footprint, guest flow, and gallery or print needs come before deposit pressure.",
+    "objectionAnswer": "For photo booth rental service, outlet access, 6-by-8-foot booth footprint, backdrop placement, prop table, guest line flow, print timing, and breakdown rules are checked before the date is held."
   }
 }

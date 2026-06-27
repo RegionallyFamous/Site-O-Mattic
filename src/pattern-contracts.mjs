@@ -1,5 +1,8 @@
+import { validatePatternMatrixFit } from "./production-polish-matrix.mjs";
+
 export const PRIMARY_PATTERNS = [
   "decision-filter-route-plan",
+  "route-schedule-board",
   "photo-quote-transformation",
   "checklist-urgency-gate",
   "risk-prevention-warning-path",
@@ -193,6 +196,7 @@ export function validatePatternContract(pattern) {
   validateColorRoles(pattern.colorRoles, errors);
   validateGeometry(pattern.geometry, errors);
   validateCoreBlockPlan(pattern.coreBlockPlan, errors);
+  errors.push(...validatePatternMatrixFit(pattern));
   if (!Array.isArray(pattern.knownRisks) || pattern.knownRisks.length < 2) {
     errors.push("pattern.knownRisks must include at least two risks.");
   } else {

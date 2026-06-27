@@ -66,6 +66,7 @@ async function buildReport(target) {
   add(checks, "font-family voices", hasFontFamilyVoices(globalStyles), "Body, display, and accent font stacks are defined.");
   add(checks, "spacing scale", (globalStyles?.settings?.spacing?.spacingSizes || []).length >= 7 && globalStyles?.settings?.spacing?.blockGap === true, "Seven spacing presets and block gap support.");
   add(checks, "surface tokens", Boolean(globalStyles?.settings?.custom?.som?.radius && globalStyles?.settings?.custom?.som?.shadow), "Custom radius and shadow variables.");
+  add(checks, "color role tokens", colorRoleTokensPass(globalStyles, customCss), "Resolved color roles are available in global styles and CSS variables.");
   add(checks, "shadow presets", (globalStyles?.settings?.shadow?.presets || []).length >= 3, "Card, lift, and button shadows.");
   add(checks, "gradient presets", (globalStyles?.settings?.color?.gradients || []).length >= 2, "Brand and highlight gradients.");
   add(checks, "design voice signature", Boolean(layoutSignature?.typographyTreatment && layoutSignature?.colorStrategy && globalStyles?.settings?.custom?.som?.type?.treatment && globalStyles?.settings?.custom?.som?.colorStrategy?.name), layoutSignature ? `${layoutSignature.typographyTreatment || "missing type"} / ${layoutSignature.colorStrategy || "missing color"}` : "Missing design voice.");
@@ -103,6 +104,15 @@ function hasFontFamilyVoices(globalStyles) {
     && blockStyles["core/navigation"]?.typography?.fontFamily?.includes("font-family|accent");
 }
 
+function colorRoleTokensPass(globalStyles, customCss) {
+  const roles = globalStyles?.settings?.custom?.som?.colorRoles || {};
+  const requiredRoles = ["ink", "paper", "field", "line", "primary", "action", "proof", "muted", "warning", "shadowTint"];
+  return requiredRoles.every((role) => roles[role]?.token && roles[role]?.color)
+    && customCss.includes("--wp--custom--som--color--action")
+    && customCss.includes("--wp--custom--som--color--proof")
+    && customCss.includes("--wp--custom--som--color--shadow-tint");
+}
+
 function contrastPairsPass(palette) {
   const pairs = [
     ["deep-green", "white"],
@@ -121,7 +131,8 @@ function contrastPairsPass(palette) {
 
 function proofCardAlignmentSystemPass(customCss) {
   return customCss.includes("grid-template-rows:minmax(2.1em, auto) auto")
-    && customCss.includes("[class*=\"-proof-card\"]")
+    && customCss.includes(".som-proof-card")
+    && !customCss.includes("[class*=\"-proof-card\"]")
     && customCss.includes("font-family:var(--wp--preset--font-family--display)!important")
     && customCss.includes("font-family:var(--wp--preset--font-family--accent)!important");
 }

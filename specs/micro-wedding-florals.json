@@ -7,14 +7,14 @@
     "primaryPattern": "consultation-story-flow",
     "secondaryPattern": "date-and-style-proof",
     "silhouette": "consultation-story-flow",
-    "navigationPrimitive": "compact-header",
-    "mobileActionPattern": "soft-date-check-actions",
+    "navigationPrimitive": "section-anchor-strip",
+    "mobileActionPattern": "post-hero-floral-anchor-actions",
     "imageRole": "process-closeup",
     "imageEvidence": "florist arranging micro-wedding bouquet and small ceremony florals on a prep table",
-    "ctaRhythm": "date-check",
-    "surfaceFamily": "single-elevated-proof",
-    "surfaceModel": "floral-support-cards-with-date-proof",
-    "styleFamily": "humanist-local-calm",
+    "ctaRhythm": "consult-first",
+    "surfaceFamily": "mostly-flat",
+    "surfaceModel": "flat-floral-brief-anchor-strip-with-outlined-support-cards",
+    "styleFamily": "editorial-proof-stage",
     "density": "balanced-editorial",
     "colorRoles": {
       "ink": "deepGreen",
@@ -30,12 +30,13 @@
     },
     "geometry": {
       "radiusScale": "petal-soft-8",
-      "borderRole": "floral support card borders",
-      "shadowRole": "single proof panel",
+      "borderRole": "outlined floral brief and support card borders",
+      "shadowRole": "hero media only with flat consult surfaces",
       "mediaCrop": "floral prep closeup crop"
     },
     "coreBlockPlan": [
       "columns",
+      "navigation",
       "list",
       "quote",
       "details",
@@ -46,7 +47,7 @@
       "logo-scale",
       "mobile-crop"
     ],
-    "styleContract": "Romantic and calm with date proof, real bouquet prep evidence, coral action accents, and floral path support cards as the signature move."
+    "styleContract": "Romantic editorial calm with bouquet prep proof, coral accent reserved for the consult action, and a post-hero floral brief anchor strip as the signature move."
   },
   "tagline": "Small wedding flowers with a calm little plan.",
   "themeSlug": "twentytwentyfive",
@@ -83,15 +84,15 @@
     "eyebrow": "Micro-wedding florals with date-first planning",
     "heroTitle": "Small wedding flowers with big-day feeling.",
     "heroText": "VowSprig shapes bouquets, personals, bud vases, and small ceremony moments into a clear palette, setup plan, and floral scope that fits intimate celebrations.",
-    "primaryCta": "Check your date",
-    "secondaryCta": "Explore floral paths",
+    "primaryCta": "Start floral consult",
+    "secondaryCta": "View floral paths",
     "introTitle": "Small guest count, full floral intention.",
     "introText": "We start with date, venue, palette, personal flowers, setup access, and what should feel lush versus lightly styled.",
     "servicesTitle": "Choose the floral path",
     "processTitle": "How your date gets designed",
     "proofTitle": "Gentle proof before petals",
-    "quoteTitle": "Want to check your wedding date?",
-    "quoteText": "Send your date, venue, colors, guest count, and floral must-haves. We will reply with availability and a right-sized floral path."
+    "quoteTitle": "Ready to shape the floral brief?",
+    "quoteText": "Plan the consult with date, venue, colors, guest count, and floral must-haves. We will reply with availability and a right-sized floral path."
   },
   "services": [
     {
@@ -153,13 +154,14 @@
       "screenshotCompared": true
     },
     "premiumReview": {
-      "version": 1,
+      "version": 2,
       "reviewedAt": "2026-06-25",
       "score": 100,
       "categories": {
         "firstViewport": true,
         "logoScale": true,
         "typography": true,
+        "polishContract": true,
         "imageProof": true,
         "ctaClarity": true,
         "mobilePolish": true,
@@ -169,25 +171,25 @@
         "brandBrief": true
       },
       "notes": [
-        "Works: floral path support cards. gives the page a memorable shape.",
+        "Works: a post-hero floral brief anchor strip. gives the page a memorable shape.",
         "Proof: florist arranging micro-wedding bouquet and small ceremony florals on a prep table. anchors the niche in the first viewport.",
-        "Action: Check your date is the main conversion path."
+        "Action: Start floral consult is the main conversion path."
       ]
     }
   },
   "brandBrief": {
-    "mood": "Romantic and calm.",
-    "trustCue": "date proof.",
-    "accentBehavior": "sun stays reserved for Check your date, active proof cues, and key booking moments.",
+    "mood": "Romantic editorial calm.",
+    "trustCue": "bouquet prep proof.",
+    "accentBehavior": "sun stays reserved for Start floral consult, active proof cues, and key booking moments.",
     "imageProof": "florist arranging micro-wedding bouquet and small ceremony florals on a prep table.",
-    "signatureMove": "floral path support cards.",
+    "signatureMove": "a post-hero floral brief anchor strip.",
     "avoidLookingLike": "Avoid a generic checklist-urgency recolor; do not repeat stock hero framing, copied card rhythm, or vague local-service claims."
   },
   "serviceDetails": {
     "turnaround": "Date first: availability checked before design drift.",
-    "whatToSend": "Send your date, venue, colors, guest count, and floral must-haves. We will reply with availability and a right-sized floral path.",
+    "whatToSend": "Share the event date, venue or address, guest count, setup window, power/water rules, and the package style you are considering.",
     "prepNote": "Venue, timing, color direction, and must-have pieces help us confirm fit quickly.",
-    "serviceRhythm": "date check for Micro-wedding bouquets, personals, bud vases, ceremony markers, small installations, elopements, courthouse florals, and intimate receptions across the region.",
-    "objectionAnswer": "Scope, access, timing, and fit are confirmed before booking so the next step is clear and low-pressure."
+    "serviceRhythm": "Date-window flow for Micro-wedding bouquets, personals, bud vases, ceremony markers, small installations, elopements, courthouse florals, and intimate receptions across the region: date fit, setup rules, guest flow, and hold status come before package pressure.",
+    "objectionAnswer": "For micro-wedding floral design, date fit, venue rules, palette direction, guest movement, and setup window are confirmed before the look gets locked."
   }
 }

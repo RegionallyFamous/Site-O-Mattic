@@ -83,7 +83,7 @@
     "eyebrow": "Solar panel cleaning with receipt-level scope",
     "heroTitle": "Clean panels, clear scope, no roof heroics.",
     "heroText": "SunWash washes dusty, pollen-coated, and bird-marked panels with soft brushes, filtered water, safety-minded roof access, and before/after panel notes you can actually read.",
-    "primaryCta": "Build my panel estimate",
+    "primaryCta": "Get estimate",
     "secondaryCta": "Review the scope",
     "introTitle": "What we check before water touches glass",
     "introText": "Panel count, roof pitch, access path, water source, inverter location, bird-mess spots, and any cracked glass or loose conduit get noted before the wash plan is priced.",
@@ -91,7 +91,7 @@
     "processTitle": "Safe wash sequence",
     "proofTitle": "Panel proof",
     "quoteTitle": "Ready for a clean-panel estimate?",
-    "quoteText": "Send a panel photo, roof angle, approximate panel count, water spigot location, and any production dip notes. We will reply with a clear scope and safe access plan."
+    "quoteText": "Request a quote with panel photo, roof angle, approximate panel count, water spigot location, and any production dip notes. We will reply with a clear scope and safe access plan."
   },
   "services": [
     {
@@ -153,13 +153,14 @@
       "screenshotCompared": true
     },
     "premiumReview": {
-      "version": 1,
+      "version": 2,
       "reviewedAt": "2026-06-25",
       "score": 100,
       "categories": {
         "firstViewport": true,
         "logoScale": true,
         "typography": true,
+        "polishContract": true,
         "imageProof": true,
         "ctaClarity": true,
         "mobilePolish": true,
@@ -171,23 +172,23 @@
       "notes": [
         "Works: a receipt table. gives the page a memorable shape.",
         "Proof: solar panel brush-wash evidence with roof-safety context. anchors the niche in the first viewport.",
-        "Action: Build my panel estimate is the main conversion path."
+        "Action: Get estimate is the main conversion path."
       ]
     }
   },
   "brandBrief": {
     "mood": "Clean ledger confidence.",
     "trustCue": "roof-safety proof.",
-    "accentBehavior": "sun stays reserved for Build my panel estimate, active proof cues, and key booking moments.",
+    "accentBehavior": "sun stays reserved for Get estimate, active proof cues, and key booking moments.",
     "imageProof": "solar panel brush-wash evidence with roof-safety context.",
     "signatureMove": "a receipt table.",
     "avoidLookingLike": "Avoid a generic service-receipt-stack recolor; do not repeat stock hero framing, copied card rhythm, or vague local-service claims."
   },
   "serviceDetails": {
     "turnaround": "Soft brush: panel-safe wash method with no harsh scrubbing.",
-    "whatToSend": "Send a panel photo, roof angle, approximate panel count, water spigot location, and any production dip notes. We will reply with a clear scope and safe access plan.",
+    "whatToSend": "Send photos from the ground, access notes, weather or date constraints, and the warning signs you noticed so the visit starts safely.",
     "prepNote": "You send photos and panel count; we check pitch, ladder path, water access, and any areas that need extra caution.",
-    "serviceRhythm": "quote first for Residential solar panel washing, bird-mess rinse downs, pollen season cleanups, production-check photos, and soft-brush maintenance across sunny suburbs, lake homes, and rural rooflines.",
-    "objectionAnswer": "Scope, access, timing, and fit are confirmed before booking so the next step is clear and low-pressure."
+    "serviceRhythm": "Risk-check flow for Residential solar panel washing, bird-mess rinse downs, pollen season cleanups, production-check photos, and soft-brush maintenance across sunny suburbs, lake homes, and rural rooflines: photos, weather, access, and no-go conditions shape the safe visit plan.",
+    "objectionAnswer": "For solar panel cleaning service, panel count, roof pitch, water access, production dips, and safe reach are checked first, so nobody guesses from the driveway."
   }
 }

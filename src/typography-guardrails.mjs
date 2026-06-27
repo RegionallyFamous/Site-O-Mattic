@@ -7,6 +7,7 @@ import {
 import { blueprintPathForSpec, readSpec, specTargets } from "./spec-utils.mjs";
 import fs from "node:fs/promises";
 
+const hasExplicitTargets = process.argv.slice(2).length > 0;
 const targets = process.argv.slice(2);
 if (!targets.length) {
   targets.push(...await defaultTargets());
@@ -24,7 +25,7 @@ for (const target of targets) {
   }
 }
 
-const batchReport = buildBatchTypographyReport(reports);
+const batchReport = hasExplicitTargets ? null : buildBatchTypographyReport(reports);
 if (batchReport) {
   printReport(batchReport);
   if (batchReport.checks.some((check) => !check.passed)) {
@@ -37,7 +38,7 @@ if (hasFailure) {
 }
 
 async function buildReport(target) {
-  const { blueprint, blueprintTarget } = await loadBlueprintForTarget(target);
+  const { blueprint, blueprintTarget, spec } = await loadBlueprintForTarget(target);
   const phpStep = getRunPhpStep(blueprint);
   if (!phpStep) {
     return {
@@ -57,20 +58,27 @@ async function buildReport(target) {
   const checks = [];
 
   add(checks, "target resolution", Boolean(blueprintTarget), `${target} -> ${blueprintTarget || "missing blueprint"}`);
+  add(checks, "typography treatment is defined", !type.fallbackTreatment, type.fallbackTreatment ? `${type.treatment || "missing"} fell back to ${type.fallbackTreatment}` : type.treatment || "missing treatment");
   add(checks, "body type is readable", isReadableBodyStack(type.bodyFont), type.bodyFont || "missing body font");
   add(checks, "display type avoids novelty fonts", hasNoNoveltyFonts(type.displayFont), type.displayFont || "missing display font");
+  add(checks, "display type avoids heavy fallback slabs", hasNoHeavyFallbackDisplay(type), type.displayFont || "missing display font");
   add(checks, "accent type avoids novelty fonts", hasNoNoveltyFonts(type.accentFont), type.accentFont || "missing accent font");
+  add(checks, "accent role fits premium service voice", premiumAccentRoleFitPass(type), describePremiumAccentRole(type));
   add(checks, "role font voices have contrast", roleFontVoicesHaveContrast(type), describeRoleVoices(type));
+  add(checks, "botanical service type has organic contrast", botanicalServiceTypePass(type, pageContent, spec), describeBotanicalTypeVoice(type, pageContent, spec));
   add(checks, "heading weight restraint", headingWeightPass(type), `weight ${type.headingWeight || "missing"} for ${type.displayFont || "missing display font"}`);
-  add(checks, "action/nav weight restraint", actionWeightPass(type), `action ${type.actionWeight || "missing"}, nav ${type.navWeight || "missing"}`);
+  add(checks, "action/nav/label weight restraint", actionWeightPass(type), `action ${type.actionWeight || "missing"}, nav ${type.navWeight || "missing"}, label ${type.labelWeight || "missing"}`);
   add(checks, "line-height readability", lineHeightsPass(type), `heading ${type.headingLineHeight || "missing"}, body ${type.bodyLineHeight || "missing"}`);
   add(checks, "readable copy measure", measurePass(customCss, measure), `copy ${measure.copy || "missing"}, tight ${measure.tight || "missing"}`);
   add(checks, "fluid scale restraint", fluidScalePass(fontSizes), describeScale(fontSizes));
   add(checks, "proof metric alignment rails", proofMetricAlignmentPass(customCss), "Shared CSS uses fixed stat and label rows for proof cards.");
+  add(checks, "utility text uses type tokens", utilityTextTokenPass(pageContent, customCss, type), describeUtilityText(pageContent, customCss));
+  add(checks, "proof/stat text weight restraint", proofTextWeightPass(pageContent, type), describeProofTextWeights(pageContent));
   add(checks, "effective heading caps", headingCaps, "Shared CSS caps h1/h2/h3 size, weight, and line-height over legacy inline styles.");
   add(checks, "manual headline hyphenation", headlineHyphenationPass(customCss), "Headlines should wrap by words first; do not allow automatic mid-word hyphenation.");
   add(checks, "variant rhythm does not undercut type system", variantRhythmPass(customCss), "Variant CSS must not reintroduce cramped important line-height overrides.");
-  add(checks, "inline heading restraint", inlineHeadingsPass(pageContent, headingCaps), describeInlineHeadings(pageContent));
+  add(checks, "inline heading restraint", inlineHeadingsPass(pageContent, headingCaps, fontSizes), describeInlineHeadings(pageContent, fontSizes));
+  add(checks, "body copy weight restraint", bodyCopyWeightPass(pageContent), describeBodyCopyWeights(pageContent));
   add(checks, "paragraph rhythm", paragraphRhythmPass(pageContent), "Readable body copy should not use cramped line-height.");
   add(checks, "uppercase label restraint", uppercaseLabelsPass(pageContent), "Small uppercase labels must be large enough and not black-weight.");
 
@@ -80,16 +88,29 @@ async function buildReport(target) {
 async function loadBlueprintForTarget(target) {
   const parsed = JSON.parse(await fs.readFile(target, "utf8"));
   if (Array.isArray(parsed.steps)) {
-    return { blueprint: parsed, blueprintTarget: target };
+    return { blueprint: parsed, blueprintTarget: target, spec: await specForBlueprintTarget(target) };
   }
   if (parsed.slug) {
     const blueprintTarget = blueprintPathForSpec(parsed);
     return {
       blueprint: JSON.parse(await fs.readFile(blueprintTarget, "utf8")),
-      blueprintTarget
+      blueprintTarget,
+      spec: parsed
     };
   }
-  return { blueprint: parsed, blueprintTarget: target };
+  return { blueprint: parsed, blueprintTarget: target, spec: await specForBlueprintTarget(target) };
+}
+
+async function specForBlueprintTarget(blueprintTarget) {
+  const slug = String(blueprintTarget || "").match(/public\/blueprints\/([^/]+)\/blueprint\.json$/)?.[1];
+  if (!slug) {
+    return null;
+  }
+  try {
+    return JSON.parse(await fs.readFile(`specs/${slug}.json`, "utf8"));
+  } catch {
+    return null;
+  }
 }
 
 function add(checks, name, passed, detail) {
@@ -112,12 +133,16 @@ function buildBatchTypographyReport(reports) {
   const categoryCounts = countBy(usableReports, (report) => displayCategory(report.type.displayFont));
   const maxDisplay = maxCount(displayCounts);
   const maxTriplet = maxCount(tripletCounts);
+  const maxCategory = maxCount(categoryCounts);
   const total = usableReports.length;
+  const displayFamilyBudget = Math.ceil(total * 0.18);
+  const displayCategoryBudget = Math.floor(total * 0.4);
 
   add(checks, "batch display variety", displayCounts.size >= Math.min(6, Math.ceil(total / 6)), describeCounts(displayCounts));
-  add(checks, "batch display concentration", maxDisplay.count <= Math.ceil(total * 0.25), `${maxDisplay.key || "missing"} used ${maxDisplay.count}/${total}`);
+  add(checks, "batch display concentration", maxDisplay.count <= displayFamilyBudget, `${maxDisplay.key || "missing"} used ${maxDisplay.count}/${total}; budget ${displayFamilyBudget}`);
   add(checks, "batch exact pairing concentration", maxTriplet.count <= Math.ceil(total * 0.16), `${maxTriplet.key || "missing"} used ${maxTriplet.count}/${total}`);
   add(checks, "batch display category mix", categoryCounts.size >= 3, describeCounts(categoryCounts));
+  add(checks, "batch display category concentration", maxCategory.count <= displayCategoryBudget, `${maxCategory.key || "missing"} used ${maxCategory.count}/${total}; budget ${displayCategoryBudget}`);
 
   return { target: "batch typography distribution", checks, type: {} };
 }
@@ -176,6 +201,24 @@ function hasNoNoveltyFonts(stack) {
     && !/\b(Impact|Arial Black|Segoe UI Black|Comic Sans|Papyrus|Brush Script|Curlz|Jokerman|Chiller|Cooper Black|Arial Rounded MT Bold|Chalkboard|Marker Felt|Noteworthy|Herculanum|Zapfino|Snell Roundhand|Mistral|Bradley Hand|Hobo|Party LET)\b/i.test(stack);
 }
 
+function hasNoHeavyFallbackDisplay(type) {
+  const display = primaryFamily(type.displayFont);
+  return Boolean(display)
+    && !/\b(rockwell|american typewriter)\b/i.test(display);
+}
+
+function premiumAccentRoleFitPass(type) {
+  const treatment = String(type.treatment || "");
+  if (!/(craft-bench|restoration-craft|handcrafted-lettering|pet-editorial)/.test(treatment)) {
+    return true;
+  }
+  return !isMonoOrReceiptStack(type.accentFont);
+}
+
+function describePremiumAccentRole(type) {
+  return `${type.treatment || "missing treatment"} uses ${primaryFamily(type.accentFont) || "missing accent"}`;
+}
+
 function roleFontVoicesHaveContrast(type) {
   const body = primaryFamily(type.bodyFont);
   const display = primaryFamily(type.displayFont);
@@ -183,7 +226,43 @@ function roleFontVoicesHaveContrast(type) {
   const voices = new Set([body, display, accent].filter(Boolean));
   return Boolean(body && display && accent)
     && body !== display
-    && voices.size >= 2;
+    && body !== accent
+    && display !== accent
+    && voices.size === 3;
+}
+
+function botanicalServiceTypePass(type, markup, spec) {
+  if (!isBotanicalServiceSpec(spec, markup)) {
+    return true;
+  }
+  const category = displayCategory(type.displayFont);
+  const weight = number(type.headingWeight);
+  if (/editorial-serif|slab-or-workbench/.test(category)) {
+    return Number.isFinite(weight) && weight <= 700;
+  }
+  return Number.isFinite(weight) && weight <= 720;
+}
+
+function describeBotanicalTypeVoice(type, markup, spec) {
+  if (!isBotanicalServiceSpec(spec, markup)) {
+    return "not a botanical service page";
+  }
+  return `${displayCategory(type.displayFont)} display at weight ${type.headingWeight || "missing"} (${primaryFamily(type.displayFont) || "missing"})`;
+}
+
+function isBotanicalServiceSpec(spec, markup) {
+  const specIdentity = [
+    spec?.slug,
+    spec?.niche,
+    spec?.businessName,
+    spec?.pattern?.secondaryPattern,
+    spec?.pattern?.styleContract,
+    spec?.brandBrief?.signatureMove
+  ].filter(Boolean).join(" ");
+  if (/\b(houseplant|plant care|plant-care|office plant|pollinator garden|garden refresh|micro-wedding floral|florals|floral design|botanical)\b/i.test(specIdentity)) {
+    return true;
+  }
+  return /\b(houseplant|plant care|office plant care|pollinator garden|garden refresh|floral service|botanical service)\b/i.test(stripTags(markup));
 }
 
 function describeRoleVoices(type) {
@@ -210,12 +289,16 @@ function headingWeightPass(type) {
 function actionWeightPass(type) {
   const action = number(type.actionWeight);
   const nav = number(type.navWeight);
+  const label = number(type.labelWeight);
   return Number.isFinite(action)
     && Number.isFinite(nav)
+    && Number.isFinite(label)
     && action >= 650
     && action <= 820
     && nav >= 650
-    && nav <= 800;
+    && nav <= 800
+    && label >= 620
+    && label <= 780;
 }
 
 function lineHeightsPass(type) {
@@ -223,7 +306,7 @@ function lineHeightsPass(type) {
   const body = number(type.bodyLineHeight);
   return Number.isFinite(heading)
     && Number.isFinite(body)
-    && heading >= 1.02
+    && heading >= 1.04
     && heading <= 1.12
     && body >= 1.52
     && body <= 1.66;
@@ -264,9 +347,57 @@ function measurePass(customCss, measure) {
 
 function proofMetricAlignmentPass(customCss) {
   return customCss.includes("grid-template-rows:minmax(2.1em, auto) auto")
-    && customCss.includes("[class*=\"-proof-card\"]")
+    && customCss.includes(".som-proof-card")
+    && !customCss.includes("[class*=\"-proof-card\"]")
     && customCss.includes("font-family:var(--wp--preset--font-family--display)!important")
     && customCss.includes("font-family:var(--wp--preset--font-family--accent)!important");
+}
+
+function utilityTextTokenPass(markup, customCss, type) {
+  const label = number(type.labelWeight);
+  const action = number(type.actionWeight);
+  return Number.isFinite(label)
+    && Number.isFinite(action)
+    && customCss.includes("--wp--custom--som--type--label-weight")
+    && customCss.includes("font-weight:var(--wp--custom--som--type--label-weight)")
+    && inlineUtilityParagraphs(markup).every(({ style }) => {
+      const weight = fontWeightFromStyle(style);
+      return !Number.isFinite(weight) || weight <= label;
+    })
+    && inlineButtonAnchors(markup).every(({ style }) => {
+      const weight = fontWeightFromStyle(style);
+      return Number.isFinite(weight) && weight <= action;
+    });
+}
+
+function describeUtilityText(markup, customCss) {
+  const utilityWeights = inlineUtilityParagraphs(markup)
+    .map(({ style }) => fontWeightFromStyle(style))
+    .filter(Number.isFinite);
+  const buttonWeights = inlineButtonAnchors(markup)
+    .map(({ style }) => fontWeightFromStyle(style))
+    .filter(Number.isFinite);
+  const maxUtility = utilityWeights.length ? Math.max(...utilityWeights) : "none";
+  const maxButton = buttonWeights.length ? Math.max(...buttonWeights) : "none";
+  const hasVariable = customCss.includes("--wp--custom--som--type--label-weight") ? "label var present" : "label var missing";
+  return `${hasVariable}; utility max ${maxUtility}; button max ${maxButton}`;
+}
+
+function proofTextWeightPass(markup, type) {
+  const label = number(type.labelWeight || type.actionWeight);
+  const cap = Number.isFinite(label) ? Math.min(label, 780) : 780;
+  return inlineProofParagraphs(markup).every(({ style }) => {
+    const weight = fontWeightFromStyle(style);
+    return !Number.isFinite(weight) || weight <= cap;
+  });
+}
+
+function describeProofTextWeights(markup) {
+  const weights = inlineProofParagraphs(markup)
+    .map(({ style }) => fontWeightFromStyle(style))
+    .filter(Number.isFinite);
+  const maxWeight = weights.length ? Math.max(...weights) : "none";
+  return `proof/stat paragraph max ${maxWeight}`;
 }
 
 function variantRhythmPass(customCss) {
@@ -278,19 +409,16 @@ function headlineHyphenationPass(customCss) {
     && !customCss.includes("hyphens:auto");
 }
 
-function inlineHeadingsPass(markup, headingCaps) {
-  if (headingCaps) {
-    return true;
-  }
+function inlineHeadingsPass(markup, headingCaps, fontSizes) {
   return inlineHeadings(markup).every((heading) => {
-    const sizeMax = maxPxFromFontSize(heading.style);
+    const sizeMax = maxPxFromFontSize(heading.style, fontSizes);
     const lineHeight = lineHeightFromStyle(heading.style);
     const weight = fontWeightFromStyle(heading.style);
     const sizeOk = !Number.isFinite(sizeMax)
-      || (heading.level === 1 ? sizeMax <= 82 : sizeMax <= 64);
+      || (heading.level === 1 ? sizeMax <= 86 : sizeMax <= 64);
     const lineOk = !Number.isFinite(lineHeight) || lineHeight >= 1;
     const weightOk = !Number.isFinite(weight) || (heading.level === 1 ? weight <= 820 : weight <= 850);
-    return sizeOk && lineOk && weightOk;
+    return headingCaps && sizeOk && lineOk && weightOk;
   });
 }
 
@@ -305,13 +433,32 @@ function paragraphRhythmPass(markup) {
   });
 }
 
+function bodyCopyWeightPass(markup) {
+  return inlineParagraphs(markup).every(({ style, text }) => {
+    const normalizedText = text.replace(/\s+/g, " ").trim();
+    const weight = fontWeightFromStyle(style);
+    if (normalizedText.length < 55 || !Number.isFinite(weight)) {
+      return true;
+    }
+    return weight <= 820;
+  });
+}
+
+function describeBodyCopyWeights(markup) {
+  const weights = inlineParagraphs(markup)
+    .map(({ style, text }) => ({ weight: fontWeightFromStyle(style), length: text.replace(/\s+/g, " ").trim().length }))
+    .filter((item) => item.length >= 55 && Number.isFinite(item.weight));
+  const maxWeight = weights.length ? Math.max(...weights.map((item) => item.weight)) : "none";
+  return `long paragraph max ${maxWeight}`;
+}
+
 function uppercaseLabelsPass(markup) {
   return [...markup.matchAll(/<p\b[^>]*style="([^"]*text-transform:\s*uppercase[^"]*)"[^>]*>/gi)].every((match) => {
     const style = match[1];
     const fontSize = maxPxFromFontSize(style);
     const weight = fontWeightFromStyle(style);
     return (!Number.isFinite(fontSize) || fontSize >= 12)
-      && (!Number.isFinite(weight) || weight <= 900);
+      && (!Number.isFinite(weight) || weight <= 780);
   });
 }
 
@@ -323,6 +470,43 @@ function inlineHeadings(markup) {
 function inlineParagraphs(markup) {
   return [...markup.matchAll(/<p\b[^>]*style="([^"]*)"[^>]*>([\s\S]*?)<\/p>/gi)]
     .map((match) => ({ style: match[1], text: stripTags(match[2]) }));
+}
+
+function inlineUtilityParagraphs(markup) {
+  return [...markup.matchAll(/<p\b([^>]*)style="([^"]*)"([^>]*)>/gi)]
+    .filter((match) => {
+      const tag = `${match[1]} ${match[3]}`;
+      return /text-transform:\s*uppercase/i.test(match[2]) || isUtilityTypographyClass(tag);
+    })
+    .map((match) => ({ style: match[2] }));
+}
+
+function inlineProofParagraphs(markup) {
+  const proofClassPattern = [
+    "som-proof-card",
+    "som-route-proof-card",
+    "som-evidence-card",
+    "som-floating-proof-cell",
+    "som-floral-proof-card",
+    "som-process-card"
+  ].join("|");
+  const containerPattern = new RegExp(`<div\\b(?=[^>]*\\b(?:${proofClassPattern})\\b)[^>]*>([\\s\\S]*?)<\\/div>`, "gi");
+  const paragraphs = [];
+  for (const container of markup.matchAll(containerPattern)) {
+    for (const paragraph of container[1].matchAll(/<p\b[^>]*style="([^"]*)"[^>]*>/gi)) {
+      paragraphs.push({ style: paragraph[1] });
+    }
+  }
+  return paragraphs;
+}
+
+function inlineButtonAnchors(markup) {
+  return [...markup.matchAll(/<a\b(?=[^>]*\bwp-block-button__link\b)[^>]*style="([^"]*)"[^>]*>/gi)]
+    .map((match) => ({ style: match[1] }));
+}
+
+function isUtilityTypographyClass(tag) {
+  return /\bsom-(?:chip|method-pill|ticket-line|rail-note|date-cell|section-anchor-label|route-status-stat|route-status-label|route-process-label|[a-z-]+number)\b/.test(String(tag || ""));
 }
 
 function hasEffectiveHeadingCaps(customCss) {
@@ -340,17 +524,18 @@ function stripTags(value) {
   return value.replace(/<!--[\s\S]*?-->/g, "").replace(/<[^>]*>/g, "");
 }
 
-function maxPxFromFontSize(style) {
+function maxPxFromFontSize(style, fontSizes = {}) {
   const fontSize = style.match(/font-size:\s*([^;]+)/i)?.[1];
   if (!fontSize) {
     return NaN;
   }
   const pxValues = [...fontSize.matchAll(/([0-9.]+)px/g)].map((match) => Number(match[1]));
-  if (pxValues.length) {
-    return Math.max(...pxValues);
-  }
   const remValues = [...fontSize.matchAll(/([0-9.]+)rem/g)].map((match) => Number(match[1]) * 16);
-  return remValues.length ? Math.max(...remValues) : NaN;
+  const presetValues = [...fontSize.matchAll(/var\(--wp--preset--font-size--([a-z0-9-]+)\)/gi)]
+    .map((match) => fontSizePresetMaxPx(fontSizes[match[1]]))
+    .filter(Number.isFinite);
+  const allValues = [...pxValues, ...remValues, ...presetValues];
+  return allValues.length ? Math.max(...allValues) : NaN;
 }
 
 function lineHeightFromStyle(style) {
@@ -364,6 +549,10 @@ function fontWeightFromStyle(style) {
 function isSerifStack(stack) {
   const value = String(stack || "").replace(/\bsans-serif\b/gi, "");
   return /\b(serif|Georgia|Cambria|Iowan|Palatino|Rockwell|Slab|Didot|Bodoni|Baskerville|Hoefler|Charter|American Typewriter|Times)\b/i.test(value);
+}
+
+function isMonoOrReceiptStack(stack) {
+  return /\b(mono|monospace|courier|consolas|menlo|sfmono|liberation mono|ibm plex mono)\b/i.test(String(stack || ""));
 }
 
 function remValue(value) {
@@ -393,9 +582,19 @@ function describeScale(fontSizes) {
   return pairs.join(", ");
 }
 
-function describeInlineHeadings(markup) {
+function fontSizePresetMaxPx(preset) {
+  if (!preset) {
+    return NaN;
+  }
+  const values = [preset.fluid?.max, preset.size]
+    .map((value) => remValue(value) * 16)
+    .filter(Number.isFinite);
+  return values.length ? Math.max(...values) : NaN;
+}
+
+function describeInlineHeadings(markup, fontSizes) {
   const headings = inlineHeadings(markup)
-    .map((heading) => `h${heading.level} max ${maxPxFromFontSize(heading.style) || "?"}px / lh ${lineHeightFromStyle(heading.style) || "?"} / w ${fontWeightFromStyle(heading.style) || "?"}`);
+    .map((heading) => `h${heading.level} max ${maxPxFromFontSize(heading.style, fontSizes) || "?"}px / lh ${lineHeightFromStyle(heading.style) || "?"} / w ${fontWeightFromStyle(heading.style) || "?"}`);
   return headings.length ? headings.join("; ") : "No inline heading styles.";
 }
 

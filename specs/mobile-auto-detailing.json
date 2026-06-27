@@ -29,13 +29,15 @@
       "shadowTint": "deepGreen"
     },
     "geometry": {
-      "radiusScale": "gloss-pill",
+      "radiusScale": "gloss-8-with-pill-actions",
       "borderRole": "package card borders",
       "shadowRole": "mobile dock strongest",
       "mediaCrop": "tight glossy service crop"
     },
     "coreBlockPlan": [
       "columns",
+      "table",
+      "details",
       "buttons",
       "list"
     ],
@@ -79,9 +81,9 @@
   },
   "copy": {
     "eyebrow": "Mobile detail packages that come to you",
-    "heroTitle": "Your driveway, but make it a detail bay.",
+    "heroTitle": "Driveway details, done right.",
     "heroText": "ShineShift brings foam, filtration, careful towels, interior tools, and a clean finish routine to your home or office without turning the curb into chaos.",
-    "primaryCta": "Get a detail quote",
+    "primaryCta": "Get quote",
     "secondaryCta": "Compare packages",
     "introTitle": "The detail stays tidy before the shine shows up.",
     "introText": "We plan water access, shade, vehicle condition, pet hair, kid-seat crumbs, and paint-safe wash steps before the first mitt touches the car.",
@@ -89,7 +91,7 @@
     "processTitle": "How mobile service stays smooth",
     "proofTitle": "Proof you can see before you pull away",
     "quoteTitle": "Ready for the driveway detail bay?",
-    "quoteText": "Send your vehicle type, address, preferred window, and a few photos of the interior and paint. We will match the right package and confirm what to move before arrival."
+    "quoteText": "Request a quote with vehicle type, address, preferred window, and a few photos of the interior and paint. We will match the right package and confirm what to move before arrival."
   },
   "services": [
     {
@@ -151,13 +153,14 @@
       "screenshotCompared": true
     },
     "premiumReview": {
-      "version": 1,
+      "version": 2,
       "reviewedAt": "2026-06-25",
       "score": 100,
       "categories": {
         "firstViewport": true,
         "logoScale": true,
         "typography": true,
+        "polishContract": true,
         "imageProof": true,
         "ctaClarity": true,
         "mobilePolish": true,
@@ -169,23 +172,23 @@
       "notes": [
         "Works: a thumb-ready bottom bar. gives the page a memorable shape.",
         "Proof: mobile service action at the customer location. anchors the niche in the first viewport.",
-        "Action: Get a detail quote is the main conversion path."
+        "Action: Get quote is the main conversion path."
       ]
     }
   },
   "brandBrief": {
     "mood": "Glossy and mobile-first.",
     "trustCue": "paint-safe package proof.",
-    "accentBehavior": "sun stays reserved for Get a detail quote, active proof cues, and key booking moments.",
+    "accentBehavior": "sun stays reserved for Get quote, active proof cues, and key booking moments.",
     "imageProof": "mobile service action at the customer location.",
     "signatureMove": "a thumb-ready bottom bar.",
     "avoidLookingLike": "Avoid a generic fixed-bottom-action recolor; do not repeat stock hero framing, copied card rhythm, or vague local-service claims."
   },
   "serviceDetails": {
     "turnaround": "2 bucket: paint-safe wash routine for contact work.",
-    "whatToSend": "Send your vehicle type, address, preferred window, and a few photos of the interior and paint. We will match the right package and confirm what to move before arrival.",
+    "whatToSend": "Share the date, guest count, venue footprint, service window, menu preferences, and host workload you want to avoid.",
     "prepNote": "A few exterior and interior photos help us spot pet hair, brake dust, sap, stains, and the right package before quote time.",
-    "serviceRhythm": "quote first for Driveway and garage-friendly mobile detailing for daily drivers, commuter cars, SUVs, trucks, and weekend cars across the central metro and nearby suburbs.",
-    "objectionAnswer": "Scope, access, timing, and fit are confirmed before booking so the next step is clear and low-pressure."
+    "serviceRhythm": "Package-board flow for Driveway and garage-friendly mobile detailing for daily drivers, commuter cars, SUVs, trucks, and weekend cars across the central metro and nearby suburbs: compare fit by vehicle size, interior condition, paint needs, access, and arrival window.",
+    "objectionAnswer": "For mobile auto detailing service, package fit depends on vehicle size, interior condition, paint sensitivity, driveway access, and weather window, so the detail level matches the actual car."
   }
 }

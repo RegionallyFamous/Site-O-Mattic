@@ -2,20 +2,20 @@
   "slug": "window-cleaning",
   "businessName": "ClearPane Window Care",
   "niche": "window cleaning service",
-  "layoutVariant": "checklist-urgency",
+  "layoutVariant": "window-scope-ledger",
   "pattern": {
-    "primaryPattern": "checklist-urgency-gate",
-    "secondaryPattern": "service-checklist-proof",
-    "silhouette": "checklist-urgency-gate",
-    "navigationPrimitive": "compact-header",
-    "mobileActionPattern": "inline-checklist-actions",
+    "primaryPattern": "photo-quote-transformation",
+    "secondaryPattern": "pane-count-edge-check-proof",
+    "silhouette": "split-quote-board",
+    "navigationPrimitive": "floating-proof-action",
+    "mobileActionPattern": "floating-proof-plus-shine-photo-actions",
     "imageRole": "work-in-progress",
-    "imageEvidence": "visible checklist-triggering service work",
-    "ctaRhythm": "quote-first",
+    "imageEvidence": "visible squeegee work and window-count scope evidence",
+    "ctaRhythm": "photo-first",
     "surfaceFamily": "outlined-repeaters",
-    "surfaceModel": "checklist-cards-proof-strip",
-    "styleFamily": "risk-control-alert",
-    "density": "compact-leadgen",
+    "surfaceModel": "floating-window-proof-action-panel",
+    "styleFamily": "clear-status-dashboard",
+    "density": "balanced-editorial",
     "colorRoles": {
       "ink": "deepGreen",
       "paper": "cream",
@@ -23,41 +23,43 @@
       "line": "leaf",
       "primary": "grass",
       "action": "sun",
-      "proof": "leaf",
+      "proof": "grass",
       "muted": "soil",
       "warning": "sun",
       "shadowTint": "deepGreen"
     },
     "geometry": {
-      "radiusScale": "utility-6",
-      "borderRole": "checklist row separators",
-      "shadowRole": "minimal proof band lift",
-      "mediaCrop": "clean vertical work crop"
+      "radiusScale": "glass-8",
+      "borderRole": "glass row dividers and pane method table",
+      "shadowRole": "hero photo and floating shine proof panel",
+      "mediaCrop": "wide glass service proof crop"
     },
     "coreBlockPlan": [
       "columns",
+      "image",
       "list",
-      "buttons",
-      "details"
+      "table",
+      "details",
+      "buttons"
     ],
     "knownRisks": [
-      "checklist-label-wrapping",
-      "glass-palette-low-contrast",
-      "nav-label-repetition"
+      "mobile-table-overflow",
+      "first-viewport-cta",
+      "glass-photo-crop"
     ],
-    "styleContract": "Bright and exacting with edge-check proof, real squeegee work evidence, yellow checklist/action accents, and a checklist hero panel as the signature move."
+    "styleContract": "Light glass-utility calm with pane-count proof, cool aqua accents reserved for quote actions, and a floating photo-quote proof panel as the signature move."
   },
   "tagline": "Glass so clear the sunshine gets cocky.",
   "themeSlug": "twentytwentyfive",
   "landingPage": "/",
   "palette": {
-    "grass": "#087084",
-    "deepGreen": "#073b4c",
-    "leaf": "#2ec4d6",
-    "sun": "#f7c948",
-    "cream": "#f5fbfc",
-    "mist": "#d8f3f6",
-    "soil": "#45616c",
+    "grass": "#217f9b",
+    "deepGreen": "#0b2636",
+    "leaf": "#b7e8f0",
+    "sun": "#8fe3ef",
+    "cream": "#f6fbff",
+    "mist": "#eaf6f8",
+    "soil": "#496373",
     "white": "#ffffff"
   },
   "assets": {
@@ -79,18 +81,18 @@
     "serviceArea": "Homes, storefronts, and small offices across the east side, lake blocks, and nearby suburbs"
   },
   "copy": {
-    "eyebrow": "Local window cleaning without the streak circus",
-    "heroTitle": "Let the light back in.",
-    "heroText": "ClearPane handles interior glass, exterior panes, screens, tracks, and storefront touch-ups with tidy crews, careful edges, and squeegee lines that know when to quit.",
+    "eyebrow": "Pane-count window care",
+    "heroTitle": "Clean glass, clear scope.",
+    "heroText": "Interior glass, exterior panes, screens, and tracks handled with careful edges and a clear quote before anyone arrives.",
     "primaryCta": "Get a shine quote",
-    "secondaryCta": "See the checklist",
+    "secondaryCta": "See scope lines",
     "introTitle": "Clean glass changes the whole room.",
     "introText": "We bring the water-fed poles, detail towels, screen brushes, and the sort of patience that makes fingerprints reconsider their life choices.",
     "servicesTitle": "What gets cleaned",
     "processTitle": "How the shine happens",
     "proofTitle": "Clear expectations",
     "quoteTitle": "Ready for brighter windows?",
-    "quoteText": "Send a window count, a few photos, and whether you need inside, outside, or both. We will reply with a simple estimate and the next open shine day."
+    "quoteText": "Request a quote with window count, a few photos, and whether you need inside, outside, or both. We will reply with a simple estimate and the next open shine day."
   },
   "services": [
     {
@@ -152,13 +154,14 @@
       "screenshotCompared": true
     },
     "premiumReview": {
-      "version": 1,
+      "version": 2,
       "reviewedAt": "2026-06-24",
       "score": 100,
       "categories": {
         "firstViewport": true,
         "logoScale": true,
         "typography": true,
+        "polishContract": true,
         "imageProof": true,
         "ctaClarity": true,
         "mobilePolish": true,
@@ -168,25 +171,25 @@
         "brandBrief": true
       },
       "notes": [
-        "Works: a checklist hero panel. gives the page a memorable shape.",
-        "Proof: visible checklist-triggering service work. anchors the niche in the first viewport.",
+        "Works: a floating photo-quote proof panel gives the page a memorable shape.",
+        "Proof: visible squeegee work and window-count scope evidence. anchors the niche in the first viewport.",
         "Action: Get a shine quote is the main conversion path."
       ]
     }
   },
   "brandBrief": {
-    "mood": "Bright and exacting.",
-    "trustCue": "edge-check proof.",
+    "mood": "Crisp glass-local calm.",
+    "trustCue": "window-count proof.",
     "accentBehavior": "sun stays reserved for Get a shine quote, active proof cues, and key booking moments.",
-    "imageProof": "visible checklist-triggering service work.",
-    "signatureMove": "a checklist hero panel.",
-    "avoidLookingLike": "Avoid a generic checklist-urgency recolor; do not repeat stock hero framing, copied card rhythm, or vague local-service claims."
+    "imageProof": "visible squeegee work and window-count scope evidence.",
+    "signatureMove": "a floating photo-quote proof panel.",
+    "avoidLookingLike": "Avoid a generic service-receipt-stack recolor or a pressure-washing clone; do not repeat receipt framing, copied card rhythm, or vague local-service claims."
   },
   "serviceDetails": {
     "turnaround": "48-hour: weekday quote follow-up.",
-    "whatToSend": "Send a window count, a few photos, and whether you need inside, outside, or both. We will reply with a simple estimate and the next open shine day.",
+    "whatToSend": "Send 3 to 5 photos of the window cleaning service surface or item, the access point, close-up problem spots, and the timing window you are hoping for.",
     "prepNote": "Send a quick count, note tricky spots, and include photos of tall or tucked-away glass.",
-    "serviceRhythm": "quote first for Homes, storefronts, and small offices across the east side, lake blocks, and nearby suburbs.",
-    "objectionAnswer": "Scope, access, timing, and fit are confirmed before booking so the next step is clear and low-pressure."
+    "serviceRhythm": "Photo-to-plan flow for Homes, storefronts, and small offices across the east side, lake blocks, and nearby suburbs: first the evidence, then method, timing, and risk notes.",
+    "objectionAnswer": "For window cleaning service, window count, tall glass photos, inside/outside scope, screens, tracks, and access notes shape the estimate before the shine day is booked."
   }
 }

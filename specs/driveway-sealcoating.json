@@ -37,6 +37,7 @@
     "coreBlockPlan": [
       "columns",
       "image",
+      "table",
       "buttons",
       "list"
     ],
@@ -90,7 +91,7 @@
     "processTitle": "How the blackline goes down",
     "proofTitle": "Good sealing windows",
     "quoteTitle": "Ready for the satisfying blacktop reset?",
-    "quoteText": "Send driveway photos, rough dimensions, crack trouble spots, and the last time it was sealed. We will reply with timing, prep notes, and a clear estimate."
+    "quoteText": "Request a quote with driveway photos, rough dimensions, crack trouble spots, and the last time it was sealed. We will reply with timing, prep notes, and a clear estimate."
   },
   "services": [
     {
@@ -152,13 +153,14 @@
       "screenshotCompared": true
     },
     "premiumReview": {
-      "version": 1,
+      "version": 2,
       "reviewedAt": "2026-06-25",
       "score": 100,
       "categories": {
         "firstViewport": true,
         "logoScale": true,
         "typography": true,
+        "polishContract": true,
         "imageProof": true,
         "ctaClarity": true,
         "mobilePolish": true,
@@ -184,9 +186,9 @@
   },
   "serviceDetails": {
     "turnaround": "70-90F: favorite sealcoat temperature range.",
-    "whatToSend": "Send driveway photos, rough dimensions, crack trouble spots, and the last time it was sealed. We will reply with timing, prep notes, and a clear estimate.",
+    "whatToSend": "Send photos from the ground, access notes, weather or date constraints, and the warning signs you noticed so the visit starts safely.",
     "prepNote": "A wide photo, a crack close-up, and rough dimensions are enough to start a real estimate.",
-    "serviceRhythm": "quote first for Residential asphalt driveways, private lanes, and small parking pads across the west suburbs, lake roads, and nearby townships.",
-    "objectionAnswer": "Scope, access, timing, and fit are confirmed before booking so the next step is clear and low-pressure."
+    "serviceRhythm": "Risk-check flow for Residential asphalt driveways, private lanes, and small parking pads across the west suburbs, lake roads, and nearby townships: photos, weather, access, and no-go conditions shape the safe visit plan.",
+    "objectionAnswer": "For driveway sealcoating service, surface photos, crack edges, shade timing, and cure-window weather decide the quote, so the plan names what can be sealed now and what should wait."
   }
 }

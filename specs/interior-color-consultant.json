@@ -78,11 +78,11 @@
     "phoneHref": "tel:+15550142950",
     "email": "hello@huehaus.test",
     "emailHref": "mailto:hello@huehaus.test",
-    "serviceArea": "Interior paint palettes, room color consults, trim and cabinet color guidance, exterior accent help, sample reviews, move-in color plans, and refresh consults across the local area"
+    "serviceArea": "Interior paint palettes, room color consults, trim and cabinet color guidance, exterior accent help, sample reviews, move-in color plans, and refresh consults in River Market, Northside, Oak Hill, Westbrook, and Maple Bend"
   },
   "copy": {
     "eyebrow": "Interior color consulting with light, samples, and sanity",
-    "heroTitle": "Choose colors that work in your actual room.",
+    "heroTitle": "Room colors that work.",
     "heroText": "HueHaus helps homeowners narrow paint, trim, cabinet, and room palettes using light, finishes, samples, and how the space really gets lived in.",
     "primaryCta": "Choose my palette",
     "secondaryCta": "See consult steps",
@@ -92,7 +92,7 @@
     "processTitle": "How the palette gets practical",
     "proofTitle": "Room proof beats guesswork",
     "quoteTitle": "Ready to choose your palette?",
-    "quoteText": "Send room photos, current finishes, paint questions, and your timeline. We will recommend the consult format and what samples to gather."
+    "quoteText": "Plan the consult with room photos, current finishes, paint questions, and your timeline. We will recommend the consult format and what samples to gather."
   },
   "services": [
     {
@@ -154,13 +154,14 @@
       "screenshotCompared": true
     },
     "premiumReview": {
-      "version": 1,
+      "version": 2,
       "reviewedAt": "2026-06-25",
       "score": 100,
       "categories": {
         "firstViewport": true,
         "logoScale": true,
         "typography": true,
+        "polishContract": true,
         "imageProof": true,
         "ctaClarity": true,
         "mobilePolish": true,
@@ -186,9 +187,9 @@
   },
   "serviceDetails": {
     "turnaround": "Light check: day and evening shifts considered.",
-    "whatToSend": "Send room photos, current finishes, paint questions, and your timeline. We will recommend the consult format and what samples to gather.",
+    "whatToSend": "Send room photos, daylight direction, fixed finishes, current paint questions, inspiration images, sample timing, and the decisions that feel stuck.",
     "prepNote": "Photos, lighting, finishes, furniture, and problem colors help us start smarter.",
-    "serviceRhythm": "consult first for Interior paint palettes, room color consults, trim and cabinet color guidance, exterior accent help, sample reviews, move-in color plans, and refresh consults across the local area.",
-    "objectionAnswer": "Scope, access, timing, and fit are confirmed before booking so the next step is clear and low-pressure."
+    "serviceRhythm": "Calm-consult flow for Interior paint palettes, room color consults, trim and cabinet color guidance, exterior accent help, sample reviews, move-in color plans, and refresh consults in River Market, Northside, Oak Hill, Westbrook, and Maple Bend: room light, fixed finishes, undertones, sample timing, and decision comfort shape the consult before colors are narrowed.",
+    "objectionAnswer": "For interior color consultant, room light, fixed finishes, undertones, inspiration, sample timing, and decision comfort shape the consult before colors are narrowed."
   }
 }
