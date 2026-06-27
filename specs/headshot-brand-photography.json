@@ -2,20 +2,20 @@
   "slug": "headshot-brand-photography",
   "businessName": "FrameForge Headshots",
   "niche": "headshot and brand photography studio",
-  "layoutVariant": "headshot-proof-gallery",
+  "layoutVariant": "headshot-prep-ledger",
   "pattern": {
-    "primaryPattern": "gallery-led-portfolio-proof",
+    "primaryPattern": "service-receipt-stack",
     "secondaryPattern": "prep-confidence-proof",
-    "silhouette": "editorial-proof-stage",
-    "navigationPrimitive": "compact-header",
-    "mobileActionPattern": "section-anchor-plus-inline-phone",
+    "silhouette": "receipt-scope-stack",
+    "navigationPrimitive": "section-anchor-strip",
+    "mobileActionPattern": "session-prep-anchor-plus-inline-booking",
     "imageRole": "operator-or-founder",
     "imageEvidence": "studio headshot session with photographer, client, lighting, and camera setup",
     "ctaRhythm": "book-first",
-    "surfaceFamily": "gallery-mosaic",
-    "surfaceModel": "studio-contact-sheet-with-prep-strip",
-    "styleFamily": "editorial-proof-stage",
-    "density": "visual-first",
+    "surfaceFamily": "receipt-stack",
+    "surfaceModel": "session-prep-ledger-with-usage-scope-table",
+    "styleFamily": "receipt-ledger",
+    "density": "balanced-editorial",
     "colorRoles": {
       "ink": "deepGreen",
       "paper": "cream",
@@ -35,8 +35,9 @@
       "mediaCrop": "studio session proof crop"
     },
     "coreBlockPlan": [
-      "cover",
-      "gallery",
+      "media-text",
+      "table",
+      "details",
       "columns",
       "list",
       "quote",
@@ -46,10 +47,10 @@
     "knownRisks": [
       "first-viewport-cta",
       "logo-scale",
-      "contact-sheet-mobile-crop",
-      "prep-proof-too-soft"
+      "session-table-mobile-readability",
+      "prep-ledger-too-heavy"
     ],
-    "styleContract": "Polished and precise with prep proof, real studio headshot evidence, restrained camera-blue proof accents, amber booking action, and a contact-sheet prep strip as the signature move."
+    "styleContract": "Polished and precise with prep proof, real studio headshot evidence, restrained camera-blue ledger accents, amber booking action, and a session-prep receipt stack as the signature move."
   },
   "tagline": "Headshots that look like you on a very good day.",
   "themeSlug": "twentytwentyfive",
@@ -140,7 +141,7 @@
   ],
   "release": {
     "status": "approved",
-    "reviewedAt": "2026-06-25",
+    "reviewedAt": "2026-06-27",
     "visualBaseline": "pending",
     "reviewChecklist": {
       "firstViewportClear": true,
@@ -157,7 +158,7 @@
     },
     "premiumReview": {
       "version": 2,
-      "reviewedAt": "2026-06-25",
+      "reviewedAt": "2026-06-27",
       "score": 100,
       "categories": {
         "firstViewport": true,
@@ -173,7 +174,7 @@
         "brandBrief": true
       },
       "notes": [
-        "Works: a contact-sheet prep strip gives the page a memorable shape.",
+        "Works: a session-prep receipt stack gives the page a memorable shape.",
         "Proof: studio headshot session with photographer, client, lighting, and camera setup. anchors the niche in the first viewport.",
         "Action: Book a headshot slot is the main conversion path."
       ]
@@ -184,7 +185,7 @@
     "trustCue": "prep proof.",
     "accentBehavior": "sun stays reserved for Book a headshot slot, active proof cues, and key booking moments.",
     "imageProof": "studio headshot session with photographer, client, lighting, and camera setup.",
-    "signatureMove": "a contact-sheet prep strip.",
+    "signatureMove": "a session-prep receipt stack.",
     "avoidLookingLike": "Avoid a generic gallery-led recolor; do not repeat stock hero framing, copied card rhythm, or vague local-service claims."
   },
   "serviceDetails": {

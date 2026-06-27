@@ -174,7 +174,7 @@ export const blueprints = [
     "heroHeight": 1080,
     "alt": "A photographer coaching a client during a professional headshot session with softbox lighting and camera setup.",
     "path": "/api/blueprints/headshot-brand-photography/blueprint.json",
-    "layoutVariant": "headshot-proof-gallery",
+    "layoutVariant": "headshot-prep-ledger",
     "releaseStatus": "approved"
   },
   {

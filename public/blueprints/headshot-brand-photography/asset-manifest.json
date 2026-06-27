@@ -2,7 +2,7 @@
   "version": 1,
   "slug": "headshot-brand-photography",
   "businessName": "FrameForge Headshots",
-  "layoutVariant": "headshot-proof-gallery",
+  "layoutVariant": "headshot-prep-ledger",
   "assets": {
     "hero": {
       "source": "assets/headshot-brand-photography/frameforge-hero.jpg",
