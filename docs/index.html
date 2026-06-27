@@ -18,6 +18,7 @@
       --pink: #ff4f87;
       --pink-dark: #9f1747;
       --mint: #4debb4;
+      --orange: #ff8f3d;
       --scarlet: #ff3b2f;
       --violet: #4c20ff;
       --shadow-blue: rgba(23, 87, 255, .42);
@@ -28,9 +29,9 @@
     body {
       margin: 0;
       background:
-        radial-gradient(circle at 1px 1px, rgba(22, 15, 42, .18) 1px, transparent 0) 0 0 / 18px 18px,
-        linear-gradient(135deg, rgba(255, 79, 135, .2), transparent 32%),
-        linear-gradient(315deg, rgba(23, 87, 255, .16), transparent 34%),
+        radial-gradient(circle at 1px 1px, rgba(22, 15, 42, .12) 1px, transparent 0) 0 0 / 18px 18px,
+        linear-gradient(135deg, rgba(255, 79, 135, .14), transparent 34%),
+        linear-gradient(315deg, rgba(23, 87, 255, .12), transparent 36%),
         var(--paper);
       color: var(--ink);
       font-family: "Avenir Next", Avenir, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -40,7 +41,7 @@
       position: fixed;
       z-index: -1;
       inset: 0;
-      background: repeating-linear-gradient(-5deg, rgba(255,255,255,.22) 0, rgba(255,255,255,.22) 2px, transparent 2px, transparent 10px);
+      background: repeating-linear-gradient(-5deg, rgba(255,255,255,.13) 0, rgba(255,255,255,.13) 2px, transparent 2px, transparent 10px);
       content: "";
       pointer-events: none;
     }
@@ -59,12 +60,14 @@
     }
     .masthead {
       display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 430px);
+      gap: clamp(20px, 4vw, 58px);
       position: relative;
       overflow: hidden;
       min-height: clamp(580px, 74vh, 820px);
       align-items: end;
       border: 3px solid var(--ink);
-      background: var(--blue);
+      background: var(--paper);
       box-shadow: 10px 10px 0 var(--pink), -10px -10px 0 var(--mint);
       isolation: isolate;
       padding: clamp(22px, 5vw, 72px);
@@ -72,11 +75,8 @@
     .masthead::before {
       position: absolute;
       inset: 0;
-      z-index: 0;
-      background:
-        linear-gradient(90deg, rgba(255, 241, 95, .98) 0 46%, rgba(255, 241, 95, .72) 62%, rgba(23, 78, 255, .2)),
-        linear-gradient(135deg, transparent 0 46%, rgba(255, 79, 135, .62) 46% 59%, transparent 59%),
-        linear-gradient(26deg, transparent 0 68%, rgba(85, 240, 183, .56) 68% 80%, transparent 80%);
+      z-index: 1;
+      background: linear-gradient(90deg, rgba(255, 241, 95, .96) 0 38%, rgba(255, 241, 95, .66) 51%, rgba(255, 241, 95, .1) 70%, transparent 100%);
       content: "";
     }
     .masthead::after,
@@ -87,24 +87,104 @@
       background: radial-gradient(circle at 1px 1px, rgba(22, 15, 42, .24) 1px, transparent 0) 0 0 / 12px 12px;
       content: "";
       mix-blend-mode: multiply;
-      opacity: .42;
+      opacity: .24;
       pointer-events: none;
+    }
+    .masthead::after {
+      z-index: 1;
+      opacity: .16;
     }
     .hero-bg {
       position: absolute;
       inset: 0;
-      z-index: -1;
+      z-index: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: top center;
-      filter: saturate(1.28) contrast(1.08);
-      mix-blend-mode: multiply;
+      object-position: center center;
+      filter: saturate(1.03) contrast(1.02);
     }
     .hero-copy {
       position: relative;
+      z-index: 2;
+      max-width: 800px;
+    }
+    .hero-ticket {
+      position: relative;
+      z-index: 2;
+      align-self: center;
+      border: 3px solid var(--ink);
+      background: var(--surface);
+      box-shadow: -8px 8px 0 var(--mint), 8px -8px 0 var(--pink);
+      padding: clamp(15px, 2vw, 22px);
+      transform: rotate(1.2deg);
+    }
+    .hero-ticket::before {
+      position: absolute;
+      inset: 9px;
+      border: 2px dashed rgba(22, 15, 42, .38);
+      content: "";
+      pointer-events: none;
+    }
+    .hero-ticket > * {
+      position: relative;
       z-index: 1;
-      max-width: 900px;
+    }
+    .hero-ticket h2 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(27px, 3vw, 43px);
+      line-height: .98;
+      text-wrap: balance;
+    }
+    .ticket-shot {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      margin: 14px 0;
+      border: 3px solid var(--ink);
+      background: var(--blue);
+      object-fit: cover;
+      object-position: top center;
+      filter: saturate(1.15) contrast(1.05);
+    }
+    .ticket-list {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .ticket-list li {
+      display: grid;
+      grid-template-columns: 32px 1fr;
+      gap: 9px;
+      align-items: start;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 850;
+      line-height: 1.28;
+    }
+    .ticket-list strong {
+      display: inline-grid;
+      min-height: 28px;
+      place-items: center;
+      border: 2px solid var(--ink);
+      background: var(--orange);
+      color: var(--ink);
+      font-size: 12px;
+      line-height: 1;
+    }
+    .ticket-ask {
+      margin: 14px 0 0;
+      padding: 10px;
+      border: 3px solid var(--ink);
+      background: var(--blue);
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 950;
+      line-height: 1.28;
+      box-shadow: 4px 4px 0 var(--scarlet);
     }
     .eyebrow {
       display: inline-flex;
@@ -233,6 +313,77 @@
       background: var(--ink);
       color: #ffffff;
       box-shadow: -8px 8px 0 var(--mint);
+    }
+    .closing-board {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+      gap: 14px;
+      align-items: stretch;
+      margin: 24px 0;
+    }
+    .closing-board > div,
+    .closing-board article {
+      border: 3px solid var(--ink);
+      background: var(--surface);
+      box-shadow: 6px 6px 0 var(--shadow-blue);
+      padding: clamp(16px, 2vw, 24px);
+    }
+    .closing-board > div {
+      background: var(--ink);
+      color: #ffffff;
+      box-shadow: -8px 8px 0 var(--pink);
+    }
+    .closing-board > div .eyebrow {
+      background: var(--mint);
+      color: var(--ink);
+    }
+    .closing-board h2,
+    .closing-board h3,
+    .closing-board p {
+      margin: 0;
+    }
+    .closing-board h2 {
+      max-width: 760px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(31px, 4vw, 62px);
+      line-height: .96;
+      text-wrap: balance;
+    }
+    .closing-board p {
+      margin-top: 12px;
+      color: inherit;
+      font-weight: 760;
+    }
+    .closing-points {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .closing-points article:nth-child(1) {
+      background: var(--paper);
+      box-shadow: 6px 6px 0 var(--pink);
+    }
+    .closing-points article:nth-child(2) {
+      background: var(--mint);
+      box-shadow: 6px 6px 0 var(--violet);
+    }
+    .closing-points article:nth-child(3) {
+      background: var(--pink);
+      box-shadow: 6px 6px 0 var(--blue);
+    }
+    .closing-points article:nth-child(4) {
+      background: var(--orange);
+      box-shadow: 6px 6px 0 var(--mint);
+    }
+    .closing-board h3 {
+      font-size: 18px;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+    .closing-points p {
+      color: var(--ink);
+      font-size: 14px;
+      line-height: 1.35;
     }
     .proof-strip > * {
       min-width: 0;
@@ -422,6 +573,7 @@
       gap: 16px;
     }
     .card {
+      position: relative;
       display: flex;
       flex-direction: column;
       overflow: hidden;
@@ -460,11 +612,25 @@
       border: 2px solid var(--ink);
       background: var(--paper);
       color: var(--ink);
-      content: "LIVE DEMO";
+      content: "LAUNCHABLE";
       font-size: 11px;
       font-weight: 1000;
       line-height: 1;
       transform: rotate(-1deg);
+    }
+    .card-number {
+      position: absolute;
+      z-index: 2;
+      right: 10px;
+      bottom: 10px;
+      padding: 5px 8px;
+      border: 2px solid var(--ink);
+      background: var(--mint);
+      color: var(--ink);
+      font-size: 11px;
+      font-weight: 1000;
+      line-height: 1;
+      transform: rotate(1deg);
     }
     .card-preview img {
       display: block;
@@ -472,7 +638,7 @@
       height: 100%;
       object-fit: cover;
       object-position: top center;
-      opacity: 0;
+      opacity: 1;
       transition: transform .18s ease;
     }
     .card-preview:hover img {
@@ -608,6 +774,9 @@
       .pitch-points {
         grid-template-columns: 1fr;
       }
+      .closing-board {
+        grid-template-columns: 1fr;
+      }
     }
     @media (max-width: 620px) {
       .page {
@@ -627,14 +796,15 @@
         border-bottom: 0;
       }
       .masthead {
+        grid-template-columns: 1fr;
         min-height: 620px;
         padding: 18px;
       }
       .masthead::before {
-        background:
-          linear-gradient(180deg, rgba(255, 241, 95, .98) 0 62%, rgba(255, 241, 95, .74)),
-          linear-gradient(135deg, transparent 0 48%, rgba(255, 79, 135, .62) 48% 63%, transparent 63%),
-          linear-gradient(26deg, transparent 0 68%, rgba(85, 240, 183, .56) 68% 80%, transparent 80%);
+        background: linear-gradient(180deg, rgba(255, 241, 95, .96) 0 48%, rgba(255, 241, 95, .56) 66%, rgba(255, 241, 95, .08) 100%);
+      }
+      .hero-bg {
+        object-position: 58% center;
       }
       h1 {
         font-size: clamp(39px, 13vw, 64px);
@@ -644,6 +814,12 @@
       }
       .latest {
         padding: 12px;
+      }
+      .hero-ticket {
+        transform: none;
+      }
+      .closing-points {
+        grid-template-columns: 1fr;
       }
       .links {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -683,22 +859,34 @@
 <body>
   <main class="page">
     <header class="masthead">
-      <img class="hero-bg" src="previews/interior-color-consultant-desktop.png" alt="" loading="eager">
+      <img class="hero-bg" src="catalog-assets/site-o-mattic-riso-pitch-wall.jpg" alt="" loading="eager">
       <div class="hero-copy">
-        <p class="eyebrow">Internal pitch wall</p>
-        <h1>35 live WordPress demos, ready for the room.</h1>
-        <p class="lede">Site-O-Mattic turns one concept into a wall of polished niche sites: branded, screenshot-backed, Playground-ready, and built from lean block-theme systems leadership can inspect.</p>
+        <p class="eyebrow">Site-O-Mattic pitch wall</p>
+        <h1>Make the pitch clickable.</h1>
+        <p class="lede">Site-O-Mattic turns one idea into 35 launchable WordPress demos: branded niche sites, real screenshots, Playground links, and QA receipts leadership can inspect live.</p>
         <ul class="hero-badges" aria-label="Demo proof points">
-          <li>Blueprint JSON</li>
-          <li>Real screenshots</li>
-          <li>QA receipts</li>
+          <li>WordPress-native</li>
+          <li>Block-first</li>
+          <li>Visual QA</li>
         </ul>
-        <p class="hero-note">Click a card during the meeting: the static pitch turns into a real WordPress site.</p>
+        <p class="hero-note">Use it like a sales wall: point to a niche, launch Playground, inspect the spec, and ask for the next production lane.</p>
         <div class="actions">
-          <a class="button primary" href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Finterior-color-consultant%2Fblueprint.json">Launch the proof</a>
-          <a class="button" href="#catalog">Jump to demo wall</a>
+          <a class="button primary" href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fsenior-downsizing-move-prep%2Fblueprint.json">Open featured demo</a>
+          <a class="button" href="#catalog">See the demo wall</a>
         </div>
       </div>
+      <aside class="hero-ticket" aria-label="90-second meeting script">
+        <p class="eyebrow">90-second room script</p>
+        <h2>Show the wall. Launch one. Ask for the green light.</h2>
+        <img class="ticket-shot" src="previews/senior-downsizing-move-prep-desktop.png" alt="" loading="eager">
+        <ol class="ticket-list">
+          <li><strong>1</strong><span>Pick a service niche the room understands instantly.</span></li>
+          <li><strong>2</strong><span>Launch the live WordPress Playground demo.</span></li>
+          <li><strong>3</strong><span>Open the JSON, screenshot, and spec receipts.</span></li>
+          <li><strong>4</strong><span>Ask for the next catalog lane and learning loop.</span></li>
+        </ol>
+        <p class="ticket-ask">The ask: approve the next production lane for inspectable WordPress demos.</p>
+      </aside>
     </header>
 
     <dl class="stats" aria-label="Catalog counts">
@@ -710,49 +898,64 @@
 
     <section class="proof-strip" aria-labelledby="proof-heading">
       <div>
-        <h2 id="proof-heading">Every claim has a working artifact behind it.</h2>
+        <h2 id="proof-heading">Bring the room a product, not a promise.</h2>
       </div>
       <article><h3>Launch</h3><p>Each niche opens in WordPress Playground from a hosted Blueprint.</p></article>
       <article><h3>Inspect</h3><p>Specs, screenshots, assets, JSON, and ZIPs stay visible for review.</p></article>
-      <article><h3>Defend</h3><p>Visual sweep, accessibility, and production checks travel with the pitch.</p></article>
+      <article><h3>Scale</h3><p>The same lean block foundation carries many brands, layouts, and service stories.</p></article>
     </section>
 
     <section class="latest" aria-labelledby="featured-heading">
-      <a class="latest-preview" href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Finterior-color-consultant%2Fblueprint.json" aria-label="Open HueHaus Color Studio in WordPress Playground">
-        <img class="desktop-shot" src="previews/interior-color-consultant-desktop.png" alt="HueHaus Color Studio desktop preview" loading="eager">
-        <img class="mobile-shot" src="previews/interior-color-consultant-mobile-390.png" alt="HueHaus Color Studio mobile preview" loading="eager">
+      <a class="latest-preview" href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fsenior-downsizing-move-prep%2Fblueprint.json" aria-label="Open KindMove Downsizing in WordPress Playground">
+        <img class="desktop-shot" src="previews/senior-downsizing-move-prep-desktop.png" alt="KindMove Downsizing desktop preview" loading="eager">
+        <img class="mobile-shot" src="previews/senior-downsizing-move-prep-mobile-390.png" alt="KindMove Downsizing mobile preview" loading="eager">
       </a>
       <div>
         <p class="eyebrow">Featured proof</p>
-        <h2 id="featured-heading">HueHaus Color Studio</h2>
-        <p>HueHaus helps homeowners narrow paint, trim, cabinet, and room palettes using light, finishes, samples, and how the space really gets lived in.</p>
+        <h2 id="featured-heading">KindMove Downsizing</h2>
+        <p>KindMove helps families sort, label, donate, pack, and plan the next chapter with steady hands, clear categories, and room for the stories that come with the boxes.</p>
         <div class="actions">
-          <a class="button primary" href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Finterior-color-consultant%2Fblueprint.json" aria-label="Launch HueHaus Color Studio in WordPress Playground">Launch in Playground</a>
-          <a class="button" href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/interior-color-consultant/blueprint.json" aria-label="Open HueHaus Color Studio Blueprint JSON">Blueprint JSON</a>
-          <a class="button" href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/interior-color-consultant/interior-color-consultant-blueprint.zip" aria-label="Download HueHaus Color Studio Blueprint ZIP">Download ZIP</a>
+          <a class="button primary" href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fsenior-downsizing-move-prep%2Fblueprint.json" aria-label="Launch KindMove Downsizing in WordPress Playground">Launch in Playground</a>
+          <a class="button" href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/senior-downsizing-move-prep/blueprint.json" aria-label="Open KindMove Downsizing Blueprint JSON">Blueprint JSON</a>
+          <a class="button" href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/senior-downsizing-move-prep/senior-downsizing-move-prep-blueprint.zip" aria-label="Download KindMove Downsizing Blueprint ZIP">Download ZIP</a>
         </div>
       </div>
     </section>
 
+    <section class="closing-board" aria-labelledby="closing-heading">
+      <div>
+        <p class="eyebrow">What you are really selling</p>
+        <h2 id="closing-heading">A repeatable WordPress demo factory with taste in the loop.</h2>
+        <p>The riso wrapper brings the spark. The proof is underneath: core blocks, theme settings, screenshots, accessibility checks, and Playground links that make the concept inspectable.</p>
+      </div>
+      <div class="closing-points">
+        <article><h3>Fast to see</h3><p>People can understand the opportunity before they read the repo.</p></article>
+        <article><h3>Easy to trust</h3><p>Every card has the live site, JSON, ZIP, spec, and preview image.</p></article>
+        <article><h3>Built to govern</h3><p>Block-first output keeps the demos close to WordPress, not a fragile one-off.</p></article>
+        <article><h3>Ready to fund</h3><p>The catalog turns the next step into a concrete production lane.</p></article>
+      </div>
+    </section>
+
     <section class="pitch-points" aria-label="Sales talking points">
-      <article><span aria-hidden="true">01</span><h2>Open with proof</h2><p>Start with the featured demo, then jump across niches without leaving the browser.</p></article>
-      <article><span aria-hidden="true">02</span><h2>Show the system</h2><p>One lean WordPress foundation, many business stories, layouts, palettes, and logos.</p></article>
-      <article><span aria-hidden="true">03</span><h2>Ask for yes</h2><p>Bring leadership a working catalog with the receipts already attached.</p></article>
+      <article><span aria-hidden="true">01</span><h2>Make it tangible</h2><p>Start with the featured demo, then jump across niches without leaving the browser.</p></article>
+      <article><span aria-hidden="true">02</span><h2>Show range</h2><p>One lean WordPress foundation, many business stories, layouts, palettes, and logos.</p></article>
+      <article><span aria-hidden="true">03</span><h2>Close cleanly</h2><p>Leadership sees the artifact, the guardrails, and the obvious next investment.</p></article>
     </section>
 
     <section class="toolbar" id="catalog" aria-labelledby="catalog-heading">
-      <h2 id="catalog-heading">Demo wall: pick a niche, launch WordPress, show the range.</h2>
+      <h2 id="catalog-heading">Demo wall: screenshots first, live WordPress one click away.</h2>
       <a href="https://github.com/RegionallyFamous/Site-O-Mattic">GitHub repository</a>
     </section>
 
     <section class="grid" aria-label="Demo catalog cards">
       <article class="card">
         <a class="card-preview" href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fballoon-garland-party-backdrop%2Fblueprint.json" aria-label="Open PopArc Party Styling in WordPress Playground" style="background-image: url('catalog-assets/balloon-garland-party-backdrop-screenshot.jpg')">
-          <img src="catalog-assets/balloon-garland-party-backdrop-screenshot.jpg" alt="Live site preview for PopArc Party Styling" loading="eager" decoding="async">
+          <img src="catalog-assets/balloon-garland-party-backdrop-screenshot.jpg" alt="Live site preview for PopArc Party Styling" loading="lazy" decoding="async">
+          <span class="card-number">Demo 01</span>
         </a>
         <div class="content">
           <div class="logo-row">
-            <img src="catalog-assets/balloon-garland-party-backdrop-logo.png" alt="PopArc Party Styling logo" loading="eager" decoding="async">
+            <img src="catalog-assets/balloon-garland-party-backdrop-logo.png" alt="PopArc Party Styling logo" loading="lazy" decoding="async">
             <div class="meta">
               <span class="pill">Status: Approved</span>
               <span class="pill">Pattern: Gallery Mosaic Proof</span>
@@ -762,22 +965,23 @@
           <h2>PopArc Party Styling</h2>
           <p>Balloon Garland And Party Backdrop Styling</p>
           <p>PopArc designs balloon garlands, backdrop moments, and photo-ready party corners with clear sizing, color notes, setup timing, and teardown options.</p>
-          <nav class="links" aria-label="PopArc Party Styling links">
+          <div class="links" role="group" aria-label="PopArc Party Styling links">
             <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fballoon-garland-party-backdrop%2Fblueprint.json" aria-label="Launch PopArc Party Styling in WordPress Playground">Launch in Playground</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/balloon-garland-party-backdrop/blueprint.json" aria-label="Open PopArc Party Styling Blueprint JSON">JSON</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/balloon-garland-party-backdrop/balloon-garland-party-backdrop-blueprint.zip" aria-label="Download PopArc Party Styling Blueprint ZIP">ZIP</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/balloon-garland-party-backdrop.json" aria-label="Open PopArc Party Styling production spec">Spec</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/balloon-garland-party-backdrop/README.md" aria-label="Open PopArc Party Styling README">README</a>
-          </nav>
+          </div>
         </div>
       </article>
       <article class="card">
         <a class="card-preview" href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fcarpet-upholstery-cleaning%2Fblueprint.json" aria-label="Open FreshThread Fabric Care in WordPress Playground" style="background-image: url('catalog-assets/carpet-upholstery-cleaning-screenshot.jpg')">
-          <img src="catalog-assets/carpet-upholstery-cleaning-screenshot.jpg" alt="Live site preview for FreshThread Fabric Care" loading="eager" decoding="async">
+          <img src="catalog-assets/carpet-upholstery-cleaning-screenshot.jpg" alt="Live site preview for FreshThread Fabric Care" loading="lazy" decoding="async">
+          <span class="card-number">Demo 02</span>
         </a>
         <div class="content">
           <div class="logo-row">
-            <img src="catalog-assets/carpet-upholstery-cleaning-logo.png" alt="FreshThread Fabric Care logo" loading="eager" decoding="async">
+            <img src="catalog-assets/carpet-upholstery-cleaning-logo.png" alt="FreshThread Fabric Care logo" loading="lazy" decoding="async">
             <div class="meta">
               <span class="pill">Status: Approved</span>
               <span class="pill">Pattern: Viewport Safe Conversion Shell</span>
@@ -787,22 +991,23 @@
           <h2>FreshThread Fabric Care</h2>
           <p>Carpet And Upholstery Cleaning Service</p>
           <p>FreshThread cleans sofas, rugs, stairs, and carpets with fabric-smart extraction, tidy setup, and drying notes that keep the room usable instead of mysterious.</p>
-          <nav class="links" aria-label="FreshThread Fabric Care links">
+          <div class="links" role="group" aria-label="FreshThread Fabric Care links">
             <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fcarpet-upholstery-cleaning%2Fblueprint.json" aria-label="Launch FreshThread Fabric Care in WordPress Playground">Launch in Playground</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/carpet-upholstery-cleaning/blueprint.json" aria-label="Open FreshThread Fabric Care Blueprint JSON">JSON</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/carpet-upholstery-cleaning/carpet-upholstery-cleaning-blueprint.zip" aria-label="Download FreshThread Fabric Care Blueprint ZIP">ZIP</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/carpet-upholstery-cleaning.json" aria-label="Open FreshThread Fabric Care production spec">Spec</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/carpet-upholstery-cleaning/README.md" aria-label="Open FreshThread Fabric Care README">README</a>
-          </nav>
+          </div>
         </div>
       </article>
       <article class="card">
         <a class="card-preview" href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fcloset-pantry-organization%2Fblueprint.json" aria-label="Open Shelfwise Organizing in WordPress Playground" style="background-image: url('catalog-assets/closet-pantry-organization-screenshot.jpg')">
-          <img src="catalog-assets/closet-pantry-organization-screenshot.jpg" alt="Live site preview for Shelfwise Organizing" loading="eager" decoding="async">
+          <img src="catalog-assets/closet-pantry-organization-screenshot.jpg" alt="Live site preview for Shelfwise Organizing" loading="lazy" decoding="async">
+          <span class="card-number">Demo 03</span>
         </a>
         <div class="content">
           <div class="logo-row">
-            <img src="catalog-assets/closet-pantry-organization-logo.png" alt="Shelfwise Organizing logo" loading="eager" decoding="async">
+            <img src="catalog-assets/closet-pantry-organization-logo.png" alt="Shelfwise Organizing logo" loading="lazy" decoding="async">
             <div class="meta">
               <span class="pill">Status: Approved</span>
               <span class="pill">Pattern: Consultation Story Flow</span>
@@ -812,22 +1017,23 @@
           <h2>Shelfwise Organizing</h2>
           <p>Closet And Pantry Organization Service</p>
           <p>Shelfwise builds closets and pantries around reach height, repeat groceries, laundry habits, morning exits, and the items that always wander back to the wrong place.</p>
-          <nav class="links" aria-label="Shelfwise Organizing links">
+          <div class="links" role="group" aria-label="Shelfwise Organizing links">
             <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fcloset-pantry-organization%2Fblueprint.json" aria-label="Launch Shelfwise Organizing in WordPress Playground">Launch in Playground</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/closet-pantry-organization/blueprint.json" aria-label="Open Shelfwise Organizing Blueprint JSON">JSON</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/closet-pantry-organization/closet-pantry-organization-blueprint.zip" aria-label="Download Shelfwise Organizing Blueprint ZIP">ZIP</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/closet-pantry-organization.json" aria-label="Open Shelfwise Organizing production spec">Spec</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/closet-pantry-organization/README.md" aria-label="Open Shelfwise Organizing README">README</a>
-          </nav>
+          </div>
         </div>
       </article>
       <article class="card">
         <a class="card-preview" href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fcoffee-cart-catering%2Fblueprint.json" aria-label="Open Cartwright Coffee Co. in WordPress Playground" style="background-image: url('catalog-assets/coffee-cart-catering-screenshot.jpg')">
-          <img src="catalog-assets/coffee-cart-catering-screenshot.jpg" alt="Live site preview for Cartwright Coffee Co." loading="eager" decoding="async">
+          <img src="catalog-assets/coffee-cart-catering-screenshot.jpg" alt="Live site preview for Cartwright Coffee Co." loading="lazy" decoding="async">
+          <span class="card-number">Demo 04</span>
         </a>
         <div class="content">
           <div class="logo-row">
-            <img src="catalog-assets/coffee-cart-catering-logo.png" alt="Cartwright Coffee Co. logo" loading="eager" decoding="async">
+            <img src="catalog-assets/coffee-cart-catering-logo.png" alt="Cartwright Coffee Co. logo" loading="lazy" decoding="async">
             <div class="meta">
               <span class="pill">Status: Approved</span>
               <span class="pill">Pattern: Package Menu Board</span>
@@ -837,22 +1043,23 @@
           <h2>Cartwright Coffee Co.</h2>
           <p>Coffee Cart Catering Service</p>
           <p>Cartwright rolls in with a polished espresso cart, friendly baristas, and a tight drink menu that keeps guests moving, caffeinated, and gently impressed.</p>
-          <nav class="links" aria-label="Cartwright Coffee Co. links">
+          <div class="links" role="group" aria-label="Cartwright Coffee Co. links">
             <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fcoffee-cart-catering%2Fblueprint.json" aria-label="Launch Cartwright Coffee Co. in WordPress Playground">Launch in Playground</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/coffee-cart-catering/blueprint.json" aria-label="Open Cartwright Coffee Co. Blueprint JSON">JSON</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/coffee-cart-catering/coffee-cart-catering-blueprint.zip" aria-label="Download Cartwright Coffee Co. Blueprint ZIP">ZIP</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/coffee-cart-catering.json" aria-label="Open Cartwright Coffee Co. production spec">Spec</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/coffee-cart-catering/README.md" aria-label="Open Cartwright Coffee Co. README">README</a>
-          </nav>
+          </div>
         </div>
       </article>
       <article class="card">
         <a class="card-preview" href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fdeck-fence-staining%2Fblueprint.json" aria-label="Open CedarLine Stain Co. in WordPress Playground" style="background-image: url('catalog-assets/deck-fence-staining-screenshot.jpg')">
-          <img src="catalog-assets/deck-fence-staining-screenshot.jpg" alt="Live site preview for CedarLine Stain Co." loading="eager" decoding="async">
+          <img src="catalog-assets/deck-fence-staining-screenshot.jpg" alt="Live site preview for CedarLine Stain Co." loading="lazy" decoding="async">
+          <span class="card-number">Demo 05</span>
         </a>
         <div class="content">
           <div class="logo-row">
-            <img src="catalog-assets/deck-fence-staining-logo.png" alt="CedarLine Stain Co. logo" loading="eager" decoding="async">
+            <img src="catalog-assets/deck-fence-staining-logo.png" alt="CedarLine Stain Co. logo" loading="lazy" decoding="async">
             <div class="meta">
               <span class="pill">Status: Approved</span>
               <span class="pill">Pattern: Operator Console</span>
@@ -862,22 +1069,23 @@
           <h2>CedarLine Stain Co.</h2>
           <p>Deck And Fence Staining Service</p>
           <p>Send rail, picket, shade, peeling, and old-finish photos. CedarLine turns them into prep notes, color direction, and a clean stain window.</p>
-          <nav class="links" aria-label="CedarLine Stain Co. links">
+          <div class="links" role="group" aria-label="CedarLine Stain Co. links">
             <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fdeck-fence-staining%2Fblueprint.json" aria-label="Launch CedarLine Stain Co. in WordPress Playground">Launch in Playground</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/deck-fence-staining/blueprint.json" aria-label="Open CedarLine Stain Co. Blueprint JSON">JSON</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/deck-fence-staining/deck-fence-staining-blueprint.zip" aria-label="Download CedarLine Stain Co. Blueprint ZIP">ZIP</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/deck-fence-staining.json" aria-label="Open CedarLine Stain Co. production spec">Spec</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/deck-fence-staining/README.md" aria-label="Open CedarLine Stain Co. README">README</a>
-          </nav>
+          </div>
         </div>
       </article>
       <article class="card">
         <a class="card-preview" href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fdessert-table-bakery-catering%2Fblueprint.json" aria-label="Open Sugarline Dessert Co. in WordPress Playground" style="background-image: url('catalog-assets/dessert-table-bakery-catering-screenshot.jpg')">
-          <img src="catalog-assets/dessert-table-bakery-catering-screenshot.jpg" alt="Live site preview for Sugarline Dessert Co." loading="eager" decoding="async">
+          <img src="catalog-assets/dessert-table-bakery-catering-screenshot.jpg" alt="Live site preview for Sugarline Dessert Co." loading="lazy" decoding="async">
+          <span class="card-number">Demo 06</span>
         </a>
         <div class="content">
           <div class="logo-row">
-            <img src="catalog-assets/dessert-table-bakery-catering-logo.png" alt="Sugarline Dessert Co. logo" loading="eager" decoding="async">
+            <img src="catalog-assets/dessert-table-bakery-catering-logo.png" alt="Sugarline Dessert Co. logo" loading="lazy" decoding="async">
             <div class="meta">
               <span class="pill">Status: Approved</span>
               <span class="pill">Pattern: Editorial Proof Stage</span>
@@ -887,22 +1095,23 @@
           <h2>Sugarline Dessert Co.</h2>
           <p>Dessert Table And Bakery Catering</p>
           <p>Sugarline plans the look, quantities, flavors, setup timing, and serving details so the table feels generous, styled, and easy for guests to enjoy.</p>
-          <nav class="links" aria-label="Sugarline Dessert Co. links">
+          <div class="links" role="group" aria-label="Sugarline Dessert Co. links">
             <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fdessert-table-bakery-catering%2Fblueprint.json" aria-label="Launch Sugarline Dessert Co. in WordPress Playground">Launch in Playground</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/dessert-table-bakery-catering/blueprint.json" aria-label="Open Sugarline Dessert Co. Blueprint JSON">JSON</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/dessert-table-bakery-catering/dessert-table-bakery-catering-blueprint.zip" aria-label="Download Sugarline Dessert Co. Blueprint ZIP">ZIP</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/dessert-table-bakery-catering.json" aria-label="Open Sugarline Dessert Co. production spec">Spec</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/dessert-table-bakery-catering/README.md" aria-label="Open Sugarline Dessert Co. README">README</a>
-          </nav>
+          </div>
         </div>
       </article>
       <article class="card">
         <a class="card-preview" href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fdriveway-sealcoating%2Fblueprint.json" aria-label="Open Blackline Sealcoating in WordPress Playground" style="background-image: url('catalog-assets/driveway-sealcoating-screenshot.jpg')">
-          <img src="catalog-assets/driveway-sealcoating-screenshot.jpg" alt="Live site preview for Blackline Sealcoating" loading="eager" decoding="async">
+          <img src="catalog-assets/driveway-sealcoating-screenshot.jpg" alt="Live site preview for Blackline Sealcoating" loading="lazy" decoding="async">
+          <span class="card-number">Demo 07</span>
         </a>
         <div class="content">
           <div class="logo-row">
-            <img src="catalog-assets/driveway-sealcoating-logo.png" alt="Blackline Sealcoating logo" loading="eager" decoding="async">
+            <img src="catalog-assets/driveway-sealcoating-logo.png" alt="Blackline Sealcoating logo" loading="lazy" decoding="async">
             <div class="meta">
               <span class="pill">Status: Approved</span>
               <span class="pill">Pattern: Split Quote Board</span>
@@ -912,22 +1121,23 @@
           <h2>Blackline Sealcoating</h2>
           <p>Driveway Sealcoating Service</p>
           <p>Blackline cleans, fills small cracks, and seals tired asphalt with tidy passes that make your driveway look cared for before the next rain gets ideas.</p>
-          <nav class="links" aria-label="Blackline Sealcoating links">
+          <div class="links" role="group" aria-label="Blackline Sealcoating links">
             <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fdriveway-sealcoating%2Fblueprint.json" aria-label="Launch Blackline Sealcoating in WordPress Playground">Launch in Playground</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/driveway-sealcoating/blueprint.json" aria-label="Open Blackline Sealcoating Blueprint JSON">JSON</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/driveway-sealcoating/driveway-sealcoating-blueprint.zip" aria-label="Download Blackline Sealcoating Blueprint ZIP">ZIP</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/driveway-sealcoating.json" aria-label="Open Blackline Sealcoating production spec">Spec</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/driveway-sealcoating/README.md" aria-label="Open Blackline Sealcoating README">README</a>
-          </nav>
+          </div>
         </div>
       </article>
       <article class="card">
         <a class="card-preview" href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Ffurniture-refinishing-repair%2Fblueprint.json" aria-label="Open GrainMend Furniture Co. in WordPress Playground" style="background-image: url('catalog-assets/furniture-refinishing-repair-screenshot.jpg')">
-          <img src="catalog-assets/furniture-refinishing-repair-screenshot.jpg" alt="Live site preview for GrainMend Furniture Co." loading="eager" decoding="async">
+          <img src="catalog-assets/furniture-refinishing-repair-screenshot.jpg" alt="Live site preview for GrainMend Furniture Co." loading="lazy" decoding="async">
+          <span class="card-number">Demo 08</span>
         </a>
         <div class="content">
           <div class="logo-row">
-            <img src="catalog-assets/furniture-refinishing-repair-logo.png" alt="GrainMend Furniture Co. logo" loading="eager" decoding="async">
+            <img src="catalog-assets/furniture-refinishing-repair-logo.png" alt="GrainMend Furniture Co. logo" loading="lazy" decoding="async">
             <div class="meta">
               <span class="pill">Status: Approved</span>
               <span class="pill">Pattern: Split Quote Board</span>
@@ -937,22 +1147,23 @@
           <h2>GrainMend Furniture Co.</h2>
           <p>Furniture Refinishing And Repair Service</p>
           <p>GrainMend repairs worn edges, tired finishes, wobbly joints, and beloved wood pieces with a practical photo estimate and a finish plan you can understand.</p>
-          <nav class="links" aria-label="GrainMend Furniture Co. links">
+          <div class="links" role="group" aria-label="GrainMend Furniture Co. links">
             <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Ffurniture-refinishing-repair%2Fblueprint.json" aria-label="Launch GrainMend Furniture Co. in WordPress Playground">Launch in Playground</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/furniture-refinishing-repair/blueprint.json" aria-label="Open GrainMend Furniture Co. Blueprint JSON">JSON</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/furniture-refinishing-repair/furniture-refinishing-repair-blueprint.zip" aria-label="Download GrainMend Furniture Co. Blueprint ZIP">ZIP</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/furniture-refinishing-repair.json" aria-label="Open GrainMend Furniture Co. production spec">Spec</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/furniture-refinishing-repair/README.md" aria-label="Open GrainMend Furniture Co. README">README</a>
-          </nav>
+          </div>
         </div>
       </article>
       <article class="card">
         <a class="card-preview" href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fgarage-organization%2Fblueprint.json" aria-label="Open GridNest Garage in WordPress Playground" style="background-image: url('catalog-assets/garage-organization-screenshot.jpg')">
-          <img src="catalog-assets/garage-organization-screenshot.jpg" alt="Live site preview for GridNest Garage" loading="eager" decoding="async">
+          <img src="catalog-assets/garage-organization-screenshot.jpg" alt="Live site preview for GridNest Garage" loading="lazy" decoding="async">
+          <span class="card-number">Demo 09</span>
         </a>
         <div class="content">
           <div class="logo-row">
-            <img src="catalog-assets/garage-organization-logo.png" alt="GridNest Garage logo" loading="eager" decoding="async">
+            <img src="catalog-assets/garage-organization-logo.png" alt="GridNest Garage logo" loading="lazy" decoding="async">
             <div class="meta">
               <span class="pill">Status: Approved</span>
               <span class="pill">Pattern: Operator Console</span>
@@ -962,22 +1173,23 @@
           <h2>GridNest Garage</h2>
           <p>Garage Organization Service</p>
           <p>GridNest turns the mystery wall, seasonal pile, tool drift, and sports gear shuffle into a clean garage system that still works after real life walks through it.</p>
-          <nav class="links" aria-label="GridNest Garage links">
+          <div class="links" role="group" aria-label="GridNest Garage links">
             <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fgarage-organization%2Fblueprint.json" aria-label="Launch GridNest Garage in WordPress Playground">Launch in Playground</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/garage-organization/blueprint.json" aria-label="Open GridNest Garage Blueprint JSON">JSON</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/garage-organization/garage-organization-blueprint.zip" aria-label="Download GridNest Garage Blueprint ZIP">ZIP</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/garage-organization.json" aria-label="Open GridNest Garage production spec">Spec</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/garage-organization/README.md" aria-label="Open GridNest Garage README">README</a>
-          </nav>
+          </div>
         </div>
       </article>
       <article class="card">
         <a class="card-preview" href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fgutter-cleaning%2Fblueprint.json" aria-label="Open ClearFlow Gutter Care in WordPress Playground" style="background-image: url('catalog-assets/gutter-cleaning-screenshot.jpg')">
-          <img src="catalog-assets/gutter-cleaning-screenshot.jpg" alt="Live site preview for ClearFlow Gutter Care" loading="eager" decoding="async">
+          <img src="catalog-assets/gutter-cleaning-screenshot.jpg" alt="Live site preview for ClearFlow Gutter Care" loading="lazy" decoding="async">
+          <span class="card-number">Demo 10</span>
         </a>
         <div class="content">
           <div class="logo-row">
-            <img src="catalog-assets/gutter-cleaning-logo.png" alt="ClearFlow Gutter Care logo" loading="eager" decoding="async">
+            <img src="catalog-assets/gutter-cleaning-logo.png" alt="ClearFlow Gutter Care logo" loading="lazy" decoding="async">
             <div class="meta">
               <span class="pill">Status: Approved</span>
               <span class="pill">Pattern: Viewport Safe Conversion Shell</span>
@@ -987,22 +1199,23 @@
           <h2>ClearFlow Gutter Care</h2>
           <p>Gutter Cleaning Service</p>
           <p>ClearFlow clears packed leaves, roof grit, seed pods, and surprise sludge so rainwater moves through the gutters instead of auditioning for your foundation.</p>
-          <nav class="links" aria-label="ClearFlow Gutter Care links">
+          <div class="links" role="group" aria-label="ClearFlow Gutter Care links">
             <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fgutter-cleaning%2Fblueprint.json" aria-label="Launch ClearFlow Gutter Care in WordPress Playground">Launch in Playground</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/gutter-cleaning/blueprint.json" aria-label="Open ClearFlow Gutter Care Blueprint JSON">JSON</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/gutter-cleaning/gutter-cleaning-blueprint.zip" aria-label="Download ClearFlow Gutter Care Blueprint ZIP">ZIP</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/gutter-cleaning.json" aria-label="Open ClearFlow Gutter Care production spec">Spec</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/gutter-cleaning/README.md" aria-label="Open ClearFlow Gutter Care README">README</a>
-          </nav>
+          </div>
         </div>
       </article>
       <article class="card">
         <a class="card-preview" href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fheadshot-brand-photography%2Fblueprint.json" aria-label="Open FrameForge Headshots in WordPress Playground" style="background-image: url('catalog-assets/headshot-brand-photography-screenshot.jpg')">
-          <img src="catalog-assets/headshot-brand-photography-screenshot.jpg" alt="Live site preview for FrameForge Headshots" loading="eager" decoding="async">
+          <img src="catalog-assets/headshot-brand-photography-screenshot.jpg" alt="Live site preview for FrameForge Headshots" loading="lazy" decoding="async">
+          <span class="card-number">Demo 11</span>
         </a>
         <div class="content">
           <div class="logo-row">
-            <img src="catalog-assets/headshot-brand-photography-logo.png" alt="FrameForge Headshots logo" loading="eager" decoding="async">
+            <img src="catalog-assets/headshot-brand-photography-logo.png" alt="FrameForge Headshots logo" loading="lazy" decoding="async">
             <div class="meta">
               <span class="pill">Status: Approved</span>
               <span class="pill">Pattern: Receipt Scope Stack</span>
@@ -1012,22 +1225,23 @@
           <h2>FrameForge Headshots</h2>
           <p>Headshot And Brand Photography Studio</p>
           <p>FrameForge guides wardrobe, lighting, expression, usage needs, and delivery so your headshots feel current, credible, and still recognizably you.</p>
-          <nav class="links" aria-label="FrameForge Headshots links">
+          <div class="links" role="group" aria-label="FrameForge Headshots links">
             <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fheadshot-brand-photography%2Fblueprint.json" aria-label="Launch FrameForge Headshots in WordPress Playground">Launch in Playground</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/headshot-brand-photography/blueprint.json" aria-label="Open FrameForge Headshots Blueprint JSON">JSON</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/headshot-brand-photography/headshot-brand-photography-blueprint.zip" aria-label="Download FrameForge Headshots Blueprint ZIP">ZIP</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/headshot-brand-photography.json" aria-label="Open FrameForge Headshots production spec">Spec</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/headshot-brand-photography/README.md" aria-label="Open FrameForge Headshots README">README</a>
-          </nav>
+          </div>
         </div>
       </article>
       <article class="card">
         <a class="card-preview" href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fholiday-light-installation%2Fblueprint.json" aria-label="Open RidgeGlow Holiday Lights in WordPress Playground" style="background-image: url('catalog-assets/holiday-light-installation-screenshot.jpg')">
-          <img src="catalog-assets/holiday-light-installation-screenshot.jpg" alt="Live site preview for RidgeGlow Holiday Lights" loading="eager" decoding="async">
+          <img src="catalog-assets/holiday-light-installation-screenshot.jpg" alt="Live site preview for RidgeGlow Holiday Lights" loading="lazy" decoding="async">
+          <span class="card-number">Demo 12</span>
         </a>
         <div class="content">
           <div class="logo-row">
-            <img src="catalog-assets/holiday-light-installation-logo.png" alt="RidgeGlow Holiday Lights logo" loading="eager" decoding="async">
+            <img src="catalog-assets/holiday-light-installation-logo.png" alt="RidgeGlow Holiday Lights logo" loading="lazy" decoding="async">
             <div class="meta">
               <span class="pill">Status: Approved</span>
               <span class="pill">Pattern: Viewport Safe Conversion Shell</span>
@@ -1037,22 +1251,23 @@
           <h2>RidgeGlow Holiday Lights</h2>
           <p>Holiday Light Installation Service</p>
           <p>RidgeGlow maps rooflines, clips, outlets, timers, ladder access, install week, and takedown labels before the first strand goes up.</p>
-          <nav class="links" aria-label="RidgeGlow Holiday Lights links">
+          <div class="links" role="group" aria-label="RidgeGlow Holiday Lights links">
             <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fholiday-light-installation%2Fblueprint.json" aria-label="Launch RidgeGlow Holiday Lights in WordPress Playground">Launch in Playground</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/holiday-light-installation/blueprint.json" aria-label="Open RidgeGlow Holiday Lights Blueprint JSON">JSON</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/holiday-light-installation/holiday-light-installation-blueprint.zip" aria-label="Download RidgeGlow Holiday Lights Blueprint ZIP">ZIP</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/holiday-light-installation.json" aria-label="Open RidgeGlow Holiday Lights production spec">Spec</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/holiday-light-installation/README.md" aria-label="Open RidgeGlow Holiday Lights README">README</a>
-          </nav>
+          </div>
         </div>
       </article>
       <article class="card">
         <a class="card-preview" href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Finterior-color-consultant%2Fblueprint.json" aria-label="Open HueHaus Color Studio in WordPress Playground" style="background-image: url('catalog-assets/interior-color-consultant-screenshot.jpg')">
-          <img src="catalog-assets/interior-color-consultant-screenshot.jpg" alt="Live site preview for HueHaus Color Studio" loading="eager" decoding="async">
+          <img src="catalog-assets/interior-color-consultant-screenshot.jpg" alt="Live site preview for HueHaus Color Studio" loading="lazy" decoding="async">
+          <span class="card-number">Demo 13</span>
         </a>
         <div class="content">
           <div class="logo-row">
-            <img src="catalog-assets/interior-color-consultant-logo.png" alt="HueHaus Color Studio logo" loading="eager" decoding="async">
+            <img src="catalog-assets/interior-color-consultant-logo.png" alt="HueHaus Color Studio logo" loading="lazy" decoding="async">
             <div class="meta">
               <span class="pill">Status: Approved</span>
               <span class="pill">Pattern: Consultation Story Flow</span>
@@ -1062,22 +1277,23 @@
           <h2>HueHaus Color Studio</h2>
           <p>Interior Color Consultant</p>
           <p>HueHaus helps homeowners narrow paint, trim, cabinet, and room palettes using light, finishes, samples, and how the space really gets lived in.</p>
-          <nav class="links" aria-label="HueHaus Color Studio links">
+          <div class="links" role="group" aria-label="HueHaus Color Studio links">
             <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Finterior-color-consultant%2Fblueprint.json" aria-label="Launch HueHaus Color Studio in WordPress Playground">Launch in Playground</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/interior-color-consultant/blueprint.json" aria-label="Open HueHaus Color Studio Blueprint JSON">JSON</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/interior-color-consultant/interior-color-consultant-blueprint.zip" aria-label="Download HueHaus Color Studio Blueprint ZIP">ZIP</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/interior-color-consultant.json" aria-label="Open HueHaus Color Studio production spec">Spec</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/interior-color-consultant/README.md" aria-label="Open HueHaus Color Studio README">README</a>
-          </nav>
+          </div>
         </div>
       </article>
       <article class="card">
         <a class="card-preview" href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fjunk-removal-donation-hauling%2Fblueprint.json" aria-label="Open ClearPath in WordPress Playground" style="background-image: url('catalog-assets/junk-removal-donation-hauling-screenshot.jpg')">
-          <img src="catalog-assets/junk-removal-donation-hauling-screenshot.jpg" alt="Live site preview for ClearPath" loading="eager" decoding="async">
+          <img src="catalog-assets/junk-removal-donation-hauling-screenshot.jpg" alt="Live site preview for ClearPath" loading="lazy" decoding="async">
+          <span class="card-number">Demo 14</span>
         </a>
         <div class="content">
           <div class="logo-row">
-            <img src="catalog-assets/junk-removal-donation-hauling-logo.png" alt="ClearPath logo" loading="eager" decoding="async">
+            <img src="catalog-assets/junk-removal-donation-hauling-logo.png" alt="ClearPath logo" loading="lazy" decoding="async">
             <div class="meta">
               <span class="pill">Status: Approved</span>
               <span class="pill">Pattern: Side Rail Service Story</span>
@@ -1087,22 +1303,23 @@
           <h2>ClearPath</h2>
           <p>Junk Removal And Donation Hauling Service</p>
           <p>ClearPath hauls bulky items, garage leftovers, move-out piles, and donation-worthy goods with fast photo estimates, tidy crews, and a sweep-up finish.</p>
-          <nav class="links" aria-label="ClearPath links">
+          <div class="links" role="group" aria-label="ClearPath links">
             <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fjunk-removal-donation-hauling%2Fblueprint.json" aria-label="Launch ClearPath in WordPress Playground">Launch in Playground</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/junk-removal-donation-hauling/blueprint.json" aria-label="Open ClearPath Blueprint JSON">JSON</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/junk-removal-donation-hauling/junk-removal-donation-hauling-blueprint.zip" aria-label="Download ClearPath Blueprint ZIP">ZIP</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/junk-removal-donation-hauling.json" aria-label="Open ClearPath production spec">Spec</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/junk-removal-donation-hauling/README.md" aria-label="Open ClearPath README">README</a>
-          </nav>
+          </div>
         </div>
       </article>
       <article class="card">
         <a class="card-preview" href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Flawn-care-service%2Fblueprint.json" aria-label="Open GreenStripe Lawn Care in WordPress Playground" style="background-image: url('catalog-assets/lawn-care-service-screenshot.jpg')">
-          <img src="catalog-assets/lawn-care-service-screenshot.jpg" alt="Live site preview for GreenStripe Lawn Care" loading="eager" decoding="async">
+          <img src="catalog-assets/lawn-care-service-screenshot.jpg" alt="Live site preview for GreenStripe Lawn Care" loading="lazy" decoding="async">
+          <span class="card-number">Demo 15</span>
         </a>
         <div class="content">
           <div class="logo-row">
-            <img src="catalog-assets/lawn-care-service-logo.png" alt="GreenStripe Lawn Care logo" loading="eager" decoding="async">
+            <img src="catalog-assets/lawn-care-service-logo.png" alt="GreenStripe Lawn Care logo" loading="lazy" decoding="async">
             <div class="meta">
               <span class="pill">Status: Approved</span>
               <span class="pill">Pattern: Route Status Board</span>
@@ -1112,22 +1329,23 @@
           <h2>GreenStripe Lawn Care</h2>
           <p>Lawn Care Service</p>
           <p>GreenStripe runs tidy neighborhood routes for mowing, edging, bed touch-ups, and post-visit gate checks, so your yard looks handled before the weekend shows up.</p>
-          <nav class="links" aria-label="GreenStripe Lawn Care links">
+          <div class="links" role="group" aria-label="GreenStripe Lawn Care links">
             <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Flawn-care-service%2Fblueprint.json" aria-label="Launch GreenStripe Lawn Care in WordPress Playground">Launch in Playground</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/lawn-care-service/blueprint.json" aria-label="Open GreenStripe Lawn Care Blueprint JSON">JSON</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/lawn-care-service/lawn-care-service-blueprint.zip" aria-label="Download GreenStripe Lawn Care Blueprint ZIP">ZIP</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/lawn-care-service.json" aria-label="Open GreenStripe Lawn Care production spec">Spec</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/lawn-care-service/README.md" aria-label="Open GreenStripe Lawn Care README">README</a>
-          </nav>
+          </div>
         </div>
       </article>
       <article class="card">
         <a class="card-preview" href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fmicro-wedding-florals%2Fblueprint.json" aria-label="Open VowSprig Florals in WordPress Playground" style="background-image: url('catalog-assets/micro-wedding-florals-screenshot.jpg')">
-          <img src="catalog-assets/micro-wedding-florals-screenshot.jpg" alt="Live site preview for VowSprig Florals" loading="eager" decoding="async">
+          <img src="catalog-assets/micro-wedding-florals-screenshot.jpg" alt="Live site preview for VowSprig Florals" loading="lazy" decoding="async">
+          <span class="card-number">Demo 16</span>
         </a>
         <div class="content">
           <div class="logo-row">
-            <img src="catalog-assets/micro-wedding-florals-logo.png" alt="VowSprig Florals logo" loading="eager" decoding="async">
+            <img src="catalog-assets/micro-wedding-florals-logo.png" alt="VowSprig Florals logo" loading="lazy" decoding="async">
             <div class="meta">
               <span class="pill">Status: Approved</span>
               <span class="pill">Pattern: Consultation Story Flow</span>
@@ -1137,22 +1355,23 @@
           <h2>VowSprig Florals</h2>
           <p>Micro-wedding Floral Design</p>
           <p>VowSprig shapes bouquets, personals, bud vases, and small ceremony moments into a clear palette, setup plan, and floral scope that fits intimate celebrations.</p>
-          <nav class="links" aria-label="VowSprig Florals links">
+          <div class="links" role="group" aria-label="VowSprig Florals links">
             <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fmicro-wedding-florals%2Fblueprint.json" aria-label="Launch VowSprig Florals in WordPress Playground">Launch in Playground</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/micro-wedding-florals/blueprint.json" aria-label="Open VowSprig Florals Blueprint JSON">JSON</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/micro-wedding-florals/micro-wedding-florals-blueprint.zip" aria-label="Download VowSprig Florals Blueprint ZIP">ZIP</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/micro-wedding-florals.json" aria-label="Open VowSprig Florals production spec">Spec</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/micro-wedding-florals/README.md" aria-label="Open VowSprig Florals README">README</a>
-          </nav>
+          </div>
         </div>
       </article>
       <article class="card">
         <a class="card-preview" href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fmobile-auto-detailing%2Fblueprint.json" aria-label="Open ShineShift Mobile Detail in WordPress Playground" style="background-image: url('catalog-assets/mobile-auto-detailing-screenshot.jpg')">
-          <img src="catalog-assets/mobile-auto-detailing-screenshot.jpg" alt="Live site preview for ShineShift Mobile Detail" loading="eager" decoding="async">
+          <img src="catalog-assets/mobile-auto-detailing-screenshot.jpg" alt="Live site preview for ShineShift Mobile Detail" loading="lazy" decoding="async">
+          <span class="card-number">Demo 17</span>
         </a>
         <div class="content">
           <div class="logo-row">
-            <img src="catalog-assets/mobile-auto-detailing-logo.png" alt="ShineShift Mobile Detail logo" loading="eager" decoding="async">
+            <img src="catalog-assets/mobile-auto-detailing-logo.png" alt="ShineShift Mobile Detail logo" loading="lazy" decoding="async">
             <div class="meta">
               <span class="pill">Status: Approved</span>
               <span class="pill">Pattern: Mobile Action Dock</span>
@@ -1162,22 +1381,23 @@
           <h2>ShineShift Mobile Detail</h2>
           <p>Mobile Auto Detailing Service</p>
           <p>ShineShift brings foam, filtration, careful towels, interior tools, and a clean finish routine to your home or office without turning the curb into chaos.</p>
-          <nav class="links" aria-label="ShineShift Mobile Detail links">
+          <div class="links" role="group" aria-label="ShineShift Mobile Detail links">
             <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fmobile-auto-detailing%2Fblueprint.json" aria-label="Launch ShineShift Mobile Detail in WordPress Playground">Launch in Playground</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/mobile-auto-detailing/blueprint.json" aria-label="Open ShineShift Mobile Detail Blueprint JSON">JSON</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/mobile-auto-detailing/mobile-auto-detailing-blueprint.zip" aria-label="Download ShineShift Mobile Detail Blueprint ZIP">ZIP</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/mobile-auto-detailing.json" aria-label="Open ShineShift Mobile Detail production spec">Spec</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/mobile-auto-detailing/README.md" aria-label="Open ShineShift Mobile Detail README">README</a>
-          </nav>
+          </div>
         </div>
       </article>
       <article class="card">
         <a class="card-preview" href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fmobile-bicycle-repair%2Fblueprint.json" aria-label="Open TuneLoop Bike Repair in WordPress Playground" style="background-image: url('catalog-assets/mobile-bicycle-repair-screenshot.jpg')">
-          <img src="catalog-assets/mobile-bicycle-repair-screenshot.jpg" alt="Live site preview for TuneLoop Bike Repair" loading="eager" decoding="async">
+          <img src="catalog-assets/mobile-bicycle-repair-screenshot.jpg" alt="Live site preview for TuneLoop Bike Repair" loading="lazy" decoding="async">
+          <span class="card-number">Demo 18</span>
         </a>
         <div class="content">
           <div class="logo-row">
-            <img src="catalog-assets/mobile-bicycle-repair-logo.png" alt="TuneLoop Bike Repair logo" loading="eager" decoding="async">
+            <img src="catalog-assets/mobile-bicycle-repair-logo.png" alt="TuneLoop Bike Repair logo" loading="lazy" decoding="async">
             <div class="meta">
               <span class="pill">Status: Approved</span>
               <span class="pill">Pattern: Route Status Board</span>
@@ -1187,22 +1407,23 @@
           <h2>TuneLoop Bike Repair</h2>
           <p>Mobile Bicycle Repair Service</p>
           <p>TuneLoop brings the stand, tools, parts check, and calm mechanic energy to your curb, office, or building bike room so small problems stop stealing whole weekends.</p>
-          <nav class="links" aria-label="TuneLoop Bike Repair links">
+          <div class="links" role="group" aria-label="TuneLoop Bike Repair links">
             <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fmobile-bicycle-repair%2Fblueprint.json" aria-label="Launch TuneLoop Bike Repair in WordPress Playground">Launch in Playground</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/mobile-bicycle-repair/blueprint.json" aria-label="Open TuneLoop Bike Repair Blueprint JSON">JSON</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/mobile-bicycle-repair/mobile-bicycle-repair-blueprint.zip" aria-label="Download TuneLoop Bike Repair Blueprint ZIP">ZIP</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/mobile-bicycle-repair.json" aria-label="Open TuneLoop Bike Repair production spec">Spec</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/mobile-bicycle-repair/README.md" aria-label="Open TuneLoop Bike Repair README">README</a>
-          </nav>
+          </div>
         </div>
       </article>
       <article class="card">
         <a class="card-preview" href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fmobile-knife-sharpening%2Fblueprint.json" aria-label="Open EdgeRoute Sharpening in WordPress Playground" style="background-image: url('catalog-assets/mobile-knife-sharpening-screenshot.jpg')">
-          <img src="catalog-assets/mobile-knife-sharpening-screenshot.jpg" alt="Live site preview for EdgeRoute Sharpening" loading="eager" decoding="async">
+          <img src="catalog-assets/mobile-knife-sharpening-screenshot.jpg" alt="Live site preview for EdgeRoute Sharpening" loading="lazy" decoding="async">
+          <span class="card-number">Demo 19</span>
         </a>
         <div class="content">
           <div class="logo-row">
-            <img src="catalog-assets/mobile-knife-sharpening-logo.png" alt="EdgeRoute Sharpening logo" loading="eager" decoding="async">
+            <img src="catalog-assets/mobile-knife-sharpening-logo.png" alt="EdgeRoute Sharpening logo" loading="lazy" decoding="async">
             <div class="meta">
               <span class="pill">Status: Approved</span>
               <span class="pill">Pattern: Route Status Board</span>
@@ -1212,22 +1433,23 @@
           <h2>EdgeRoute Sharpening</h2>
           <p>Mobile Knife Sharpening Service</p>
           <p>EdgeRoute brings a tidy bench to route stops, refreshes hardworking kitchen edges, and sends every blade home with simple care notes.</p>
-          <nav class="links" aria-label="EdgeRoute Sharpening links">
+          <div class="links" role="group" aria-label="EdgeRoute Sharpening links">
             <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fmobile-knife-sharpening%2Fblueprint.json" aria-label="Launch EdgeRoute Sharpening in WordPress Playground">Launch in Playground</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/mobile-knife-sharpening/blueprint.json" aria-label="Open EdgeRoute Sharpening Blueprint JSON">JSON</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/mobile-knife-sharpening/mobile-knife-sharpening-blueprint.zip" aria-label="Download EdgeRoute Sharpening Blueprint ZIP">ZIP</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/mobile-knife-sharpening.json" aria-label="Open EdgeRoute Sharpening production spec">Spec</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/mobile-knife-sharpening/README.md" aria-label="Open EdgeRoute Sharpening README">README</a>
-          </nav>
+          </div>
         </div>
       </article>
       <article class="card">
         <a class="card-preview" href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fmocktail-beverage-cart%2Fblueprint.json" aria-label="Open SpritzLoop Beverage Cart in WordPress Playground" style="background-image: url('catalog-assets/mocktail-beverage-cart-screenshot.jpg')">
-          <img src="catalog-assets/mocktail-beverage-cart-screenshot.jpg" alt="Live site preview for SpritzLoop Beverage Cart" loading="eager" decoding="async">
+          <img src="catalog-assets/mocktail-beverage-cart-screenshot.jpg" alt="Live site preview for SpritzLoop Beverage Cart" loading="lazy" decoding="async">
+          <span class="card-number">Demo 20</span>
         </a>
         <div class="content">
           <div class="logo-row">
-            <img src="catalog-assets/mocktail-beverage-cart-logo.png" alt="SpritzLoop Beverage Cart logo" loading="eager" decoding="async">
+            <img src="catalog-assets/mocktail-beverage-cart-logo.png" alt="SpritzLoop Beverage Cart logo" loading="lazy" decoding="async">
             <div class="meta">
               <span class="pill">Status: Approved</span>
               <span class="pill">Pattern: Package Menu Board</span>
@@ -1237,22 +1459,23 @@
           <h2>SpritzLoop Beverage Cart</h2>
           <p>Mocktail And Beverage Cart Service</p>
           <p>SpritzLoop brings zero-proof drinks, citrus, herbs, glassware, and a tidy cart setup for events that want the fun without alcohol.</p>
-          <nav class="links" aria-label="SpritzLoop Beverage Cart links">
+          <div class="links" role="group" aria-label="SpritzLoop Beverage Cart links">
             <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fmocktail-beverage-cart%2Fblueprint.json" aria-label="Launch SpritzLoop Beverage Cart in WordPress Playground">Launch in Playground</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/mocktail-beverage-cart/blueprint.json" aria-label="Open SpritzLoop Beverage Cart Blueprint JSON">JSON</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/mocktail-beverage-cart/mocktail-beverage-cart-blueprint.zip" aria-label="Download SpritzLoop Beverage Cart Blueprint ZIP">ZIP</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/mocktail-beverage-cart.json" aria-label="Open SpritzLoop Beverage Cart production spec">Spec</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/mocktail-beverage-cart/README.md" aria-label="Open SpritzLoop Beverage Cart README">README</a>
-          </nav>
+          </div>
         </div>
       </article>
       <article class="card">
         <a class="card-preview" href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fmural-window-lettering-artist%2Fblueprint.json" aria-label="Open LetterLoom Studio in WordPress Playground" style="background-image: url('catalog-assets/mural-window-lettering-artist-screenshot.jpg')">
-          <img src="catalog-assets/mural-window-lettering-artist-screenshot.jpg" alt="Live site preview for LetterLoom Studio" loading="eager" decoding="async">
+          <img src="catalog-assets/mural-window-lettering-artist-screenshot.jpg" alt="Live site preview for LetterLoom Studio" loading="lazy" decoding="async">
+          <span class="card-number">Demo 21</span>
         </a>
         <div class="content">
           <div class="logo-row">
-            <img src="catalog-assets/mural-window-lettering-artist-logo.png" alt="LetterLoom Studio logo" loading="eager" decoding="async">
+            <img src="catalog-assets/mural-window-lettering-artist-logo.png" alt="LetterLoom Studio logo" loading="lazy" decoding="async">
             <div class="meta">
               <span class="pill">Status: Approved</span>
               <span class="pill">Pattern: Operator Console</span>
@@ -1262,22 +1485,23 @@
           <h2>LetterLoom Studio</h2>
           <p>Mural And Window Lettering Artist</p>
           <p>LetterLoom turns surface photos, scale notes, and brand color into painted storefront moments with clean install timing.</p>
-          <nav class="links" aria-label="LetterLoom Studio links">
+          <div class="links" role="group" aria-label="LetterLoom Studio links">
             <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fmural-window-lettering-artist%2Fblueprint.json" aria-label="Launch LetterLoom Studio in WordPress Playground">Launch in Playground</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/mural-window-lettering-artist/blueprint.json" aria-label="Open LetterLoom Studio Blueprint JSON">JSON</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/mural-window-lettering-artist/mural-window-lettering-artist-blueprint.zip" aria-label="Download LetterLoom Studio Blueprint ZIP">ZIP</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/mural-window-lettering-artist.json" aria-label="Open LetterLoom Studio production spec">Spec</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/mural-window-lettering-artist/README.md" aria-label="Open LetterLoom Studio README">README</a>
-          </nav>
+          </div>
         </div>
       </article>
       <article class="card">
         <a class="card-preview" href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fpet-portrait-photography%2Fblueprint.json" aria-label="Open BrightPaw Portraits in WordPress Playground" style="background-image: url('catalog-assets/pet-portrait-photography-screenshot.jpg')">
-          <img src="catalog-assets/pet-portrait-photography-screenshot.jpg" alt="Live site preview for BrightPaw Portraits" loading="eager" decoding="async">
+          <img src="catalog-assets/pet-portrait-photography-screenshot.jpg" alt="Live site preview for BrightPaw Portraits" loading="lazy" decoding="async">
+          <span class="card-number">Demo 22</span>
         </a>
         <div class="content">
           <div class="logo-row">
-            <img src="catalog-assets/pet-portrait-photography-logo.png" alt="BrightPaw Portraits logo" loading="eager" decoding="async">
+            <img src="catalog-assets/pet-portrait-photography-logo.png" alt="BrightPaw Portraits logo" loading="lazy" decoding="async">
             <div class="meta">
               <span class="pill">Status: Approved</span>
               <span class="pill">Pattern: Gallery Mosaic Proof</span>
@@ -1287,22 +1511,23 @@
           <h2>BrightPaw Portraits</h2>
           <p>Pet Portrait Photography Studio</p>
           <p>Slow, treat-friendly studio sessions catch the tiny looks that make your pet unmistakably yours.</p>
-          <nav class="links" aria-label="BrightPaw Portraits links">
+          <div class="links" role="group" aria-label="BrightPaw Portraits links">
             <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fpet-portrait-photography%2Fblueprint.json" aria-label="Launch BrightPaw Portraits in WordPress Playground">Launch in Playground</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/pet-portrait-photography/blueprint.json" aria-label="Open BrightPaw Portraits Blueprint JSON">JSON</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/pet-portrait-photography/pet-portrait-photography-blueprint.zip" aria-label="Download BrightPaw Portraits Blueprint ZIP">ZIP</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/pet-portrait-photography.json" aria-label="Open BrightPaw Portraits production spec">Spec</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/pet-portrait-photography/README.md" aria-label="Open BrightPaw Portraits README">README</a>
-          </nav>
+          </div>
         </div>
       </article>
       <article class="card">
         <a class="card-preview" href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fphoto-booth-rental%2Fblueprint.json" aria-label="Open FlashDash Photo Booth in WordPress Playground" style="background-image: url('catalog-assets/photo-booth-rental-screenshot.jpg')">
-          <img src="catalog-assets/photo-booth-rental-screenshot.jpg" alt="Live site preview for FlashDash Photo Booth" loading="eager" decoding="async">
+          <img src="catalog-assets/photo-booth-rental-screenshot.jpg" alt="Live site preview for FlashDash Photo Booth" loading="lazy" decoding="async">
+          <span class="card-number">Demo 23</span>
         </a>
         <div class="content">
           <div class="logo-row">
-            <img src="catalog-assets/photo-booth-rental-logo.png" alt="FlashDash Photo Booth logo" loading="eager" decoding="async">
+            <img src="catalog-assets/photo-booth-rental-logo.png" alt="FlashDash Photo Booth logo" loading="lazy" decoding="async">
             <div class="meta">
               <span class="pill">Status: Approved</span>
               <span class="pill">Pattern: Mobile Action Dock</span>
@@ -1312,22 +1537,23 @@
           <h2>FlashDash Photo Booth</h2>
           <p>Photo Booth Rental Service</p>
           <p>FlashDash brings a sharp booth setup, clean props, backdrop options, and a host-friendly arrival plan so the photo corner never becomes a mystery table.</p>
-          <nav class="links" aria-label="FlashDash Photo Booth links">
+          <div class="links" role="group" aria-label="FlashDash Photo Booth links">
             <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fphoto-booth-rental%2Fblueprint.json" aria-label="Launch FlashDash Photo Booth in WordPress Playground">Launch in Playground</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/photo-booth-rental/blueprint.json" aria-label="Open FlashDash Photo Booth Blueprint JSON">JSON</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/photo-booth-rental/photo-booth-rental-blueprint.zip" aria-label="Download FlashDash Photo Booth Blueprint ZIP">ZIP</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/photo-booth-rental.json" aria-label="Open FlashDash Photo Booth production spec">Spec</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/photo-booth-rental/README.md" aria-label="Open FlashDash Photo Booth README">README</a>
-          </nav>
+          </div>
         </div>
       </article>
       <article class="card">
         <a class="card-preview" href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fpicnic-proposal-setup%2Fblueprint.json" aria-label="Open Linen &amp; Lantern Setups in WordPress Playground" style="background-image: url('catalog-assets/picnic-proposal-setup-screenshot.jpg')">
-          <img src="catalog-assets/picnic-proposal-setup-screenshot.jpg" alt="Live site preview for Linen &amp; Lantern Setups" loading="eager" decoding="async">
+          <img src="catalog-assets/picnic-proposal-setup-screenshot.jpg" alt="Live site preview for Linen &amp; Lantern Setups" loading="lazy" decoding="async">
+          <span class="card-number">Demo 24</span>
         </a>
         <div class="content">
           <div class="logo-row">
-            <img src="catalog-assets/picnic-proposal-setup-logo.png" alt="Linen &amp; Lantern Setups logo" loading="eager" decoding="async">
+            <img src="catalog-assets/picnic-proposal-setup-logo.png" alt="Linen &amp; Lantern Setups logo" loading="lazy" decoding="async">
             <div class="meta">
               <span class="pill">Status: Approved</span>
               <span class="pill">Pattern: Editorial Proof Stage</span>
@@ -1337,22 +1563,23 @@
           <h2>Linen &amp; Lantern Setups</h2>
           <p>Picnic And Proposal Setup Service</p>
           <p>Linen &amp; Lantern creates styled picnic and proposal moments with linens, florals, cushions, timing notes, access planning, and a calm backup plan if weather gets theatrical.</p>
-          <nav class="links" aria-label="Linen &amp; Lantern Setups links">
+          <div class="links" role="group" aria-label="Linen &amp; Lantern Setups links">
             <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fpicnic-proposal-setup%2Fblueprint.json" aria-label="Launch Linen &amp; Lantern Setups in WordPress Playground">Launch in Playground</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/picnic-proposal-setup/blueprint.json" aria-label="Open Linen &amp; Lantern Setups Blueprint JSON">JSON</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/picnic-proposal-setup/picnic-proposal-setup-blueprint.zip" aria-label="Download Linen &amp; Lantern Setups Blueprint ZIP">ZIP</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/picnic-proposal-setup.json" aria-label="Open Linen &amp; Lantern Setups production spec">Spec</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/picnic-proposal-setup/README.md" aria-label="Open Linen &amp; Lantern Setups README">README</a>
-          </nav>
+          </div>
         </div>
       </article>
       <article class="card">
         <a class="card-preview" href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fplant-care%2Fblueprint.json" aria-label="Open LeafDesk Plant Care in WordPress Playground" style="background-image: url('catalog-assets/plant-care-screenshot.jpg')">
-          <img src="catalog-assets/plant-care-screenshot.jpg" alt="Live site preview for LeafDesk Plant Care" loading="eager" decoding="async">
+          <img src="catalog-assets/plant-care-screenshot.jpg" alt="Live site preview for LeafDesk Plant Care" loading="lazy" decoding="async">
+          <span class="card-number">Demo 25</span>
         </a>
         <div class="content">
           <div class="logo-row">
-            <img src="catalog-assets/plant-care-logo.png" alt="LeafDesk Plant Care logo" loading="eager" decoding="async">
+            <img src="catalog-assets/plant-care-logo.png" alt="LeafDesk Plant Care logo" loading="lazy" decoding="async">
             <div class="meta">
               <span class="pill">Status: Approved</span>
               <span class="pill">Pattern: Consultation Story Flow</span>
@@ -1362,22 +1589,23 @@
           <h2>LeafDesk Plant Care</h2>
           <p>Houseplant And Office Plant Care Service</p>
           <p>LeafDesk reads light, soil feel, drainage, pruning needs, and plant stress before setting a care rhythm for calmer homes and offices.</p>
-          <nav class="links" aria-label="LeafDesk Plant Care links">
+          <div class="links" role="group" aria-label="LeafDesk Plant Care links">
             <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fplant-care%2Fblueprint.json" aria-label="Launch LeafDesk Plant Care in WordPress Playground">Launch in Playground</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/plant-care/blueprint.json" aria-label="Open LeafDesk Plant Care Blueprint JSON">JSON</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/plant-care/plant-care-blueprint.zip" aria-label="Download LeafDesk Plant Care Blueprint ZIP">ZIP</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/plant-care.json" aria-label="Open LeafDesk Plant Care production spec">Spec</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/plant-care/README.md" aria-label="Open LeafDesk Plant Care README">README</a>
-          </nav>
+          </div>
         </div>
       </article>
       <article class="card">
         <a class="card-preview" href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fpollinator-garden-refresh%2Fblueprint.json" aria-label="Open BloomRoute Garden Studio in WordPress Playground" style="background-image: url('catalog-assets/pollinator-garden-refresh-screenshot.jpg')">
-          <img src="catalog-assets/pollinator-garden-refresh-screenshot.jpg" alt="Live site preview for BloomRoute Garden Studio" loading="eager" decoding="async">
+          <img src="catalog-assets/pollinator-garden-refresh-screenshot.jpg" alt="Live site preview for BloomRoute Garden Studio" loading="lazy" decoding="async">
+          <span class="card-number">Demo 26</span>
         </a>
         <div class="content">
           <div class="logo-row">
-            <img src="catalog-assets/pollinator-garden-refresh-logo.png" alt="BloomRoute Garden Studio logo" loading="eager" decoding="async">
+            <img src="catalog-assets/pollinator-garden-refresh-logo.png" alt="BloomRoute Garden Studio logo" loading="lazy" decoding="async">
             <div class="meta">
               <span class="pill">Status: Approved</span>
               <span class="pill">Pattern: Route Status Board</span>
@@ -1387,22 +1615,23 @@
           <h2>BloomRoute Garden Studio</h2>
           <p>Pollinator Garden Refresh Service</p>
           <p>BloomRoute refreshes front-yard beds with native flowers, soft grasses, tidy edges, and planting plans that make bees happy without making your walkway disappear.</p>
-          <nav class="links" aria-label="BloomRoute Garden Studio links">
+          <div class="links" role="group" aria-label="BloomRoute Garden Studio links">
             <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fpollinator-garden-refresh%2Fblueprint.json" aria-label="Launch BloomRoute Garden Studio in WordPress Playground">Launch in Playground</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/pollinator-garden-refresh/blueprint.json" aria-label="Open BloomRoute Garden Studio Blueprint JSON">JSON</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/pollinator-garden-refresh/pollinator-garden-refresh-blueprint.zip" aria-label="Download BloomRoute Garden Studio Blueprint ZIP">ZIP</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/pollinator-garden-refresh.json" aria-label="Open BloomRoute Garden Studio production spec">Spec</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/pollinator-garden-refresh/README.md" aria-label="Open BloomRoute Garden Studio README">README</a>
-          </nav>
+          </div>
         </div>
       </article>
       <article class="card">
         <a class="card-preview" href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fpool-cleaning%2Fblueprint.json" aria-label="Open BlueLane Pool Care in WordPress Playground" style="background-image: url('catalog-assets/pool-cleaning-screenshot.jpg')">
-          <img src="catalog-assets/pool-cleaning-screenshot.jpg" alt="Live site preview for BlueLane Pool Care" loading="eager" decoding="async">
+          <img src="catalog-assets/pool-cleaning-screenshot.jpg" alt="Live site preview for BlueLane Pool Care" loading="lazy" decoding="async">
+          <span class="card-number">Demo 27</span>
         </a>
         <div class="content">
           <div class="logo-row">
-            <img src="catalog-assets/pool-cleaning-logo.png" alt="BlueLane Pool Care logo" loading="eager" decoding="async">
+            <img src="catalog-assets/pool-cleaning-logo.png" alt="BlueLane Pool Care logo" loading="lazy" decoding="async">
             <div class="meta">
               <span class="pill">Status: Approved</span>
               <span class="pill">Pattern: Operator Console</span>
@@ -1412,22 +1641,23 @@
           <h2>BlueLane Pool Care</h2>
           <p>Pool Cleaning Service</p>
           <p>BlueLane keeps the skim, brush, baskets, and chemistry on a simple route so the pool is ready before anyone asks if it is safe to jump in.</p>
-          <nav class="links" aria-label="BlueLane Pool Care links">
+          <div class="links" role="group" aria-label="BlueLane Pool Care links">
             <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fpool-cleaning%2Fblueprint.json" aria-label="Launch BlueLane Pool Care in WordPress Playground">Launch in Playground</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/pool-cleaning/blueprint.json" aria-label="Open BlueLane Pool Care Blueprint JSON">JSON</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/pool-cleaning/pool-cleaning-blueprint.zip" aria-label="Download BlueLane Pool Care Blueprint ZIP">ZIP</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/pool-cleaning.json" aria-label="Open BlueLane Pool Care production spec">Spec</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/pool-cleaning/README.md" aria-label="Open BlueLane Pool Care README">README</a>
-          </nav>
+          </div>
         </div>
       </article>
       <article class="card">
         <a class="card-preview" href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fpressure-washing-service%2Fblueprint.json" aria-label="Open BrightJet Exterior Cleaning in WordPress Playground" style="background-image: url('catalog-assets/pressure-washing-service-screenshot.jpg')">
-          <img src="catalog-assets/pressure-washing-service-screenshot.jpg" alt="Live site preview for BrightJet Exterior Cleaning" loading="eager" decoding="async">
+          <img src="catalog-assets/pressure-washing-service-screenshot.jpg" alt="Live site preview for BrightJet Exterior Cleaning" loading="lazy" decoding="async">
+          <span class="card-number">Demo 28</span>
         </a>
         <div class="content">
           <div class="logo-row">
-            <img src="catalog-assets/pressure-washing-service-logo.png" alt="BrightJet Exterior Cleaning logo" loading="eager" decoding="async">
+            <img src="catalog-assets/pressure-washing-service-logo.png" alt="BrightJet Exterior Cleaning logo" loading="lazy" decoding="async">
             <div class="meta">
               <span class="pill">Status: Approved</span>
               <span class="pill">Pattern: Split Quote Board</span>
@@ -1437,22 +1667,23 @@
           <h2>BrightJet Exterior Cleaning</h2>
           <p>Pressure Washing And Soft Washing Service</p>
           <p>BrightJet cleans driveways, siding, patios, fences, and storefronts with smart pressure, soft-wash care, and crews who treat your place like it has company coming.</p>
-          <nav class="links" aria-label="BrightJet Exterior Cleaning links">
+          <div class="links" role="group" aria-label="BrightJet Exterior Cleaning links">
             <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fpressure-washing-service%2Fblueprint.json" aria-label="Launch BrightJet Exterior Cleaning in WordPress Playground">Launch in Playground</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/pressure-washing-service/blueprint.json" aria-label="Open BrightJet Exterior Cleaning Blueprint JSON">JSON</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/pressure-washing-service/pressure-washing-service-blueprint.zip" aria-label="Download BrightJet Exterior Cleaning Blueprint ZIP">ZIP</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/pressure-washing-service.json" aria-label="Open BrightJet Exterior Cleaning production spec">Spec</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/pressure-washing-service/README.md" aria-label="Open BrightJet Exterior Cleaning README">README</a>
-          </nav>
+          </div>
         </div>
       </article>
       <article class="card">
         <a class="card-preview" href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fsenior-downsizing-move-prep%2Fblueprint.json" aria-label="Open KindMove Downsizing in WordPress Playground" style="background-image: url('catalog-assets/senior-downsizing-move-prep-screenshot.jpg')">
-          <img src="catalog-assets/senior-downsizing-move-prep-screenshot.jpg" alt="Live site preview for KindMove Downsizing" loading="eager" decoding="async">
+          <img src="catalog-assets/senior-downsizing-move-prep-screenshot.jpg" alt="Live site preview for KindMove Downsizing" loading="lazy" decoding="async">
+          <span class="card-number">Demo 29</span>
         </a>
         <div class="content">
           <div class="logo-row">
-            <img src="catalog-assets/senior-downsizing-move-prep-logo.png" alt="KindMove Downsizing logo" loading="eager" decoding="async">
+            <img src="catalog-assets/senior-downsizing-move-prep-logo.png" alt="KindMove Downsizing logo" loading="lazy" decoding="async">
             <div class="meta">
               <span class="pill">Status: Approved</span>
               <span class="pill">Pattern: Consultation Story Flow</span>
@@ -1462,22 +1693,23 @@
           <h2>KindMove Downsizing</h2>
           <p>Senior Downsizing And Move Prep Service</p>
           <p>KindMove helps families sort, label, donate, pack, and plan the next chapter with steady hands, clear categories, and room for the stories that come with the boxes.</p>
-          <nav class="links" aria-label="KindMove Downsizing links">
+          <div class="links" role="group" aria-label="KindMove Downsizing links">
             <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fsenior-downsizing-move-prep%2Fblueprint.json" aria-label="Launch KindMove Downsizing in WordPress Playground">Launch in Playground</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/senior-downsizing-move-prep/blueprint.json" aria-label="Open KindMove Downsizing Blueprint JSON">JSON</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/senior-downsizing-move-prep/senior-downsizing-move-prep-blueprint.zip" aria-label="Download KindMove Downsizing Blueprint ZIP">ZIP</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/senior-downsizing-move-prep.json" aria-label="Open KindMove Downsizing production spec">Spec</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/senior-downsizing-move-prep/README.md" aria-label="Open KindMove Downsizing README">README</a>
-          </nav>
+          </div>
         </div>
       </article>
       <article class="card">
         <a class="card-preview" href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fsmall-event-dj-sound%2Fblueprint.json" aria-label="Open SoundNest Events in WordPress Playground" style="background-image: url('catalog-assets/small-event-dj-sound-screenshot.jpg')">
-          <img src="catalog-assets/small-event-dj-sound-screenshot.jpg" alt="Live site preview for SoundNest Events" loading="eager" decoding="async">
+          <img src="catalog-assets/small-event-dj-sound-screenshot.jpg" alt="Live site preview for SoundNest Events" loading="lazy" decoding="async">
+          <span class="card-number">Demo 30</span>
         </a>
         <div class="content">
           <div class="logo-row">
-            <img src="catalog-assets/small-event-dj-sound-logo.png" alt="SoundNest Events logo" loading="eager" decoding="async">
+            <img src="catalog-assets/small-event-dj-sound-logo.png" alt="SoundNest Events logo" loading="lazy" decoding="async">
             <div class="meta">
               <span class="pill">Status: Approved</span>
               <span class="pill">Pattern: Side Rail Service Story</span>
@@ -1487,22 +1719,23 @@
           <h2>SoundNest Events</h2>
           <p>Small-event DJ And Sound Service</p>
           <p>SoundNest handles music flow, microphones, compact speakers, clean cables, and readable volume so small events feel alive without swallowing the room.</p>
-          <nav class="links" aria-label="SoundNest Events links">
+          <div class="links" role="group" aria-label="SoundNest Events links">
             <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fsmall-event-dj-sound%2Fblueprint.json" aria-label="Launch SoundNest Events in WordPress Playground">Launch in Playground</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/small-event-dj-sound/blueprint.json" aria-label="Open SoundNest Events Blueprint JSON">JSON</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/small-event-dj-sound/small-event-dj-sound-blueprint.zip" aria-label="Download SoundNest Events Blueprint ZIP">ZIP</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/small-event-dj-sound.json" aria-label="Open SoundNest Events production spec">Spec</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/small-event-dj-sound/README.md" aria-label="Open SoundNest Events README">README</a>
-          </nav>
+          </div>
         </div>
       </article>
       <article class="card">
         <a class="card-preview" href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fsmart-home-setup%2Fblueprint.json" aria-label="Open SignalNest Home Setup in WordPress Playground" style="background-image: url('catalog-assets/smart-home-setup-screenshot.jpg')">
-          <img src="catalog-assets/smart-home-setup-screenshot.jpg" alt="Live site preview for SignalNest Home Setup" loading="eager" decoding="async">
+          <img src="catalog-assets/smart-home-setup-screenshot.jpg" alt="Live site preview for SignalNest Home Setup" loading="lazy" decoding="async">
+          <span class="card-number">Demo 31</span>
         </a>
         <div class="content">
           <div class="logo-row">
-            <img src="catalog-assets/smart-home-setup-logo.png" alt="SignalNest Home Setup logo" loading="eager" decoding="async">
+            <img src="catalog-assets/smart-home-setup-logo.png" alt="SignalNest Home Setup logo" loading="lazy" decoding="async">
             <div class="meta">
               <span class="pill">Status: Approved</span>
               <span class="pill">Pattern: Side Rail Service Story</span>
@@ -1512,22 +1745,23 @@
           <h2>SignalNest Home Setup</h2>
           <p>Smart Home And Home Theater Setup Service</p>
           <p>SignalNest turns TVs, soundbars, streaming boxes, remotes, speakers, and mystery cables into a clean setup that your whole household can actually use.</p>
-          <nav class="links" aria-label="SignalNest Home Setup links">
+          <div class="links" role="group" aria-label="SignalNest Home Setup links">
             <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fsmart-home-setup%2Fblueprint.json" aria-label="Launch SignalNest Home Setup in WordPress Playground">Launch in Playground</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/smart-home-setup/blueprint.json" aria-label="Open SignalNest Home Setup Blueprint JSON">JSON</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/smart-home-setup/smart-home-setup-blueprint.zip" aria-label="Download SignalNest Home Setup Blueprint ZIP">ZIP</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/smart-home-setup.json" aria-label="Open SignalNest Home Setup production spec">Spec</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/smart-home-setup/README.md" aria-label="Open SignalNest Home Setup README">README</a>
-          </nav>
+          </div>
         </div>
       </article>
       <article class="card">
         <a class="card-preview" href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fsolar-panel-cleaning%2Fblueprint.json" aria-label="Open SunWash Solar Care in WordPress Playground" style="background-image: url('catalog-assets/solar-panel-cleaning-screenshot.jpg')">
-          <img src="catalog-assets/solar-panel-cleaning-screenshot.jpg" alt="Live site preview for SunWash Solar Care" loading="eager" decoding="async">
+          <img src="catalog-assets/solar-panel-cleaning-screenshot.jpg" alt="Live site preview for SunWash Solar Care" loading="lazy" decoding="async">
+          <span class="card-number">Demo 32</span>
         </a>
         <div class="content">
           <div class="logo-row">
-            <img src="catalog-assets/solar-panel-cleaning-logo.png" alt="SunWash Solar Care logo" loading="eager" decoding="async">
+            <img src="catalog-assets/solar-panel-cleaning-logo.png" alt="SunWash Solar Care logo" loading="lazy" decoding="async">
             <div class="meta">
               <span class="pill">Status: Approved</span>
               <span class="pill">Pattern: Receipt Scope Stack</span>
@@ -1537,22 +1771,23 @@
           <h2>SunWash Solar Care</h2>
           <p>Solar Panel Cleaning Service</p>
           <p>SunWash washes dusty, pollen-coated, and bird-marked panels with soft brushes, filtered water, safety-minded roof access, and before/after panel notes you can actually read.</p>
-          <nav class="links" aria-label="SunWash Solar Care links">
+          <div class="links" role="group" aria-label="SunWash Solar Care links">
             <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fsolar-panel-cleaning%2Fblueprint.json" aria-label="Launch SunWash Solar Care in WordPress Playground">Launch in Playground</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/solar-panel-cleaning/blueprint.json" aria-label="Open SunWash Solar Care Blueprint JSON">JSON</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/solar-panel-cleaning/solar-panel-cleaning-blueprint.zip" aria-label="Download SunWash Solar Care Blueprint ZIP">ZIP</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/solar-panel-cleaning.json" aria-label="Open SunWash Solar Care production spec">Spec</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/solar-panel-cleaning/README.md" aria-label="Open SunWash Solar Care README">README</a>
-          </nav>
+          </div>
         </div>
       </article>
       <article class="card">
         <a class="card-preview" href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fvacation-rental-turnover%2Fblueprint.json" aria-label="Open Turnkey Tidy in WordPress Playground" style="background-image: url('catalog-assets/vacation-rental-turnover-screenshot.jpg')">
-          <img src="catalog-assets/vacation-rental-turnover-screenshot.jpg" alt="Live site preview for Turnkey Tidy" loading="eager" decoding="async">
+          <img src="catalog-assets/vacation-rental-turnover-screenshot.jpg" alt="Live site preview for Turnkey Tidy" loading="lazy" decoding="async">
+          <span class="card-number">Demo 33</span>
         </a>
         <div class="content">
           <div class="logo-row">
-            <img src="catalog-assets/vacation-rental-turnover-logo.png" alt="Turnkey Tidy logo" loading="eager" decoding="async">
+            <img src="catalog-assets/vacation-rental-turnover-logo.png" alt="Turnkey Tidy logo" loading="lazy" decoding="async">
             <div class="meta">
               <span class="pill">Status: Approved</span>
               <span class="pill">Pattern: Editorial Proof Stage</span>
@@ -1562,22 +1797,23 @@
           <h2>Turnkey Tidy</h2>
           <p>Vacation Rental Turnover Cleaning Service</p>
           <p>Turnkey Tidy resets beds, baths, kitchens, entry details, linens, and restocks with clear host notes so every turnover feels tracked, not guessed.</p>
-          <nav class="links" aria-label="Turnkey Tidy links">
+          <div class="links" role="group" aria-label="Turnkey Tidy links">
             <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fvacation-rental-turnover%2Fblueprint.json" aria-label="Launch Turnkey Tidy in WordPress Playground">Launch in Playground</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/vacation-rental-turnover/blueprint.json" aria-label="Open Turnkey Tidy Blueprint JSON">JSON</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/vacation-rental-turnover/vacation-rental-turnover-blueprint.zip" aria-label="Download Turnkey Tidy Blueprint ZIP">ZIP</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/vacation-rental-turnover.json" aria-label="Open Turnkey Tidy production spec">Spec</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/vacation-rental-turnover/README.md" aria-label="Open Turnkey Tidy README">README</a>
-          </nav>
+          </div>
         </div>
       </article>
       <article class="card">
         <a class="card-preview" href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fwindow-cleaning%2Fblueprint.json" aria-label="Open ClearPane Window Care in WordPress Playground" style="background-image: url('catalog-assets/window-cleaning-screenshot.jpg')">
-          <img src="catalog-assets/window-cleaning-screenshot.jpg" alt="Live site preview for ClearPane Window Care" loading="eager" decoding="async">
+          <img src="catalog-assets/window-cleaning-screenshot.jpg" alt="Live site preview for ClearPane Window Care" loading="lazy" decoding="async">
+          <span class="card-number">Demo 34</span>
         </a>
         <div class="content">
           <div class="logo-row">
-            <img src="catalog-assets/window-cleaning-logo.png" alt="ClearPane Window Care logo" loading="eager" decoding="async">
+            <img src="catalog-assets/window-cleaning-logo.png" alt="ClearPane Window Care logo" loading="lazy" decoding="async">
             <div class="meta">
               <span class="pill">Status: Approved</span>
               <span class="pill">Pattern: Split Quote Board</span>
@@ -1587,22 +1823,23 @@
           <h2>ClearPane Window Care</h2>
           <p>Window Cleaning Service</p>
           <p>Interior glass, exterior panes, screens, and tracks handled with careful edges and a clear quote before anyone arrives.</p>
-          <nav class="links" aria-label="ClearPane Window Care links">
+          <div class="links" role="group" aria-label="ClearPane Window Care links">
             <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fwindow-cleaning%2Fblueprint.json" aria-label="Launch ClearPane Window Care in WordPress Playground">Launch in Playground</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/window-cleaning/blueprint.json" aria-label="Open ClearPane Window Care Blueprint JSON">JSON</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/window-cleaning/window-cleaning-blueprint.zip" aria-label="Download ClearPane Window Care Blueprint ZIP">ZIP</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/window-cleaning.json" aria-label="Open ClearPane Window Care production spec">Spec</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/window-cleaning/README.md" aria-label="Open ClearPane Window Care README">README</a>
-          </nav>
+          </div>
         </div>
       </article>
       <article class="card">
         <a class="card-preview" href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fwood-fired-pizza-taco-catering%2Fblueprint.json" aria-label="Open Ember &amp; Masa Catering in WordPress Playground" style="background-image: url('catalog-assets/wood-fired-pizza-taco-catering-screenshot.jpg')">
-          <img src="catalog-assets/wood-fired-pizza-taco-catering-screenshot.jpg" alt="Live site preview for Ember &amp; Masa Catering" loading="eager" decoding="async">
+          <img src="catalog-assets/wood-fired-pizza-taco-catering-screenshot.jpg" alt="Live site preview for Ember &amp; Masa Catering" loading="lazy" decoding="async">
+          <span class="card-number">Demo 35</span>
         </a>
         <div class="content">
           <div class="logo-row">
-            <img src="catalog-assets/wood-fired-pizza-taco-catering-logo.png" alt="Ember &amp; Masa Catering logo" loading="eager" decoding="async">
+            <img src="catalog-assets/wood-fired-pizza-taco-catering-logo.png" alt="Ember &amp; Masa Catering logo" loading="lazy" decoding="async">
             <div class="meta">
               <span class="pill">Status: Approved</span>
               <span class="pill">Pattern: Package Menu Board</span>
@@ -1612,13 +1849,13 @@
           <h2>Ember &amp; Masa Catering</h2>
           <p>Wood-fired Pizza And Taco Pop-up Catering</p>
           <p>Ember &amp; Masa brings wood-fired pies, taco boards, prep tables, and a calm crew so your party gets the theater without the kitchen panic.</p>
-          <nav class="links" aria-label="Ember &amp; Masa Catering links">
+          <div class="links" role="group" aria-label="Ember &amp; Masa Catering links">
             <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fwood-fired-pizza-taco-catering%2Fblueprint.json" aria-label="Launch Ember &amp; Masa Catering in WordPress Playground">Launch in Playground</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/wood-fired-pizza-taco-catering/blueprint.json" aria-label="Open Ember &amp; Masa Catering Blueprint JSON">JSON</a>
             <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/wood-fired-pizza-taco-catering/wood-fired-pizza-taco-catering-blueprint.zip" aria-label="Download Ember &amp; Masa Catering Blueprint ZIP">ZIP</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/wood-fired-pizza-taco-catering.json" aria-label="Open Ember &amp; Masa Catering production spec">Spec</a>
             <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/wood-fired-pizza-taco-catering/README.md" aria-label="Open Ember &amp; Masa Catering README">README</a>
-          </nav>
+          </div>
         </div>
       </article>
     </section>
@@ -1636,7 +1873,7 @@
     </details>
 
     <footer>
-      Generated 2026-06-27T18:42:05Z from RegionallyFamous/Site-O-Mattic on main.
+      Generated 2026-06-27T19:21:13Z from RegionallyFamous/Site-O-Mattic on main.
     </footer>
   </main>
 </body>
