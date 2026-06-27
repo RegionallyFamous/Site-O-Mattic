@@ -1,0 +1,1027 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Site-O-Mattic Blueprint Catalog</title>
+  <meta name="description" content="Latest Site-O-Mattic Blueprint previews, Playground links, JSON files, and ZIP downloads.">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #151916;
+      --muted: #56635b;
+      --paper: #f5f7f2;
+      --surface: #ffffff;
+      --line: #d7dfd3;
+      --field: #e8efe5;
+      --action: #e79005;
+      --action-ink: #1b1208;
+      --green: #1f6b4a;
+      --shadow: 0 18px 45px rgba(27, 54, 38, .12);
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+    }
+    a {
+      color: inherit;
+    }
+    .page {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 34px 0 52px;
+    }
+    .masthead {
+      display: grid;
+      gap: 18px;
+      grid-template-columns: minmax(0, 1.1fr) minmax(280px, .9fr);
+      align-items: end;
+      padding: 0 0 28px;
+      border-bottom: 1px solid var(--line);
+    }
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--green);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    h1 {
+      max-width: 760px;
+      margin: 0;
+      font-size: clamp(34px, 5vw, 64px);
+      line-height: .96;
+      letter-spacing: 0;
+    }
+    .lede {
+      max-width: 720px;
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 18px;
+    }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+    .stat {
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .48);
+    }
+    .stat strong {
+      display: block;
+      font-size: 28px;
+      line-height: 1;
+    }
+    .stat span {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .latest {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(300px, .64fr);
+      gap: 22px;
+      align-items: center;
+      margin: 28px 0;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+    .latest-preview {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(96px, 18%);
+      gap: 10px;
+      align-items: end;
+      text-decoration: none;
+    }
+    .latest-preview img {
+      display: block;
+      width: 100%;
+      object-fit: cover;
+      border-radius: 6px;
+      background: var(--field);
+    }
+    .desktop-shot {
+      aspect-ratio: 16 / 9;
+      object-position: top center;
+    }
+    .mobile-shot {
+      aspect-ratio: 9 / 16;
+      object-position: top center;
+      border: 1px solid var(--line);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, .14);
+    }
+    .latest h2,
+    .card h2 {
+      margin: 0;
+      font-size: 24px;
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+    .latest p,
+    .card p {
+      margin: 10px 0 0;
+      color: var(--muted);
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--surface);
+      color: var(--ink);
+      font-size: 14px;
+      font-weight: 800;
+      line-height: 1.1;
+      text-decoration: none;
+    }
+    .button.primary {
+      border-color: transparent;
+      background: var(--action);
+      color: var(--action-ink);
+    }
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+      margin: 28px 0 16px;
+    }
+    .toolbar h2 {
+      margin: 0;
+      font-size: 22px;
+    }
+    .toolbar a {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .card {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+    }
+    .content {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      padding: 16px;
+    }
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: var(--field);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+    }
+    .signals {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 0 0 12px;
+    }
+    .signal {
+      display: inline-flex;
+      align-items: center;
+      min-height: 22px;
+      padding: 3px 7px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 800;
+      line-height: 1.1;
+    }
+    .taste-queue {
+      margin: 18px 0 8px;
+    }
+    .links {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: auto;
+      padding-top: 16px;
+    }
+    .links a {
+      min-height: 38px;
+      padding: 9px 10px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 800;
+      text-align: center;
+      text-decoration: none;
+    }
+    .links a:first-child {
+      grid-column: 1 / -1;
+      border-color: transparent;
+      background: var(--ink);
+      color: var(--surface);
+    }
+    footer {
+      margin-top: 32px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 14px;
+    }
+    @media (max-width: 920px) {
+      .masthead,
+      .latest {
+        grid-template-columns: 1fr;
+      }
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+    @media (max-width: 620px) {
+      .page {
+        width: min(100% - 24px, 1180px);
+        padding-top: 24px;
+      }
+      .stats,
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      .latest {
+        padding: 12px;
+      }
+      .links {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .latest-preview {
+        grid-template-columns: 1fr;
+      }
+      .mobile-shot {
+        display: none!important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="masthead">
+      <div>
+        <p class="eyebrow">Site-O-Mattic</p>
+        <h1>Blueprint previews for local service site experiments.</h1>
+        <p class="lede">A quick catalog of the latest generated WordPress Playground Blueprints, with preview images, source JSON, ZIP downloads, and spec links.</p>
+      </div>
+      <div class="stats" aria-label="Catalog counts">
+        <div class="stat"><strong>35</strong><span>Blueprints</span></div>
+        <div class="stat"><strong>35</strong><span>Approved</span></div>
+        <div class="stat"><strong>35/35</strong><span>Sweep OK</span></div>
+        <div class="stat"><strong>main</strong><span>Branch</span></div>
+      </div>
+    </header>
+
+    <section class="signals taste-queue" aria-label="Taste queue">
+      <span class="signal">Taste queue</span>
+      <span class="signal">0 warnings</span>
+      <span class="signal" title="lawn-care-service: route-status-board / split-nav-action-header / clear-status-dashboard | plant-care: route-status-board / compact-header / clear-status-dashboard">lawn care service &lt;-&gt; plant care 245</span>
+      <span class="signal" title="headshot-brand-photography: gallery-mosaic-proof / compact-header / editorial-proof-stage | pet-portrait-photography: gallery-mosaic-proof / compact-header / editorial-proof-stage">headshot brand... &lt;-&gt; pet portrait photography 250</span>
+      <span class="signal" title="dessert-table-bakery-catering: editorial-proof-stage / compact-header / editorial-proof-stage | picnic-proposal-setup: editorial-proof-stage / compact-header / editorial-proof-stage">dessert table bakery... &lt;-&gt; picnic proposal setup 271</span>
+      <span class="signal" title="coffee-cart-catering: package-menu-board / menu-utility-header / hospitality-menu | wood-fired-pizza-taco-catering: package-menu-board / menu-utility-header / hospitality-menu">coffee cart catering &lt;-&gt; wood fired pizza taco... 275</span>
+      <span class="signal" title="junk-removal-donation-hauling: side-rail-service-story / desktop-side-rail / operator-console | small-event-dj-sound: side-rail-service-story / desktop-side-rail / operator-console">junk removal donation... &lt;-&gt; small event dj sound 277</span>
+    </section>
+
+    <section class="latest" aria-labelledby="featured-heading">
+      <a class="latest-preview" href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fgutter-cleaning%2Fblueprint.json" aria-label="Open ClearFlow Gutter Care in WordPress Playground">
+        <img class="desktop-shot" src="previews/gutter-cleaning-desktop.png" alt="ClearFlow Gutter Care desktop preview" loading="eager">
+        <img class="mobile-shot" src="previews/gutter-cleaning-mobile-390.png" alt="ClearFlow Gutter Care mobile preview" loading="eager">
+      </a>
+      <div>
+        <p class="eyebrow">Latest checked preview</p>
+        <h2 id="featured-heading">ClearFlow Gutter Care</h2>
+        <p>ClearFlow clears packed leaves, roof grit, seed pods, and surprise sludge so rainwater moves through the gutters instead of auditioning for your foundation.</p>
+        <div class="actions">
+          <a class="button primary" href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fgutter-cleaning%2Fblueprint.json">Open Playground</a>
+          <a class="button" href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/gutter-cleaning/blueprint.json">Blueprint JSON</a>
+          <a class="button" href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/gutter-cleaning/gutter-cleaning-blueprint.zip">Download ZIP</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="toolbar">
+      <h2>All Blueprint Links</h2>
+      <a href="https://github.com/RegionallyFamous/Site-O-Mattic">GitHub repository</a>
+    </div>
+
+    <section class="grid" aria-label="Blueprint catalog">
+      <article class="card">
+        <div class="content">
+          <div class="meta">
+            <span class="pill">approved</span>
+            <span class="pill">balloon-backdrop-gallery</span>
+          </div>
+          <div class="signals"><span class="signal">OK sweep</span><span class="signal">CTA: Style my party</span><span class="signal">gallery-mosaic-proof</span><span class="signal">Near headshot-brand-ph... 286</span></div>
+          <h2>PopArc Party Styling</h2>
+          <p>Balloon Garland And Party Backdrop Styling</p>
+          <p>PopArc designs balloon garlands, backdrop moments, and photo-ready party corners with clear sizing, color notes, setup timing, and teardown options.</p>
+          <nav class="links" aria-label="PopArc Party Styling links">
+            <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fballoon-garland-party-backdrop%2Fblueprint.json">Playground</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/balloon-garland-party-backdrop/blueprint.json">JSON</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/balloon-garland-party-backdrop/balloon-garland-party-backdrop-blueprint.zip">ZIP</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/balloon-garland-party-backdrop.json">Spec</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/balloon-garland-party-backdrop/README.md">README</a>
+          </nav>
+        </div>
+      </article>
+      <article class="card">
+        <div class="content">
+          <div class="meta">
+            <span class="pill">approved</span>
+            <span class="pill">stain-care</span>
+          </div>
+          <div class="signals"><span class="signal">OK sweep</span><span class="signal">CTA: Book a free estimate</span><span class="signal">viewport-safe-conversion-sh...</span><span class="signal">Near driveway-sealcoat... 319</span></div>
+          <h2>FreshThread Fabric Care</h2>
+          <p>Carpet And Upholstery Cleaning Service</p>
+          <p>FreshThread cleans sofas, rugs, stairs, and carpets with fabric-smart extraction, tidy setup, and drying notes that keep the room usable instead of mysterious.</p>
+          <nav class="links" aria-label="FreshThread Fabric Care links">
+            <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fcarpet-upholstery-cleaning%2Fblueprint.json">Playground</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/carpet-upholstery-cleaning/blueprint.json">JSON</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/carpet-upholstery-cleaning/carpet-upholstery-cleaning-blueprint.zip">ZIP</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/carpet-upholstery-cleaning.json">Spec</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/carpet-upholstery-cleaning/README.md">README</a>
+          </nav>
+        </div>
+      </article>
+      <article class="card">
+        <div class="content">
+          <div class="meta">
+            <span class="pill">approved</span>
+            <span class="pill">organizing-zone-board</span>
+          </div>
+          <div class="signals"><span class="signal">OK sweep</span><span class="signal">CTA: Start my reset</span><span class="signal">consultation-story-flow</span><span class="signal">Near interior-color-co... 323</span></div>
+          <h2>Shelfwise Organizing</h2>
+          <p>Closet And Pantry Organization Service</p>
+          <p>Shelfwise builds closets and pantries around reach height, repeat groceries, laundry habits, morning exits, and the items that always wander back to the wrong place.</p>
+          <nav class="links" aria-label="Shelfwise Organizing links">
+            <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fcloset-pantry-organization%2Fblueprint.json">Playground</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/closet-pantry-organization/blueprint.json">JSON</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/closet-pantry-organization/closet-pantry-organization-blueprint.zip">ZIP</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/closet-pantry-organization.json">Spec</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/closet-pantry-organization/README.md">README</a>
+          </nav>
+        </div>
+      </article>
+      <article class="card">
+        <div class="content">
+          <div class="meta">
+            <span class="pill">approved</span>
+            <span class="pill">package-menu-board</span>
+          </div>
+          <div class="signals"><span class="signal">OK sweep</span><span class="signal">CTA: Check your date</span><span class="signal">package-menu-board</span><span class="signal">Near wood-fired-pizza-... 275</span></div>
+          <h2>Cartwright Coffee Co.</h2>
+          <p>Coffee Cart Catering Service</p>
+          <p>Cartwright rolls in with a polished espresso cart, friendly baristas, and a tight drink menu that keeps guests moving, caffeinated, and gently impressed.</p>
+          <nav class="links" aria-label="Cartwright Coffee Co. links">
+            <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fcoffee-cart-catering%2Fblueprint.json">Playground</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/coffee-cart-catering/blueprint.json">JSON</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/coffee-cart-catering/coffee-cart-catering-blueprint.zip">ZIP</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/coffee-cart-catering.json">Spec</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/coffee-cart-catering/README.md">README</a>
+          </nav>
+        </div>
+      </article>
+      <article class="card">
+        <div class="content">
+          <div class="meta">
+            <span class="pill">approved</span>
+            <span class="pill">deck-finish-sample-board</span>
+          </div>
+          <div class="signals"><span class="signal">OK sweep</span><span class="signal">CTA: Send photos</span><span class="signal">operator-console</span><span class="signal">Near mural-window-lett... 281</span></div>
+          <h2>CedarLine Stain Co.</h2>
+          <p>Deck And Fence Staining Service</p>
+          <p>Send rail, picket, shade, peeling, and old-finish photos. CedarLine turns them into prep notes, color direction, and a clean stain window.</p>
+          <nav class="links" aria-label="CedarLine Stain Co. links">
+            <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fdeck-fence-staining%2Fblueprint.json">Playground</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/deck-fence-staining/blueprint.json">JSON</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/deck-fence-staining/deck-fence-staining-blueprint.zip">ZIP</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/deck-fence-staining.json">Spec</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/deck-fence-staining/README.md">README</a>
+          </nav>
+        </div>
+      </article>
+      <article class="card">
+        <div class="content">
+          <div class="meta">
+            <span class="pill">approved</span>
+            <span class="pill">dessert-table-gallery</span>
+          </div>
+          <div class="signals"><span class="signal">OK sweep</span><span class="signal">CTA: Design sweets</span><span class="signal">editorial-proof-stage</span><span class="signal">Near picnic-proposal-s... 271</span></div>
+          <h2>Sugarline Dessert Co.</h2>
+          <p>Dessert Table And Bakery Catering</p>
+          <p>Sugarline plans the look, quantities, flavors, setup timing, and serving details so the table feels generous, styled, and easy for guests to enjoy.</p>
+          <nav class="links" aria-label="Sugarline Dessert Co. links">
+            <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fdessert-table-bakery-catering%2Fblueprint.json">Playground</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/dessert-table-bakery-catering/blueprint.json">JSON</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/dessert-table-bakery-catering/dessert-table-bakery-catering-blueprint.zip">ZIP</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/dessert-table-bakery-catering.json">Spec</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/dessert-table-bakery-catering/README.md">README</a>
+          </nav>
+        </div>
+      </article>
+      <article class="card">
+        <div class="content">
+          <div class="meta">
+            <span class="pill">approved</span>
+            <span class="pill">surface-seasonal</span>
+          </div>
+          <div class="signals"><span class="signal">OK sweep</span><span class="signal">CTA: Get a driveway quote</span><span class="signal">split-quote-board</span><span class="signal">Near carpet-upholstery... 319</span></div>
+          <h2>Blackline Sealcoating</h2>
+          <p>Driveway Sealcoating Service</p>
+          <p>Blackline cleans, fills small cracks, and seals tired asphalt with tidy passes that make your driveway look cared for before the next rain gets ideas.</p>
+          <nav class="links" aria-label="Blackline Sealcoating links">
+            <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fdriveway-sealcoating%2Fblueprint.json">Playground</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/driveway-sealcoating/blueprint.json">JSON</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/driveway-sealcoating/driveway-sealcoating-blueprint.zip">ZIP</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/driveway-sealcoating.json">Spec</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/driveway-sealcoating/README.md">README</a>
+          </nav>
+        </div>
+      </article>
+      <article class="card">
+        <div class="content">
+          <div class="meta">
+            <span class="pill">approved</span>
+            <span class="pill">furniture-refinish-proof</span>
+          </div>
+          <div class="signals"><span class="signal">OK sweep</span><span class="signal">CTA: Send a furniture photo</span><span class="signal">split-quote-board</span><span class="signal">Near window-cleaning 304</span></div>
+          <h2>GrainMend Furniture Co.</h2>
+          <p>Furniture Refinishing And Repair Service</p>
+          <p>GrainMend repairs worn edges, tired finishes, wobbly joints, and beloved wood pieces with a practical photo estimate and a finish plan you can understand.</p>
+          <nav class="links" aria-label="GrainMend Furniture Co. links">
+            <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Ffurniture-refinishing-repair%2Fblueprint.json">Playground</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/furniture-refinishing-repair/blueprint.json">JSON</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/furniture-refinishing-repair/furniture-refinishing-repair-blueprint.zip">ZIP</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/furniture-refinishing-repair.json">Spec</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/furniture-refinishing-repair/README.md">README</a>
+          </nav>
+        </div>
+      </article>
+      <article class="card">
+        <div class="content">
+          <div class="meta">
+            <span class="pill">approved</span>
+            <span class="pill">zone-grid-planner</span>
+          </div>
+          <div class="signals"><span class="signal">OK sweep</span><span class="signal">CTA: Plan garage</span><span class="signal">operator-console</span><span class="signal">Near closet-pantry-org... 343</span></div>
+          <h2>GridNest Garage</h2>
+          <p>Garage Organization Service</p>
+          <p>GridNest turns the mystery wall, seasonal pile, tool drift, and sports gear shuffle into a clean garage system that still works after real life walks through it.</p>
+          <nav class="links" aria-label="GridNest Garage links">
+            <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fgarage-organization%2Fblueprint.json">Playground</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/garage-organization/blueprint.json">JSON</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/garage-organization/garage-organization-blueprint.zip">ZIP</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/garage-organization.json">Spec</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/garage-organization/README.md">README</a>
+          </nav>
+        </div>
+      </article>
+      <article class="card">
+        <div class="content">
+          <div class="meta">
+            <span class="pill">approved</span>
+            <span class="pill">risk-prevention</span>
+          </div>
+          <div class="signals"><span class="signal">OK sweep</span><span class="signal">CTA: Clear clogged gutters</span><span class="signal">viewport-safe-conversion-sh...</span><span class="signal">Near driveway-sealcoat... 340</span></div>
+          <h2>ClearFlow Gutter Care</h2>
+          <p>Gutter Cleaning Service</p>
+          <p>ClearFlow clears packed leaves, roof grit, seed pods, and surprise sludge so rainwater moves through the gutters instead of auditioning for your foundation.</p>
+          <nav class="links" aria-label="ClearFlow Gutter Care links">
+            <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fgutter-cleaning%2Fblueprint.json">Playground</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/gutter-cleaning/blueprint.json">JSON</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/gutter-cleaning/gutter-cleaning-blueprint.zip">ZIP</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/gutter-cleaning.json">Spec</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/gutter-cleaning/README.md">README</a>
+          </nav>
+        </div>
+      </article>
+      <article class="card">
+        <div class="content">
+          <div class="meta">
+            <span class="pill">approved</span>
+            <span class="pill">headshot-proof-gallery</span>
+          </div>
+          <div class="signals"><span class="signal">OK sweep</span><span class="signal">CTA: Book a headshot slot</span><span class="signal">gallery-mosaic-proof</span><span class="signal">Near pet-portrait-phot... 250</span></div>
+          <h2>FrameForge Headshots</h2>
+          <p>Headshot And Brand Photography Studio</p>
+          <p>FrameForge guides wardrobe, lighting, expression, usage needs, and delivery so your headshots feel current, credible, and still recognizably you.</p>
+          <nav class="links" aria-label="FrameForge Headshots links">
+            <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fheadshot-brand-photography%2Fblueprint.json">Playground</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/headshot-brand-photography/blueprint.json">JSON</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/headshot-brand-photography/headshot-brand-photography-blueprint.zip">ZIP</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/headshot-brand-photography.json">Spec</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/headshot-brand-photography/README.md">README</a>
+          </nav>
+        </div>
+      </article>
+      <article class="card">
+        <div class="content">
+          <div class="meta">
+            <span class="pill">approved</span>
+            <span class="pill">urgent-checklist</span>
+          </div>
+          <div class="signals"><span class="signal">OK sweep</span><span class="signal">CTA: Check dates</span><span class="signal">viewport-safe-conversion-sh...</span><span class="signal">Near coffee-cart-cater... 354</span></div>
+          <h2>RidgeGlow Holiday Lights</h2>
+          <p>Holiday Light Installation Service</p>
+          <p>RidgeGlow maps rooflines, clips, outlets, timers, ladder access, install week, and takedown labels before the first strand goes up.</p>
+          <nav class="links" aria-label="RidgeGlow Holiday Lights links">
+            <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fholiday-light-installation%2Fblueprint.json">Playground</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/holiday-light-installation/blueprint.json">JSON</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/holiday-light-installation/holiday-light-installation-blueprint.zip">ZIP</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/holiday-light-installation.json">Spec</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/holiday-light-installation/README.md">README</a>
+          </nav>
+        </div>
+      </article>
+      <article class="card">
+        <div class="content">
+          <div class="meta">
+            <span class="pill">approved</span>
+            <span class="pill">color-consult-story</span>
+          </div>
+          <div class="signals"><span class="signal">OK sweep</span><span class="signal">CTA: Choose my palette</span><span class="signal">consultation-story-flow</span><span class="signal">Near closet-pantry-org... 323</span></div>
+          <h2>HueHaus Color Studio</h2>
+          <p>Interior Color Consultant</p>
+          <p>HueHaus helps homeowners narrow paint, trim, cabinet, and room palettes using light, finishes, samples, and how the space really gets lived in.</p>
+          <nav class="links" aria-label="HueHaus Color Studio links">
+            <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Finterior-color-consultant%2Fblueprint.json">Playground</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/interior-color-consultant/blueprint.json">JSON</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/interior-color-consultant/interior-color-consultant-blueprint.zip">ZIP</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/interior-color-consultant.json">Spec</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/interior-color-consultant/README.md">README</a>
+          </nav>
+        </div>
+      </article>
+      <article class="card">
+        <div class="content">
+          <div class="meta">
+            <span class="pill">approved</span>
+            <span class="pill">side-rail-service</span>
+          </div>
+          <div class="signals"><span class="signal">OK sweep</span><span class="signal">CTA: Send junk photos</span><span class="signal">side-rail-service-story</span><span class="signal">Near small-event-dj-so... 277</span></div>
+          <h2>ClearPath</h2>
+          <p>Junk Removal And Donation Hauling Service</p>
+          <p>ClearPath hauls bulky items, garage leftovers, move-out piles, and donation-worthy goods with fast photo estimates, tidy crews, and a sweep-up finish.</p>
+          <nav class="links" aria-label="ClearPath links">
+            <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fjunk-removal-donation-hauling%2Fblueprint.json">Playground</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/junk-removal-donation-hauling/blueprint.json">JSON</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/junk-removal-donation-hauling/junk-removal-donation-hauling-blueprint.zip">ZIP</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/junk-removal-donation-hauling.json">Spec</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/junk-removal-donation-hauling/README.md">README</a>
+          </nav>
+        </div>
+      </article>
+      <article class="card">
+        <div class="content">
+          <div class="meta">
+            <span class="pill">approved</span>
+            <span class="pill">lawn-route-status-board</span>
+          </div>
+          <div class="signals"><span class="signal">OK sweep</span><span class="signal">CTA: Join the route</span><span class="signal">route-status-board</span><span class="signal">Near plant-care 245</span></div>
+          <h2>GreenStripe Lawn Care</h2>
+          <p>Lawn Care Service</p>
+          <p>GreenStripe runs tidy neighborhood routes for mowing, edging, bed touch-ups, and post-visit gate checks, so your yard looks handled before the weekend shows up.</p>
+          <nav class="links" aria-label="GreenStripe Lawn Care links">
+            <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Flawn-care-service%2Fblueprint.json">Playground</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/lawn-care-service/blueprint.json">JSON</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/lawn-care-service/lawn-care-service-blueprint.zip">ZIP</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/lawn-care-service.json">Spec</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/lawn-care-service/README.md">README</a>
+          </nav>
+        </div>
+      </article>
+      <article class="card">
+        <div class="content">
+          <div class="meta">
+            <span class="pill">approved</span>
+            <span class="pill">micro-wedding-floral-story</span>
+          </div>
+          <div class="signals"><span class="signal">OK sweep</span><span class="signal">CTA: Start floral consult</span><span class="signal">consultation-story-flow</span><span class="signal">Near interior-color-co... 328</span></div>
+          <h2>VowSprig Florals</h2>
+          <p>Micro-wedding Floral Design</p>
+          <p>VowSprig shapes bouquets, personals, bud vases, and small ceremony moments into a clear palette, setup plan, and floral scope that fits intimate celebrations.</p>
+          <nav class="links" aria-label="VowSprig Florals links">
+            <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fmicro-wedding-florals%2Fblueprint.json">Playground</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/micro-wedding-florals/blueprint.json">JSON</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/micro-wedding-florals/micro-wedding-florals-blueprint.zip">ZIP</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/micro-wedding-florals.json">Spec</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/micro-wedding-florals/README.md">README</a>
+          </nav>
+        </div>
+      </article>
+      <article class="card">
+        <div class="content">
+          <div class="meta">
+            <span class="pill">approved</span>
+            <span class="pill">fixed-bottom-action</span>
+          </div>
+          <div class="signals"><span class="signal">OK sweep</span><span class="signal">CTA: Get quote</span><span class="signal">mobile-action-dock</span><span class="signal">Near photo-booth-rental 277</span></div>
+          <h2>ShineShift Mobile Detail</h2>
+          <p>Mobile Auto Detailing Service</p>
+          <p>ShineShift brings foam, filtration, careful towels, interior tools, and a clean finish routine to your home or office without turning the curb into chaos.</p>
+          <nav class="links" aria-label="ShineShift Mobile Detail links">
+            <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fmobile-auto-detailing%2Fblueprint.json">Playground</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/mobile-auto-detailing/blueprint.json">JSON</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/mobile-auto-detailing/mobile-auto-detailing-blueprint.zip">ZIP</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/mobile-auto-detailing.json">Spec</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/mobile-auto-detailing/README.md">README</a>
+          </nav>
+        </div>
+      </article>
+      <article class="card">
+        <div class="content">
+          <div class="meta">
+            <span class="pill">approved</span>
+            <span class="pill">bike-route-workstand</span>
+          </div>
+          <div class="signals"><span class="signal">OK sweep</span><span class="signal">CTA: Book tune-up</span><span class="signal">route-status-board</span><span class="signal">Near mobile-knife-shar... 297</span></div>
+          <h2>TuneLoop Bike Repair</h2>
+          <p>Mobile Bicycle Repair Service</p>
+          <p>TuneLoop brings the stand, tools, parts check, and calm mechanic energy to your curb, office, or building bike room so small problems stop stealing whole weekends.</p>
+          <nav class="links" aria-label="TuneLoop Bike Repair links">
+            <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fmobile-bicycle-repair%2Fblueprint.json">Playground</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/mobile-bicycle-repair/blueprint.json">JSON</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/mobile-bicycle-repair/mobile-bicycle-repair-blueprint.zip">ZIP</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/mobile-bicycle-repair.json">Spec</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/mobile-bicycle-repair/README.md">README</a>
+          </nav>
+        </div>
+      </article>
+      <article class="card">
+        <div class="content">
+          <div class="meta">
+            <span class="pill">approved</span>
+            <span class="pill">sharp-route-bench</span>
+          </div>
+          <div class="signals"><span class="signal">OK sweep</span><span class="signal">CTA: Book knife route</span><span class="signal">route-status-board</span><span class="signal">Near mobile-bicycle-re... 297</span></div>
+          <h2>EdgeRoute Sharpening</h2>
+          <p>Mobile Knife Sharpening Service</p>
+          <p>EdgeRoute brings a tidy bench to route stops, refreshes hardworking kitchen edges, and sends every blade home with simple care notes.</p>
+          <nav class="links" aria-label="EdgeRoute Sharpening links">
+            <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fmobile-knife-sharpening%2Fblueprint.json">Playground</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/mobile-knife-sharpening/blueprint.json">JSON</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/mobile-knife-sharpening/mobile-knife-sharpening-blueprint.zip">ZIP</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/mobile-knife-sharpening.json">Spec</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/mobile-knife-sharpening/README.md">README</a>
+          </nav>
+        </div>
+      </article>
+      <article class="card">
+        <div class="content">
+          <div class="meta">
+            <span class="pill">approved</span>
+            <span class="pill">mocktail-cart-menu</span>
+          </div>
+          <div class="signals"><span class="signal">OK sweep</span><span class="signal">CTA: Plan mocktails</span><span class="signal">package-menu-board</span><span class="signal">Near wood-fired-pizza-... 286</span></div>
+          <h2>SpritzLoop Beverage Cart</h2>
+          <p>Mocktail And Beverage Cart Service</p>
+          <p>SpritzLoop brings zero-proof drinks, citrus, herbs, glassware, and a tidy cart setup for events that want the fun without alcohol.</p>
+          <nav class="links" aria-label="SpritzLoop Beverage Cart links">
+            <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fmocktail-beverage-cart%2Fblueprint.json">Playground</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/mocktail-beverage-cart/blueprint.json">JSON</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/mocktail-beverage-cart/mocktail-beverage-cart-blueprint.zip">ZIP</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/mocktail-beverage-cart.json">Spec</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/mocktail-beverage-cart/README.md">README</a>
+          </nav>
+        </div>
+      </article>
+      <article class="card">
+        <div class="content">
+          <div class="meta">
+            <span class="pill">approved</span>
+            <span class="pill">mural-lettering-workshop</span>
+          </div>
+          <div class="signals"><span class="signal">OK sweep</span><span class="signal">CTA: Start lettering</span><span class="signal">operator-console</span><span class="signal">Near deck-fence-staini... 281</span></div>
+          <h2>LetterLoom Studio</h2>
+          <p>Mural And Window Lettering Artist</p>
+          <p>LetterLoom turns surface photos, scale notes, and brand color into painted storefront moments with clean install timing.</p>
+          <nav class="links" aria-label="LetterLoom Studio links">
+            <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fmural-window-lettering-artist%2Fblueprint.json">Playground</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/mural-window-lettering-artist/blueprint.json">JSON</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/mural-window-lettering-artist/mural-window-lettering-artist-blueprint.zip">ZIP</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/mural-window-lettering-artist.json">Spec</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/mural-window-lettering-artist/README.md">README</a>
+          </nav>
+        </div>
+      </article>
+      <article class="card">
+        <div class="content">
+          <div class="meta">
+            <span class="pill">approved</span>
+            <span class="pill">pet-portrait-gallery</span>
+          </div>
+          <div class="signals"><span class="signal">OK sweep</span><span class="signal">CTA: Book a session</span><span class="signal">gallery-mosaic-proof</span><span class="signal">Near headshot-brand-ph... 250</span></div>
+          <h2>BrightPaw Portraits</h2>
+          <p>Pet Portrait Photography Studio</p>
+          <p>Calm Northside studio appointments built around treats, breaks, favorite toys, and the tiny expressions that make your pet unmistakably yours.</p>
+          <nav class="links" aria-label="BrightPaw Portraits links">
+            <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fpet-portrait-photography%2Fblueprint.json">Playground</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/pet-portrait-photography/blueprint.json">JSON</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/pet-portrait-photography/pet-portrait-photography-blueprint.zip">ZIP</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/pet-portrait-photography.json">Spec</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/pet-portrait-photography/README.md">README</a>
+          </nav>
+        </div>
+      </article>
+      <article class="card">
+        <div class="content">
+          <div class="meta">
+            <span class="pill">approved</span>
+            <span class="pill">photo-booth-strip-packages</span>
+          </div>
+          <div class="signals"><span class="signal">OK sweep</span><span class="signal">CTA: Reserve a booth</span><span class="signal">mobile-action-dock</span><span class="signal">Near mobile-auto-detai... 277</span></div>
+          <h2>FlashDash Photo Booth</h2>
+          <p>Photo Booth Rental Service</p>
+          <p>FlashDash brings a sharp booth setup, clean props, backdrop options, and a host-friendly arrival plan so the photo corner never becomes a mystery table.</p>
+          <nav class="links" aria-label="FlashDash Photo Booth links">
+            <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fphoto-booth-rental%2Fblueprint.json">Playground</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/photo-booth-rental/blueprint.json">JSON</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/photo-booth-rental/photo-booth-rental-blueprint.zip">ZIP</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/photo-booth-rental.json">Spec</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/photo-booth-rental/README.md">README</a>
+          </nav>
+        </div>
+      </article>
+      <article class="card">
+        <div class="content">
+          <div class="meta">
+            <span class="pill">approved</span>
+            <span class="pill">picnic-proposal-lookbook</span>
+          </div>
+          <div class="signals"><span class="signal">OK sweep</span><span class="signal">CTA: Plan a setup</span><span class="signal">editorial-proof-stage</span><span class="signal">Near dessert-table-bak... 271</span></div>
+          <h2>Linen &amp; Lantern Setups</h2>
+          <p>Picnic And Proposal Setup Service</p>
+          <p>Linen &amp; Lantern creates styled picnic and proposal moments with linens, florals, cushions, timing notes, access planning, and a calm backup plan if weather gets theatrical.</p>
+          <nav class="links" aria-label="Linen &amp; Lantern Setups links">
+            <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fpicnic-proposal-setup%2Fblueprint.json">Playground</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/picnic-proposal-setup/blueprint.json">JSON</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/picnic-proposal-setup/picnic-proposal-setup-blueprint.zip">ZIP</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/picnic-proposal-setup.json">Spec</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/picnic-proposal-setup/README.md">README</a>
+          </nav>
+        </div>
+      </article>
+      <article class="card">
+        <div class="content">
+          <div class="meta">
+            <span class="pill">approved</span>
+            <span class="pill">route-led-schedule</span>
+          </div>
+          <div class="signals"><span class="signal">OK sweep</span><span class="signal">CTA: Get a plant plan</span><span class="signal">route-status-board</span><span class="signal">Near lawn-care-service 245</span></div>
+          <h2>LeafDesk Plant Care</h2>
+          <p>Houseplant And Office Plant Care Service</p>
+          <p>LeafDesk keeps watering, pruning, soil checks, rotations, and plant rescue notes on a simple care route for homes and offices that want greenery without guesswork.</p>
+          <nav class="links" aria-label="LeafDesk Plant Care links">
+            <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fplant-care%2Fblueprint.json">Playground</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/plant-care/blueprint.json">JSON</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/plant-care/plant-care-blueprint.zip">ZIP</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/plant-care.json">Spec</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/plant-care/README.md">README</a>
+          </nav>
+        </div>
+      </article>
+      <article class="card">
+        <div class="content">
+          <div class="meta">
+            <span class="pill">approved</span>
+            <span class="pill">pollinator-season-board</span>
+          </div>
+          <div class="signals"><span class="signal">OK sweep</span><span class="signal">CTA: Send photos</span><span class="signal">route-status-board</span><span class="signal">Near closet-pantry-org... 355</span></div>
+          <h2>BloomRoute Garden Studio</h2>
+          <p>Pollinator Garden Refresh Service</p>
+          <p>BloomRoute refreshes front-yard beds with native flowers, soft grasses, tidy edges, and planting plans that make bees happy without making your walkway disappear.</p>
+          <nav class="links" aria-label="BloomRoute Garden Studio links">
+            <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fpollinator-garden-refresh%2Fblueprint.json">Playground</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/pollinator-garden-refresh/blueprint.json">JSON</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/pollinator-garden-refresh/pollinator-garden-refresh-blueprint.zip">ZIP</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/pollinator-garden-refresh.json">Spec</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/pollinator-garden-refresh/README.md">README</a>
+          </nav>
+        </div>
+      </article>
+      <article class="card">
+        <div class="content">
+          <div class="meta">
+            <span class="pill">approved</span>
+            <span class="pill">water-test-board</span>
+          </div>
+          <div class="signals"><span class="signal">OK sweep</span><span class="signal">CTA: Start service</span><span class="signal">operator-console</span><span class="signal">Near garage-organizati... 344</span></div>
+          <h2>BlueLane Pool Care</h2>
+          <p>Pool Cleaning Service</p>
+          <p>BlueLane keeps the skim, brush, baskets, and chemistry on a simple route so the pool is ready before anyone asks if it is safe to jump in.</p>
+          <nav class="links" aria-label="BlueLane Pool Care links">
+            <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fpool-cleaning%2Fblueprint.json">Playground</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/pool-cleaning/blueprint.json">JSON</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/pool-cleaning/pool-cleaning-blueprint.zip">ZIP</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/pool-cleaning.json">Spec</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/pool-cleaning/README.md">README</a>
+          </nav>
+        </div>
+      </article>
+      <article class="card">
+        <div class="content">
+          <div class="meta">
+            <span class="pill">approved</span>
+            <span class="pill">before-after-quote</span>
+          </div>
+          <div class="signals"><span class="signal">OK sweep</span><span class="signal">CTA: Text a photo for a...</span><span class="signal">split-quote-board</span><span class="signal">Near window-cleaning 313</span></div>
+          <h2>BrightJet Exterior Cleaning</h2>
+          <p>Pressure Washing And Soft Washing Service</p>
+          <p>BrightJet cleans driveways, siding, patios, fences, and storefronts with smart pressure, soft-wash care, and crews who treat your place like it has company coming.</p>
+          <nav class="links" aria-label="BrightJet Exterior Cleaning links">
+            <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fpressure-washing-service%2Fblueprint.json">Playground</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/pressure-washing-service/blueprint.json">JSON</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/pressure-washing-service/pressure-washing-service-blueprint.zip">ZIP</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/pressure-washing-service.json">Spec</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/pressure-washing-service/README.md">README</a>
+          </nav>
+        </div>
+      </article>
+      <article class="card">
+        <div class="content">
+          <div class="meta">
+            <span class="pill">approved</span>
+            <span class="pill">story-card-consult</span>
+          </div>
+          <div class="signals"><span class="signal">OK sweep</span><span class="signal">CTA: Schedule a consult</span><span class="signal">consultation-story-flow</span><span class="signal">Near interior-color-co... 325</span></div>
+          <h2>KindMove Downsizing</h2>
+          <p>Senior Downsizing And Move Prep Service</p>
+          <p>KindMove helps families sort, label, donate, pack, and plan the next chapter with steady hands, clear categories, and room for the stories that come with the boxes.</p>
+          <nav class="links" aria-label="KindMove Downsizing links">
+            <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fsenior-downsizing-move-prep%2Fblueprint.json">Playground</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/senior-downsizing-move-prep/blueprint.json">JSON</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/senior-downsizing-move-prep/senior-downsizing-move-prep-blueprint.zip">ZIP</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/senior-downsizing-move-prep.json">Spec</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/senior-downsizing-move-prep/README.md">README</a>
+          </nav>
+        </div>
+      </article>
+      <article class="card">
+        <div class="content">
+          <div class="meta">
+            <span class="pill">approved</span>
+            <span class="pill">soundcheck-console</span>
+          </div>
+          <div class="signals"><span class="signal">OK sweep</span><span class="signal">CTA: Check my date</span><span class="signal">side-rail-service-story</span><span class="signal">Near junk-removal-dona... 277</span></div>
+          <h2>SoundNest Events</h2>
+          <p>Small-event DJ And Sound Service</p>
+          <p>SoundNest handles music flow, microphones, compact speakers, clean cables, and readable volume so small events feel alive without swallowing the room.</p>
+          <nav class="links" aria-label="SoundNest Events links">
+            <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fsmall-event-dj-sound%2Fblueprint.json">Playground</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/small-event-dj-sound/blueprint.json">JSON</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/small-event-dj-sound/small-event-dj-sound-blueprint.zip">ZIP</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/small-event-dj-sound.json">Spec</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/small-event-dj-sound/README.md">README</a>
+          </nav>
+        </div>
+      </article>
+      <article class="card">
+        <div class="content">
+          <div class="meta">
+            <span class="pill">approved</span>
+            <span class="pill">side-rail-estimate</span>
+          </div>
+          <div class="signals"><span class="signal">OK sweep</span><span class="signal">CTA: Plan my setup</span><span class="signal">side-rail-service-story</span><span class="signal">Near small-event-dj-so... 304</span></div>
+          <h2>SignalNest Home Setup</h2>
+          <p>Smart Home And Home Theater Setup Service</p>
+          <p>SignalNest turns TVs, soundbars, streaming boxes, remotes, speakers, and mystery cables into a clean setup that your whole household can actually use.</p>
+          <nav class="links" aria-label="SignalNest Home Setup links">
+            <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fsmart-home-setup%2Fblueprint.json">Playground</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/smart-home-setup/blueprint.json">JSON</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/smart-home-setup/smart-home-setup-blueprint.zip">ZIP</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/smart-home-setup.json">Spec</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/smart-home-setup/README.md">README</a>
+          </nav>
+        </div>
+      </article>
+      <article class="card">
+        <div class="content">
+          <div class="meta">
+            <span class="pill">approved</span>
+            <span class="pill">service-receipt-stack</span>
+          </div>
+          <div class="signals"><span class="signal">OK sweep</span><span class="signal">CTA: Get estimate</span><span class="signal">receipt-scope-stack</span></div>
+          <h2>SunWash Solar Care</h2>
+          <p>Solar Panel Cleaning Service</p>
+          <p>SunWash washes dusty, pollen-coated, and bird-marked panels with soft brushes, filtered water, safety-minded roof access, and before/after panel notes you can actually read.</p>
+          <nav class="links" aria-label="SunWash Solar Care links">
+            <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fsolar-panel-cleaning%2Fblueprint.json">Playground</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/solar-panel-cleaning/blueprint.json">JSON</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/solar-panel-cleaning/solar-panel-cleaning-blueprint.zip">ZIP</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/solar-panel-cleaning.json">Spec</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/solar-panel-cleaning/README.md">README</a>
+          </nav>
+        </div>
+      </article>
+      <article class="card">
+        <div class="content">
+          <div class="meta">
+            <span class="pill">approved</span>
+            <span class="pill">turnover-receipt-board</span>
+          </div>
+          <div class="signals"><span class="signal">OK sweep</span><span class="signal">CTA: Get coverage</span><span class="signal">editorial-proof-stage</span><span class="signal">Near carpet-upholstery... 356</span></div>
+          <h2>Turnkey Tidy</h2>
+          <p>Vacation Rental Turnover Cleaning Service</p>
+          <p>Turnkey Tidy resets beds, baths, kitchens, entry details, linens, and restocks with clear host notes so every turnover feels tracked, not guessed.</p>
+          <nav class="links" aria-label="Turnkey Tidy links">
+            <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fvacation-rental-turnover%2Fblueprint.json">Playground</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/vacation-rental-turnover/blueprint.json">JSON</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/vacation-rental-turnover/vacation-rental-turnover-blueprint.zip">ZIP</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/vacation-rental-turnover.json">Spec</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/vacation-rental-turnover/README.md">README</a>
+          </nav>
+        </div>
+      </article>
+      <article class="card">
+        <div class="content">
+          <div class="meta">
+            <span class="pill">approved</span>
+            <span class="pill">window-scope-ledger</span>
+          </div>
+          <div class="signals"><span class="signal">OK sweep</span><span class="signal">CTA: Get a shine quote</span><span class="signal">split-quote-board</span><span class="signal">Near furniture-refinis... 304</span></div>
+          <h2>ClearPane Window Care</h2>
+          <p>Window Cleaning Service</p>
+          <p>ClearPane handles interior glass, exterior panes, screens, tracks, and storefront touch-ups with tidy crews, careful edges, and a clear scope before arrival.</p>
+          <nav class="links" aria-label="ClearPane Window Care links">
+            <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fwindow-cleaning%2Fblueprint.json">Playground</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/window-cleaning/blueprint.json">JSON</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/window-cleaning/window-cleaning-blueprint.zip">ZIP</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/window-cleaning.json">Spec</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/window-cleaning/README.md">README</a>
+          </nav>
+        </div>
+      </article>
+      <article class="card">
+        <div class="content">
+          <div class="meta">
+            <span class="pill">approved</span>
+            <span class="pill">street-food-menu-board</span>
+          </div>
+          <div class="signals"><span class="signal">OK sweep</span><span class="signal">CTA: Feed my event</span><span class="signal">package-menu-board</span><span class="signal">Near coffee-cart-cater... 275</span></div>
+          <h2>Ember &amp; Masa Catering</h2>
+          <p>Wood-fired Pizza And Taco Pop-up Catering</p>
+          <p>Ember &amp; Masa brings wood-fired pies, taco boards, prep tables, and a calm crew so your party gets the theater without the kitchen panic.</p>
+          <nav class="links" aria-label="Ember &amp; Masa Catering links">
+            <a href="https://playground.wordpress.net/?blueprint-url=https%3A%2F%2Fraw.githubusercontent.com%2FRegionallyFamous%2FSite-O-Mattic%2Fmain%2Fpublic%2Fblueprints%2Fwood-fired-pizza-taco-catering%2Fblueprint.json">Playground</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/wood-fired-pizza-taco-catering/blueprint.json">JSON</a>
+            <a href="https://raw.githubusercontent.com/RegionallyFamous/Site-O-Mattic/main/public/blueprints/wood-fired-pizza-taco-catering/wood-fired-pizza-taco-catering-blueprint.zip">ZIP</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/specs/wood-fired-pizza-taco-catering.json">Spec</a>
+            <a href="https://github.com/RegionallyFamous/Site-O-Mattic/blob/main/public/blueprints/wood-fired-pizza-taco-catering/README.md">README</a>
+          </nav>
+        </div>
+      </article>
+    </section>
+
+    <footer>
+      Generated 2026-06-27T00:59:32Z from RegionallyFamous/Site-O-Mattic on main.
+    </footer>
+  </main>
+</body>
+</html>
