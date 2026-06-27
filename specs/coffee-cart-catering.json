@@ -45,19 +45,19 @@
       "date-cta-buried",
       "menu-board-overstyling"
     ],
-    "styleContract": "Warm event hospitality with package-fit proof, a bright event-room espresso cart scene, citrus action accents, and a readable menu ticket as the signature move."
+    "styleContract": "Bright cafe hospitality with package-fit proof, a bright event-room espresso cart scene, pistachio field notes, cobalt menu depth, coral booking accents, and a readable menu ticket as the signature move."
   },
   "tagline": "A tidy espresso bar that makes the room smell like yes.",
   "themeSlug": "twentytwentyfive",
   "landingPage": "/",
   "palette": {
-    "grass": "#1f6f66",
-    "deepGreen": "#2b2118",
-    "leaf": "#7bd0c2",
-    "sun": "#e88d2a",
-    "cream": "#fff7ea",
-    "mist": "#efe2cf",
-    "soil": "#7a4a24",
+    "grass": "#247e73",
+    "deepGreen": "#142a63",
+    "leaf": "#8fe3ac",
+    "sun": "#ff7a68",
+    "cream": "#f8fff5",
+    "mist": "#dff7e8",
+    "soil": "#3f5872",
     "white": "#ffffff"
   },
   "assets": {
@@ -136,7 +136,7 @@
   ],
   "release": {
     "status": "approved",
-    "reviewedAt": "2026-06-25",
+    "reviewedAt": "2026-06-27",
     "visualBaseline": "pending",
     "reviewChecklist": {
       "firstViewportClear": true,
@@ -153,7 +153,7 @@
     },
     "premiumReview": {
       "version": 2,
-      "reviewedAt": "2026-06-25",
+      "reviewedAt": "2026-06-27",
       "score": 100,
       "categories": {
         "firstViewport": true,
@@ -169,16 +169,16 @@
         "brandBrief": true
       },
       "notes": [
-        "Works: a readable menu ticket. gives the page a memorable shape.",
+        "Works: a cobalt menu ticket against pistachio-white surfaces gives the page a memorable cafe-hosting shape.",
         "Proof: espresso cart service in a bright event room with guests, barista, cart equipment, and menu setup visible. anchors the niche in the first viewport.",
-        "Action: Check your date is the main conversion path."
+        "Action: Check your date uses the reserved coral accent as the main conversion path."
       ]
     }
   },
   "brandBrief": {
-    "mood": "Warm event hospitality.",
+    "mood": "Bright cafe hospitality.",
     "trustCue": "package-fit proof.",
-    "accentBehavior": "sun stays reserved for Check your date, active proof cues, and key booking moments.",
+    "accentBehavior": "coral stays reserved for Check your date, active proof cues, and key booking moments.",
     "imageProof": "espresso cart service in a bright event room with guests, barista, cart equipment, and menu setup visible.",
     "signatureMove": "a readable menu ticket.",
     "avoidLookingLike": "Avoid a generic package-menu-board recolor; do not repeat stock hero framing, copied card rhythm, or vague local-service claims."

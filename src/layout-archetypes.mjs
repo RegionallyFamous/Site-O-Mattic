@@ -432,7 +432,7 @@ export const LAYOUT_ARCHETYPES = {
     ],
     navigationTreatment: "split-nav-action-header-with-zone-process-quote-anchors",
     typographyTreatment: "organized-grid-humanist-sans",
-    colorStrategy: "garage-charcoal-grid-with-safety-yellow-action",
+    colorStrategy: "garage-charcoal-grid-with-safety-orange-action",
     servicePresentation: "zone-plan-cards-with-grid-map-note",
     proofTreatment: "floor-first-proof-strip-with-zone-metrics",
     ctaRhythm: "hero-design-garage-plus-final-photo-plan-quote",

@@ -47,18 +47,18 @@
       "workshop-nav-labels",
       "tiny-tool-photo"
     ],
-    "styleContract": "Steady craft confidence with edge-care proof, real sharpening bench evidence, blue-steel, edge-lime, and brass action accents, and a route-day bench ticket as the signature move."
+    "styleContract": "Steady craft confidence with edge-care proof, real sharpening bench evidence, stainless blue-gray surfaces, graphite ink, tomato action accents, and a route-day bench ticket as the signature move."
   },
   "tagline": "Sharper kitchen tools, no drawer guilt required.",
   "themeSlug": "twentytwentyfive",
   "landingPage": "/",
   "palette": {
-    "grass": "#2f6973",
-    "deepGreen": "#10191d",
-    "leaf": "#9fb73d",
-    "sun": "#f0b429",
-    "cream": "#f4f7f7",
-    "mist": "#dbe4e6",
+    "grass": "#426b7a",
+    "deepGreen": "#26313a",
+    "leaf": "#58717d",
+    "sun": "#ff6a4d",
+    "cream": "#f8fbfa",
+    "mist": "#d9e4e8",
     "soil": "#4f5960",
     "white": "#ffffff"
   },
@@ -138,7 +138,7 @@
   ],
   "release": {
     "status": "approved",
-    "reviewedAt": "2026-06-25",
+    "reviewedAt": "2026-06-27",
     "visualBaseline": "pending",
     "reviewChecklist": {
       "firstViewportClear": true,
@@ -155,7 +155,7 @@
     },
     "premiumReview": {
       "version": 2,
-      "reviewedAt": "2026-06-25",
+      "reviewedAt": "2026-06-27",
       "score": 100,
       "categories": {
         "firstViewport": true,
@@ -171,7 +171,7 @@
         "brandBrief": true
       },
       "notes": [
-        "Works: brass action accents, and a route-day bench ticket. gives the page a memorable shape.",
+        "Works: stainless blue-gray surfaces, tomato action accents, and a route-day bench ticket give the page a memorable workshop shape.",
         "Proof: sharpening bench with knives, water tray, and route bins. anchors the niche in the first viewport.",
         "Action: Book knife route is the main conversion path."
       ]
@@ -180,9 +180,9 @@
   "brandBrief": {
     "mood": "Steady craft confidence.",
     "trustCue": "edge-care proof.",
-    "accentBehavior": "sun stays reserved for Book knife route, active proof cues, and key booking moments.",
+    "accentBehavior": "tomato red stays reserved for Book knife route, active proof cues, and key booking moments.",
     "imageProof": "sharpening bench with knives, water tray, and route bins.",
-    "signatureMove": "brass action accents, and a route-day bench ticket.",
+    "signatureMove": "tomato action accents and a route-day bench ticket.",
     "avoidLookingLike": "Avoid a generic workshop-bench recolor; do not repeat stock hero framing, copied card rhythm, or vague local-service claims."
   },
   "serviceDetails": {
