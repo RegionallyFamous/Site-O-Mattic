@@ -4,16 +4,19 @@ Built-in imagegen prompt used for the solar panel cleaning hero:
 
 ```text
 Use case: photorealistic-natural
-Asset type: WordPress one-page service business hero image, landscape 16:9
-Primary request: Create a polished, realistic hero photo for a local solar panel cleaning service.
-Scene/backdrop: sunny suburban roof with rows of dark blue-black solar panels, clean sky, soft late-morning light, a glimpse of neighborhood trees in the distance.
-Subject: one professional technician safely cleaning solar panels with a soft water-fed brush and hose, non-slip shoes, tidy workwear, no visible brand logos.
-Composition: wide horizontal frame, panels lead diagonally across the image, technician on the right third, crisp clean panel reflections, open negative space on the left/top-left for website headline copy.
-Style: premium local service photography, natural color, high clarity, trustworthy and practical, not stocky or overposed.
-Avoid: readable text, fake signage, watermarks, company logos, distorted hands, unsafe ladder behavior, standing directly on panels, dramatic storm lighting, heavy blur, exaggerated lens flare.
+Asset type: WordPress local-service hero image for Site-O-Mattic solar panel cleaning Blueprint
+Primary request: premium editorial service photography of a solar panel cleaning technician using a soft water-fed brush across dusty rooftop solar panels, with a clear clean-vs-dusty stripe visible on the glass and a small rugged tablet nearby showing abstract unreadable service report blocks and checkmarks.
+Scene/backdrop: bright residential rooftop with rows of solar panels, blue sky, distant neighborhood and tree line, safety-minded working posture.
+Subject: one technician in plain unbranded workwear, water-fed pole brush, wet panel edge, clean reflection on part of the array, dusty pollen film on another part.
+Style/medium: realistic editorial service photography, crisp and trustworthy, not stock-photo glossy.
+Composition/framing: 16:9 wide landscape crop; strong diagonal panel grid; proof action in the right half; copy-friendly negative space in the upper-left/mid-left; enough roof and panel context to read instantly as solar panel cleaning.
+Lighting/mood: clear morning sunlight, cobalt sky, bright lemon highlights, clean graphite panel texture.
+Color palette: cobalt blue, graphite black, lemon yellow safety/action accent, small teal report cue; avoid brown, tan, cream, sepia.
+Materials/textures: solar glass, water beads, soft brush bristles, aluminum rails, tablet case, clean reflection vs dusty haze.
+Constraints: no readable text, no brand names, no logos, no signage, no fake rating/review props, no exaggerated smile, no distorted hands, no broken tools, no unsafe roof behavior, no uniforms with text, no watermark.
 ```
 
-Production art direction note: show an active solar panel cleaning service service moment with visible proof or finished outcome tied to solar panel brush-wash evidence with roof-safety context. Keep it in a believable local home, room, workshop, office, event venue, outdoor route, garden, driveway, roofline, or cart environment as appropriate; frame a wide 16:9 landscape hero with copy-safe negative space for a headline overlay on one side and the service evidence in the opposite focal zone. Use soft natural light or warm event light, include relevant tools, materials, surface textures, and equipment from the scene (Solar panel cleaning technician using a soft water-fed brush on residential rooftop panels under a clear sky), and avoid readable text, logos, brand marks, watermark artifacts, distorted hands, broken tools, and over-polished stock staging.
+Production art direction note: show an active solar panel cleaning service moment with visible clean-panel proof, soft brush/water action, safe roof stance, and unbranded report/tablet cue. Frame a wide 16:9 landscape hero with copy-safe sky/left negative space, diagonal panel rhythm, and panel cleaning evidence in the opposite focal zone. Use cobalt sky, graphite panel texture, lemon sunlight, precise utility polish, and avoid readable text, logos, brand marks, watermark artifacts, distorted hands, unsafe roof behavior, and brown/cream/tan palette drift.
 
 ## Site-O-Mattic Image Style Contract
 

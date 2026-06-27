@@ -9,8 +9,8 @@
     "silhouette": "gallery-mosaic-proof",
     "navigationPrimitive": "compact-header",
     "mobileActionPattern": "section-anchor-plus-inline-phone",
-    "imageRole": "operator-or-founder",
-    "imageEvidence": "dog portrait studio session with photographer, softbox, and calm posing platform",
+    "imageRole": "finished-outcome",
+    "imageEvidence": "expressive dog portrait session with framed finished print, proof contact sheet, softbox, and calm posing platform",
     "ctaRhythm": "book-first",
     "surfaceFamily": "gallery-mosaic",
     "surfaceModel": "portrait-session-gallery-with-comfort-proof",
@@ -48,19 +48,19 @@
       "gallery-hero-mobile-height",
       "pet-crop"
     ],
-    "styleContract": "Expressive portrait-studio warmth with pet-comfort cues, real studio session evidence, aubergine ink, marine proof fields, mint action, coral detail accents, and a portrait gallery hero as the signature move."
+    "styleContract": "Expressive portrait-studio confidence with pet-comfort cues, framed portrait proof, aubergine ink, marine proof fields, mint action, coral detail accents, and a deliverable-led portrait gallery hero as the signature move."
   },
   "tagline": "Portrait days for pets with big personality.",
   "themeSlug": "twentytwentyfive",
   "landingPage": "/",
   "palette": {
-    "grass": "#286f9f",
-    "deepGreen": "#28162e",
-    "leaf": "#e05067",
-    "sun": "#aef5dc",
-    "cream": "#fff8f2",
-    "mist": "#eaf3ff",
-    "soil": "#5c586a",
+    "grass": "#235f8f",
+    "deepGreen": "#25142c",
+    "leaf": "#e64e71",
+    "sun": "#83f0d7",
+    "cream": "#f3f8ff",
+    "mist": "#fff0f4",
+    "soil": "#57566a",
     "white": "#ffffff"
   },
   "assets": {
@@ -71,7 +71,7 @@
   "assetMeta": {
     "hero": {
       "title": "BrightPaw pet portrait photography hero image",
-      "alt": "A calm dog posing on a studio platform while a photographer adjusts softbox lighting for a pet portrait session."
+      "alt": "A golden dog posing in a pet portrait studio beside a framed finished portrait, proof sheet, camera gear, treats, and softbox lighting."
     }
   },
   "contact": {
@@ -83,8 +83,8 @@
   },
   "copy": {
     "eyebrow": "Patient pet portraits",
-    "heroTitle": "Portraits for pets with big personality.",
-    "heroText": "Slow, treat-friendly studio sessions catch the tiny looks that make your pet unmistakably yours.",
+    "heroTitle": "Portrait proof with the personality built in.",
+    "heroText": "Slow, treat-friendly studio sessions turn expressive pets into framed prints, proof sheets, and images that still feel unmistakably theirs.",
     "primaryCta": "Book a session",
     "secondaryCta": "View packages",
     "introTitle": "Calm studio sessions for nervous pets.",
@@ -172,18 +172,18 @@
         "brandBrief": true
       },
       "notes": [
-        "Works: a portrait gallery hero. gives the page a memorable shape.",
-        "Proof: dog portrait studio session with photographer, softbox, and calm posing platform. anchors the niche in the first viewport.",
+        "Works: a deliverable-led portrait gallery hero. gives the page a memorable shape.",
+        "Proof: expressive dog portrait session with framed finished print, proof contact sheet, softbox, and calm posing platform. anchors the niche in the first viewport.",
         "Action: Book a session is the main conversion path."
       ]
     }
   },
   "brandBrief": {
-    "mood": "Expressive portrait-studio warmth.",
+    "mood": "Expressive portrait-studio confidence.",
     "trustCue": "pet-comfort cues.",
-    "accentBehavior": "sun stays reserved for Book a session and booking moments, while leaf punctuates small pet-expression proof.",
-    "imageProof": "dog portrait studio session with photographer, softbox, and calm posing platform.",
-    "signatureMove": "a portrait gallery hero.",
+    "accentBehavior": "sun stays reserved for Book a session, active proof cues, and key booking moments.",
+    "imageProof": "expressive dog portrait session with framed finished print, proof contact sheet, softbox, and calm posing platform.",
+    "signatureMove": "a deliverable-led portrait gallery hero.",
     "avoidLookingLike": "Avoid a generic gallery-led recolor; do not repeat stock hero framing, copied card rhythm, or vague local-service claims."
   },
   "serviceDetails": {

@@ -2,19 +2,19 @@
   "slug": "headshot-brand-photography",
   "businessName": "FrameForge Headshots",
   "niche": "headshot and brand photography studio",
-  "layoutVariant": "headshot-prep-ledger",
+  "layoutVariant": "headshot-proof-gallery",
   "pattern": {
-    "primaryPattern": "service-receipt-stack",
+    "primaryPattern": "gallery-led-portfolio-proof",
     "secondaryPattern": "prep-confidence-proof",
-    "silhouette": "receipt-scope-stack",
-    "navigationPrimitive": "section-anchor-strip",
-    "mobileActionPattern": "session-prep-anchor-plus-inline-booking",
-    "imageRole": "operator-or-founder",
-    "imageEvidence": "studio headshot session with photographer, client, lighting, and camera setup",
+    "silhouette": "gallery-mosaic-proof",
+    "navigationPrimitive": "compact-header",
+    "mobileActionPattern": "image-led-session-stack-plus-inline-booking",
+    "imageRole": "work-in-progress",
+    "imageEvidence": "studio headshot service moment with photographer using camera setup, coaching under softbox lighting, and proof-selection contact sheet",
     "ctaRhythm": "book-first",
-    "surfaceFamily": "receipt-stack",
-    "surfaceModel": "session-prep-ledger-with-usage-scope-table",
-    "styleFamily": "receipt-ledger",
+    "surfaceFamily": "gallery-mosaic",
+    "surfaceModel": "cover-hero-contact-sheet-proof-strip",
+    "styleFamily": "editorial-proof-stage",
     "density": "balanced-editorial",
     "colorRoles": {
       "ink": "deepGreen",
@@ -29,40 +29,39 @@
       "shadowTint": "grass"
     },
     "geometry": {
-      "radiusScale": "studio-ledger-8",
-      "borderRole": "ledger rows and session receipt separators",
-      "shadowRole": "studio media lift only",
-      "mediaCrop": "studio session proof crop"
+      "radiusScale": "studio-proof-8",
+      "borderRole": "thin proof-frame borders and contact-sheet crops",
+      "shadowRole": "hero cover and contact sheet only",
+      "mediaCrop": "image-led studio cover with proof-contact-sheet crops"
     },
     "coreBlockPlan": [
-      "media-text",
-      "table",
-      "details",
+      "cover",
+      "gallery",
+      "quote",
       "columns",
       "list",
-      "quote",
       "navigation",
       "buttons"
     ],
     "knownRisks": [
       "first-viewport-cta",
       "logo-scale",
-      "session-table-mobile-readability",
-      "prep-ledger-too-heavy"
+      "hero-overlay-contrast",
+      "contact-sheet-crop-proof"
     ],
-    "styleContract": "Polished and precise with prep proof, real studio headshot evidence, restrained camera-blue ledger accents, amber booking action, and a session-prep receipt stack as the signature move."
+    "styleContract": "Editorial studio proof with a charcoal image-led hero, visible proof-selection contact sheet, cobalt proof accents, blush booking action, and a contact-sheet gallery as the signature move."
   },
   "tagline": "Headshots that look like you on a very good day.",
   "themeSlug": "twentytwentyfive",
   "landingPage": "/",
   "palette": {
-    "grass": "#405f83",
-    "deepGreen": "#182233",
-    "leaf": "#7aa7b8",
-    "sun": "#f2bc56",
-    "cream": "#f6f1e8",
-    "mist": "#dfe7ec",
-    "soil": "#56606c",
+    "grass": "#385f9d",
+    "deepGreen": "#14151d",
+    "leaf": "#89a9bf",
+    "sun": "#d9687f",
+    "cream": "#faf7fa",
+    "mist": "#e8edf6",
+    "soil": "#53515f",
     "white": "#ffffff"
   },
   "assets": {
@@ -73,7 +72,7 @@
   "assetMeta": {
     "hero": {
       "title": "FrameForge headshot photography hero image",
-      "alt": "A photographer coaching a client during a professional headshot session with softbox lighting and camera setup."
+      "alt": "A photographer coaches a client during a professional headshot session beside softbox lighting, camera gear, and a proof-selection monitor."
     }
   },
   "contact": {
@@ -84,12 +83,12 @@
     "serviceArea": "Professional headshots, brand photography, team portraits, LinkedIn refreshes, speaker images, website portraits, and studio or on-location sessions for North Loop, River Market, Oak Hill, Westbrook, and nearby offices"
   },
   "copy": {
-    "eyebrow": "Headshots and brand photos with prep built in",
-    "heroTitle": "Polished, not over-produced.",
-    "heroText": "FrameForge guides wardrobe, lighting, expression, usage needs, and delivery so your headshots feel current, credible, and still recognizably you.",
+    "eyebrow": "Studio headshots with proof selection",
+    "heroTitle": "Headshots that still look like you.",
+    "heroText": "FrameForge guides wardrobe, lighting, expression, usage needs, proof selection, and delivery so the final portraits feel current, credible, and recognizably human.",
     "primaryCta": "Book a headshot slot",
-    "secondaryCta": "Review prep checklist",
-    "introTitle": "The best headshot starts before you sit down.",
+    "secondaryCta": "See proof cues",
+    "introTitle": "The best headshot is shaped before you choose it.",
     "introText": "We talk about industry, usage, background, wardrobe, retouch comfort, and whether you need one strong portrait or a small brand set.",
     "servicesTitle": "Session options",
     "processTitle": "How prep keeps it easy",
@@ -174,25 +173,25 @@
         "brandBrief": true
       },
       "notes": [
-        "Works: a session-prep receipt stack gives the page a memorable shape.",
-        "Proof: studio headshot session with photographer, client, lighting, and camera setup. anchors the niche in the first viewport.",
+        "Works: a contact-sheet gallery. gives the page a memorable shape.",
+        "Proof: studio headshot service moment with photographer using camera setup, coaching under softbox lighting, and proof-selection contact sheet. anchors the niche in the first viewport.",
         "Action: Book a headshot slot is the main conversion path."
       ]
     }
   },
   "brandBrief": {
-    "mood": "Polished and precise.",
-    "trustCue": "prep proof.",
-    "accentBehavior": "sun stays reserved for Book a headshot slot, active proof cues, and key booking moments.",
-    "imageProof": "studio headshot session with photographer, client, lighting, and camera setup.",
-    "signatureMove": "a session-prep receipt stack.",
+    "mood": "Editorial studio proof.",
+    "trustCue": "a charcoal image-led hero.",
+    "accentBehavior": "The blush action token stays reserved for Book a headshot slot, active proof cues, and key booking moments.",
+    "imageProof": "studio headshot service moment with photographer using camera setup, coaching under softbox lighting, and proof-selection contact sheet.",
+    "signatureMove": "a contact-sheet gallery.",
     "avoidLookingLike": "Avoid a generic gallery-led recolor; do not repeat stock hero framing, copied card rhythm, or vague local-service claims."
   },
   "serviceDetails": {
     "turnaround": "Prep guide: wardrobe and expression notes included.",
     "whatToSend": "Share your role, photo usage, deadline, headcount, background preference, wardrobe questions, retouch comfort, and any brand examples or team scheduling needs.",
     "prepNote": "We ask where the photos will live, what tone they need, and what backgrounds make sense.",
-    "serviceRhythm": "Receipt-scope flow for Professional headshots, brand photography, team portraits, LinkedIn refreshes, speaker images, website portraits, and studio or on-location sessions for North Loop, River Market, Oak Hill, Westbrook, and nearby offices: role, usage, background, wardrobe, retouch comfort, and delivery format stay visible before booking.",
+    "serviceRhythm": "Gallery-proof flow for professional headshots, brand photography, team portraits, LinkedIn refreshes, speaker images, website portraits, and studio or on-location sessions across North Loop, River Market, Oak Hill, Westbrook, and nearby offices: role, usage, background, wardrobe, retouch comfort, and delivery format stay visible before booking.",
     "objectionAnswer": "For headshot and brand photography studio, usage, roles, headcount, background needs, wardrobe, proof timing, and delivery format are scoped before anyone picks a session lane."
   }
 }

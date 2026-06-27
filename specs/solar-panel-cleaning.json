@@ -10,7 +10,7 @@
     "navigationPrimitive": "section-anchor-strip",
     "mobileActionPattern": "section-anchor-plus-inline-phone",
     "imageRole": "process-closeup",
-    "imageEvidence": "solar panel brush-wash evidence with roof-safety context",
+    "imageEvidence": "clean-vs-dusty solar panel brush-wash evidence with safe roof stance and report tablet cue",
     "ctaRhythm": "quote-first",
     "surfaceFamily": "receipt-stack",
     "surfaceModel": "receipt-table-details-stack",
@@ -46,19 +46,19 @@
       "roof-safety-trust",
       "hero-media-too-tall"
     ],
-    "styleContract": "Clean ledger confidence with roof-safety proof, real panel-washing evidence, sun-stamp action accents, and a receipt table as the signature move."
+    "styleContract": "Crisp solar-utility confidence with roof-safety proof, clean-vs-dusty panel evidence, cobalt grid fields, lemon action accents, and a service report receipt table as the signature move."
   },
   "tagline": "Solar panels cleaned gently, safely, and without output guesswork.",
   "themeSlug": "twentytwentyfive",
   "landingPage": "/",
   "palette": {
-    "grass": "#1f7a9a",
-    "deepGreen": "#10233f",
-    "leaf": "#3eb489",
-    "sun": "#f5c84b",
-    "cream": "#f6f8f2",
-    "mist": "#dceff5",
-    "soil": "#4b5967",
+    "grass": "#155fd6",
+    "deepGreen": "#0b2142",
+    "leaf": "#18a994",
+    "sun": "#ffd447",
+    "cream": "#f4f8ff",
+    "mist": "#d9eaff",
+    "soil": "#405368",
     "white": "#ffffff"
   },
   "assets": {
@@ -69,7 +69,7 @@
   "assetMeta": {
     "hero": {
       "title": "SunWash solar panel cleaning hero image",
-      "alt": "Solar panel cleaning technician using a soft water-fed brush on residential rooftop panels under a clear sky."
+      "alt": "A solar panel cleaning technician safely uses a soft water-fed brush on dusty residential rooftop panels with a service report tablet nearby."
     }
   },
   "contact": {
@@ -81,8 +81,8 @@
   },
   "copy": {
     "eyebrow": "Solar panel cleaning with receipt-level scope",
-    "heroTitle": "Clean panels, clear scope, no roof heroics.",
-    "heroText": "SunWash washes dusty, pollen-coated, and bird-marked panels with soft brushes, filtered water, safety-minded roof access, and before/after panel notes you can actually read.",
+    "heroTitle": "Clean panels. Clear service report.",
+    "heroText": "SunWash clears dusty, pollen-coated, and bird-marked panels with soft brushes, filtered water, safety-minded roof access, and photo notes that make the visit easy to trust.",
     "primaryCta": "Get estimate",
     "secondaryCta": "Review the scope",
     "introTitle": "What we check before water touches glass",
@@ -137,7 +137,7 @@
   ],
   "release": {
     "status": "approved",
-    "reviewedAt": "2026-06-25",
+    "reviewedAt": "2026-06-27",
     "visualBaseline": "pending",
     "reviewChecklist": {
       "firstViewportClear": true,
@@ -154,7 +154,7 @@
     },
     "premiumReview": {
       "version": 2,
-      "reviewedAt": "2026-06-25",
+      "reviewedAt": "2026-06-27",
       "score": 100,
       "categories": {
         "firstViewport": true,
@@ -170,18 +170,18 @@
         "brandBrief": true
       },
       "notes": [
-        "Works: a receipt table. gives the page a memorable shape.",
-        "Proof: solar panel brush-wash evidence with roof-safety context. anchors the niche in the first viewport.",
+        "Works: a service report receipt table. gives the page a memorable shape.",
+        "Proof: clean-vs-dusty solar panel brush-wash evidence with safe roof stance and report tablet cue. anchors the niche in the first viewport.",
         "Action: Get estimate is the main conversion path."
       ]
     }
   },
   "brandBrief": {
-    "mood": "Clean ledger confidence.",
+    "mood": "Crisp solar-utility confidence.",
     "trustCue": "roof-safety proof.",
     "accentBehavior": "sun stays reserved for Get estimate, active proof cues, and key booking moments.",
-    "imageProof": "solar panel brush-wash evidence with roof-safety context.",
-    "signatureMove": "a receipt table.",
+    "imageProof": "clean-vs-dusty solar panel brush-wash evidence with safe roof stance and report tablet cue.",
+    "signatureMove": "a service report receipt table.",
     "avoidLookingLike": "Avoid a generic service-receipt-stack recolor; do not repeat stock hero framing, copied card rhythm, or vague local-service claims."
   },
   "serviceDetails": {

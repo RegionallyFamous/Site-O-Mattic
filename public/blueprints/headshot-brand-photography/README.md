@@ -16,4 +16,4 @@ The ZIP includes the same root `blueprint.json`, an `asset-manifest.json`, plus 
 - Creates a one-page headshot and brand photography studio homepage using core blocks only.
 - Creates a front-page block template so the default theme does not wrap the site with its stock header, title, or footer.
 - Applies the site palette and typography through WordPress global styles/settings, with a core custom CSS fallback for first-load palette classes.
-- Uses the `headshot-prep-ledger` layout archetype.
+- Uses the `headshot-proof-gallery` layout archetype.

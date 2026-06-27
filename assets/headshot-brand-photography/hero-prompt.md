@@ -1,10 +1,10 @@
 # FrameForge Headshots hero image prompt
 
-Professional headshot studio with photographer coaching client, softboxes and camera visible, wide 16:9 with left negative space, no logos or readable text.
+Premium headshot studio hero showing the result and workflow: photographer coaching a client under softbox lighting, camera/tether setup visible, proof-selection monitor/contact sheet with abstract headshot thumbnails, wardrobe hints, and copy-friendly negative space. No readable text, logos, or brand marks.
 
-Generated with built-in Imagegen for Site-O-Mattic production on 2026-06-25. Avoid readable text, logos, watermarks, and generic stock staging.
+Regenerated with built-in Imagegen for Site-O-Mattic production on 2026-06-27. Avoid readable text, logos, watermarks, generic office stock staging, over-glamour fashion styling, and beige/brown dominance.
 
-Production art direction note: show an active headshot and brand photography studio service moment with visible proof or finished outcome tied to studio headshot session with photographer, client, lighting, and camera setup. Keep it in a believable local home, room, workshop, office, event venue, outdoor route, garden, driveway, roofline, or cart environment as appropriate; frame a wide 16:9 landscape hero with copy-safe negative space for a headline overlay on one side and the service evidence in the opposite focal zone. Use soft natural light or warm event light, include relevant tools, materials, surface textures, and equipment from the scene (A photographer coaching a client during a professional headshot session with softbox lighting and camera setup), and avoid readable text, logos, brand marks, watermark artifacts, distorted hands, broken tools, and over-polished stock staging.
+Production art direction note: show an active headshot and brand photography studio moment with visible result proof tied to softbox lighting, coaching, camera/tether workflow, proof-selection monitor/contact sheet, and wardrobe/prep cues. Frame a wide 16:9 landscape hero with copy-safe negative space and the session result clear at a glance. Use precise studio lighting, camera-blue/amber accents, crisp neutral surfaces, and avoid readable text, logos, brand marks, watermark artifacts, distorted faces/hands, generic office stock staging, and over-glamour fashion styling.
 
 ## Site-O-Mattic Image Style Contract
 

@@ -1,10 +1,10 @@
 # BrightPaw Portraits hero image prompt
 
-Professional pet portrait studio session, calm dog on posing platform, photographer adjusting softbox, warm neutral backdrop, wide 16:9 with left negative space, no readable text or logos.
+Premium pet portrait studio hero showing the finished deliverable: an expressive dog on a calm posing platform, a large framed dog portrait, a proof contact sheet with abstract thumbnails, softbox lighting, treats, camera gear, and copy-friendly negative space. No readable text, logos, or brand marks.
 
-Generated with built-in Imagegen for Site-O-Mattic production on 2026-06-25. Avoid readable text, logos, watermarks, and generic stock staging.
+Regenerated with built-in Imagegen for Site-O-Mattic production on 2026-06-27. Avoid readable text, logos, watermarks, generic stock staging, distorted animals, and warm brown/cream dominance.
 
-Production art direction note: show an active pet portrait photography studio service moment with visible proof or finished outcome tied to dog portrait studio session with photographer, softbox, and calm posing platform. Keep it in a believable local home, room, workshop, office, event venue, outdoor route, garden, driveway, roofline, or cart environment as appropriate; frame a wide 16:9 landscape hero with copy-safe negative space for a headline overlay on one side and the service evidence in the opposite focal zone. Use soft natural light or warm event light, include relevant tools, materials, surface textures, and equipment from the scene (A calm dog posing on a studio platform while a photographer adjusts softbox lighting for a pet portrait session), and avoid readable text, logos, brand marks, watermark artifacts, distorted hands, broken tools, and over-polished stock staging.
+Production art direction note: show an active pet portrait photography studio moment with finished portrait proof tied to a calm dog session, framed print, contact sheet, softbox, treats, and photographer/camera presence. Frame a wide 16:9 landscape hero with copy-safe negative space and the dog plus deliverable proof clear at a glance. Use polished studio light, cool portrait backdrop, pet-friendly textures, and avoid readable text, logos, brand marks, watermark artifacts, distorted animals, generic stock gloss, and over-polished showroom staging.
 
 ## Site-O-Mattic Image Style Contract
 
