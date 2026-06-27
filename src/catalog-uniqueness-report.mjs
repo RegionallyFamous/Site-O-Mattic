@@ -12,7 +12,7 @@ const targets = await specTargets(targetArgs);
 const specs = await Promise.all(targets.map(async (specPath) => ({ spec: await readSpec(specPath), specPath })));
 const rows = specs.map(({ spec, specPath }) => buildRow(spec, specPath));
 const report = buildReport(rows);
-const output = `${renderMarkdown(report)}\n`;
+const output = `${renderMarkdown(report).trimEnd()}\n`;
 const failures = [...report.failures];
 
 if (writeMode) {

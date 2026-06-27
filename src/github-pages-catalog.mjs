@@ -38,6 +38,7 @@ for (const { spec, updatedAtMs } of specEntries) {
   const playgroundUrl = `https://playground.wordpress.net/?blueprint-url=${encodeURIComponent(blueprintUrl)}`;
   const heroUrl = `${rawBase}/public/blueprints/${spec.slug}${manifest.assets.hero.outputPath}`;
   const logoUrl = `${rawBase}/public/blueprints/${spec.slug}${manifest.assets.logo.outputPath}`;
+  const screenshotUrl = await screenshotUrlFor(spec.slug, heroUrl);
   const reviewItem = reviewItemsBySlug.get(spec.slug);
 
   cards.push({
@@ -49,6 +50,7 @@ for (const { spec, updatedAtMs } of specEntries) {
     variant: spec.layoutVariant,
     heroUrl,
     logoUrl,
+    screenshotUrl,
     heroAlt: spec.assetMeta?.hero?.alt || `${spec.businessName} preview image`,
     playgroundUrl,
     blueprintUrl,
@@ -106,23 +108,26 @@ function renderPage(items, featured) {
   <style>
     :root {
       color-scheme: light;
-      --ink: #151916;
-      --muted: #56635b;
-      --paper: #f5f7f2;
-      --surface: #ffffff;
-      --line: #d7dfd3;
-      --field: #e8efe5;
-      --action: #e79005;
-      --action-ink: #1b1208;
-      --green: #1f6b4a;
-      --shadow: 0 18px 45px rgba(27, 54, 38, .12);
+      --ink: #172129;
+      --muted: #60707a;
+      --paper: #f7f4ee;
+      --surface: #fffdf8;
+      --line: #ddd5c8;
+      --field: #e8efe9;
+      --action: #d98032;
+      --action-ink: #fffaf1;
+      --green: #176f77;
+      --plum: #463350;
+      --shadow: 0 16px 38px rgba(23, 33, 41, .11);
     }
     * {
       box-sizing: border-box;
     }
     body {
       margin: 0;
-      background: var(--paper);
+      background:
+        linear-gradient(180deg, rgba(232, 239, 233, .92), rgba(247, 244, 238, 0) 340px),
+        var(--paper);
       color: var(--ink);
       font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       line-height: 1.5;
@@ -131,38 +136,40 @@ function renderPage(items, featured) {
       color: inherit;
     }
     .page {
-      width: min(1180px, calc(100% - 32px));
+      width: min(1360px, calc(100% - 32px));
       margin: 0 auto;
-      padding: 34px 0 52px;
+      padding: 24px 0 46px;
     }
     .masthead {
       display: grid;
-      gap: 18px;
-      grid-template-columns: minmax(0, 1.1fr) minmax(280px, .9fr);
-      align-items: end;
-      padding: 0 0 28px;
-      border-bottom: 1px solid var(--line);
+      gap: 20px;
+      grid-template-columns: minmax(0, 1fr) minmax(300px, .72fr);
+      align-items: center;
+      padding: 0 0 18px;
+      border-bottom: 1px solid rgba(23, 33, 41, .14);
     }
     .eyebrow {
       margin: 0 0 8px;
-      color: var(--green);
-      font-size: 13px;
+      color: #8f4218;
+      font-size: 12px;
       font-weight: 800;
-      letter-spacing: .04em;
+      letter-spacing: 0;
       text-transform: uppercase;
     }
     h1 {
-      max-width: 760px;
+      max-width: 720px;
       margin: 0;
-      font-size: clamp(34px, 5vw, 64px);
-      line-height: .96;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(32px, 4.5vw, 58px);
+      font-weight: 650;
+      line-height: 1.01;
       letter-spacing: 0;
     }
     .lede {
       max-width: 720px;
-      margin: 18px 0 0;
+      margin: 14px 0 0;
       color: var(--muted);
-      font-size: 18px;
+      font-size: 17px;
     }
     .stats {
       display: grid;
@@ -170,10 +177,10 @@ function renderPage(items, featured) {
       gap: 10px;
     }
     .stat {
-      padding: 14px;
-      border: 1px solid var(--line);
+      padding: 12px;
+      border: 1px solid rgba(23, 33, 41, .14);
       border-radius: 8px;
-      background: rgba(255, 255, 255, .48);
+      background: rgba(255, 253, 248, .68);
     }
     .stat strong {
       display: block;
@@ -193,8 +200,8 @@ function renderPage(items, featured) {
       grid-template-columns: minmax(0, 1fr) minmax(300px, .64fr);
       gap: 22px;
       align-items: center;
-      margin: 28px 0;
-      padding: 18px;
+      margin: 22px 0;
+      padding: 14px;
       border: 1px solid var(--line);
       border-radius: 8px;
       background: var(--surface);
@@ -228,7 +235,7 @@ function renderPage(items, featured) {
     .latest h2,
     .card h2 {
       margin: 0;
-      font-size: 24px;
+      font-size: 23px;
       line-height: 1.08;
       letter-spacing: 0;
     }
@@ -250,7 +257,7 @@ function renderPage(items, featured) {
       min-height: 40px;
       padding: 10px 14px;
       border: 1px solid var(--line);
-      border-radius: 999px;
+      border-radius: 6px;
       background: var(--surface);
       color: var(--ink);
       font-size: 14px;
@@ -260,8 +267,8 @@ function renderPage(items, featured) {
     }
     .button.primary {
       border-color: transparent;
-      background: var(--action);
-      color: var(--action-ink);
+      background: var(--ink);
+      color: var(--surface);
     }
     .toolbar {
       display: flex;
@@ -269,7 +276,7 @@ function renderPage(items, featured) {
       gap: 10px;
       align-items: center;
       justify-content: space-between;
-      margin: 28px 0 16px;
+      margin: 26px 0 14px;
     }
     .toolbar h2 {
       margin: 0;
@@ -283,34 +290,71 @@ function renderPage(items, featured) {
     .grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
+      gap: 16px;
     }
     .card {
       display: flex;
       flex-direction: column;
+      overflow: hidden;
       min-width: 0;
       border: 1px solid var(--line);
       border-radius: 8px;
       background: var(--surface);
+      box-shadow: 0 10px 28px rgba(23, 33, 41, .08);
+    }
+    .card-preview {
+      display: block;
+      overflow: hidden;
+      aspect-ratio: 16 / 10;
+      border-bottom: 1px solid rgba(23, 33, 41, .12);
+      background: var(--field);
+      text-decoration: none;
+    }
+    .card-preview img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      transition: transform .18s ease;
+    }
+    .card-preview:hover img {
+      transform: scale(1.018);
     }
     .content {
       display: flex;
       flex: 1;
       flex-direction: column;
-      padding: 16px;
+      padding: 14px;
+    }
+    .logo-row {
+      display: flex;
+      min-height: 50px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .logo-row img {
+      display: block;
+      width: min(210px, 62%);
+      max-height: 48px;
+      object-fit: contain;
+      object-position: left center;
     }
     .meta {
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
-      margin-bottom: 10px;
+      justify-content: flex-end;
+      margin: 0 0 0 auto;
     }
     .pill {
       display: inline-flex;
       align-items: center;
       min-height: 24px;
       padding: 4px 8px;
-      border-radius: 999px;
+      border-radius: 6px;
       background: var(--field);
       color: var(--muted);
       font-size: 12px;
@@ -328,7 +372,7 @@ function renderPage(items, featured) {
       min-height: 22px;
       padding: 3px 7px;
       border: 1px solid var(--line);
-      border-radius: 999px;
+      border-radius: 6px;
       color: var(--muted);
       font-size: 11px;
       font-weight: 800;
@@ -358,7 +402,7 @@ function renderPage(items, featured) {
     .links a:first-child {
       grid-column: 1 / -1;
       border-color: transparent;
-      background: var(--ink);
+      background: var(--green);
       color: var(--surface);
     }
     footer {
@@ -373,13 +417,16 @@ function renderPage(items, featured) {
       .latest {
         grid-template-columns: 1fr;
       }
+      .stats {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
       .grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
     @media (max-width: 620px) {
       .page {
-        width: min(100% - 24px, 1180px);
+        width: min(100% - 24px, 1360px);
         padding-top: 24px;
       }
       .stats,
@@ -397,6 +444,17 @@ function renderPage(items, featured) {
       }
       .mobile-shot {
         display: none!important;
+      }
+      .logo-row {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+      .logo-row img {
+        width: min(240px, 100%);
+      }
+      .meta {
+        justify-content: flex-start;
+        margin-left: 0;
       }
     }
   </style>
@@ -493,10 +551,16 @@ function renderCard(item) {
     ? `<div class="signals">${item.reviewSignals.map((signal) => `<span class="signal">${escapeHtml(signal)}</span>`).join("")}</div>`
     : "";
   return `      <article class="card">
+        <a class="card-preview" href="${escapeAttr(item.playgroundUrl)}" aria-label="Open ${escapeAttr(item.name)} in WordPress Playground">
+          <img src="${escapeAttr(item.screenshotUrl)}" alt="${escapeAttr(item.name)} screenshot preview" loading="lazy">
+        </a>
         <div class="content">
-          <div class="meta">
-            <span class="pill">${escapeHtml(item.status)}</span>
-            <span class="pill">${escapeHtml(item.variant)}</span>
+          <div class="logo-row">
+            <img src="${escapeAttr(item.logoUrl)}" alt="${escapeAttr(item.name)} logo" loading="lazy">
+            <div class="meta">
+              <span class="pill">${escapeHtml(item.status)}</span>
+              <span class="pill">${escapeHtml(item.variant)}</span>
+            </div>
           </div>
           ${signals}
           <h2>${escapeHtml(item.name)}</h2>
@@ -511,6 +575,16 @@ function renderCard(item) {
           </nav>
         </div>
       </article>`;
+}
+
+async function screenshotUrlFor(slug, fallback) {
+  const screenshotPath = path.join("public", "blueprints", slug, "assets", "screenshot.png");
+  try {
+    await fs.access(screenshotPath);
+    return `${rawBase}/public/blueprints/${slug}/assets/screenshot.png`;
+  } catch {
+    return fallback;
+  }
 }
 
 function pairTasteTitle(pair) {
