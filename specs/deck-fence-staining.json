@@ -47,20 +47,20 @@
       "care-note-too-long",
       "craft-surfaces-too-heavy"
     ],
-    "styleContract": "Craft-forward and material honest with stain-window proof, close wood-grain work evidence, amber action accents, and a finish-sample table as the signature move."
+    "styleContract": "Craft-forward and material honest with stain-window proof, close wood-grain work evidence, pine-green and oxide-orange accents, and a finish-sample table as the signature move."
   },
   "tagline": "Wood staining that protects the good grain.",
   "themeSlug": "twentytwentyfive",
   "landingPage": "/",
   "palette": {
-    "grass": "#4f6b3c",
-    "deepGreen": "#24160f",
-    "leaf": "#9f4d2f",
-    "sun": "#d98236",
-    "cream": "#f7efe2",
-    "mist": "#dcc4a5",
-    "soil": "#3f2c22",
-    "white": "#fffaf2"
+    "grass": "#2f6f4f",
+    "deepGreen": "#10231f",
+    "leaf": "#b9472f",
+    "sun": "#f26d21",
+    "cream": "#f5f7f2",
+    "mist": "#dfe8dc",
+    "soil": "#515a52",
+    "white": "#ffffff"
   },
   "assets": {
     "hero": "assets/deck-fence-staining/cedarline-hero.jpg",

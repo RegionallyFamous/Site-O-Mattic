@@ -46,19 +46,19 @@
       "logo-scale",
       "mobile-crop"
     ],
-    "styleContract": "Romantic and practical with timing proof, styled picnic evidence, rose-gold action accents, and occasion lookbook cards as the signature move."
+    "styleContract": "Romantic and practical with timing proof, styled picnic evidence, sky, meadow, coral, and navy accents, and occasion lookbook cards as the signature move."
   },
   "tagline": "Styled picnic setups with timing handled.",
   "themeSlug": "twentytwentyfive",
   "landingPage": "/",
   "palette": {
-    "grass": "#8b6457",
-    "deepGreen": "#2b2320",
-    "leaf": "#b77b83",
-    "sun": "#eebc6a",
-    "cream": "#fff5ea",
-    "mist": "#eaded5",
-    "soil": "#675650",
+    "grass": "#2f7d5b",
+    "deepGreen": "#142340",
+    "leaf": "#f08aa6",
+    "sun": "#ff6f61",
+    "cream": "#f7fbff",
+    "mist": "#d9eef4",
+    "soil": "#4f6170",
     "white": "#ffffff"
   },
   "assets": {
@@ -170,7 +170,7 @@
         "brandBrief": true
       },
       "notes": [
-        "Works: occasion lookbook cards. gives the page a memorable shape.",
+        "Works: navy accents, and occasion lookbook cards. gives the page a memorable shape.",
         "Proof: styled picnic and proposal setup with low table, florals, cushions, and sunset location context. anchors the niche in the first viewport.",
         "Action: Plan a setup is the main conversion path."
       ]
@@ -181,7 +181,7 @@
     "trustCue": "timing proof.",
     "accentBehavior": "sun stays reserved for Plan a setup, active proof cues, and key booking moments.",
     "imageProof": "styled picnic and proposal setup with low table, florals, cushions, and sunset location context.",
-    "signatureMove": "occasion lookbook cards.",
+    "signatureMove": "navy accents, and occasion lookbook cards.",
     "avoidLookingLike": "Avoid a generic gallery-led recolor; do not repeat stock hero framing, copied card rhythm, or vague local-service claims."
   },
   "serviceDetails": {

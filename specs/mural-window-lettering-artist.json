@@ -47,19 +47,19 @@
       "logo-scale",
       "mobile-crop"
     ],
-    "styleContract": "Creative and precise with surface proof, real storefront painting evidence, signmaker-red proof accents, brass action, and a project ticket as the signature move."
+    "styleContract": "Creative and precise with surface proof, real storefront painting evidence, sign-green, cobalt, and enamel-red accents, and a project ticket as the signature move."
   },
   "tagline": "Walls and windows with hand-painted character.",
   "themeSlug": "twentytwentyfive",
   "landingPage": "/",
   "palette": {
-    "grass": "#b24b3f",
-    "deepGreen": "#1d1b19",
-    "leaf": "#2f73b7",
-    "sun": "#f0b84d",
-    "cream": "#fbf1e4",
-    "mist": "#e7ded2",
-    "soil": "#62544a",
+    "grass": "#0f7b57",
+    "deepGreen": "#151716",
+    "leaf": "#2457c5",
+    "sun": "#f04b3a",
+    "cream": "#f8f4ea",
+    "mist": "#d8e9de",
+    "soil": "#333536",
     "white": "#ffffff"
   },
   "assets": {
@@ -171,7 +171,7 @@
         "brandBrief": true
       },
       "notes": [
-        "Works: a project ticket. gives the page a memorable shape.",
+        "Works: enamel-red accents, and a project ticket. gives the page a memorable shape.",
         "Proof: artist painting decorative window lettering and mural shapes on storefront glass with tools nearby. anchors the niche in the first viewport.",
         "Action: Start lettering is the main conversion path."
       ]
@@ -182,7 +182,7 @@
     "trustCue": "surface proof.",
     "accentBehavior": "sun stays reserved for Start lettering, active proof cues, and key booking moments.",
     "imageProof": "artist painting decorative window lettering and mural shapes on storefront glass with tools nearby.",
-    "signatureMove": "a project ticket.",
+    "signatureMove": "enamel-red accents, and a project ticket.",
     "avoidLookingLike": "Avoid a generic workshop-bench recolor; do not repeat stock hero framing, copied card rhythm, or vague local-service claims."
   },
   "serviceDetails": {

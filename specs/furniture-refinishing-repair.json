@@ -47,19 +47,19 @@
       "logo-scale",
       "floating-proof-panel-crowding"
     ],
-    "styleContract": "Patient and tactile with material proof, real refinishing evidence, brass accent behavior, and a hero photo proof pair plus floating send-photo panel as the signature move."
+    "styleContract": "Patient and tactile with material proof, real refinishing evidence, steel-indigo and brass accent behavior, and a hero photo proof pair plus floating send-photo panel as the signature move."
   },
   "tagline": "Furniture repair with grain, care, and receipts.",
   "themeSlug": "twentytwentyfive",
   "landingPage": "/",
   "palette": {
-    "grass": "#7a4f2a",
-    "deepGreen": "#251b15",
-    "leaf": "#a8784a",
-    "sun": "#e7b75c",
-    "cream": "#f7efe4",
-    "mist": "#e5d6c5",
-    "soil": "#655142",
+    "grass": "#3f5f8a",
+    "deepGreen": "#17202a",
+    "leaf": "#6f8794",
+    "sun": "#c79a2f",
+    "cream": "#f3f5f6",
+    "mist": "#dde3e8",
+    "soil": "#4f5862",
     "white": "#ffffff"
   },
   "assets": {
@@ -171,7 +171,7 @@
         "brandBrief": true
       },
       "notes": [
-        "Works: a hero photo proof pair plus floating send-photo panel gives the page a memorable shape.",
+        "Works: a hero photo proof pair plus floating send-photo panel. gives the page a memorable shape.",
         "Proof: craftsperson refinishing a wooden furniture piece in a tidy workshop with tools and finish samples. anchors the niche in the first viewport.",
         "Action: Send a furniture photo is the main conversion path."
       ]

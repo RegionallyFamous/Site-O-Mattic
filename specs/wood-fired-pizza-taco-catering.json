@@ -45,19 +45,19 @@
       "logo-scale",
       "mobile-crop"
     ],
-    "styleContract": "Warm and lively with guest-count proof, an outdoor live-fire catering station, flame-yellow action accents, and a readable menu ticket as the signature move."
+    "styleContract": "Warm and lively with guest-count proof, an outdoor live-fire catering station, tomato, cilantro-teal, and masa-yellow action accents, and a readable menu ticket as the signature move."
   },
   "tagline": "Live-fire catering for hungry parties.",
   "themeSlug": "twentytwentyfive",
   "landingPage": "/",
   "palette": {
-    "grass": "#a33d2e",
-    "deepGreen": "#211917",
-    "leaf": "#4f8f72",
-    "sun": "#f3b23d",
-    "cream": "#fff3df",
-    "mist": "#ead4bd",
-    "soil": "#6b4b39",
+    "grass": "#bf3322",
+    "deepGreen": "#171718",
+    "leaf": "#168a73",
+    "sun": "#f2c94c",
+    "cream": "#fff8e6",
+    "mist": "#d8f0e7",
+    "soil": "#34424a",
     "white": "#ffffff"
   },
   "assets": {
@@ -169,7 +169,7 @@
         "brandBrief": true
       },
       "notes": [
-        "Works: a readable menu ticket. gives the page a memorable shape.",
+        "Works: masa-yellow action accents, and a readable menu ticket. gives the page a memorable shape.",
         "Proof: outdoor live-fire catering station with wood oven, prep table, finished pizza, tacos, toppings, and crew visible. anchors the niche in the first viewport.",
         "Action: Feed my event is the main conversion path."
       ]
@@ -180,7 +180,7 @@
     "trustCue": "guest-count proof.",
     "accentBehavior": "sun stays reserved for Feed my event, active proof cues, and key booking moments.",
     "imageProof": "outdoor live-fire catering station with wood oven, prep table, finished pizza, tacos, toppings, and crew visible.",
-    "signatureMove": "a readable menu ticket.",
+    "signatureMove": "masa-yellow action accents, and a readable menu ticket.",
     "avoidLookingLike": "Avoid a generic package-menu-board recolor; do not repeat stock hero framing, copied card rhythm, or vague local-service claims."
   },
   "serviceDetails": {

@@ -47,19 +47,19 @@
       "logo-scale",
       "mobile-crop"
     ],
-    "styleContract": "Romantic editorial calm with bouquet prep proof, coral accent reserved for the consult action, and a post-hero floral brief anchor strip as the signature move."
+    "styleContract": "Romantic editorial calm with bouquet prep proof, blackberry, celadon, and marigold accents reserved for consult actions, and a post-hero floral brief anchor strip as the signature move."
   },
   "tagline": "Small wedding flowers with a calm little plan.",
   "themeSlug": "twentytwentyfive",
   "landingPage": "/",
   "palette": {
-    "grass": "#667a5b",
-    "deepGreen": "#253025",
-    "leaf": "#c48f94",
-    "sun": "#f0ad65",
-    "cream": "#fff6ef",
-    "mist": "#eee1e8",
-    "soil": "#625452",
+    "grass": "#517b63",
+    "deepGreen": "#2b1733",
+    "leaf": "#9bc6b0",
+    "sun": "#d89a2b",
+    "cream": "#fbf8f5",
+    "mist": "#e8f1ea",
+    "soil": "#5c4b5f",
     "white": "#ffffff"
   },
   "assets": {
@@ -171,7 +171,7 @@
         "brandBrief": true
       },
       "notes": [
-        "Works: a post-hero floral brief anchor strip. gives the page a memorable shape.",
+        "Works: marigold accents reserved for consult actions, and a post-hero floral brief anchor strip. gives the page a memorable shape.",
         "Proof: florist arranging micro-wedding bouquet and small ceremony florals on a prep table. anchors the niche in the first viewport.",
         "Action: Start floral consult is the main conversion path."
       ]
@@ -182,7 +182,7 @@
     "trustCue": "bouquet prep proof.",
     "accentBehavior": "sun stays reserved for Start floral consult, active proof cues, and key booking moments.",
     "imageProof": "florist arranging micro-wedding bouquet and small ceremony florals on a prep table.",
-    "signatureMove": "a post-hero floral brief anchor strip.",
+    "signatureMove": "marigold accents reserved for consult actions, and a post-hero floral brief anchor strip.",
     "avoidLookingLike": "Avoid a generic checklist-urgency recolor; do not repeat stock hero framing, copied card rhythm, or vague local-service claims."
   },
   "serviceDetails": {

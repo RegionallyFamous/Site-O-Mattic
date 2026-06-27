@@ -47,19 +47,19 @@
       "workshop-nav-labels",
       "tiny-tool-photo"
     ],
-    "styleContract": "Steady craft confidence with edge-care proof, real sharpening bench evidence, brass action accents, and a route-day bench ticket as the signature move."
+    "styleContract": "Steady craft confidence with edge-care proof, real sharpening bench evidence, blue-steel, edge-lime, and brass action accents, and a route-day bench ticket as the signature move."
   },
   "tagline": "Sharper kitchen tools, no drawer guilt required.",
   "themeSlug": "twentytwentyfive",
   "landingPage": "/",
   "palette": {
-    "grass": "#5d6f73",
-    "deepGreen": "#1d2426",
-    "leaf": "#63703a",
-    "sun": "#e4b04a",
-    "cream": "#f3eadc",
-    "mist": "#d9ded8",
-    "soil": "#594a3f",
+    "grass": "#2f6973",
+    "deepGreen": "#10191d",
+    "leaf": "#9fb73d",
+    "sun": "#f0b429",
+    "cream": "#f4f7f7",
+    "mist": "#dbe4e6",
+    "soil": "#4f5960",
     "white": "#ffffff"
   },
   "assets": {
@@ -171,7 +171,7 @@
         "brandBrief": true
       },
       "notes": [
-        "Works: a route-day bench ticket. gives the page a memorable shape.",
+        "Works: brass action accents, and a route-day bench ticket. gives the page a memorable shape.",
         "Proof: sharpening bench with knives, water tray, and route bins. anchors the niche in the first viewport.",
         "Action: Book knife route is the main conversion path."
       ]
@@ -182,7 +182,7 @@
     "trustCue": "edge-care proof.",
     "accentBehavior": "sun stays reserved for Book knife route, active proof cues, and key booking moments.",
     "imageProof": "sharpening bench with knives, water tray, and route bins.",
-    "signatureMove": "a route-day bench ticket.",
+    "signatureMove": "brass action accents, and a route-day bench ticket.",
     "avoidLookingLike": "Avoid a generic workshop-bench recolor; do not repeat stock hero framing, copied card rhythm, or vague local-service claims."
   },
   "serviceDetails": {
