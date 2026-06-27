@@ -4695,6 +4695,102 @@ function buildAliasVisualCss(spec) {
     display:none!important;
   }
 }`.trim(),
+    "plant-care-story": `
+.som-plant-story-hero{
+  background:linear-gradient(180deg, ${p.cream}, color-mix(in srgb, ${p.mist} 70%, ${p.white}));
+}
+.som-plant-story-hero .wp-block-media-text__media{
+  background-position:58% 50%!important;
+}
+.som-plant-story-hero .wp-block-media-text__media img{
+  filter:saturate(1.02) contrast(1.03);
+  object-position:58% 50%;
+}
+.som-plant-story-hero p.has-soil-color,
+.som-plant-story-hero .som-story-check-list{
+  color:color-mix(in srgb, ${p.soil} 72%, ${p.deepGreen})!important;
+}
+.som-plant-story-hero .wp-block-button__link{
+  background:color-mix(in srgb, ${p.sun} 86%, ${p.white})!important;
+  box-shadow:none!important;
+}
+.som-plant-support-card{
+  background:linear-gradient(180deg, ${p.white}, color-mix(in srgb, ${p.mist} 46%, ${p.white}))!important;
+  border:1px solid color-mix(in srgb, ${p.leaf} 20%, transparent);
+  border-left:6px solid ${p.leaf}!important;
+  box-shadow:none!important;
+}
+.som-plant-proof-band{
+  background:color-mix(in srgb, ${p.leaf} 12%, ${p.white})!important;
+}
+.som-plant-proof-card{
+  align-content:start!important;
+  background:
+    linear-gradient(90deg, color-mix(in srgb, ${p.leaf} 16%, transparent) 0 4px, transparent 4px),
+    linear-gradient(180deg, ${p.white}, color-mix(in srgb, ${p.mist} 52%, ${p.white}))!important;
+  border:1px solid color-mix(in srgb, ${p.leaf} 28%, transparent);
+  border-radius:6px!important;
+  row-gap:18px!important;
+  box-shadow:none!important;
+}
+.som-plant-proof-card p:first-child{
+  color:${p.deepGreen}!important;
+  font-size:clamp(1.2rem, 2vw, 1.65rem)!important;
+  line-height:1.06!important;
+  min-block-size:2.12em!important;
+}
+.som-plant-proof-card p:last-child{
+  align-self:start!important;
+  color:${p.soil}!important;
+  font-weight:620!important;
+  min-block-size:2.52em!important;
+}
+.som-plant-process-step .wp-block-column:first-child{
+  flex:0 0 86px!important;
+  max-width:86px;
+}
+.som-plant-quote{
+  border-left-color:${p.leaf}!important;
+  color:${p.deepGreen}!important;
+}
+.som-plant-quote cite{
+  color:${p.grass}!important;
+}
+.som-plant-consult-strip{
+  background:linear-gradient(135deg, ${p.white}, color-mix(in srgb, ${p.mist} 76%, ${p.white}))!important;
+}
+.som-plant-consult-strip .wp-block-column{
+  min-width:0;
+}
+.som-plant-consult-strip .wp-block-button__link{
+  box-sizing:border-box;
+  white-space:normal;
+}
+@media (min-width:701px) and (max-width:900px){
+  .som-plant-story-hero .wp-block-media-text__media{
+    background-position:74% 50%!important;
+  }
+  .som-plant-story-hero .wp-block-media-text__media img{
+    object-position:74% 50%!important;
+  }
+}
+@media (max-width:700px){
+  .som-plant-story-hero .wp-block-media-text__content{
+    padding-top:18px!important;
+    padding-bottom:24px!important;
+  }
+  .som-plant-story-hero .wp-block-media-text__media,
+  .som-plant-story-hero .wp-block-media-text__media img{
+    max-height:190px!important;
+    min-height:168px!important;
+  }
+  .som-plant-story-hero .wp-block-media-text__media img{
+    object-position:50% 46%;
+  }
+  .som-plant-story-hero h1{
+    font-size:clamp(29px, 7.6vw, 35px)!important;
+  }
+}`.trim(),
     "color-consult-story": `
 .som-color-header-action .wp-block-button__link{
   box-shadow:none!important;

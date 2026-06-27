@@ -188,6 +188,7 @@ const RENDER_FAMILY_BY_LAYOUT = {
   "organizing-zone-board": "zone-grid-planner",
   "route-led-schedule": "lawn-route-status-board",
   "story-card-consult": "checklist-urgency",
+  "plant-care-story": "checklist-urgency",
   "window-scope-ledger": "before-after-quote",
   "pet-portrait-gallery": "gallery-led",
   "pet-portrait-booking-dock": "fixed-bottom-action",
@@ -1001,6 +1002,53 @@ export const LAYOUT_ARCHETYPES = {
     layoutMarkers: ["wp:media-text", "som-story-hero", "som-story-check-list", "som-story-proof-band", "som-support-card", "som-story-process-step", "wp:quote", "wp:details", "som-consult-quote-strip"],
     guidance: "Use warmer editorial pacing with a true Media & Text story hero, one gentle hero CTA, support cards, consult details, and a final low-pressure contact panel."
   },
+  "plant-care-story": storyAlias({
+    prefix: "plant",
+    label: "Plant care story",
+    bestFor: ["houseplant care", "office plant care", "plant rescue"],
+    archetype: "Plant health consultation story flow",
+    hero: "image-left-media-text-with-plant-health-checklist",
+    sectionOrder: [
+      "compact-plant-header",
+      "media-text-plant-health-hero",
+      "plant-proof-band",
+      "care-support-cards",
+      "plant-care-steps",
+      "care-plan-footer"
+    ],
+    navigationTreatment: "compact-plant-consult-header-with-care-plan-action",
+    typographyTreatment: "living-route-humanist-field-guide",
+    colorStrategy: "field-guide-cream-with-sun-action-and-leaf-proof",
+    servicePresentation: "plant-care-support-cards-with-room-and-rhythm-notes",
+    proofTreatment: "moisture-light-proof-band-before-care-steps",
+    ctaRhythm: "hero-send-plant-photos-plus-final-care-plan",
+    navLabels: ["Plants", "Care", "Plan"],
+    anchorOrder: ["support", "steps", "quote"],
+    extraComponentClasses: [
+      "som-story-hero",
+      "som-story-proof-band",
+      "som-support-card",
+      "som-story-phone-line",
+      "som-story-check-list",
+      "som-story-process-step",
+      "som-story-step-number",
+      "som-plant-process-step",
+      "som-plant-step-number",
+      "som-consult-quote-strip",
+      "som-footer"
+    ],
+    extraLayoutMarkers: [
+      "wp:media-text",
+      "som-story-hero",
+      "som-story-check-list",
+      "som-story-proof-band",
+      "som-story-process-step",
+      "wp:quote",
+      "wp:details",
+      "som-consult-quote-strip"
+    ],
+    guidance: "Use a field-guide consult flow for plant health, light, soil, drainage, and care notes instead of a route status board."
+  }),
   "turnover-receipt-board": {
     label: "Turnover receipt board",
     bestFor: ["vacation rental turnover", "move-out cleaning", "rental reset"],

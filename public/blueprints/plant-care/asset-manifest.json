@@ -2,7 +2,7 @@
   "version": 1,
   "slug": "plant-care",
   "businessName": "LeafDesk Plant Care",
-  "layoutVariant": "route-led-schedule",
+  "layoutVariant": "plant-care-story",
   "assets": {
     "hero": {
       "source": "assets/plant-care/leafdesk-hero.jpg",

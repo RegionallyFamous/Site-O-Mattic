@@ -2,19 +2,19 @@
   "slug": "plant-care",
   "businessName": "LeafDesk Plant Care",
   "niche": "houseplant and office plant care service",
-  "layoutVariant": "route-led-schedule",
+  "layoutVariant": "plant-care-story",
   "pattern": {
-    "primaryPattern": "route-schedule-board",
+    "primaryPattern": "consultation-story-flow",
     "secondaryPattern": "living-plant-health-proof",
-    "silhouette": "route-status-board",
+    "silhouette": "consultation-story-flow",
     "navigationPrimitive": "compact-header",
-    "mobileActionPattern": "route-join-actions",
-    "imageRole": "work-in-progress",
+    "mobileActionPattern": "consult-photo-actions",
+    "imageRole": "process-closeup",
     "imageEvidence": "plant care specialist pruning and checking soil moisture on plant shelf",
-    "ctaRhythm": "route-join",
-    "surfaceFamily": "status-board",
-    "surfaceModel": "route-care-plan-cards",
-    "styleFamily": "clear-status-dashboard",
+    "ctaRhythm": "consult-first",
+    "surfaceFamily": "mostly-flat",
+    "surfaceModel": "plant-health-consult-cards",
+    "styleFamily": "humanist-local-calm",
     "density": "balanced-editorial",
     "colorRoles": {
       "ink": "deepGreen",
@@ -29,27 +29,27 @@
       "shadowTint": "deepGreen"
     },
     "geometry": {
-      "radiusScale": "living-route-8",
-      "borderRole": "care route dividers",
-      "shadowRole": "route plan card only",
-      "mediaCrop": "plant shelf service crop"
+      "radiusScale": "plant-story-6",
+      "borderRole": "leaf note dividers",
+      "shadowRole": "hero media and final contact only",
+      "mediaCrop": "plant shelf consult crop"
     },
     "coreBlockPlan": [
-      "image",
+      "media-text",
       "columns",
-      "table",
+      "quote",
       "details",
       "list",
       "buttons"
     ],
     "knownRisks": [
-      "too-botanical-generic",
+      "too-soft-consult-copy",
       "plant-photo-crowding",
-      "route-copy-too-cute"
+      "cta-too-vague"
     ],
-    "styleContract": "Fresh route-care calm with soil-moisture proof, real plant maintenance evidence, sunlit action accents, and a route status board as the signature move."
+    "styleContract": "Fresh field-guide calm with soil-moisture proof, real plant maintenance evidence, sunlit action accents, and a guided plant-health story flow as the signature move."
   },
-  "tagline": "Plant care routes for leaves that have meetings to attend.",
+  "tagline": "Plant care for leaves that have meetings to attend.",
   "themeSlug": "twentytwentyfive",
   "landingPage": "/",
   "palette": {
@@ -81,18 +81,18 @@
     "serviceArea": "Recurring houseplant and office plant care, watering routes, pruning, soil moisture checks, yellow leaf cleanup, plant rescue triage, lobby plant refreshes, and vacation plant visits for homes, studios, offices, and sunny apartments"
   },
   "copy": {
-    "eyebrow": "Houseplant and office plant care on route",
+    "eyebrow": "Houseplant health consults and care routes",
     "heroTitle": "Healthy plants, fewer mystery leaves.",
-    "heroText": "LeafDesk keeps watering, pruning, soil checks, rotations, and plant rescue notes on a simple care route for homes and offices that want greenery without guesswork.",
-    "primaryCta": "Get a plant plan",
-    "secondaryCta": "See care routes",
+    "heroText": "LeafDesk reads light, soil feel, drainage, pruning needs, and plant stress before setting a care rhythm for calmer homes and offices.",
+    "primaryCta": "Plan plant care",
+    "secondaryCta": "See plant notes",
     "introTitle": "Watering is only one line on the leaf report.",
-    "introText": "We track light, soil feel, pot drainage, leaf color, pest clues, humidity swings, and vacation gaps before deciding the right care rhythm.",
-    "servicesTitle": "Choose your care route",
-    "processTitle": "How the plants stay understood",
+    "introText": "We check room light, soil moisture, pot drainage, leaf color, pest clues, humidity swings, and vacation gaps before deciding whether the next move is water, prune, rotate, wait, or rescue.",
+    "servicesTitle": "Plant support that starts with the room",
+    "processTitle": "How we read the room before watering",
     "proofTitle": "Plant notes beat panic watering",
     "quoteTitle": "Ready for calmer plant care?",
-    "quoteText": "Join the route with plant photos, room light notes, watering history, and any sad-leaf situations. We will reply with a care rhythm and first-visit plan."
+    "quoteText": "Send plant photos, room light notes, watering history, and any sad-leaf situations. We will reply with a care rhythm and first-visit plan."
   },
   "services": [
     {
@@ -128,7 +128,7 @@
       "label": "soil feel before watering decisions"
     },
     {
-      "stat": "Route notes",
+      "stat": "Care notes",
       "label": "care changes tracked each visit"
     },
     {
@@ -171,25 +171,25 @@
         "brandBrief": true
       },
       "notes": [
-        "Works: a route status board. gives the page a memorable shape.",
+        "Works: a guided plant-health story flow gives the page a memorable shape.",
         "Proof: plant care specialist pruning and checking soil moisture on plant shelf. anchors the niche in the first viewport.",
-        "Action: Get a plant plan is the main conversion path."
+        "Action: Plan plant care is the main conversion path."
       ]
     }
   },
   "brandBrief": {
-    "mood": "Fresh route-care calm.",
-    "trustCue": "soil-moisture proof.",
-    "accentBehavior": "sun stays reserved for Get a plant plan, active proof cues, and key booking moments.",
+    "mood": "Fresh field-guide calm.",
+    "trustCue": "soil, light, drainage, and leaf-stress proof.",
+    "accentBehavior": "sun stays reserved for Plan plant care, active proof cues, and key booking moments.",
     "imageProof": "plant care specialist pruning and checking soil moisture on plant shelf.",
-    "signatureMove": "a route status board.",
+    "signatureMove": "a guided plant-health story flow.",
     "avoidLookingLike": "Avoid a generic lawn-route-status-board recolor; do not repeat stock hero framing, copied card rhythm, or vague local-service claims."
   },
   "serviceDetails": {
-    "turnaround": "Moisture check: soil feel before watering decisions.",
-    "whatToSend": "Send your address or neighborhood, access notes, preferred cadence, photos when useful, and any skip conditions before joining the route.",
-    "prepNote": "Room photos, plant count, window direction, watering habits, and problem leaves help us sketch the first route.",
-    "serviceRhythm": "Route-fit flow for Recurring houseplant and office plant care, watering routes, pruning, soil moisture checks, yellow leaf cleanup, plant rescue triage, lobby plant refreshes, and vacation plant visits for homes, studios, offices, and sunny apartments: cadence, access, skip rules, and first-visit notes make the route realistic.",
-    "objectionAnswer": "For houseplant and office plant care service, plant count, room light, watering history, access, and skip dates shape the first route before a care cadence is set."
+    "turnaround": "Care plan reply: plant photos, light, drainage, and watering history shape the first visit.",
+    "whatToSend": "Send plant photos, plant count, room light or window direction, watering history, pot and drainage notes, access needs, and any yellow leaf or pest clues.",
+    "prepNote": "Room photos, plant count, window direction, watering habits, and problem leaves help us sketch the first care plan.",
+    "serviceRhythm": "Calm-consult flow for recurring houseplant and office plant care: light, soil, drainage, access, plant count, and watering history shape a care rhythm before repeat visits begin.",
+    "objectionAnswer": "For houseplant and office plant care service, plant count, room light, watering history, drainage, access, and skip dates shape the first visit before a care cadence is set."
   }
 }

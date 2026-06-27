@@ -138,6 +138,7 @@ const VARIANT_CLASS_FINGERPRINTS = {
     "som-proof-card": "som-family-proof-card",
     "som-quote-strip": "som-consult-quote-strip"
   },
+  "plant-care-story": plantStoryFingerprint(),
   "turnover-receipt-board": {
     "som-receipt-page": "som-turnover-page",
     "som-receipt-header": "som-turnover-header",
@@ -218,6 +219,21 @@ function storyFingerprint(prefix) {
     "som-check-quote": `som-${prefix}-quote`,
     "som-proof-card": `som-${prefix}-proof-card`,
     "som-quote-strip": `som-${prefix}-consult-strip`
+  };
+}
+
+function plantStoryFingerprint() {
+  return {
+    ...storyFingerprint("plant"),
+    "som-checklist-hero": "som-story-hero som-plant-story-hero",
+    "som-urgency-band": "som-story-proof-band som-plant-proof-band",
+    "som-check-card": "som-support-card som-plant-support-card",
+    "som-proof-card": "som-plant-proof-card",
+    "som-check-detail": "som-plant-detail",
+    "som-check-quote": "som-plant-quote",
+    "som-story-process-step": "som-plant-process-step",
+    "som-story-step-number": "som-plant-step-number",
+    "som-quote-strip": "som-consult-quote-strip som-plant-consult-strip"
   };
 }
 
@@ -824,7 +840,7 @@ function buildPageContent(spec) {
     content = buildDessertTableGalleryPageContent(spec);
   } else if (layoutVariant === "color-consult-story") {
     content = buildColorConsultStoryPageContent(spec);
-  } else if (layoutVariant === "story-card-consult") {
+  } else if (layoutVariant === "story-card-consult" || layoutVariant === "plant-care-story") {
     content = buildStoryCardConsultPageContent(spec);
   } else if (layoutVariant === "turnover-receipt-board") {
     content = buildTurnoverReceiptBoardPageContent(spec);
@@ -1205,6 +1221,13 @@ function buildStoryCardConsultPageContent(spec) {
   const process = spec.process.map((item, index) => storyProcessStep(index + 1, item.title, item.text)).join("\n");
   const consultQuote = storyConsultQuote(spec);
   const details = storyConsultDetails(spec);
+  const heroBullets = storyHeroBullets(spec).map((item) => `<!-- wp:list-item --><li>${esc(item)}</li><!-- /wp:list-item -->`).join("");
+  const finalEmailLabel = storyFinalEmailLabel(spec);
+  const proofSectionName = storyProofSectionName(spec);
+  const navWeight = storyNavWeight(spec);
+  const actionWeight = storyActionWeight(spec);
+  const heroListWeight = storyHeroListWeight(spec);
+  const phoneLineWeight = storyPhoneLineWeight(spec);
 
   return `
 <!-- wp:group {"align":"full","backgroundColor":"cream","style":{"spacing":{"padding":{"top":"18px","right":"24px","bottom":"18px","left":"24px"}}},"layout":{"type":"constrained","wideSize":"1180px"}} -->
@@ -1212,7 +1235,7 @@ function buildStoryCardConsultPageContent(spec) {
 <!-- wp:group {"align":"wide","layout":{"type":"flex","flexWrap":"wrap","justifyContent":"space-between","verticalAlignment":"center"}} -->
 <div class="wp-block-group alignwide">
 <!-- wp:site-logo {"width":250,"shouldSyncIcon":true} /-->
-<!-- wp:navigation {"overlayMenu":"mobile","layout":{"type":"flex","justifyContent":"right"},"style":{"typography":{"fontSize":"15px","fontStyle":"normal","fontWeight":"720"}}} -->
+<!-- wp:navigation {"overlayMenu":"mobile","layout":{"type":"flex","justifyContent":"right"},"style":{"typography":{"fontSize":"15px","fontStyle":"normal","fontWeight":"${navWeight}"}}} -->
 ${navigationLinkBlocks(navLinks)}
 <!-- /wp:navigation -->
 </div>
@@ -1235,22 +1258,22 @@ ${navigationLinkBlocks(navLinks)}
 <!-- /wp:paragraph -->
 <!-- wp:buttons {"style":{"spacing":{"blockGap":"12px"}}} -->
 <div class="wp-block-buttons">
-<!-- wp:button {"backgroundColor":"sun","textColor":"deep-green","style":{"border":{"radius":"6px"},"spacing":{"padding":{"top":"13px","bottom":"13px","left":"20px","right":"20px"}},"typography":{"fontStyle":"normal","fontWeight":"780"}}} -->
-<div class="wp-block-button" style="font-style:normal;font-weight:780"><a class="wp-block-button__link has-deep-green-color has-sun-background-color has-text-color has-background wp-element-button" href="#quote" style="border-radius:6px;padding-top:13px;padding-right:20px;padding-bottom:13px;padding-left:20px">${esc(copy.primaryCta)}</a></div>
+<!-- wp:button {"backgroundColor":"sun","textColor":"deep-green","style":{"border":{"radius":"6px"},"spacing":{"padding":{"top":"13px","bottom":"13px","left":"20px","right":"20px"}},"typography":{"fontStyle":"normal","fontWeight":"${actionWeight}"}}} -->
+<div class="wp-block-button" style="font-style:normal;font-weight:${actionWeight}"><a class="wp-block-button__link has-deep-green-color has-sun-background-color has-text-color has-background wp-element-button" href="#quote" style="border-radius:6px;padding-top:13px;padding-right:20px;padding-bottom:13px;padding-left:20px">${esc(copy.primaryCta)}</a></div>
 <!-- /wp:button -->
 </div>
 <!-- /wp:buttons -->
-<!-- wp:paragraph {"className":"som-story-phone-line","textColor":"soil","style":{"typography":{"fontSize":"16px","lineHeight":"1.45","fontStyle":"normal","fontWeight":"680"},"spacing":{"margin":{"top":"16px","bottom":"0"}}}} -->
-<p class="som-story-phone-line has-soil-color has-text-color" style="margin-top:16px;margin-bottom:0;font-size:16px;font-style:normal;font-weight:680;line-height:1.45">Prefer to talk it through? <a href="${esc(contact.phoneHref)}">${esc(contact.phoneLabel)}</a></p>
+<!-- wp:paragraph {"className":"som-story-phone-line","textColor":"soil","style":{"typography":{"fontSize":"16px","lineHeight":"1.45","fontStyle":"normal","fontWeight":"${phoneLineWeight}"},"spacing":{"margin":{"top":"16px","bottom":"0"}}}} -->
+<p class="som-story-phone-line has-soil-color has-text-color" style="margin-top:16px;margin-bottom:0;font-size:16px;font-style:normal;font-weight:${phoneLineWeight};line-height:1.45">Prefer to talk it through? <a href="${esc(contact.phoneHref)}">${esc(contact.phoneLabel)}</a></p>
 <!-- /wp:paragraph -->
-<!-- wp:list {"className":"som-story-check-list","style":{"typography":{"fontSize":"17px","lineHeight":"1.5","fontWeight":"650"},"spacing":{"margin":{"top":"24px","bottom":"0"}}}} -->
-<ul class="som-story-check-list" style="margin-top:24px;margin-bottom:0;font-size:17px;font-weight:650;line-height:1.5"><!-- wp:list-item --><li>One room at a time, with keep, gift, donate, pack, and unsure labels.</li><!-- /wp:list-item --><!-- wp:list-item --><li>Family questions get written down before sensitive items leave the house.</li><!-- /wp:list-item --></ul>
+<!-- wp:list {"className":"som-story-check-list","style":{"typography":{"fontSize":"17px","lineHeight":"1.5","fontWeight":"${heroListWeight}"},"spacing":{"margin":{"top":"24px","bottom":"0"}}}} -->
+<ul class="som-story-check-list" style="margin-top:24px;margin-bottom:0;font-size:17px;font-weight:${heroListWeight};line-height:1.5">${heroBullets}</ul>
 <!-- /wp:list -->
 </div>
 </div>
 <!-- /wp:media-text -->
 
-<!-- wp:group {"metadata":{"name":"Family proof"},"align":"full","className":"som-urgency-band","backgroundColor":"white","style":{"spacing":{"padding":{"top":"36px","right":"24px","bottom":"36px","left":"24px"}}},"layout":{"type":"constrained","wideSize":"1180px"}} -->
+<!-- wp:group {"metadata":{"name":"${esc(proofSectionName)}"},"align":"full","className":"som-urgency-band","backgroundColor":"white","style":{"spacing":{"padding":{"top":"36px","right":"24px","bottom":"36px","left":"24px"}}},"layout":{"type":"constrained","wideSize":"1180px"}} -->
 <div class="wp-block-group alignfull som-urgency-band has-white-background-color has-background" style="padding-top:36px;padding-right:24px;padding-bottom:36px;padding-left:24px">
 <!-- wp:columns {"align":"wide","style":{"spacing":{"blockGap":{"left":"14px"}}}} -->
 <div class="wp-block-columns alignwide">
@@ -1314,11 +1337,11 @@ ${details}
 <div class="wp-block-column is-vertically-aligned-center" style="flex-basis:40%">
 <!-- wp:buttons {"layout":{"type":"flex","justifyContent":"left"},"style":{"spacing":{"blockGap":"12px"}}} -->
 <div class="wp-block-buttons">
-<!-- wp:button {"backgroundColor":"sun","textColor":"deep-green","width":100,"style":{"border":{"radius":"6px"},"spacing":{"padding":{"top":"14px","bottom":"14px","left":"22px","right":"22px"}},"typography":{"fontStyle":"normal","fontWeight":"780"}}} -->
-<div class="wp-block-button has-custom-width wp-block-button__width-100" style="font-style:normal;font-weight:780"><a class="wp-block-button__link has-deep-green-color has-sun-background-color has-text-color has-background wp-element-button" href="${esc(contact.emailHref)}" style="border-radius:6px;padding-top:14px;padding-right:22px;padding-bottom:14px;padding-left:22px">Email timeline details</a></div>
+<!-- wp:button {"backgroundColor":"sun","textColor":"deep-green","width":100,"style":{"border":{"radius":"6px"},"spacing":{"padding":{"top":"14px","bottom":"14px","left":"22px","right":"22px"}},"typography":{"fontStyle":"normal","fontWeight":"${actionWeight}"}}} -->
+<div class="wp-block-button has-custom-width wp-block-button__width-100" style="font-style:normal;font-weight:${actionWeight}"><a class="wp-block-button__link has-deep-green-color has-sun-background-color has-text-color has-background wp-element-button" href="${esc(contact.emailHref)}" style="border-radius:6px;padding-top:14px;padding-right:22px;padding-bottom:14px;padding-left:22px">${esc(finalEmailLabel)}</a></div>
 <!-- /wp:button -->
-<!-- wp:button {"className":"is-style-outline","textColor":"deep-green","width":100,"style":{"border":{"radius":"6px"},"spacing":{"padding":{"top":"14px","bottom":"14px","left":"22px","right":"22px"}},"typography":{"fontStyle":"normal","fontWeight":"780"}}} -->
-<div class="wp-block-button has-custom-width wp-block-button__width-100 is-style-outline" style="font-style:normal;font-weight:780"><a class="wp-block-button__link has-deep-green-color has-text-color wp-element-button" href="${esc(contact.phoneHref)}" style="border-radius:6px;padding-top:14px;padding-right:22px;padding-bottom:14px;padding-left:22px">${esc(contact.phoneLabel)}</a></div>
+<!-- wp:button {"className":"is-style-outline","textColor":"deep-green","width":100,"style":{"border":{"radius":"6px"},"spacing":{"padding":{"top":"14px","bottom":"14px","left":"22px","right":"22px"}},"typography":{"fontStyle":"normal","fontWeight":"${actionWeight}"}}} -->
+<div class="wp-block-button has-custom-width wp-block-button__width-100 is-style-outline" style="font-style:normal;font-weight:${actionWeight}"><a class="wp-block-button__link has-deep-green-color has-text-color wp-element-button" href="${esc(contact.phoneHref)}" style="border-radius:6px;padding-top:14px;padding-right:22px;padding-bottom:14px;padding-left:22px">${esc(contact.phoneLabel)}</a></div>
 <!-- /wp:button -->
 </div>
 <!-- /wp:buttons -->
@@ -6313,11 +6336,28 @@ function storyProcessStep(number, title, text) {
 function storyConsultQuote(spec) {
   return `
 <!-- wp:quote {"className":"som-check-quote"} -->
-<blockquote class="wp-block-quote som-check-quote"><p>${esc(spec.copy.introText)}</p><cite>Family note from ${esc(spec.businessName)}</cite></blockquote>
+<blockquote class="wp-block-quote som-check-quote"><p>${esc(spec.copy.introText)}</p><cite>${esc(storyConsultCite(spec))} from ${esc(spec.businessName)}</cite></blockquote>
 <!-- /wp:quote -->`.trim();
 }
 
 function storyConsultDetails(spec) {
+  if (spec.slug === "plant-care") {
+    return storyDetailGroup([
+      {
+        summary: "What should I send before the plant consult?",
+        text: spec.serviceDetails?.whatToSend || spec.copy.quoteText
+      },
+      {
+        summary: "Can you help if the plant already looks rough?",
+        text: spec.serviceDetails?.objectionAnswer || "Yes. We look at light, moisture, drainage, pests, leaf color, and recent watering before changing the care rhythm."
+      },
+      {
+        summary: "Where do you help?",
+        text: spec.contact.serviceArea
+      }
+    ]);
+  }
+
   const rows = [
     {
       summary: "What should we share before the consult?",
@@ -6333,6 +6373,10 @@ function storyConsultDetails(spec) {
     }
   ];
 
+  return storyDetailGroup(rows);
+}
+
+function storyDetailGroup(rows) {
   return `
 <!-- wp:group {"className":"som-check-details","style":{"spacing":{"margin":{"top":"18px"}}},"layout":{"type":"constrained"}} -->
 <div class="wp-block-group som-check-details" style="margin-top:18px">
@@ -6346,6 +6390,48 @@ ${rows.map(({ summary, text }) => `
 <!-- /wp:details -->`.trim()).join("\n")}
 </div>
 <!-- /wp:group -->`.trim();
+}
+
+function storyHeroBullets(spec) {
+  if (spec.slug === "plant-care") {
+    return [
+      "Light, soil feel, drainage, and yellow leaves get read together.",
+      "Care notes explain what changed before the next watering decision."
+    ];
+  }
+
+  return [
+    "One room at a time, with keep, gift, donate, pack, and unsure labels.",
+    "Family questions get written down before sensitive items leave the house."
+  ];
+}
+
+function storyConsultCite(spec) {
+  return spec.slug === "plant-care" ? "Care note" : "Family note";
+}
+
+function storyFinalEmailLabel(spec) {
+  return spec.slug === "plant-care" ? "Email plant photos" : "Email timeline details";
+}
+
+function storyProofSectionName(spec) {
+  return spec.slug === "plant-care" ? "Plant proof" : "Family proof";
+}
+
+function storyNavWeight(spec) {
+  return spec.slug === "plant-care" ? "660" : "720";
+}
+
+function storyActionWeight(spec) {
+  return spec.slug === "plant-care" ? "700" : "780";
+}
+
+function storyHeroListWeight(spec) {
+  return spec.slug === "plant-care" ? "610" : "650";
+}
+
+function storyPhoneLineWeight(spec) {
+  return spec.slug === "plant-care" ? "620" : "680";
 }
 
 function galleryStyleCard(number, title, text) {

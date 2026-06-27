@@ -389,7 +389,7 @@ export const blueprints = [
     "slug": "plant-care",
     "name": "LeafDesk Plant Care",
     "eyebrow": "Houseplant And Office Plant Care Service",
-    "summary": "LeafDesk keeps watering, pruning, soil checks, rotations, and plant rescue notes on a simple care route for homes and offices that want greenery without...",
+    "summary": "LeafDesk reads light, soil feel, drainage, pruning needs, and plant stress before setting a care rhythm for calmer homes and offices.",
     "logo": "/blueprints/plant-care/assets/logo.png",
     "logoWidth": 1000,
     "logoHeight": 300,
@@ -398,7 +398,7 @@ export const blueprints = [
     "heroHeight": 1080,
     "alt": "A plant care specialist pruning and checking soil moisture on a lush indoor plant shelf in a bright office lobby with tools and watering can nearby.",
     "path": "/api/blueprints/plant-care/blueprint.json",
-    "layoutVariant": "route-led-schedule",
+    "layoutVariant": "plant-care-story",
     "releaseStatus": "approved"
   },
   {
