@@ -175,31 +175,28 @@ function renderPage(items, featured, pitchHeroUrl = "") {
   <style>
     :root {
       color-scheme: light;
-      --paper: #fff15f;
-      --surface: #fffef6;
-      --ink: #160f2a;
-      --muted: #42375d;
-      --line: #181225;
-      --blue: #174eff;
+      --paper: #ffe65a;
+      --page: #f5f7ec;
+      --surface: #fffdf4;
+      --ink: #111628;
+      --muted: #4e5366;
+      --line: #171b2b;
+      --blue: #1646f5;
       --blue-dark: #08277f;
-      --pink: #ff4f87;
+      --pink: #f14e83;
       --pink-dark: #9f1747;
-      --mint: #4debb4;
-      --orange: #ff8f3d;
-      --scarlet: #ff3b2f;
-      --violet: #4c20ff;
-      --shadow-blue: rgba(23, 87, 255, .42);
+      --mint: #20c8a2;
+      --orange: #ff8a35;
+      --scarlet: #ff4438;
+      --violet: #4532d8;
+      --shadow-blue: rgba(17, 22, 40, .14);
     }
     * {
       box-sizing: border-box;
     }
     body {
       margin: 0;
-      background:
-        radial-gradient(circle at 1px 1px, rgba(22, 15, 42, .12) 1px, transparent 0) 0 0 / 18px 18px,
-        linear-gradient(135deg, rgba(255, 79, 135, .14), transparent 34%),
-        linear-gradient(315deg, rgba(23, 87, 255, .12), transparent 36%),
-        var(--paper);
+      background: var(--page);
       color: var(--ink);
       font-family: "Avenir Next", Avenir, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       line-height: 1.5;
@@ -208,7 +205,7 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       position: fixed;
       z-index: -1;
       inset: 0;
-      background: repeating-linear-gradient(-5deg, rgba(255,255,255,.13) 0, rgba(255,255,255,.13) 2px, transparent 2px, transparent 10px);
+      background: radial-gradient(circle at 1px 1px, rgba(17, 22, 40, .08) 1px, transparent 0) 0 0 / 22px 22px;
       content: "";
       pointer-events: none;
     }
@@ -221,21 +218,21 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       box-shadow: 0 0 0 8px var(--mint);
     }
     .page {
-      width: min(1480px, calc(100% - 28px));
+      width: min(1420px, calc(100% - 32px));
       margin: 0 auto;
-      padding: 24px 0 56px;
+      padding: 28px 0 60px;
     }
     .masthead {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(280px, 430px);
-      gap: clamp(20px, 4vw, 58px);
+      grid-template-columns: minmax(0, 1fr) minmax(300px, 400px);
+      gap: clamp(22px, 4vw, 54px);
       position: relative;
       overflow: hidden;
-      min-height: clamp(580px, 74vh, 820px);
+      min-height: clamp(560px, 72vh, 760px);
       align-items: end;
-      border: 3px solid var(--ink);
+      border: 2px solid var(--ink);
       background: var(--paper);
-      box-shadow: 10px 10px 0 var(--pink), -10px -10px 0 var(--mint);
+      box-shadow: 0 18px 44px rgba(17, 22, 40, .18);
       isolation: isolate;
       padding: clamp(22px, 5vw, 72px);
     }
@@ -243,18 +240,16 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       position: absolute;
       inset: 0;
       z-index: 1;
-      background: linear-gradient(90deg, rgba(255, 241, 95, .96) 0 38%, rgba(255, 241, 95, .66) 51%, rgba(255, 241, 95, .1) 70%, transparent 100%);
+      background: linear-gradient(90deg, rgba(255, 230, 90, .95) 0 36%, rgba(255, 230, 90, .56) 50%, rgba(255, 230, 90, .08) 67%, transparent 100%);
       content: "";
     }
-    .masthead::after,
-    .latest-preview::after,
-    .card-preview::after {
+    .masthead::after {
       position: absolute;
       inset: 0;
       background: radial-gradient(circle at 1px 1px, rgba(22, 15, 42, .24) 1px, transparent 0) 0 0 / 12px 12px;
       content: "";
       mix-blend-mode: multiply;
-      opacity: .24;
+      opacity: .1;
       pointer-events: none;
     }
     .masthead::after {
@@ -280,16 +275,15 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       position: relative;
       z-index: 2;
       align-self: center;
-      border: 3px solid var(--ink);
-      background: var(--surface);
-      box-shadow: -8px 8px 0 var(--mint), 8px -8px 0 var(--pink);
+      border: 2px solid var(--ink);
+      background: rgba(255, 253, 244, .94);
+      box-shadow: 0 16px 34px rgba(17, 22, 40, .2);
       padding: clamp(15px, 2vw, 22px);
-      transform: rotate(1.2deg);
     }
     .hero-ticket::before {
       position: absolute;
       inset: 9px;
-      border: 2px dashed rgba(22, 15, 42, .38);
+      border: 1px dashed rgba(22, 15, 42, .28);
       content: "";
       pointer-events: none;
     }
@@ -300,8 +294,9 @@ function renderPage(items, featured, pitchHeroUrl = "") {
     .hero-ticket h2 {
       margin: 0;
       font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(27px, 3vw, 43px);
-      line-height: .98;
+      font-size: clamp(25px, 2.4vw, 37px);
+      font-weight: 800;
+      line-height: 1;
       text-wrap: balance;
     }
     .ticket-shot {
@@ -309,7 +304,7 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       width: 100%;
       aspect-ratio: 16 / 10;
       margin: 14px 0;
-      border: 3px solid var(--ink);
+      border: 2px solid var(--ink);
       background: var(--blue);
       object-fit: cover;
       object-position: top center;
@@ -329,14 +324,14 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       align-items: start;
       color: var(--muted);
       font-size: 14px;
-      font-weight: 850;
+      font-weight: 720;
       line-height: 1.28;
     }
     .ticket-list strong {
       display: inline-grid;
       min-height: 28px;
       place-items: center;
-      border: 2px solid var(--ink);
+      border: 1px solid var(--ink);
       background: var(--orange);
       color: var(--ink);
       font-size: 12px;
@@ -345,13 +340,12 @@ function renderPage(items, featured, pitchHeroUrl = "") {
     .ticket-ask {
       margin: 14px 0 0;
       padding: 10px;
-      border: 3px solid var(--ink);
+      border: 2px solid var(--ink);
       background: var(--blue);
       color: #ffffff;
       font-size: 14px;
-      font-weight: 950;
+      font-weight: 850;
       line-height: 1.28;
-      box-shadow: 4px 4px 0 var(--scarlet);
     }
     .eyebrow {
       display: inline-flex;
@@ -359,14 +353,13 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       min-height: 30px;
       margin: 0 0 10px;
       padding: 5px 9px;
-      border: 2px solid var(--ink);
+      border: 1px solid var(--ink);
       background: var(--mint);
       color: var(--ink);
       font-size: 12px;
-      font-weight: 1000;
+      font-weight: 850;
       letter-spacing: 0;
       text-transform: uppercase;
-      transform: rotate(-1deg);
     }
     .hero-badges {
       display: flex;
@@ -381,13 +374,12 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       align-items: center;
       min-height: 32px;
       padding: 6px 10px;
-      border: 2px solid var(--ink);
+      border: 1px solid var(--ink);
       background: var(--surface);
       color: var(--ink);
       font-size: 13px;
-      font-weight: 1000;
+      font-weight: 820;
       line-height: 1;
-      box-shadow: 3px 3px 0 var(--ink);
     }
     .hero-badges li:nth-child(2) {
       background: var(--pink);
@@ -396,12 +388,12 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       background: var(--mint);
     }
     h1 {
-      max-width: 930px;
+      max-width: 850px;
       margin: 0;
       font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(45px, 6.6vw, 110px);
-      font-weight: 900;
-      line-height: .9;
+      font-size: clamp(46px, 5.4vw, 88px);
+      font-weight: 800;
+      line-height: .94;
       letter-spacing: 0;
       text-wrap: balance;
     }
@@ -410,19 +402,18 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       margin: 14px 0 0;
       color: #241c38;
       font-size: clamp(17px, 1.5vw, 21px);
-      font-weight: 760;
+      font-weight: 620;
     }
     .hero-note {
-      display: inline-flex;
+      display: block;
       max-width: 680px;
       margin-top: 16px;
-      padding: 10px 12px;
-      border: 3px solid var(--ink);
-      background: var(--surface);
+      padding: 10px 12px 10px 14px;
+      border-left: 5px solid var(--blue);
+      background: rgba(255, 253, 244, .86);
       color: var(--blue-dark);
       font-size: 14px;
-      font-weight: 1000;
-      box-shadow: 5px 5px 0 var(--pink);
+      font-weight: 820;
     }
     .stats {
       display: grid;
@@ -438,18 +429,18 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       display: flex;
       flex-direction: column;
       padding: 18px;
-      border: 3px solid var(--ink);
+      border: 2px solid var(--ink);
       background: var(--surface);
-      box-shadow: 6px 6px 0 var(--shadow-blue);
+      box-shadow: 0 10px 24px var(--shadow-blue);
     }
     .stat:nth-child(2) {
-      box-shadow: 6px 6px 0 var(--pink);
+      box-shadow: 0 10px 24px rgba(241, 78, 131, .16);
     }
     .stat:nth-child(3) {
-      box-shadow: 6px 6px 0 var(--mint);
+      box-shadow: 0 10px 24px rgba(32, 200, 162, .16);
     }
     .stat:nth-child(4) {
-      box-shadow: 6px 6px 0 var(--violet);
+      box-shadow: 0 10px 24px rgba(69, 50, 216, .16);
     }
     .stat dd {
       order: 1;
@@ -458,7 +449,7 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       color: var(--pink-dark);
       font-family: Georgia, "Times New Roman", serif;
       font-size: clamp(31px, 4vw, 62px);
-      font-weight: 900;
+      font-weight: 800;
       line-height: .9;
     }
     .stat dt {
@@ -467,7 +458,7 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       margin-top: 10px;
       color: var(--muted);
       font-size: 12px;
-      font-weight: 1000;
+      font-weight: 850;
       text-transform: uppercase;
     }
     .proof-strip {
@@ -476,10 +467,10 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       gap: 0;
       overflow: hidden;
       margin: 0 0 22px;
-      border: 3px solid var(--ink);
-      background: var(--ink);
-      color: #ffffff;
-      box-shadow: -8px 8px 0 var(--mint);
+      border: 2px solid var(--ink);
+      background: var(--surface);
+      color: var(--ink);
+      box-shadow: 0 16px 36px rgba(17, 22, 40, .16);
     }
     .closing-board {
       display: grid;
@@ -490,15 +481,15 @@ function renderPage(items, featured, pitchHeroUrl = "") {
     }
     .closing-board > div,
     .closing-board article {
-      border: 3px solid var(--ink);
+      border: 2px solid var(--ink);
       background: var(--surface);
-      box-shadow: 6px 6px 0 var(--shadow-blue);
+      box-shadow: 0 12px 26px var(--shadow-blue);
       padding: clamp(16px, 2vw, 24px);
     }
     .closing-board > div {
       background: var(--ink);
       color: #ffffff;
-      box-shadow: -8px 8px 0 var(--pink);
+      box-shadow: 0 16px 36px rgba(17, 22, 40, .16);
     }
     .closing-board > div .eyebrow {
       background: var(--mint);
@@ -528,19 +519,15 @@ function renderPage(items, featured, pitchHeroUrl = "") {
     }
     .closing-points article:nth-child(1) {
       background: var(--paper);
-      box-shadow: 6px 6px 0 var(--pink);
     }
     .closing-points article:nth-child(2) {
       background: var(--mint);
-      box-shadow: 6px 6px 0 var(--violet);
     }
     .closing-points article:nth-child(3) {
       background: var(--pink);
-      box-shadow: 6px 6px 0 var(--blue);
     }
     .closing-points article:nth-child(4) {
       background: var(--orange);
-      box-shadow: 6px 6px 0 var(--mint);
     }
     .closing-board h3 {
       font-size: 18px;
@@ -555,11 +542,12 @@ function renderPage(items, featured, pitchHeroUrl = "") {
     .proof-strip > * {
       min-width: 0;
       padding: 17px;
-      border-right: 3px solid var(--ink);
-      background: var(--blue);
+      border-right: 2px solid var(--ink);
+      background: var(--surface);
     }
     .proof-strip > :first-child {
-      background: var(--scarlet);
+      background: var(--ink);
+      color: #ffffff;
     }
     .proof-strip > :last-child {
       border-right: 0;
@@ -574,17 +562,18 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       font-family: Georgia, "Times New Roman", serif;
       font-size: clamp(25px, 3vw, 47px);
       line-height: .98;
+      font-weight: 800;
       text-wrap: balance;
     }
     .proof-strip h3 {
-      color: var(--paper);
+      color: var(--blue);
       font-size: 14px;
       text-transform: uppercase;
     }
     .proof-strip p {
       margin-top: 8px;
       font-size: 14px;
-      font-weight: 800;
+      font-weight: 720;
     }
     .latest {
       display: grid;
@@ -593,9 +582,9 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       align-items: center;
       margin: 22px 0 26px;
       padding: 16px;
-      border: 3px solid var(--ink);
+      border: 2px solid var(--ink);
       background: var(--surface);
-      box-shadow: -8px 8px 0 var(--pink), 8px -8px 0 var(--mint);
+      box-shadow: 0 16px 36px rgba(17, 22, 40, .14);
     }
     .latest-preview {
       position: relative;
@@ -604,7 +593,7 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       grid-template-columns: minmax(0, 1fr) minmax(96px, 18%);
       gap: 10px;
       align-items: end;
-      border: 3px solid var(--ink);
+      border: 2px solid var(--ink);
       background: var(--blue);
       text-decoration: none;
     }
@@ -635,7 +624,7 @@ function renderPage(items, featured, pitchHeroUrl = "") {
     .card p {
       margin: 10px 0 0;
       color: var(--muted);
-      font-weight: 650;
+      font-weight: 560;
     }
     .actions {
       display: flex;
@@ -653,20 +642,20 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       background: var(--surface);
       color: var(--ink);
       font-size: 14px;
-      font-weight: 900;
+      font-weight: 820;
       line-height: 1.1;
       text-decoration: none;
-      box-shadow: 4px 4px 0 var(--ink);
+      box-shadow: 0 4px 0 var(--ink);
       transition: transform .18s ease, box-shadow .18s ease;
     }
     .button.primary {
-      background: var(--scarlet);
-      color: var(--ink);
+      background: var(--blue);
+      color: #ffffff;
     }
     .button:hover,
     .links a:hover {
       transform: translate(-1px, -1px);
-      box-shadow: 5px 5px 0 var(--ink);
+      box-shadow: 0 5px 0 var(--ink);
     }
     .pitch-points {
       display: grid;
@@ -677,15 +666,15 @@ function renderPage(items, featured, pitchHeroUrl = "") {
     .pitch-points article {
       min-height: 160px;
       padding: 18px;
-      border: 3px solid var(--ink);
+      border: 2px solid var(--ink);
       background: var(--surface);
-      box-shadow: 6px 6px 0 var(--shadow-blue);
+      box-shadow: 0 10px 24px var(--shadow-blue);
     }
     .pitch-points article:nth-child(2) {
-      box-shadow: 6px 6px 0 var(--pink);
+      box-shadow: 0 10px 24px rgba(241, 78, 131, .14);
     }
     .pitch-points article:nth-child(3) {
-      box-shadow: 6px 6px 0 var(--mint);
+      box-shadow: 0 10px 24px rgba(32, 200, 162, .14);
     }
     .pitch-points span {
       display: inline-flex;
@@ -693,10 +682,9 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       min-height: 34px;
       align-items: center;
       justify-content: center;
-      border: 3px solid var(--ink);
+      border: 1px solid var(--ink);
       background: var(--pink);
-      font-weight: 1000;
-      transform: rotate(-2deg);
+      font-weight: 850;
     }
     .pitch-points article:nth-child(2) span {
       background: var(--mint);
@@ -707,11 +695,11 @@ function renderPage(items, featured, pitchHeroUrl = "") {
     .pitch-points h2 {
       margin: 12px 0 0;
       font-size: clamp(24px, 3vw, 42px);
-      line-height: 1;
+      line-height: 1.05;
     }
     .pitch-points p {
       color: var(--muted);
-      font-weight: 650;
+      font-weight: 560;
     }
     .toolbar {
       display: flex;
@@ -719,25 +707,26 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       gap: 10px;
       align-items: center;
       justify-content: space-between;
-      margin: 26px 0 14px;
+      margin: 34px 0 16px;
       scroll-margin-top: 18px;
     }
     .toolbar h2 {
       margin: 0;
       font-family: Georgia, "Times New Roman", serif;
       font-size: clamp(28px, 3.6vw, 54px);
-      line-height: .98;
+      line-height: 1;
+      font-weight: 800;
       text-wrap: balance;
     }
     .toolbar a {
       color: var(--muted);
       font-size: 14px;
-      font-weight: 900;
+      font-weight: 760;
     }
     .grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
+      gap: 18px;
     }
     .card {
       position: relative;
@@ -745,25 +734,25 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       flex-direction: column;
       overflow: hidden;
       min-width: 0;
-      border: 3px solid var(--ink);
+      border: 2px solid var(--ink);
       background: var(--surface);
-      box-shadow: 6px 6px 0 var(--shadow-blue);
+      box-shadow: 0 10px 24px var(--shadow-blue);
     }
     .card:nth-child(3n+1) {
-      box-shadow: 6px 6px 0 var(--pink);
+      box-shadow: 0 10px 24px rgba(241, 78, 131, .12);
     }
     .card:nth-child(3n+2) {
-      box-shadow: 6px 6px 0 var(--mint);
+      box-shadow: 0 10px 24px rgba(32, 200, 162, .12);
     }
     .card:nth-child(3n+3) {
-      box-shadow: 6px 6px 0 var(--violet);
+      box-shadow: 0 10px 24px rgba(69, 50, 216, .12);
     }
     .card-preview {
       position: relative;
       display: block;
       overflow: hidden;
       aspect-ratio: 36 / 25;
-      border-bottom: 3px solid var(--ink);
+      border-bottom: 2px solid var(--ink);
       background: var(--blue);
       background-position: top center;
       background-repeat: no-repeat;
@@ -771,19 +760,19 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       text-decoration: none;
     }
     .card-preview::before {
+      display: none;
       position: absolute;
       z-index: 1;
       top: 10px;
       left: 10px;
       padding: 5px 8px;
-      border: 2px solid var(--ink);
+      border: 1px solid var(--ink);
       background: var(--paper);
       color: var(--ink);
-      content: "LAUNCHABLE";
+      content: "PREVIEW";
       font-size: 11px;
-      font-weight: 1000;
+      font-weight: 850;
       line-height: 1;
-      transform: rotate(-1deg);
     }
     .card-number {
       position: absolute;
@@ -791,13 +780,12 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       right: 10px;
       bottom: 10px;
       padding: 5px 8px;
-      border: 2px solid var(--ink);
+      border: 1px solid var(--ink);
       background: var(--mint);
       color: var(--ink);
       font-size: 11px;
-      font-weight: 1000;
+      font-weight: 850;
       line-height: 1;
-      transform: rotate(1deg);
     }
     .card-preview img {
       display: block;
@@ -844,11 +832,11 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       align-items: center;
       min-height: 24px;
       padding: 4px 8px;
-      border: 2px solid var(--ink);
-      background: var(--mint);
+      border: 1px solid var(--ink);
+      background: #eefaf6;
       color: var(--ink);
       font-size: 12px;
-      font-weight: 900;
+      font-weight: 760;
     }
     .signals {
       display: flex;
@@ -861,10 +849,10 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       align-items: center;
       min-height: 22px;
       padding: 3px 7px;
-      border: 2px solid var(--line);
+      border: 1px solid rgba(23, 27, 43, .42);
       color: var(--muted);
       font-size: 11px;
-      font-weight: 900;
+      font-weight: 720;
       line-height: 1.1;
     }
     .taste-queue {
@@ -872,13 +860,13 @@ function renderPage(items, featured, pitchHeroUrl = "") {
     }
     .review-notes {
       padding: 12px;
-      border: 3px solid var(--line);
+      border: 2px solid var(--line);
       background: var(--surface);
-      box-shadow: 6px 6px 0 var(--shadow-blue);
+      box-shadow: 0 10px 24px var(--shadow-blue);
     }
     .review-notes summary {
       cursor: pointer;
-      font-weight: 1000;
+      font-weight: 850;
     }
     .review-notes .signals {
       margin: 12px 0 0;
@@ -893,10 +881,10 @@ function renderPage(items, featured, pitchHeroUrl = "") {
     .links a {
       min-height: 38px;
       padding: 9px 10px;
-      border: 2px solid var(--line);
+      border: 1px solid var(--line);
       color: var(--ink);
       font-size: 13px;
-      font-weight: 900;
+      font-weight: 760;
       text-align: center;
       text-decoration: none;
       transition: transform .18s ease, box-shadow .18s ease;
@@ -957,7 +945,7 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       }
       .proof-strip > * {
         border-right: 0;
-        border-bottom: 3px solid var(--ink);
+        border-bottom: 2px solid var(--ink);
       }
       .proof-strip > :last-child {
         border-bottom: 0;
@@ -965,7 +953,8 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       .masthead {
         grid-template-columns: 1fr;
         min-height: 620px;
-        padding: 18px;
+        gap: 22px;
+        padding: 20px;
       }
       .masthead::before {
         background: linear-gradient(180deg, rgba(255, 241, 95, .96) 0 48%, rgba(255, 241, 95, .56) 66%, rgba(255, 241, 95, .08) 100%);
@@ -974,7 +963,8 @@ function renderPage(items, featured, pitchHeroUrl = "") {
         object-position: 58% center;
       }
       h1 {
-        font-size: clamp(39px, 13vw, 64px);
+        font-size: clamp(35px, 10.8vw, 52px);
+        line-height: .98;
       }
       .hero-badges li {
         font-size: 12px;
@@ -983,7 +973,27 @@ function renderPage(items, featured, pitchHeroUrl = "") {
         padding: 12px;
       }
       .hero-ticket {
+        padding: 16px;
         transform: none;
+      }
+      .hero-ticket h2 {
+        font-size: clamp(23px, 7.1vw, 30px);
+        line-height: 1.04;
+      }
+      .ticket-list {
+        gap: 10px;
+      }
+      .ticket-list li {
+        grid-template-columns: 28px 1fr;
+        font-size: 13px;
+        font-weight: 680;
+      }
+      .ticket-list strong {
+        min-height: 26px;
+      }
+      .ticket-ask {
+        padding: 11px;
+        font-size: 13px;
       }
       .closing-points {
         grid-template-columns: 1fr;
@@ -997,8 +1007,8 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       .mobile-shot {
         width: min(220px, 62%)!important;
         margin: -34px 14px 14px auto;
-        border: 3px solid var(--ink);
-        box-shadow: 6px 6px 0 var(--pink);
+        border: 2px solid var(--ink);
+        box-shadow: 0 10px 22px rgba(17, 22, 40, .16);
       }
       .logo-row {
         align-items: flex-start;
@@ -1029,12 +1039,12 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       <img class="hero-bg" src="${escapeAttr(heroIllustration)}" alt="" loading="eager">
       <div class="hero-copy">
         <p class="eyebrow">Site-O-Mattic pitch wall</p>
-        <h1>Make the pitch clickable.</h1>
-        <p class="lede">Site-O-Mattic turns one idea into ${items.length} launchable WordPress demos: branded niche sites, real screenshots, Playground links, and QA receipts leadership can inspect live.</p>
+        <h1>Turn the pitch into a live demo.</h1>
+        <p class="lede">Site-O-Mattic turns one idea into ${items.length} launchable WordPress demos: branded niche sites, real screenshots, Playground links, and receipts leadership can inspect live.</p>
         <ul class="hero-badges" aria-label="Demo proof points">
           <li>WordPress-native</li>
           <li>Block-first</li>
-          <li>Visual QA</li>
+          <li>Vision QA</li>
         </ul>
         <p class="hero-note">Use it like a sales wall: point to a niche, launch Playground, inspect the spec, and ask for the next production lane.</p>
         <div class="actions">
@@ -1044,7 +1054,7 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       </div>
       <aside class="hero-ticket" aria-label="90-second meeting script">
         <p class="eyebrow">90-second room script</p>
-        <h2>Show the wall. Launch one. Ask for the green light.</h2>
+        <h2>Show the wall. Open Playground. Ask for approval.</h2>
         <img class="ticket-shot" src="${escapeAttr(featuredImage)}" alt="" loading="eager">
         <ol class="ticket-list">
           <li><strong>1</strong><span>Pick a service niche the room understands instantly.</span></li>
@@ -1093,7 +1103,7 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       <div>
         <p class="eyebrow">What you are really selling</p>
         <h2 id="closing-heading">A repeatable WordPress demo factory with taste in the loop.</h2>
-        <p>The riso wrapper brings the spark. The proof is underneath: core blocks, theme settings, screenshots, accessibility checks, and Playground links that make the concept inspectable.</p>
+        <p>The ImageGen pitch wall brings the spark. The proof is underneath: core blocks, theme settings, screenshots, accessibility checks, and Playground links that make the concept inspectable.</p>
       </div>
       <div class="closing-points">
         <article><h3>Fast to see</h3><p>People can understand the opportunity before they read the repo.</p></article>
@@ -1105,7 +1115,7 @@ function renderPage(items, featured, pitchHeroUrl = "") {
 
     <section class="pitch-points" aria-label="Sales talking points">
       <article><span aria-hidden="true">01</span><h2>Make it tangible</h2><p>Start with the featured demo, then jump across niches without leaving the browser.</p></article>
-      <article><span aria-hidden="true">02</span><h2>Show range</h2><p>One lean WordPress foundation, many business stories, layouts, palettes, and logos.</p></article>
+      <article><span aria-hidden="true">02</span><h2>Show range</h2><p>One lean WordPress foundation, many business stories, layouts, palettes, and generated logos.</p></article>
       <article><span aria-hidden="true">03</span><h2>Close cleanly</h2><p>Leadership sees the artifact, the guardrails, and the obvious next investment.</p></article>
     </section>
 
