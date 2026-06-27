@@ -172,7 +172,7 @@ export function buildGlobalStyles(spec) {
         "core/details": {
           border: {
             color: colorRoles.line.color,
-            radius: "var:preset|spacing|20",
+            radius: "var(--wp--custom--som--radius--card)",
             width: "1px"
           },
           spacing: {
@@ -1466,8 +1466,11 @@ ${sectionAnchorCss}
 }
 .wp-block-details summary{
   cursor:pointer;
+  display:list-item;
   font-family:var(--wp--preset--font-family--accent);
   font-weight:var(--wp--custom--som--type--action-weight);
+  min-block-size:44px;
+  padding-block:8px;
 }
 .wp-block-details summary:focus-visible{
   outline:3px solid ${p.sun};
@@ -1492,6 +1495,17 @@ ${detailGridCss}
 .wp-block-table table{
   border-collapse:collapse;
   width:100%;
+}
+.wp-block-table caption{
+  color:${p.soil};
+  caption-side:top;
+  font-family:var(--wp--preset--font-family--accent);
+  font-size:.78rem;
+  font-weight:760;
+  letter-spacing:0;
+  padding:0 0 .55rem;
+  text-align:left;
+  text-transform:uppercase;
 }
 .wp-block-table :where(th,td){
   border-bottom:1px solid color-mix(in srgb, ${p.deepGreen} 14%, transparent);

@@ -1568,7 +1568,7 @@ ${processCards}
 <!-- wp:column {"width":"58%"} -->
 <div class="wp-block-column" style="flex-basis:58%">
 <!-- wp:table {"className":"som-route-table"} -->
-<figure class="wp-block-table som-route-table"><table><thead><tr><th>Step</th><th>${esc(routeTone.tableNoteLabel)}</th><th>What it means</th></tr></thead><tbody>
+<figure class="wp-block-table som-route-table"><table>${tableCaption("Route process notes")}${tableHead(["Step", routeTone.tableNoteLabel, "What it means"])}<tbody>
 ${processRows}
 </tbody></table></figure>
 <!-- /wp:table -->
@@ -1793,7 +1793,7 @@ ${proof.map((item) => turnoverProof(item.stat, item.label)).join("\n")}
 </div>
 <!-- /wp:columns -->
 <!-- wp:table {"className":"som-turnover-table"} -->
-<figure class="wp-block-table som-turnover-table"><table><thead><tr><th>Reset zone</th><th>Handoff proof</th><th>Host note</th></tr></thead><tbody>${turnoverTableRows(services, proof)}</tbody></table></figure>
+<figure class="wp-block-table som-turnover-table"><table>${tableCaption("Turnover reset scope")}${tableHead(["Reset zone", "Handoff proof", "Host note"])}<tbody>${turnoverTableRows(services, proof)}</tbody></table></figure>
 <!-- /wp:table -->
 </div>
 <!-- /wp:group -->
@@ -2136,7 +2136,7 @@ function receiptScopeTable(services) {
   const rows = services.map((service, index) => `<tr><td>${esc(service.title)}</td><td>${index === 0 ? "Standard" : index === 1 ? "Add-on" : "Optional"}</td><td>${esc(service.text)}</td></tr>`).join("");
   return `
 <!-- wp:table {"className":"som-receipt-table"} -->
-<figure class="wp-block-table som-receipt-table"><table><thead><tr><th>Scope line</th><th>Fit</th><th>Notes</th></tr></thead><tbody>${rows}</tbody></table></figure>
+<figure class="wp-block-table som-receipt-table"><table>${tableCaption("Service scope receipt")}${tableHead(["Scope line", "Fit", "Notes"])}<tbody>${rows}</tbody></table></figure>
 <!-- /wp:table -->`;
 }
 
@@ -5380,7 +5380,7 @@ function pollinatorSeasonPathTable() {
   ];
   return `
 <!-- wp:table {"className":"som-zone-map som-pollinator-map som-pollinator-season-table"} -->
-<figure class="wp-block-table som-zone-map som-pollinator-map som-pollinator-season-table"><table><colgroup><col style="width:112px"><col></colgroup><thead><tr><th>When</th><th>Field note</th></tr></thead><tbody>${rows.map(([season, note]) => `<tr><td>${esc(season)}</td><td>${esc(note)}</td></tr>`).join("")}</tbody></table></figure>
+<figure class="wp-block-table som-zone-map som-pollinator-map som-pollinator-season-table"><table>${tableCaption("Season path notes")}<colgroup><col style="width:112px"><col></colgroup>${tableHead(["When", "Field note"])}<tbody>${rows.map(([season, note]) => `<tr><td>${esc(season)}</td><td>${esc(note)}</td></tr>`).join("")}</tbody></table></figure>
 <!-- /wp:table -->`.trim();
 }
 
@@ -5543,7 +5543,7 @@ function deckFinishSampleTable(proof) {
   ];
   return `
 <!-- wp:table {"className":"som-workshop-ticket som-finish-sample-table"} -->
-<figure class="wp-block-table som-workshop-ticket som-finish-sample-table" style="margin-top:18px"><table><colgroup><col style="width:108px"><col></colgroup><thead><tr><th>Sample</th><th>What we check</th></tr></thead><tbody>${rows.map(([label, note]) => `<tr><td>${esc(label)}</td><td>${esc(note)}</td></tr>`).join("")}</tbody></table></figure>
+<figure class="wp-block-table som-workshop-ticket som-finish-sample-table" style="margin-top:18px"><table>${tableCaption("Finish sample checks")}<colgroup><col style="width:108px"><col></colgroup>${tableHead(["Sample", "What we check"])}<tbody>${rows.map(([label, note]) => `<tr><td>${esc(label)}</td><td>${esc(note)}</td></tr>`).join("")}</tbody></table></figure>
 <!-- /wp:table -->`.trim();
 }
 
@@ -6090,7 +6090,7 @@ function menuComparisonTable(spec) {
 
   return `
 <!-- wp:table {"className":"som-menu-table"} -->
-<figure class="wp-block-table som-menu-table"><table><thead><tr><th>Package</th><th>Best fit</th><th>Planning note</th></tr></thead><tbody>${rows}</tbody></table></figure>
+<figure class="wp-block-table som-menu-table"><table>${tableCaption("Package comparison")}${tableHead(["Package", "Best fit", "Planning note"])}<tbody>${rows}</tbody></table></figure>
 <!-- /wp:table -->`.trim();
 }
 
@@ -6103,7 +6103,7 @@ function waterServiceTable(spec) {
 
   return `
 <!-- wp:table {"className":"som-water-table"} -->
-<figure class="wp-block-table som-water-table"><table><thead><tr><th>Care lane</th><th>Proof cue</th><th>Visit note</th></tr></thead><tbody>${rows}</tbody></table></figure>
+<figure class="wp-block-table som-water-table"><table>${tableCaption("Water care lanes")}${tableHead(["Care lane", "Proof cue", "Visit note"])}<tbody>${rows}</tbody></table></figure>
 <!-- /wp:table -->`.trim();
 }
 
@@ -6155,7 +6155,7 @@ function transformationMethodTable(spec) {
 
   return `
 <!-- wp:table {"className":"som-method-table"} -->
-<figure class="wp-block-table som-method-table"><table><thead><tr><th>Surface</th><th>Method</th><th>Quote note</th></tr></thead><tbody>${rows}</tbody></table></figure>
+<figure class="wp-block-table som-method-table"><table>${tableCaption("Service method comparison")}${tableHead(["Surface", "Method", "Quote note"])}<tbody>${rows}</tbody></table></figure>
 <!-- /wp:table -->`.trim();
 }
 
@@ -6198,7 +6198,7 @@ function serviceScopeTable(spec, options = {}) {
 
   return `
 <!-- wp:table {"className":"${esc(className)}"} -->
-<figure class="wp-block-table ${esc(className)}"><table><thead><tr><th>${esc(headings[0])}</th><th>${esc(headings[1])}</th><th>${esc(headings[2])}</th></tr></thead><tbody>${rows}</tbody></table></figure>
+<figure class="wp-block-table ${esc(className)}"><table>${tableCaption(options.caption || "Service scope comparison")}${tableHead(headings)}<tbody>${rows}</tbody></table></figure>
 <!-- /wp:table -->`.trim();
 }
 
@@ -7047,6 +7047,14 @@ function mimeTypeForPath(filePath) {
     return "image/webp";
   }
   throw new Error(`Unsupported asset type: ${filePath}`);
+}
+
+function tableCaption(value) {
+  return `<caption class="som-table-caption">${esc(value)}</caption>`;
+}
+
+function tableHead(headings) {
+  return `<thead><tr>${headings.map((heading) => `<th scope="col">${esc(heading)}</th>`).join("")}</tr></thead>`;
 }
 
 function esc(value) {

@@ -57,6 +57,8 @@ async function buildReport(target) {
   add(checks, "safe link hrefs", links.every((link) => isSafeHref(link.href)), `${links.length} links checked.`);
   add(checks, "no vague link text", links.every((link) => !/^(click here|learn more|read more)$/i.test(link.text)), "Link text names the action.");
   add(checks, "navigation labels unique", navigationLabelsUnique(pageContent), "Navigation labels do not repeat.");
+  const tableA11y = tableAccessibility(pageContent);
+  add(checks, "table captions and scoped headers", tableA11y.passed, tableA11y.detail);
 
   return { target, checks };
 }
@@ -110,6 +112,32 @@ function isSafeHref(href) {
 function navigationLabelsUnique(markup) {
   const labels = [...markup.matchAll(/<!-- wp:navigation-link \{"label":"([^"]+)"/g)].map((match) => match[1]);
   return labels.length > 0 && new Set(labels).size === labels.length;
+}
+
+function tableAccessibility(markup) {
+  const tables = [...markup.matchAll(/<table\b[^>]*>(.*?)<\/table>/gs)].map((match) => match[1]);
+  if (!tables.length) {
+    return { passed: true, detail: "No tables rendered." };
+  }
+
+  const missingCaptions = [];
+  const unscopedHeaders = [];
+  tables.forEach((table, index) => {
+    if (!/<caption\b[^>]*>.*?<\/caption>/s.test(table)) {
+      missingCaptions.push(index + 1);
+    }
+    const headers = [...table.matchAll(/<th\b([^>]*)>/g)];
+    headers.forEach((header, headerIndex) => {
+      if (!/\bscope=(["'])(col|row|colgroup|rowgroup)\1/.test(header[1])) {
+        unscopedHeaders.push(`${index + 1}.${headerIndex + 1}`);
+      }
+    });
+  });
+
+  return {
+    passed: missingCaptions.length === 0 && unscopedHeaders.length === 0,
+    detail: `${tables.length} table(s), missing captions: ${missingCaptions.join(", ") || "none"}, unscoped th: ${unscopedHeaders.join(", ") || "none"}.`
+  };
 }
 
 function add(checks, name, passed, detail) {
