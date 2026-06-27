@@ -48,6 +48,7 @@ for (const { spec, updatedAtMs } of specEntries) {
     summary: summarize(spec.copy?.heroText || ""),
     status: spec.release?.status || "draft",
     variant: spec.layoutVariant,
+    patternLabel: labelText(spec.pattern?.silhouette || spec.layoutVariant),
     heroUrl,
     logoUrl,
     screenshotUrl,
@@ -96,7 +97,7 @@ function renderPage(items, featured) {
   const sweepStat = reviewEvidence ? `${sweepPassed}/${reviewEvidence.total}` : "n/a";
   const featuredImage = featured.desktopPreview || featured.heroUrl;
   const featuredMobile = featured.mobilePreview || "";
-  const tasteQueue = renderTasteQueue();
+  const tasteQueue = renderTasteQueue(items);
 
   return `<!doctype html>
 <html lang="en">
@@ -305,7 +306,7 @@ function renderPage(items, featured) {
     .card-preview {
       display: block;
       overflow: hidden;
-      aspect-ratio: 16 / 10;
+      aspect-ratio: 36 / 25;
       border-bottom: 1px solid rgba(23, 33, 41, .12);
       background: var(--field);
       text-decoration: none;
@@ -464,8 +465,8 @@ function renderPage(items, featured) {
     <header class="masthead">
       <div>
         <p class="eyebrow">Site-O-Mattic</p>
-        <h1>Blueprint previews for local service site experiments.</h1>
-        <p class="lede">A quick catalog of the latest generated WordPress Playground Blueprints, with preview images, source JSON, ZIP downloads, and spec links.</p>
+        <h1>${items.length} Playground-ready local service sites.</h1>
+        <p class="lede">Browse the latest Site-O-Mattic previews, open each Blueprint in WordPress Playground, or inspect the JSON, ZIP, and production spec behind it.</p>
       </div>
       <div class="stats" aria-label="Catalog counts">
         <div class="stat"><strong>${items.length}</strong><span>Blueprints</span></div>
@@ -495,7 +496,7 @@ function renderPage(items, featured) {
     </section>
 
     <div class="toolbar">
-      <h2>All Blueprint Links</h2>
+      <h2>Blueprints</h2>
       <a href="${escapeAttr(repoBase)}">GitHub repository</a>
     </div>
 
@@ -512,7 +513,8 @@ ${items.map(renderCard).join("\n")}
 `;
 }
 
-function renderTasteQueue() {
+function renderTasteQueue(items) {
+  const nameBySlug = new Map(items.map((item) => [item.slug, item.name]));
   const warnings = (reviewEvidence?.items || [])
     .filter((item) => item.tasteWarnings?.length)
     .slice(0, 3);
@@ -520,17 +522,17 @@ function renderTasteQueue() {
     .slice(0, warnings.length ? 3 : 5);
   const warningCount = Number(reviewEvidence?.tasteWarningCount || 0);
   const signals = [
-    { text: "Taste queue" },
-    { text: `${warningCount} warnings` },
+    { text: warnings.length ? "Visual review queue" : "Closest visual neighbors" },
+    warnings.length ? { text: `${warningCount} warnings` } : null,
     ...warnings.map((item) => ({
-      text: `${shortSlug(item.slug)} ${tasteSignalFor(item.tasteWarnings)}`,
+      text: `${nameBySlug.get(item.slug) || labelText(item.slug)}: ${tasteSignalFor(item.tasteWarnings)}`,
       title: (item.tasteWarnings || []).map((warning) => typeof warning === "string" ? warning : warning?.message || warning?.reason || "").filter(Boolean).join(" | ")
     })),
     ...nearest.map((pair) => ({
-      text: `${shortSlug(pair.left)} <-> ${shortSlug(pair.right)} ${pair.distance}`,
-      title: pairTasteTitle(pair)
+      text: `Watch ${nameBySlug.get(pair.left) || labelText(pair.left)} + ${nameBySlug.get(pair.right) || labelText(pair.right)}`,
+      title: [pair.distance ? `Distance ${pair.distance}` : "", pairTasteTitle(pair)].filter(Boolean).join(" | ")
     }))
-  ].filter((item) => item.text);
+  ].filter((item) => item?.text);
 
   if (signals.length <= 2 && !nearest.length) {
     return "";
@@ -558,8 +560,8 @@ function renderCard(item) {
           <div class="logo-row">
             <img src="${escapeAttr(item.logoUrl)}" alt="${escapeAttr(item.name)} logo" loading="lazy">
             <div class="meta">
-              <span class="pill">${escapeHtml(item.status)}</span>
-              <span class="pill">${escapeHtml(item.variant)}</span>
+              <span class="pill">Status: ${escapeHtml(labelText(item.status))}</span>
+              <span class="pill">Pattern: ${escapeHtml(item.patternLabel)}</span>
             </div>
           </div>
           ${signals}
@@ -599,16 +601,12 @@ function pairTasteTitle(pair) {
   ].join(" | ");
 }
 
-function shortSlug(value) {
-  return shortSignal(String(value || "").replace(/-/g, " "), 24);
-}
-
 function reviewSignalsFor(spec, reviewItem) {
   const signals = [];
   if (reviewItem) {
-    signals.push(reviewItem.status === "ok" ? "OK sweep" : `${reviewItem.failures?.length || 1} issues`);
+    signals.push(reviewItem.status === "ok" ? "Visual sweep OK" : `Review ${reviewItem.failures?.length || 1} issues`);
     if (reviewItem.tasteWarnings?.length) {
-      signals.push(tasteSignalFor(reviewItem.tasteWarnings));
+      signals.push(`Taste: ${tasteSignalFor(reviewItem.tasteWarnings)}`);
     }
     const scenario = reviewItem.scenarios?.find((item) => item.name === "desktop")
       || reviewItem.scenarios?.find((item) => item.name?.startsWith("mobile"))
@@ -618,12 +616,7 @@ function reviewSignalsFor(spec, reviewItem) {
       signals.push(`CTA: ${shortSignal(ctaSignal, 22)}`);
     }
   } else {
-    signals.push("No sweep");
-  }
-  signals.push(shortSignal(reviewItem?.silhouette || spec.pattern?.silhouette || spec.layoutVariant, 28));
-  const nearest = nearestNeighborFor(spec.slug);
-  if (nearest) {
-    signals.push(`Near ${shortSignal(nearest.slug, 18)} ${nearest.distance}`);
+    signals.push("Visual sweep pending");
   }
   return signals.filter(Boolean).slice(0, 5);
 }
@@ -654,23 +647,6 @@ function tasteWarningReason(warning) {
     return "near neighbor";
   }
   return "taste check";
-}
-
-function nearestNeighborFor(slug) {
-  const dashboardReport = comparisonDashboard?.reports?.find((item) => item.slug === slug);
-  const dashboardNearest = dashboardReport?.nearest?.[0];
-  if (dashboardNearest) {
-    const other = dashboardNearest.left === slug ? dashboardNearest.right : dashboardNearest.left;
-    return { slug: other, distance: dashboardNearest.distance };
-  }
-  const sweepNearest = reviewEvidence?.nearestNeighbors?.find((item) => item.left === slug || item.right === slug);
-  if (!sweepNearest) {
-    return null;
-  }
-  return {
-    slug: sweepNearest.left === slug ? sweepNearest.right : sweepNearest.left,
-    distance: sweepNearest.distance
-  };
 }
 
 function latestCard(items) {
@@ -710,6 +686,13 @@ function titleCase(value) {
     .filter(Boolean)
     .map((word) => `${word.slice(0, 1).toUpperCase()}${word.slice(1)}`)
     .join(" ");
+}
+
+function labelText(value) {
+  return titleCase(String(value || "")
+    .replace(/[-_]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim());
 }
 
 async function readJsonIfExists(filePath) {

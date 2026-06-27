@@ -197,7 +197,7 @@ h2 {
 .preview-frame {
   position: relative;
   overflow: hidden;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 36 / 25;
   border-bottom: 1px solid rgba(23, 33, 41, 0.13);
   background: var(--field);
 }

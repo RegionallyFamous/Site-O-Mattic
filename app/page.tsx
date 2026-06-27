@@ -27,7 +27,7 @@ export default async function Home() {
           <span className="brand-mark">SOM</span>
           <span>
             <span className="brand-name">Site-O-Mattic</span>
-            <span className="brand-subtitle">Blueprint catalog</span>
+            <span className="brand-subtitle">Playground catalog</span>
           </span>
         </Link>
         <div className="catalog-meta" aria-label="Catalog status">
@@ -38,12 +38,14 @@ export default async function Home() {
 
       <section className="catalog-intro" aria-labelledby="catalog-title">
         <div>
-          <p className="eyebrow">Local service starters</p>
-          <h1 id="catalog-title">Preview, launch, or inspect every Blueprint.</h1>
+          <p className="eyebrow">Site-O-Mattic</p>
+          <h1 id="catalog-title">
+            {blueprints.length} Playground-ready local service sites.
+          </h1>
         </div>
         <p className="summary">
-          A compact index of one-page WordPress Playground starters with bundled
-          media, generated brand assets, and direct Blueprint JSON access.
+          Browse visual previews, open each Blueprint in WordPress Playground,
+          or inspect the bundled JSON behind the site.
         </p>
       </section>
 
@@ -85,8 +87,8 @@ export default async function Home() {
                 </div>
                 <p className="card-summary">{blueprint.summary}</p>
                 <div className="blueprint-details" aria-label="Blueprint details">
-                  <span>{blueprint.layoutVariant}</span>
-                  <span>{blueprint.releaseStatus}</span>
+                  <span>Pattern: {blueprint.layoutVariant.replaceAll("-", " ")}</span>
+                  <span>Status: {blueprint.releaseStatus}</span>
                 </div>
                 <div className="actions" aria-label={`${blueprint.name} links`}>
                   <a className="button primary" href={playgroundUrl}>
