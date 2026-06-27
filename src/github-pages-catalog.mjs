@@ -156,21 +156,22 @@ function renderPage(items, featured) {
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Site-O-Mattic Demo Catalog</title>
-  <meta name="description" content="A riso-style sales demo for Playground-ready WordPress Blueprint sites.">
+  <meta name="description" content="A riso-style internal pitch page for Playground-ready WordPress Blueprint demos.">
   <style>
     :root {
       color-scheme: light;
-      --paper: #fff35f;
-      --surface: #fffef4;
-      --ink: #181225;
-      --muted: #4d4762;
+      --paper: #fff15f;
+      --surface: #fffef6;
+      --ink: #160f2a;
+      --muted: #42375d;
       --line: #181225;
-      --blue: #1757ff;
+      --blue: #174eff;
       --blue-dark: #08277f;
       --pink: #ff4f87;
       --pink-dark: #9f1747;
-      --mint: #55f0b7;
+      --mint: #4debb4;
       --scarlet: #ff3b2f;
+      --violet: #4c20ff;
       --shadow-blue: rgba(23, 87, 255, .42);
     }
     * {
@@ -179,7 +180,7 @@ function renderPage(items, featured) {
     body {
       margin: 0;
       background:
-        radial-gradient(circle at 1px 1px, rgba(24, 18, 37, .18) 1px, transparent 0) 0 0 / 18px 18px,
+        radial-gradient(circle at 1px 1px, rgba(22, 15, 42, .18) 1px, transparent 0) 0 0 / 18px 18px,
         linear-gradient(135deg, rgba(255, 79, 135, .2), transparent 32%),
         linear-gradient(315deg, rgba(23, 87, 255, .16), transparent 34%),
         var(--paper);
@@ -191,7 +192,7 @@ function renderPage(items, featured) {
       position: fixed;
       z-index: -1;
       inset: 0;
-      background: repeating-linear-gradient(-5deg, rgba(255,255,255,.18) 0, rgba(255,255,255,.18) 2px, transparent 2px, transparent 10px);
+      background: repeating-linear-gradient(-5deg, rgba(255,255,255,.22) 0, rgba(255,255,255,.22) 2px, transparent 2px, transparent 10px);
       content: "";
       pointer-events: none;
     }
@@ -212,11 +213,11 @@ function renderPage(items, featured) {
       display: grid;
       position: relative;
       overflow: hidden;
-      min-height: clamp(560px, 70vh, 790px);
+      min-height: clamp(580px, 74vh, 820px);
       align-items: end;
       border: 3px solid var(--ink);
       background: var(--blue);
-      box-shadow: 10px 10px 0 var(--pink);
+      box-shadow: 10px 10px 0 var(--pink), -10px -10px 0 var(--mint);
       isolation: isolate;
       padding: clamp(22px, 5vw, 72px);
     }
@@ -225,8 +226,8 @@ function renderPage(items, featured) {
       inset: 0;
       z-index: 0;
       background:
-        linear-gradient(90deg, rgba(255, 243, 95, .97) 0 42%, rgba(255, 243, 95, .72) 55%, rgba(23, 87, 255, .48)),
-        linear-gradient(135deg, transparent 0 52%, rgba(255, 79, 135, .62) 52% 65%, transparent 65%),
+        linear-gradient(90deg, rgba(255, 241, 95, .98) 0 46%, rgba(255, 241, 95, .72) 62%, rgba(23, 78, 255, .2)),
+        linear-gradient(135deg, transparent 0 46%, rgba(255, 79, 135, .62) 46% 59%, transparent 59%),
         linear-gradient(26deg, transparent 0 68%, rgba(85, 240, 183, .56) 68% 80%, transparent 80%);
       content: "";
     }
@@ -235,7 +236,7 @@ function renderPage(items, featured) {
     .card-preview::after {
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at 1px 1px, rgba(24, 18, 37, .24) 1px, transparent 0) 0 0 / 12px 12px;
+      background: radial-gradient(circle at 1px 1px, rgba(22, 15, 42, .24) 1px, transparent 0) 0 0 / 12px 12px;
       content: "";
       mix-blend-mode: multiply;
       opacity: .42;
@@ -249,13 +250,13 @@ function renderPage(items, featured) {
       height: 100%;
       object-fit: cover;
       object-position: top center;
-      filter: saturate(1.18) contrast(1.04);
+      filter: saturate(1.28) contrast(1.08);
       mix-blend-mode: multiply;
     }
     .hero-copy {
       position: relative;
       z-index: 1;
-      max-width: 830px;
+      max-width: 900px;
     }
     .eyebrow {
       display: inline-flex;
@@ -272,11 +273,38 @@ function renderPage(items, featured) {
       text-transform: uppercase;
       transform: rotate(-1deg);
     }
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 16px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .hero-badges li {
+      display: inline-flex;
+      align-items: center;
+      min-height: 32px;
+      padding: 6px 10px;
+      border: 2px solid var(--ink);
+      background: var(--surface);
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 1000;
+      line-height: 1;
+      box-shadow: 3px 3px 0 var(--ink);
+    }
+    .hero-badges li:nth-child(2) {
+      background: var(--pink);
+    }
+    .hero-badges li:nth-child(3) {
+      background: var(--mint);
+    }
     h1 {
       max-width: 930px;
       margin: 0;
       font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(42px, 6.7vw, 106px);
+      font-size: clamp(45px, 6.6vw, 110px);
       font-weight: 900;
       line-height: .9;
       letter-spacing: 0;
@@ -318,6 +346,15 @@ function renderPage(items, featured) {
       border: 3px solid var(--ink);
       background: var(--surface);
       box-shadow: 6px 6px 0 var(--shadow-blue);
+    }
+    .stat:nth-child(2) {
+      box-shadow: 6px 6px 0 var(--pink);
+    }
+    .stat:nth-child(3) {
+      box-shadow: 6px 6px 0 var(--mint);
+    }
+    .stat:nth-child(4) {
+      box-shadow: 6px 6px 0 var(--violet);
     }
     .stat dd {
       order: 1;
@@ -458,7 +495,7 @@ function renderPage(items, featured) {
     }
     .button.primary {
       background: var(--scarlet);
-      color: #ffffff;
+      color: var(--ink);
     }
     .button:hover,
     .links a:hover {
@@ -478,6 +515,12 @@ function renderPage(items, featured) {
       background: var(--surface);
       box-shadow: 6px 6px 0 var(--shadow-blue);
     }
+    .pitch-points article:nth-child(2) {
+      box-shadow: 6px 6px 0 var(--pink);
+    }
+    .pitch-points article:nth-child(3) {
+      box-shadow: 6px 6px 0 var(--mint);
+    }
     .pitch-points span {
       display: inline-flex;
       min-width: 44px;
@@ -488,6 +531,12 @@ function renderPage(items, featured) {
       background: var(--pink);
       font-weight: 1000;
       transform: rotate(-2deg);
+    }
+    .pitch-points article:nth-child(2) span {
+      background: var(--mint);
+    }
+    .pitch-points article:nth-child(3) span {
+      background: var(--paper);
     }
     .pitch-points h2 {
       margin: 12px 0 0;
@@ -505,6 +554,7 @@ function renderPage(items, featured) {
       align-items: center;
       justify-content: space-between;
       margin: 26px 0 14px;
+      scroll-margin-top: 18px;
     }
     .toolbar h2 {
       margin: 0;
@@ -532,6 +582,15 @@ function renderPage(items, featured) {
       background: var(--surface);
       box-shadow: 6px 6px 0 var(--shadow-blue);
     }
+    .card:nth-child(3n+1) {
+      box-shadow: 6px 6px 0 var(--pink);
+    }
+    .card:nth-child(3n+2) {
+      box-shadow: 6px 6px 0 var(--mint);
+    }
+    .card:nth-child(3n+3) {
+      box-shadow: 6px 6px 0 var(--violet);
+    }
     .card-preview {
       position: relative;
       display: block;
@@ -543,6 +602,21 @@ function renderPage(items, featured) {
       background-repeat: no-repeat;
       background-size: cover;
       text-decoration: none;
+    }
+    .card-preview::before {
+      position: absolute;
+      z-index: 1;
+      top: 10px;
+      left: 10px;
+      padding: 5px 8px;
+      border: 2px solid var(--ink);
+      background: var(--paper);
+      color: var(--ink);
+      content: "LIVE DEMO";
+      font-size: 11px;
+      font-weight: 1000;
+      line-height: 1;
+      transform: rotate(-1deg);
     }
     .card-preview img {
       display: block;
@@ -648,7 +722,15 @@ function renderPage(items, featured) {
     }
     .links a:first-child {
       grid-column: 1 / -1;
+      background: var(--scarlet);
+      color: var(--ink);
+    }
+    .card:nth-child(3n+2) .links a:first-child {
       background: var(--blue);
+      color: #ffffff;
+    }
+    .card:nth-child(3n+3) .links a:first-child {
+      background: var(--pink-dark);
       color: #ffffff;
     }
     footer {
@@ -702,12 +784,15 @@ function renderPage(items, featured) {
       }
       .masthead::before {
         background:
-          linear-gradient(180deg, rgba(255, 243, 95, .98) 0 62%, rgba(255, 243, 95, .74)),
+          linear-gradient(180deg, rgba(255, 241, 95, .98) 0 62%, rgba(255, 241, 95, .74)),
           linear-gradient(135deg, transparent 0 48%, rgba(255, 79, 135, .62) 48% 63%, transparent 63%),
           linear-gradient(26deg, transparent 0 68%, rgba(85, 240, 183, .56) 68% 80%, transparent 80%);
       }
       h1 {
         font-size: clamp(39px, 13vw, 64px);
+      }
+      .hero-badges li {
+        font-size: 12px;
       }
       .latest {
         padding: 12px;
@@ -727,9 +812,10 @@ function renderPage(items, featured) {
       .logo-row {
         align-items: flex-start;
         flex-direction: column;
+        min-height: 0;
       }
       .logo-row img {
-        width: min(240px, 100%);
+        display: none;
       }
       .meta {
         justify-content: flex-start;
@@ -751,31 +837,36 @@ function renderPage(items, featured) {
     <header class="masthead">
       <img class="hero-bg" src="${escapeAttr(featuredImage)}" alt="" loading="eager">
       <div class="hero-copy">
-        <p class="eyebrow">Riso proof kit</p>
-        <h1>Sell the idea with live WordPress demos, not another slide.</h1>
-        <p class="lede">Site-O-Mattic turns narrow local-service niches into polished, Playground-ready block themes with logos, screenshots, accessibility checks, and one-click proof.</p>
-        <p class="hero-note">Open any card and the pitch becomes a real WordPress site in the browser.</p>
+        <p class="eyebrow">Internal pitch wall</p>
+        <h1>${items.length} live WordPress demos, ready for the room.</h1>
+        <p class="lede">Site-O-Mattic turns one concept into a wall of polished niche sites: branded, screenshot-backed, Playground-ready, and built from lean block-theme systems leadership can inspect.</p>
+        <ul class="hero-badges" aria-label="Demo proof points">
+          <li>Blueprint JSON</li>
+          <li>Real screenshots</li>
+          <li>QA receipts</li>
+        </ul>
+        <p class="hero-note">Click a card during the meeting: the static pitch turns into a real WordPress site.</p>
         <div class="actions">
-          <a class="button primary" href="${escapeAttr(featured.playgroundUrl)}">Launch featured demo</a>
-          <a class="button" href="#catalog">Browse the catalog</a>
+          <a class="button primary" href="${escapeAttr(featured.playgroundUrl)}">Launch the proof</a>
+          <a class="button" href="#catalog">Jump to demo wall</a>
         </div>
       </div>
     </header>
 
     <dl class="stats" aria-label="Catalog counts">
-      <div class="stat"><dt>Live demos</dt><dd>${items.length}</dd></div>
-      <div class="stat"><dt>Approved builds</dt><dd>${approvedCount}</dd></div>
-      <div class="stat"><dt>Distinct layouts</dt><dd>${layoutCount}</dd></div>
+      <div class="stat"><dt>One-click demos</dt><dd>${items.length}</dd></div>
+      <div class="stat"><dt>Approved packages</dt><dd>${approvedCount}</dd></div>
+      <div class="stat"><dt>Layout lanes</dt><dd>${layoutCount}</dd></div>
       <div class="stat"><dt>Screenshot QA</dt><dd>${escapeHtml(sweepStat)}</dd></div>
     </dl>
 
     <section class="proof-strip" aria-labelledby="proof-heading">
       <div>
-        <h2 id="proof-heading">The concept is clickable, inspectable, and already packaged.</h2>
+        <h2 id="proof-heading">Every claim has a working artifact behind it.</h2>
       </div>
       <article><h3>Launch</h3><p>Each niche opens in WordPress Playground from a hosted Blueprint.</p></article>
-      <article><h3>Inspect</h3><p>Specs, screenshots, assets, JSON, and ZIPs stay visible.</p></article>
-      <article><h3>Trust</h3><p>Visual sweep, accessibility, and production checks travel with the demo.</p></article>
+      <article><h3>Inspect</h3><p>Specs, screenshots, assets, JSON, and ZIPs stay visible for review.</p></article>
+      <article><h3>Defend</h3><p>Visual sweep, accessibility, and production checks travel with the pitch.</p></article>
     </section>
 
     <section class="latest" aria-labelledby="featured-heading">
@@ -784,11 +875,11 @@ function renderPage(items, featured) {
         ${featuredMobile ? `<img class="mobile-shot" src="${escapeAttr(featuredMobile)}" alt="${escapeAttr(featured.name)} mobile preview" loading="eager">` : ""}
       </a>
       <div>
-        <p class="eyebrow">Live proof, not a deck</p>
+        <p class="eyebrow">Featured proof</p>
         <h2 id="featured-heading">${escapeHtml(featured.name)}</h2>
         <p>${escapeHtml(featured.summary)}</p>
         <div class="actions">
-          <a class="button primary" href="${escapeAttr(featured.playgroundUrl)}" aria-label="Open ${escapeAttr(featured.name)} live WordPress demo">Open live demo</a>
+          <a class="button primary" href="${escapeAttr(featured.playgroundUrl)}" aria-label="Launch ${escapeAttr(featured.name)} in WordPress Playground">Launch in Playground</a>
           <a class="button" href="${escapeAttr(featured.blueprintUrl)}" aria-label="Open ${escapeAttr(featured.name)} Blueprint JSON">Blueprint JSON</a>
           <a class="button" href="${escapeAttr(featured.zipUrl)}" aria-label="Download ${escapeAttr(featured.name)} Blueprint ZIP">Download ZIP</a>
         </div>
@@ -796,17 +887,17 @@ function renderPage(items, featured) {
     </section>
 
     <section class="pitch-points" aria-label="Sales talking points">
-      <article><span aria-hidden="true">01</span><h2>Demo fast</h2><p>Start with a niche, click Playground, and watch the site appear.</p></article>
-      <article><span aria-hidden="true">02</span><h2>Scale taste</h2><p>Use block themes, global settings, and visual review to keep quality high.</p></article>
-      <article><span aria-hidden="true">03</span><h2>Sell proof</h2><p>Bring leadership a working catalog instead of a promise.</p></article>
+      <article><span aria-hidden="true">01</span><h2>Open with proof</h2><p>Start with the featured demo, then jump across niches without leaving the browser.</p></article>
+      <article><span aria-hidden="true">02</span><h2>Show the system</h2><p>One lean WordPress foundation, many business stories, layouts, palettes, and logos.</p></article>
+      <article><span aria-hidden="true">03</span><h2>Ask for yes</h2><p>Bring leadership a working catalog with the receipts already attached.</p></article>
     </section>
 
     <section class="toolbar" id="catalog" aria-labelledby="catalog-heading">
-      <h2 id="catalog-heading">Pick a niche. Open the site. Feel the pitch click.</h2>
+      <h2 id="catalog-heading">Demo wall: pick a niche, launch WordPress, show the range.</h2>
       <a href="${escapeAttr(repoBase)}">GitHub repository</a>
     </section>
 
-    <section class="grid" aria-labelledby="catalog-heading">
+    <section class="grid" aria-label="Demo catalog cards">
 ${items.map(renderCard).join("\n")}
     </section>
 
@@ -879,7 +970,7 @@ function renderCard(item) {
           <p>${escapeHtml(item.niche)}</p>
           <p>${escapeHtml(item.summary)}</p>
           <nav class="links" aria-label="${escapeAttr(item.name)} links">
-            <a href="${escapeAttr(item.playgroundUrl)}" aria-label="Open ${escapeAttr(item.name)} live WordPress demo">Open live demo</a>
+            <a href="${escapeAttr(item.playgroundUrl)}" aria-label="Launch ${escapeAttr(item.name)} in WordPress Playground">Launch in Playground</a>
             <a href="${escapeAttr(item.blueprintUrl)}" aria-label="Open ${escapeAttr(item.name)} Blueprint JSON">JSON</a>
             <a href="${escapeAttr(item.zipUrl)}" aria-label="Download ${escapeAttr(item.name)} Blueprint ZIP">ZIP</a>
             <a href="${escapeAttr(item.specUrl)}" aria-label="Open ${escapeAttr(item.name)} production spec">Spec</a>
