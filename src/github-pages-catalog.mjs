@@ -95,6 +95,7 @@ function renderPage(items, featured) {
   const approvedCount = items.filter((item) => item.status === "approved").length;
   const sweepPassed = reviewEvidence ? Math.max(0, reviewEvidence.total - reviewEvidence.failed) : null;
   const sweepStat = reviewEvidence ? `${sweepPassed}/${reviewEvidence.total}` : "n/a";
+  const layoutCount = new Set(items.map((item) => item.variant)).size;
   const featuredImage = featured.desktopPreview || featured.heroUrl;
   const featuredMobile = featured.mobilePreview || "";
   const tasteQueue = renderTasteQueue(items);
@@ -104,22 +105,22 @@ function renderPage(items, featured) {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Site-O-Mattic Blueprint Catalog</title>
-  <meta name="description" content="Latest Site-O-Mattic Blueprint previews, Playground links, JSON files, and ZIP downloads.">
+  <title>Site-O-Mattic Demo Catalog</title>
+  <meta name="description" content="A riso-style sales demo for Playground-ready WordPress Blueprint sites.">
   <style>
     :root {
       color-scheme: light;
-      --ink: #172129;
-      --muted: #60707a;
-      --paper: #f7f4ee;
-      --surface: #fffdf8;
-      --line: #ddd5c8;
-      --field: #e8efe9;
-      --action: #d98032;
-      --action-ink: #fffaf1;
-      --green: #176f77;
-      --plum: #463350;
-      --shadow: 0 16px 38px rgba(23, 33, 41, .11);
+      --paper: #fff06a;
+      --surface: #fffdf2;
+      --ink: #181225;
+      --muted: #4d4762;
+      --line: #181225;
+      --blue: #1757ff;
+      --blue-dark: #08277f;
+      --pink: #ff4f87;
+      --pink-dark: #9f1747;
+      --mint: #55f0b7;
+      --shadow-blue: rgba(23, 87, 255, .42);
     }
     * {
       box-sizing: border-box;
@@ -127,73 +128,143 @@ function renderPage(items, featured) {
     body {
       margin: 0;
       background:
-        linear-gradient(180deg, rgba(232, 239, 233, .92), rgba(247, 244, 238, 0) 340px),
+        radial-gradient(circle at 1px 1px, rgba(24, 18, 37, .18) 1px, transparent 0) 0 0 / 18px 18px,
+        linear-gradient(135deg, rgba(255, 79, 135, .2), transparent 32%),
+        linear-gradient(315deg, rgba(23, 87, 255, .16), transparent 34%),
         var(--paper);
       color: var(--ink);
-      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family: "Arial Rounded MT Bold", "Avenir Next", Avenir, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       line-height: 1.5;
+    }
+    body::before {
+      position: fixed;
+      z-index: -1;
+      inset: 0;
+      background: repeating-linear-gradient(-5deg, rgba(255,255,255,.18) 0, rgba(255,255,255,.18) 2px, transparent 2px, transparent 10px);
+      content: "";
+      pointer-events: none;
     }
     a {
       color: inherit;
     }
+    a:focus-visible {
+      outline: 4px solid var(--mint);
+      outline-offset: 4px;
+    }
     .page {
-      width: min(1360px, calc(100% - 32px));
+      width: min(1480px, calc(100% - 28px));
       margin: 0 auto;
-      padding: 24px 0 46px;
+      padding: 24px 0 56px;
     }
     .masthead {
       display: grid;
-      gap: 20px;
-      grid-template-columns: minmax(0, 1fr) minmax(300px, .72fr);
-      align-items: center;
-      padding: 0 0 18px;
-      border-bottom: 1px solid rgba(23, 33, 41, .14);
+      position: relative;
+      overflow: hidden;
+      min-height: clamp(520px, 66vh, 760px);
+      align-items: end;
+      border: 3px solid var(--ink);
+      background: var(--blue);
+      box-shadow: 10px 10px 0 var(--pink);
+      isolation: isolate;
+      padding: clamp(22px, 5vw, 72px);
+    }
+    .masthead::before {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background:
+        linear-gradient(90deg, rgba(255, 240, 106, .96) 0 43%, rgba(255, 240, 106, .72) 55%, rgba(23, 87, 255, .38)),
+        radial-gradient(circle at 78% 22%, rgba(85, 240, 183, .62), transparent 28%),
+        radial-gradient(circle at 85% 72%, rgba(255, 79, 135, .55), transparent 24%);
+      content: "";
+    }
+    .masthead::after,
+    .latest-preview::after,
+    .card-preview::after {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 1px 1px, rgba(24, 18, 37, .24) 1px, transparent 0) 0 0 / 12px 12px;
+      content: "";
+      mix-blend-mode: multiply;
+      opacity: .42;
+      pointer-events: none;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      filter: saturate(1.18) contrast(1.04);
+      mix-blend-mode: multiply;
+    }
+    .hero-copy {
+      position: relative;
+      z-index: 1;
+      max-width: 780px;
     }
     .eyebrow {
       margin: 0 0 8px;
-      color: #8f4218;
+      color: var(--blue-dark);
       font-size: 12px;
-      font-weight: 800;
+      font-weight: 1000;
       letter-spacing: 0;
       text-transform: uppercase;
     }
     h1 {
-      max-width: 720px;
+      max-width: 860px;
       margin: 0;
       font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(32px, 4.5vw, 58px);
-      font-weight: 650;
-      line-height: 1.01;
+      font-size: clamp(39px, 6.6vw, 102px);
+      font-weight: 900;
+      line-height: .91;
       letter-spacing: 0;
+      text-wrap: balance;
     }
     .lede {
       max-width: 720px;
       margin: 14px 0 0;
-      color: var(--muted);
-      font-size: 17px;
+      color: #241c38;
+      font-size: clamp(17px, 1.5vw, 21px);
+      font-weight: 720;
     }
     .stats {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
+      gap: 12px;
+      margin: 22px 0;
+    }
+    .stats dl,
+    .stats dd {
+      margin: 0;
     }
     .stat {
-      padding: 12px;
-      border: 1px solid rgba(23, 33, 41, .14);
-      border-radius: 8px;
-      background: rgba(255, 253, 248, .68);
+      display: flex;
+      flex-direction: column;
+      padding: 18px;
+      border: 3px solid var(--ink);
+      background: var(--surface);
+      box-shadow: 6px 6px 0 var(--shadow-blue);
     }
-    .stat strong {
+    .stat dd {
+      order: 1;
       display: block;
-      font-size: 28px;
-      line-height: 1;
+      margin: 0;
+      color: var(--pink-dark);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(31px, 4vw, 62px);
+      font-weight: 900;
+      line-height: .9;
     }
-    .stat span {
+    .stat dt {
+      order: 2;
       display: block;
-      margin-top: 6px;
+      margin-top: 10px;
       color: var(--muted);
       font-size: 12px;
-      font-weight: 700;
+      font-weight: 1000;
       text-transform: uppercase;
     }
     .latest {
@@ -201,27 +272,28 @@ function renderPage(items, featured) {
       grid-template-columns: minmax(0, 1fr) minmax(300px, .64fr);
       gap: 22px;
       align-items: center;
-      margin: 22px 0;
-      padding: 14px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
+      margin: 22px 0 26px;
+      padding: 16px;
+      border: 3px solid var(--ink);
       background: var(--surface);
-      box-shadow: var(--shadow);
+      box-shadow: -8px 8px 0 var(--pink), 8px -8px 0 var(--mint);
     }
     .latest-preview {
       position: relative;
+      overflow: hidden;
       display: grid;
       grid-template-columns: minmax(0, 1fr) minmax(96px, 18%);
       gap: 10px;
       align-items: end;
+      border: 3px solid var(--ink);
+      background: var(--blue);
       text-decoration: none;
     }
     .latest-preview img {
       display: block;
       width: 100%;
       object-fit: cover;
-      border-radius: 6px;
-      background: var(--field);
+      background: var(--blue);
     }
     .desktop-shot {
       aspect-ratio: 16 / 9;
@@ -230,20 +302,21 @@ function renderPage(items, featured) {
     .mobile-shot {
       aspect-ratio: 9 / 16;
       object-position: top center;
-      border: 1px solid var(--line);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, .14);
+      border-left: 3px solid var(--ink);
     }
     .latest h2,
     .card h2 {
       margin: 0;
-      font-size: 23px;
-      line-height: 1.08;
+      font-size: 25px;
+      line-height: 1.03;
       letter-spacing: 0;
+      text-wrap: balance;
     }
     .latest p,
     .card p {
       margin: 10px 0 0;
       color: var(--muted);
+      font-weight: 650;
     }
     .actions {
       display: flex;
@@ -255,21 +328,53 @@ function renderPage(items, featured) {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 40px;
+      min-height: 44px;
       padding: 10px 14px;
-      border: 1px solid var(--line);
-      border-radius: 6px;
+      border: 2px solid var(--ink);
       background: var(--surface);
       color: var(--ink);
       font-size: 14px;
-      font-weight: 800;
+      font-weight: 900;
       line-height: 1.1;
       text-decoration: none;
+      box-shadow: 4px 4px 0 var(--ink);
     }
     .button.primary {
-      border-color: transparent;
       background: var(--ink);
-      color: var(--surface);
+      color: #ffffff;
+    }
+    .pitch-points {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin: 20px 0;
+    }
+    .pitch-points article {
+      min-height: 160px;
+      padding: 18px;
+      border: 3px solid var(--ink);
+      background: var(--surface);
+      box-shadow: 6px 6px 0 var(--shadow-blue);
+    }
+    .pitch-points span {
+      display: inline-flex;
+      min-width: 44px;
+      min-height: 34px;
+      align-items: center;
+      justify-content: center;
+      border: 3px solid var(--ink);
+      background: var(--pink);
+      font-weight: 1000;
+      transform: rotate(-2deg);
+    }
+    .pitch-points h2 {
+      margin: 12px 0 0;
+      font-size: clamp(24px, 3vw, 42px);
+      line-height: 1;
+    }
+    .pitch-points p {
+      color: var(--muted);
+      font-weight: 650;
     }
     .toolbar {
       display: flex;
@@ -286,7 +391,7 @@ function renderPage(items, featured) {
     .toolbar a {
       color: var(--muted);
       font-size: 14px;
-      font-weight: 700;
+      font-weight: 900;
     }
     .grid {
       display: grid;
@@ -298,17 +403,17 @@ function renderPage(items, featured) {
       flex-direction: column;
       overflow: hidden;
       min-width: 0;
-      border: 1px solid var(--line);
-      border-radius: 8px;
+      border: 3px solid var(--ink);
       background: var(--surface);
-      box-shadow: 0 10px 28px rgba(23, 33, 41, .08);
+      box-shadow: 6px 6px 0 var(--shadow-blue);
     }
     .card-preview {
+      position: relative;
       display: block;
       overflow: hidden;
       aspect-ratio: 36 / 25;
-      border-bottom: 1px solid rgba(23, 33, 41, .12);
-      background: var(--field);
+      border-bottom: 3px solid var(--ink);
+      background: var(--blue);
       text-decoration: none;
     }
     .card-preview img {
@@ -355,11 +460,11 @@ function renderPage(items, featured) {
       align-items: center;
       min-height: 24px;
       padding: 4px 8px;
-      border-radius: 6px;
-      background: var(--field);
-      color: var(--muted);
+      border: 2px solid var(--ink);
+      background: var(--mint);
+      color: var(--ink);
       font-size: 12px;
-      font-weight: 800;
+      font-weight: 900;
     }
     .signals {
       display: flex;
@@ -372,11 +477,10 @@ function renderPage(items, featured) {
       align-items: center;
       min-height: 22px;
       padding: 3px 7px;
-      border: 1px solid var(--line);
-      border-radius: 6px;
+      border: 2px solid var(--line);
       color: var(--muted);
       font-size: 11px;
-      font-weight: 800;
+      font-weight: 900;
       line-height: 1.1;
     }
     .taste-queue {
@@ -392,24 +496,22 @@ function renderPage(items, featured) {
     .links a {
       min-height: 38px;
       padding: 9px 10px;
-      border: 1px solid var(--line);
-      border-radius: 6px;
+      border: 2px solid var(--line);
       color: var(--ink);
       font-size: 13px;
-      font-weight: 800;
+      font-weight: 900;
       text-align: center;
       text-decoration: none;
     }
     .links a:first-child {
       grid-column: 1 / -1;
-      border-color: transparent;
-      background: var(--green);
-      color: var(--surface);
+      background: var(--blue);
+      color: #ffffff;
     }
     footer {
       margin-top: 32px;
       padding-top: 20px;
-      border-top: 1px solid var(--line);
+      border-top: 3px solid var(--line);
       color: var(--muted);
       font-size: 14px;
     }
@@ -424,6 +526,9 @@ function renderPage(items, featured) {
       .grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
+      .pitch-points {
+        grid-template-columns: 1fr;
+      }
     }
     @media (max-width: 620px) {
       .page {
@@ -433,6 +538,19 @@ function renderPage(items, featured) {
       .stats,
       .grid {
         grid-template-columns: 1fr;
+      }
+      .masthead {
+        min-height: 620px;
+        padding: 18px;
+      }
+      .masthead::before {
+        background:
+          linear-gradient(180deg, rgba(255, 240, 106, .97) 0 62%, rgba(255, 240, 106, .72)),
+          radial-gradient(circle at 78% 22%, rgba(85, 240, 183, .62), transparent 28%),
+          radial-gradient(circle at 85% 72%, rgba(255, 79, 135, .55), transparent 24%);
+      }
+      h1 {
+        font-size: clamp(39px, 13vw, 64px);
       }
       .latest {
         padding: 12px;
@@ -444,7 +562,10 @@ function renderPage(items, featured) {
         grid-template-columns: 1fr;
       }
       .mobile-shot {
-        display: none!important;
+        width: min(220px, 62%)!important;
+        margin: -34px 14px 14px auto;
+        border: 3px solid var(--ink);
+        box-shadow: 6px 6px 0 var(--pink);
       }
       .logo-row {
         align-items: flex-start;
@@ -458,23 +579,37 @@ function renderPage(items, featured) {
         margin-left: 0;
       }
     }
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto!important;
+        transition-duration: .001ms!important;
+      }
+    }
   </style>
 </head>
 <body>
   <main class="page">
     <header class="masthead">
-      <div>
-        <p class="eyebrow">Site-O-Mattic</p>
-        <h1>${items.length} Playground-ready local service sites.</h1>
-        <p class="lede">Browse the latest Site-O-Mattic previews, open each Blueprint in WordPress Playground, or inspect the JSON, ZIP, and production spec behind it.</p>
-      </div>
-      <div class="stats" aria-label="Catalog counts">
-        <div class="stat"><strong>${items.length}</strong><span>Blueprints</span></div>
-        <div class="stat"><strong>${approvedCount}</strong><span>Approved</span></div>
-        <div class="stat"><strong>${escapeHtml(sweepStat)}</strong><span>Sweep OK</span></div>
-        <div class="stat"><strong>${escapeHtml(branch)}</strong><span>Branch</span></div>
+      <img class="hero-bg" src="${escapeAttr(featuredImage)}" alt="" loading="eager">
+      <div class="hero-copy">
+        <p class="eyebrow">Internal pitch kit</p>
+        <h1>Sell the idea with live WordPress demos, not another slide.</h1>
+        <p class="lede">Site-O-Mattic turns narrow local-service niches into polished, Playground-ready block themes with brand assets, screenshots, accessibility checks, and one-click proof.</p>
+        <div class="actions">
+          <a class="button primary" href="${escapeAttr(featured.playgroundUrl)}">Launch featured demo</a>
+          <a class="button" href="#catalog">Browse the catalog</a>
+        </div>
       </div>
     </header>
+
+    <dl class="stats" aria-label="Catalog counts">
+      <div class="stat"><dt>Ready niches</dt><dd>${items.length}</dd></div>
+      <div class="stat"><dt>Approved builds</dt><dd>${approvedCount}</dd></div>
+      <div class="stat"><dt>Layout systems</dt><dd>${layoutCount}</dd></div>
+      <div class="stat"><dt>Screenshot QA passed</dt><dd>${escapeHtml(sweepStat)}</dd></div>
+    </dl>
 
     ${tasteQueue}
 
@@ -484,19 +619,25 @@ function renderPage(items, featured) {
         ${featuredMobile ? `<img class="mobile-shot" src="${escapeAttr(featuredMobile)}" alt="${escapeAttr(featured.name)} mobile preview" loading="eager">` : ""}
       </a>
       <div>
-        <p class="eyebrow">Latest checked preview</p>
+        <p class="eyebrow">Live proof, not a deck</p>
         <h2 id="featured-heading">${escapeHtml(featured.name)}</h2>
         <p>${escapeHtml(featured.summary)}</p>
         <div class="actions">
-          <a class="button primary" href="${escapeAttr(featured.playgroundUrl)}">Open Playground</a>
-          <a class="button" href="${escapeAttr(featured.blueprintUrl)}">Blueprint JSON</a>
-          <a class="button" href="${escapeAttr(featured.zipUrl)}">Download ZIP</a>
+          <a class="button primary" href="${escapeAttr(featured.playgroundUrl)}" aria-label="Open ${escapeAttr(featured.name)} in WordPress Playground">Open Playground</a>
+          <a class="button" href="${escapeAttr(featured.blueprintUrl)}" aria-label="Open ${escapeAttr(featured.name)} Blueprint JSON">Blueprint JSON</a>
+          <a class="button" href="${escapeAttr(featured.zipUrl)}" aria-label="Download ${escapeAttr(featured.name)} Blueprint ZIP">Download ZIP</a>
         </div>
       </div>
     </section>
 
-    <div class="toolbar">
-      <h2>Blueprints</h2>
+    <section class="pitch-points" aria-label="Sales talking points">
+      <article><span aria-hidden="true">01</span><h2>Concrete</h2><p>Show an actual site, not a hypothetical flowchart.</p></article>
+      <article><span aria-hidden="true">02</span><h2>Portable</h2><p>Every demo opens in WordPress Playground from a hosted Blueprint.</p></article>
+      <article><span aria-hidden="true">03</span><h2>Inspectable</h2><p>JSON, screenshots, assets, and production specs stay visible.</p></article>
+    </section>
+
+    <div class="toolbar" id="catalog">
+      <h2>Pick a niche. Open the site. Feel the pitch click.</h2>
       <a href="${escapeAttr(repoBase)}">GitHub repository</a>
     </div>
 
@@ -569,11 +710,11 @@ function renderCard(item) {
           <p>${escapeHtml(item.niche)}</p>
           <p>${escapeHtml(item.summary)}</p>
           <nav class="links" aria-label="${escapeAttr(item.name)} links">
-            <a href="${escapeAttr(item.playgroundUrl)}">Playground</a>
-            <a href="${escapeAttr(item.blueprintUrl)}">JSON</a>
-            <a href="${escapeAttr(item.zipUrl)}">ZIP</a>
-            <a href="${escapeAttr(item.specUrl)}">Spec</a>
-            <a href="${escapeAttr(item.readmeUrl)}">README</a>
+            <a href="${escapeAttr(item.playgroundUrl)}" aria-label="Open ${escapeAttr(item.name)} in WordPress Playground">Playground</a>
+            <a href="${escapeAttr(item.blueprintUrl)}" aria-label="Open ${escapeAttr(item.name)} Blueprint JSON">JSON</a>
+            <a href="${escapeAttr(item.zipUrl)}" aria-label="Download ${escapeAttr(item.name)} Blueprint ZIP">ZIP</a>
+            <a href="${escapeAttr(item.specUrl)}" aria-label="Open ${escapeAttr(item.name)} production spec">Spec</a>
+            <a href="${escapeAttr(item.readmeUrl)}" aria-label="Open ${escapeAttr(item.name)} README">README</a>
           </nav>
         </div>
       </article>`;

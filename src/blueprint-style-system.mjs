@@ -988,6 +988,7 @@ function buildTypographyTokens(spec) {
   treatments["portfolio-editorial-display"] = treatments["editorial-gallery-serif-display"];
   treatments["bold-proof-before-after"] = treatments["confident-transform-grotesk"];
   treatments["event-menu-board-sans"] = treatments["menu-board-display-sans"];
+  treatments["cool-portrait-serif-with-friendly-labels"] = treatments["warm-portrait-serif-with-playful-labels"];
   const treatmentVoice = treatments[treatment];
   const voice = normalizeTypographyVoice(treatmentVoice || treatments["friendly-bold-route-sans"]);
 
@@ -3861,19 +3862,19 @@ function buildAliasVisualCss(spec) {
 .wp-block-image.som-pet-gallery-image{
   margin-right:0;
   margin-left:auto;
-  width:min(610px, 58%)!important;
+  width:min(560px, 54%)!important;
 }
 .wp-block-image.som-pet-gallery-image img{
   aspect-ratio:4/3;
   display:block;
-  height:430px!important;
+  height:390px!important;
   min-height:0;
   object-position:46% 50%;
   width:100%!important;
   border-radius:8px;
 }
 .som-pet-gallery-hero .som-gallery-copy-row{
-  margin-top:-168px!important;
+  margin-top:-198px!important;
 }
 .som-pet-gallery-note{
   transform:none;

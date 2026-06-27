@@ -362,7 +362,7 @@ export const blueprints = [
     "slug": "pet-portrait-photography",
     "name": "BrightPaw Portraits",
     "eyebrow": "Pet Portrait Photography Studio",
-    "summary": "Calm Northside studio appointments built around treats, breaks, favorite toys, and the tiny expressions that make your pet unmistakably yours.",
+    "summary": "Slow, treat-friendly studio sessions catch the tiny looks that make your pet unmistakably yours.",
     "logo": "/blueprints/pet-portrait-photography/assets/logo.png",
     "logoWidth": 1000,
     "logoHeight": 300,
