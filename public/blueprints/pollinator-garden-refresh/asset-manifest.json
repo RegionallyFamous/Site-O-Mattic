@@ -9,7 +9,7 @@
       "fileName": "hero.jpg",
       "outputPath": "/assets/hero.jpg",
       "mimeType": "image/jpeg",
-      "byteSize": 576237,
+      "byteSize": 385817,
       "width": 1672,
       "height": 941,
       "embedded": true
@@ -19,9 +19,9 @@
       "fileName": "logo.png",
       "outputPath": "/assets/logo.png",
       "mimeType": "image/png",
-      "byteSize": 174138,
-      "width": 1200,
-      "height": 260,
+      "byteSize": 76405,
+      "width": 1000,
+      "height": 300,
       "embedded": true
     },
     "favicon": {
@@ -29,9 +29,9 @@
       "fileName": "favicon.png",
       "outputPath": "/assets/favicon.png",
       "mimeType": "image/png",
-      "byteSize": 217459,
-      "width": 512,
-      "height": 512,
+      "byteSize": 80573,
+      "width": 384,
+      "height": 384,
       "embedded": true
     }
   }

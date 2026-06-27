@@ -19,9 +19,9 @@
       "fileName": "logo.png",
       "outputPath": "/assets/logo.png",
       "mimeType": "image/png",
-      "byteSize": 225070,
-      "width": 1200,
-      "height": 260,
+      "byteSize": 59929,
+      "width": 1000,
+      "height": 300,
       "embedded": true
     },
     "favicon": {
@@ -29,9 +29,9 @@
       "fileName": "favicon.png",
       "outputPath": "/assets/favicon.png",
       "mimeType": "image/png",
-      "byteSize": 117743,
-      "width": 512,
-      "height": 512,
+      "byteSize": 60255,
+      "width": 384,
+      "height": 384,
       "embedded": true
     }
   }
