@@ -163,6 +163,7 @@ function renderPage(items, featured, pitchHeroUrl = "") {
   const featuredImage = featured.desktopPreview || featured.heroUrl;
   const featuredMobile = featured.mobilePreview || "";
   const heroIllustration = pitchHeroUrl || featuredImage;
+  const heroShelf = renderHeroShelf(items, featured);
   const tasteQueue = renderTasteQueue(items);
 
   return `<!doctype html>
@@ -171,12 +172,12 @@ function renderPage(items, featured, pitchHeroUrl = "") {
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Site-O-Mattic Demo Catalog</title>
-  <meta name="description" content="A riso-style internal pitch page for Playground-ready WordPress Blueprint demos.">
+  <meta name="description" content="A bold riso-style internal sales catalog for Playground-ready WordPress Blueprint demos.">
   <style>
     :root {
       color-scheme: light;
       --paper: #ffe65a;
-      --page: #f3f5ec;
+      --page: #f7f1df;
       --surface: #fffdf4;
       --ink: #111628;
       --muted: #4e5366;
@@ -190,13 +191,14 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       --scarlet: #ef6259;
       --violet: #1646f5;
       --shadow-blue: rgba(17, 22, 40, .14);
+      --shadow-hard: 8px 8px 0 var(--ink);
     }
     * {
       box-sizing: border-box;
     }
     body {
       margin: 0;
-      background: var(--page);
+      background: linear-gradient(180deg, #fff4ca 0, var(--page) 440px);
       color: var(--ink);
       font-family: "Avenir Next", Avenir, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       line-height: 1.5;
@@ -228,11 +230,11 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       gap: clamp(22px, 4vw, 44px);
       position: relative;
       overflow: hidden;
-      min-height: clamp(560px, 72vh, 760px);
+      min-height: clamp(560px, 74vh, 780px);
       align-items: end;
       border: 2px solid var(--ink);
       background: var(--paper);
-      box-shadow: 0 18px 38px rgba(17, 22, 40, .14);
+      box-shadow: var(--shadow-hard);
       isolation: isolate;
       padding: clamp(22px, 5vw, 72px);
     }
@@ -240,7 +242,7 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       position: absolute;
       inset: 0;
       z-index: 1;
-      background: linear-gradient(90deg, rgba(255, 230, 90, .98) 0 43%, rgba(255, 230, 90, .6) 58%, rgba(255, 230, 90, .12) 74%, transparent 100%);
+      background: linear-gradient(90deg, rgba(255, 230, 90, .98) 0 38%, rgba(255, 230, 90, .68) 56%, rgba(255, 230, 90, .14) 76%, transparent 100%);
       content: "";
     }
     .masthead::after {
@@ -251,10 +253,6 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       mix-blend-mode: multiply;
       opacity: .1;
       pointer-events: none;
-    }
-    .masthead::after {
-      z-index: 1;
-      opacity: .1;
     }
     .hero-bg {
       position: absolute;
@@ -275,10 +273,10 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       position: relative;
       z-index: 2;
       align-self: center;
-      max-width: 360px;
-      border: 1px solid var(--ink);
+      max-width: 380px;
+      border: 2px solid var(--ink);
       background: rgba(255, 253, 244, .92);
-      box-shadow: 0 12px 26px rgba(17, 22, 40, .16);
+      box-shadow: 6px 6px 0 var(--ink);
       padding: clamp(14px, 1.7vw, 20px);
     }
     .hero-ticket::before {
@@ -341,8 +339,6 @@ function renderPage(items, featured, pitchHeroUrl = "") {
     .ticket-ask {
       margin: 14px 0 0;
       padding: 10px;
-      border: 2px solid var(--ink);
-      border: 0;
       background: var(--ink);
       color: #ffffff;
       font-size: 13px;
@@ -417,6 +413,50 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       font-size: 14px;
       font-weight: 760;
     }
+    .hero-shelf {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-column: 1 / -1;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 10px;
+      align-self: end;
+      margin-top: clamp(8px, 2vw, 18px);
+    }
+    .hero-shelf a {
+      position: relative;
+      overflow: hidden;
+      display: block;
+      min-height: 118px;
+      border: 2px solid var(--ink);
+      background: var(--surface);
+      color: var(--ink);
+      text-decoration: none;
+      box-shadow: 4px 4px 0 var(--ink);
+    }
+    .hero-shelf a:nth-child(2n) {
+      transform: translateY(-8px);
+    }
+    .hero-shelf a:nth-child(3n) {
+      box-shadow: 4px 4px 0 var(--pink-dark);
+    }
+    .hero-shelf img {
+      display: block;
+      width: 100%;
+      height: 92px;
+      object-fit: cover;
+      object-position: top center;
+      border-bottom: 2px solid var(--ink);
+      filter: saturate(1.08) contrast(1.04);
+    }
+    .hero-shelf span {
+      display: block;
+      padding: 7px 8px 8px;
+      background: rgba(255, 253, 244, .96);
+      font-size: 11px;
+      font-weight: 860;
+      line-height: 1.12;
+    }
     .stats {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -433,16 +473,16 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       padding: 18px;
       border: 2px solid var(--ink);
       background: var(--surface);
-      box-shadow: 0 8px 20px var(--shadow-blue);
+      box-shadow: 5px 5px 0 var(--ink);
     }
     .stat:nth-child(2) {
-      box-shadow: 0 8px 20px rgba(239, 98, 89, .12);
+      box-shadow: 5px 5px 0 var(--pink-dark);
     }
     .stat:nth-child(3) {
-      box-shadow: 0 8px 20px rgba(32, 200, 162, .12);
+      box-shadow: 5px 5px 0 #11866d;
     }
     .stat:nth-child(4) {
-      box-shadow: 0 8px 20px rgba(22, 70, 245, .12);
+      box-shadow: 5px 5px 0 var(--blue-dark);
     }
     .stat dd {
       order: 1;
@@ -472,7 +512,7 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       border: 2px solid var(--ink);
       background: var(--surface);
       color: var(--ink);
-      box-shadow: 0 16px 36px rgba(17, 22, 40, .16);
+      box-shadow: var(--shadow-hard);
     }
     .closing-board {
       display: grid;
@@ -485,13 +525,13 @@ function renderPage(items, featured, pitchHeroUrl = "") {
     .closing-board article {
       border: 2px solid var(--ink);
       background: var(--surface);
-      box-shadow: 0 12px 26px var(--shadow-blue);
+      box-shadow: 5px 5px 0 var(--ink);
       padding: clamp(16px, 2vw, 24px);
     }
     .closing-board > div {
       background: var(--ink);
       color: #ffffff;
-      box-shadow: 0 16px 36px rgba(17, 22, 40, .16);
+      box-shadow: 6px 6px 0 var(--blue);
     }
     .closing-board > div .eyebrow {
       background: var(--mint);
@@ -526,10 +566,10 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       background: var(--mint);
     }
     .closing-points article:nth-child(3) {
-      background: color-mix(in srgb, var(--pink) 24%, var(--surface));
+      background: #ffd4cd;
     }
     .closing-points article:nth-child(4) {
-      background: color-mix(in srgb, var(--blue) 13%, var(--surface));
+      background: #dce6ff;
     }
     .closing-board h3 {
       font-size: 18px;
@@ -586,7 +626,7 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       padding: 16px;
       border: 2px solid var(--ink);
       background: var(--surface);
-      box-shadow: 0 16px 36px rgba(17, 22, 40, .14);
+      box-shadow: var(--shadow-hard);
     }
     .latest-preview {
       position: relative;
@@ -627,6 +667,17 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       margin: 10px 0 0;
       color: var(--muted);
       font-weight: 560;
+    }
+    .card-kicker {
+      color: var(--pink-dark)!important;
+      font-size: 13px;
+      font-weight: 860!important;
+      line-height: 1.15;
+      text-transform: uppercase;
+    }
+    .card-summary strong {
+      color: var(--ink);
+      font-weight: 850;
     }
     .actions {
       display: flex;
@@ -753,7 +804,7 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       position: relative;
       display: block;
       overflow: hidden;
-      aspect-ratio: 36 / 25;
+      aspect-ratio: 16 / 10;
       border-bottom: 2px solid var(--ink);
       background: var(--blue);
       background-position: top center;
@@ -762,7 +813,7 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       text-decoration: none;
     }
     .card-preview::before {
-      display: none;
+      display: inline-flex;
       position: absolute;
       z-index: 1;
       top: 10px;
@@ -771,7 +822,7 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       border: 1px solid var(--ink);
       background: var(--paper);
       color: var(--ink);
-      content: "PREVIEW";
+      content: "LIVE SCREENSHOT";
       font-size: 11px;
       font-weight: 850;
       line-height: 1;
@@ -805,7 +856,7 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       display: flex;
       flex: 1;
       flex-direction: column;
-      padding: 14px;
+      padding: 16px;
     }
     .logo-row {
       display: flex;
@@ -882,7 +933,7 @@ function renderPage(items, featured, pitchHeroUrl = "") {
     }
     .links a {
       min-height: 38px;
-      padding: 9px 10px;
+      padding: 10px 10px;
       border: 1px solid var(--line);
       color: var(--ink);
       font-size: 13px;
@@ -895,6 +946,7 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       grid-column: 1 / -1;
       background: var(--scarlet);
       color: var(--ink);
+      font-weight: 880;
     }
     .card:nth-child(3n+2) .links a:first-child {
       background: var(--blue);
@@ -928,6 +980,9 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       .grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
+      .hero-shelf {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
       .pitch-points {
         grid-template-columns: 1fr;
       }
@@ -958,6 +1013,15 @@ function renderPage(items, featured, pitchHeroUrl = "") {
         gap: 22px;
         padding: 20px;
       }
+      .hero-copy {
+        order: 1;
+      }
+      .hero-shelf {
+        order: 2;
+      }
+      .hero-ticket {
+        order: 3;
+      }
       .masthead::before {
         background: linear-gradient(180deg, rgba(255, 241, 95, .98) 0 56%, rgba(255, 241, 95, .62) 76%, rgba(255, 241, 95, .12) 100%);
       }
@@ -981,6 +1045,23 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       .hero-ticket h2 {
         font-size: clamp(23px, 7.1vw, 30px);
         line-height: 1.04;
+      }
+      .hero-shelf {
+        grid-template-columns: 1fr 1fr;
+        gap: 9px;
+      }
+      .hero-shelf a {
+        min-height: 104px;
+      }
+      .hero-shelf a:nth-child(n+5) {
+        display: none;
+      }
+      .hero-shelf img {
+        height: 74px;
+      }
+      .hero-shelf span {
+        padding: 6px 7px;
+        font-size: 10px;
       }
       .ticket-list {
         gap: 10px;
@@ -1040,48 +1121,49 @@ function renderPage(items, featured, pitchHeroUrl = "") {
     <header class="masthead">
       <img class="hero-bg" src="${escapeAttr(heroIllustration)}" alt="" loading="eager">
       <div class="hero-copy">
-        <p class="eyebrow">Site-O-Mattic pitch wall</p>
-        <h1>Turn the pitch into a live demo.</h1>
-        <p class="lede">Approval-ready demo walls for niche WordPress packages: ${items.length} launchable sites, real screenshots, Playground links, and receipts leadership can inspect live.</p>
+        <p class="eyebrow">Site-O-Mattic sales wall</p>
+        <h1>Sell the idea with live WordPress.</h1>
+        <p class="lede">${items.length} inspectable niche demos with ImageGen-made brand energy, screenshot proof on every card, and one-click Playground launches for the room.</p>
         <ul class="hero-badges" aria-label="Demo proof points">
-          <li>WordPress-native</li>
-          <li>Block-first</li>
-          <li>Vision QA</li>
+          <li>ImageGen-led</li>
+          <li>Screenshot-first</li>
+          <li>Playground-ready</li>
         </ul>
-        <p class="hero-note">Use it like a sales wall: point to a niche, launch Playground, inspect the proof, and ask for the next production lane.</p>
+        <p class="hero-note">Use it like a meeting artifact: point at a niche, launch the live site, show the proof trail, and ask for the next production lane.</p>
         <div class="actions">
           <a class="button primary" href="${escapeAttr(featured.playgroundUrl)}">Open featured demo</a>
-          <a class="button" href="#catalog">See the demo wall</a>
+          <a class="button" href="#catalog">Browse screenshot wall</a>
         </div>
       </div>
       <aside class="hero-ticket" aria-label="90-second meeting script">
         <p class="eyebrow">90-second room script</p>
-        <h2>Open a demo. Show proof. Ask for the lane.</h2>
+        <h2>Open the site. Show the receipts. Close the lane.</h2>
         <img class="ticket-shot" src="${escapeAttr(featuredImage)}" alt="" loading="eager">
         <ol class="ticket-list">
-          <li><strong>1</strong><span>Pick a niche the room gets instantly.</span></li>
+          <li><strong>1</strong><span>Pick a niche the room understands instantly.</span></li>
           <li><strong>2</strong><span>Launch the live Playground site.</span></li>
           <li><strong>3</strong><span>Show the screenshot, JSON, and spec.</span></li>
           <li><strong>4</strong><span>Ask for the next production lane.</span></li>
         </ol>
-        <p class="ticket-ask">Ask: approve the next lane for inspectable WordPress demos.</p>
+        <p class="ticket-ask">Ask: approve the next lane of inspectable WordPress sales demos.</p>
       </aside>
+      ${heroShelf}
     </header>
 
     <dl class="stats" aria-label="Catalog counts">
-      <div class="stat"><dt>One-click demos</dt><dd>${items.length}</dd></div>
-      <div class="stat"><dt>Approved packages</dt><dd>${approvedCount}</dd></div>
+      <div class="stat"><dt>Live demo links</dt><dd>${items.length}</dd></div>
+      <div class="stat"><dt>Approved proofs</dt><dd>${approvedCount}</dd></div>
       <div class="stat"><dt>Layout lanes</dt><dd>${layoutCount}</dd></div>
-      <div class="stat"><dt>Screenshot QA</dt><dd>${escapeHtml(sweepStat)}</dd></div>
+      <div class="stat"><dt>Visual sweep</dt><dd>${escapeHtml(sweepStat)}</dd></div>
     </dl>
 
     <section class="proof-strip" aria-labelledby="proof-heading">
       <div>
         <h2 id="proof-heading">Bring the room a product, not a promise.</h2>
       </div>
-      <article><h3>Launch</h3><p>Each niche opens in WordPress Playground from a hosted Blueprint.</p></article>
-      <article><h3>Inspect</h3><p>Specs, screenshots, assets, JSON, and ZIPs stay visible for review.</p></article>
-      <article><h3>Scale</h3><p>The same lean block foundation carries many brands, layouts, and service stories.</p></article>
+      <article><h3>Launch</h3><p>Every niche opens as a real WordPress site from a hosted Blueprint.</p></article>
+      <article><h3>Inspect</h3><p>Screenshots, specs, assets, JSON, and ZIPs keep the artifact accountable.</p></article>
+      <article><h3>Scale</h3><p>One lean block foundation carries many brands, layouts, and service stories.</p></article>
     </section>
 
     <section class="latest" aria-labelledby="featured-heading">
@@ -1105,11 +1187,11 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       <div>
         <p class="eyebrow">What you are really selling</p>
         <h2 id="closing-heading">A repeatable WordPress demo factory with taste in the loop.</h2>
-        <p>The ImageGen pitch wall brings the spark. The proof is underneath: core blocks, theme settings, screenshots, accessibility checks, and Playground links that make the concept inspectable.</p>
+        <p>The ImageGen pitch wall brings the spark. The proof underneath is practical: core blocks, theme settings, screenshots, accessibility checks, and Playground links that make the concept inspectable.</p>
       </div>
       <div class="closing-points">
         <article><h3>Fast to see</h3><p>People can understand the opportunity before they read the repo.</p></article>
-        <article><h3>Easy to trust</h3><p>Every card has the live site, JSON, ZIP, spec, and preview image.</p></article>
+        <article><h3>Easy to trust</h3><p>Every card leads with a screenshot and carries the live site, JSON, ZIP, and spec.</p></article>
         <article><h3>Built to govern</h3><p>Block-first output keeps the demos close to WordPress, not a fragile one-off.</p></article>
         <article><h3>Ready to fund</h3><p>The catalog turns the next step into a concrete production lane.</p></article>
       </div>
@@ -1122,7 +1204,7 @@ function renderPage(items, featured, pitchHeroUrl = "") {
     </section>
 
     <section class="toolbar" id="catalog" aria-labelledby="catalog-heading">
-      <h2 id="catalog-heading">Demo wall: screenshots first, live WordPress one click away.</h2>
+      <h2 id="catalog-heading">Demo wall: screenshot first, live WordPress one click away.</h2>
       <a href="${escapeAttr(repoBase)}">GitHub repository</a>
     </section>
 
@@ -1139,6 +1221,39 @@ ${items.map((item, index) => renderCard(item, index)).join("\n")}
 </body>
 </html>
 `;
+}
+
+function renderHeroShelf(items, featured) {
+  const preferredSlugs = [
+    featured.slug,
+    "garage-organization",
+    "mobile-auto-detailing",
+    "holiday-light-installation",
+    "pool-cleaning",
+    "wood-fired-pizza-taco-catering"
+  ];
+  const bySlug = new Map(items.map((item) => [item.slug, item]));
+  const seen = new Set();
+  const shelfItems = [...preferredSlugs.map((slug) => bySlug.get(slug)), ...items]
+    .filter((item) => {
+      if (!item || seen.has(item.slug)) {
+        return false;
+      }
+      seen.add(item.slug);
+      return Boolean(item.screenshotUrl && item.playgroundUrl);
+    })
+    .slice(0, 6);
+
+  if (!shelfItems.length) {
+    return "";
+  }
+
+  return `<nav class="hero-shelf" aria-label="Featured live demo screenshots">
+${shelfItems.map((item) => `        <a href="${escapeAttr(item.playgroundUrl)}" aria-label="Open ${escapeAttr(item.name)} live demo in WordPress Playground">
+          <img src="${escapeAttr(item.screenshotUrl)}" alt="" loading="eager">
+          <span>${escapeHtml(item.name)}</span>
+        </a>`).join("\n")}
+      </nav>`;
 }
 
 function renderTasteQueue(items) {
@@ -1182,9 +1297,9 @@ function renderCard(item, index = 0) {
   const signals = item.reviewSignals.length
     ? `<div class="signals">${item.reviewSignals.map((signal) => `<span class="signal">${escapeHtml(signal)}</span>`).join("")}</div>`
     : "";
-  return `      <article class="card">
+  return `      <article class="card" aria-labelledby="card-${escapeAttr(item.slug)}-title">
         <a class="card-preview" href="${escapeAttr(item.playgroundUrl)}" aria-label="Open ${escapeAttr(item.name)} in WordPress Playground" style="background-image: url('${escapeAttr(item.screenshotUrl)}')">
-          <img src="${escapeAttr(item.screenshotUrl)}" alt="Live site preview for ${escapeAttr(item.name)}" loading="lazy" decoding="async">
+          <img src="${escapeAttr(item.screenshotUrl)}" alt="Screenshot preview of the ${escapeAttr(item.name)} demo site" loading="lazy" decoding="async">
           <span class="card-number">Demo ${String(index + 1).padStart(2, "0")}</span>
         </a>
         <div class="content">
@@ -1196,11 +1311,11 @@ function renderCard(item, index = 0) {
             </div>
           </div>
           ${signals}
-          <h2>${escapeHtml(item.name)}</h2>
-          <p>${escapeHtml(item.niche)}</p>
-          <p>${escapeHtml(item.summary)}</p>
+          <h2 id="card-${escapeAttr(item.slug)}-title">${escapeHtml(item.name)}</h2>
+          <p class="card-kicker">${escapeHtml(item.niche)} sales demo</p>
+          <p class="card-summary"><strong>Pitch angle:</strong> ${escapeHtml(item.summary)}</p>
           <div class="links" role="group" aria-label="${escapeAttr(item.name)} links">
-            <a href="${escapeAttr(item.playgroundUrl)}" aria-label="Launch ${escapeAttr(item.name)} in WordPress Playground">Launch in Playground</a>
+            <a href="${escapeAttr(item.playgroundUrl)}" aria-label="Launch ${escapeAttr(item.name)} in WordPress Playground">Launch Playground</a>
             <a href="${escapeAttr(item.blueprintUrl)}" aria-label="Open ${escapeAttr(item.name)} Blueprint JSON">JSON</a>
             <a href="${escapeAttr(item.zipUrl)}" aria-label="Download ${escapeAttr(item.name)} Blueprint ZIP">ZIP</a>
             <a href="${escapeAttr(item.specUrl)}" aria-label="Open ${escapeAttr(item.name)} production spec">Spec</a>
