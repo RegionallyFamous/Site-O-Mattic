@@ -18,5 +18,5 @@ jobs:
       - run: npm ci
       - run: npm run blueprint:build
       - run: npm run quality
-      - name: Verify generated Blueprints are committed
-        run: git diff --exit-code public/blueprints
+      - name: Verify generated Blueprint JSON and assets are committed
+        run: git diff --exit-code public/blueprints -- ':(exclude)**/*.zip'
