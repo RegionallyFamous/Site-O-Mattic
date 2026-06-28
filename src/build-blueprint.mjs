@@ -4403,14 +4403,14 @@ function buildGalleryLedPageContent(spec) {
   const visualProof = galleryVisualProof(spec);
   const heroCopy = isPetGallery
     ? {
-      width: "58%",
+      width: "52%",
       radius: "8px",
-      paddingTop: "24px",
-      paddingBottom: "24px",
+      paddingTop: "22px",
+      paddingBottom: "22px",
       eyebrowSize: "12px",
       eyebrowWeight: "650",
-      h1Size: "clamp(36px, 3.9vw, 54px)",
-      h1LineHeight: "1.03",
+      h1Size: "clamp(34px, 3.6vw, 50px)",
+      h1LineHeight: "1.05",
       h1Weight: "620",
       buttonWeight: "760",
       secondaryColor: "soil"
@@ -4458,11 +4458,11 @@ function buildGalleryLedPageContent(spec) {
     };
   const heroNote = isPetGallery
     ? {
-      width: "36%",
+      width: "40%",
       radius: "8px",
       backgroundColor: "grass",
-      paddingTop: "24px",
-      paddingBottom: "24px",
+      paddingTop: "22px",
+      paddingBottom: "22px",
       labelSize: "12px",
       labelWeight: "650",
       textSize: "17px",
