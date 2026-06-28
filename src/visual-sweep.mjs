@@ -398,6 +398,8 @@ async function inspectScenario(browser, url, scenario, screenshot, spec) {
       const firstViewportExpectedCta = expectedCtas.length
         ? visibleCtas.find((cta) => expectedCtas.includes(normalizeCtaText(cta.text)))
         : firstViewportCta;
+      const firstViewportCtaIsExpected = Boolean(firstViewportCta
+        && (!expectedCtas.length || expectedCtas.includes(normalizeCtaText(firstViewportCta.text))));
       const keyOverlaps = keyOverlapFailures([
         { name: "logo", rect: logo },
         { name: "navigation", rect: navigation },
@@ -422,6 +424,7 @@ async function inspectScenario(browser, url, scenario, screenshot, spec) {
         defaultWrapperLeak: /Twenty Twenty|Designed with WordPress|^Home$/m.test(text),
         firstViewportCtaVisible: Boolean(firstViewportCta),
         firstViewportCtaText: firstViewportCta?.text || null,
+        firstViewportCtaIsExpected,
         firstViewportExpectedCtaVisible: Boolean(firstViewportExpectedCta),
         firstViewportExpectedCtaText: firstViewportExpectedCta?.text || null,
         expectedCtaTexts,
@@ -1091,6 +1094,9 @@ function failuresFor(result) {
   if (result.firstViewportCtaVisible && !result.firstViewportExpectedCtaVisible) {
     failures.push(`No spec primary/secondary CTA is visible in the first viewport. Expected ${result.expectedCtaTexts.join(" / ")}; saw ${result.visibleCtaTexts.join(" / ") || "none"}.`);
   }
+  if (result.firstViewportExpectedCtaVisible && result.firstViewportCtaVisible && !result.firstViewportCtaIsExpected) {
+    failures.push(`First visible CTA is not the primary/secondary action. Expected first action ${result.expectedCtaTexts.join(" / ")}; saw ${result.firstViewportCtaText}.`);
+  }
   if (result.h1Contrast && !result.h1Contrast.backgroundImageAncestor && result.h1Contrast.ratio < 4.5) {
     failures.push(`H1 contrast is low on its computed background (${result.h1Contrast.ratio}:1, ${result.h1Contrast.foreground} on ${result.h1Contrast.background}).`);
   }
@@ -1200,6 +1206,7 @@ function buildReviewEvidence(report) {
       bodyTextLength: scenario.bodyTextLength,
       defaultWrapperLeak: scenario.defaultWrapperLeak,
       firstViewportCtaText: scenario.firstViewportCtaText,
+      firstViewportCtaIsExpected: scenario.firstViewportCtaIsExpected,
       firstViewportExpectedCtaText: scenario.firstViewportExpectedCtaText,
       expectedCtaTexts: scenario.expectedCtaTexts,
       visibleCtaTexts: scenario.visibleCtaTexts,

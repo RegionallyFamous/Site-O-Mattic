@@ -1617,7 +1617,7 @@ ${navigationLinkBlocks(navLinks)}
 <!-- wp:buttons {"layout":{"type":"flex","justifyContent":"right"}} -->
 <div class="wp-block-buttons">
 <!-- wp:button {"backgroundColor":"deep-green","textColor":"white","style":{"border":{"radius":"6px"},"spacing":{"padding":{"top":"12px","right":"16px","bottom":"12px","left":"16px"}},"typography":{"fontSize":"14px","fontStyle":"normal","fontWeight":"800"}}} -->
-<div class="wp-block-button" style="font-size:14px;font-style:normal;font-weight:800"><a class="wp-block-button__link has-white-color has-deep-green-background-color has-text-color has-background wp-element-button" href="${esc(contact.phoneHref)}" style="border-radius:6px;padding-top:12px;padding-right:16px;padding-bottom:12px;padding-left:16px;white-space:nowrap">${esc(contact.phoneLabel)}</a></div>
+<div class="wp-block-button" style="font-size:14px;font-style:normal;font-weight:800"><a class="wp-block-button__link has-white-color has-deep-green-background-color has-text-color has-background wp-element-button" href="#quote" style="border-radius:6px;padding-top:12px;padding-right:16px;padding-bottom:12px;padding-left:16px;white-space:nowrap">${esc(copy.primaryCta)}</a></div>
 <!-- /wp:button -->
 </div>
 <!-- /wp:buttons -->
@@ -1853,12 +1853,12 @@ ${navigationLinkBlocks(navLinks)}
 <!-- /wp:navigation -->
 </div>
 <!-- /wp:column -->
-<!-- wp:column {"verticalAlignment":"center","width":"184px","className":"som-turnover-header-action"} -->
-<div class="wp-block-column is-vertically-aligned-center som-turnover-header-action" style="flex-basis:184px">
+<!-- wp:column {"verticalAlignment":"center","width":"196px","className":"som-turnover-header-action"} -->
+<div class="wp-block-column is-vertically-aligned-center som-turnover-header-action" style="flex-basis:196px">
 <!-- wp:buttons {"layout":{"type":"flex","justifyContent":"right"}} -->
 <div class="wp-block-buttons">
 <!-- wp:button {"backgroundColor":"deep-green","textColor":"white","style":{"border":{"radius":"6px"},"spacing":{"padding":{"top":"12px","right":"18px","bottom":"12px","left":"18px"}}}} -->
-<div class="wp-block-button"><a class="wp-block-button__link has-white-color has-deep-green-background-color has-text-color has-background wp-element-button" href="${esc(contact.phoneHref)}" style="border-radius:6px;padding-top:12px;padding-right:18px;padding-bottom:12px;padding-left:18px;white-space:nowrap">${esc(contact.phoneLabel)}</a></div>
+<div class="wp-block-button"><a class="wp-block-button__link has-white-color has-deep-green-background-color has-text-color has-background wp-element-button" href="#quote" style="border-radius:6px;padding-top:12px;padding-right:18px;padding-bottom:12px;padding-left:18px;white-space:nowrap">${esc(copy.primaryCta)}</a></div>
 <!-- /wp:button -->
 </div>
 <!-- /wp:buttons -->
@@ -2104,12 +2104,12 @@ ${navigationLinkBlocks(navLinks)}
 ${headerNavigation}
 </div>
 <!-- /wp:column -->
-<!-- wp:column {"verticalAlignment":"center","width":"190px","className":"som-receipt-header-action"} -->
-<div class="wp-block-column is-vertically-aligned-center som-receipt-header-action" style="flex-basis:190px">
+<!-- wp:column {"verticalAlignment":"center","width":"196px","className":"som-receipt-header-action"} -->
+<div class="wp-block-column is-vertically-aligned-center som-receipt-header-action" style="flex-basis:196px">
 <!-- wp:buttons {"layout":{"type":"flex","justifyContent":"right"}} -->
 <div class="wp-block-buttons">
 <!-- wp:button {"backgroundColor":"deep-green","textColor":"white","style":{"border":{"radius":"6px"},"spacing":{"padding":{"top":"12px","right":"18px","bottom":"12px","left":"18px"}}}} -->
-<div class="wp-block-button"><a class="wp-block-button__link has-white-color has-deep-green-background-color has-text-color has-background wp-element-button" href="${esc(contact.phoneHref)}" style="border-radius:6px;padding-top:12px;padding-right:18px;padding-bottom:12px;padding-left:18px;white-space:nowrap">${esc(contact.phoneLabel)}</a></div>
+<div class="wp-block-button"><a class="wp-block-button__link has-white-color has-deep-green-background-color has-text-color has-background wp-element-button" href="#quote" style="border-radius:6px;padding-top:12px;padding-right:18px;padding-bottom:12px;padding-left:18px;white-space:nowrap">${esc(copy.primaryCta)}</a></div>
 <!-- /wp:button -->
 </div>
 <!-- /wp:buttons -->
@@ -3509,12 +3509,12 @@ ${navigationLinkBlocks(navLinks)}
 <!-- /wp:navigation -->
 </div>
 <!-- /wp:column -->
-<!-- wp:column {"verticalAlignment":"center","width":"170px","className":"som-menu-header-action"} -->
-<div class="wp-block-column is-vertically-aligned-center som-menu-header-action" style="flex-basis:170px">
+<!-- wp:column {"verticalAlignment":"center","width":"205px","className":"som-menu-header-action"} -->
+<div class="wp-block-column is-vertically-aligned-center som-menu-header-action" style="flex-basis:205px">
 <!-- wp:buttons {"layout":{"type":"flex","justifyContent":"right"}} -->
 <div class="wp-block-buttons">
 <!-- wp:button {"backgroundColor":"deep-green","textColor":"white","style":{"border":{"radius":"999px"},"spacing":{"padding":{"top":"12px","right":"18px","bottom":"12px","left":"18px"}}}} -->
-<div class="wp-block-button"><a class="wp-block-button__link has-white-color has-deep-green-background-color has-text-color has-background wp-element-button" href="#quote" style="border-radius:999px;padding-top:12px;padding-right:18px;padding-bottom:12px;padding-left:18px">Check date</a></div>
+<div class="wp-block-button"><a class="wp-block-button__link has-white-color has-deep-green-background-color has-text-color has-background wp-element-button" href="#quote" style="border-radius:999px;padding-top:12px;padding-right:18px;padding-bottom:12px;padding-left:18px;white-space:nowrap">${esc(copy.primaryCta)}</a></div>
 <!-- /wp:button -->
 </div>
 <!-- /wp:buttons -->
