@@ -13,7 +13,7 @@
     "imageEvidence": "craftsperson refinishing a wooden furniture piece in a tidy workshop with tools and finish samples",
     "ctaRhythm": "photo-first",
     "surfaceFamily": "outlined-repeaters",
-    "surfaceModel": "hero-photo-before-after-proof-plus-floating-action-panel",
+    "surfaceModel": "hero-photo-before-after-proof-plus-floating-action-panel-and-restoration-trust-quote",
     "styleFamily": "material-workbench",
     "density": "balanced-editorial",
     "colorRoles": {
@@ -39,6 +39,7 @@
       "image",
       "table",
       "details",
+      "quote",
       "list",
       "buttons"
     ],
@@ -47,7 +48,7 @@
       "logo-scale",
       "floating-proof-panel-crowding"
     ],
-    "styleContract": "Patient and tactile with material proof, real refinishing evidence, steel-indigo and brass accent behavior, and a hero photo proof pair plus floating send-photo panel as the signature move."
+    "styleContract": "Patient and tactile with material proof, real refinishing evidence, steel-indigo and brass accent behavior, and a hero photo proof pair plus restoration trust quote as the signature move."
   },
   "tagline": "Furniture repair with grain, care, and receipts.",
   "themeSlug": "twentytwentyfive",

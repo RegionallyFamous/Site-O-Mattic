@@ -5034,6 +5034,14 @@ function buildBeforeAfterQuotePageContent(spec) {
   const heroMediaColumn = beforeAfterHeroMediaColumn(spec, transformationCopy);
   const isWindowScope = layoutVariant === "window-scope-ledger";
   const isFurnitureProof = layoutVariant === "furniture-refinish-proof";
+  const furnitureTrustQuote = isFurnitureProof
+    ? serviceTrustQuote(spec, {
+      className: "som-service-quote som-furniture-trust-quote",
+      bandClassName: "som-service-quote-band som-furniture-trust-quote-band",
+      citation: `${spec.businessName} restoration note`,
+      text: "The best repair plan starts by naming what should stay: original grain, family wear, existing joinery, and the finish character that makes the piece feel like yours."
+    })
+    : "";
   const imageFirstHero = ["furniture-refinish-proof", "window-scope-ledger"].includes(layoutVariant);
   const heroClassName = isWindowScope
     ? "som-split-hero som-window-split-hero"
@@ -5155,6 +5163,7 @@ ${prepDetails}
 <!-- /wp:column -->
 </div>
 <!-- /wp:columns -->
+${furnitureTrustQuote}
 </div>
 <!-- /wp:group -->
 
@@ -5236,14 +5245,15 @@ function beforeAfterHeroTextColumn(spec, transformationCopy) {
   const heroTextColor = isWindow ? "deep-green" : "soil";
   const heroTextSize = isWindow ? "clamp(17px, 1.45vw, 21px)" : "clamp(20px, 2vw, 27px)";
   const heroTextLineHeight = isWindow ? "1.5" : "1.45";
+  const heroTitleSize = isFurniture ? "clamp(42px, 5.8vw, 76px)" : "clamp(50px, 7.4vw, 98px)";
   return `
 <!-- wp:column {"width":"47%"${columnClassName},"style":{"spacing":{"padding":{"top":"24px","bottom":"24px"}}}} -->
 <div class="${columnHtmlClass}" style="padding-top:24px;padding-bottom:24px;flex-basis:47%">
 <!-- wp:paragraph {"textColor":"grass","style":{"typography":{"fontSize":"${eyebrowSize}","fontStyle":"normal","fontWeight":"${eyebrowWeight}","textTransform":"uppercase","letterSpacing":"0px"}}} -->
 <p class="has-grass-color has-text-color" style="font-size:${eyebrowSize};font-style:normal;font-weight:${eyebrowWeight};letter-spacing:0px;text-transform:uppercase">${esc(copy.eyebrow)}</p>
 <!-- /wp:paragraph -->
-<!-- wp:heading {"level":1,"textColor":"deep-green","style":{"typography":{"fontSize":"clamp(50px, 7.4vw, 98px)","lineHeight":"0.92","fontStyle":"normal","fontWeight":"900"},"spacing":{"margin":{"top":"12px","bottom":"22px"}}}} -->
-<h1 class="wp-block-heading has-deep-green-color has-text-color" style="margin-top:12px;margin-bottom:22px;font-size:clamp(50px, 7.4vw, 98px);font-style:normal;font-weight:900;line-height:0.92">${esc(copy.heroTitle)}</h1>
+<!-- wp:heading {"level":1,"textColor":"deep-green","style":{"typography":{"fontSize":"${heroTitleSize}","lineHeight":"0.92","fontStyle":"normal","fontWeight":"900"},"spacing":{"margin":{"top":"12px","bottom":"22px"}}}} -->
+<h1 class="wp-block-heading has-deep-green-color has-text-color" style="margin-top:12px;margin-bottom:22px;font-size:${heroTitleSize};font-style:normal;font-weight:900;line-height:0.92">${esc(copy.heroTitle)}</h1>
 <!-- /wp:heading -->
 <!-- wp:paragraph {"textColor":"${heroTextColor}","style":{"typography":{"fontSize":"${heroTextSize}","lineHeight":"${heroTextLineHeight}"},"spacing":{"margin":{"bottom":"30px"}}}} -->
 <p class="has-${heroTextColor}-color has-text-color" style="margin-bottom:30px;font-size:${heroTextSize};line-height:${heroTextLineHeight}">${esc(copy.heroText)}</p>
@@ -6306,7 +6316,10 @@ function serviceTrustQuote(spec, options = {}) {
     ? `${spec.businessName} planning note`
     : options.citation || `${spec.businessName} planning note`;
   const proof = spec.proof[0] || {};
-  const proofText = proof.label ? `${proof.stat}: ${proof.label}.` : spec.copy.introText;
+  const defaultProofText = proof.label ? `${proof.stat}: ${proof.label}.` : spec.copy.introText;
+  const proofText = typeof options === "string"
+    ? defaultProofText
+    : options.text || options.quoteText || defaultProofText;
 
   return `
 <!-- wp:group {"metadata":{"name":"Trust quote"},"className":"${esc(bandClassName)}","backgroundColor":"white","style":{"spacing":{"padding":{"top":"38px","right":"42px","bottom":"38px","left":"42px"},"margin":{"top":"28px"}}},"layout":{"type":"constrained","wideSize":"1120px"}} -->

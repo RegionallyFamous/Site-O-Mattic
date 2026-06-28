@@ -3802,6 +3802,11 @@ function buildVariantCustomCss(spec) {
   .som-method-table td{
     border-bottom:1px solid color-mix(in srgb, ${spec.palette.deepGreen} 10%, transparent);
   }
+  .som-method-table caption{
+    box-sizing:border-box;
+    display:block;
+    width:100%;
+  }
   .som-method-table td:last-child{
     border-bottom:0;
   }
@@ -5582,68 +5587,65 @@ function buildAliasVisualCss(spec) {
   object-position:50% 52%;
   border-radius:8px;
 }
-.som-furniture-split-hero h1{
-  font-size:clamp(42px, 5.8vw, 76px)!important;
-}
 .som-furniture-before-after .wp-block-column{
   border:1px solid color-mix(in srgb, ${p.deepGreen} 14%, transparent);
   box-shadow:none;
 }
 .som-furniture-hero-media-column .som-furniture-before-after{
-  margin-top:14px!important;
+  margin-top:14px;
 }
 .som-furniture-hero-media-column .som-furniture-evidence-card{
   min-height:112px;
 }
 .som-furniture-surface-row{
   border-left:8px solid ${p.sun};
-  border-radius:8px!important;
+  border-radius:8px;
 }
 .som-furniture-evidence-card{
-  border-radius:8px!important;
+  border-radius:8px;
 }
 .som-furniture-quote-strip{
-  background:linear-gradient(135deg, ${p.deepGreen}, color-mix(in srgb, ${p.soil} 24%, ${p.deepGreen}))!important;
+  background:linear-gradient(135deg, ${p.deepGreen}, color-mix(in srgb, ${p.soil} 24%, ${p.deepGreen}));
 }
 @media (max-width:781px){
   .som-furniture-split-hero{
-    display:flex!important;
-    flex-direction:column!important;
-    gap:20px!important;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
   }
   .som-furniture-hero-copy-column{
-    order:-1!important;
-    padding-top:0!important;
-    padding-bottom:0!important;
+    order:-1;
+    padding-top:0;
+    padding-bottom:0;
   }
   .som-furniture-hero-media-column{
-    order:0!important;
+    order:0;
   }
   .som-furniture-hero-photo img{
     min-height:240px;
     aspect-ratio:16/8;
   }
   .som-furniture-before-after{
-    display:grid!important;
+    display:grid;
     grid-template-columns:repeat(2, minmax(0, 1fr));
-    gap:12px!important;
+    gap:12px;
   }
   .som-furniture-hero-media-column .som-furniture-evidence-card{
     min-height:0;
-    padding-top:16px!important;
-    padding-bottom:16px!important;
+    padding-top:16px;
+    padding-bottom:16px;
   }
 }
 @media (max-width:700px){
   .som-furniture-split-hero{
-    gap:18px!important;
+    gap:18px;
   }
   .som-furniture-hero-photo img{
     min-height:170px;
   }
   .som-furniture-before-after{
     grid-template-columns:1fr;
-    gap:10px!important;
+    gap:10px;
   }
 }`.trim()
   };

@@ -176,7 +176,17 @@ function beforeAfterAlias(config) {
     ["split-hero", "hero-photo", "before-after", "evidence-card", "floating-proof-action", "quote-strip", "surface-row", "method-pill", "method-table", "method-detail", "timeline-step", "proof-grid", "proof-card"],
     ["split-hero", "hero-photo", "before-after", "floating-proof-action", "surface-row", "method-table", "method-detail", "quote-strip"]
   );
-  return { ...config, ...classes };
+  return {
+    ...config,
+    componentClassesExpected: [
+      ...classes.componentClassesExpected,
+      ...(config.extraComponentClasses || [])
+    ],
+    layoutMarkers: [
+      ...classes.layoutMarkers,
+      ...(config.extraLayoutMarkers || [])
+    ]
+  };
 }
 
 const RENDER_FAMILY_BY_LAYOUT = {
@@ -1508,16 +1518,18 @@ export const LAYOUT_ARCHETYPES = {
     bestFor: ["furniture refinishing", "furniture repair"],
     archetype: "Furniture restoration before-and-after proof",
     hero: "split-restoration-hero-with-detail-photo-and-before-after-proof",
-    sectionOrder: ["restoration-header", "split-restoration-hero-with-photo-proof", "send-photo-estimate-strip", "repair-surface-rows", "finish-method-panel", "care-timeline", "restoration-proof-footer"],
+    sectionOrder: ["restoration-header", "split-restoration-hero-with-photo-proof", "send-photo-estimate-strip", "repair-surface-rows", "finish-method-panel", "restoration-trust-quote", "care-timeline", "restoration-proof-footer"],
     navigationTreatment: "top-header-plus-floating-send-photo-proof-action",
     typographyTreatment: "restoration-craft-serif-with-shop-sans",
     colorStrategy: "warm-wood-neutrals-with-brass-repair-action",
     servicePresentation: "repair-and-finish-rows-with-material-pills",
-    proofTreatment: "before-after-proof-pair-under-hero-photo-plus-final-detail-grid",
+    proofTreatment: "before-after-proof-pair-under-hero-photo-plus-restoration-trust-quote-and-final-detail-grid",
     ctaRhythm: "early-send-photo-strip-plus-final-care-proof-quote",
     navLabels: ["Photo quote", "Repairs", "Finish"],
     anchorOrder: ["quote", "surfaces", "method"],
-    guidance: "Use the hero photo and adjacent before/after proof pair as the first restoration evidence, then repair rows, finish methods, care notes, and a send-a-furniture-photo CTA."
+    extraComponentClasses: ["som-furniture-trust-quote-band", "som-furniture-trust-quote"],
+    extraLayoutMarkers: ["wp:quote", "som-furniture-trust-quote"],
+    guidance: "Use the hero photo and adjacent before/after proof pair as the first restoration evidence, then repair rows, finish methods, a restoration trust quote, care notes, and a send-a-furniture-photo CTA."
   }),
   "consultation-led": {
     label: "Consultation led",
