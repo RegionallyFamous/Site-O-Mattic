@@ -2861,8 +2861,14 @@ function buildWorkshopBenchPageContent(spec) {
   const services = spec.services;
   const process = spec.process;
   const proof = spec.proof;
+  const layoutVariant = layoutVariantFor(spec);
+  const isDeckFinishSampleBoard = layoutVariant === "deck-finish-sample-board";
+  const isBikeRouteWorkstand = layoutVariant === "bike-route-workstand";
+  const isMuralLetteringWorkshop = layoutVariant === "mural-lettering-workshop";
   const scopeTable = corePlanIncludes(spec, "table")
-    ? serviceScopeTable(spec, {
+    ? isDeckFinishSampleBoard
+      ? deckFinishSampleTable(proof)
+      : serviceScopeTable(spec, {
       className: "som-workshop-scope-table",
       headings: ["Scope lane", "Best proof", "Photo note"]
     })
@@ -2881,10 +2887,6 @@ function buildWorkshopBenchPageContent(spec) {
       citation: `${spec.businessName} bench note`
     })
     : "";
-  const layoutVariant = layoutVariantFor(spec);
-  const isDeckFinishSampleBoard = layoutVariant === "deck-finish-sample-board";
-  const isBikeRouteWorkstand = layoutVariant === "bike-route-workstand";
-  const isMuralLetteringWorkshop = layoutVariant === "mural-lettering-workshop";
   const heroCopyWidth = isBikeRouteWorkstand ? "52%" : isMuralLetteringWorkshop ? "49%" : "43%";
   const heroMediaWidth = isBikeRouteWorkstand ? "48%" : isMuralLetteringWorkshop ? "51%" : "57%";
   const heroHeadingColor = isBikeRouteWorkstand ? "deep-green" : "cream";
@@ -2903,7 +2905,7 @@ function buildWorkshopBenchPageContent(spec) {
     : "";
   const mediaTicket = isMuralLetteringWorkshop
     ? ""
-    : `\n${isDeckFinishSampleBoard ? deckFinishSampleTable(proof) : workshopTicket(proof, { label: ticketLabel })}`;
+    : `\n${workshopTicket(proof, { label: isDeckFinishSampleBoard ? "Finish checks" : ticketLabel, compact: isDeckFinishSampleBoard })}`;
   const heroCopyColumn = `
 <!-- wp:column {"verticalAlignment":"center","width":"${heroCopyWidth}"} -->
 <div class="wp-block-column is-vertically-aligned-center" style="flex-basis:${heroCopyWidth}">
@@ -4390,6 +4392,7 @@ function buildGalleryLedPageContent(spec) {
   const galleryVariant = layoutVariantFor(spec);
   const isPetGallery = galleryVariant === "pet-portrait-gallery";
   const isPicnicGallery = galleryVariant === "picnic-proposal-lookbook";
+  const isBalloonGallery = galleryVariant === "balloon-backdrop-gallery";
   const styles = spec.services.map((item, index) => galleryStyleCard(index + 1, item.title, item.text, { variant: galleryVariant })).join("\n");
   const process = spec.process.map((item, index) => processStep(index + 1, item.title, item.text)).join("\n");
   const proof = spec.proof.map((item) => galleryProof(item.stat, item.label, { variant: galleryVariant })).join("\n");
@@ -4412,6 +4415,20 @@ function buildGalleryLedPageContent(spec) {
       buttonWeight: "760",
       secondaryColor: "soil"
     }
+    : isBalloonGallery
+      ? {
+        width: "60%",
+        radius: "8px",
+        paddingTop: "24px",
+        paddingBottom: "24px",
+        eyebrowSize: "12px",
+        eyebrowWeight: "700",
+        h1Size: "clamp(36px, 4.3vw, 56px)",
+        h1LineHeight: "1.04",
+        h1Weight: "680",
+        buttonWeight: "740",
+        secondaryColor: "deep-green"
+      }
     : isPicnicGallery
       ? {
         width: "62%",
@@ -4451,6 +4468,18 @@ function buildGalleryLedPageContent(spec) {
       textSize: "17px",
       textLineHeight: "1.5"
     }
+    : isBalloonGallery
+      ? {
+        width: "34%",
+        radius: "8px",
+        backgroundColor: "deep-green",
+        paddingTop: "22px",
+        paddingBottom: "22px",
+        labelSize: "12px",
+        labelWeight: "700",
+        textSize: "17px",
+        textLineHeight: "1.5"
+      }
     : isPicnicGallery
       ? {
         width: "38%",
@@ -4474,9 +4503,9 @@ function buildGalleryLedPageContent(spec) {
       textSize: "18px",
       textLineHeight: "1.48"
     };
-  const heroParagraphSize = isPetGallery ? "clamp(17px, 1.45vw, 21px)" : "clamp(18px, 1.55vw, 22px)";
+  const heroParagraphSize = isPetGallery || isBalloonGallery ? "clamp(17px, 1.42vw, 20px)" : "clamp(18px, 1.55vw, 22px)";
   const heroParagraphLineHeight = isPetGallery ? "1.5" : "1.5";
-  const heroParagraphMargin = isPetGallery
+  const heroParagraphMargin = isPetGallery || isBalloonGallery
     ? {
       blockAttr: '"spacing":{"margin":{"top":"18px","bottom":"0"}}',
       htmlStyle: "margin-top:18px;margin-bottom:0"
@@ -4500,7 +4529,7 @@ function buildGalleryLedPageContent(spec) {
 <!-- /wp:button -->
 </div>
 <!-- /wp:buttons -->`.trim();
-  const heroActionStack = isPetGallery
+  const heroActionStack = isPetGallery || isBalloonGallery
     ? `${heroButtons}\n${heroParagraph}`
     : `${heroParagraph}\n${heroButtons}`;
   const galleryHeroPaddingTop = isPetGallery ? "34px" : "42px";
@@ -5570,8 +5599,8 @@ function deckFinishSampleTable(proof) {
     ["Window", weather?.label || "dry-weather timing before stain day"]
   ];
   return `
-<!-- wp:table {"className":"som-workshop-ticket som-finish-sample-table"} -->
-<figure class="wp-block-table som-workshop-ticket som-finish-sample-table" style="margin-top:18px"><table>${tableCaption("Finish sample checks")}<colgroup><col style="width:108px"><col></colgroup>${tableHead(["Sample", "What we check"])}<tbody>${rows.map(([label, note]) => `<tr><td>${esc(label)}</td><td>${esc(note)}</td></tr>`).join("")}</tbody></table></figure>
+<!-- wp:table {"className":"som-workshop-scope-table som-finish-sample-table"} -->
+<figure class="wp-block-table som-workshop-scope-table som-finish-sample-table"><table>${tableCaption("Finish sample checks")}<colgroup><col style="width:108px"><col></colgroup>${tableHead(["Sample", "What we check"])}<tbody>${rows.map(([label, note]) => `<tr><td>${esc(label)}</td><td>${esc(note)}</td></tr>`).join("")}</tbody></table></figure>
 <!-- /wp:table -->`.trim();
 }
 
@@ -6509,17 +6538,21 @@ function galleryStyleCard(number, title, text, options = {}) {
 
 function galleryProof(stat, label, options = {}) {
   const isPet = options.variant === "pet-portrait-gallery";
-  const statSize = isPet ? "clamp(24px, 3.2vw, 34px)" : "clamp(25px, 3.6vw, 36px)";
-  const statWeight = isPet ? "680" : "760";
-  const labelWeight = isPet ? "640" : "700";
+  const isBalloon = options.variant === "balloon-backdrop-gallery";
+  const statSize = isPet ? "clamp(24px, 3.2vw, 34px)" : isBalloon ? "clamp(22px, 2.5vw, 30px)" : "clamp(25px, 3.6vw, 36px)";
+  const statWeight = isPet ? "680" : isBalloon ? "680" : "760";
+  const labelWeight = isPet ? "640" : isBalloon ? "640" : "700";
+  const backgroundColor = isBalloon ? "white" : "grass";
+  const statColor = isBalloon ? "deep-green" : "sun";
+  const labelColor = isBalloon ? "soil" : "white";
   return `
-<!-- wp:column {"className":"som-gallery-proof","backgroundColor":"grass","style":{"border":{"radius":"8px"},"spacing":{"padding":{"top":"22px","right":"20px","bottom":"22px","left":"20px"}}}} -->
-<div class="wp-block-column som-gallery-proof has-grass-background-color has-background" style="border-radius:8px;padding-top:22px;padding-right:20px;padding-bottom:22px;padding-left:20px">
-<!-- wp:paragraph {"textColor":"sun","style":{"typography":{"fontSize":"${statSize}","lineHeight":"1.04","fontStyle":"normal","fontWeight":"${statWeight}"},"spacing":{"margin":{"bottom":"9px"}}}} -->
-<p class="has-sun-color has-text-color" style="margin-bottom:9px;font-size:${statSize};font-style:normal;font-weight:${statWeight};line-height:1.04">${esc(stat)}</p>
+<!-- wp:column {"className":"som-gallery-proof","backgroundColor":"${backgroundColor}","style":{"border":{"radius":"8px"},"spacing":{"padding":{"top":"22px","right":"20px","bottom":"22px","left":"20px"}}}} -->
+<div class="wp-block-column som-gallery-proof has-${backgroundColor}-background-color has-background" style="border-radius:8px;padding-top:22px;padding-right:20px;padding-bottom:22px;padding-left:20px">
+<!-- wp:paragraph {"textColor":"${statColor}","style":{"typography":{"fontSize":"${statSize}","lineHeight":"1.04","fontStyle":"normal","fontWeight":"${statWeight}"},"spacing":{"margin":{"bottom":"9px"}}}} -->
+<p class="has-${statColor}-color has-text-color" style="margin-bottom:9px;font-size:${statSize};font-style:normal;font-weight:${statWeight};line-height:1.04">${esc(stat)}</p>
 <!-- /wp:paragraph -->
-<!-- wp:paragraph {"textColor":"white","style":{"typography":{"fontSize":"15px","lineHeight":"1.42","fontStyle":"normal","fontWeight":"${labelWeight}"}}} -->
-<p class="has-white-color has-text-color" style="font-size:15px;font-style:normal;font-weight:${labelWeight};line-height:1.42">${esc(label)}</p>
+<!-- wp:paragraph {"textColor":"${labelColor}","style":{"typography":{"fontSize":"15px","lineHeight":"1.42","fontStyle":"normal","fontWeight":"${labelWeight}"}}} -->
+<p class="has-${labelColor}-color has-text-color" style="font-size:15px;font-style:normal;font-weight:${labelWeight};line-height:1.42">${esc(label)}</p>
 <!-- /wp:paragraph -->
 </div>
 <!-- /wp:column -->`.trim();

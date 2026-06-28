@@ -4058,10 +4058,10 @@ function buildAliasVisualCss(spec) {
     linear-gradient(135deg, ${p.cream}, ${p.white});
 }
 .som-balloon-gallery-image img{
-  aspect-ratio:16/6;
-  height:300px!important;
+  aspect-ratio:16/6.4;
+  height:330px!important;
   min-height:0;
-  object-position:50% 44%;
+  object-position:50% 42%;
   border-radius:8px;
 }
 .som-balloon-gallery-copy,
@@ -4070,21 +4070,28 @@ function buildAliasVisualCss(spec) {
   border-radius:8px!important;
 }
 .som-balloon-gallery-hero .som-gallery-copy-row{
-  margin-top:-118px!important;
+  margin-top:-96px!important;
 }
 .som-balloon-gallery-copy{
   padding-top:24px!important;
   padding-bottom:24px!important;
 }
 .som-balloon-gallery-copy h1{
-  font-size:clamp(34px, 3.9vw, 48px)!important;
-  line-height:1.02!important;
+  font-size:clamp(34px, 3.7vw, 52px)!important;
+  line-height:1.04!important;
+  max-width:11ch;
+}
+.som-balloon-gallery-proof{
+  border-top:6px solid ${p.sun};
 }
 @media (max-width:700px){
   .som-balloon-gallery-image img{
     min-height:176px;
     aspect-ratio:16/9;
     border-radius:8px;
+  }
+  .som-balloon-gallery-hero .som-gallery-copy-row{
+    margin-top:14px!important;
   }
   .som-balloon-gallery-copy h1{
     font-size:clamp(30px, 8.4vw, 38px)!important;
