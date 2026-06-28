@@ -59,6 +59,7 @@ async function buildReport(target) {
   add(checks, "navigation labels unique", navigationLabelsUnique(pageContent), "Navigation labels do not repeat.");
   const tableA11y = tableAccessibility(pageContent);
   add(checks, "table captions and scoped headers", tableA11y.passed, tableA11y.detail);
+  add(checks, "reduced motion fallback", phpStep.code.includes("prefers-reduced-motion"), "Custom CSS respects reduced motion preferences.");
 
   return { target, checks };
 }

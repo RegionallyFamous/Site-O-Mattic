@@ -1404,6 +1404,14 @@ body{
   text-decoration-thickness:2px;
   text-underline-offset:.25em;
 }
+@media (prefers-reduced-motion: reduce){
+  html{
+    scroll-behavior:auto;
+  }
+  .wp-block-button__link{
+    transition:none;
+  }
+}
 ${sectionAnchorCss}
 .som-card,
 .som-process-card,
@@ -3882,42 +3890,31 @@ function buildAliasVisualCss(spec) {
     linear-gradient(180deg, color-mix(in srgb, ${p.cream} 88%, ${p.white}), color-mix(in srgb, ${p.leaf} 8%, ${p.cream}));
 }
 .wp-block-image.som-pet-gallery-image{
-  margin-right:0;
-  margin-left:auto;
-  width:min(790px, 72%)!important;
+  margin:0;
 }
 .wp-block-image.som-pet-gallery-image img{
   aspect-ratio:4/3;
   display:block;
-  height:470px!important;
+  height:clamp(360px, 34vw, 520px);
   min-height:0;
   object-position:58% 47%;
-  width:100%!important;
+  width:100%;
   border-radius:8px;
 }
-.som-pet-gallery-hero .som-gallery-copy-row{
-  margin-top:-146px!important;
-}
 .som-pet-gallery-note{
-  transform:none;
+  box-shadow:var(--wp--custom--som--shadow--card);
 }
 .som-pet-style-card{
   border-top:0;
   border-left:8px solid ${p.sun};
 }
 @media (max-width:700px){
-  .wp-block-image.som-pet-gallery-image{
-    width:100%!important;
-  }
   .wp-block-image.som-pet-gallery-image img{
-    height:250px!important;
+    height:auto;
     min-height:0;
-    width:100%!important;
+    width:100%;
     aspect-ratio:4/3;
     object-position:50% 48%;
-  }
-  .som-pet-gallery-hero .som-gallery-copy-row{
-    margin-top:12px!important;
   }
   .som-pet-gallery-copy{
     padding:20px!important;
