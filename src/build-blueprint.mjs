@@ -685,6 +685,7 @@ function normalizePageTypography(markup, spec) {
   const designTokens = buildDesignTokens(spec);
   const tokens = designTokens.typography;
   const actionProps = {
+    "font-style": "normal",
     "font-weight": tokens.actionWeight
   };
   const labelProps = {
@@ -706,7 +707,9 @@ function normalizePageTypography(markup, spec) {
           attrs.style.typography.fontWeight = tokens.headingWeight;
           attrs.style.typography.lineHeight = tokens.headingLineHeight;
         } else if (blockName === "button") {
+          attrs.style.typography.fontStyle = "normal";
           attrs.style.typography.fontWeight = tokens.actionWeight;
+          delete attrs.style.typography.fontSize;
         } else if (blockName === "navigation") {
           attrs.style.typography.fontWeight = tokens.navWeight;
         } else if (blockName === "paragraph" && paragraphUsesUtilityTypography(attrs)) {
@@ -720,11 +723,12 @@ function normalizePageTypography(markup, spec) {
     .replace(/(<h([1-6])\b[^>]*\bstyle=")([^"]*)("[^>]*>)/g, (_match, before, level, style, after) => {
       return `${before}${rewriteInlineStyle(style, headingPropsForLevel(Number(level), tokens, spec))}${after}`;
     })
-    .replace(/(<div\b(?=[^>]*\bwp-block-button\b)[^>]*\bstyle=")([^"]*)("[^>]*>)/g, (_match, before, style, after) => {
-      return `${before}${rewriteInlineStyle(style, actionProps)}${after}`;
+    .replace(/(<div\b(?=[^>]*\bwp-block-button\b)[^>]*?)\sstyle="([^"]*)"([^>]*>)/g, (_match, before, style, after) => {
+      const strippedStyle = removeInlineStyleProps(style, ["font-style", "font-weight", "font-size"]);
+      return strippedStyle ? `${before} style="${strippedStyle}"${after}` : `${before}${after}`;
     })
     .replace(/(<a\b(?=[^>]*\bwp-block-button__link\b)[^>]*\bstyle=")([^"]*)("[^>]*>)/g, (_match, before, style, after) => {
-      return `${before}${rewriteInlineStyle(style, actionProps)}${after}`;
+      return `${before}${rewriteInlineStyle(removeInlineStyleProps(style, ["white-space"]), actionProps)}${after}`;
     })
     .replace(/(<p\b[^>]*\bstyle=")([^"]*)("[^>]*>)/gi, (match, before, style, after) => {
       if (!/text-transform:\s*uppercase/i.test(style) && !isUtilityTypographyClass(`${before} ${after}`)) {
@@ -734,7 +738,92 @@ function normalizePageTypography(markup, spec) {
     });
 
   const colorNormalized = normalizePageColorRoles(normalized, designTokens.colorRoles);
-  return normalizeProofParagraphTypography(colorNormalized, tokens);
+  const coverNormalized = normalizeCoreCoverMarkup(colorNormalized);
+  const mediaTextNormalized = normalizeCoreMediaTextMarkup(coverNormalized);
+  const tableNormalized = normalizeCoreTableMarkup(mediaTextNormalized);
+  return normalizeProofParagraphTypography(tableNormalized, tokens);
+}
+
+function normalizeCoreCoverMarkup(markup) {
+  return normalizeCoreCoverContentPositionClasses(markup)
+    .replace(/(<div\b(?=[^>]*\bwp-block-cover\b)[^>]*>)(<span\b(?=[^>]*\bwp-block-cover__background\b)[^>]*><\/span>)(<img\b(?=[^>]*\bwp-block-cover__image-background\b)[^>]*\/>)/g, "$1$3$2")
+    .replace(/<img\b(?=[^>]*\bwp-block-cover__image-background\b)[^>]*\/>/g, normalizeCoreCoverImageTag);
+}
+
+function normalizeCoreCoverContentPositionClasses(markup) {
+  return markup.replace(/(<!-- wp:cover\s+)([\s\S]*?)(\s*-->\s*)(<div\b(?=[^>]*\bwp-block-cover\b)(?=[^>]*\bclass=")[^>]*>)/g, (match, prefix, rawAttributes, suffix, divTag) => {
+    const contentPosition = rawAttributes.match(/"contentPosition"\s*:\s*"([^"]+)"/)?.[1];
+    const positionClass = coverContentPositionClass(contentPosition);
+    if (!positionClass) {
+      return match;
+    }
+
+    const normalizedDivTag = divTag.replace(/\bclass="([^"]*)"/i, (_classMatch, className) => {
+      return `class="${addCoverPositionClasses(className, positionClass)}"`;
+    });
+    return `${prefix}${rawAttributes}${suffix}${normalizedDivTag}`;
+  });
+}
+
+function coverContentPositionClass(position) {
+  const normalized = String(position || "").trim().toLowerCase().replace(/\s+/g, " ");
+  if (!normalized || normalized === "center center") {
+    return "";
+  }
+  return `is-position-${normalized.replace(/\s/g, "-")}`;
+}
+
+function addCoverPositionClasses(className, positionClass) {
+  const requiredClasses = ["has-custom-content-position", positionClass];
+  const classes = className.split(/\s+/).filter(Boolean).filter((classToken) => !requiredClasses.includes(classToken));
+  const alignIndex = classes.findIndex((classToken) => /^align(?:wide|full|left|right|center)$/.test(classToken));
+  const blockIndex = classes.indexOf("wp-block-cover");
+  const insertAt = alignIndex >= 0 ? alignIndex + 1 : blockIndex >= 0 ? blockIndex + 1 : 0;
+  classes.splice(insertAt, 0, ...requiredClasses);
+  return classes.join(" ");
+}
+
+function normalizeCoreCoverImageTag(tag) {
+  const withoutUnsupportedAttrs = tag
+    .replace(/\s+alt="[^"]*"/i, "")
+    .replace(/\s+data-object-position="[^"]*"/i, "");
+  if (/\balt="/i.test(withoutUnsupportedAttrs)) {
+    return withoutUnsupportedAttrs;
+  }
+  return withoutUnsupportedAttrs.replace(/(<img\b[^>]*\bclass="[^"]*")/i, '$1 alt=""');
+}
+
+function normalizeCoreTableMarkup(markup) {
+  return markup.replace(/(<figure\b(?=[^>]*\bwp-block-table\b)[^>]*>\s*<table)([^>]*)>([\s\S]*?)(<\/table>)(\s*<\/figure>)/g, (_match, tableStart, rawTableAttrs, tableInner, tableClose, figureClose) => {
+    let caption = "";
+    const withoutCaption = tableInner.replace(/^\s*<caption\b[^>]*>([\s\S]*?)<\/caption>\s*/i, (_captionMatch, captionText) => {
+      caption = captionText;
+      return "";
+    });
+    const cleanedInner = withoutCaption.replace(/^\s*<colgroup\b[\s\S]*?<\/colgroup>\s*/i, "");
+    const tableAttrs = ensureClassAttribute(rawTableAttrs, "has-fixed-layout");
+    const figcaption = caption ? `<figcaption class="wp-element-caption">${caption}</figcaption>` : "";
+    return `${tableStart}${tableAttrs}>${cleanedInner}${tableClose}${figcaption}${figureClose}`;
+  });
+}
+
+function normalizeCoreMediaTextMarkup(markup) {
+  const withImageFillClass = markup.replace(/(<div\b(?=[^>]*\bwp-block-media-text\b)[^>]*\bclass=")([^"]*)("[^>]*>)/g, (match, before, className, after) => {
+    const classes = className.split(/\s+/).filter(Boolean);
+    const fillIndex = classes.indexOf("is-image-fill");
+    if (fillIndex === -1 || classes.includes("is-image-fill-element")) {
+      return match;
+    }
+    classes.splice(fillIndex, 0, "is-image-fill-element");
+    return `${before}${classes.join(" ")}${after}`;
+  });
+
+  return withImageFillClass.replace(/(<figure\b(?=[^>]*\bwp-block-media-text__media\b)[^>]*?)\sstyle="[^"]*\bbackground-image:[^"]*"([^>]*>)(<img\b[^>]*?)(\s*\/>)(<\/figure>)/g, (_match, figureStart, figureEnd, imageStart, imageEnd, figureClose) => {
+    const normalizedImageStart = /\bstyle="/i.test(imageStart)
+      ? imageStart.replace(/\bstyle="[^"]*"/i, 'style="object-position:50% 50%"')
+      : `${imageStart} style="object-position:50% 50%"`;
+    return `${figureStart}${figureEnd}${normalizedImageStart}${imageEnd}${figureClose}`;
+  });
 }
 
 function normalizePageColorRoles(markup, colorRoles) {
@@ -771,6 +860,22 @@ function colorClassSlug(token) {
   return String(token || "")
     .replace(/([a-z])([A-Z])/g, "$1-$2")
     .toLowerCase();
+}
+
+function blendHexColors(baseHex, mixHex, baseWeight = 0.5) {
+  const base = hexToRgb(baseHex);
+  const mix = hexToRgb(mixHex);
+  const weight = Math.min(1, Math.max(0, baseWeight));
+  const channels = base.map((channel, index) => Math.round((channel * weight) + (mix[index] * (1 - weight))));
+  return `#${channels.map((channel) => channel.toString(16).padStart(2, "0")).join("")}`;
+}
+
+function hexToRgb(hex) {
+  const normalized = String(hex || "").replace("#", "").trim();
+  if (!/^[0-9a-f]{6}$/i.test(normalized)) {
+    return [0, 0, 0];
+  }
+  return [0, 2, 4].map((offset) => Number.parseInt(normalized.slice(offset, offset + 2), 16));
 }
 
 function paragraphUsesUtilityTypography(attrs) {
@@ -854,6 +959,31 @@ function rewriteInlineStyle(style, updates) {
   }
 
   return rewritten.join(";");
+}
+
+function removeInlineStyleProps(style, properties) {
+  const remove = new Set(properties.map((property) => property.toLowerCase()));
+  return style
+    .split(";")
+    .map((declaration) => declaration.trim())
+    .filter(Boolean)
+    .filter((declaration) => {
+      const property = declaration.split(":")[0]?.trim().toLowerCase();
+      return property && !remove.has(property);
+    })
+    .join(";");
+}
+
+function ensureClassAttribute(attributes, className) {
+  if (/\bclass="/i.test(attributes)) {
+    return attributes.replace(/\bclass="([^"]*)"/i, (_match, classes) => {
+      const nextClasses = new Set(classes.split(/\s+/).filter(Boolean));
+      nextClasses.add(className);
+      return `class="${Array.from(nextClasses).join(" ")}"`;
+    });
+  }
+  const trimmed = attributes.trim();
+  return trimmed ? ` ${trimmed} class="${className}"` : ` class="${className}"`;
 }
 
 function buildPageContent(spec) {
@@ -1994,7 +2124,6 @@ ${headerNavigation}
 <div class="wp-block-group som-receipt-hero-shell has-cream-background-color has-background" style="padding-top:clamp(42px, 6vw, 76px);padding-right:clamp(24px, 5vw, 72px);padding-bottom:clamp(34px, 5vw, 64px);padding-left:clamp(24px, 5vw, 72px)">
 <!-- wp:media-text {"align":"wide","mediaPosition":"right","mediaId":{{hero_id}},"mediaLink":"{{hero_url}}","mediaType":"image","mediaWidth":46,"imageFill":true,"className":"som-receipt-hero"} -->
 <div class="wp-block-media-text alignwide has-media-on-the-right is-stacked-on-mobile is-image-fill som-receipt-hero" style="grid-template-columns:auto 46%">
-<figure class="wp-block-media-text__media" style="background-image:url({{hero_url}});background-position:50% 50%"><img src="{{hero_url}}" alt="${esc(spec.assetMeta.hero.alt)}" class="wp-image-{{hero_id}} size-full"/></figure>
 <div class="wp-block-media-text__content">
 <!-- wp:paragraph {"textColor":"grass","style":{"typography":{"fontSize":"15px","fontStyle":"normal","fontWeight":"900","textTransform":"uppercase","letterSpacing":"0px"}}} -->
 <p class="has-grass-color has-text-color" style="font-size:15px;font-style:normal;font-weight:900;letter-spacing:0px;text-transform:uppercase">${esc(copy.eyebrow)}</p>
@@ -2017,6 +2146,7 @@ ${headerNavigation}
 <!-- /wp:buttons -->
 ${receiptCard(spec)}
 </div>
+<figure class="wp-block-media-text__media" style="background-image:url({{hero_url}});background-position:50% 50%"><img src="{{hero_url}}" alt="${esc(spec.assetMeta.hero.alt)}" class="wp-image-{{hero_id}} size-full"/></figure>
 </div>
 <!-- /wp:media-text -->
 </div>
@@ -2117,13 +2247,17 @@ ${services.map((service) => receiptDetail(`What is included in ${service.title}?
 
 function receiptCard(spec) {
   const proof = spec.proof.slice(0, 3);
+  const rows = proof.map((item) => `
+<!-- wp:paragraph {"className":"som-ticket-line","textColor":"deep-green","style":{"typography":{"fontSize":"14px","lineHeight":"1.45","fontStyle":"normal","fontWeight":"800"},"spacing":{"margin":{"top":"0","bottom":"8px"}}}} -->
+<p class="som-ticket-line has-deep-green-color has-text-color" style="margin-top:0;margin-bottom:8px;font-size:14px;font-style:normal;font-weight:800;line-height:1.45"><strong>${esc(item.stat)}</strong> / ${esc(item.label)}</p>
+<!-- /wp:paragraph -->`).join("\n");
   return `
 <!-- wp:group {"className":"som-receipt-card","backgroundColor":"white","style":{"spacing":{"padding":{"top":"20px","right":"20px","bottom":"20px","left":"20px"},"margin":{"top":"28px"}}},"layout":{"type":"default"}} -->
 <div class="wp-block-group som-receipt-card has-white-background-color has-background" style="margin-top:28px;padding-top:20px;padding-right:20px;padding-bottom:20px;padding-left:20px">
 <!-- wp:paragraph {"textColor":"grass","style":{"typography":{"fontSize":"13px","fontStyle":"normal","fontWeight":"900","textTransform":"uppercase","letterSpacing":"0px"}}} -->
 <p class="has-grass-color has-text-color" style="font-size:13px;font-style:normal;font-weight:900;letter-spacing:0px;text-transform:uppercase">Estimate receipt</p>
 <!-- /wp:paragraph -->
-${proof.map((item) => `<div class="som-ticket-line"><span>${esc(item.stat)}</span><strong>${esc(item.label)}</strong></div>`).join("\n")}
+${rows}
 </div>
 <!-- /wp:group -->`;
 }
@@ -3762,8 +3896,9 @@ ${navigationLinkBlocks(navLinks)}
   const heroTitleMarginTop = isFloralStory ? "clamp(8px, 1vw, 12px)" : "12px";
   const heroTitleMarginBottom = isFloralStory ? "clamp(12px, 2vw, 22px)" : "22px";
   const proofBackgroundColor = isFloralStory ? "mist" : "deep-green";
+  const quoteGradientStop = isFloralStory ? blendHexColors(spec.palette.deepGreen, spec.palette.leaf, 0.82) : "";
   const quoteGradient = isFloralStory
-    ? `linear-gradient(135deg, ${spec.palette.deepGreen}, color-mix(in srgb, ${spec.palette.deepGreen} 82%, ${spec.palette.leaf}))`
+    ? `linear-gradient(135deg, ${spec.palette.deepGreen}, ${quoteGradientStop})`
     : "";
   const quoteColorStyle = quoteGradient ? `,"color":{"gradient":"${quoteGradient}"}` : "";
   const quoteInlineBackground = quoteGradient ? `background:${quoteGradient};` : "";
@@ -5899,13 +6034,9 @@ function detailPackageCard(number, title, text, spec) {
       ? "Booth"
       : "Detail";
   const radius = isBooth ? "4px" : "18px";
-  const railToken = isBooth ? ["sun", "leaf", "grass"][(number - 1) % 3] : "";
-  const railStyle = isBooth
-    ? `border-top:0;border-left:10px solid var(--wp--preset--color--${railToken});`
-    : "";
   return `
 <!-- wp:column {"className":"som-detail-package","backgroundColor":"white","style":{"border":{"radius":"${radius}"},"spacing":{"padding":{"top":"30px","right":"28px","bottom":"30px","left":"28px"}}}} -->
-<div class="wp-block-column som-detail-package has-white-background-color has-background" style="border-radius:${radius};${railStyle}padding-top:30px;padding-right:28px;padding-bottom:30px;padding-left:28px">
+<div class="wp-block-column som-detail-package has-white-background-color has-background" style="border-radius:${radius};padding-top:30px;padding-right:28px;padding-bottom:30px;padding-left:28px">
 <!-- wp:paragraph {"textColor":"leaf","style":{"typography":{"fontSize":"15px","fontStyle":"normal","fontWeight":"900","textTransform":"uppercase","letterSpacing":"0px"},"spacing":{"margin":{"bottom":"14px"}}}} -->
 <p class="has-leaf-color has-text-color" style="margin-bottom:14px;font-size:15px;font-style:normal;font-weight:900;letter-spacing:0px;text-transform:uppercase">${esc(label)} ${number}</p>
 <!-- /wp:paragraph -->

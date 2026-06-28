@@ -27,6 +27,7 @@
     "blueprint:copy-realism": "node src/copy-realism-report.mjs",
     "blueprint:premium": "node src/premium-review-report.mjs",
     "blueprint:lean-css": "node src/lean-css-report.mjs",
+    "blueprint:editor-validate": "node src/editor-block-validation-report.mjs",
     "blueprint:manifest": "node src/production-redo-manifest.mjs",
     "blueprint:manifest:write": "node src/production-redo-manifest.mjs --write",
     "blueprint:uniqueness": "node src/catalog-uniqueness-report.mjs",

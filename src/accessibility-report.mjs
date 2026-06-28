@@ -115,7 +115,8 @@ function navigationLabelsUnique(markup) {
 }
 
 function tableAccessibility(markup) {
-  const tables = [...markup.matchAll(/<table\b[^>]*>(.*?)<\/table>/gs)].map((match) => match[1]);
+  const tables = [...markup.matchAll(/<figure\b(?=[^>]*\bwp-block-table\b)[\s\S]*?<\/figure>|<table\b[^>]*>[\s\S]*?<\/table>/g)]
+    .map((match) => match[0]);
   if (!tables.length) {
     return { passed: true, detail: "No tables rendered." };
   }
@@ -123,10 +124,13 @@ function tableAccessibility(markup) {
   const missingCaptions = [];
   const unscopedHeaders = [];
   tables.forEach((table, index) => {
-    if (!/<caption\b[^>]*>.*?<\/caption>/s.test(table)) {
+    const tableInner = table.match(/<table\b[^>]*>([\s\S]*?)<\/table>/)?.[1] || table;
+    const hasCaption = /<caption\b[^>]*>[\s\S]*?<\/caption>/s.test(tableInner)
+      || /<figcaption\b(?=[^>]*\bwp-element-caption\b)[^>]*>[\s\S]*?<\/figcaption>/s.test(table);
+    if (!hasCaption) {
       missingCaptions.push(index + 1);
     }
-    const headers = [...table.matchAll(/<th\b([^>]*)>/g)];
+    const headers = [...tableInner.matchAll(/<th\b([^>]*)>/g)];
     headers.forEach((header, headerIndex) => {
       if (!/\bscope=(["'])(col|row|colgroup|rowgroup)\1/.test(header[1])) {
         unscopedHeaders.push(`${index + 1}.${headerIndex + 1}`);

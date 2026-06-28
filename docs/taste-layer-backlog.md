@@ -9,6 +9,7 @@ Site-O-Mattic should stay block-first: core WordPress blocks and global settings
 - Color theory: value contrast, warm/cool balance, action color discipline, and palette fingerprints that reflect rendered behavior.
 - Lean output: custom CSS size, `!important`, negative margins, transforms, sticky/fixed UI, wildcard selectors, and fragile breakpoints.
 - Block-first styling: visual decisions should live in block styles, block settings/supports, `theme.json`-compatible global styles, and block attributes before scoped CSS. CSS that duplicates what core blocks can express is design debt.
+- Editor validity: generated `post_content` must match current core block `save()` serialization so pages open in the editor without "unexpected or invalid content" recovery prompts.
 - Catalog presentation: GitHub Pages and dashboards should help judge rendered design quality quickly, not just list files.
 
 ## Current Evidence Commands
@@ -18,6 +19,7 @@ Site-O-Mattic should stay block-first: core WordPress blocks and global settings
 - `npm run visual:compare -- --input qa/reports/visual-sweep/report.json --out qa/reports/visual-sweep/dashboard`
 - `npm run pages:catalog`
 - `npm run blueprint:lean-css`
+- `npm run blueprint:editor-validate`
 - `VISUAL_SWEEP_DIR=qa/reports/visual-sweep-proof-timing npm run visual:sweep -- specs/mural-window-lettering-artist.json specs/mocktail-beverage-cart.json specs/deck-fence-staining.json specs/coffee-cart-catering.json specs/mobile-auto-detailing.json specs/photo-booth-rental.json`
 
 These commands do not approve visual quality. A pass is only ready to describe as tasteful after Codex inspects the desktop/mobile screenshots, explains the visual change in human design language, and, for non-trivial changes, gets an independent model/subagent taste read.
@@ -53,6 +55,7 @@ Taste warnings are also directional while thresholds are calibrated. They should
 
 ## Next Composition Queue
 
+- Resolved on 2026-06-28: the editor-invalid block pass added `npm run blueprint:editor-validate`, which boots each generated Blueprint in WordPress Playground, opens the Home page in the block editor, and reports blocks where `isValid === false`. The full 35-blueprint run now passes with 0 invalid blocks after normalizing current core save markup for Button typography, Table captions/fixed layout/colgroups, Cover content position and background images, Media & Text image-fill classes/order/object-position, receipt proof rows, photo-booth package rails, and a sanitized floral quote gradient.
 - Resolved on 2026-06-27: `photo-booth-rental` got a Codex/subagent taste pass instead of a metric-only lean cleanup. The page keeps the fixed mobile reserve dock and core Columns/Image/Buttons/Table/Details structure, but desktop now reads as a booth package sidecar instead of the old deck-like image-left split shell. Booth-specific hero padding, column ratio, CTA padding, ticket radius, package rails, and dock padding moved into generated block attributes/inline block styles; avoidable booth CSS overrides for row reversal, ticket rotation, mobile H1/button compression, and dock padding were removed. Copy was shortened to fit mobile naturally. Focused lean score improved from 38 to 28, and the focused booth/deck visual sweep passed 2/2 with 0 taste warnings while distance improved from 51 to 404.
 - Resolved on 2026-06-27: `gutter-cleaning` moved away from the `window-cleaning` split-service silhouette with a Codex/subagent taste pass. The fix stayed block-first: the risk-prevention hero now uses a core Cover with a storm-check `core/list` board, compact core Columns proof/status strip, lower service-area note, 8px panel radii, and the concrete `Clear clogged gutters` CTA. Two independent reviewers both recommended making gutter a warning/checklist page; visual inspection confirms desktop now reads as storm-prep prevention while window remains airy and quote-led. Focused gutter/window sweep passed 2/2 with 0 taste warnings and distance improved from 42 to 668. The full sweep passed 35/35 with 0 failures and 0 taste warnings, and gutter/window is no longer in the closest-neighbor list.
 - Resolved on 2026-06-27: `pet-portrait-photography` got a Codex/subagent taste pass instead of a code-only pass. The page keeps the existing core Image/Columns/Buttons/Gallery flow, but now has a calmer portrait-studio type system, clearer `Book a session` / `View packages` CTA hierarchy, `Book` nav label, more local first-viewport copy, a tighter dog crop, softer proof note, and more block-owned hero markup. Several pet-specific choices moved from CSS overrides into block attributes/styles, dropping the focused lean report from `important-heavy` to no flags while the focused visual sweep passed 1/1 with 0 taste warnings.

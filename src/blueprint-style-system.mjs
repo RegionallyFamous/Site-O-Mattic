@@ -1388,6 +1388,9 @@ body{
   box-shadow:var(--wp--custom--som--shadow--button);
   transition:box-shadow .18s ease, background-color .18s ease, color .18s ease;
 }
+.wp-block-button__link[href^="tel:"]{
+  white-space:nowrap;
+}
 .wp-block-button__link:hover{
   box-shadow:var(--wp--custom--som--shadow--card);
 }
@@ -4991,6 +4994,16 @@ function buildAliasVisualCss(spec) {
   border-radius:6px;
   box-shadow:8px 8px 0 ${p.white}, 0 28px 80px rgba(0,0,0,.24);
 }
+.som-booth-package{
+  border-top:0;
+  border-left:10px solid ${p.sun};
+}
+.som-booth-package:nth-child(2){
+  border-left-color:${p.leaf};
+}
+.som-booth-package:nth-child(3){
+  border-left-color:${p.grass};
+}
 @media (max-width:700px){
   .som-booth-page{
     --som-mobile-action-reserve:calc(104px + env(safe-area-inset-bottom));
@@ -5185,6 +5198,9 @@ function buildAliasVisualCss(spec) {
 }
 .som-turnover-hero{
   overflow:hidden;
+}
+.som-turnover-hero .wp-block-cover__image-background{
+  object-position:50% 54%;
 }
 .som-turnover-hero .wp-block-cover__background{
   background:
