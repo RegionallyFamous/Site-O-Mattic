@@ -2164,7 +2164,7 @@ ${proof.map((item) => receiptProof(item.stat, item.label)).join("\n")}
 </div>
 <!-- /wp:group -->
 
-<!-- wp:group {"metadata":{"name":"Scope"},"anchor":"scope","className":"som-receipt-scope","backgroundColor":"white","style":{"spacing":{"padding":{"top":"clamp(56px, 7vw, 92px)","right":"clamp(24px, 5vw, 72px)","bottom":"clamp(56px, 7vw, 92px)","left":"clamp(24px, 5vw, 72px)"}}},"layout":{"type":"constrained","wideSize":"1180px"}} -->
+<!-- wp:group {"metadata":{"name":"Scope"},"anchor":"scope","className":"som-receipt-scope","backgroundColor":"white","style":{"spacing":{"padding":{"top":"clamp(56px, 7vw, 92px)","right":"clamp(24px, 5vw, 72px)","bottom":"clamp(56px, 7vw, 92px)","left":"clamp(24px, 5vw, 72px)"}}},"layout":{"type":"constrained","wideSize":"1180px","justifyContent":"left"}} -->
 <div id="scope" class="wp-block-group som-receipt-scope has-white-background-color has-background" style="padding-top:clamp(56px, 7vw, 92px);padding-right:clamp(24px, 5vw, 72px);padding-bottom:clamp(56px, 7vw, 92px);padding-left:clamp(24px, 5vw, 72px)">
 <!-- wp:heading {"textColor":"deep-green","style":{"typography":{"fontSize":"var:preset|font-size|section-title","lineHeight":"1","fontStyle":"normal","fontWeight":"900"},"spacing":{"margin":{"bottom":"16px"}}}} -->
 <h2 class="wp-block-heading has-deep-green-color has-text-color" style="margin-bottom:16px;font-size:var(--wp--preset--font-size--section-title);font-style:normal;font-weight:900;line-height:1">${esc(copy.servicesTitle)}</h2>
@@ -3162,7 +3162,7 @@ ${proof.map((item) => workshopProof(item.stat, item.label)).join("\n")}
 </div>
 <!-- /wp:group -->
 
-<!-- wp:group {"metadata":{"name":"Wood scope"},"anchor":"wood","className":"som-wood-scope","backgroundColor":"cream","style":{"spacing":{"padding":{"top":"clamp(54px, 7vw, 92px)","right":"clamp(24px, 5vw, 72px)","bottom":"clamp(54px, 7vw, 88px)","left":"clamp(24px, 5vw, 72px)"}}},"layout":{"type":"constrained","wideSize":"1180px"}} -->
+<!-- wp:group {"metadata":{"name":"Wood scope"},"anchor":"wood","className":"som-wood-scope","backgroundColor":"cream","style":{"spacing":{"padding":{"top":"clamp(54px, 7vw, 92px)","right":"clamp(24px, 5vw, 72px)","bottom":"clamp(54px, 7vw, 88px)","left":"clamp(24px, 5vw, 72px)"}}},"layout":{"type":"constrained","wideSize":"1180px","justifyContent":"left"}} -->
 <div id="wood" class="wp-block-group som-wood-scope has-cream-background-color has-background" style="padding-top:clamp(54px, 7vw, 92px);padding-right:clamp(24px, 5vw, 72px);padding-bottom:clamp(54px, 7vw, 88px);padding-left:clamp(24px, 5vw, 72px)">
 <!-- wp:heading {"textColor":"deep-green","style":{"typography":{"fontSize":"var:preset|font-size|section-title","lineHeight":"1.02","fontStyle":"normal","fontWeight":"900"},"spacing":{"margin":{"bottom":"18px"}}}} -->
 <h2 class="wp-block-heading has-deep-green-color has-text-color" style="margin-bottom:18px;font-size:var(--wp--preset--font-size--section-title);font-style:normal;font-weight:900;line-height:1.02">${esc(copy.servicesTitle)}</h2>
@@ -3577,7 +3577,7 @@ ${proof.map((item) => menuProof(item.stat, item.label)).join("\n")}
 </div>
 <!-- /wp:group -->
 
-<!-- wp:group {"metadata":{"name":"Packages"},"anchor":"packages","className":"som-menu-packages","backgroundColor":"cream","style":{"spacing":{"padding":{"top":"clamp(54px, 7vw, 92px)","right":"clamp(24px, 5vw, 72px)","bottom":"clamp(54px, 7vw, 92px)","left":"clamp(24px, 5vw, 72px)"}}},"layout":{"type":"constrained","wideSize":"1180px"}} -->
+<!-- wp:group {"metadata":{"name":"Packages"},"anchor":"packages","className":"som-menu-packages","backgroundColor":"cream","style":{"spacing":{"padding":{"top":"clamp(54px, 7vw, 92px)","right":"clamp(24px, 5vw, 72px)","bottom":"clamp(54px, 7vw, 92px)","left":"clamp(24px, 5vw, 72px)"}}},"layout":{"type":"constrained","wideSize":"1180px","justifyContent":"left"}} -->
 <div id="packages" class="wp-block-group som-menu-packages has-cream-background-color has-background" style="padding-top:clamp(54px, 7vw, 92px);padding-right:clamp(24px, 5vw, 72px);padding-bottom:clamp(54px, 7vw, 92px);padding-left:clamp(24px, 5vw, 72px)">
 <!-- wp:heading {"textColor":"deep-green","style":{"typography":{"fontSize":"var:preset|font-size|section-title","lineHeight":"1","fontStyle":"normal","fontWeight":"900"},"spacing":{"margin":{"bottom":"18px"}}}} -->
 <h2 class="wp-block-heading has-deep-green-color has-text-color" style="margin-bottom:18px;font-size:var(--wp--preset--font-size--section-title);font-style:normal;font-weight:900;line-height:1">${esc(copy.servicesTitle)}</h2>
