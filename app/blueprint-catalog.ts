@@ -379,7 +379,7 @@ export const blueprints = [
     "slug": "photo-booth-rental",
     "name": "FlashDash Photo Booth",
     "eyebrow": "Photo Booth Rental Service",
-    "summary": "FlashDash brings a sharp booth setup, clean props, backdrop options, and a host-friendly arrival plan so the photo corner never becomes a mystery table.",
+    "summary": "FlashDash brings a sharp booth, clean props, backdrop options, and a setup plan that keeps guests moving.",
     "logo": "/blueprints/photo-booth-rental/assets/logo.png",
     "logoWidth": 1000,
     "logoHeight": 300,

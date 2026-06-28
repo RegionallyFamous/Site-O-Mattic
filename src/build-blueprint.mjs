@@ -3121,10 +3121,34 @@ function workshopProjectStrip(proof) {
 
 function buildFixedBottomActionPageContent(spec) {
   const { copy, contact } = spec;
+  const isBooth = layoutVariantFor(spec) === "photo-booth-strip-packages";
   const navLabels = layoutArchetypeFor(spec).navLabels || ["Packages", "Process", "Quote"];
   const services = spec.services;
   const process = spec.process;
   const proof = spec.proof;
+  const heroPadding = isBooth
+    ? {
+      top: "clamp(34px, 5vw, 76px)",
+      right: "clamp(24px, 5vw, 72px)",
+      bottom: "clamp(36px, 6vw, 82px)",
+      left: "clamp(24px, 5vw, 72px)"
+    }
+    : {
+      top: "clamp(44px, 6vw, 84px)",
+      right: "clamp(24px, 5vw, 72px)",
+      bottom: "clamp(46px, 7vw, 86px)",
+      left: "clamp(24px, 5vw, 72px)"
+    };
+  const heroCopyWidth = isBooth ? "43%" : "46%";
+  const heroMediaWidth = isBooth ? "57%" : "54%";
+  const heroButtonPadding = isBooth
+    ? { top: "14px", right: "20px", bottom: "14px", left: "20px" }
+    : { top: "15px", right: "24px", bottom: "15px", left: "24px" };
+  const dockPadding = isBooth
+    ? { top: "8px", right: "10px", bottom: "8px", left: "10px" }
+    : { top: "10px", right: "12px", bottom: "10px", left: "12px" };
+  const dockBorderAttribute = isBooth ? "\"border\":{\"radius\":\"20px\"}," : "";
+  const dockInlineBorder = isBooth ? "border-radius:20px;" : "";
   const packageTable = corePlanIncludes(spec, "table")
     ? serviceScopeTable(spec, {
       className: "som-detail-scope-table",
@@ -3183,12 +3207,12 @@ function buildFixedBottomActionPageContent(spec) {
 </div>
 <!-- /wp:group -->
 
-<!-- wp:group {"className":"som-fixed-hero","backgroundColor":"deep-green","style":{"spacing":{"padding":{"top":"clamp(44px, 6vw, 84px)","right":"clamp(24px, 5vw, 72px)","bottom":"clamp(46px, 7vw, 86px)","left":"clamp(24px, 5vw, 72px)"}}},"layout":{"type":"constrained","wideSize":"1180px"}} -->
-<div class="wp-block-group som-fixed-hero has-deep-green-background-color has-background" style="padding-top:clamp(44px, 6vw, 84px);padding-right:clamp(24px, 5vw, 72px);padding-bottom:clamp(46px, 7vw, 86px);padding-left:clamp(24px, 5vw, 72px)">
+<!-- wp:group {"className":"som-fixed-hero","backgroundColor":"deep-green","style":{"spacing":{"padding":{"top":"${heroPadding.top}","right":"${heroPadding.right}","bottom":"${heroPadding.bottom}","left":"${heroPadding.left}"}}},"layout":{"type":"constrained","wideSize":"1180px"}} -->
+<div class="wp-block-group som-fixed-hero has-deep-green-background-color has-background" style="padding-top:${heroPadding.top};padding-right:${heroPadding.right};padding-bottom:${heroPadding.bottom};padding-left:${heroPadding.left}">
 <!-- wp:columns {"verticalAlignment":"center","style":{"spacing":{"blockGap":{"left":"clamp(32px, 5vw, 70px)"}}}} -->
 <div class="wp-block-columns are-vertically-aligned-center">
-<!-- wp:column {"verticalAlignment":"center","width":"46%"} -->
-<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:46%">
+<!-- wp:column {"verticalAlignment":"center","width":"${heroCopyWidth}"} -->
+<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:${heroCopyWidth}">
 <!-- wp:paragraph {"textColor":"leaf","style":{"typography":{"fontSize":"16px","fontStyle":"normal","fontWeight":"900","textTransform":"uppercase","letterSpacing":"0px"}}} -->
 <p class="has-leaf-color has-text-color" style="font-size:16px;font-style:normal;font-weight:900;letter-spacing:0px;text-transform:uppercase">${esc(copy.eyebrow)}</p>
 <!-- /wp:paragraph -->
@@ -3200,18 +3224,18 @@ function buildFixedBottomActionPageContent(spec) {
 <!-- /wp:paragraph -->
 <!-- wp:buttons {"style":{"spacing":{"blockGap":{"left":"12px"}}}} -->
 <div class="wp-block-buttons">
-<!-- wp:button {"backgroundColor":"sun","textColor":"deep-green","style":{"border":{"radius":"999px"},"spacing":{"padding":{"top":"15px","right":"24px","bottom":"15px","left":"24px"}}}} -->
-<div class="wp-block-button"><a class="wp-block-button__link has-deep-green-color has-sun-background-color has-text-color has-background wp-element-button" href="#quote" style="border-radius:999px;padding-top:15px;padding-right:24px;padding-bottom:15px;padding-left:24px">${esc(copy.primaryCta)}</a></div>
+<!-- wp:button {"backgroundColor":"sun","textColor":"deep-green","style":{"border":{"radius":"999px"},"spacing":{"padding":{"top":"${heroButtonPadding.top}","right":"${heroButtonPadding.right}","bottom":"${heroButtonPadding.bottom}","left":"${heroButtonPadding.left}"}}}} -->
+<div class="wp-block-button"><a class="wp-block-button__link has-deep-green-color has-sun-background-color has-text-color has-background wp-element-button" href="#quote" style="border-radius:999px;padding-top:${heroButtonPadding.top};padding-right:${heroButtonPadding.right};padding-bottom:${heroButtonPadding.bottom};padding-left:${heroButtonPadding.left}">${esc(copy.primaryCta)}</a></div>
 <!-- /wp:button -->
-<!-- wp:button {"backgroundColor":"white","textColor":"deep-green","style":{"border":{"radius":"999px"},"spacing":{"padding":{"top":"15px","right":"24px","bottom":"15px","left":"24px"}}}} -->
-<div class="wp-block-button"><a class="wp-block-button__link has-deep-green-color has-white-background-color has-text-color has-background wp-element-button" href="#packages" style="border-radius:999px;padding-top:15px;padding-right:24px;padding-bottom:15px;padding-left:24px">${esc(copy.secondaryCta)}</a></div>
+<!-- wp:button {"backgroundColor":"white","textColor":"deep-green","style":{"border":{"radius":"999px"},"spacing":{"padding":{"top":"${heroButtonPadding.top}","right":"${heroButtonPadding.right}","bottom":"${heroButtonPadding.bottom}","left":"${heroButtonPadding.left}"}}}} -->
+<div class="wp-block-button"><a class="wp-block-button__link has-deep-green-color has-white-background-color has-text-color has-background wp-element-button" href="#packages" style="border-radius:999px;padding-top:${heroButtonPadding.top};padding-right:${heroButtonPadding.right};padding-bottom:${heroButtonPadding.bottom};padding-left:${heroButtonPadding.left}">${esc(copy.secondaryCta)}</a></div>
 <!-- /wp:button -->
 </div>
 <!-- /wp:buttons -->
 </div>
 <!-- /wp:column -->
-<!-- wp:column {"verticalAlignment":"center","width":"54%"} -->
-<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:54%">
+<!-- wp:column {"verticalAlignment":"center","width":"${heroMediaWidth}"} -->
+<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:${heroMediaWidth}">
 <!-- wp:image {"id":{{hero_id}},"sizeSlug":"full","linkDestination":"none","className":"som-detail-photo"} -->
 <figure class="wp-block-image size-full som-detail-photo"><img src="{{hero_url}}" alt="${esc(spec.assetMeta.hero.alt)}" class="wp-image-{{hero_id}}"/></figure>
 <!-- /wp:image -->
@@ -3227,7 +3251,7 @@ ${detailTicket(proof, spec)}
 <div class="wp-block-group som-detail-proof-strip has-mist-background-color has-background" style="padding-top:28px;padding-right:clamp(24px, 5vw, 72px);padding-bottom:28px;padding-left:clamp(24px, 5vw, 72px)">
 <!-- wp:columns {"style":{"spacing":{"blockGap":{"left":"16px"}}}} -->
 <div class="wp-block-columns">
-${proof.map((item) => detailProof(item.stat, item.label)).join("\n")}
+${proof.map((item) => detailProof(item.stat, item.label, spec)).join("\n")}
 </div>
 <!-- /wp:columns -->
 </div>
@@ -3271,7 +3295,7 @@ ${detailStack}
 <!-- /wp:column -->
 <!-- wp:column {"verticalAlignment":"top"} -->
 <div class="wp-block-column is-vertically-aligned-top">
-${process.map((step, index) => detailStep(index + 1, step.title, step.text)).join("\n")}
+${process.map((step, index) => detailStep(index + 1, step.title, step.text, spec)).join("\n")}
 </div>
 <!-- /wp:column -->
 </div>
@@ -3308,8 +3332,8 @@ ${process.map((step, index) => detailStep(index + 1, step.title, step.text)).joi
 </div>
 <!-- /wp:group -->
 
-<!-- wp:group {"className":"som-mobile-action-bar","backgroundColor":"deep-green","style":{"spacing":{"padding":{"top":"10px","right":"12px","bottom":"10px","left":"12px"}}},"layout":{"type":"default"}} -->
-<div class="wp-block-group som-mobile-action-bar has-deep-green-background-color has-background" style="padding-top:10px;padding-right:12px;padding-bottom:10px;padding-left:12px">
+<!-- wp:group {"className":"som-mobile-action-bar","backgroundColor":"deep-green","style":{${dockBorderAttribute}"spacing":{"padding":{"top":"${dockPadding.top}","right":"${dockPadding.right}","bottom":"${dockPadding.bottom}","left":"${dockPadding.left}"}}},"layout":{"type":"default"}} -->
+<div class="wp-block-group som-mobile-action-bar has-deep-green-background-color has-background" style="${dockInlineBorder}padding-top:${dockPadding.top};padding-right:${dockPadding.right};padding-bottom:${dockPadding.bottom};padding-left:${dockPadding.left}">
 <!-- wp:buttons {"style":{"spacing":{"blockGap":{"left":"8px"}}},"layout":{"type":"flex","justifyContent":"center","flexWrap":"nowrap"}} -->
 <div class="wp-block-buttons">
 <!-- wp:button {"backgroundColor":"sun","textColor":"deep-green","width":60,"style":{"border":{"radius":"999px"},"spacing":{"padding":{"top":"12px","right":"16px","bottom":"12px","left":"16px"}}}} -->
@@ -5828,6 +5852,8 @@ function checkCard(title, text, options = {}) {
 }
 
 function detailTicket(items, spec) {
+  const isBooth = layoutVariantFor(spec) === "photo-booth-strip-packages";
+  const radius = isBooth ? "4px" : "18px";
   const rows = items.slice(0, 3).map((item) => `
 <!-- wp:paragraph {"className":"som-ticket-line","textColor":"mist","style":{"typography":{"fontSize":"14px","lineHeight":"1.45","fontStyle":"normal","fontWeight":"800"},"spacing":{"margin":{"top":"0","bottom":"8px"}}}} -->
 <p class="som-ticket-line has-mist-color has-text-color" style="margin-top:0;margin-bottom:8px;font-size:14px;font-style:normal;font-weight:800;line-height:1.45"><strong>${esc(item.stat)}</strong> / ${esc(item.label)}</p>
@@ -5840,8 +5866,8 @@ function detailTicket(items, spec) {
       : "Detail kit";
 
   return `
-<!-- wp:group {"className":"som-detail-ticket","backgroundColor":"grass","style":{"border":{"radius":"18px"},"spacing":{"padding":{"top":"18px","right":"18px","bottom":"10px","left":"18px"},"margin":{"top":"20px"}}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group som-detail-ticket has-grass-background-color has-background" style="border-radius:18px;margin-top:20px;padding-top:18px;padding-right:18px;padding-bottom:10px;padding-left:18px">
+<!-- wp:group {"className":"som-detail-ticket","backgroundColor":"grass","style":{"border":{"radius":"${radius}"},"spacing":{"padding":{"top":"18px","right":"18px","bottom":"10px","left":"18px"},"margin":{"top":"20px"}}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group som-detail-ticket has-grass-background-color has-background" style="border-radius:${radius};margin-top:20px;padding-top:18px;padding-right:18px;padding-bottom:10px;padding-left:18px">
 <!-- wp:paragraph {"textColor":"sun","style":{"typography":{"fontSize":"13px","fontStyle":"normal","fontWeight":"900","textTransform":"uppercase","letterSpacing":"0px"},"spacing":{"margin":{"bottom":"10px"}}}} -->
 <p class="has-sun-color has-text-color" style="margin-bottom:10px;font-size:13px;font-style:normal;font-weight:900;letter-spacing:0px;text-transform:uppercase">${esc(label)}</p>
 <!-- /wp:paragraph -->
@@ -5850,10 +5876,11 @@ ${rows}
 <!-- /wp:group -->`.trim();
 }
 
-function detailProof(stat, label) {
+function detailProof(stat, label, spec = null) {
+  const radius = spec && layoutVariantFor(spec) === "photo-booth-strip-packages" ? "8px" : "18px";
   return `
-<!-- wp:column {"className":"som-detail-proof","backgroundColor":"white","style":{"border":{"radius":"18px"},"spacing":{"padding":{"top":"22px","right":"20px","bottom":"22px","left":"20px"}}}} -->
-<div class="wp-block-column som-detail-proof has-white-background-color has-background" style="border-radius:18px;padding-top:22px;padding-right:20px;padding-bottom:22px;padding-left:20px">
+<!-- wp:column {"className":"som-detail-proof","backgroundColor":"white","style":{"border":{"radius":"${radius}"},"spacing":{"padding":{"top":"22px","right":"20px","bottom":"22px","left":"20px"}}}} -->
+<div class="wp-block-column som-detail-proof has-white-background-color has-background" style="border-radius:${radius};padding-top:22px;padding-right:20px;padding-bottom:22px;padding-left:20px">
 <!-- wp:paragraph {"textColor":"leaf","style":{"typography":{"fontSize":"clamp(24px, 3vw, 36px)","lineHeight":"1","fontStyle":"normal","fontWeight":"900"},"spacing":{"margin":{"bottom":"8px"}}}} -->
 <p class="has-leaf-color has-text-color" style="margin-bottom:8px;font-size:clamp(24px, 3vw, 36px);font-style:normal;font-weight:900;line-height:1">${esc(stat)}</p>
 <!-- /wp:paragraph -->
@@ -5865,14 +5892,20 @@ function detailProof(stat, label) {
 }
 
 function detailPackageCard(number, title, text, spec) {
+  const isBooth = layoutVariantFor(spec) === "photo-booth-strip-packages";
   const label = layoutVariantFor(spec) === "pet-portrait-booking-dock"
     ? "Session"
     : layoutVariantFor(spec) === "photo-booth-strip-packages"
       ? "Booth"
       : "Detail";
+  const radius = isBooth ? "4px" : "18px";
+  const railToken = isBooth ? ["sun", "leaf", "grass"][(number - 1) % 3] : "";
+  const railStyle = isBooth
+    ? `border-top:0;border-left:10px solid var(--wp--preset--color--${railToken});`
+    : "";
   return `
-<!-- wp:column {"className":"som-detail-package","backgroundColor":"white","style":{"border":{"radius":"18px"},"spacing":{"padding":{"top":"30px","right":"28px","bottom":"30px","left":"28px"}}}} -->
-<div class="wp-block-column som-detail-package has-white-background-color has-background" style="border-radius:18px;padding-top:30px;padding-right:28px;padding-bottom:30px;padding-left:28px">
+<!-- wp:column {"className":"som-detail-package","backgroundColor":"white","style":{"border":{"radius":"${radius}"},"spacing":{"padding":{"top":"30px","right":"28px","bottom":"30px","left":"28px"}}}} -->
+<div class="wp-block-column som-detail-package has-white-background-color has-background" style="border-radius:${radius};${railStyle}padding-top:30px;padding-right:28px;padding-bottom:30px;padding-left:28px">
 <!-- wp:paragraph {"textColor":"leaf","style":{"typography":{"fontSize":"15px","fontStyle":"normal","fontWeight":"900","textTransform":"uppercase","letterSpacing":"0px"},"spacing":{"margin":{"bottom":"14px"}}}} -->
 <p class="has-leaf-color has-text-color" style="margin-bottom:14px;font-size:15px;font-style:normal;font-weight:900;letter-spacing:0px;text-transform:uppercase">${esc(label)} ${number}</p>
 <!-- /wp:paragraph -->
@@ -5886,10 +5919,11 @@ function detailPackageCard(number, title, text, spec) {
 <!-- /wp:column -->`.trim();
 }
 
-function detailStep(number, title, text) {
+function detailStep(number, title, text, spec = null) {
+  const radius = spec && layoutVariantFor(spec) === "photo-booth-strip-packages" ? "8px" : "18px";
   return `
-<!-- wp:group {"className":"som-detail-step","backgroundColor":"cream","style":{"border":{"radius":"18px"},"spacing":{"padding":{"top":"22px","right":"24px","bottom":"22px","left":"24px"},"margin":{"bottom":"14px"}}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group som-detail-step has-cream-background-color has-background" style="border-radius:18px;margin-bottom:14px;padding-top:22px;padding-right:24px;padding-bottom:22px;padding-left:24px">
+<!-- wp:group {"className":"som-detail-step","backgroundColor":"cream","style":{"border":{"radius":"${radius}"},"spacing":{"padding":{"top":"22px","right":"24px","bottom":"22px","left":"24px"},"margin":{"bottom":"14px"}}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group som-detail-step has-cream-background-color has-background" style="border-radius:${radius};margin-bottom:14px;padding-top:22px;padding-right:24px;padding-bottom:22px;padding-left:24px">
 <!-- wp:columns {"verticalAlignment":"center","style":{"spacing":{"blockGap":{"left":"20px"}}}} -->
 <div class="wp-block-columns are-vertically-aligned-center">
 <!-- wp:column {"verticalAlignment":"center","width":"70px"} -->

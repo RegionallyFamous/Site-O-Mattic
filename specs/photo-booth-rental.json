@@ -82,11 +82,11 @@
     "serviceArea": "Open-air photo booths, backdrop rentals, props, print strips, digital galleries, weddings, school events, corporate parties, and community nights in North Loop, Oak Hill, Westbrook, Maple Bend, and nearby venues"
   },
   "copy": {
-    "eyebrow": "Photo booth packages with guest-flow proof",
+    "eyebrow": "Photo booth guest-flow proof",
     "heroTitle": "The booth guests use.",
-    "heroText": "FlashDash brings a sharp booth setup, clean props, backdrop options, and a host-friendly arrival plan so the photo corner never becomes a mystery table.",
+    "heroText": "FlashDash brings a sharp booth, clean props, backdrop options, and a setup plan that keeps guests moving.",
     "primaryCta": "Reserve a booth",
-    "secondaryCta": "Compare booth packages",
+    "secondaryCta": "View packages",
     "introTitle": "Props are fun. Guest flow is the real magic.",
     "introText": "We match booth style, backdrop space, guest count, print or digital needs, and setup timing before the first flash.",
     "servicesTitle": "Pick the booth setup",
@@ -172,7 +172,7 @@
         "brandBrief": true
       },
       "notes": [
-        "Works: the mobile reserve dock gives the page a memorable shape, with the booth hardware crop kept visible sooner.",
+        "Works: the mobile reserve dock gives the page a memorable shape, with booth hardware and package proof visible early.",
         "Proof: open-air photo booth in use with attendant, guests, props table, lit kiosk, and event backdrop. anchors the niche in the first viewport.",
         "Action: Reserve a booth is the main conversion path."
       ]
