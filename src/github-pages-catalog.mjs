@@ -14,6 +14,7 @@ const pagePath = path.join("docs", "index.html");
 const pitchHeroSource = path.join("assets", "demo", "site-o-mattic-riso-pitch-wall.jpg");
 const pitchHeroTargetName = "site-o-mattic-riso-pitch-wall.jpg";
 const catalogFaviconSource = path.join("assets", "demo", "site-o-mattic-catalog-favicon.png");
+const catalogFaviconIcoSource = path.join("assets", "demo", "site-o-mattic-catalog-favicon.ico");
 const catalogAppleTouchIconSource = path.join("assets", "demo", "site-o-mattic-catalog-apple-touch-icon.png");
 const requestedFeaturedSlug = process.env.SITE_O_MATTIC_FEATURED_SLUG || "";
 const previewSweepDir = process.env.SITE_O_MATTIC_PREVIEW_SWEEP_DIR || path.join("qa", "reports", "visual-sweep");
@@ -126,8 +127,16 @@ async function preparePitchHeroAsset() {
 
 async function prepareCatalogIconAssets() {
   const iconTarget = path.join("docs", "favicon.png");
+  const icoTarget = path.join("docs", "favicon.ico");
   const appleTarget = path.join("docs", "apple-touch-icon.png");
   const icons = {};
+
+  try {
+    await fs.copyFile(catalogFaviconIcoSource, icoTarget);
+    icons.faviconIco = await cacheBustedAssetHref(icoTarget, "favicon.ico");
+  } catch {
+    // Keep the PNG favicon path as the canonical generated icon if ICO is absent.
+  }
 
   try {
     await fs.copyFile(catalogFaviconSource, iconTarget);
@@ -200,6 +209,7 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
   const heroShelf = renderHeroShelf(items, featured);
   const tasteQueue = renderTasteQueue(items);
   const faviconTags = [
+    catalogIcons.faviconIco ? `<link rel="icon" sizes="any" href="${escapeAttr(catalogIcons.faviconIco)}">` : "",
     catalogIcons.favicon ? `<link rel="icon" type="image/png" sizes="256x256" href="${escapeAttr(catalogIcons.favicon)}">` : "",
     catalogIcons.appleTouchIcon ? `<link rel="apple-touch-icon" sizes="180x180" href="${escapeAttr(catalogIcons.appleTouchIcon)}">` : ""
   ].filter(Boolean).join("\n  ");

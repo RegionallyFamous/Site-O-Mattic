@@ -4419,16 +4419,12 @@ function buildAliasVisualCss(spec) {
   background:
     radial-gradient(circle at 12% 12%, color-mix(in srgb, ${p.sun} 18%, transparent), transparent 28%),
     radial-gradient(circle at 88% 0%, color-mix(in srgb, ${p.leaf} 18%, transparent), transparent 24%),
-    linear-gradient(180deg, ${p.cream}, ${p.white});
+    linear-gradient(180deg, ${p.mist}, ${p.white});
 }
 .som-floral-story-hero .som-hero-photo img{
   min-height:440px;
   object-position:50% 58%;
   border-radius:120px 120px 8px 8px;
-}
-.som-floral-story-hero h1{
-  font-size:clamp(40px, 4.6vw, 62px)!important;
-  line-height:1.08!important;
 }
 .som-floral-anchor-strip{
   border-top:1px solid color-mix(in srgb, ${p.leaf} 26%, transparent);
@@ -4440,8 +4436,6 @@ function buildAliasVisualCss(spec) {
 }
 .som-floral-anchor-label{
   flex:0 0 auto;
-  margin:0!important;
-  color:${p.deepGreen}!important;
 }
 .som-floral-anchor-nav .wp-block-navigation__container{
   gap:8px 10px;
@@ -4449,76 +4443,40 @@ function buildAliasVisualCss(spec) {
 .som-floral-anchor-nav .wp-block-navigation-item__content{
   border:1px solid color-mix(in srgb, ${p.leaf} 40%, transparent);
   border-radius:999px;
-  color:${p.deepGreen}!important;
+  color:${p.deepGreen};
   padding:8px 12px;
-  text-decoration:none!important;
+  text-decoration:none;
 }
 .som-floral-anchor-nav .wp-block-navigation-item__content:hover,
 .som-floral-anchor-nav .wp-block-navigation-item__content:focus-visible{
   background:color-mix(in srgb, ${p.leaf} 14%, ${p.white});
-  text-decoration:none!important;
+  text-decoration:none;
 }
 .som-floral-anchor-action{
   flex:0 0 auto;
 }
 .som-floral-support-card{
-  border-left:0!important;
+  border-left:0;
   border-top:5px solid ${p.leaf};
-  border-radius:8px!important;
-  box-shadow:none!important;
+  box-shadow:none;
   outline:1px solid color-mix(in srgb, ${p.leaf} 20%, transparent);
 }
-.som-floral-proof-band{
-  background:color-mix(in srgb, ${p.leaf} 18%, ${p.cream})!important;
-}
 .som-floral-proof-card{
-  background:color-mix(in srgb, ${p.white} 88%, ${p.cream})!important;
   border:1px solid color-mix(in srgb, ${p.leaf} 34%, transparent);
-  border-radius:8px!important;
-  box-shadow:none!important;
-}
-.som-floral-proof-card p:first-child{
-  color:${p.deepGreen}!important;
-  font-size:clamp(1.15rem, 2vw, 1.55rem)!important;
-  line-height:1.08!important;
-}
-.som-floral-proof-card p:last-child{
-  color:${p.soil}!important;
-  font-size:1rem!important;
-  font-weight:650!important;
-}
-.som-floral-consult-strip{
-  background:linear-gradient(135deg, ${p.deepGreen}, color-mix(in srgb, ${p.deepGreen} 82%, ${p.leaf}))!important;
+  box-shadow:none;
 }
 @media (max-width:700px){
-  .som-floral-story-hero{
-    padding-top:24px!important;
-    padding-bottom:36px!important;
-  }
   .som-floral-story-hero .wp-block-columns{
-    gap:16px!important;
+    gap:16px;
   }
   .som-floral-story-hero .som-hero-photo img{
     min-height:174px;
     aspect-ratio:16/8;
     border-radius:42px 42px 8px 8px;
   }
-  .som-floral-story-hero h1{
-    font-size:clamp(30px, 8.8vw, 39px)!important;
-    margin-top:8px!important;
-    margin-bottom:12px!important;
-  }
-  .som-floral-story-hero p{
-    font-size:16px!important;
-    line-height:1.45!important;
-  }
-  .som-floral-anchor-strip{
-    padding-top:12px!important;
-    padding-bottom:12px!important;
-  }
   .som-floral-anchor-strip .wp-block-group.alignwide{
-    align-items:flex-start!important;
-    gap:10px!important;
+    align-items:flex-start;
+    gap:10px;
   }
   .som-floral-anchor-label{
     inline-size:100%;
@@ -4530,7 +4488,7 @@ function buildAliasVisualCss(spec) {
   }
   .som-floral-anchor-nav .wp-block-navigation__container{
     flex-wrap:nowrap;
-    justify-content:flex-start!important;
+    justify-content:flex-start;
   }
   .som-floral-anchor-nav .wp-block-navigation-item__content{
     white-space:nowrap;
@@ -4543,10 +4501,6 @@ function buildAliasVisualCss(spec) {
   .som-floral-anchor-action .wp-block-button__link{
     inline-size:100%;
     text-align:center;
-  }
-  .som-floral-story-hero .wp-block-button__link{
-    padding-top:12px!important;
-    padding-bottom:12px!important;
   }
 }`.trim(),
     "story-card-consult": `

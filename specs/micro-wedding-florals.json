@@ -13,13 +13,13 @@
     "imageEvidence": "florist arranging micro-wedding bouquet and small ceremony florals on a prep table",
     "ctaRhythm": "consult-first",
     "surfaceFamily": "mostly-flat",
-    "surfaceModel": "flat-floral-brief-anchor-strip-with-outlined-support-cards",
+    "surfaceModel": "celadon-floral-brief-field-with-outlined-support-cards",
     "styleFamily": "editorial-proof-stage",
     "density": "balanced-editorial",
     "colorRoles": {
       "ink": "deepGreen",
-      "paper": "cream",
-      "field": "mist",
+      "paper": "mist",
+      "field": "cream",
       "line": "leaf",
       "primary": "grass",
       "action": "sun",
@@ -47,7 +47,7 @@
       "logo-scale",
       "mobile-crop"
     ],
-    "styleContract": "Romantic editorial calm with bouquet prep proof, blackberry, celadon, and marigold accents reserved for consult actions, and a post-hero floral brief anchor strip as the signature move."
+    "styleContract": "Romantic editorial calm with bouquet prep proof, celadon page fields, cream support cards, blackberry ink, marigold accents reserved for consult actions, and a post-hero floral brief anchor strip as the signature move."
   },
   "tagline": "Small wedding flowers with a calm little plan.",
   "themeSlug": "twentytwentyfive",
