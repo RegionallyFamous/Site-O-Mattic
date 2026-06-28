@@ -1,9 +1,9 @@
-ImageGen raster logo refresh, 2026-06-27.
-
-Direction: a tall arched-window badge for ClearPane, with a squeegee wipe streak and clean reflection sparkle. The mark should read as architectural window service, not another blue circular cleaning icon.
-
-Palette: glass cyan, deep navy/black, raspberry accent, crisp white, tiny lemon highlight.
-
-Avoid: all-blue circles, beige, tan, brown, cream, muted vintage palettes, tagline text, secondary small text, fake labels, mockups, SVG/vector reconstruction, or generic water-service iconography.
-
-Production source: `clearpane-logo-source-v2.png`, generated on a flat `#ff00ff` chroma-key background and processed with `scripts/process-imagegen-logo.sh`.
+ImageGen direction: arched window with one squeegee slash for ClearPane, created as a favicon-first raster brand mark with no generated lettering. The wide header lockup pairs the ImageGen bitmap mark with real local raster typography so the name stays readable.
+Silhouette: arched window with one squeegee slash; favicon uses an intentional white sticker tile around the square mark.
+Palette: cyan, navy, raspberry, lemon, white.
+Avoid: Brown, tan, beige, cream, sepia, generic swooshes, shields, fake labels, generated text, tagline text, tiny details, vector/code reconstruction, repeated small-icon-plus-wordmark sameness.
+Source sheet: assets/logo-mark-sheets/site-o-mattic-logo-mark-sheet-v2-imagegen-source.png.
+Source crop: generated/clearpane-mark-v4-imagegen-source.png.
+Sticker mark: generated/clearpane-mark-v4-sticker.png.
+Chroma key: not used for production; the clean white ImageGen source is preserved as an intentional sticker-tile mark to avoid edge halos.
+Visual acceptance: Accepted after v4 logo and favicon contact-sheet review; header lockup reads at catalog scale and favicon uses the mark only.

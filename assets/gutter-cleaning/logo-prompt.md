@@ -1,9 +1,9 @@
-ImageGen raster logo refresh, 2026-06-27.
-
-Direction: a roofline and gutter cross-section badge for ClearFlow, with leaf/debris cleanup and a clean water-flow cue. It should feel like practical home maintenance, not a generic water drop.
-
-Palette: slate charcoal, raincoat yellow, fresh leaf green, clean white, small sky-blue water accent.
-
-Avoid: all-blue droplet marks, beige, tan, brown, cream, muted vintage palettes, tagline text, secondary small text, fake labels, mockups, SVG/vector reconstruction, or a generic cleaning-app icon.
-
-Production source: `clearflow-logo-source-v2.png`, generated on a flat `#ff00ff` chroma-key background and processed with `scripts/process-imagegen-logo.sh`.
+ImageGen direction: bold downspout elbow with leaf and water drop for ClearFlow, created as a favicon-first raster brand mark with no generated lettering. The wide header lockup pairs the ImageGen bitmap mark with real local raster typography so the name stays readable.
+Silhouette: bold downspout elbow with leaf and water drop; favicon uses an intentional white sticker tile around the square mark.
+Palette: storm navy, rain yellow, leaf green, sky blue, white.
+Avoid: Brown, tan, beige, cream, sepia, generic swooshes, shields, fake labels, generated text, tagline text, tiny details, vector/code reconstruction, repeated small-icon-plus-wordmark sameness.
+Source sheet: assets/logo-mark-sheets/site-o-mattic-logo-mark-sheet-v2-imagegen-source.png.
+Source crop: generated/clearflow-mark-v4-imagegen-source.png.
+Sticker mark: generated/clearflow-mark-v4-sticker.png.
+Chroma key: not used for production; the clean white ImageGen source is preserved as an intentional sticker-tile mark to avoid edge halos.
+Visual acceptance: Accepted after v4 logo and favicon contact-sheet review; header lockup reads at catalog scale and favicon uses the mark only.

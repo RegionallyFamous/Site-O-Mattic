@@ -12,6 +12,8 @@ const repoBase = `https://github.com/${owner}/${repo}`;
 const pagePath = path.join("docs", "index.html");
 const pitchHeroSource = path.join("assets", "demo", "site-o-mattic-riso-pitch-wall.jpg");
 const pitchHeroTargetName = "site-o-mattic-riso-pitch-wall.jpg";
+const catalogFaviconSource = path.join("assets", "demo", "site-o-mattic-catalog-favicon.png");
+const catalogAppleTouchIconSource = path.join("assets", "demo", "site-o-mattic-catalog-apple-touch-icon.png");
 const requestedFeaturedSlug = process.env.SITE_O_MATTIC_FEATURED_SLUG || "";
 const previewSweepDir = process.env.SITE_O_MATTIC_PREVIEW_SWEEP_DIR || path.join("qa", "reports", "visual-sweep");
 const reviewEvidence = await readJsonIfExists(path.join("qa", "reports", "visual-sweep", "review-evidence.json"));
@@ -72,8 +74,9 @@ const featuredCard = requestedFeaturedSlug
   : latestCard(cards);
 await prepareCatalogAssets(cards);
 const pitchHeroUrl = await preparePitchHeroAsset();
+const catalogIcons = await prepareCatalogIconAssets();
 await prepareFeaturedPreview(featuredCard);
-await fs.writeFile(pagePath, renderPage(cards, featuredCard, pitchHeroUrl));
+await fs.writeFile(pagePath, renderPage(cards, featuredCard, pitchHeroUrl, catalogIcons));
 
 console.log(`Wrote ${pagePath} with ${cards.length} Blueprint links.`);
 
@@ -120,6 +123,28 @@ async function preparePitchHeroAsset() {
   }
 }
 
+async function prepareCatalogIconAssets() {
+  const iconTarget = path.join("docs", "favicon.png");
+  const appleTarget = path.join("docs", "apple-touch-icon.png");
+  const icons = {};
+
+  try {
+    await fs.copyFile(catalogFaviconSource, iconTarget);
+    icons.favicon = "favicon.png";
+  } catch {
+    // Keep the catalog usable if the optional generated icon is missing.
+  }
+
+  try {
+    await fs.copyFile(catalogAppleTouchIconSource, appleTarget);
+    icons.appleTouchIcon = "apple-touch-icon.png";
+  } catch {
+    // Keep the catalog usable if the optional generated icon is missing.
+  }
+
+  return icons;
+}
+
 async function writeCatalogScreenshotThumbnail(source, target) {
   execFileSync("sips", [
     "-s",
@@ -154,7 +179,7 @@ async function prepareFeaturedPreview(item) {
   }
 }
 
-function renderPage(items, featured, pitchHeroUrl = "") {
+function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
   const generatedAt = new Date().toISOString().replace(/\.\d{3}Z$/, "Z");
   const approvedCount = items.filter((item) => item.status === "approved").length;
   const sweepPassed = reviewEvidence ? Math.max(0, reviewEvidence.total - reviewEvidence.failed) : null;
@@ -164,6 +189,10 @@ function renderPage(items, featured, pitchHeroUrl = "") {
   const heroIllustration = pitchHeroUrl || featuredImage;
   const heroShelf = renderHeroShelf(items, featured);
   const tasteQueue = renderTasteQueue(items);
+  const faviconTags = [
+    catalogIcons.favicon ? `<link rel="icon" type="image/png" sizes="256x256" href="${escapeAttr(catalogIcons.favicon)}">` : "",
+    catalogIcons.appleTouchIcon ? `<link rel="apple-touch-icon" sizes="180x180" href="${escapeAttr(catalogIcons.appleTouchIcon)}">` : ""
+  ].filter(Boolean).join("\n  ");
 
   return `<!doctype html>
 <html lang="en">
@@ -172,6 +201,7 @@ function renderPage(items, featured, pitchHeroUrl = "") {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Site-O-Mattic Demo Catalog</title>
   <meta name="description" content="A riso-bright internal pitch catalog for live, Playground-ready WordPress Blueprint demos.">
+  ${faviconTags}
   <style>
     :root {
       color-scheme: light;
@@ -197,7 +227,7 @@ function renderPage(items, featured, pitchHeroUrl = "") {
     }
     body {
       margin: 0;
-      background: linear-gradient(180deg, #fff59d 0, var(--page) 520px);
+      background: linear-gradient(180deg, #fff476 0, var(--page) 620px);
       color: var(--ink);
       font-family: "Avenir Next", Avenir, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       line-height: 1.5;
@@ -219,29 +249,29 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       box-shadow: 0 0 0 8px var(--mint);
     }
     .page {
-      width: min(1420px, calc(100% - 32px));
+      width: min(1440px, calc(100% - 28px));
       margin: 0 auto;
-      padding: 28px 0 60px;
+      padding: 24px 0 60px;
     }
     .masthead {
       display: grid;
-      grid-template-columns: minmax(0, .92fr) minmax(280px, 330px);
-      gap: clamp(20px, 3.4vw, 40px);
+      grid-template-columns: minmax(0, .95fr) minmax(290px, 350px);
+      gap: clamp(18px, 3vw, 34px);
       position: relative;
       overflow: hidden;
-      min-height: clamp(560px, 74vh, 800px);
+      min-height: clamp(540px, 70vh, 760px);
       align-items: end;
       border: 2px solid var(--ink);
       background: var(--paper);
       box-shadow: var(--shadow-hard);
       isolation: isolate;
-      padding: clamp(24px, 4.2vw, 60px);
+      padding: clamp(22px, 3.8vw, 54px);
     }
     .masthead::before {
       position: absolute;
       inset: 0;
       z-index: 1;
-      background: linear-gradient(90deg, rgba(255, 243, 135, .92) 0 31%, rgba(255, 243, 135, .58) 49%, rgba(255, 243, 135, .14) 68%, transparent 100%);
+      background: linear-gradient(90deg, rgba(255, 241, 99, .9) 0 30%, rgba(255, 241, 99, .48) 48%, rgba(255, 241, 99, .09) 65%, transparent 100%);
       content: "";
     }
     .masthead::after {
@@ -266,15 +296,15 @@ function renderPage(items, featured, pitchHeroUrl = "") {
     .hero-copy {
       position: relative;
       z-index: 2;
-      max-width: 660px;
+      max-width: 650px;
     }
     .hero-ticket {
       position: relative;
       z-index: 2;
       align-self: center;
-      max-width: 360px;
+      max-width: 340px;
       border: 2px solid var(--ink);
-      background: rgba(255, 253, 247, .95);
+      background: rgba(255, 253, 247, .98);
       box-shadow: 4px 4px 0 var(--ink);
       padding: clamp(14px, 1.7vw, 20px);
     }
@@ -388,7 +418,7 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       max-width: 720px;
       margin: 0;
       font-family: Charter, "Iowan Old Style", Georgia, "Times New Roman", serif;
-      font-size: clamp(43px, 4.45vw, 72px);
+      font-size: clamp(42px, 4.25vw, 68px);
       font-weight: 720;
       line-height: 1.01;
       letter-spacing: 0;
@@ -398,7 +428,7 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       max-width: 680px;
       margin: 14px 0 0;
       color: #20243d;
-      font-size: clamp(17px, 1.28vw, 20px);
+      font-size: clamp(17px, 1.22vw, 19px);
       font-weight: 620;
       line-height: 1.42;
     }
@@ -408,7 +438,7 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       margin-top: 16px;
       padding: 11px 13px 11px 15px;
       border-left: 5px solid var(--blue);
-      background: rgba(255, 253, 247, .84);
+      background: rgba(255, 253, 247, .9);
       color: var(--blue-dark);
       font-size: 14px;
       font-weight: 680;
@@ -422,13 +452,13 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       grid-template-columns: repeat(6, minmax(0, 1fr));
       gap: 10px;
       align-self: end;
-      margin-top: clamp(4px, 1.6vw, 14px);
+      margin-top: clamp(0px, 1.2vw, 10px);
     }
     .hero-shelf a {
       position: relative;
       overflow: hidden;
       display: block;
-      min-height: 118px;
+      min-height: 108px;
       border: 2px solid var(--ink);
       background: var(--surface);
       color: var(--ink);
@@ -444,7 +474,7 @@ function renderPage(items, featured, pitchHeroUrl = "") {
     .hero-shelf img {
       display: block;
       width: 100%;
-      height: 88px;
+      height: 78px;
       object-fit: cover;
       object-position: top center;
       border-bottom: 2px solid var(--ink);
@@ -471,7 +501,7 @@ function renderPage(items, featured, pitchHeroUrl = "") {
     .stat {
       display: flex;
       flex-direction: column;
-      padding: 18px;
+      padding: 15px;
       border: 2px solid var(--ink);
       background: var(--surface);
       box-shadow: 3px 3px 0 var(--ink);
@@ -491,7 +521,7 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       margin: 0;
       color: var(--pink-dark);
       font-family: Charter, "Iowan Old Style", Georgia, "Times New Roman", serif;
-      font-size: clamp(30px, 3.3vw, 52px);
+      font-size: clamp(28px, 3vw, 46px);
       font-weight: 760;
       line-height: .9;
     }
@@ -824,7 +854,7 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       border: 1px solid var(--ink);
       background: var(--paper);
       color: var(--ink);
-      content: "LIVE SCREENSHOT";
+      content: "LIVE DEMO";
       font-size: 11px;
       font-weight: 850;
       line-height: 1;
@@ -1011,9 +1041,9 @@ function renderPage(items, featured, pitchHeroUrl = "") {
       }
       .masthead {
         grid-template-columns: 1fr;
-        min-height: 620px;
-        gap: 22px;
-        padding: 20px;
+        min-height: auto;
+        gap: 16px;
+        padding: 18px;
       }
       .hero-copy {
         order: 1;
@@ -1025,24 +1055,36 @@ function renderPage(items, featured, pitchHeroUrl = "") {
         order: 3;
       }
       .masthead::before {
-        background: linear-gradient(180deg, rgba(255, 241, 95, .94) 0 38%, rgba(255, 241, 95, .76) 58%, rgba(255, 241, 95, .2) 100%);
+        background: linear-gradient(180deg, rgba(255, 241, 95, .9) 0 42%, rgba(255, 241, 95, .7) 64%, rgba(255, 241, 95, .22) 100%);
       }
       .hero-bg {
-        object-position: 70% center;
+        object-position: 72% top;
+        opacity: .62;
       }
       h1 {
-        font-size: clamp(35px, 10.8vw, 52px);
-        line-height: .98;
+        font-size: clamp(32px, 9.2vw, 44px);
+        line-height: 1.02;
+      }
+      .lede {
+        font-size: clamp(15px, 4.35vw, 18px);
+        line-height: 1.36;
+        margin-top: 12px;
+      }
+      .hero-note {
+        margin-top: 12px;
+        padding: 10px 11px 10px 13px;
+        font-size: 13px;
       }
       .hero-badges li {
-        font-size: 12px;
+        font-size: 11px;
+        min-height: 34px;
+        padding: 8px 10px;
       }
       .latest {
         padding: 12px;
       }
       .hero-ticket {
-        padding: 16px;
-        transform: none;
+        display: none;
       }
       .hero-ticket h2 {
         font-size: clamp(23px, 7.1vw, 30px);

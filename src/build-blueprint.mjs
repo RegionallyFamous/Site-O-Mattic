@@ -886,7 +886,7 @@ function buildPageContent(spec) {
 function buildDessertTableGalleryPageContent(spec) {
   const { copy, contact } = spec;
   const navLinks = navModelForSpec(spec, ["Styles", "Flavors", "Date"], ["styles", "process", "quote"]);
-  const styles = spec.services.map((item, index) => galleryStyleCard(index + 1, item.title, item.text)).join("\n");
+  const styles = spec.services.map((item, index) => galleryStyleCard(index + 1, item.title, item.text, { variant: layoutVariantFor(spec) })).join("\n");
   const process = spec.process.map((item, index) => processStep(index + 1, item.title, item.text)).join("\n");
   const menuItems = spec.proof.map((item, index) => dessertMenuBoardItem(index + 1, item.stat, item.label)).join("\n");
 
@@ -4238,7 +4238,7 @@ function buildHeadshotProofGalleryPageContent(spec) {
   const stylesAnchor = anchorAt(navLinks, 0, "styles");
   const processAnchor = anchorAt(navLinks, 1, "process");
   const quoteAnchor = anchorAt(navLinks, 2, "quote");
-  const styles = spec.services.map((item, index) => galleryStyleCard(index + 1, item.title, item.text)).join("\n");
+  const styles = spec.services.map((item, index) => galleryStyleCard(index + 1, item.title, item.text, { variant: layoutVariantFor(spec) })).join("\n");
   const process = spec.process.map((item, index) => processStep(index + 1, item.title, item.text)).join("\n");
   const proof = spec.proof.map((item) => headshotProofChip(item.stat, item.label)).join("\n");
 
@@ -4387,10 +4387,12 @@ ${process}
 
 function buildGalleryLedPageContent(spec) {
   const { copy, contact } = spec;
-  const isPetGallery = layoutVariantFor(spec) === "pet-portrait-gallery";
-  const styles = spec.services.map((item, index) => galleryStyleCard(index + 1, item.title, item.text)).join("\n");
+  const galleryVariant = layoutVariantFor(spec);
+  const isPetGallery = galleryVariant === "pet-portrait-gallery";
+  const isPicnicGallery = galleryVariant === "picnic-proposal-lookbook";
+  const styles = spec.services.map((item, index) => galleryStyleCard(index + 1, item.title, item.text, { variant: galleryVariant })).join("\n");
   const process = spec.process.map((item, index) => processStep(index + 1, item.title, item.text)).join("\n");
-  const proof = spec.proof.map((item) => galleryProof(item.stat, item.label)).join("\n");
+  const proof = spec.proof.map((item) => galleryProof(item.stat, item.label, { variant: galleryVariant })).join("\n");
   const navLinks = navModelForSpec(spec, ["Styles", "Process", "Quote"], ["styles", "process", "quote"]);
   const stylesAnchor = anchorAt(navLinks, 0, "styles");
   const processAnchor = anchorAt(navLinks, 1, "process");
@@ -4410,17 +4412,31 @@ function buildGalleryLedPageContent(spec) {
       buttonWeight: "760",
       secondaryColor: "soil"
     }
+    : isPicnicGallery
+      ? {
+        width: "62%",
+        radius: "8px",
+        paddingTop: "24px",
+        paddingBottom: "24px",
+        eyebrowSize: "12px",
+        eyebrowWeight: "720",
+        h1Size: "clamp(36px, 4.2vw, 58px)",
+        h1LineHeight: "1.04",
+        h1Weight: "680",
+        buttonWeight: "760",
+        secondaryColor: "deep-green"
+      }
     : {
       width: "66%",
-      radius: "24px",
-      paddingTop: "30px",
-      paddingBottom: "30px",
-      eyebrowSize: "16px",
-      eyebrowWeight: "900",
-      h1Size: "clamp(42px, 6vw, 78px)",
-      h1LineHeight: "0.96",
-      h1Weight: "900",
-      buttonWeight: "800",
+      radius: "8px",
+      paddingTop: "26px",
+      paddingBottom: "26px",
+      eyebrowSize: "13px",
+      eyebrowWeight: "760",
+      h1Size: "clamp(38px, 5vw, 64px)",
+      h1LineHeight: "1.04",
+      h1Weight: "720",
+      buttonWeight: "760",
       secondaryColor: "deep-green"
     };
   const heroNote = isPetGallery
@@ -4435,19 +4451,31 @@ function buildGalleryLedPageContent(spec) {
       textSize: "17px",
       textLineHeight: "1.5"
     }
+    : isPicnicGallery
+      ? {
+        width: "38%",
+        radius: "8px",
+        backgroundColor: "deep-green",
+        paddingTop: "22px",
+        paddingBottom: "22px",
+        labelSize: "12px",
+        labelWeight: "720",
+        textSize: "17px",
+        textLineHeight: "1.48"
+      }
     : {
       width: "34%",
-      radius: "24px",
+      radius: "8px",
       backgroundColor: "deep-green",
-      paddingTop: "30px",
-      paddingBottom: "30px",
-      labelSize: "16px",
-      labelWeight: "900",
-      textSize: "19px",
-      textLineHeight: "1.45"
+      paddingTop: "24px",
+      paddingBottom: "24px",
+      labelSize: "13px",
+      labelWeight: "760",
+      textSize: "18px",
+      textLineHeight: "1.48"
     };
-  const heroParagraphSize = isPetGallery ? "clamp(17px, 1.45vw, 21px)" : "clamp(19px, 1.8vw, 24px)";
-  const heroParagraphLineHeight = isPetGallery ? "1.5" : "1.42";
+  const heroParagraphSize = isPetGallery ? "clamp(17px, 1.45vw, 21px)" : "clamp(18px, 1.55vw, 22px)";
+  const heroParagraphLineHeight = isPetGallery ? "1.5" : "1.5";
   const heroParagraphMargin = isPetGallery
     ? {
       blockAttr: '"spacing":{"margin":{"top":"18px","bottom":"0"}}',
@@ -4539,8 +4567,8 @@ ${visualProof}
 
 <!-- wp:group {"metadata":{"name":"${esc(navLinks[0]?.label || "Styles")}"},"anchor":"${esc(stylesAnchor)}","align":"full","backgroundColor":"cream","style":{"spacing":{"padding":{"top":"78px","right":"24px","bottom":"78px","left":"24px"}}},"layout":{"type":"constrained","wideSize":"1180px"}} -->
 <div id="${esc(stylesAnchor)}" class="wp-block-group alignfull has-cream-background-color has-background" style="padding-top:78px;padding-right:24px;padding-bottom:78px;padding-left:24px">
-<!-- wp:heading {"level":2,"align":"wide","textColor":"deep-green","style":{"typography":{"fontSize":"clamp(36px, 5.6vw, 64px)","lineHeight":"1","fontStyle":"normal","fontWeight":"900"},"spacing":{"margin":{"bottom":"30px"}}}} -->
-<h2 class="wp-block-heading alignwide has-deep-green-color has-text-color" style="margin-bottom:30px;font-size:clamp(36px, 5.6vw, 64px);font-style:normal;font-weight:900;line-height:1">${esc(copy.servicesTitle)}</h2>
+<!-- wp:heading {"level":2,"align":"wide","textColor":"deep-green","style":{"typography":{"fontSize":"clamp(34px, 4.8vw, 56px)","lineHeight":"1.06","fontStyle":"normal","fontWeight":"720"},"spacing":{"margin":{"bottom":"30px"}}}} -->
+<h2 class="wp-block-heading alignwide has-deep-green-color has-text-color" style="margin-bottom:30px;font-size:clamp(34px, 4.8vw, 56px);font-style:normal;font-weight:720;line-height:1.06">${esc(copy.servicesTitle)}</h2>
 <!-- /wp:heading -->
 <!-- wp:columns {"align":"wide","style":{"spacing":{"blockGap":{"left":"22px"}}}} -->
 <div class="wp-block-columns alignwide">
@@ -4552,8 +4580,8 @@ ${styles}
 
 <!-- wp:group {"metadata":{"name":"${esc(navLinks[1]?.label || "Process")}"},"anchor":"${esc(processAnchor)}","align":"full","backgroundColor":"mist","style":{"spacing":{"padding":{"top":"78px","right":"24px","bottom":"78px","left":"24px"}}},"layout":{"type":"constrained","wideSize":"1180px"}} -->
 <div id="${esc(processAnchor)}" class="wp-block-group alignfull has-mist-background-color has-background" style="padding-top:78px;padding-right:24px;padding-bottom:78px;padding-left:24px">
-<!-- wp:heading {"level":2,"align":"wide","textColor":"deep-green","style":{"typography":{"fontSize":"clamp(34px, 5vw, 58px)","lineHeight":"1","fontStyle":"normal","fontWeight":"900"},"spacing":{"margin":{"bottom":"34px"}}}} -->
-<h2 class="wp-block-heading alignwide has-deep-green-color has-text-color" style="margin-bottom:34px;font-size:clamp(34px, 5vw, 58px);font-style:normal;font-weight:900;line-height:1">${esc(copy.processTitle)}</h2>
+<!-- wp:heading {"level":2,"align":"wide","textColor":"deep-green","style":{"typography":{"fontSize":"clamp(32px, 4.5vw, 52px)","lineHeight":"1.06","fontStyle":"normal","fontWeight":"720"},"spacing":{"margin":{"bottom":"34px"}}}} -->
+<h2 class="wp-block-heading alignwide has-deep-green-color has-text-color" style="margin-bottom:34px;font-size:clamp(32px, 4.5vw, 52px);font-style:normal;font-weight:720;line-height:1.06">${esc(copy.processTitle)}</h2>
 <!-- /wp:heading -->
 <!-- wp:columns {"align":"wide","style":{"spacing":{"blockGap":{"left":"24px"}}}} -->
 <div class="wp-block-columns alignwide">
@@ -4569,8 +4597,8 @@ ${process}
 <div class="wp-block-columns alignwide">
 <!-- wp:column {"width":"58%"} -->
 <div class="wp-block-column" style="flex-basis:58%">
-<!-- wp:heading {"level":2,"textColor":"white","style":{"typography":{"fontSize":"clamp(36px, 6vw, 68px)","lineHeight":"1","fontStyle":"normal","fontWeight":"900"},"spacing":{"margin":{"bottom":"18px"}}}} -->
-<h2 class="wp-block-heading has-white-color has-text-color" style="margin-bottom:18px;font-size:clamp(36px, 6vw, 68px);font-style:normal;font-weight:900;line-height:1">${esc(copy.quoteTitle)}</h2>
+<!-- wp:heading {"level":2,"textColor":"white","style":{"typography":{"fontSize":"clamp(34px, 5vw, 58px)","lineHeight":"1.05","fontStyle":"normal","fontWeight":"720"},"spacing":{"margin":{"bottom":"18px"}}}} -->
+<h2 class="wp-block-heading has-white-color has-text-color" style="margin-bottom:18px;font-size:clamp(34px, 5vw, 58px);font-style:normal;font-weight:720;line-height:1.05">${esc(copy.quoteTitle)}</h2>
 <!-- /wp:heading -->
 <!-- wp:paragraph {"textColor":"white","style":{"typography":{"fontSize":"20px","lineHeight":"1.5"}}} -->
 <p class="has-white-color has-text-color" style="font-size:20px;line-height:1.5">${esc(copy.quoteText)}</p>
@@ -4581,11 +4609,11 @@ ${process}
 <div class="wp-block-column" style="flex-basis:42%">
 <!-- wp:buttons {"layout":{"type":"flex","justifyContent":"left"},"style":{"spacing":{"blockGap":"12px"}}} -->
 <div class="wp-block-buttons">
-<!-- wp:button {"backgroundColor":"sun","textColor":"deep-green","width":100,"style":{"border":{"radius":"999px"},"spacing":{"padding":{"top":"14px","bottom":"14px","left":"22px","right":"22px"}},"typography":{"fontStyle":"normal","fontWeight":"800"}}} -->
-<div class="wp-block-button has-custom-width wp-block-button__width-100" style="font-style:normal;font-weight:800"><a class="wp-block-button__link has-deep-green-color has-sun-background-color has-text-color has-background wp-element-button" href="${esc(contact.emailHref)}" style="border-radius:999px;padding-top:14px;padding-right:22px;padding-bottom:14px;padding-left:22px">${esc(copy.primaryCta)}</a></div>
+<!-- wp:button {"backgroundColor":"sun","textColor":"deep-green","width":100,"style":{"border":{"radius":"999px"},"spacing":{"padding":{"top":"14px","bottom":"14px","left":"22px","right":"22px"}},"typography":{"fontStyle":"normal","fontWeight":"760"}}} -->
+<div class="wp-block-button has-custom-width wp-block-button__width-100" style="font-style:normal;font-weight:760"><a class="wp-block-button__link has-deep-green-color has-sun-background-color has-text-color has-background wp-element-button" href="${esc(contact.emailHref)}" style="border-radius:999px;padding-top:14px;padding-right:22px;padding-bottom:14px;padding-left:22px">${esc(copy.primaryCta)}</a></div>
 <!-- /wp:button -->
-<!-- wp:button {"className":"is-style-outline","textColor":"white","width":100,"style":{"border":{"radius":"999px"},"spacing":{"padding":{"top":"14px","bottom":"14px","left":"22px","right":"22px"}},"typography":{"fontStyle":"normal","fontWeight":"800"}}} -->
-<div class="wp-block-button has-custom-width wp-block-button__width-100 is-style-outline" style="font-style:normal;font-weight:800"><a class="wp-block-button__link has-white-color has-text-color wp-element-button" href="${esc(contact.phoneHref)}" style="border-radius:999px;padding-top:14px;padding-right:22px;padding-bottom:14px;padding-left:22px">${esc(contact.phoneLabel)}</a></div>
+<!-- wp:button {"className":"is-style-outline","textColor":"white","width":100,"style":{"border":{"radius":"999px"},"spacing":{"padding":{"top":"14px","bottom":"14px","left":"22px","right":"22px"}},"typography":{"fontStyle":"normal","fontWeight":"760"}}} -->
+<div class="wp-block-button has-custom-width wp-block-button__width-100 is-style-outline" style="font-style:normal;font-weight:760"><a class="wp-block-button__link has-white-color has-text-color wp-element-button" href="${esc(contact.phoneHref)}" style="border-radius:999px;padding-top:14px;padding-right:22px;padding-bottom:14px;padding-left:22px">${esc(contact.phoneLabel)}</a></div>
 <!-- /wp:button -->
 </div>
 <!-- /wp:buttons -->
@@ -6453,32 +6481,45 @@ function storyPhoneLineWeight(spec) {
   return spec.slug === "plant-care" ? "620" : "680";
 }
 
-function galleryStyleCard(number, title, text) {
+function galleryStyleCard(number, title, text, options = {}) {
+  const isPet = options.variant === "pet-portrait-gallery";
+  const isHeadshot = options.variant === "headshot-proof-gallery";
+  const isDessert = options.variant === "dessert-table-gallery";
+  const label = isHeadshot ? "Cue" : isDessert ? "Table" : "Style";
+  const padding = isPet || isHeadshot ? "24px" : "26px";
+  const labelWeight = isPet ? "650" : "760";
+  const headingWeight = isPet || isHeadshot ? "660" : "720";
+  const headingSize = isPet ? "25px" : isHeadshot ? "24px" : "26px";
+  const paragraphSize = isPet || isHeadshot ? "17px" : "18px";
   return `
-<!-- wp:column {"className":"som-style-card","backgroundColor":"white","style":{"border":{"radius":"18px"},"spacing":{"padding":{"top":"30px","right":"28px","bottom":"30px","left":"28px"}}}} -->
-<div class="wp-block-column som-style-card has-white-background-color has-background" style="border-radius:18px;padding-top:30px;padding-right:28px;padding-bottom:30px;padding-left:28px">
-<!-- wp:paragraph {"textColor":"grass","style":{"typography":{"fontSize":"15px","fontStyle":"normal","fontWeight":"900","textTransform":"uppercase","letterSpacing":"0px"},"spacing":{"margin":{"bottom":"14px"}}}} -->
-<p class="has-grass-color has-text-color" style="margin-bottom:14px;font-size:15px;font-style:normal;font-weight:900;letter-spacing:0px;text-transform:uppercase">Style ${number}</p>
+<!-- wp:column {"className":"som-style-card","backgroundColor":"white","style":{"border":{"radius":"8px"},"spacing":{"padding":{"top":"${padding}","right":"26px","bottom":"${padding}","left":"26px"}}}} -->
+<div class="wp-block-column som-style-card has-white-background-color has-background" style="border-radius:8px;padding-top:${padding};padding-right:26px;padding-bottom:${padding};padding-left:26px">
+<!-- wp:paragraph {"textColor":"grass","style":{"typography":{"fontSize":"13px","fontStyle":"normal","fontWeight":"${labelWeight}","textTransform":"uppercase","letterSpacing":"0px"},"spacing":{"margin":{"bottom":"12px"}}}} -->
+<p class="has-grass-color has-text-color" style="margin-bottom:12px;font-size:13px;font-style:normal;font-weight:${labelWeight};letter-spacing:0px;text-transform:uppercase">${label} ${number}</p>
 <!-- /wp:paragraph -->
-<!-- wp:heading {"level":3,"textColor":"deep-green","style":{"typography":{"fontSize":"29px","lineHeight":"1.08","fontStyle":"normal","fontWeight":"900"},"spacing":{"margin":{"bottom":"14px"}}}} -->
-<h3 class="wp-block-heading has-deep-green-color has-text-color" style="margin-bottom:14px;font-size:29px;font-style:normal;font-weight:900;line-height:1.08">${esc(title)}</h3>
+<!-- wp:heading {"level":3,"textColor":"deep-green","style":{"typography":{"fontSize":"${headingSize}","lineHeight":"1.1","fontStyle":"normal","fontWeight":"${headingWeight}"},"spacing":{"margin":{"bottom":"12px"}}}} -->
+<h3 class="wp-block-heading has-deep-green-color has-text-color" style="margin-bottom:12px;font-size:${headingSize};font-style:normal;font-weight:${headingWeight};line-height:1.1">${esc(title)}</h3>
 <!-- /wp:heading -->
-<!-- wp:paragraph {"textColor":"soil","style":{"typography":{"fontSize":"18px","lineHeight":"1.55"}}} -->
-<p class="has-soil-color has-text-color" style="font-size:18px;line-height:1.55">${esc(text)}</p>
+<!-- wp:paragraph {"textColor":"soil","style":{"typography":{"fontSize":"${paragraphSize}","lineHeight":"1.56"}}} -->
+<p class="has-soil-color has-text-color" style="font-size:${paragraphSize};line-height:1.56">${esc(text)}</p>
 <!-- /wp:paragraph -->
 </div>
 <!-- /wp:column -->`.trim();
 }
 
-function galleryProof(stat, label) {
+function galleryProof(stat, label, options = {}) {
+  const isPet = options.variant === "pet-portrait-gallery";
+  const statSize = isPet ? "clamp(24px, 3.2vw, 34px)" : "clamp(25px, 3.6vw, 36px)";
+  const statWeight = isPet ? "680" : "760";
+  const labelWeight = isPet ? "640" : "700";
   return `
-<!-- wp:column {"className":"som-gallery-proof","backgroundColor":"grass","style":{"border":{"radius":"18px"},"spacing":{"padding":{"top":"24px","right":"20px","bottom":"24px","left":"20px"}}}} -->
-<div class="wp-block-column som-gallery-proof has-grass-background-color has-background" style="border-radius:18px;padding-top:24px;padding-right:20px;padding-bottom:24px;padding-left:20px">
-<!-- wp:paragraph {"textColor":"sun","style":{"typography":{"fontSize":"clamp(26px, 4vw, 40px)","lineHeight":"1","fontStyle":"normal","fontWeight":"900"},"spacing":{"margin":{"bottom":"10px"}}}} -->
-<p class="has-sun-color has-text-color" style="margin-bottom:10px;font-size:clamp(26px, 4vw, 40px);font-style:normal;font-weight:900;line-height:1">${esc(stat)}</p>
+<!-- wp:column {"className":"som-gallery-proof","backgroundColor":"grass","style":{"border":{"radius":"8px"},"spacing":{"padding":{"top":"22px","right":"20px","bottom":"22px","left":"20px"}}}} -->
+<div class="wp-block-column som-gallery-proof has-grass-background-color has-background" style="border-radius:8px;padding-top:22px;padding-right:20px;padding-bottom:22px;padding-left:20px">
+<!-- wp:paragraph {"textColor":"sun","style":{"typography":{"fontSize":"${statSize}","lineHeight":"1.04","fontStyle":"normal","fontWeight":"${statWeight}"},"spacing":{"margin":{"bottom":"9px"}}}} -->
+<p class="has-sun-color has-text-color" style="margin-bottom:9px;font-size:${statSize};font-style:normal;font-weight:${statWeight};line-height:1.04">${esc(stat)}</p>
 <!-- /wp:paragraph -->
-<!-- wp:paragraph {"textColor":"white","style":{"typography":{"fontSize":"16px","lineHeight":"1.45","fontStyle":"normal","fontWeight":"800"}}} -->
-<p class="has-white-color has-text-color" style="font-size:16px;font-style:normal;font-weight:800;line-height:1.45">${esc(label)}</p>
+<!-- wp:paragraph {"textColor":"white","style":{"typography":{"fontSize":"15px","lineHeight":"1.42","fontStyle":"normal","fontWeight":"${labelWeight}"}}} -->
+<p class="has-white-color has-text-color" style="font-size:15px;font-style:normal;font-weight:${labelWeight};line-height:1.42">${esc(label)}</p>
 <!-- /wp:paragraph -->
 </div>
 <!-- /wp:column -->`.trim();

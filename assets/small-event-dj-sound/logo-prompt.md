@@ -1,9 +1,9 @@
-ImageGen raster logo refresh, 2026-06-27.
-
-Direction: a speaker-stack and turntable seal for SoundNest, with tidy cable arcs and a compact live-event sound badge silhouette. The seal should be bold enough to work as a favicon.
-
-Palette: black, crisp white, cobalt blue, neon magenta, warm amber accent.
-
-Avoid: beige, tan, brown, cream, muted vintage palettes, generic waveform circles, tagline text, secondary small text, fake labels, mockups, SVG/vector reconstruction, or a flat tech-app icon.
-
-Production source: `soundnest-logo-source-v2.png`, regenerated on a flat `#00ff00` chroma-key background after the first magenta-key attempt produced a visible magenta rectangle, then processed with `scripts/process-imagegen-logo.sh`.
+ImageGen direction: speaker and turntable rosette console mark for SoundNest, created as a favicon-first raster brand mark with no generated lettering. The wide header lockup pairs the ImageGen bitmap mark with real local raster typography so the name stays readable.
+Silhouette: speaker and turntable rosette console mark; favicon uses an intentional white sticker tile around the square mark.
+Palette: black, cyan, magenta, amber, white.
+Avoid: Brown, tan, beige, cream, sepia, generic swooshes, shields, fake labels, generated text, tagline text, tiny details, vector/code reconstruction, repeated small-icon-plus-wordmark sameness.
+Source sheet: assets/logo-mark-sheets/site-o-mattic-logo-mark-sheet-v2-imagegen-source.png.
+Source crop: generated/soundnest-mark-v4-imagegen-source.png.
+Sticker mark: generated/soundnest-mark-v4-sticker.png.
+Chroma key: not used for production; the clean white ImageGen source is preserved as an intentional sticker-tile mark to avoid edge halos.
+Visual acceptance: Accepted after v4 logo and favicon contact-sheet review; header lockup reads at catalog scale and favicon uses the mark only.

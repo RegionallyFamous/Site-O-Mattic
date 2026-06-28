@@ -3896,7 +3896,6 @@ function buildAliasVisualCss(spec) {
 .som-pet-style-card{
   border-top:0;
   border-left:8px solid ${p.sun};
-  border-radius:8px;
 }
 @media (max-width:700px){
   .wp-block-image.som-pet-gallery-image{
@@ -3944,11 +3943,11 @@ function buildAliasVisualCss(spec) {
 .som-dessert-gallery-note{
   background:color-mix(in srgb, ${p.cream} 92%, ${p.white})!important;
   border:1px solid color-mix(in srgb, ${p.leaf} 46%, transparent);
-  border-radius:8px 28px 8px 28px!important;
+  border-radius:8px!important;
   box-shadow:0 18px 52px rgba(42,31,38,.14);
 }
 .som-dessert-gallery-copy{
-  border-radius:34px 8px 34px 8px!important;
+  border-radius:8px!important;
   border:1px solid color-mix(in srgb, ${p.white} 70%, transparent);
 }
 .som-dessert-gallery-copy h1{
@@ -4024,7 +4023,7 @@ function buildAliasVisualCss(spec) {
     width:100%!important;
   }
   .som-dessert-gallery-note{
-    border-radius:8px 22px!important;
+    border-radius:8px!important;
   }
   .som-dessert-gallery-copy h1{
     font-size:clamp(28px, 7.2vw, 34px)!important;
@@ -4063,12 +4062,12 @@ function buildAliasVisualCss(spec) {
   height:300px!important;
   min-height:0;
   object-position:50% 44%;
-  border-radius:80px 8px 80px 8px;
+  border-radius:8px;
 }
 .som-balloon-gallery-copy,
 .som-balloon-gallery-note,
 .som-balloon-style-card{
-  border-radius:32px 8px!important;
+  border-radius:8px!important;
 }
 .som-balloon-gallery-hero .som-gallery-copy-row{
   margin-top:-118px!important;
@@ -4085,7 +4084,7 @@ function buildAliasVisualCss(spec) {
   .som-balloon-gallery-image img{
     min-height:176px;
     aspect-ratio:16/9;
-    border-radius:34px 8px;
+    border-radius:8px;
   }
   .som-balloon-gallery-copy h1{
     font-size:clamp(30px, 8.4vw, 38px)!important;
@@ -4118,7 +4117,6 @@ function buildAliasVisualCss(spec) {
 .som-picnic-gallery-note{
   flex-basis:100%!important;
   width:100%!important;
-  border-radius:8px!important;
 }
 .som-picnic-gallery-note{
   margin-top:16px!important;
@@ -4129,7 +4127,6 @@ function buildAliasVisualCss(spec) {
 .som-picnic-style-card{
   border-top:0!important;
   border-left:5px solid ${p.sun};
-  border-radius:8px!important;
 }
 @media (max-width:900px){
   .wp-block-image.som-picnic-gallery-image{
@@ -4189,11 +4186,6 @@ function buildAliasVisualCss(spec) {
 }
 .som-contact-crop-studio img{
   object-position:84% 44%;
-}
-.som-headshot-gallery-note,
-.som-headshot-style-card,
-.som-headshot-gallery-proof{
-  border-radius:8px!important;
 }
 .som-headshot-style-card{
   border:1px solid color-mix(in srgb, ${p.deepGreen} 14%, transparent);
