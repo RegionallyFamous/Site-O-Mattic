@@ -1,5 +1,6 @@
 import fs from "node:fs/promises";
 import path from "node:path";
+import crypto from "node:crypto";
 import { execFileSync } from "node:child_process";
 import { blueprintDirForSpec, blueprintPathForSpec, readSpec, specTargets } from "./spec-utils.mjs";
 
@@ -130,19 +131,28 @@ async function prepareCatalogIconAssets() {
 
   try {
     await fs.copyFile(catalogFaviconSource, iconTarget);
-    icons.favicon = "favicon.png";
+    icons.favicon = await cacheBustedAssetHref(iconTarget, "favicon.png");
   } catch {
     // Keep the catalog usable if the optional generated icon is missing.
   }
 
   try {
     await fs.copyFile(catalogAppleTouchIconSource, appleTarget);
-    icons.appleTouchIcon = "apple-touch-icon.png";
+    icons.appleTouchIcon = await cacheBustedAssetHref(appleTarget, "apple-touch-icon.png");
   } catch {
     // Keep the catalog usable if the optional generated icon is missing.
   }
 
   return icons;
+}
+
+async function cacheBustedAssetHref(filePath, publicPath) {
+  const digest = crypto
+    .createHash("sha256")
+    .update(await fs.readFile(filePath))
+    .digest("hex")
+    .slice(0, 12);
+  return `${publicPath}?v=${digest}`;
 }
 
 async function writeCatalogScreenshotThumbnail(source, target) {
