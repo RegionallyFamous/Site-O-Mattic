@@ -76,8 +76,8 @@
   "contact": {
     "phoneLabel": "(555) 014-1836",
     "phoneHref": "tel:+15550141836",
-    "email": "hello@letterloom.test",
-    "emailHref": "mailto:hello@letterloom.test",
+    "email": "hello@letterloom.example.com",
+    "emailHref": "mailto:hello@letterloom.example.com",
     "serviceArea": "Window lettering, small murals, storefront graphics, menu wall accents, office murals, seasonal glass art, surface refreshes, and hand-painted installs for River Market, North Loop, Oak Hill, Westbrook, and Maple Bend storefronts"
   },
   "copy": {

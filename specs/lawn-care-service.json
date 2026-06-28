@@ -75,8 +75,8 @@
   "contact": {
     "phoneLabel": "(555) 014-7883",
     "phoneHref": "tel:+15550147883",
-    "email": "hello@greenstripe.test",
-    "emailHref": "mailto:hello@greenstripe.test",
+    "email": "hello@greenstripe.example.com",
+    "emailHref": "mailto:hello@greenstripe.example.com",
     "serviceArea": "Northside, Oak Hill, Westbrook, Maple Bend, and nearby weekly mowing routes with room for one-time cleanup passes when the calendar allows"
   },
   "copy": {

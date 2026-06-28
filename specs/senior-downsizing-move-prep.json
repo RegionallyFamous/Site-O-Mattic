@@ -76,8 +76,8 @@
   "contact": {
     "phoneLabel": "(555) 014-8843",
     "phoneHref": "tel:+15550148843",
-    "email": "hello@kindmove.test",
-    "emailHref": "mailto:hello@kindmove.test",
+    "email": "hello@kindmove.example.com",
+    "emailHref": "mailto:hello@kindmove.example.com",
     "serviceArea": "Senior downsizing consults, room-by-room sorting, family decision support, donation planning, packing prep, move labels, keepsake organization, and gentle transition help for apartments, condos, family homes, and retirement communities"
   },
   "copy": {

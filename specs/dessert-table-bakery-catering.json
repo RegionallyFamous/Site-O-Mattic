@@ -75,8 +75,8 @@
   "contact": {
     "phoneLabel": "(555) 014-7742",
     "phoneHref": "tel:+15550147742",
-    "email": "hello@sugarline.test",
-    "emailHref": "mailto:hello@sugarline.test",
+    "email": "hello@sugarline.example.com",
+    "emailHref": "mailto:hello@sugarline.example.com",
     "serviceArea": "Dessert tables, bakery catering, cake-and-mini spreads, shower sweets, birthday tables, corporate dessert bars, and celebration delivery for River Market, Oak Hill, Westbrook, Maple Bend, and nearby event rooms"
   },
   "copy": {

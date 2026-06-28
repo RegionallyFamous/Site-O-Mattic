@@ -78,8 +78,8 @@
   "contact": {
     "phoneLabel": "(555) 014-7190",
     "phoneHref": "tel:+15550147190",
-    "email": "hello@turnkeytidy.test",
-    "emailHref": "mailto:hello@turnkeytidy.test",
+    "email": "hello@turnkeytidy.example.com",
+    "emailHref": "mailto:hello@turnkeytidy.example.com",
     "serviceArea": "Vacation rental turnovers, linen swaps, restock checks, kitchen and bath reset, entry photos, damage notes, same-day changeovers, and host coverage for guest suites, cabins, lake homes, and short-term rentals across the local booking corridor"
   },
   "copy": {

@@ -74,8 +74,8 @@
   "contact": {
     "phoneLabel": "(555) 014-1225",
     "phoneHref": "tel:+15550141225",
-    "email": "hello@ridgeglow.test",
-    "emailHref": "mailto:hello@ridgeglow.test",
+    "email": "hello@ridgeglow.example.com",
+    "emailHref": "mailto:hello@ridgeglow.example.com",
     "serviceArea": "Holiday roofline lights, porch columns, wreaths, timers, removal, and labeled storage for homes across the north suburbs, lake neighborhoods, and nearby cul-de-sacs"
   },
   "copy": {

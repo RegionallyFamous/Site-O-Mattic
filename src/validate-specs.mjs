@@ -143,6 +143,9 @@ function validateContact(contact, errors) {
   if (!/^mailto:[^@\s]+@[^@\s]+\.[^@\s]+$/.test(contact?.emailHref || "")) {
     errors.push("contact.emailHref must be a mailto: email link.");
   }
+  if ([contact?.email, contact?.emailHref].some((value) => /\.test(?:$|[/?#:])/i.test(String(value || "")))) {
+    errors.push("contact email fields must not use .test domains; use reserved example.com demo addresses.");
+  }
   if (!contact?.serviceArea || contact.serviceArea.length < 20) {
     errors.push("contact.serviceArea should be specific enough to feel local.");
   }

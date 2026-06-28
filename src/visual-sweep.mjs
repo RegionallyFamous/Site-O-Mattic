@@ -410,8 +410,9 @@ async function inspectScenario(browser, url, scenario, screenshot, spec) {
       const ctaTypography = ctaTypographyReport(visibleCtas);
       const h1Typography = h1TypographyReport(h1Element, h1);
       const navigationTypography = navigationTypographyReport(navigationElement);
-      const tasteWarnings = tasteWarningReport({ mediaProof, ctaTypography, h1Typography, navigationTypography });
       const proofAlignment = proofAlignmentReport();
+      const sectionIntroAlignment = sectionIntroAlignmentReport();
+      const tasteWarnings = tasteWarningReport({ mediaProof, ctaTypography, h1Typography, navigationTypography, sectionIntroAlignment });
       disableSmoothScrolling();
       const anchorNavigation = await anchorNavigationReport();
       const focusWalk = await focusWalkReport();
@@ -442,6 +443,7 @@ async function inspectScenario(browser, url, scenario, screenshot, spec) {
         overflowers,
         keyOverlaps,
         proofAlignment,
+        sectionIntroAlignment,
         anchorNavigation,
         focusWalk
       };
@@ -595,6 +597,73 @@ async function inspectScenario(browser, url, scenario, screenshot, spec) {
         };
       }
 
+      function sectionIntroAlignmentReport() {
+        const headings = [...document.querySelectorAll(".wp-site-blocks h2.wp-block-heading, .wp-site-blocks h2")]
+          .filter(visibleElement)
+          .map((heading) => {
+            const intro = nextIntroParagraphFor(heading);
+            const headingRect = rectFor(heading);
+            const introRect = intro ? rectFor(intro) : null;
+            return { heading, intro, headingRect, introRect };
+          })
+          .filter((pair) => pair.intro && pair.headingRect && pair.introRect)
+          .filter((pair) => {
+            const headingText = pair.heading.textContent?.trim() || "";
+            const introText = pair.intro.textContent?.trim() || "";
+            return headingText.length >= 8
+              && introText.length >= 55
+              && pair.headingRect.width >= 220
+              && pair.introRect.width >= 240
+              && pair.headingRect.height >= 20
+              && pair.introRect.height >= 20;
+          })
+          .filter((pair) => {
+            const headingAlign = getComputedStyle(pair.heading).textAlign;
+            const introAlign = getComputedStyle(pair.intro).textAlign;
+            return headingAlign !== "center"
+              && introAlign !== "center"
+              && !pair.heading.classList.contains("has-text-align-center")
+              && !pair.intro.classList.contains("has-text-align-center");
+          });
+        const driftLimit = isMobileViewport
+          ? 72
+          : Math.max(110, Math.min(190, viewport.width * 0.1));
+        const failures = headings
+          .map((pair) => {
+            const delta = Math.round(pair.introRect.left - pair.headingRect.left);
+            return {
+              headingText: pair.heading.textContent?.trim() || "",
+              delta
+            };
+          })
+          .filter((item) => Math.abs(item.delta) > driftLimit)
+          .map((item) => `Section intro "${shortText(item.headingText, 42)}" has supporting copy starting ${Math.abs(item.delta)}px ${item.delta > 0 ? "to the right" : "to the left"} of the heading on ${scenarioName}.`);
+        return {
+          checkedPairs: headings.length,
+          driftLimit: Math.round(driftLimit),
+          failures: failures.slice(0, 8)
+        };
+      }
+
+      function nextIntroParagraphFor(heading) {
+        let candidate = heading.nextElementSibling;
+        let scanned = 0;
+        while (candidate && scanned < 6) {
+          scanned += 1;
+          if (/^H[1-3]$/i.test(candidate.tagName)) {
+            return null;
+          }
+          if (candidate.matches?.("p, .wp-block-paragraph") && visibleElement(candidate)) {
+            return candidate;
+          }
+          if (candidate.matches?.(".wp-block-columns, .wp-block-table, .wp-block-gallery, .wp-block-media-text, figure, ul, ol, table")) {
+            return null;
+          }
+          candidate = candidate.nextElementSibling;
+        }
+        return null;
+      }
+
       function mediaProofReport(rect) {
         if (!rect) {
           return null;
@@ -621,10 +690,13 @@ async function inspectScenario(browser, url, scenario, screenshot, spec) {
         };
       }
 
-      function tasteWarningReport({ mediaProof: proof, ctaTypography: ctaType, h1Typography: h1Type, navigationTypography: navType }) {
+      function tasteWarningReport({ mediaProof: proof, ctaTypography: ctaType, h1Typography: h1Type, navigationTypography: navType, sectionIntroAlignment: sectionIntro }) {
         const warnings = [];
         if (isMobileViewport && proof && proof.visibleArea > 0 && proof.visibleRatio < mobileMediaProofMinVisibleRatio) {
           warnings.push(`Primary media proof is thin in first viewport: ${formatPercent(proof.visibleRatio)} visible on ${scenarioName} (top ${proof.top}px, ${proof.visibleHeight}/${proof.totalHeight}px height visible).`);
+        }
+        for (const failure of sectionIntro?.failures || []) {
+          warnings.push(failure);
         }
         for (const failure of ctaType?.failures || []) {
           warnings.push(failure);
@@ -815,6 +887,14 @@ async function inspectScenario(browser, url, scenario, screenshot, spec) {
           .map((item) => `.${item}`)
           .join("");
         return `${tag}${id}${className}`;
+      }
+
+      function shortText(value, maxLength) {
+        const textValue = String(value || "").replace(/\s+/g, " ").trim();
+        if (textValue.length <= maxLength) {
+          return textValue;
+        }
+        return `${textValue.slice(0, Math.max(0, maxLength - 1)).trim()}...`;
       }
 
       function overlapArea(left, right) {
@@ -1094,6 +1174,7 @@ function buildReviewEvidence(report) {
       overflowers: scenario.overflowers,
       keyOverlaps: scenario.keyOverlaps,
       proofAlignment: scenario.proofAlignment,
+      sectionIntroAlignment: scenario.sectionIntroAlignment,
       anchorNavigation: scenario.anchorNavigation,
       focusWalk: scenario.focusWalk,
       failures: scenario.failures

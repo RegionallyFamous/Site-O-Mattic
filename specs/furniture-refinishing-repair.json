@@ -77,8 +77,8 @@
   "contact": {
     "phoneLabel": "(555) 014-6744",
     "phoneHref": "tel:+15550146744",
-    "email": "hello@grainmend.test",
-    "emailHref": "mailto:hello@grainmend.test",
+    "email": "hello@grainmend.example.com",
+    "emailHref": "mailto:hello@grainmend.example.com",
     "serviceArea": "Furniture refinishing, chair repair, table restoration, finish refreshes, small cabinet repair, heirloom care, photo estimates, and pickup or drop-off guidance for River Market, Northside, Oak Hill, Westbrook, and Maple Bend"
   },
   "copy": {

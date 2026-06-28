@@ -74,8 +74,8 @@
   "contact": {
     "phoneLabel": "(555) 014-7741",
     "phoneHref": "tel:+15550147741",
-    "email": "hello@cartwrightcoffee.test",
-    "emailHref": "mailto:hello@cartwrightcoffee.test",
+    "email": "hello@cartwrightcoffee.example.com",
+    "emailHref": "mailto:hello@cartwrightcoffee.example.com",
     "serviceArea": "Espresso cart service for weddings, offices, open houses, showers, markets, and private events across the central metro and nearby suburbs"
   },
   "copy": {

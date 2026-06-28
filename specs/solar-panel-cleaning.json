@@ -75,8 +75,8 @@
   "contact": {
     "phoneLabel": "(555) 014-2088",
     "phoneHref": "tel:+15550142088",
-    "email": "hello@sunwash.test",
-    "emailHref": "mailto:hello@sunwash.test",
+    "email": "hello@sunwash.example.com",
+    "emailHref": "mailto:hello@sunwash.example.com",
     "serviceArea": "Residential solar panel washing, bird-mess rinse downs, pollen season cleanups, production-check photos, and soft-brush maintenance across sunny suburbs, lake homes, and rural rooflines"
   },
   "copy": {

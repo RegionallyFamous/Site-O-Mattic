@@ -75,8 +75,8 @@
   "contact": {
     "phoneLabel": "(555) 014-9052",
     "phoneHref": "tel:+15550149052",
-    "email": "hello@shineshift.test",
-    "emailHref": "mailto:hello@shineshift.test",
+    "email": "hello@shineshift.example.com",
+    "emailHref": "mailto:hello@shineshift.example.com",
     "serviceArea": "Driveway and garage-friendly mobile detailing for daily drivers, commuter cars, SUVs, trucks, and weekend cars across the central metro and nearby suburbs"
   },
   "copy": {

@@ -73,8 +73,8 @@
   "contact": {
     "phoneLabel": "(555) 014-4412",
     "phoneHref": "tel:+15550144412",
-    "email": "hello@gridnest.test",
-    "emailHref": "mailto:hello@gridnest.test",
+    "email": "hello@gridnest.example.com",
+    "emailHref": "mailto:hello@gridnest.example.com",
     "serviceArea": "Garage organization, wall storage, shelves, bins, pegboard zones, sports gear hooks, seasonal storage resets, workbench planning, and floor-clearing systems for attached garages across the north metro and nearby suburbs"
   },
   "copy": {

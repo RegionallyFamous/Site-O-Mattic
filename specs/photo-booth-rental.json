@@ -77,8 +77,8 @@
   "contact": {
     "phoneLabel": "(555) 014-6204",
     "phoneHref": "tel:+15550146204",
-    "email": "hello@flashdash.test",
-    "emailHref": "mailto:hello@flashdash.test",
+    "email": "hello@flashdash.example.com",
+    "emailHref": "mailto:hello@flashdash.example.com",
     "serviceArea": "Open-air photo booths, backdrop rentals, props, print strips, digital galleries, weddings, school events, corporate parties, and community nights in North Loop, Oak Hill, Westbrook, Maple Bend, and nearby venues"
   },
   "copy": {

@@ -76,8 +76,8 @@
   "contact": {
     "phoneLabel": "(555) 014-3329",
     "phoneHref": "tel:+15550143329",
-    "email": "hello@vowsprig.test",
-    "emailHref": "mailto:hello@vowsprig.test",
+    "email": "hello@vowsprig.example.com",
+    "emailHref": "mailto:hello@vowsprig.example.com",
     "serviceArea": "Micro-wedding bouquets, personals, bud vases, ceremony markers, small installations, elopements, courthouse florals, and intimate receptions across the region"
   },
   "copy": {

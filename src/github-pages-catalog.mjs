@@ -78,9 +78,22 @@ await prepareCatalogAssets(cards);
 const pitchHeroUrl = await preparePitchHeroAsset();
 const catalogIcons = await prepareCatalogIconAssets();
 await prepareFeaturedPreview(featuredCard);
-await fs.writeFile(pagePath, renderPage(cards, featuredCard, pitchHeroUrl, catalogIcons));
+const pageHtml = renderPage(cards, featuredCard, pitchHeroUrl, catalogIcons);
+assertNoDotTestUrls(pageHtml);
+await fs.writeFile(pagePath, pageHtml);
 
 console.log(`Wrote ${pagePath} with ${cards.length} Blueprint links.`);
+
+function assertNoDotTestUrls(html) {
+  const matches = [
+    ...html.matchAll(/\b(?:href|src)=["']([^"']*\.test(?:[/?#:][^"']*)?)["']/gi),
+    ...html.matchAll(/\bhttps?:\/\/[^\s"'<>)]*\.test(?:[/?#:][^\s"'<>)]*)?/gi)
+  ].map((match) => match[1] || match[0]);
+  const uniqueMatches = [...new Set(matches)];
+  if (uniqueMatches.length) {
+    throw new Error(`Catalog must not publish .test URLs: ${uniqueMatches.slice(0, 8).join(", ")}`);
+  }
+}
 
 async function prepareCatalogAssets(items) {
   const targetDir = path.join("docs", "catalog-assets");
@@ -229,7 +242,7 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       --page: #eef6ff;
       --surface: #fffdf7;
       --ink: #101626;
-      --muted: #4e5366;
+      --muted: #34394d;
       --line: #171b2b;
       --blue: #1646f5;
       --blue-dark: #08277f;
@@ -271,7 +284,7 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
     .page {
       width: min(1440px, calc(100% - 28px));
       margin: 0 auto;
-      padding: 24px 0 60px;
+      padding: 24px 0 72px;
     }
     .masthead {
       display: grid;
@@ -370,7 +383,7 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       grid-template-columns: 28px 1fr;
       gap: 9px;
       align-items: start;
-      color: var(--muted);
+      color: var(--ink);
       font-size: 13px;
       font-weight: 640;
       line-height: 1.34;
@@ -512,7 +525,7 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 12px;
-      margin: 22px 0 16px;
+      margin: 26px 0 22px;
     }
     .stats dl,
     .stats dd {
@@ -559,7 +572,7 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       grid-template-columns: minmax(0, 1.25fr) repeat(3, minmax(0, .75fr));
       gap: 0;
       overflow: hidden;
-      margin: 0 0 22px;
+      margin: 0 0 30px;
       border: 2px solid var(--ink);
       background: var(--surface);
       color: var(--ink);
@@ -572,19 +585,19 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       align-items: stretch;
       margin: 24px 0;
     }
-    .closing-board > div,
+    .closing-board > div:first-child,
     .closing-board article {
       border: 2px solid var(--ink);
       background: var(--surface);
       box-shadow: 4px 4px 0 var(--ink);
       padding: clamp(16px, 2vw, 24px);
     }
-    .closing-board > div {
+    .closing-board > div:first-child {
       background: var(--ink);
       color: #ffffff;
       box-shadow: 4px 4px 0 var(--blue);
     }
-    .closing-board > div .eyebrow {
+    .closing-board > div:first-child .eyebrow {
       background: var(--mint);
       color: var(--ink);
     }
@@ -624,6 +637,7 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       background: #dce6ff;
     }
     .closing-board h3 {
+      color: var(--ink);
       font-size: 18px;
       line-height: 1;
       text-transform: uppercase;
@@ -635,7 +649,7 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
     }
     .proof-strip > * {
       min-width: 0;
-      padding: 17px;
+      padding: clamp(18px, 2vw, 24px);
       border-right: 2px solid var(--ink);
       background: var(--surface);
     }
@@ -674,8 +688,8 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       grid-template-columns: minmax(0, 1fr) minmax(300px, .64fr);
       gap: 22px;
       align-items: center;
-      margin: 22px 0 26px;
-      padding: 16px;
+      margin: 28px 0 34px;
+      padding: 20px;
       border: 2px solid var(--ink);
       background: var(--surface);
       box-shadow: var(--shadow-hard);
@@ -766,7 +780,7 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 12px;
-      margin: 20px 0;
+      margin: 28px 0;
     }
     .pitch-points article {
       min-height: 160px;
@@ -812,7 +826,7 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       gap: 10px;
       align-items: center;
       justify-content: space-between;
-      margin: 34px 0 16px;
+      margin: 44px 0 20px;
       scroll-margin-top: 18px;
     }
     .toolbar h2 {
@@ -824,14 +838,14 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       text-wrap: balance;
     }
     .toolbar a {
-      color: var(--muted);
+      color: var(--ink);
       font-size: 14px;
-      font-weight: 760;
+      font-weight: 820;
     }
     .grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
+      gap: 22px;
     }
     .card {
       position: relative;
@@ -908,19 +922,20 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       display: flex;
       flex: 1;
       flex-direction: column;
-      padding: 16px;
+      padding: 18px;
     }
     .logo-row {
       display: flex;
+      flex-direction: column;
       min-height: 50px;
-      align-items: center;
-      justify-content: space-between;
+      align-items: flex-start;
+      justify-content: flex-start;
       gap: 10px;
       margin-bottom: 10px;
     }
     .logo-row img {
       display: block;
-      width: min(210px, 62%);
+      width: min(220px, 72%);
       max-height: 48px;
       object-fit: contain;
       object-position: left center;
@@ -929,8 +944,8 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
-      justify-content: flex-end;
-      margin: 0 0 0 auto;
+      justify-content: flex-start;
+      margin: 0;
     }
     .pill {
       display: inline-flex;
@@ -954,8 +969,9 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       align-items: center;
       min-height: 22px;
       padding: 3px 7px;
-      border: 1px solid rgba(23, 27, 43, .42);
-      color: var(--muted);
+      border: 1px solid rgba(23, 27, 43, .68);
+      background: #ffffff;
+      color: #2d3448;
       font-size: 11px;
       font-weight: 720;
       line-height: 1.1;
@@ -1117,7 +1133,7 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       .hero-shelf a {
         min-height: 104px;
       }
-      .hero-shelf a:nth-child(n+5) {
+      .hero-shelf a:nth-child(n+3) {
         display: none;
       }
       .hero-shelf img {
@@ -1452,6 +1468,9 @@ function tasteWarningReason(warning) {
   }
   if (/cta/i.test(text)) {
     return /wrap/i.test(text) ? "CTA wrap" : "CTA timing";
+  }
+  if (/section intro|supporting copy|heading/i.test(text)) {
+    return "section spacing";
   }
   if (/nearest-neighbor|too close/i.test(text)) {
     return "near neighbor";

@@ -75,8 +75,8 @@
   "contact": {
     "phoneLabel": "(555) 014-5826",
     "phoneHref": "tel:+15550145826",
-    "email": "hello@clearpath.test",
-    "emailHref": "mailto:hello@clearpath.test",
+    "email": "hello@clearpath.example.com",
+    "emailHref": "mailto:hello@clearpath.example.com",
     "serviceArea": "Garage cleanouts, basement piles, apartment move-outs, donation runs, and curbside pickups across the central metro and close-in suburbs"
   },
   "copy": {

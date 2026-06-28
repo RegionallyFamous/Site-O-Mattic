@@ -75,8 +75,8 @@
   "contact": {
     "phoneLabel": "(555) 014-6412",
     "phoneHref": "tel:+15550146412",
-    "email": "hello@freshthread.test",
-    "emailHref": "mailto:hello@freshthread.test",
+    "email": "hello@freshthread.example.com",
+    "emailHref": "mailto:hello@freshthread.example.com",
     "serviceArea": "Sofas, sectionals, area rugs, stairs, bedrooms, and favorite living room paths across the east metro and nearby suburbs"
   },
   "copy": {

@@ -75,8 +75,8 @@
   "contact": {
     "phoneLabel": "(555) 014-7730",
     "phoneHref": "tel:+15550147730",
-    "email": "quotes@blackline.test",
-    "emailHref": "mailto:quotes@blackline.test",
+    "email": "quotes@blackline.example.com",
+    "emailHref": "mailto:quotes@blackline.example.com",
     "serviceArea": "Residential asphalt driveways, private lanes, and small parking pads across the west suburbs, lake roads, and nearby townships"
   },
   "copy": {

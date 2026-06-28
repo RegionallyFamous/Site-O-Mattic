@@ -76,8 +76,8 @@
   "contact": {
     "phoneLabel": "(555) 014-2684",
     "phoneHref": "tel:+15550142684",
-    "email": "hello@leafdesk.test",
-    "emailHref": "mailto:hello@leafdesk.test",
+    "email": "hello@leafdesk.example.com",
+    "emailHref": "mailto:hello@leafdesk.example.com",
     "serviceArea": "Recurring houseplant and office plant care, watering routes, pruning, soil moisture checks, yellow leaf cleanup, plant rescue triage, lobby plant refreshes, and vacation plant visits for homes, studios, offices, and sunny apartments"
   },
   "copy": {
