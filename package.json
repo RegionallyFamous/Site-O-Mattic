@@ -45,7 +45,7 @@
     "spec:polish-fields": "node src/production-polish-fields.mjs",
     "validate": "npm run blueprint:validate",
     "quality": "npm run spec:validate && npm run blueprint:manifest && npm run blueprint:uniqueness && npm run validate && npm run blueprint:polish && npm run blueprint:accessibility && npm run blueprint:conversion && npm run blueprint:sync && npm run blueprint:variety && npm run blueprint:typography && npm run blueprint:guardrails && npm run blueprint:asset-qa && npm run blueprint:copy-realism && npm run blueprint:premium && npm run visual:baseline && npm run site:build && npm run lint",
-    "quality:release": "npm run quality && VISUAL_SWEEP_DIR=qa/reports/visual-sweep npm run visual:sweep && npm run visual:compare -- --input qa/reports/visual-sweep/report.json --out qa/reports/visual-sweep/dashboard",
+    "quality:release": "npm run quality && npm run blueprint:editor-validate && VISUAL_SWEEP_DIR=qa/reports/visual-sweep npm run visual:sweep && npm run visual:compare -- --input qa/reports/visual-sweep/report.json --out qa/reports/visual-sweep/dashboard",
     "quality:catalog": "npm run blueprint:build && npm run blueprint:determinism && npm run quality:release",
     "quality:public": "npm run playground:smoke",
     "render-brand": "sh scripts/render-brand-assets.sh"

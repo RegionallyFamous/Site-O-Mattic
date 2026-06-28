@@ -62,6 +62,12 @@ async function main() {
     for (const error of report.errors || []) {
       console.log(`  - ${error}`);
     }
+    for (const warning of report.visibleWarnings || []) {
+      console.log(`  - visible editor warning: ${warning}`);
+    }
+    for (const log of report.validationLogs || []) {
+      console.log(`  - editor console: ${log}`);
+    }
     for (const block of report.invalid || []) {
       console.log(`  - ${block.name}${block.className ? ` .${block.className}` : ""}${block.text ? `: ${block.text}` : ""}`);
       for (const issue of block.issues || []) {
@@ -213,9 +219,14 @@ async function inspectEditor(browser, baseUrl, slug) {
       };
       const all = flat(blocks);
       const invalid = all.filter((block) => block.isValid === false);
+      const visibleWarnings = [...document.querySelectorAll(".block-editor-warning, .components-notice, [role='alert']")]
+        .map((node) => node.textContent?.replace(/\s+/g, " ").trim() || "")
+        .filter((text) => /unexpected or invalid|block validation failed|has encountered an error/i.test(text))
+        .slice(0, 12);
       return {
         total: all.length,
         invalidCount: invalid.length,
+        visibleWarnings,
         invalid: invalid.map((block) => ({
           name: block.name,
           text: block.attributes?.text || block.attributes?.content || block.attributes?.caption || "",
@@ -229,11 +240,14 @@ async function inspectEditor(browser, baseUrl, slug) {
       };
     });
 
+    const hasValidationSignal = result.invalidCount > 0 || result.visibleWarnings.length > 0 || validationLogs.length > 0;
+
     return {
       slug,
-      status: result.invalidCount === 0 ? "passed" : "failed",
+      status: hasValidationSignal ? "failed" : "passed",
       total: result.total,
       invalidCount: result.invalidCount,
+      visibleWarnings: result.visibleWarnings,
       invalid: result.invalid,
       validationLogs
     };

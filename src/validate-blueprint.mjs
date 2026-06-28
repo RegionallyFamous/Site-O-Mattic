@@ -132,6 +132,8 @@ if (!phpStep) {
     errors.push("Empty anchor links are not allowed.");
   }
   validateCoreAnchorAttributes(pageContent, errors);
+  validateBlockDelimiterBalance(pageContent, errors);
+  validateSavedMarkupDriftRisks(pageContent, errors);
   for (const hrefTarget of extractHrefTargets(pageContent)) {
     if (!extractElementIds(pageContent).has(hrefTarget)) {
       errors.push(`In-page link points to missing anchor: #${hrefTarget}`);
@@ -260,6 +262,81 @@ function validateCoreAnchorAttributes(pageContent, errors) {
       errors.push(`core/${blockName} uses nonstandard id attr "${attrs.id}"; use the Core anchor attr for section targets.`);
     }
   }
+}
+
+function validateBlockDelimiterBalance(pageContent, errors) {
+  const stack = [];
+  const delimiterPattern = /<!--\s*(\/)?wp:([a-z0-9-]+)(?:\s+[\s\S]*?)?\s*(\/)?-->/g;
+
+  for (const match of pageContent.matchAll(delimiterPattern)) {
+    const isClosing = Boolean(match[1]);
+    const blockName = match[2];
+    const isSelfClosing = Boolean(match[3]);
+    const line = lineForIndex(pageContent, match.index || 0);
+
+    if (isClosing) {
+      const previous = stack.pop();
+      if (!previous) {
+        errors.push(`Closing core/${blockName} delimiter has no matching opener near line ${line}.`);
+        continue;
+      }
+      if (previous.blockName !== blockName) {
+        errors.push(`Block delimiter mismatch near line ${line}: closed core/${blockName}, but core/${previous.blockName} opened near line ${previous.line}.`);
+      }
+      continue;
+    }
+
+    if (!isSelfClosing) {
+      stack.push({ blockName, line });
+    }
+  }
+
+  for (const entry of stack) {
+    errors.push(`Opening core/${entry.blockName} delimiter has no matching close near line ${entry.line}.`);
+  }
+}
+
+function validateSavedMarkupDriftRisks(pageContent, errors) {
+  for (const match of pageContent.matchAll(/<!--(?!\s*\/?wp:)[\s\S]*?-->/g)) {
+    errors.push(`Saved page content includes a non-block HTML comment near line ${lineForIndex(pageContent, match.index || 0)}; use block delimiters only.`);
+  }
+
+  const tagPattern = /<([a-z][a-z0-9-]*)\b([^<>]*?)>/gi;
+  for (const match of pageContent.matchAll(tagPattern)) {
+    const tagName = match[1].toLowerCase();
+    const rawAttrs = match[2] || "";
+    const attrPattern = /\s(aria-[a-z0-9-]+|role|tabindex|data-[a-z0-9-]+)(?:\s*=|\s|$)/gi;
+    for (const attrMatch of rawAttrs.matchAll(attrPattern)) {
+      const attrName = attrMatch[1].toLowerCase();
+      if (isAllowedCoreSavedAttribute(tagName, rawAttrs, attrName)) {
+        continue;
+      }
+      errors.push(`Saved core block markup includes ${attrName} on <${tagName}> near line ${lineForIndex(pageContent, match.index || 0)}; use core block attributes/supports, block settings, or theme JSON instead.`);
+    }
+  }
+}
+
+function isAllowedCoreSavedAttribute(tagName, rawAttrs, attrName) {
+  const className = String(rawAttrs.match(/\bclass=(["'])(.*?)\1/i)?.[2] || "");
+  const classList = ` ${className} `;
+
+  if (attrName === "aria-hidden" && tagName === "span" && classList.includes(" wp-block-cover__background ")) {
+    return true;
+  }
+
+  if (
+    tagName === "img"
+    && classList.includes(" wp-block-cover__image-background ")
+    && (attrName === "data-object-fit" || attrName === "data-object-position")
+  ) {
+    return true;
+  }
+
+  return false;
+}
+
+function lineForIndex(value, index) {
+  return String(value).slice(0, index).split("\n").length;
 }
 
 function validateLayoutSignature(phpCode, pageContent, errors) {
