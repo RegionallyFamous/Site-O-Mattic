@@ -6,14 +6,14 @@
   "pattern": {
     "primaryPattern": "date-window-reservation",
     "secondaryPattern": "checklist-safety-date-proof",
-    "silhouette": "viewport-safe-conversion-shell",
-    "navigationPrimitive": "viewport-safe-hero-shell",
+    "silhouette": "receipt-scope-stack",
+    "navigationPrimitive": "compact-header",
     "mobileActionPattern": "date-check-actions",
     "imageRole": "environment-context",
     "imageEvidence": "seasonal work in progress with safety context",
     "ctaRhythm": "date-check",
     "surfaceFamily": "receipt-stack",
-    "surfaceModel": "date-board-checklist-cards",
+    "surfaceModel": "roofline-date-ledger-with-clip-checklist",
     "styleFamily": "editorial-proof-stage",
     "density": "balanced-editorial",
     "colorRoles": {
@@ -32,11 +32,13 @@
       "radiusScale": "utility-6",
       "borderRole": "date checklist dividers",
       "shadowRole": "date board and hero media",
-      "mediaCrop": "seasonal action crop"
+      "mediaCrop": "narrow roofline evidence strip"
     },
     "coreBlockPlan": [
       "columns",
       "image",
+      "table",
+      "list",
       "details",
       "buttons"
     ],

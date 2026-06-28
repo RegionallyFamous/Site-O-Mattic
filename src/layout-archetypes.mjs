@@ -933,13 +933,13 @@ export const LAYOUT_ARCHETYPES = {
   },
   "urgent-checklist": {
     label: "Urgent checklist",
-    bestFor: ["gutter cleaning", "holiday light installation", "vacation rental turnover", "solar panel cleaning"],
-    archetype: "Seasonal checklist service with date pressure",
+    bestFor: ["holiday light installation"],
+    archetype: "Seasonal installation checklist with date pressure",
     hero: "dusk-install-photo-with-reserve-date-board",
     sectionOrder: [
       "utility-action-header",
       "urgent-install-hero",
-      "seasonal-proof-strip",
+      "roofline-readiness-strip",
       "install-scope-checklist",
       "safety-process-board",
       "objection-details",
@@ -948,9 +948,9 @@ export const LAYOUT_ARCHETYPES = {
     navigationTreatment: "utility-header-with-urgent-cta-and-short-anchors",
     typographyTreatment: "holiday-editorial-proof-serif-with-date-sans",
     colorStrategy: "black-cherry-editorial-urgency-with-warm-proof-color",
-    servicePresentation: "install-checklist-cards-with-reserve-date-board",
-    proofTreatment: "seasonal-safety-proof-strip-before-scope",
-    ctaRhythm: "hero-reserve-date-plus-final-removal-plan-quote",
+    servicePresentation: "install-checklist-cards-with-roofline-date-ledger",
+    proofTreatment: "roofline-date-table-plus-readiness-list-before-scope",
+    ctaRhythm: "hero-install-week-hold-plus-final-removal-plan-quote",
     navLabels: ["Install", "Safety", "Dates"],
     anchorOrder: ["install", "safety", "quote"],
     componentClassesExpected: [
@@ -959,15 +959,17 @@ export const LAYOUT_ARCHETYPES = {
       "som-urgent-hero",
       "som-urgent-photo",
       "som-date-board",
-      "som-urgent-proof",
+      "som-date-table",
+      "som-urgent-readiness-strip",
+      "som-urgent-readiness-list",
       "som-urgent-card",
       "som-urgent-step",
       "som-urgent-faq",
       "som-quote-strip",
       "som-footer"
     ],
-    layoutMarkers: ["som-urgent-page", "som-urgent-header", "som-urgent-hero", "som-urgent-photo", "som-date-board", "som-urgent-proof", "som-urgent-card", "som-urgent-step", "som-urgent-faq", "som-quote-strip"],
-    guidance: "Use a problem checklist beside the service image, then warning signs, packages, safety proof, service area, and repeated availability CTAs."
+    layoutMarkers: ["som-urgent-page", "som-urgent-header", "som-urgent-hero", "som-urgent-photo", "som-date-board", "som-date-table", "wp:table", "som-urgent-readiness-strip", "som-urgent-readiness-list", "wp:list", "som-urgent-card", "som-urgent-step", "som-urgent-faq", "som-quote-strip"],
+    guidance: "Make the install-window ledger the hero organizing object, then use a roofline readiness list, package cards, safety steps, details, and availability CTAs."
   },
   "story-card-consult": {
     label: "Story card consult",

@@ -1317,7 +1317,7 @@ body{
 .wp-site-blocks :where(p,li,summary,td,th){
   font-family:var(--wp--preset--font-family--body);
 }
-.wp-site-blocks :where(.som-chip,.som-method-pill,.som-ticket-line,.som-rail-note,.som-date-cell,.som-ticket-line span,.som-ticket-line strong){
+.wp-site-blocks :where(.som-chip,.som-method-pill,.som-ticket-line,.som-rail-note,.som-ticket-line span,.som-ticket-line strong){
   font-family:var(--wp--preset--font-family--accent)!important;
   font-weight:var(--wp--custom--som--type--label-weight);
 }
@@ -1380,7 +1380,7 @@ body{
   margin-left:auto;
   margin-right:auto;
 }
-.wp-site-blocks :where(.som-chip,.som-method-pill,.som-ticket-line,.som-rail-note,.som-date-cell,.som-route-card-number,.som-haul-number,.som-timeline-number,.som-water-step-number,.som-zone-step-number,.som-craft-step-number,.som-row-number,.som-detail-step-number,.som-menu-step-number,.som-warning-number,.som-urgent-step-number){
+.wp-site-blocks :where(.som-chip,.som-method-pill,.som-ticket-line,.som-rail-note,.som-route-card-number,.som-haul-number,.som-timeline-number,.som-water-step-number,.som-zone-step-number,.som-craft-step-number,.som-row-number,.som-detail-step-number,.som-menu-step-number,.som-warning-number,.som-urgent-step-number){
   max-inline-size:none;
   font-weight:var(--wp--custom--som--type--label-weight);
 }
@@ -2027,33 +2027,77 @@ function buildVariantCustomCss(spec) {
 }
 .som-urgent-photo img{
   width:100%;
-  min-height:520px;
-  aspect-ratio:16/10;
+  min-height:500px;
+  aspect-ratio:4/5;
   object-fit:cover;
   object-position:58% 50%;
-  border-radius:26px;
+  border-radius:8px;
   box-shadow:0 28px 80px rgba(0,0,0,.28);
 }
 .som-date-board{
-  width:min(520px, 88%);
-  margin:-58px 28px 0 auto;
-  position:relative;
+  width:100%;
+  margin:0;
   border:1px solid color-mix(in srgb, ${spec.palette.deepGreen} 14%, transparent);
-  border-radius:18px;
+  border-radius:8px;
   box-shadow:0 22px 60px rgba(0,0,0,.2);
 }
-.som-date-cell{
-  border-left:4px solid ${spec.palette.sun};
-  padding-left:12px;
+.som-date-table{
+  margin-top:14px;
 }
-.som-urgent-proof{
-  border-left:4px solid ${spec.palette.sun};
-  padding:4px 0 4px 14px;
+.som-date-table table{
+  margin:0;
+}
+.som-date-table caption{
+  color:${spec.palette.soil};
+}
+.som-date-table thead{
+  display:block;
+}
+.som-date-table thead tr{
+  display:grid;
+  grid-template-columns:minmax(0, .42fr) minmax(0, 1fr);
+  border-top:0;
+  padding:0 0 10px;
+}
+.som-date-table thead th{
+  color:${spec.palette.soil};
+  display:block;
+  font-family:var(--wp--preset--font-family--accent);
+  font-size:.72rem;
+  letter-spacing:0;
+  line-height:1.1;
+  text-transform:uppercase;
+}
+.som-date-table tr{
+  display:block;
+  border-top:1px solid color-mix(in srgb, ${spec.palette.deepGreen} 12%, transparent);
+  padding:12px 0;
+}
+.som-date-table tr:first-child{
+  border-top:0;
+}
+.som-date-table th,
+.som-date-table td{
+  display:block;
+  border:0;
+  padding:0;
+}
+.som-date-table th[scope="row"]{
+  color:${spec.palette.deepGreen};
+  font-family:var(--wp--preset--font-family--display);
+  font-size:clamp(1.35rem, 2.5vw, 1.8rem);
+  line-height:1;
+}
+.som-date-table td{
+  color:${spec.palette.soil};
+  font-size:.93rem;
+  line-height:1.42;
+  padding-top:6px;
 }
 .som-urgent-card{
   padding:26px;
   border:1px solid color-mix(in srgb, ${spec.palette.deepGreen} 12%, transparent);
-  border-radius:18px;
+  border-radius:8px;
   background:${spec.palette.white};
   box-shadow:var(--wp--custom--som--shadow--card);
 }
@@ -3443,8 +3487,18 @@ function buildVariantCustomCss(spec) {
   padding:clamp(28px, 4vw, 56px);
 }
 .som-receipt-hero .wp-block-media-text__media{
-  min-height:620px;
-  background-position:50% 62%!important;
+  align-self:stretch;
+  min-height:0;
+}
+.som-receipt-hero .wp-block-media-text__media img{
+  aspect-ratio:4/5;
+  border-radius:0!important;
+  display:block;
+  height:100%;
+  min-height:clamp(500px, 45vw, 620px);
+  object-fit:cover;
+  object-position:70% 50%;
+  width:100%;
 }
 .som-receipt-card,
 .som-receipt-step,
@@ -3561,8 +3615,13 @@ function buildVariantCustomCss(spec) {
     padding:20px 22px 22px!important;
   }
   .som-receipt-hero .wp-block-media-text__media{
-    min-height:144px;
-    background-position:50% 52%!important;
+    min-height:0;
+  }
+  .som-receipt-hero .wp-block-media-text__media img{
+    aspect-ratio:16/9;
+    height:clamp(168px, 46vw, 240px);
+    min-height:0;
+    object-position:54% 50%;
   }
   .som-receipt-hero h1{
     font-size:clamp(34px, 9.4vw, 40px)!important;
@@ -4542,7 +4601,9 @@ function buildAliasVisualCss(spec) {
 .som-story-hero .wp-block-media-text__media img{
   border-right:12px solid ${p.white};
   box-shadow:none;
+  display:block;
   filter:saturate(.96) contrast(1.02);
+  height:100%;
   min-height:600px;
   object-fit:cover;
   object-position:50% 50%;
@@ -4637,7 +4698,7 @@ function buildAliasVisualCss(spec) {
 @media (max-width:900px){
   .som-story-hero.wp-block-media-text{
     display:flex!important;
-    flex-direction:column-reverse;
+    flex-direction:column;
     gap:0;
     padding-top:0!important;
     padding-bottom:0!important;
@@ -4656,6 +4717,7 @@ function buildAliasVisualCss(spec) {
   .som-story-hero .wp-block-media-text__media img{
     border-right:0;
     border-top:10px solid ${p.white};
+    height:clamp(180px, 48vw, 230px);
     max-height:230px;
   }
 }
@@ -4680,11 +4742,18 @@ function buildAliasVisualCss(spec) {
   background:linear-gradient(180deg, ${p.cream}, color-mix(in srgb, ${p.mist} 70%, ${p.white}));
 }
 .som-plant-story-hero .wp-block-media-text__media{
+  align-self:center;
   background-position:58% 50%!important;
+  overflow:hidden;
 }
 .som-plant-story-hero .wp-block-media-text__media img{
+  aspect-ratio:4/3;
+  display:block;
   filter:saturate(1.02) contrast(1.03);
+  height:clamp(360px, 34vw, 500px);
+  object-fit:cover;
   object-position:58% 50%;
+  width:100%;
 }
 .som-plant-story-hero p.has-soil-color,
 .som-plant-story-hero .som-story-check-list{
@@ -4761,7 +4830,8 @@ function buildAliasVisualCss(spec) {
   }
   .som-plant-story-hero .wp-block-media-text__media,
   .som-plant-story-hero .wp-block-media-text__media img{
-    max-height:190px!important;
+    height:clamp(168px, 48vw, 210px)!important;
+    max-height:210px!important;
     min-height:168px!important;
   }
   .som-plant-story-hero .wp-block-media-text__media img{
@@ -4803,17 +4873,19 @@ function buildAliasVisualCss(spec) {
 }
 .som-color-story-hero .wp-block-media-text__media{
   align-self:stretch;
-  background-size:cover;
-  min-height:620px;
+  min-height:0;
   overflow:hidden;
 }
 .som-color-story-hero .wp-block-media-text__media img{
   border-left:12px solid ${p.white};
+  border-radius:0!important;
   box-shadow:none;
+  display:block;
   filter:saturate(.96) contrast(1.03);
+  height:100%;
   min-height:620px;
   object-fit:cover;
-  object-position:50% 52%;
+  object-position:56% 52%;
   width:100%;
 }
 .som-color-room-list{
@@ -4910,7 +4982,7 @@ function buildAliasVisualCss(spec) {
   }
   .som-color-story-hero .wp-block-media-text__media,
   .som-color-story-hero .wp-block-media-text__media img{
-    min-height:170px;
+    min-height:0;
   }
   .som-color-story-hero .wp-block-media-text__media{
     width:100%;
@@ -4918,7 +4990,9 @@ function buildAliasVisualCss(spec) {
   .som-color-story-hero .wp-block-media-text__media img{
     border-left:0;
     border-top:10px solid ${p.white};
-    max-height:220px;
+    height:250px;
+    max-height:none;
+    object-position:54% 50%;
   }
 }
 @media (max-width:700px){

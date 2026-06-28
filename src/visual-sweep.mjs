@@ -626,21 +626,34 @@ async function inspectScenario(browser, url, scenario, screenshot, spec) {
               && !pair.intro.classList.contains("has-text-align-center");
           });
         const driftLimit = isMobileViewport
-          ? 72
-          : Math.max(110, Math.min(190, viewport.width * 0.1));
-        const failures = headings
-          .map((pair) => {
-            const delta = Math.round(pair.introRect.left - pair.headingRect.left);
-            return {
-              headingText: pair.heading.textContent?.trim() || "",
-              delta
-            };
-          })
-          .filter((item) => Math.abs(item.delta) > driftLimit)
-          .map((item) => `Section intro "${shortText(item.headingText, 42)}" has supporting copy starting ${Math.abs(item.delta)}px ${item.delta > 0 ? "to the right" : "to the left"} of the heading on ${scenarioName}.`);
+          ? 48
+          : Math.max(80, Math.min(140, viewport.width * 0.075));
+        const gapLimit = isMobileViewport ? 42 : 56;
+        const items = headings
+          .map((pair) => ({
+            headingText: pair.heading.textContent?.trim() || "",
+            delta: Math.round(pair.introRect.left - pair.headingRect.left),
+            verticalGap: Math.round(pair.introRect.top - pair.headingRect.bottom),
+            headingLeft: Math.round(pair.headingRect.left),
+            introLeft: Math.round(pair.introRect.left)
+          }));
+        const failures = items
+          .filter((item) => Math.abs(item.delta) > driftLimit || item.verticalGap > gapLimit)
+          .map((item) => {
+            const issues = [];
+            if (Math.abs(item.delta) > driftLimit) {
+              issues.push(`copy starts ${Math.abs(item.delta)}px ${item.delta > 0 ? "to the right" : "to the left"}`);
+            }
+            if (item.verticalGap > gapLimit) {
+              issues.push(`gap is ${item.verticalGap}px`);
+            }
+            return `Section intro "${shortText(item.headingText, 42)}" has awkward rhythm on ${scenarioName}: ${issues.join(", ")}.`;
+          });
         return {
           checkedPairs: headings.length,
           driftLimit: Math.round(driftLimit),
+          gapLimit,
+          items: items.slice(0, 8),
           failures: failures.slice(0, 8)
         };
       }
@@ -1067,6 +1080,9 @@ function failuresFor(result) {
   }
   if (result.proofAlignment?.failures?.length) {
     failures.push(`Proof card alignment drift: ${result.proofAlignment.failures.join("; ")}`);
+  }
+  if (result.sectionIntroAlignment?.failures?.length) {
+    failures.push(`Section intro alignment drift: ${result.sectionIntroAlignment.failures.join("; ")}`);
   }
   if (result.anchorNavigation?.failures?.length) {
     failures.push(`Anchor navigation issue: ${result.anchorNavigation.failures.join("; ")}`);
