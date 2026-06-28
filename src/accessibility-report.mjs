@@ -59,6 +59,8 @@ async function buildReport(target) {
   add(checks, "navigation labels unique", navigationLabelsUnique(pageContent), "Navigation labels do not repeat.");
   const tableA11y = tableAccessibility(pageContent);
   add(checks, "table captions and scoped headers", tableA11y.passed, tableA11y.detail);
+  const imageA11y = renderedImageAccessibility(pageContent);
+  add(checks, "rendered informative image alt text", imageA11y.passed, imageA11y.detail);
   add(checks, "reduced motion fallback", phpStep.code.includes("prefers-reduced-motion"), "Custom CSS respects reduced motion preferences.");
 
   return { target, checks };
@@ -124,6 +126,7 @@ function tableAccessibility(markup) {
 
   const missingCaptions = [];
   const unscopedHeaders = [];
+  const missingRowHeaders = [];
   tables.forEach((table, index) => {
     const tableInner = table.match(/<table\b[^>]*>([\s\S]*?)<\/table>/)?.[1] || table;
     const hasCaption = /<caption\b[^>]*>[\s\S]*?<\/caption>/s.test(tableInner)
@@ -137,12 +140,45 @@ function tableAccessibility(markup) {
         unscopedHeaders.push(`${index + 1}.${headerIndex + 1}`);
       }
     });
+    const tbody = tableInner.match(/<tbody\b[^>]*>([\s\S]*?)<\/tbody>/i)?.[1] || "";
+    const rows = [...tbody.matchAll(/<tr\b[^>]*>([\s\S]*?)<\/tr>/gi)];
+    rows.forEach((row, rowIndex) => {
+      const firstCell = row[1].match(/^\s*<(th|td)\b([^>]*)>/i);
+      if (!firstCell || firstCell[1].toLowerCase() !== "th" || !/\bscope=(["'])row\1/i.test(firstCell[2])) {
+        missingRowHeaders.push(`${index + 1}.${rowIndex + 1}`);
+      }
+    });
   });
 
   return {
-    passed: missingCaptions.length === 0 && unscopedHeaders.length === 0,
-    detail: `${tables.length} table(s), missing captions: ${missingCaptions.join(", ") || "none"}, unscoped th: ${unscopedHeaders.join(", ") || "none"}.`
+    passed: missingCaptions.length === 0 && unscopedHeaders.length === 0 && missingRowHeaders.length === 0,
+    detail: `${tables.length} table(s), missing captions: ${missingCaptions.join(", ") || "none"}, unscoped th: ${unscopedHeaders.join(", ") || "none"}, missing row headers: ${missingRowHeaders.join(", ") || "none"}.`
   };
+}
+
+function renderedImageAccessibility(markup) {
+  const images = [...markup.matchAll(/<img\b([^>]*)>/gi)].map((match) => {
+    const attrs = match[1];
+    return {
+      className: attr(attrs, "class"),
+      alt: attr(attrs, "alt"),
+      ariaHidden: attr(attrs, "aria-hidden")
+    };
+  });
+  const informativeImages = images.filter((image) => !isDecorativeImage(image));
+  const missingAlt = informativeImages
+    .map((image, index) => ({ image, index: index + 1 }))
+    .filter(({ image }) => image.alt.trim().length === 0);
+
+  return {
+    passed: missingAlt.length === 0,
+    detail: `${informativeImages.length} informative image(s), missing alt: ${missingAlt.map(({ index, image }) => `${index}${image.className ? ` .${image.className.split(/\s+/).filter(Boolean).join(".")}` : ""}`).join(", ") || "none"}.`
+  };
+}
+
+function isDecorativeImage(image) {
+  return image.ariaHidden === "true"
+    || image.className.split(/\s+/).includes("wp-block-cover__image-background");
 }
 
 function add(checks, name, passed, detail) {

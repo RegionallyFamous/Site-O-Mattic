@@ -173,7 +173,8 @@ async function inspectEditor(browser, baseUrl, slug) {
   });
 
   try {
-    await page.goto(`${baseUrl}/wp-admin/edit.php?post_type=page`, { waitUntil: "networkidle", timeout: EDITOR_TIMEOUT_MS });
+    await page.goto(`${baseUrl}/wp-admin/edit.php?post_type=page`, { waitUntil: "domcontentloaded", timeout: EDITOR_TIMEOUT_MS });
+    await page.waitForSelector('a[href*="post.php?post="][href*="action=edit"]', { timeout: EDITOR_TIMEOUT_MS });
     const editHref = await page.$$eval("a", (anchors) => anchors
       .map((anchor) => anchor.href)
       .find((href) => /post\.php\?post=/.test(href) && /action=edit/.test(href)));

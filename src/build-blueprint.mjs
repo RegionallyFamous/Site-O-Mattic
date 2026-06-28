@@ -2043,7 +2043,7 @@ function turnoverProof(stat, label) {
 function turnoverTableRows(services, proof) {
   return services.map((service, index) => {
     const proofItem = proof[index] || proof[proof.length - 1] || { stat: "Checked", label: "completion note sent before handoff" };
-    return `<tr><td>${esc(service.title)}</td><td>${esc(proofItem.stat)}</td><td>${esc(service.text)} ${esc(proofItem.label)}.</td></tr>`;
+    return `<tr>${tableRowHeader(service.title)}<td>${esc(proofItem.stat)}</td><td>${esc(service.text)} ${esc(proofItem.label)}.</td></tr>`;
   }).join("");
 }
 
@@ -2294,7 +2294,7 @@ function receiptServiceCard(number, title, text) {
 }
 
 function receiptScopeTable(services) {
-  const rows = services.map((service, index) => `<tr><td>${esc(service.title)}</td><td>${index === 0 ? "Standard" : index === 1 ? "Add-on" : "Optional"}</td><td>${esc(service.text)}</td></tr>`).join("");
+  const rows = services.map((service, index) => `<tr>${tableRowHeader(service.title)}<td>${index === 0 ? "Standard" : index === 1 ? "Add-on" : "Optional"}</td><td>${esc(service.text)}</td></tr>`).join("");
   return `
 <!-- wp:table {"className":"som-receipt-table"} -->
 <figure class="wp-block-table som-receipt-table"><table>${tableCaption("Service scope receipt")}${tableHead(["Scope line", "Fit", "Notes"])}<tbody>${rows}</tbody></table></figure>
@@ -3744,7 +3744,7 @@ ${ticket}
 <!-- wp:column {"verticalAlignment":"center","width":"${heroPhotoWidth}"} -->
 <div class="wp-block-column is-vertically-aligned-center" style="${heroPhotoStyle}">
 <!-- wp:image {"id":{{hero_id}},"sizeSlug":"full","linkDestination":"none","className":"som-haul-photo"} -->
-<figure class="wp-block-image size-full som-haul-photo"><img src="{{hero_url}}" alt="" class="wp-image-{{hero_id}}"/></figure>
+<figure class="wp-block-image size-full som-haul-photo"><img src="{{hero_url}}" alt="${esc(spec.assetMeta.hero.alt)}" class="wp-image-{{hero_id}}"/></figure>
 <!-- /wp:image -->
 </div>
 <!-- /wp:column -->
@@ -3948,7 +3948,7 @@ ${headerNavigation}
 <!-- wp:column {"verticalAlignment":"center","width":"53%"} -->
 <div class="wp-block-column is-vertically-aligned-center" style="flex-basis:53%">
 <!-- wp:image {"id":{{hero_id}},"sizeSlug":"full","linkDestination":"none","className":"som-hero-photo"} -->
-<figure class="wp-block-image size-full som-hero-photo"><img src="{{hero_url}}" alt="" class="wp-image-{{hero_id}}"/></figure>
+<figure class="wp-block-image size-full som-hero-photo"><img src="{{hero_url}}" alt="${esc(spec.assetMeta.hero.alt)}" class="wp-image-{{hero_id}}"/></figure>
 <!-- /wp:image -->
 </div>
 <!-- /wp:column -->
@@ -4186,7 +4186,7 @@ function buildSurfaceSeasonalPageContent(spec) {
 <!-- wp:column {"verticalAlignment":"center","width":"56%"} -->
 <div class="wp-block-column is-vertically-aligned-center" style="flex-basis:56%">
 <!-- wp:image {"id":{{hero_id}},"sizeSlug":"full","linkDestination":"none","className":"som-surface-photo"} -->
-<figure class="wp-block-image size-full som-surface-photo"><img src="{{hero_url}}" alt="" class="wp-image-{{hero_id}}"/></figure>
+<figure class="wp-block-image size-full som-surface-photo"><img src="{{hero_url}}" alt="${esc(spec.assetMeta.hero.alt)}" class="wp-image-{{hero_id}}"/></figure>
 <!-- /wp:image -->
 </div>
 <!-- /wp:column -->
@@ -4371,7 +4371,7 @@ function buildStainCarePageContent(spec) {
 <!-- wp:column {"verticalAlignment":"center","width":"52%","className":"som-fabric-media"} -->
 <div class="wp-block-column is-vertically-aligned-center som-fabric-media" style="flex-basis:52%">
 <!-- wp:image {"id":{{hero_id}},"sizeSlug":"full","linkDestination":"none","className":"som-fabric-photo"} -->
-<figure class="wp-block-image size-full som-fabric-photo"><img src="{{hero_url}}" alt="" class="wp-image-{{hero_id}}"/></figure>
+<figure class="wp-block-image size-full som-fabric-photo"><img src="{{hero_url}}" alt="${esc(spec.assetMeta.hero.alt)}" class="wp-image-{{hero_id}}"/></figure>
 <!-- /wp:image -->
 <!-- wp:group {"className":"som-care-note","backgroundColor":"white","style":{"border":{"radius":"8px"},"spacing":{"padding":{"top":"20px","right":"22px","bottom":"20px","left":"22px"},"margin":{"top":"16px"}}},"layout":{"type":"constrained"}} -->
 <div class="wp-block-group som-care-note has-white-background-color has-background" style="border-radius:8px;margin-top:16px;padding-top:20px;padding-right:22px;padding-bottom:20px;padding-left:22px">
@@ -4833,7 +4833,7 @@ ${galleryNoteCard}
 <!-- wp:group {"metadata":{"name":"Gallery hero"},"align":"full","className":"som-gallery-hero","backgroundColor":"cream","style":{"spacing":{"padding":{"top":"${galleryHeroPaddingTop}","right":"24px","bottom":"${galleryHeroPaddingBottom}","left":"24px"}}},"layout":{"type":"constrained","wideSize":"1180px"}} -->
 <div class="wp-block-group alignfull som-gallery-hero has-cream-background-color has-background" style="padding-top:${galleryHeroPaddingTop};padding-right:24px;padding-bottom:${galleryHeroPaddingBottom};padding-left:24px">
 <!-- wp:image {"id":{{hero_id}},"sizeSlug":"full","linkDestination":"none","align":"wide","className":"som-gallery-image"} -->
-<figure class="wp-block-image alignwide size-full som-gallery-image"><img src="{{hero_url}}" alt="" class="wp-image-{{hero_id}}"/></figure>
+<figure class="wp-block-image alignwide size-full som-gallery-image"><img src="{{hero_url}}" alt="${esc(spec.assetMeta.hero.alt)}" class="wp-image-{{hero_id}}"/></figure>
 <!-- /wp:image -->
 <!-- wp:columns {"align":"wide","className":"som-gallery-copy-row","verticalAlignment":"bottom","style":{"spacing":{"blockGap":{"left":"24px"}}}} -->
 <div class="wp-block-columns alignwide are-vertically-aligned-bottom som-gallery-copy-row">
@@ -5595,7 +5595,7 @@ function beforeAfterHeroMediaColumn(spec, transformationCopy) {
 <!-- wp:column {"width":"53%"${columnClassName}} -->
 <div class="${columnHtmlClass}" style="flex-basis:53%">
 <!-- wp:image {"id":{{hero_id}},"sizeSlug":"full","linkDestination":"none","className":"som-hero-photo"} -->
-<figure class="wp-block-image size-full som-hero-photo"><img src="{{hero_url}}" alt="" class="wp-image-{{hero_id}}"/></figure>
+<figure class="wp-block-image size-full som-hero-photo"><img src="{{hero_url}}" alt="${esc(spec.assetMeta.hero.alt)}" class="wp-image-{{hero_id}}"/></figure>
 <!-- /wp:image -->
 ${evidenceCards}
 </div>
@@ -5758,7 +5758,7 @@ function pollinatorSeasonPathTable() {
   ];
   return `
 <!-- wp:table {"className":"som-zone-map som-pollinator-map som-pollinator-season-table"} -->
-<figure class="wp-block-table som-zone-map som-pollinator-map som-pollinator-season-table"><table>${tableCaption("Season path notes")}<colgroup><col style="width:112px"><col></colgroup>${tableHead(["When", "Field note"])}<tbody>${rows.map(([season, note]) => `<tr><td>${esc(season)}</td><td>${esc(note)}</td></tr>`).join("")}</tbody></table></figure>
+<figure class="wp-block-table som-zone-map som-pollinator-map som-pollinator-season-table"><table>${tableCaption("Season path notes")}<colgroup><col style="width:112px"><col></colgroup>${tableHead(["When", "Field note"])}<tbody>${rows.map(([season, note]) => `<tr>${tableRowHeader(season)}<td>${esc(note)}</td></tr>`).join("")}</tbody></table></figure>
 <!-- /wp:table -->`.trim();
 }
 
@@ -5921,7 +5921,7 @@ function deckFinishSampleTable(proof) {
   ];
   return `
 <!-- wp:table {"className":"som-workshop-scope-table som-finish-sample-table"} -->
-<figure class="wp-block-table som-workshop-scope-table som-finish-sample-table"><table>${tableCaption("Finish sample checks")}<colgroup><col style="width:108px"><col></colgroup>${tableHead(["Sample", "What we check"])}<tbody>${rows.map(([label, note]) => `<tr><td>${esc(label)}</td><td>${esc(note)}</td></tr>`).join("")}</tbody></table></figure>
+<figure class="wp-block-table som-workshop-scope-table som-finish-sample-table"><table>${tableCaption("Finish sample checks")}<colgroup><col style="width:108px"><col></colgroup>${tableHead(["Sample", "What we check"])}<tbody>${rows.map(([label, note]) => `<tr>${tableRowHeader(label)}<td>${esc(note)}</td></tr>`).join("")}</tbody></table></figure>
 <!-- /wp:table -->`.trim();
 }
 
@@ -6472,7 +6472,7 @@ ${rows.map(({ summary, text }) => `
 function menuComparisonTable(spec) {
   const rows = spec.services.map((service, index) => {
     const process = spec.process[index] || spec.process[0] || {};
-    return `<tr><td>${esc(service.title)}</td><td>${esc(service.text)}</td><td>${esc(process.title || "Date fit")} - ${esc(process.text || spec.copy.quoteText)}</td></tr>`;
+    return `<tr>${tableRowHeader(service.title)}<td>${esc(service.text)}</td><td>${esc(process.title || "Date fit")} - ${esc(process.text || spec.copy.quoteText)}</td></tr>`;
   }).join("");
 
   return `
@@ -6485,7 +6485,7 @@ function waterServiceTable(spec) {
   const rows = spec.services.map((service, index) => {
     const proof = spec.proof[index] || spec.proof[0] || {};
     const process = spec.process[index] || spec.process[0] || {};
-    return `<tr><td>${esc(service.title)}</td><td>${esc(proof.stat || "Route check")}</td><td>${esc(process.text || service.text)}</td></tr>`;
+    return `<tr>${tableRowHeader(service.title)}<td>${esc(proof.stat || "Route check")}</td><td>${esc(process.text || service.text)}</td></tr>`;
   }).join("");
 
   return `
@@ -6537,7 +6537,7 @@ function transformationMethodTable(spec) {
   const rows = spec.services.map((item, index) => {
     const method = methods[index] || "Custom plan";
     const note = spec.process[index]?.text || item.text;
-    return `<tr><td>${esc(item.title)}</td><td>${esc(method)}</td><td>${esc(note)}</td></tr>`;
+    return `<tr>${tableRowHeader(item.title)}<td>${esc(method)}</td><td>${esc(note)}</td></tr>`;
   }).join("");
 
   return `
@@ -6580,7 +6580,7 @@ function serviceScopeTable(spec, options = {}) {
     const process = spec.process[index] || spec.process[0] || {};
     const proofText = [proof.stat, proof.label].filter(Boolean).join(" - ") || spec.copy.proofTitle;
     const note = process.text || service.text || spec.copy.quoteText;
-    return `<tr><td>${esc(service.title)}</td><td>${esc(proofText)}</td><td>${esc(note)}</td></tr>`;
+    return `<tr>${tableRowHeader(service.title)}<td>${esc(proofText)}</td><td>${esc(note)}</td></tr>`;
   }).join("");
 
   return `
@@ -7377,7 +7377,7 @@ function routeProcessCard(number, title, text, tone = {}) {
 }
 
 function routeTableRow(number, title, text) {
-  return `<tr><td>${number}</td><td>${esc(title)}</td><td>${esc(text)}</td></tr>`;
+  return `<tr>${tableRowHeader(number)}<td>${esc(title)}</td><td>${esc(text)}</td></tr>`;
 }
 
 function routeProofCard(stat, label) {
@@ -7482,6 +7482,10 @@ function tableCaption(value) {
 
 function tableHead(headings) {
   return `<thead><tr>${headings.map((heading) => `<th scope="col">${esc(heading)}</th>`).join("")}</tr></thead>`;
+}
+
+function tableRowHeader(value) {
+  return `<th scope="row">${esc(value)}</th>`;
 }
 
 function esc(value) {

@@ -1651,7 +1651,7 @@ function buildDetailGridSupportCss() {
 function buildScopedTableSupportCss(p, classNames) {
   const selectors = classNames.map((className) => `.${className}`).join(",\n");
   const tableSelectors = classNames.map((className) => `.${className} table`).join(",\n");
-  const firstCellSelectors = classNames.map((className) => `.${className} td:first-child`).join(",\n");
+  const firstCellSelectors = classNames.map((className) => `.${className} tbody th[scope="row"], .${className} td:first-child`).join(",\n");
 
   return `
 ${selectors}{
@@ -1892,7 +1892,7 @@ function buildVariantCustomCss(spec) {
   font-weight:900;
   text-transform:uppercase;
 }
-.som-route-table td:first-child{
+.som-route-table tbody th[scope="row"]{
   color:${spec.palette.grass};
   font-family:var(--wp--preset--font-family--accent);
   font-size:20px;
@@ -1968,6 +1968,7 @@ function buildVariantCustomCss(spec) {
   .som-route-table table,
   .som-route-table tbody,
   .som-route-table tr,
+  .som-route-table th,
   .som-route-table td{
     display:block;
     width:100%;
@@ -1987,7 +1988,7 @@ function buildVariantCustomCss(spec) {
     box-sizing:border-box;
     padding:5px 16px;
   }
-  .som-route-table td:first-child{
+  .som-route-table tbody th[scope="row"]{
     width:auto;
   }
   .som-route-quote-card{
@@ -2613,7 +2614,7 @@ function buildVariantCustomCss(spec) {
   letter-spacing:0;
   text-transform:uppercase;
 }
-.som-menu-table td:first-child{
+.som-menu-table tbody th[scope="row"]{
   color:${spec.palette.deepGreen};
   font-weight:900;
 }
@@ -2679,7 +2680,7 @@ function buildVariantCustomCss(spec) {
     margin-bottom:12px;
     overflow:hidden;
   }
-  .som-menu-table td{
+  .som-menu-table :where(th[scope="row"],td){
     border-bottom:1px solid color-mix(in srgb, ${spec.palette.deepGreen} 10%, transparent);
   }
   .som-menu-table td:last-child{
@@ -2972,7 +2973,7 @@ function buildVariantCustomCss(spec) {
   letter-spacing:0;
   text-transform:uppercase;
 }
-.som-water-table td:first-child{
+.som-water-table tbody th[scope="row"]{
   color:${spec.palette.deepGreen};
   font-weight:900;
 }
@@ -3032,7 +3033,7 @@ function buildVariantCustomCss(spec) {
     margin-bottom:12px;
     overflow:hidden;
   }
-  .som-water-table td{
+  .som-water-table :where(th[scope="row"],td){
     border-bottom:1px solid color-mix(in srgb, ${spec.palette.deepGreen} 10%, transparent);
   }
   .som-water-table td:last-child{
@@ -3506,7 +3507,7 @@ function buildVariantCustomCss(spec) {
   text-transform:uppercase;
   letter-spacing:0;
 }
-.som-receipt-table td:first-child{
+.som-receipt-table tbody th[scope="row"]{
   color:${spec.palette.deepGreen};
   font-weight:850;
 }
@@ -3605,23 +3606,29 @@ function buildVariantCustomCss(spec) {
   .som-receipt-table tr:first-child{
     border-top:0;
   }
+  .som-receipt-table tbody th[scope="row"],
   .som-receipt-table td{
     border:0;
     display:grid;
-    grid-template-columns:minmax(82px, 32%) minmax(0, 1fr);
+    grid-template-columns:minmax(68px, 24%) minmax(0, 1fr);
     gap:12px;
     padding:6px 14px;
     overflow-wrap:break-word;
   }
+  .som-receipt-table tbody th[scope="row"]::before,
   .som-receipt-table td::before{
     color:${spec.palette.grass};
     content:"";
+    display:inline-block;
     font-family:var(--wp--preset--font-family--accent);
     font-size:12px;
     font-weight:900;
+    margin-right:12px;
+    min-width:68px;
     text-transform:uppercase;
+    white-space:nowrap;
   }
-  .som-receipt-table td:nth-child(1)::before{
+  .som-receipt-table tbody th[scope="row"]::before{
     content:"Scope";
   }
   .som-receipt-table td:nth-child(2)::before{
@@ -3723,7 +3730,7 @@ function buildVariantCustomCss(spec) {
   letter-spacing:0;
   text-transform:uppercase;
 }
-.som-method-table td:first-child{
+.som-method-table tbody th[scope="row"]{
   color:${spec.palette.deepGreen};
   font-weight:900;
 }
@@ -3810,7 +3817,7 @@ function buildVariantCustomCss(spec) {
     margin-bottom:12px;
     overflow:hidden;
   }
-  .som-method-table td{
+  .som-method-table :where(th[scope="row"],td){
     border-bottom:1px solid color-mix(in srgb, ${spec.palette.deepGreen} 10%, transparent);
   }
   .som-method-table caption{
@@ -5262,7 +5269,7 @@ function buildAliasVisualCss(spec) {
   letter-spacing:0;
   text-transform:uppercase;
 }
-.som-turnover-table td:first-child{
+.som-turnover-table tbody th[scope="row"]{
   color:${p.deepGreen};
   font-weight:850;
 }
@@ -5380,15 +5387,16 @@ function buildAliasVisualCss(spec) {
   .som-turnover-table tr:first-child{
     border-top:0;
   }
+  .som-turnover-table tbody th[scope="row"],
   .som-turnover-table td{
     border:0;
     display:grid;
-    grid-template-columns:minmax(86px, 34%) minmax(0, 1fr);
+    grid-template-columns:minmax(68px, 24%) minmax(0, 1fr);
     gap:12px;
     padding:6px 14px;
     overflow-wrap:break-word;
   }
-  .som-turnover-table td:nth-child(1)::before{
+  .som-turnover-table tbody th[scope="row"]::before{
     content:"Zone";
   }
   .som-turnover-table td:nth-child(2)::before{
@@ -5397,12 +5405,17 @@ function buildAliasVisualCss(spec) {
   .som-turnover-table td:nth-child(3)::before{
     content:"Host note";
   }
+  .som-turnover-table tbody th[scope="row"]::before,
   .som-turnover-table td::before{
     color:${p.grass};
+    display:inline-block;
     font-family:var(--wp--preset--font-family--accent);
     font-size:12px;
     font-weight:900;
+    margin-right:12px;
+    min-width:68px;
     text-transform:uppercase;
+    white-space:nowrap;
   }
 }
 `.trim(),
