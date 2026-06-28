@@ -3655,23 +3655,26 @@ ${process.map((step, index) => menuStep(index + 1, step.title, step.text)).join(
 
 function buildSideRailServicePageContent(spec) {
   const { copy, contact } = spec;
-  const isEstimateRail = layoutVariantFor(spec) === "side-rail-estimate";
+  const layoutVariant = layoutVariantFor(spec);
+  const isEstimateRail = layoutVariant === "side-rail-estimate";
+  const isSoundConsole = layoutVariant === "soundcheck-console";
+  const railTone = sideRailTone(spec);
   const navLinks = navModelForSpec(spec, ["We take", "Sort path", "Quote"], ["take", "sort", "quote"]);
   const servicesAnchor = anchorAt(navLinks, 0, "take");
   const processAnchor = anchorAt(navLinks, 1, "sort");
   const quoteAnchor = anchorAt(navLinks, 2, "quote");
-  const serviceCardVerb = isEstimateRail ? "Setup" : "Load";
+  const serviceCardVerb = railTone.serviceCardLabel;
   const services = spec.services.map((item, index) => haulCard(index + 1, item.title, item.text, serviceCardVerb)).join("\n");
   const process = spec.process.map((item, index) => haulStep(index + 1, item.title, item.text)).join("\n");
   const proof = spec.proof.map((item) => haulProof(item.stat, item.label)).join("\n");
-  const ticket = haulTicket(spec.proof, isEstimateRail ? "Setup notes" : "Haul ticket");
+  const ticket = haulTicket(spec.proof, railTone.ticket);
   const trustQuote = corePlanIncludes(spec, "quote")
     ? serviceTrustQuote(spec, "som-side-rail-quote")
     : "";
-  const heroMetadataName = isEstimateRail ? "Consult hero" : "Haul hero";
-  const proofMetadataName = isEstimateRail ? "Signal proof" : "Donation proof";
-  const servicesMetadataName = isEstimateRail ? "Setup scope" : "Accepted items";
-  const processMetadataName = isEstimateRail ? "Setup path" : "Sort path";
+  const heroMetadataName = isSoundConsole ? "Soundcheck hero" : isEstimateRail ? "Consult hero" : "Haul hero";
+  const proofMetadataName = isSoundConsole ? "Event proof" : isEstimateRail ? "Signal proof" : "Donation proof";
+  const servicesMetadataName = isSoundConsole ? "Sound packages" : isEstimateRail ? "Setup scope" : "Accepted items";
+  const processMetadataName = isSoundConsole ? "Soundcheck path" : isEstimateRail ? "Setup path" : "Sort path";
   const heroBackground = isEstimateRail ? "mist" : "deep-green";
   const heroHeadingColor = isEstimateRail ? "deep-green" : "white";
   const heroBodyColor = isEstimateRail ? "soil" : "cream";
@@ -3689,10 +3692,10 @@ function buildSideRailServicePageContent(spec) {
 <!-- wp:group {"className":"som-side-rail","backgroundColor":"white","style":{"spacing":{"padding":{"top":"28px","right":"24px","bottom":"28px","left":"24px"}}},"layout":{"type":"constrained"}} -->
 <div class="wp-block-group som-side-rail has-white-background-color has-background" style="padding-top:28px;padding-right:24px;padding-bottom:28px;padding-left:24px">
 <!-- wp:site-logo {"width":230,"shouldSyncIcon":true} /-->
-<!-- wp:paragraph {"textColor":"soil","className":"som-rail-note","style":{"typography":{"fontSize":"16px","lineHeight":"1.45","fontStyle":"normal","fontWeight":"700"},"spacing":{"margin":{"top":"24px","bottom":"24px"}}}} -->
-<p class="som-rail-note has-soil-color has-text-color" style="margin-top:24px;margin-bottom:24px;font-size:16px;font-style:normal;font-weight:700;line-height:1.45">${esc(copy.introText)}</p>
+<!-- wp:paragraph {"textColor":"${railTone.railNoteColor}","className":"som-rail-note","style":{"typography":{"fontSize":"${railTone.railNoteFontSize}","lineHeight":"1.45","fontStyle":"normal","fontWeight":"700"},"spacing":{"margin":{"top":"24px","bottom":"24px"}}}} -->
+<p class="som-rail-note has-${railTone.railNoteColor}-color has-text-color" style="margin-top:24px;margin-bottom:24px;font-size:${railTone.railNoteFontSize};font-style:normal;font-weight:700;line-height:1.45">${esc(railTone.railNoteText)}</p>
 <!-- /wp:paragraph -->
-<!-- wp:navigation {"overlayMenu":"mobile","className":"som-rail-nav","layout":{"type":"flex","orientation":"vertical","justifyContent":"left"},"style":{"typography":{"fontSize":"16px","fontStyle":"normal","fontWeight":"800"}}} -->
+<!-- wp:navigation {"overlayMenu":"mobile","className":"som-rail-nav","textColor":"${railTone.railNavColor}","layout":{"type":"flex","orientation":"vertical","justifyContent":"left"},"style":{"typography":{"fontSize":"16px","fontStyle":"normal","fontWeight":"800"}}} -->
 ${navigationLinkBlocks(navLinks)}
 <!-- /wp:navigation -->
 <!-- wp:buttons {"className":"som-rail-actions","style":{"spacing":{"blockGap":"10px","margin":{"top":"28px"}}},"layout":{"type":"flex","orientation":"vertical"}} -->
@@ -4081,6 +4084,48 @@ ${navigationLinkBlocks(navLinks)}
 <!-- /wp:group -->
 </div>
 <!-- /wp:group -->`.trim();
+}
+
+function sideRailTone(spec) {
+  const variant = layoutVariantFor(spec);
+
+  if (variant === "soundcheck-console") {
+    return {
+      serviceCardLabel: "Package",
+      railNoteText: spec.tagline || spec.copy.introText,
+      railNoteColor: "mist",
+      railNoteFontSize: "15px",
+      railNavColor: "cream",
+      ticket: {
+        label: "Soundcheck notes",
+        backgroundColor: "mist",
+        labelColor: "deep-green",
+        lineColor: "deep-green",
+        radius: "8px",
+        marginTop: "24px"
+      }
+    };
+  }
+
+  if (variant === "side-rail-estimate") {
+    return {
+      serviceCardLabel: "Setup",
+      railNoteText: spec.copy.introText,
+      railNoteColor: "soil",
+      railNoteFontSize: "16px",
+      railNavColor: "deep-green",
+      ticket: "Setup notes"
+    };
+  }
+
+  return {
+    serviceCardLabel: "Load",
+    railNoteText: spec.copy.introText,
+    railNoteColor: "soil",
+    railNoteFontSize: "16px",
+    railNavColor: "deep-green",
+    ticket: "Haul ticket"
+  };
 }
 
 function buildSurfaceSeasonalPageContent(spec) {
@@ -5602,20 +5647,37 @@ function floatingProofCell(stat, label) {
 
 function zoneMap(proof, spec) {
   const items = proof.slice(0, 3);
-  const cells = layoutVariantFor(spec) === "pollinator-season-board"
+  const variant = layoutVariantFor(spec);
+  const cells = variant === "pollinator-season-board"
     ? [
       ["Sun", "sun"],
       ["Soil", "grass"],
       ["Bloom", "cream"],
       ["Edge", "leaf"]
     ]
+    : variant === "organizing-zone-board"
+      ? [
+        ["Pantry", "sun"],
+        ["Closet", "grass"],
+        ["Backstock", "cream"],
+        ["Daily reach", "leaf"]
+      ]
     : [
       ["Tools", "sun"],
       ["Sports", "grass"],
       ["Seasonal", "cream"],
       ["Overflow", "leaf"]
     ];
-  const mapLabel = layoutVariantFor(spec) === "pollinator-season-board" ? "Bloom board" : "Zone map";
+  const mapLabel = variant === "pollinator-season-board"
+    ? "Bloom board"
+    : variant === "organizing-zone-board"
+      ? "Shelf map"
+      : "Zone map";
+
+  const proofList = `
+<!-- wp:list {"className":"som-zone-proof-list","textColor":"cream","style":{"typography":{"fontSize":"14px","lineHeight":"1.45","fontStyle":"normal","fontWeight":"850"},"spacing":{"padding":{"left":"18px"},"margin":{"top":"12px","bottom":"0"}}}} -->
+<ul class="som-zone-proof-list has-cream-color has-text-color" style="margin-top:12px;margin-bottom:0;padding-left:18px;font-size:14px;font-style:normal;font-weight:850;line-height:1.45">${items.map((item) => `<!-- wp:list-item --><li><strong>${esc(item.stat)}</strong> / ${esc(item.label)}</li><!-- /wp:list-item -->`).join("")}</ul>
+<!-- /wp:list -->`.trim();
 
   return `
 <!-- wp:group {"className":"som-zone-map","backgroundColor":"soil","style":{"border":{"radius":"8px"},"spacing":{"padding":{"top":"18px","right":"18px","bottom":"16px","left":"18px"},"margin":{"top":"26px"}}},"layout":{"type":"constrained"}} -->
@@ -5635,10 +5697,7 @@ ${cells.map(([label, color]) => `
 <!-- /wp:column -->`.trim()).join("\n")}
 </div>
 <!-- /wp:columns -->
-${items.map((item) => `
-<!-- wp:paragraph {"className":"som-ticket-line","textColor":"cream","style":{"typography":{"fontSize":"14px","lineHeight":"1.45","fontStyle":"normal","fontWeight":"850"},"spacing":{"margin":{"top":"0","bottom":"7px"}}}} -->
-<p class="som-ticket-line has-cream-color has-text-color" style="margin-top:0;margin-bottom:7px;font-size:14px;font-style:normal;font-weight:850;line-height:1.45"><strong>${esc(item.stat)}</strong> / ${esc(item.label)}</p>
-<!-- /wp:paragraph -->`.trim()).join("\n")}
+${proofList}
 </div>
 <!-- /wp:group -->`.trim();
 }
@@ -6879,19 +6938,29 @@ function haulCard(number, title, text, label = "Load") {
 <!-- /wp:column -->`.trim();
 }
 
-function haulTicket(items, label = "Haul ticket") {
-  const rows = items.slice(0, 3).map((item) => `
-<!-- wp:paragraph {"className":"som-ticket-line","textColor":"cream","style":{"typography":{"fontSize":"14px","lineHeight":"1.45","fontStyle":"normal","fontWeight":"800"},"spacing":{"margin":{"top":"0","bottom":"8px"}}}} -->
-<p class="som-ticket-line has-cream-color has-text-color" style="margin-top:0;margin-bottom:8px;font-size:14px;font-style:normal;font-weight:800;line-height:1.45"><strong>${esc(item.stat)}</strong> / ${esc(item.label)}</p>
-<!-- /wp:paragraph -->`).join("\n");
+function haulTicket(items, options = "Haul ticket") {
+  const config = typeof options === "string" ? { label: options } : options;
+  const {
+    label = "Haul ticket",
+    backgroundColor = "grass",
+    labelColor = "sun",
+    lineColor = "cream",
+    radius = "18px",
+    marginTop = "28px"
+  } = config;
+  const rows = items.slice(0, 3)
+    .map((item) => `<!-- wp:list-item --><li><strong>${esc(item.stat)}</strong> / ${esc(item.label)}</li><!-- /wp:list-item -->`)
+    .join("");
 
   return `
-<!-- wp:group {"className":"som-haul-ticket","backgroundColor":"grass","style":{"border":{"radius":"18px"},"spacing":{"padding":{"top":"18px","right":"18px","bottom":"10px","left":"18px"},"margin":{"top":"28px"}}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group som-haul-ticket has-grass-background-color has-background" style="border-radius:18px;margin-top:28px;padding-top:18px;padding-right:18px;padding-bottom:10px;padding-left:18px">
-<!-- wp:paragraph {"textColor":"sun","style":{"typography":{"fontSize":"13px","fontStyle":"normal","fontWeight":"900","textTransform":"uppercase","letterSpacing":"0px"},"spacing":{"margin":{"bottom":"10px"}}}} -->
-<p class="has-sun-color has-text-color" style="margin-bottom:10px;font-size:13px;font-style:normal;font-weight:900;letter-spacing:0px;text-transform:uppercase">${esc(label)}</p>
+<!-- wp:group {"className":"som-haul-ticket","backgroundColor":"${backgroundColor}","style":{"border":{"radius":"${radius}"},"spacing":{"padding":{"top":"18px","right":"18px","bottom":"10px","left":"18px"},"margin":{"top":"${marginTop}"}}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group som-haul-ticket has-${backgroundColor}-background-color has-background" style="border-radius:${radius};margin-top:${marginTop};padding-top:18px;padding-right:18px;padding-bottom:10px;padding-left:18px">
+<!-- wp:paragraph {"textColor":"${labelColor}","style":{"typography":{"fontSize":"13px","fontStyle":"normal","fontWeight":"900","textTransform":"uppercase","letterSpacing":"0px"},"spacing":{"margin":{"bottom":"10px"}}}} -->
+<p class="has-${labelColor}-color has-text-color" style="margin-bottom:10px;font-size:13px;font-style:normal;font-weight:900;letter-spacing:0px;text-transform:uppercase">${esc(label)}</p>
 <!-- /wp:paragraph -->
-${rows}
+<!-- wp:list {"className":"som-ticket-list","textColor":"${lineColor}","style":{"typography":{"fontSize":"14px","lineHeight":"1.45","fontStyle":"normal","fontWeight":"800"},"spacing":{"padding":{"left":"18px"},"margin":{"top":"0","bottom":"0"}}}} -->
+<ul class="som-ticket-list has-${lineColor}-color has-text-color" style="margin-top:0;margin-bottom:0;padding-left:18px;font-size:14px;font-style:normal;font-weight:800;line-height:1.45">${rows}</ul>
+<!-- /wp:list -->
 </div>
 <!-- /wp:group -->`.trim();
 }

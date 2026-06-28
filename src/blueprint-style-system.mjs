@@ -2396,7 +2396,7 @@ function buildVariantCustomCss(spec) {
   border:1px solid color-mix(in srgb, ${spec.palette.sun} 34%, transparent);
   box-shadow:0 18px 44px rgba(0,0,0,.14);
 }
-.som-haul-ticket strong{
+.som-haul-ticket:not(.som-sound-ticket) strong{
   color:${spec.palette.sun};
   font-weight:900;
 }
