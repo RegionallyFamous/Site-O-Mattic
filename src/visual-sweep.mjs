@@ -387,7 +387,7 @@ async function inspectScenario(browser, url, scenario, screenshot, spec) {
       const bodyRect = rectFor(document.body);
       const viewport = { width: window.innerWidth, height: window.innerHeight };
       const overflowers = [...document.querySelectorAll("body *")]
-        .filter((element) => element.scrollWidth > element.clientWidth + 2)
+        .filter((element) => !visuallyHiddenElement(element) && element.scrollWidth > element.clientWidth + 2)
         .slice(0, 10)
         .map((element) => String(element.className || element.tagName.toLowerCase()));
 
@@ -866,6 +866,31 @@ async function inspectScenario(browser, url, scenario, screenshot, spec) {
           && style.display !== "none"
           && rect.width > 0
           && rect.height > 0);
+      }
+
+      function visuallyHiddenElement(element) {
+        let current = element;
+        while (current && current !== document.body && current.nodeType === Node.ELEMENT_NODE) {
+          if (visuallyHiddenSelf(current)) {
+            return true;
+          }
+          current = current.parentElement;
+        }
+        return false;
+      }
+
+      function visuallyHiddenSelf(element) {
+        const style = window.getComputedStyle(element);
+        const rect = rectFor(element);
+        if (!rect || style.display === "none" || style.visibility === "hidden") {
+          return true;
+        }
+        const clipped = style.clip !== "auto" || style.clipPath !== "none";
+        return Boolean(clipped
+          && rect.width <= 2
+          && rect.height <= 2
+          && style.position === "absolute"
+          && style.overflow === "hidden");
       }
 
       async function nextPaint() {

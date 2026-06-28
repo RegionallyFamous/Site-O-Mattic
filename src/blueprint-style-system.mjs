@@ -1359,6 +1359,7 @@ function buildSharedPolishCss(spec) {
     includeDetailGrid,
     tableSupportClasses
   });
+  const accessibleHiddenTableHeadCss = buildAccessibleHiddenTableHeadCss();
 
   return `
 html{
@@ -1528,6 +1529,18 @@ ${detailGridCss}
   background:color-mix(in srgb, ${p.sun} 20%, ${p.white});
 }
 ${scopedTableCss}
+.som-section-intro{
+  max-inline-size:760px;
+  margin-left:0!important;
+  margin-right:auto!important;
+}
+.som-section-intro > :where(h1,h2,h3,p){
+  margin-left:0!important;
+  margin-right:0!important;
+}
+.som-section-intro > p{
+  max-inline-size:760px;
+}
 .wp-block-quote,
 .wp-block-pullquote{
   border-color:${p.sun};
@@ -1547,6 +1560,7 @@ ${mobileSupportCss}
     overflow-wrap:break-word;
   }
 }
+${accessibleHiddenTableHeadCss}
 `.trim();
 }
 
@@ -1668,6 +1682,57 @@ ${firstCellSelectors}{
 }`.trim();
 }
 
+function buildAccessibleHiddenTableHeadCss() {
+  const tableClasses = [
+    "som-workshop-scope-table",
+    "som-detail-scope-table",
+    "som-surface-scope-table",
+    "som-route-plan-table",
+    "som-route-table",
+    "som-menu-table",
+    "som-water-table",
+    "som-receipt-table",
+    "som-method-table",
+    "som-turnover-table"
+  ];
+  const headSelectors = tableClasses.map((className) => `.${className} thead`).join(",\n");
+  const childSelectors = tableClasses.flatMap((className) => [
+    `.${className} thead tr`,
+    `.${className} thead th`
+  ]).join(",\n");
+  return `
+@media (max-width:900px){
+${headSelectors}{
+  border:0!important;
+  clip:rect(0 0 0 0)!important;
+  clip-path:inset(50%)!important;
+  height:1px!important;
+  margin:-1px!important;
+  max-height:1px!important;
+  max-width:1px!important;
+  overflow:hidden!important;
+  padding:0!important;
+  position:absolute!important;
+  white-space:nowrap!important;
+  width:1px!important;
+}
+${childSelectors}{
+  border:0!important;
+  box-sizing:border-box!important;
+  display:block!important;
+  height:1px!important;
+  line-height:1!important;
+  margin:0!important;
+  max-height:1px!important;
+  max-width:1px!important;
+  overflow:hidden!important;
+  padding:0!important;
+  white-space:nowrap!important;
+  width:1px!important;
+}
+}`.trim();
+}
+
 function buildSharedMobileSupportCss(p, options) {
   const chunks = [];
   if (options.includeSectionAnchor) {
@@ -1731,7 +1796,16 @@ ${tableParts}{
     display:block;
   }
 ${headParts}{
-    display:none;
+    border:0;
+    clip:rect(0 0 0 0);
+    clip-path:inset(50%);
+    height:1px;
+    margin:-1px;
+    overflow:hidden;
+    padding:0;
+    position:absolute;
+    white-space:nowrap;
+    width:1px;
   }
 ${rowParts}{
     border:1px solid color-mix(in srgb, ${p.deepGreen} 12%, transparent);
@@ -1974,7 +2048,16 @@ function buildVariantCustomCss(spec) {
     width:100%;
   }
   .som-route-table thead{
-    display:none;
+    border:0;
+    clip:rect(0 0 0 0);
+    clip-path:inset(50%);
+    height:1px;
+    margin:-1px;
+    overflow:hidden;
+    padding:0;
+    position:absolute;
+    white-space:nowrap;
+    width:1px;
   }
   .som-route-table tr{
     border-bottom:1px solid color-mix(in srgb, ${spec.palette.deepGreen} 14%, transparent);
@@ -2196,8 +2279,15 @@ function buildVariantCustomCss(spec) {
 .som-risk-hero .wp-block-cover__inner-container{
   width:min(1180px,100%);
 }
+.som-risk-hero .wp-block-cover__background{
+  background:linear-gradient(90deg, color-mix(in srgb, ${spec.palette.deepGreen} 88%, transparent), color-mix(in srgb, ${spec.palette.deepGreen} 62%, transparent) 48%, color-mix(in srgb, ${spec.palette.deepGreen} 42%, transparent))!important;
+  opacity:1!important;
+}
 .som-risk-hero .wp-block-cover__image-background{
   object-position:52% 50%;
+}
+.som-risk-copy{
+  text-shadow:0 2px 18px rgba(0,0,0,.32);
 }
 .som-risk-panel,
 .som-risk-area-note,
@@ -2399,7 +2489,7 @@ function buildVariantCustomCss(spec) {
     return `
 .som-side-rail-shell{
   display:grid;
-  grid-template-columns:minmax(250px, 300px) minmax(0, 1fr);
+  grid-template-columns:minmax(250px, 280px) minmax(0, 1fr);
   align-items:start;
   min-height:100vh;
 }
@@ -2415,6 +2505,9 @@ function buildVariantCustomCss(spec) {
 .som-side-rail .wp-block-site-logo{
   margin-bottom:0;
 }
+.som-side-rail .wp-block-site-logo img{
+  max-width:min(230px, 62vw);
+}
 .som-side-rail .wp-block-navigation__container{
   align-items:flex-start;
   gap:8px;
@@ -2427,6 +2520,10 @@ function buildVariantCustomCss(spec) {
   background:color-mix(in srgb, ${spec.palette.sun} 22%, transparent);
   text-decoration:none;
 }
+.som-rail-actions .wp-block-button__link{
+  font-size:15px;
+  white-space:nowrap;
+}
 .som-side-main{
   min-width:0;
 }
@@ -2435,11 +2532,11 @@ function buildVariantCustomCss(spec) {
 }
 .som-haul-photo img{
   width:100%;
-  min-height:500px;
-  aspect-ratio:4/3;
+  min-height:520px;
+  aspect-ratio:16/11;
   object-fit:cover;
   object-position:center center;
-  border-radius:30px;
+  border-radius:8px;
   box-shadow:0 28px 80px rgba(0,0,0,.24);
 }
 .som-donation-strip{
@@ -2716,7 +2813,16 @@ function buildVariantCustomCss(spec) {
     display:block;
   }
   .som-menu-table thead{
-    display:none;
+    border:0;
+    clip:rect(0 0 0 0);
+    clip-path:inset(50%);
+    height:1px;
+    margin:-1px;
+    overflow:hidden;
+    padding:0;
+    position:absolute;
+    white-space:nowrap;
+    width:1px;
   }
   .som-menu-table tr{
     border:1px solid color-mix(in srgb, ${spec.palette.deepGreen} 12%, transparent);
@@ -3069,7 +3175,16 @@ function buildVariantCustomCss(spec) {
     display:block;
   }
   .som-water-table thead{
-    display:none;
+    border:0;
+    clip:rect(0 0 0 0);
+    clip-path:inset(50%);
+    height:1px;
+    margin:-1px;
+    overflow:hidden;
+    padding:0;
+    position:absolute;
+    white-space:nowrap;
+    width:1px;
   }
   .som-water-table tr{
     border:1px solid color-mix(in srgb, ${spec.palette.deepGreen} 12%, transparent);
@@ -3656,7 +3771,16 @@ function buildVariantCustomCss(spec) {
     box-sizing:border-box;
   }
   .som-receipt-table thead{
-    display:none;
+    border:0;
+    clip:rect(0 0 0 0);
+    clip-path:inset(50%);
+    height:1px;
+    margin:-1px;
+    overflow:hidden;
+    padding:0;
+    position:absolute;
+    white-space:nowrap;
+    width:1px;
   }
   .som-receipt-table tr{
     border-top:1px dashed color-mix(in srgb, ${spec.palette.deepGreen} 18%, transparent);
@@ -3868,7 +3992,16 @@ function buildVariantCustomCss(spec) {
     display:block;
   }
   .som-method-table thead{
-    display:none;
+    border:0;
+    clip:rect(0 0 0 0);
+    clip-path:inset(50%);
+    height:1px;
+    margin:-1px;
+    overflow:hidden;
+    padding:0;
+    position:absolute;
+    white-space:nowrap;
+    width:1px;
   }
   .som-method-table tr{
     border:1px solid color-mix(in srgb, ${spec.palette.deepGreen} 12%, transparent);
@@ -5022,6 +5155,7 @@ function buildAliasVisualCss(spec) {
 .som-sound-rail .wp-block-site-logo{
   display:inline-flex!important;
   align-items:center!important;
+  width:230px!important;
   max-width:min(230px, 64vw)!important;
   padding:10px 12px!important;
   border-radius:8px!important;
@@ -5040,7 +5174,7 @@ function buildAliasVisualCss(spec) {
 }
 .som-sound-photo img{
   aspect-ratio:16/9;
-  min-height:420px;
+  min-height:455px;
   border-radius:4px;
 }
 .som-sound-ticket{
@@ -5198,15 +5332,15 @@ function buildAliasVisualCss(spec) {
     "pollinator-season-board": `
 .som-pollinator-hero{
   background:
-    linear-gradient(90deg, color-mix(in srgb, ${p.deepGreen} 8%, transparent) 1px, transparent 1px),
-    linear-gradient(0deg, color-mix(in srgb, ${p.deepGreen} 5%, transparent) 1px, transparent 1px),
-    linear-gradient(135deg, ${p.cream}, color-mix(in srgb, ${p.leaf} 14%, ${p.white}));
-  background-size:36px 36px, 36px 36px, auto;
+    linear-gradient(90deg, color-mix(in srgb, ${p.deepGreen} 9%, transparent) 1px, transparent 1px),
+    linear-gradient(0deg, color-mix(in srgb, ${p.deepGreen} 6%, transparent) 1px, transparent 1px),
+    linear-gradient(135deg, color-mix(in srgb, ${p.white} 82%, ${p.cream}), color-mix(in srgb, ${p.leaf} 12%, ${p.white}));
+  background-size:32px 32px, 32px 32px, auto;
   background-color:${p.cream}!important;
 }
 .som-pollinator-hero h1{
   color:${p.deepGreen}!important;
-  font-size:clamp(40px, 5.2vw, 70px)!important;
+  font-size:clamp(40px, 5vw, 66px)!important;
   line-height:1.04!important;
   text-shadow:none!important;
 }
@@ -5214,14 +5348,30 @@ function buildAliasVisualCss(spec) {
   color:${p.grass}!important;
 }
 .som-pollinator-photo img{
-  aspect-ratio:16/12;
-  min-height:540px;
+  aspect-ratio:4/3;
+  min-height:470px;
   object-position:50% 54%;
-  border-radius:8px 8px 86px 8px;
+  border-radius:8px 8px 58px 8px;
+  box-shadow:0 22px 64px rgba(36,20,61,.16);
+}
+.som-pollinator-season-pills{
+  gap:10px;
+}
+.som-pollinator-season-pill{
+  background:color-mix(in srgb, ${p.white} 84%, ${p.mist});
+  border:1px solid color-mix(in srgb, ${p.deepGreen} 14%, transparent);
+  border-radius:8px;
+  flex:1 1 142px;
 }
 .som-pollinator-map{
-  border-color:color-mix(in srgb, ${p.sun} 48%, transparent);
+  background:${p.white};
+  border-color:color-mix(in srgb, ${p.deepGreen} 58%, transparent);
+  margin-top:28px;
   box-shadow:none;
+}
+.som-pollinator-map th,
+.som-pollinator-map td{
+  border-color:color-mix(in srgb, ${p.deepGreen} 28%, transparent);
 }
 .som-pollinator-anchor-strip{
   border-top:1px solid color-mix(in srgb, ${p.deepGreen} 12%, transparent);
@@ -5262,6 +5412,9 @@ function buildAliasVisualCss(spec) {
     min-height:210px;
     aspect-ratio:16/9;
     border-radius:8px 8px 42px 8px;
+  }
+  .som-pollinator-season-pill{
+    flex-basis:100%;
   }
 }`.trim(),
     "turnover-receipt-board": `
@@ -5452,7 +5605,16 @@ function buildAliasVisualCss(spec) {
     box-sizing:border-box;
   }
   .som-turnover-table thead{
-    display:none;
+    border:0;
+    clip:rect(0 0 0 0);
+    clip-path:inset(50%);
+    height:1px;
+    margin:-1px;
+    overflow:hidden;
+    padding:0;
+    position:absolute;
+    white-space:nowrap;
+    width:1px;
   }
   .som-turnover-table tr{
     border-top:1px dashed color-mix(in srgb, ${p.deepGreen} 18%, transparent);

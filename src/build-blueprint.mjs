@@ -2658,7 +2658,7 @@ ${navigationLinkBlocks(navLinks)}
 <!-- /wp:button -->
 </div>
 <!-- /wp:buttons -->
-${isPollinatorSeasonBoard ? pollinatorSeasonPathTable() : zoneMap(proof, spec)}
+${isPollinatorSeasonBoard ? pollinatorSeasonPills(proof) : zoneMap(proof, spec)}
 </div>
 <!-- /wp:column -->`.trim();
   const heroImageColumn = `
@@ -2748,6 +2748,7 @@ ${proof.map((item) => zoneProof(item.stat, item.label)).join("\n")}
 <!-- /wp:column -->
 </div>
 <!-- /wp:columns -->
+${isPollinatorSeasonBoard ? pollinatorSeasonPathTable() : ""}
 <!-- wp:columns {"style":{"spacing":{"blockGap":{"left":"20px"}}}} -->
 <div class="wp-block-columns">
 ${services.map((service, index) => zoneCard(index + 1, service.title, service.text)).join("\n")}
@@ -3676,8 +3677,8 @@ function buildSideRailServicePageContent(spec) {
   const heroHeadingColor = isEstimateRail ? "deep-green" : "white";
   const heroBodyColor = isEstimateRail ? "soil" : "cream";
   const heroOutlineColor = isEstimateRail ? "deep-green" : "white";
-  const heroCopyWidth = isEstimateRail ? "53%" : "45%";
-  const heroPhotoWidth = isEstimateRail ? "47%" : "55%";
+  const heroCopyWidth = isEstimateRail ? "50%" : isSoundConsole ? "43%" : "44%";
+  const heroPhotoWidth = isEstimateRail ? "50%" : isSoundConsole ? "57%" : "56%";
   const heroCopyStyle = isEstimateRail ? `flex-basis:${heroCopyWidth};order:2` : `flex-basis:${heroCopyWidth}`;
   const heroPhotoStyle = isEstimateRail ? `flex-basis:${heroPhotoWidth};order:1` : `flex-basis:${heroPhotoWidth}`;
   const heroColumnGap = isEstimateRail ? "34px" : "42px";
@@ -3710,8 +3711,8 @@ ${navigationLinkBlocks(navLinks)}
 
 <!-- wp:group {"className":"som-side-main","layout":{"type":"default"}} -->
 <div class="wp-block-group som-side-main">
-<!-- wp:group {"metadata":{"name":"${heroMetadataName}"},"className":"som-haul-hero","backgroundColor":"${heroBackground}","style":{"spacing":{"padding":{"top":"62px","right":"42px","bottom":"62px","left":"42px"}}},"layout":{"type":"constrained","wideSize":"1120px"}} -->
-<div class="wp-block-group som-haul-hero has-${heroBackground}-background-color has-background" style="padding-top:62px;padding-right:42px;padding-bottom:62px;padding-left:42px">
+<!-- wp:group {"metadata":{"name":"${heroMetadataName}"},"className":"som-haul-hero","backgroundColor":"${heroBackground}","style":{"spacing":{"padding":{"top":"56px","right":"42px","bottom":"56px","left":"42px"}}},"layout":{"type":"constrained","wideSize":"1160px"}} -->
+<div class="wp-block-group som-haul-hero has-${heroBackground}-background-color has-background" style="padding-top:56px;padding-right:42px;padding-bottom:56px;padding-left:42px">
 <!-- wp:columns {"align":"wide","verticalAlignment":"center","style":{"spacing":{"blockGap":{"left":"${heroColumnGap}"}}}} -->
 <div class="wp-block-columns alignwide are-vertically-aligned-center">
 <!-- wp:column {"verticalAlignment":"center","width":"${heroCopyWidth}"} -->
@@ -4107,7 +4108,7 @@ function sideRailTone(spec) {
   if (variant === "side-rail-estimate") {
     return {
       serviceCardLabel: "Setup",
-      railNoteText: spec.copy.introText,
+      railNoteText: spec.tagline || spec.copy.introText,
       railNoteColor: "soil",
       railNoteFontSize: "16px",
       railNavColor: "deep-green",
@@ -4117,7 +4118,7 @@ function sideRailTone(spec) {
 
   return {
     serviceCardLabel: "Load",
-    railNoteText: spec.copy.introText,
+    railNoteText: spec.tagline || spec.copy.introText,
     railNoteColor: "soil",
     railNoteFontSize: "16px",
     railNavColor: "deep-green",
@@ -5757,6 +5758,26 @@ function pollinatorSeasonPathTable() {
 <!-- wp:table {"className":"som-zone-map som-pollinator-map som-pollinator-season-table"} -->
 <figure class="wp-block-table som-zone-map som-pollinator-map som-pollinator-season-table"><table>${tableCaption("Season path notes")}<colgroup><col style="width:112px"><col></colgroup>${tableHead(["When", "Field note"])}<tbody>${rows.map(([season, note]) => `<tr>${tableRowHeader(season)}<td>${esc(note)}</td></tr>`).join("")}</tbody></table></figure>
 <!-- /wp:table -->`.trim();
+}
+
+function pollinatorSeasonPills(proof) {
+  const items = proof.slice(0, 3).map((item) => `
+<!-- wp:group {"className":"som-pollinator-season-pill","style":{"spacing":{"padding":{"top":"10px","right":"12px","bottom":"10px","left":"12px"}}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group som-pollinator-season-pill" style="padding-top:10px;padding-right:12px;padding-bottom:10px;padding-left:12px">
+<!-- wp:paragraph {"textColor":"deep-green","style":{"typography":{"fontSize":"13px","fontStyle":"normal","fontWeight":"900","textTransform":"uppercase","letterSpacing":"0px"},"spacing":{"margin":{"bottom":"3px"}}}} -->
+<p class="has-deep-green-color has-text-color" style="margin-bottom:3px;font-size:13px;font-style:normal;font-weight:900;letter-spacing:0px;text-transform:uppercase">${esc(item.stat)}</p>
+<!-- /wp:paragraph -->
+<!-- wp:paragraph {"textColor":"soil","style":{"typography":{"fontSize":"14px","lineHeight":"1.35"},"spacing":{"margin":{"top":"0","bottom":"0"}}}} -->
+<p class="has-soil-color has-text-color" style="margin-top:0;margin-bottom:0;font-size:14px;line-height:1.35">${esc(item.label)}</p>
+<!-- /wp:paragraph -->
+</div>
+<!-- /wp:group -->`).join("\n");
+  return `
+<!-- wp:group {"className":"som-pollinator-season-pills","style":{"spacing":{"margin":{"top":"20px"}}},"layout":{"type":"flex","flexWrap":"wrap"}} -->
+<div class="wp-block-group som-pollinator-season-pills" style="margin-top:20px">
+${items}
+</div>
+<!-- /wp:group -->`.trim();
 }
 
 function zoneProof(stat, label) {
