@@ -354,11 +354,13 @@ async function main() {
   const spec = JSON.parse(await fs.readFile(specPath, "utf8"));
   const outDir = path.join(BLUEPRINT_OUTPUT_ROOT, spec.slug);
   const outAssets = path.join(outDir, "assets");
+  const preservedInspectionAssets = await readPreservedInspectionAssets(outAssets);
 
   await fs.rm(outDir, { recursive: true, force: true });
   await fs.mkdir(outAssets, { recursive: true });
 
   const assets = await copyAssets(spec, outAssets);
+  await restorePreservedInspectionAssets(preservedInspectionAssets, outAssets);
   const assetManifest = buildAssetManifest(spec, assets);
   const blueprint = buildBlueprint(spec, assets);
 
@@ -396,6 +398,28 @@ async function copyAssets(spec, outAssets) {
   }
 
   return mapped;
+}
+
+async function readPreservedInspectionAssets(outAssets) {
+  const preserved = [];
+  for (const fileName of ["screenshot.png"]) {
+    const sourcePath = path.join(outAssets, fileName);
+    try {
+      preserved.push({
+        fileName,
+        bytes: await fs.readFile(sourcePath)
+      });
+    } catch {
+      // Fresh builds in CI or new specs may not have inspection screenshots yet.
+    }
+  }
+  return preserved;
+}
+
+async function restorePreservedInspectionAssets(preserved, outAssets) {
+  for (const asset of preserved) {
+    await fs.writeFile(path.join(outAssets, asset.fileName), asset.bytes);
+  }
 }
 
 function buildAssetManifest(spec, assets) {
@@ -7144,7 +7168,7 @@ async function listFilesForBundle(directory, relativeDirectory) {
     const relativePath = path.join(relativeDirectory, entry.name);
     if (entry.isDirectory()) {
       files.push(...await listFilesForBundle(absolutePath, relativePath));
-    } else if (entry.isFile()) {
+    } else if (entry.isFile() && relativePath !== path.join("assets", "screenshot.png")) {
       files.push(relativePath);
     }
   }
