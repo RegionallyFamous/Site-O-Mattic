@@ -81,6 +81,7 @@ async function buildReport(target) {
   add(checks, "body copy weight restraint", bodyCopyWeightPass(pageContent), describeBodyCopyWeights(pageContent));
   add(checks, "paragraph rhythm", paragraphRhythmPass(pageContent), "Readable body copy should not use cramped line-height.");
   add(checks, "uppercase label restraint", uppercaseLabelsPass(pageContent), "Small uppercase labels must be large enough and not black-weight.");
+  add(checks, "small bold inline text restraint", smallBoldInlineTextPass(pageContent), describeSmallBoldInlineText(pageContent));
 
   return { target, checks, type };
 }
@@ -457,9 +458,33 @@ function uppercaseLabelsPass(markup) {
     const style = match[1];
     const fontSize = maxPxFromFontSize(style);
     const weight = fontWeightFromStyle(style);
-    return (!Number.isFinite(fontSize) || fontSize >= 12)
+    return (!Number.isFinite(fontSize) || fontSize >= 16)
       && (!Number.isFinite(weight) || weight <= 780);
   });
+}
+
+function smallBoldInlineTextPass(markup) {
+  return smallBoldInlineTextFindings(markup).length === 0;
+}
+
+function describeSmallBoldInlineText(markup) {
+  const findings = smallBoldInlineTextFindings(markup);
+  if (!findings.length) {
+    return "No inline text under 16px paired with 700+ weight.";
+  }
+  return findings.slice(0, 4).map((item) => `${item.tag} ${item.size}px / w${item.weight}`).join("; ");
+}
+
+function smallBoldInlineTextFindings(markup) {
+  return [...markup.matchAll(/<([a-z0-9-]+)\b[^>]*style="([^"]*)"[^>]*>/gi)]
+    .map((match) => ({
+      tag: match[1].toLowerCase(),
+      style: match[2],
+      size: maxPxFromFontSize(match[2]),
+      weight: fontWeightFromStyle(match[2])
+    }))
+    .filter((item) => ["p", "ul", "ol", "li", "span", "a", "summary", "td", "th"].includes(item.tag))
+    .filter((item) => Number.isFinite(item.size) && item.size < 16 && Number.isFinite(item.weight) && item.weight >= 700);
 }
 
 function inlineHeadings(markup) {

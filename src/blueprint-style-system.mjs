@@ -1273,7 +1273,7 @@ export function buildCustomCss(spec) {
   }`
     : "";
 
-  return `
+  return normalizeReadableCssTypography(`
 :root{
 ${variables}
 ${spacingVariables}
@@ -1343,7 +1343,46 @@ ${coverMobileCss}
     min-height:44px;
   }
 }
-`.trim();
+`.trim(), tokens.typography);
+}
+
+function normalizeReadableCssTypography(css, typography = {}) {
+  const labelWeight = String(Math.min(Number.parseInt(typography.labelWeight || typography.actionWeight || "740", 10) || 740, 740));
+
+  return css.replace(/([^{}]+)\{([^{}]*)\}/g, (match, selector, body) => {
+    const fontSize = body.match(/font-size:\s*([^;]+);/i)?.[1];
+    if (!cssFontSizeIsBelowOneRem(fontSize)) {
+      return match;
+    }
+
+    const weight = Number.parseInt(body.match(/font-weight:\s*([0-9]+)/i)?.[1] || "", 10);
+    const isHeavy = Number.isFinite(weight) && weight >= 760;
+    const isUtility = /text-transform:\s*uppercase/i.test(body)
+      || /\b(?:som-|wp-block-navigation|wp-block-button|caption|summary)\b/i.test(selector);
+    if (!isUtility && !isHeavy) {
+      return match;
+    }
+
+    let nextBody = body.replace(/font-size:\s*[^;]+;/i, "font-size:1rem;");
+    if (isHeavy) {
+      nextBody = nextBody.replace(/font-weight:\s*[0-9]+;/i, `font-weight:${labelWeight};`);
+    }
+
+    return `${selector}{${nextBody}}`;
+  });
+}
+
+function cssFontSizeIsBelowOneRem(value) {
+  const normalized = String(value || "").trim().toLowerCase();
+  const px = normalized.match(/^([0-9.]+)px$/);
+  if (px) {
+    return Number(px[1]) < 16;
+  }
+  const rem = normalized.match(/^([0-9.]+)rem$/);
+  if (rem) {
+    return Number(rem[1]) < 1;
+  }
+  return false;
 }
 
 function buildSharedPolishCss(spec) {
@@ -2110,6 +2149,7 @@ function buildVariantCustomCss(spec) {
   background:
     radial-gradient(circle at 10% 12%, color-mix(in srgb, ${spec.palette.sun} 18%, transparent), transparent 30%),
     linear-gradient(135deg, ${spec.palette.deepGreen}, color-mix(in srgb, ${spec.palette.deepGreen} 72%, ${spec.palette.grass}) 100%);
+  background-color:${spec.palette.deepGreen};
 }
 .som-urgent-photo{
   margin:0;
@@ -4559,6 +4599,7 @@ function buildAliasVisualCss(spec) {
 .som-sharp-hero{
   background:
     linear-gradient(90deg, color-mix(in srgb, ${p.deepGreen} 96%, #000), ${p.deepGreen});
+  background-color:${p.deepGreen};
 }
 .som-sharp-photo img{
   aspect-ratio:16/7;
@@ -4626,6 +4667,7 @@ function buildAliasVisualCss(spec) {
 .som-mural-hero{
   background:
     linear-gradient(135deg, ${p.deepGreen}, color-mix(in srgb, ${p.deepGreen} 82%, ${p.sun}));
+  background-color:${p.deepGreen};
 }
 .som-mural-photo img{
   aspect-ratio:16/8;
@@ -5355,6 +5397,7 @@ function buildAliasVisualCss(spec) {
     linear-gradient(90deg, color-mix(in srgb, ${p.sun} 12%, transparent) 1px, transparent 1px),
     linear-gradient(0deg, color-mix(in srgb, ${p.deepGreen} 6%, transparent) 1px, transparent 1px),
     ${p.cream};
+  background-color:${p.cream};
   background-size:26px 26px;
 }
 .som-organizing-photo img{

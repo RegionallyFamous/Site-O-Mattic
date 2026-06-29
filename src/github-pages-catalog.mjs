@@ -436,24 +436,28 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       line-height: 1.48;
     }
     .proof-strip {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      display: flex;
+      flex-wrap: wrap;
       gap: 0;
       overflow: hidden;
-      margin: 18px 0 24px;
-      border: 1px solid rgba(16, 22, 38, .42);
-      background: var(--surface);
+      margin: 14px 0 30px;
+      border: 0;
+      background: transparent;
       color: var(--ink);
-      box-shadow: 0 10px 24px rgba(17, 22, 40, .07);
+      box-shadow: none;
     }
     .proof-strip > * {
+      display: flex;
+      gap: 7px;
+      align-items: baseline;
       min-width: 0;
-      padding: clamp(14px, 1.5vw, 18px);
-      border-right: 1px solid rgba(16, 22, 38, .22);
-      background: var(--surface);
+      padding: 0 13px 0 0;
+      border: 0;
+      background: transparent;
     }
-    .proof-strip > :last-child {
-      border-right: 0;
+    .proof-strip > * + * {
+      border-left: 1px solid rgba(16, 22, 38, .3);
+      padding-left: 13px;
     }
     .proof-strip h2,
     .proof-strip h3,
@@ -469,11 +473,11 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       text-transform: uppercase;
     }
     .proof-strip p {
-      max-width: 32ch;
-      margin-top: 6px;
+      max-width: none;
+      margin-top: 0;
       font-size: 1rem;
       font-weight: 440;
-      line-height: 1.48;
+      line-height: 1.34;
     }
     .card h2 {
       margin: 0;
@@ -517,10 +521,12 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       color: #ffffff;
     }
     .button:hover,
-    .card-launch:hover,
     .links a:hover {
       transform: translate(-1px, -1px);
       box-shadow: 0 4px 0 var(--ink);
+    }
+    .card-launch:hover {
+      color: var(--blue-dark);
     }
     .toolbar {
       display: flex;
@@ -528,7 +534,7 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       gap: 12px;
       align-items: end;
       justify-content: space-between;
-      margin: 24px 0 16px;
+      margin: 18px 0 16px;
       scroll-margin-top: 18px;
     }
     .toolbar h2 {
@@ -554,8 +560,8 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
     }
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
-      gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr));
+      gap: 18px;
     }
     .card {
       position: relative;
@@ -565,7 +571,7 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       min-width: 0;
       border: 1px solid rgba(16, 22, 38, .34);
       background: var(--surface);
-      box-shadow: 0 10px 24px rgba(17, 22, 40, .07);
+      box-shadow: 0 8px 18px rgba(17, 22, 40, .055);
     }
     .card-preview {
       position: relative;
@@ -595,68 +601,57 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       display: flex;
       flex: 1;
       flex-direction: column;
-      padding: 16px;
-    }
-    .logo-row {
-      display: flex;
-      flex-direction: column;
-      min-height: 44px;
-      align-items: flex-start;
-      justify-content: flex-start;
-      gap: 10px;
-      margin-bottom: 8px;
-    }
-    .logo-row img {
-      display: block;
-      width: min(190px, 70%);
-      max-height: 42px;
-      object-fit: contain;
-      object-position: left center;
+      padding: 13px 14px 12px;
     }
     .card-meta {
-      margin: 0 0 8px;
+      margin: 0 0 6px;
       color: var(--blue-dark);
-      font-size: .95rem;
-      font-weight: 560;
+      font-size: 1rem;
+      font-weight: 600;
       line-height: 1.35;
     }
     .card-summary {
-      display: -webkit-box;
-      overflow: hidden;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 2;
       line-height: 1.46;
     }
     .card-launch {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 40px;
-      margin-top: 16px;
-      padding: 10px 12px;
-      border: 1px solid var(--ink);
-      background: var(--blue);
-      color: #ffffff;
+      width: fit-content;
+      min-height: 36px;
+      margin-top: 10px;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: var(--blue);
       font-size: 1rem;
-      font-weight: 660;
+      font-weight: 720;
       line-height: 1.15;
-      text-decoration: none;
-      box-shadow: 0 3px 0 var(--ink);
-      transition: transform .18s ease, box-shadow .18s ease;
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: .2em;
+      box-shadow: none;
+      transition: color .18s ease;
+    }
+    .card-launch::after {
+      content: " →";
     }
     .artifact-links {
-      margin-top: 10px;
+      margin-top: auto;
       border-top: 1px solid rgba(16, 22, 38, .16);
-      padding-top: 10px;
+      padding-top: 6px;
     }
     .artifact-links summary {
       display: flex;
-      min-height: 36px;
+      min-height: 38px;
       align-items: center;
       cursor: pointer;
       color: var(--muted);
-      font-size: .95rem;
+      font-size: .98rem;
       font-weight: 560;
+    }
+    .artifact-links .card-summary {
+      margin: 4px 0 10px;
     }
     .links {
       display: grid;
@@ -665,11 +660,11 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       margin-top: 9px;
     }
     .links a {
-      min-height: 34px;
+      min-height: 44px;
       padding: 8px 7px;
       border: 1px solid rgba(16, 22, 38, .34);
       color: var(--ink);
-      font-size: .95rem;
+      font-size: 1rem;
       font-weight: 560;
       text-align: center;
       text-decoration: none;
@@ -690,36 +685,29 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
         grid-template-columns: repeat(3, minmax(0, 1fr));
       }
     }
-    @media (min-width: 621px) and (max-width: 920px) {
-      .proof-strip > * {
-        border-right: 1px solid rgba(16, 22, 38, .22);
-        border-bottom: 0;
-      }
-      .proof-strip > :last-child {
-        border-right: 0;
-      }
-    }
     @media (max-width: 620px) {
       .page {
-        width: min(100% - 24px, 1360px);
+        width: min(100% - 18px, 1360px);
         padding-top: 24px;
       }
-      .proof-strip,
       .grid {
         grid-template-columns: 1fr;
       }
       .proof-strip > * {
-        border-right: 0;
-        border-bottom: 1px solid rgba(16, 22, 38, .22);
+        flex: 1 1 100%;
+        padding: 4px 0;
       }
-      .proof-strip > :last-child {
-        border-bottom: 0;
+      .proof-strip > * + * {
+        border-left: 0;
+        border-top: 1px solid rgba(16, 22, 38, .2);
+        padding-left: 0;
       }
       .masthead {
         grid-template-columns: 1fr;
         min-height: auto;
         gap: 16px;
-        padding: 18px;
+        border-width: 1px;
+        padding: 16px;
       }
       .hero-copy {
         order: 1;
@@ -753,16 +741,11 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       .hero-ticket .actions {
         margin-top: 12px;
       }
+      .card-preview {
+        aspect-ratio: 4 / 3;
+      }
       .links {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-      .logo-row {
-        align-items: flex-start;
-        flex-direction: column;
-        min-height: 0;
-      }
-      .logo-row img {
-        display: none;
       }
     }
     @media (prefers-reduced-motion: reduce) {
@@ -802,9 +785,9 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
     </header>
 
     <section class="proof-strip" aria-labelledby="proof-heading">
-      <article><h2 id="proof-heading">${items.length} demos</h2><p>Every card starts with the rendered site.</p></article>
-      <article><h3>${approvedCount} approved</h3><p>Specs and downloads are tucked behind each card.</p></article>
-      <article><h3>${escapeHtml(sweepStat)} sweep</h3><p>Visual, accessibility, and editor checks stay in the loop.</p></article>
+      <article><h2 id="proof-heading">${items.length} demos</h2><p>Rendered screenshots first.</p></article>
+      <article><h3>${approvedCount} approved</h3><p>Files tucked away.</p></article>
+      <article><h3>${escapeHtml(sweepStat)} sweep</h3><p>Vision and checks in the loop.</p></article>
     </section>
 
     <section class="toolbar" id="catalog" aria-labelledby="catalog-heading">
@@ -830,15 +813,12 @@ function renderCard(item) {
           <img src="${escapeAttr(item.screenshotUrl)}" alt="Screenshot preview of the ${escapeAttr(item.name)} demo site" loading="lazy" decoding="async">
         </a>
         <div class="content">
-          <div class="logo-row">
-            <img src="${escapeAttr(item.logoUrl)}" alt="${escapeAttr(item.name)} logo" loading="lazy" decoding="async">
-          </div>
-          <p class="card-meta">${escapeHtml(item.niche)} demo</p>
+          <p class="card-meta">${escapeHtml(item.niche)}</p>
           <h2 id="card-${escapeAttr(item.slug)}-title">${escapeHtml(item.name)}</h2>
-          <p class="card-summary">${escapeHtml(item.summary)}</p>
-          <a class="card-launch" href="${escapeAttr(item.playgroundUrl)}" aria-label="Launch ${escapeAttr(item.name)} in WordPress Playground">Launch Playground</a>
+          <a class="card-launch" href="${escapeAttr(item.playgroundUrl)}" aria-label="Launch ${escapeAttr(item.name)} in WordPress Playground">Open Playground</a>
           <details class="artifact-links">
-            <summary>Specs and downloads</summary>
+            <summary>Files</summary>
+            <p class="card-summary">${escapeHtml(item.summary)}</p>
             <div class="links" role="group" aria-label="${escapeAttr(item.name)} artifacts">
               <a href="${escapeAttr(item.blueprintUrl)}" aria-label="Open ${escapeAttr(item.name)} Blueprint JSON">JSON</a>
               <a href="${escapeAttr(item.zipUrl)}" aria-label="Download ${escapeAttr(item.name)} Blueprint ZIP">ZIP</a>

@@ -689,11 +689,12 @@ function normalizePageTypography(markup, spec) {
     "font-weight": tokens.actionWeight
   };
   const labelProps = {
+    "font-size": "1rem",
     "font-weight": tokens.labelWeight || tokens.actionWeight
   };
 
   const normalized = markup
-    .replace(/<!-- wp:(heading|button|navigation|paragraph)(\s+\{[^]*?\})?\s*-->/g, (match, blockName, rawAttributes = "") => {
+    .replace(/<!-- wp:(heading|button|navigation|paragraph|list)(\s+\{[^]*?\})?\s*-->/g, (match, blockName, rawAttributes = "") => {
       if (!rawAttributes.trim()) {
         return match;
       }
@@ -711,9 +712,10 @@ function normalizePageTypography(markup, spec) {
           attrs.style.typography.fontWeight = tokens.actionWeight;
           delete attrs.style.typography.fontSize;
         } else if (blockName === "navigation") {
+          attrs.style.typography.fontSize = readableUtilityFontSize(attrs.style.typography.fontSize);
           attrs.style.typography.fontWeight = tokens.navWeight;
-        } else if (blockName === "paragraph" && paragraphUsesUtilityTypography(attrs)) {
-          attrs.style.typography.fontWeight = tokens.labelWeight || tokens.actionWeight;
+        } else if (blockName === "paragraph" || blockName === "list") {
+          normalizeReadableInlineTypographyAttrs(attrs, tokens);
         }
         return `<!-- wp:${blockName} ${JSON.stringify(attrs)} -->`;
       } catch {
@@ -737,7 +739,8 @@ function normalizePageTypography(markup, spec) {
       return `${before}${rewriteInlineStyle(style, labelProps)}${after}`;
     });
 
-  const colorNormalized = normalizePageColorRoles(normalized, designTokens.colorRoles);
+  const readableNormalized = normalizeSmallBoldInlineTypography(normalized, tokens);
+  const colorNormalized = normalizePageColorRoles(readableNormalized, designTokens.colorRoles);
   const coverNormalized = normalizeCoreCoverMarkup(colorNormalized);
   const mediaTextNormalized = normalizeCoreMediaTextMarkup(coverNormalized);
   const tableNormalized = normalizeCoreTableMarkup(mediaTextNormalized);
@@ -884,13 +887,62 @@ function paragraphUsesUtilityTypography(attrs) {
     || isUtilityTypographyClass(attrs?.className);
 }
 
+function normalizeReadableInlineTypographyAttrs(attrs, tokens) {
+  const typography = attrs?.style?.typography;
+  if (!typography) {
+    return;
+  }
+
+  const hasFontSize = Boolean(String(typography.fontSize || "").trim());
+  const isSmall = hasFontSize && fontSizeIsBelowOneRem(typography.fontSize);
+  const weight = Number.parseInt(typography.fontWeight || "", 10);
+  const isBold = Number.isFinite(weight) && weight >= 700;
+  const isUtility = paragraphUsesUtilityTypography(attrs);
+  if (!isUtility && !isSmall) {
+    return;
+  }
+
+  if (isUtility || (isSmall && isBold)) {
+    typography.fontSize = "1rem";
+  }
+  const weightCap = readableLabelWeightCap(tokens);
+  if (Number.isFinite(weight) && weight > weightCap && (isUtility || isSmall)) {
+    typography.fontWeight = String(weightCap);
+  }
+}
+
 function isUtilityTypographyClass(className) {
   return /\bsom-(?:chip|method-pill|ticket-line|rail-note|date-cell|section-anchor-label|[a-z-]+number)\b/.test(String(className || ""));
 }
 
+function normalizeSmallBoldInlineTypography(markup, tokens) {
+  const weightCap = readableLabelWeightCap(tokens);
+
+  return markup.replace(/(<(?:p|ul|ol|li|span|a|summary|td|th)\b[^>]*\bstyle=")([^"]*)("[^>]*>)/gi, (match, before, style, after) => {
+    const fontSize = style.match(/font-size:\s*([^;]+)/i)?.[1] || "";
+    const weight = Number.parseInt(style.match(/font-weight:\s*([0-9]+)/i)?.[1] || "", 10);
+    const isSmall = Boolean(fontSize) && fontSizeIsBelowOneRem(fontSize);
+    const isBold = Number.isFinite(weight) && weight >= 700;
+    const isUtility = /text-transform:\s*uppercase/i.test(style) || isUtilityTypographyClass(`${before} ${after}`);
+    const updates = {};
+
+    if (isUtility || (isSmall && isBold)) {
+      updates["font-size"] = "1rem";
+    }
+    if (Number.isFinite(weight) && weight > weightCap && (isUtility || isSmall)) {
+      updates["font-weight"] = String(weightCap);
+    }
+    if (!Object.keys(updates).length) {
+      return match;
+    }
+
+    return `${before}${rewriteInlineStyle(style, updates)}${after}`;
+  });
+}
+
 function normalizeProofParagraphTypography(markup, tokens) {
   const labelWeight = Number.parseInt(tokens.labelWeight || tokens.actionWeight, 10);
-  const weightCap = Number.isFinite(labelWeight) ? Math.min(labelWeight, 780) : 760;
+  const weightCap = Number.isFinite(labelWeight) ? Math.min(labelWeight, 740) : 740;
   const proofClassPattern = [
     "som-proof-card",
     "som-route-proof-card",
@@ -904,12 +956,44 @@ function normalizeProofParagraphTypography(markup, tokens) {
   return markup.replace(containerPattern, (container) => {
     return container.replace(/(<p\b[^>]*\bstyle=")([^"]*)("[^>]*>)/gi, (match, before, style, after) => {
       const currentWeight = Number.parseInt(style.match(/font-weight:\s*([0-9]+)/i)?.[1] || "", 10);
-      if (!Number.isFinite(currentWeight) || currentWeight <= weightCap) {
+      const updates = {};
+      if (fontSizeIsBelowOneRem(style.match(/font-size:\s*([^;]+)/i)?.[1] || "")) {
+        updates["font-size"] = "1rem";
+      }
+      if (Number.isFinite(currentWeight) && currentWeight > weightCap) {
+        updates["font-weight"] = String(weightCap);
+      }
+      if (!Object.keys(updates).length) {
         return match;
       }
-      return `${before}${rewriteInlineStyle(style, { "font-weight": String(weightCap) })}${after}`;
+      return `${before}${rewriteInlineStyle(style, updates)}${after}`;
     });
   });
+}
+
+function readableLabelWeightCap(tokens) {
+  const weight = Number.parseInt(tokens.labelWeight || tokens.actionWeight || "740", 10);
+  return Number.isFinite(weight) ? Math.min(weight, 740) : 740;
+}
+
+function readableUtilityFontSize(value) {
+  return fontSizeIsBelowOneRem(value) ? "1rem" : value;
+}
+
+function fontSizeIsBelowOneRem(value) {
+  const normalized = String(value || "").trim().toLowerCase();
+  if (!normalized) {
+    return true;
+  }
+  const px = normalized.match(/^([0-9.]+)px$/);
+  if (px) {
+    return Number(px[1]) < 16;
+  }
+  const rem = normalized.match(/^([0-9.]+)rem$/);
+  if (rem) {
+    return Number(rem[1]) < 1;
+  }
+  return false;
 }
 
 function headingPropsForLevel(level, tokens, spec) {
@@ -2635,18 +2719,23 @@ ${navigationLinkBlocks(navLinks)}
   const services = spec.services;
   const process = spec.process;
   const proof = spec.proof;
-  const isPollinatorSeasonBoard = layoutVariantFor(spec) === "pollinator-season-board";
+  const currentLayoutVariant = layoutVariantFor(spec);
+  const isPollinatorSeasonBoard = currentLayoutVariant === "pollinator-season-board";
+  const isOrganizingZoneBoard = currentLayoutVariant === "organizing-zone-board";
+  const heroEyebrowColor = isOrganizingZoneBoard ? "grass" : "sun";
+  const heroTitleColor = isPollinatorSeasonBoard || isOrganizingZoneBoard ? "deep-green" : "white";
+  const heroTextColor = isPollinatorSeasonBoard ? "grass" : isOrganizingZoneBoard ? "soil" : "mist";
   const heroCopyColumn = `
 <!-- wp:column {"verticalAlignment":"center","width":"44%"} -->
 <div class="wp-block-column is-vertically-aligned-center" style="flex-basis:44%">
-<!-- wp:paragraph {"textColor":"sun","style":{"typography":{"fontSize":"15px","fontStyle":"normal","fontWeight":"900","textTransform":"uppercase","letterSpacing":"0px"},"spacing":{"margin":{"bottom":"12px"}}}} -->
-<p class="has-sun-color has-text-color" style="margin-bottom:12px;font-size:15px;font-style:normal;font-weight:900;letter-spacing:0px;text-transform:uppercase">${esc(copy.eyebrow)}</p>
+<!-- wp:paragraph {"textColor":"${heroEyebrowColor}","style":{"typography":{"fontSize":"15px","fontStyle":"normal","fontWeight":"900","textTransform":"uppercase","letterSpacing":"0px"},"spacing":{"margin":{"bottom":"12px"}}}} -->
+<p class="has-${heroEyebrowColor}-color has-text-color" style="margin-bottom:12px;font-size:15px;font-style:normal;font-weight:900;letter-spacing:0px;text-transform:uppercase">${esc(copy.eyebrow)}</p>
 <!-- /wp:paragraph -->
-<!-- wp:heading {"level":1,"textColor":"white","style":{"typography":{"fontSize":"var:preset|font-size|hero","lineHeight":"0.98","fontStyle":"normal","fontWeight":"900"},"spacing":{"margin":{"top":"0","bottom":"20px"}}}} -->
-<h1 class="wp-block-heading has-white-color has-text-color" style="margin-top:0;margin-bottom:20px;font-size:var(--wp--preset--font-size--hero);font-style:normal;font-weight:900;line-height:0.98">${esc(copy.heroTitle)}</h1>
+<!-- wp:heading {"level":1,"textColor":"${heroTitleColor}","style":{"typography":{"fontSize":"var:preset|font-size|hero","lineHeight":"0.98","fontStyle":"normal","fontWeight":"900"},"spacing":{"margin":{"top":"0","bottom":"20px"}}}} -->
+<h1 class="wp-block-heading has-${heroTitleColor}-color has-text-color" style="margin-top:0;margin-bottom:20px;font-size:var(--wp--preset--font-size--hero);font-style:normal;font-weight:900;line-height:0.98">${esc(copy.heroTitle)}</h1>
 <!-- /wp:heading -->
-<!-- wp:paragraph {"textColor":"mist","style":{"typography":{"fontSize":"var:preset|font-size|lead","lineHeight":"1.5"},"spacing":{"margin":{"bottom":"26px"}}}} -->
-<p class="has-mist-color has-text-color" style="margin-bottom:26px;font-size:var(--wp--preset--font-size--lead);line-height:1.5">${esc(copy.heroText)}</p>
+<!-- wp:paragraph {"textColor":"${heroTextColor}","style":{"typography":{"fontSize":"var:preset|font-size|lead","lineHeight":"1.5"},"spacing":{"margin":{"bottom":"26px"}}}} -->
+<p class="has-${heroTextColor}-color has-text-color" style="margin-bottom:26px;font-size:var(--wp--preset--font-size--lead);line-height:1.5">${esc(copy.heroText)}</p>
 <!-- /wp:paragraph -->
 <!-- wp:buttons {"style":{"spacing":{"blockGap":{"left":"12px"}}}} -->
 <div class="wp-block-buttons">
