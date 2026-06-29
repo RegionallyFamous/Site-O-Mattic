@@ -254,7 +254,7 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
     body {
       margin: 0;
       background:
-        linear-gradient(180deg, rgba(255, 240, 106, .72) 0, rgba(255, 240, 106, .26) 360px, var(--page) 760px),
+        linear-gradient(180deg, rgba(255, 240, 106, .6) 0, rgba(255, 240, 106, .18) 300px, var(--page) 680px),
         var(--page);
       color: var(--ink);
       font-family: "Avenir Next", Avenir, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -277,31 +277,31 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       box-shadow: 0 0 0 8px var(--mint);
     }
     .page {
-      width: min(1180px, calc(100% - 28px));
+      width: min(1160px, calc(100% - 28px));
       margin: 0 auto;
       padding: 24px 0 68px;
     }
     .masthead {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(310px, 420px);
-      gap: clamp(22px, 4vw, 48px);
+      grid-template-columns: minmax(0, 1.18fr) minmax(300px, .82fr);
+      gap: clamp(18px, 3vw, 34px);
       position: relative;
       overflow: hidden;
-      min-height: clamp(430px, 57vh, 620px);
+      min-height: clamp(360px, 48vh, 520px);
       align-items: center;
       border: 2px solid var(--ink);
       background: var(--paper);
-      box-shadow: var(--shadow-hard);
+      box-shadow: 4px 4px 0 var(--ink);
       isolation: isolate;
-      padding: clamp(24px, 4.2vw, 58px);
+      padding: clamp(22px, 3.6vw, 46px);
     }
     .masthead::before {
       position: absolute;
       inset: 0;
       z-index: 1;
       background:
-        linear-gradient(90deg, rgba(255, 240, 106, .92) 0 42%, rgba(255, 240, 106, .5) 63%, rgba(255, 240, 106, .12) 100%),
-        linear-gradient(180deg, rgba(255, 253, 247, .18), rgba(255, 253, 247, .52));
+        linear-gradient(90deg, rgba(255, 240, 106, .97) 0 53%, rgba(255, 253, 247, .82) 100%),
+        linear-gradient(180deg, rgba(255, 253, 247, .08), rgba(255, 253, 247, .42));
       content: "";
     }
     .masthead::after {
@@ -310,7 +310,7 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       background: radial-gradient(circle at 1px 1px, rgba(22, 15, 42, .24) 1px, transparent 0) 0 0 / 12px 12px;
       content: "";
       mix-blend-mode: multiply;
-      opacity: .08;
+      opacity: .045;
       pointer-events: none;
     }
     .hero-bg {
@@ -322,6 +322,8 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       object-fit: cover;
       object-position: center center;
       filter: saturate(1.04) contrast(1.02);
+      mix-blend-mode: multiply;
+      opacity: .16;
     }
     .hero-copy {
       position: relative;
@@ -332,16 +334,15 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       position: relative;
       z-index: 2;
       align-self: stretch;
-      border: 2px solid var(--ink);
+      border: 1px solid var(--ink);
       background: rgba(255, 253, 247, .98);
-      box-shadow: 3px 3px 0 var(--ink);
-      padding: clamp(14px, 1.8vw, 22px);
+      box-shadow: 0 14px 28px rgba(17, 22, 40, .12);
+      padding: clamp(12px, 1.6vw, 18px);
     }
     .hero-ticket::before {
       position: absolute;
       inset: 10px;
-      border: 1px solid rgba(22, 15, 42, .12);
-      content: "";
+      content: none;
       pointer-events: none;
     }
     .hero-ticket > * {
@@ -382,14 +383,11 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
     .eyebrow {
       display: inline-flex;
       align-items: center;
-      min-height: 30px;
-      margin: 0 0 10px;
-      padding: 5px 9px;
-      border: 1px solid var(--ink);
-      background: var(--mint);
-      color: var(--ink);
-      font-size: 14px;
-      font-weight: 680;
+      min-height: 24px;
+      margin: 0 0 8px;
+      color: var(--blue-dark);
+      font-size: .95rem;
+      font-weight: 720;
       letter-spacing: 0;
       text-transform: uppercase;
     }
@@ -423,7 +421,7 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       max-width: 720px;
       margin: 0;
       font-family: Charter, "Iowan Old Style", Georgia, "Times New Roman", serif;
-      font-size: clamp(42px, 4.25vw, 68px);
+      font-size: clamp(40px, 3.9vw, 62px);
       font-weight: 720;
       line-height: 1.01;
       letter-spacing: 0;
@@ -431,32 +429,28 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
     }
     .lede {
       max-width: 680px;
-      margin: 14px 0 0;
+      margin: 12px 0 0;
       color: #20243d;
       font-size: clamp(17px, 1.22vw, 19px);
-      font-weight: 520;
+      font-weight: 500;
       line-height: 1.48;
     }
     .proof-strip {
       display: grid;
-      grid-template-columns: minmax(0, 1.25fr) repeat(3, minmax(0, .75fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 0;
       overflow: hidden;
-      margin: 0 0 30px;
-      border: 2px solid var(--ink);
+      margin: 18px 0 24px;
+      border: 1px solid rgba(16, 22, 38, .42);
       background: var(--surface);
       color: var(--ink);
-      box-shadow: var(--shadow-hard);
+      box-shadow: 0 10px 24px rgba(17, 22, 40, .07);
     }
     .proof-strip > * {
       min-width: 0;
-      padding: clamp(16px, 1.8vw, 22px);
-      border-right: 2px solid var(--ink);
+      padding: clamp(14px, 1.5vw, 18px);
+      border-right: 1px solid rgba(16, 22, 38, .22);
       background: var(--surface);
-    }
-    .proof-strip > :first-child {
-      background: var(--ink);
-      color: #ffffff;
     }
     .proof-strip > :last-child {
       border-right: 0;
@@ -466,32 +460,25 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
     .proof-strip p {
       margin: 0;
     }
-    .proof-strip h2 {
-      max-width: 680px;
-      font-family: Charter, "Iowan Old Style", Georgia, "Times New Roman", serif;
-      font-size: clamp(25px, 2.8vw, 44px);
-      line-height: 1.02;
-      font-weight: 740;
-      text-wrap: balance;
-    }
+    .proof-strip h2,
     .proof-strip h3 {
       color: var(--blue);
-      font-size: 14px;
-      font-weight: 620;
+      font-size: 1rem;
+      font-weight: 720;
       line-height: 1.25;
       text-transform: uppercase;
     }
     .proof-strip p {
-      max-width: 30ch;
-      margin-top: 10px;
-      font-size: 16px;
+      max-width: 32ch;
+      margin-top: 6px;
+      font-size: 1rem;
       font-weight: 440;
       line-height: 1.48;
     }
     .card h2 {
       margin: 0;
       font-size: clamp(22px, 1.7vw, 25px);
-      font-weight: 680;
+      font-weight: 640;
       line-height: 1.14;
       letter-spacing: 0;
       text-wrap: balance;
@@ -499,7 +486,9 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
     .card p {
       margin: 10px 0 0;
       color: var(--muted);
-      font-weight: 480;
+      font-size: 1rem;
+      font-weight: 440;
+      line-height: 1.46;
     }
     .actions {
       display: flex;
@@ -539,27 +528,34 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       gap: 12px;
       align-items: end;
       justify-content: space-between;
-      margin: 34px 0 18px;
+      margin: 24px 0 16px;
       scroll-margin-top: 18px;
     }
     .toolbar h2 {
       margin: 0;
       font-family: Charter, "Iowan Old Style", Georgia, "Times New Roman", serif;
       max-width: 780px;
-      font-size: clamp(30px, 3.8vw, 56px);
+      font-size: clamp(30px, 3.25vw, 48px);
       line-height: 1.02;
       font-weight: 740;
       text-wrap: balance;
     }
     .toolbar a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 40px;
+      padding: 8px 12px;
+      border: 1px solid rgba(16, 22, 38, .34);
+      background: var(--surface);
       color: var(--ink);
       font-size: 1rem;
       font-weight: 650;
+      text-decoration: none;
     }
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
-      gap: 18px;
+      gap: 16px;
     }
     .card {
       position: relative;
@@ -567,18 +563,9 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       flex-direction: column;
       overflow: hidden;
       min-width: 0;
-      border: 1px solid rgba(16, 22, 38, .42);
+      border: 1px solid rgba(16, 22, 38, .34);
       background: var(--surface);
-      box-shadow: 0 12px 28px rgba(17, 22, 40, .08);
-    }
-    .card:nth-child(3n+1) {
-      box-shadow: 0 12px 28px rgba(241, 78, 131, .08);
-    }
-    .card:nth-child(3n+2) {
-      box-shadow: 0 12px 28px rgba(32, 200, 162, .08);
-    }
-    .card:nth-child(3n+3) {
-      box-shadow: 0 12px 28px rgba(69, 50, 216, .08);
+      box-shadow: 0 10px 24px rgba(17, 22, 40, .07);
     }
     .card-preview {
       position: relative;
@@ -629,7 +616,7 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
     .card-meta {
       margin: 0 0 8px;
       color: var(--blue-dark);
-      font-size: 13px;
+      font-size: .95rem;
       font-weight: 560;
       line-height: 1.35;
     }
@@ -650,7 +637,7 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       border: 1px solid var(--ink);
       background: var(--blue);
       color: #ffffff;
-      font-size: 14px;
+      font-size: 1rem;
       font-weight: 660;
       line-height: 1.15;
       text-decoration: none;
@@ -663,9 +650,12 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       padding-top: 10px;
     }
     .artifact-links summary {
+      display: flex;
+      min-height: 36px;
+      align-items: center;
       cursor: pointer;
       color: var(--muted);
-      font-size: 13px;
+      font-size: .95rem;
       font-weight: 560;
     }
     .links {
@@ -679,7 +669,7 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       padding: 8px 7px;
       border: 1px solid rgba(16, 22, 38, .34);
       color: var(--ink);
-      font-size: 13px;
+      font-size: .95rem;
       font-weight: 560;
       text-align: center;
       text-decoration: none;
@@ -697,26 +687,16 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
         grid-template-columns: 1fr;
       }
       .proof-strip {
-        grid-template-columns: 1fr 1fr;
-      }
-      .proof-strip > :first-child {
-        grid-column: 1 / -1;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
       }
     }
     @media (min-width: 621px) and (max-width: 920px) {
-      .proof-strip > :first-child {
-        border-right: 0;
-        border-bottom: 2px solid var(--ink);
-      }
-      .proof-strip > :nth-child(3) {
-        border-right: 0;
+      .proof-strip > * {
+        border-right: 1px solid rgba(16, 22, 38, .22);
+        border-bottom: 0;
       }
       .proof-strip > :last-child {
-        grid-column: 1 / -1;
-        border-top: 2px solid var(--ink);
-      }
-      .proof-strip > :last-child p {
-        max-width: 46ch;
+        border-right: 0;
       }
     }
     @media (max-width: 620px) {
@@ -730,7 +710,7 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       }
       .proof-strip > * {
         border-right: 0;
-        border-bottom: 2px solid var(--ink);
+        border-bottom: 1px solid rgba(16, 22, 38, .22);
       }
       .proof-strip > :last-child {
         border-bottom: 0;
@@ -752,7 +732,7 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       }
       .hero-bg {
         object-position: 72% top;
-        opacity: .62;
+        opacity: .1;
       }
       h1 {
         font-size: clamp(32px, 9.2vw, 44px);
@@ -763,14 +743,15 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
         line-height: 1.36;
         margin-top: 12px;
       }
-      .hero-badges li {
-        font-size: 13px;
-        min-height: 34px;
-        padding: 8px 10px;
-      }
       .hero-ticket h2 {
         font-size: clamp(23px, 7.1vw, 30px);
         line-height: 1.04;
+      }
+      .hero-ticket p:not(.eyebrow) {
+        display: none;
+      }
+      .hero-ticket .actions {
+        margin-top: 12px;
       }
       .links {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -800,16 +781,11 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       <img class="hero-bg" src="${escapeAttr(heroIllustration)}" alt="" loading="eager">
       <div class="hero-copy">
         <p class="eyebrow">Site-O-Mattic demo catalog</p>
-        <h1>Live WordPress demos that make the idea obvious.</h1>
-        <p class="lede">A curated wall of ${items.length} niche sites, each with a real screenshot, a one-click Playground launch, and the Blueprint artifacts behind it.</p>
-        <ul class="hero-badges" aria-label="Demo proof points">
-          <li>Screenshot first</li>
-          <li>Playground ready</li>
-          <li>Block-first foundation</li>
-        </ul>
+        <h1>Real WordPress demos, ready to launch.</h1>
+        <p class="lede">Pick a niche, open the live site, and show the Blueprint behind it.</p>
         <div class="actions">
           <a class="button primary" href="${escapeAttr(featured.playgroundUrl)}" aria-label="Open ${escapeAttr(featured.name)} in WordPress Playground">Open featured demo</a>
-          <a class="button" href="#catalog">Browse the wall</a>
+          <a class="button" href="#catalog">Browse demos</a>
         </div>
       </div>
       <aside class="hero-ticket" aria-label="Featured demo">
@@ -820,24 +796,20 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
         <h2>${escapeHtml(featured.name)}</h2>
         <p>${escapeHtml(featured.summary)}</p>
         <div class="actions">
-          <a class="button primary" href="${escapeAttr(featured.playgroundUrl)}" aria-label="Launch ${escapeAttr(featured.name)} in WordPress Playground">Launch</a>
-          <a class="button" href="${escapeAttr(featured.blueprintUrl)}" aria-label="Open ${escapeAttr(featured.name)} Blueprint JSON">JSON</a>
+          <a class="button primary" href="${escapeAttr(featured.playgroundUrl)}" aria-label="Launch ${escapeAttr(featured.name)} in WordPress Playground">Launch Playground</a>
         </div>
       </aside>
     </header>
 
     <section class="proof-strip" aria-labelledby="proof-heading">
-      <div>
-        <h2 id="proof-heading">Enough proof to trust it fast.</h2>
-      </div>
-      <article><h3>${items.length} demos</h3><p>Every card leads with the rendered site, not a promise deck.</p></article>
-      <article><h3>${approvedCount} approved</h3><p>Specs, screenshots, assets, JSON, and ZIPs stay one click away.</p></article>
-      <article><h3>${escapeHtml(sweepStat)} sweep</h3><p>The catalog is backed by visual, accessibility, and editor guardrails.</p></article>
+      <article><h2 id="proof-heading">${items.length} demos</h2><p>Every card starts with the rendered site.</p></article>
+      <article><h3>${approvedCount} approved</h3><p>Specs and downloads are tucked behind each card.</p></article>
+      <article><h3>${escapeHtml(sweepStat)} sweep</h3><p>Visual, accessibility, and editor checks stay in the loop.</p></article>
     </section>
 
     <section class="toolbar" id="catalog" aria-labelledby="catalog-heading">
-      <h2 id="catalog-heading">Browse the live demo wall.</h2>
-      <a href="${escapeAttr(repoBase)}">GitHub repository</a>
+      <h2 id="catalog-heading">Choose a demo.</h2>
+      <a href="${escapeAttr(repoBase)}">Repository</a>
     </section>
 
     <section class="grid" aria-label="Demo catalog cards">
@@ -866,7 +838,7 @@ function renderCard(item) {
           <p class="card-summary">${escapeHtml(item.summary)}</p>
           <a class="card-launch" href="${escapeAttr(item.playgroundUrl)}" aria-label="Launch ${escapeAttr(item.name)} in WordPress Playground">Launch Playground</a>
           <details class="artifact-links">
-            <summary>Artifacts</summary>
+            <summary>Specs and downloads</summary>
             <div class="links" role="group" aria-label="${escapeAttr(item.name)} artifacts">
               <a href="${escapeAttr(item.blueprintUrl)}" aria-label="Open ${escapeAttr(item.name)} Blueprint JSON">JSON</a>
               <a href="${escapeAttr(item.zipUrl)}" aria-label="Download ${escapeAttr(item.name)} Blueprint ZIP">ZIP</a>
