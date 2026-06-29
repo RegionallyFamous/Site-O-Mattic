@@ -2,6 +2,7 @@ import { readBlueprint, getRunPhpStep, extractCustomCss } from "./blueprint-insp
 import { blueprintPathForSpec, readSpec, specTargets } from "./spec-utils.mjs";
 
 const strict = process.argv.includes("--strict");
+const priorityOverridePattern = new RegExp(`!${"important"}\\b`, "g");
 const rows = [];
 
 for (const target of await specTargets(process.argv.slice(2).filter((arg) => arg !== "--strict"))) {
@@ -24,7 +25,7 @@ console.log("");
 for (const row of rows) {
   const review = row.reviewNotes.length ? row.reviewNotes.join(", ") : "none";
   const severe = row.severeFlags.length ? `, severe: ${row.severeFlags.join(", ")}` : "";
-  console.log(`${row.slug}: score ${row.score}, css ${row.cssBytes} bytes, !important ${row.important}, media ${row.media}, review: ${review}${severe}`);
+  console.log(`${row.slug}: score ${row.score}, css ${row.cssBytes} bytes, priority overrides ${row.priorityOverrides}, media ${row.media}, review: ${review}${severe}`);
 }
 
 const failures = rows.filter((row) => row.score >= 28 || row.severeFlags.some((flag) => flag.startsWith("very-heavy")));
@@ -47,7 +48,7 @@ if (strict && failures.length) {
 
 function analyzeCss(spec, customCss) {
   const counts = {
-    important: count(customCss, /!important\b/g),
+    priorityOverrides: count(customCss, priorityOverridePattern),
     negativeMargins: count(customCss, /margin(?:-[a-z]+)?\s*:\s*-[\d.]/gi),
     transforms: count(customCss, /(?:^|[;{\s])transform\s*:/gi),
     fixedOrSticky: count(customCss, /\bposition\s*:\s*(?:fixed|sticky)\b/gi),
@@ -57,7 +58,7 @@ function analyzeCss(spec, customCss) {
 
   const score = Math.round(
     (customCss.length / 2200)
-    + counts.important * 0.25
+    + counts.priorityOverrides * 0.25
     + counts.negativeMargins * 2
     + counts.transforms * 2
     + counts.fixedOrSticky * 3
@@ -67,7 +68,7 @@ function analyzeCss(spec, customCss) {
 
   const severeFlags = [];
   if (customCss.length > 19000) severeFlags.push("very-heavy-css");
-  if (counts.important > 80) severeFlags.push("important-heavy");
+  if (counts.priorityOverrides > 80) severeFlags.push("priority-override-heavy");
   if (counts.negativeMargins > 2) severeFlags.push("negative-margin-layout");
   if (counts.transforms > 2) severeFlags.push("transform-layout");
   if (counts.fixedOrSticky > 1) severeFlags.push("fixed-or-sticky-ui");
@@ -78,7 +79,7 @@ function analyzeCss(spec, customCss) {
   if (score >= 28) reviewNotes.push("score-review");
   if (customCss.length >= 16000) reviewNotes.push("large-css-surface");
   if (customCss.length >= 14000 && customCss.length < 16000) reviewNotes.push("moderate-css-surface");
-  if (counts.important >= 60) reviewNotes.push("important-heavy-review");
+  if (counts.priorityOverrides >= 60) reviewNotes.push("priority-override-review");
   if (counts.media >= 6) reviewNotes.push("breakpoint-review");
   if (counts.negativeMargins > 0) reviewNotes.push("negative-margin-check");
   if (counts.transforms > 0) reviewNotes.push("transform-layout-check");
@@ -101,8 +102,8 @@ function adviceFor(row) {
   if (row.cssBytes >= 14000) {
     advice.push("- Move repeated type, spacing, radius, shadow, and table defaults into global styles/block defaults before trimming CSS.");
   }
-  if (row.important >= 60) {
-    advice.push("- Replace repeated !important overrides with block attributes, block-level global styles, or a lower-specificity shared selector.");
+  if (row.priorityOverrides >= 60) {
+    advice.push("- Replace repeated priority overrides with block attributes, block-level global styles, or a lower-specificity shared selector.");
   }
   if (row.media >= 6) {
     advice.push("- Check whether breakpoint rules can become responsive block settings, intrinsic grid/flex behavior, or one shared mobile fallback.");

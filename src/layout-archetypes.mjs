@@ -1030,7 +1030,7 @@ export const LAYOUT_ARCHETYPES = {
     ],
     navigationTreatment: "compact-plant-consult-header-with-care-plan-action",
     typographyTreatment: "living-route-humanist-field-guide",
-    colorStrategy: "field-guide-cream-with-sun-action-and-leaf-proof",
+    colorStrategy: "white-field-guide-with-sun-action-and-dark-leaf-proof",
     servicePresentation: "plant-care-support-cards-with-room-and-rhythm-notes",
     proofTreatment: "moisture-light-proof-band-before-care-steps",
     ctaRhythm: "hero-send-plant-photos-plus-final-care-plan",

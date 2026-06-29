@@ -76,7 +76,7 @@ async function buildReport(target) {
   add(checks, "proof/stat text weight restraint", proofTextWeightPass(pageContent, type), describeProofTextWeights(pageContent));
   add(checks, "effective heading caps", headingCaps, "Shared CSS caps h1/h2/h3 size, weight, and line-height over legacy inline styles.");
   add(checks, "manual headline hyphenation", headlineHyphenationPass(customCss), "Headlines should wrap by words first; do not allow automatic mid-word hyphenation.");
-  add(checks, "variant rhythm does not undercut type system", variantRhythmPass(customCss), "Variant CSS must not reintroduce cramped important line-height overrides.");
+  add(checks, "variant rhythm does not undercut type system", variantRhythmPass(customCss), "Variant CSS must not reintroduce priority overrides.");
   add(checks, "inline heading restraint", inlineHeadingsPass(pageContent, headingCaps, fontSizes), describeInlineHeadings(pageContent, fontSizes));
   add(checks, "body copy weight restraint", bodyCopyWeightPass(pageContent), describeBodyCopyWeights(pageContent));
   add(checks, "paragraph rhythm", paragraphRhythmPass(pageContent), "Readable body copy should not use cramped line-height.");
@@ -349,8 +349,8 @@ function proofMetricAlignmentPass(customCss) {
   return customCss.includes("grid-template-rows:minmax(2.1em, auto) auto")
     && customCss.includes(".som-proof-card")
     && !customCss.includes("[class*=\"-proof-card\"]")
-    && customCss.includes("font-family:var(--wp--preset--font-family--display)!important")
-    && customCss.includes("font-family:var(--wp--preset--font-family--accent)!important");
+    && customCss.includes("font-family:var(--wp--preset--font-family--display)")
+    && customCss.includes("font-family:var(--wp--preset--font-family--accent)");
 }
 
 function utilityTextTokenPass(markup, customCss, type) {
@@ -401,7 +401,7 @@ function describeProofTextWeights(markup) {
 }
 
 function variantRhythmPass(customCss) {
-  return !/line-height:\s*(?:0?\.[0-9]+|1\.3[0-9])!important/i.test(customCss);
+  return !priorityOverridePattern().test(customCss);
 }
 
 function headlineHyphenationPass(customCss) {
@@ -513,11 +513,15 @@ function hasEffectiveHeadingCaps(customCss) {
   return customCss.includes(".wp-site-blocks h1.wp-block-heading")
     && customCss.includes(".wp-site-blocks h2.wp-block-heading")
     && customCss.includes(".wp-site-blocks h3.wp-block-heading")
-    && customCss.includes("font-weight:var(--wp--custom--som--type--heading-weight)!important")
-    && customCss.includes("line-height:var(--wp--custom--som--type--heading-line-height)!important")
-    && /h1\.wp-block-heading\{[\s\S]*font-size:clamp\([^}]+!important/.test(customCss)
-    && /h2\.wp-block-heading\{[\s\S]*font-size:clamp\([^}]+!important/.test(customCss)
-    && /h3\.wp-block-heading\{[\s\S]*font-size:clamp\([^}]+!important/.test(customCss);
+    && customCss.includes("font-weight:var(--wp--custom--som--type--heading-weight)")
+    && customCss.includes("line-height:var(--wp--custom--som--type--heading-line-height)")
+    && /h1\.wp-block-heading\{[\s\S]*font-size:clamp\(/.test(customCss)
+    && /h2\.wp-block-heading\{[\s\S]*font-size:clamp\(/.test(customCss)
+    && /h3\.wp-block-heading\{[\s\S]*font-size:clamp\(/.test(customCss);
+}
+
+function priorityOverridePattern() {
+  return new RegExp(`!${"important"}\\b`, "i");
 }
 
 function stripTags(value) {

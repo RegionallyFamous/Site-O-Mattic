@@ -481,7 +481,7 @@ export const blueprints = [
     "slug": "senior-downsizing-move-prep",
     "name": "KindMove Downsizing",
     "eyebrow": "Senior Downsizing And Move Prep Service",
-    "summary": "KindMove helps families sort, label, donate, pack, and plan the next chapter with steady hands, clear categories, and room for the stories that come with...",
+    "summary": "KindMove turns keep, gift, donate, pack, and unsure decisions into a room-by-room plan with family notes before move day.",
     "logo": "/blueprints/senior-downsizing-move-prep/assets/logo.png",
     "logoWidth": 1000,
     "logoHeight": 300,

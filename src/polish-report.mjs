@@ -133,8 +133,8 @@ function proofCardAlignmentSystemPass(customCss) {
   return customCss.includes("grid-template-rows:minmax(2.1em, auto) auto")
     && customCss.includes(".som-proof-card")
     && !customCss.includes("[class*=\"-proof-card\"]")
-    && customCss.includes("font-family:var(--wp--preset--font-family--display)!important")
-    && customCss.includes("font-family:var(--wp--preset--font-family--accent)!important");
+    && customCss.includes("font-family:var(--wp--preset--font-family--display)")
+    && customCss.includes("font-family:var(--wp--preset--font-family--accent)");
 }
 
 function extractBusinessName(phpCode) {

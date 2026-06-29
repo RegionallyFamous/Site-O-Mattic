@@ -74,7 +74,7 @@ async function validateSpec(spec, target) {
   validateColorRoleResolution(spec, errors);
   await validateAssets(spec.assets, errors);
   validateAssetMeta(spec.assetMeta, errors);
-  validateContact(spec.contact, errors);
+  validateContact(spec.contact, spec.businessName, errors);
   validateCopy(spec.copy, errors);
   validateCards(spec.services, "services", errors);
   validateCards(spec.process, "process", errors);
@@ -136,19 +136,34 @@ function validateAssetMeta(assetMeta, errors) {
   }
 }
 
-function validateContact(contact, errors) {
+function validateContact(contact, businessName, errors) {
   if (!/^tel:\+?[0-9]+/.test(contact?.phoneHref || "")) {
     errors.push("contact.phoneHref must be a tel: link.");
   }
   if (!/^mailto:[^@\s]+@[^@\s]+\.[^@\s]+$/.test(contact?.emailHref || "")) {
     errors.push("contact.emailHref must be a mailto: email link.");
   }
-  if ([contact?.email, contact?.emailHref].some((value) => /\.test(?:$|[/?#:])/i.test(String(value || "")))) {
-    errors.push("contact email fields must not use .test domains; use reserved example.com demo addresses.");
+  if (contact?.email && contact.emailHref !== `mailto:${contact.email}`) {
+    errors.push("contact.emailHref must match contact.email.");
+  }
+  const expectedDomain = domainForBusinessName(businessName);
+  const emailDomain = String(contact?.email || "").split("@").at(1) || "";
+  if (emailDomain !== expectedDomain) {
+    errors.push(`contact email must use the business-name .com domain: ${expectedDomain}.`);
+  }
+  const reservedExampleDomain = ["example", "com"].join("\\.");
+  const reservedDomainPattern = new RegExp(`(?:${reservedExampleDomain}|\\.test)(?:$|[/?#:])`, "i");
+  if ([contact?.email, contact?.emailHref].some((value) => reservedDomainPattern.test(String(value || "")))) {
+    errors.push("contact email fields must not use reserved placeholder domains.");
   }
   if (!contact?.serviceArea || contact.serviceArea.length < 20) {
     errors.push("contact.serviceArea should be specific enough to feel local.");
   }
+}
+
+function domainForBusinessName(businessName) {
+  const root = String(businessName || "").toLowerCase().replace(/[^a-z0-9]+/g, "");
+  return root ? `${root}.com` : "";
 }
 
 function validateCopy(copy, errors) {

@@ -53,13 +53,13 @@
   "themeSlug": "twentytwentyfive",
   "landingPage": "/",
   "palette": {
-    "grass": "#35745d",
-    "deepGreen": "#173527",
-    "leaf": "#86b56a",
-    "sun": "#e8c866",
-    "cream": "#f4f3e8",
-    "mist": "#dfe8d8",
-    "soil": "#52614f",
+    "grass": "#1f6f50",
+    "deepGreen": "#123323",
+    "leaf": "#2f8a5b",
+    "sun": "#f0ce58",
+    "cream": "#fbfff7",
+    "mist": "#e6f2df",
+    "soil": "#47564a",
     "white": "#ffffff"
   },
   "assets": {
@@ -76,8 +76,8 @@
   "contact": {
     "phoneLabel": "(555) 014-2684",
     "phoneHref": "tel:+15550142684",
-    "email": "hello@leafdesk.example.com",
-    "emailHref": "mailto:hello@leafdesk.example.com",
+    "email": "hello@leafdeskplantcare.com",
+    "emailHref": "mailto:hello@leafdeskplantcare.com",
     "serviceArea": "Recurring houseplant and office plant care, watering routes, pruning, soil moisture checks, yellow leaf cleanup, plant rescue triage, lobby plant refreshes, and vacation plant visits for homes, studios, offices, and sunny apartments"
   },
   "copy": {

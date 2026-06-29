@@ -19,8 +19,6 @@ const catalogAppleTouchIconSource = path.join("assets", "demo", "site-o-mattic-c
 const requestedFeaturedSlug = process.env.SITE_O_MATTIC_FEATURED_SLUG || "";
 const previewSweepDir = process.env.SITE_O_MATTIC_PREVIEW_SWEEP_DIR || path.join("qa", "reports", "visual-sweep");
 const reviewEvidence = await readJsonIfExists(path.join("qa", "reports", "visual-sweep", "review-evidence.json"));
-const comparisonDashboard = await readJsonIfExists(path.join("qa", "reports", "visual-sweep", "dashboard", "visual-comparison-dashboard.json"));
-const reviewItemsBySlug = new Map((reviewEvidence?.items || []).map((item) => [item.slug, item]));
 
 const specEntries = [];
 for (const target of await specTargets([])) {
@@ -45,7 +43,6 @@ for (const { spec, updatedAtMs } of specEntries) {
   const heroUrl = `${rawBase}/public/blueprints/${spec.slug}${manifest.assets.hero.outputPath}`;
   const logoUrl = `${rawBase}/public/blueprints/${spec.slug}${manifest.assets.logo.outputPath}`;
   const screenshotUrl = await screenshotUrlFor(spec.slug, heroUrl);
-  const reviewItem = reviewItemsBySlug.get(spec.slug);
 
   cards.push({
     slug: spec.slug,
@@ -64,8 +61,7 @@ for (const { spec, updatedAtMs } of specEntries) {
     zipUrl: `${rawBase}/public/blueprints/${spec.slug}/${spec.slug}-blueprint.zip`,
     readmeUrl: `${sourceBase}/public/blueprints/${spec.slug}/README.md`,
     specUrl: `${sourceBase}/specs/${spec.slug}.json`,
-    updatedAtMs,
-    reviewSignals: reviewSignalsFor(spec, reviewItem)
+    updatedAtMs
   });
 }
 
@@ -217,10 +213,7 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
   const sweepPassed = reviewEvidence ? Math.max(0, reviewEvidence.total - reviewEvidence.failed) : null;
   const sweepStat = reviewEvidence ? `${sweepPassed}/${reviewEvidence.total}` : "n/a";
   const featuredImage = featured.desktopPreview || featured.heroUrl;
-  const featuredMobile = featured.mobilePreview || "";
   const heroIllustration = pitchHeroUrl || featuredImage;
-  const heroShelf = renderHeroShelf(items, featured);
-  const tasteQueue = renderTasteQueue(items);
   const faviconTags = [
     catalogIcons.faviconIco ? `<link rel="icon" sizes="any" href="${escapeAttr(catalogIcons.faviconIco)}">` : "",
     catalogIcons.favicon ? `<link rel="icon" type="image/png" sizes="256x256" href="${escapeAttr(catalogIcons.favicon)}">` : "",
@@ -238,8 +231,8 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
   <style>
     :root {
       color-scheme: light;
-      --paper: #ffe65a;
-      --page: #eef6ff;
+      --paper: #fff06a;
+      --page: #f4f8ff;
       --surface: #fffdf7;
       --ink: #101626;
       --muted: #34394d;
@@ -252,15 +245,17 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       --orange: #f07a3f;
       --scarlet: #ef6259;
       --violet: #1646f5;
-      --shadow-blue: rgba(17, 22, 40, .14);
-      --shadow-hard: 5px 5px 0 var(--ink);
+      --shadow-blue: rgba(17, 22, 40, .1);
+      --shadow-hard: 4px 4px 0 var(--ink);
     }
     * {
       box-sizing: border-box;
     }
     body {
       margin: 0;
-      background: linear-gradient(180deg, #fff476 0, var(--page) 620px);
+      background:
+        linear-gradient(180deg, rgba(255, 240, 106, .72) 0, rgba(255, 240, 106, .26) 360px, var(--page) 760px),
+        var(--page);
       color: var(--ink);
       font-family: "Avenir Next", Avenir, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       line-height: 1.5;
@@ -269,7 +264,7 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       position: fixed;
       z-index: -1;
       inset: 0;
-      background: radial-gradient(circle at 1px 1px, rgba(17, 22, 40, .055) 1px, transparent 0) 0 0 / 22px 22px;
+      background: radial-gradient(circle at 1px 1px, rgba(17, 22, 40, .045) 1px, transparent 0) 0 0 / 26px 26px;
       content: "";
       pointer-events: none;
     }
@@ -282,29 +277,31 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       box-shadow: 0 0 0 8px var(--mint);
     }
     .page {
-      width: min(1440px, calc(100% - 28px));
+      width: min(1180px, calc(100% - 28px));
       margin: 0 auto;
-      padding: 24px 0 72px;
+      padding: 24px 0 68px;
     }
     .masthead {
       display: grid;
-      grid-template-columns: minmax(0, .95fr) minmax(290px, 350px);
-      gap: clamp(18px, 3vw, 34px);
+      grid-template-columns: minmax(0, 1fr) minmax(310px, 420px);
+      gap: clamp(22px, 4vw, 48px);
       position: relative;
       overflow: hidden;
-      min-height: clamp(540px, 70vh, 760px);
-      align-items: end;
+      min-height: clamp(430px, 57vh, 620px);
+      align-items: center;
       border: 2px solid var(--ink);
       background: var(--paper);
       box-shadow: var(--shadow-hard);
       isolation: isolate;
-      padding: clamp(22px, 3.8vw, 54px);
+      padding: clamp(24px, 4.2vw, 58px);
     }
     .masthead::before {
       position: absolute;
       inset: 0;
       z-index: 1;
-      background: linear-gradient(90deg, rgba(255, 241, 99, .9) 0 30%, rgba(255, 241, 99, .48) 48%, rgba(255, 241, 99, .09) 65%, transparent 100%);
+      background:
+        linear-gradient(90deg, rgba(255, 240, 106, .92) 0 42%, rgba(255, 240, 106, .5) 63%, rgba(255, 240, 106, .12) 100%),
+        linear-gradient(180deg, rgba(255, 253, 247, .18), rgba(255, 253, 247, .52));
       content: "";
     }
     .masthead::after {
@@ -313,7 +310,7 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       background: radial-gradient(circle at 1px 1px, rgba(22, 15, 42, .24) 1px, transparent 0) 0 0 / 12px 12px;
       content: "";
       mix-blend-mode: multiply;
-      opacity: .1;
+      opacity: .08;
       pointer-events: none;
     }
     .hero-bg {
@@ -324,27 +321,26 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       height: 100%;
       object-fit: cover;
       object-position: center center;
-      filter: saturate(1.08) contrast(1.04);
+      filter: saturate(1.04) contrast(1.02);
     }
     .hero-copy {
       position: relative;
       z-index: 2;
-      max-width: 650px;
+      max-width: 680px;
     }
     .hero-ticket {
       position: relative;
       z-index: 2;
-      align-self: center;
-      max-width: 340px;
+      align-self: stretch;
       border: 2px solid var(--ink);
       background: rgba(255, 253, 247, .98);
-      box-shadow: 4px 4px 0 var(--ink);
-      padding: clamp(14px, 1.7vw, 20px);
+      box-shadow: 3px 3px 0 var(--ink);
+      padding: clamp(14px, 1.8vw, 22px);
     }
     .hero-ticket::before {
       position: absolute;
       inset: 10px;
-      border: 1px dashed rgba(22, 15, 42, .18);
+      border: 1px solid rgba(22, 15, 42, .12);
       content: "";
       pointer-events: none;
     }
@@ -355,57 +351,33 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
     .hero-ticket h2 {
       margin: 0;
       font-family: Charter, "Iowan Old Style", Georgia, "Times New Roman", serif;
-      font-size: clamp(22px, 1.9vw, 30px);
+      font-size: clamp(22px, 2.1vw, 32px);
       font-weight: 720;
       line-height: 1.04;
       text-wrap: balance;
+    }
+    .hero-ticket p {
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: 1rem;
+      font-weight: 480;
+      line-height: 1.45;
     }
     .ticket-shot {
       display: block;
       width: 100%;
       aspect-ratio: 16 / 9;
-      margin: 14px 0 12px;
+      margin: 0 0 14px;
       border: 1px solid var(--ink);
       background: var(--blue);
       object-fit: cover;
       object-position: top center;
       filter: saturate(1.15) contrast(1.05);
     }
-    .ticket-list {
-      display: grid;
-      gap: 7px;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-    .ticket-list li {
-      display: grid;
-      grid-template-columns: 28px 1fr;
-      gap: 9px;
-      align-items: start;
-      color: var(--ink);
-      font-size: 13px;
-      font-weight: 640;
-      line-height: 1.34;
-    }
-    .ticket-list strong {
-      display: inline-grid;
-      min-height: 28px;
-      place-items: center;
-      border: 1px solid var(--ink);
-      background: var(--mint);
-      color: var(--ink);
-      font-size: 12px;
-      line-height: 1;
-    }
-    .ticket-ask {
-      margin: 14px 0 0;
-      padding: 10px;
-      background: var(--ink);
-      color: #ffffff;
-      font-size: 13px;
-      font-weight: 720;
-      line-height: 1.32;
+    .ticket-shot-link {
+      display: block;
+      color: inherit;
+      text-decoration: none;
     }
     .eyebrow {
       display: inline-flex;
@@ -416,8 +388,8 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       border: 1px solid var(--ink);
       background: var(--mint);
       color: var(--ink);
-      font-size: 12px;
-      font-weight: 780;
+      font-size: 14px;
+      font-weight: 680;
       letter-spacing: 0;
       text-transform: uppercase;
     }
@@ -425,7 +397,7 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin: 16px 0 0;
+      margin: 18px 0 0;
       padding: 0;
       list-style: none;
     }
@@ -437,9 +409,9 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       border: 1px solid var(--ink);
       background: var(--surface);
       color: var(--ink);
-      font-size: 13px;
-      font-weight: 760;
-      line-height: 1.08;
+      font-size: 14px;
+      font-weight: 560;
+      line-height: 1.2;
     }
     .hero-badges li:nth-child(2) {
       background: var(--surface);
@@ -462,110 +434,8 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       margin: 14px 0 0;
       color: #20243d;
       font-size: clamp(17px, 1.22vw, 19px);
-      font-weight: 620;
-      line-height: 1.42;
-    }
-    .hero-note {
-      display: block;
-      max-width: 650px;
-      margin-top: 16px;
-      padding: 11px 13px 11px 15px;
-      border-left: 5px solid var(--blue);
-      background: rgba(255, 253, 247, .9);
-      color: var(--blue-dark);
-      font-size: 14px;
-      font-weight: 680;
-      line-height: 1.38;
-    }
-    .hero-shelf {
-      position: relative;
-      z-index: 2;
-      display: grid;
-      grid-column: 1 / -1;
-      grid-template-columns: repeat(6, minmax(0, 1fr));
-      gap: 10px;
-      align-self: end;
-      margin-top: clamp(0px, 1.2vw, 10px);
-    }
-    .hero-shelf a {
-      position: relative;
-      overflow: hidden;
-      display: block;
-      min-height: 108px;
-      border: 2px solid var(--ink);
-      background: var(--surface);
-      color: var(--ink);
-      text-decoration: none;
-      box-shadow: 2px 2px 0 var(--ink);
-    }
-    .hero-shelf a:nth-child(2n) {
-      transform: translateY(-8px);
-    }
-    .hero-shelf a:nth-child(3n) {
-      box-shadow: 4px 4px 0 var(--pink-dark);
-    }
-    .hero-shelf img {
-      display: block;
-      width: 100%;
-      height: 78px;
-      object-fit: cover;
-      object-position: top center;
-      border-bottom: 2px solid var(--ink);
-      filter: saturate(1.08) contrast(1.04);
-    }
-    .hero-shelf span {
-      display: block;
-      padding: 7px 8px 8px;
-      background: rgba(255, 253, 244, .96);
-      font-size: 11px;
-      font-weight: 760;
-      line-height: 1.16;
-    }
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-      margin: 26px 0 22px;
-    }
-    .stats dl,
-    .stats dd {
-      margin: 0;
-    }
-    .stat {
-      display: flex;
-      flex-direction: column;
-      padding: 15px;
-      border: 2px solid var(--ink);
-      background: var(--surface);
-      box-shadow: 3px 3px 0 var(--ink);
-    }
-    .stat:nth-child(2) {
-      box-shadow: 3px 3px 0 var(--pink-dark);
-    }
-    .stat:nth-child(3) {
-      box-shadow: 3px 3px 0 #11866d;
-    }
-    .stat:nth-child(4) {
-      box-shadow: 3px 3px 0 var(--blue-dark);
-    }
-    .stat dd {
-      order: 1;
-      display: block;
-      margin: 0;
-      color: var(--pink-dark);
-      font-family: Charter, "Iowan Old Style", Georgia, "Times New Roman", serif;
-      font-size: clamp(28px, 3vw, 46px);
-      font-weight: 760;
-      line-height: .9;
-    }
-    .stat dt {
-      order: 2;
-      display: block;
-      margin-top: 10px;
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 760;
-      text-transform: uppercase;
+      font-weight: 520;
+      line-height: 1.48;
     }
     .proof-strip {
       display: grid;
@@ -578,78 +448,9 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       color: var(--ink);
       box-shadow: var(--shadow-hard);
     }
-    .closing-board {
-      display: grid;
-      grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
-      gap: 14px;
-      align-items: stretch;
-      margin: 24px 0;
-    }
-    .closing-board > div:first-child,
-    .closing-board article {
-      border: 2px solid var(--ink);
-      background: var(--surface);
-      box-shadow: 4px 4px 0 var(--ink);
-      padding: clamp(16px, 2vw, 24px);
-    }
-    .closing-board > div:first-child {
-      background: var(--ink);
-      color: #ffffff;
-      box-shadow: 4px 4px 0 var(--blue);
-    }
-    .closing-board > div:first-child .eyebrow {
-      background: var(--mint);
-      color: var(--ink);
-    }
-    .closing-board h2,
-    .closing-board h3,
-    .closing-board p {
-      margin: 0;
-    }
-    .closing-board h2 {
-      max-width: 760px;
-      font-family: Charter, "Iowan Old Style", Georgia, "Times New Roman", serif;
-      font-size: clamp(31px, 3.7vw, 58px);
-      line-height: 1;
-      text-wrap: balance;
-    }
-    .closing-board p {
-      margin-top: 12px;
-      color: inherit;
-      font-weight: 640;
-      line-height: 1.42;
-    }
-    .closing-points {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-    }
-    .closing-points article:nth-child(1) {
-      background: var(--paper);
-    }
-    .closing-points article:nth-child(2) {
-      background: var(--mint);
-    }
-    .closing-points article:nth-child(3) {
-      background: #ffd4cd;
-    }
-    .closing-points article:nth-child(4) {
-      background: #dce6ff;
-    }
-    .closing-board h3 {
-      color: var(--ink);
-      font-size: 18px;
-      line-height: 1;
-      text-transform: uppercase;
-    }
-    .closing-points p {
-      color: var(--ink);
-      font-size: 14px;
-      line-height: 1.35;
-    }
     .proof-strip > * {
       min-width: 0;
-      padding: clamp(18px, 2vw, 24px);
+      padding: clamp(16px, 1.8vw, 22px);
       border-right: 2px solid var(--ink);
       background: var(--surface);
     }
@@ -676,74 +477,29 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
     .proof-strip h3 {
       color: var(--blue);
       font-size: 14px;
+      font-weight: 620;
+      line-height: 1.25;
       text-transform: uppercase;
     }
     .proof-strip p {
-      margin-top: 8px;
-      font-size: 14px;
-      font-weight: 720;
+      max-width: 30ch;
+      margin-top: 10px;
+      font-size: 16px;
+      font-weight: 440;
+      line-height: 1.48;
     }
-    .latest {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(300px, .64fr);
-      gap: 22px;
-      align-items: center;
-      margin: 28px 0 34px;
-      padding: 20px;
-      border: 2px solid var(--ink);
-      background: var(--surface);
-      box-shadow: var(--shadow-hard);
-    }
-    .latest-preview {
-      position: relative;
-      overflow: hidden;
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(96px, 18%);
-      gap: 10px;
-      align-items: end;
-      border: 2px solid var(--ink);
-      background: var(--blue);
-      text-decoration: none;
-    }
-    .latest-preview img {
-      display: block;
-      width: 100%;
-      object-fit: cover;
-      background: var(--blue);
-    }
-    .desktop-shot {
-      aspect-ratio: 16 / 9;
-      object-position: top center;
-    }
-    .mobile-shot {
-      aspect-ratio: 9 / 16;
-      object-position: top center;
-      border-left: 3px solid var(--ink);
-    }
-    .latest h2,
     .card h2 {
       margin: 0;
-      font-size: 25px;
-      line-height: 1.03;
+      font-size: clamp(22px, 1.7vw, 25px);
+      font-weight: 680;
+      line-height: 1.14;
       letter-spacing: 0;
       text-wrap: balance;
     }
-    .latest p,
     .card p {
       margin: 10px 0 0;
       color: var(--muted);
-      font-weight: 560;
-    }
-    .card-kicker {
-      color: var(--pink-dark)!important;
-      font-size: 13px;
-      font-weight: 860!important;
-      line-height: 1.15;
-      text-transform: uppercase;
-    }
-    .card-summary strong {
-      color: var(--ink);
-      font-weight: 850;
+      font-weight: 480;
     }
     .actions {
       display: flex;
@@ -760,11 +516,11 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       border: 2px solid var(--ink);
       background: var(--surface);
       color: var(--ink);
-      font-size: 14px;
-      font-weight: 780;
-      line-height: 1.1;
+      font-size: 1rem;
+      font-weight: 680;
+      line-height: 1.16;
       text-decoration: none;
-      box-shadow: 0 4px 0 var(--ink);
+      box-shadow: 0 3px 0 var(--ink);
       transition: transform .18s ease, box-shadow .18s ease;
     }
     .button.primary {
@@ -772,80 +528,38 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       color: #ffffff;
     }
     .button:hover,
+    .card-launch:hover,
     .links a:hover {
       transform: translate(-1px, -1px);
-      box-shadow: 0 5px 0 var(--ink);
-    }
-    .pitch-points {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
-      margin: 28px 0;
-    }
-    .pitch-points article {
-      min-height: 160px;
-      padding: 18px;
-      border: 2px solid var(--ink);
-      background: var(--surface);
-      box-shadow: 0 10px 24px var(--shadow-blue);
-    }
-    .pitch-points article:nth-child(2) {
-      box-shadow: 0 10px 24px rgba(241, 78, 131, .14);
-    }
-    .pitch-points article:nth-child(3) {
-      box-shadow: 0 10px 24px rgba(32, 200, 162, .14);
-    }
-    .pitch-points span {
-      display: inline-flex;
-      min-width: 44px;
-      min-height: 34px;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid var(--ink);
-      background: var(--pink);
-      font-weight: 850;
-    }
-    .pitch-points article:nth-child(2) span {
-      background: var(--mint);
-    }
-    .pitch-points article:nth-child(3) span {
-      background: var(--paper);
-    }
-    .pitch-points h2 {
-      margin: 12px 0 0;
-      font-size: clamp(24px, 2.8vw, 39px);
-      line-height: 1.08;
-    }
-    .pitch-points p {
-      color: var(--muted);
-      font-weight: 560;
+      box-shadow: 0 4px 0 var(--ink);
     }
     .toolbar {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
+      gap: 12px;
+      align-items: end;
       justify-content: space-between;
-      margin: 44px 0 20px;
+      margin: 34px 0 18px;
       scroll-margin-top: 18px;
     }
     .toolbar h2 {
       margin: 0;
       font-family: Charter, "Iowan Old Style", Georgia, "Times New Roman", serif;
-      font-size: clamp(28px, 3.6vw, 54px);
-      line-height: 1;
+      max-width: 780px;
+      font-size: clamp(30px, 3.8vw, 56px);
+      line-height: 1.02;
       font-weight: 740;
       text-wrap: balance;
     }
     .toolbar a {
       color: var(--ink);
-      font-size: 14px;
-      font-weight: 820;
+      font-size: 1rem;
+      font-weight: 650;
     }
     .grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 22px;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+      gap: 18px;
     }
     .card {
       position: relative;
@@ -853,58 +567,30 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       flex-direction: column;
       overflow: hidden;
       min-width: 0;
-      border: 2px solid var(--ink);
+      border: 1px solid rgba(16, 22, 38, .42);
       background: var(--surface);
-      box-shadow: 0 10px 24px var(--shadow-blue);
+      box-shadow: 0 12px 28px rgba(17, 22, 40, .08);
     }
     .card:nth-child(3n+1) {
-      box-shadow: 0 10px 24px rgba(241, 78, 131, .12);
+      box-shadow: 0 12px 28px rgba(241, 78, 131, .08);
     }
     .card:nth-child(3n+2) {
-      box-shadow: 0 10px 24px rgba(32, 200, 162, .12);
+      box-shadow: 0 12px 28px rgba(32, 200, 162, .08);
     }
     .card:nth-child(3n+3) {
-      box-shadow: 0 10px 24px rgba(69, 50, 216, .12);
+      box-shadow: 0 12px 28px rgba(69, 50, 216, .08);
     }
     .card-preview {
       position: relative;
       display: block;
       overflow: hidden;
       aspect-ratio: 16 / 10;
-      border-bottom: 2px solid var(--ink);
+      border-bottom: 1px solid rgba(16, 22, 38, .32);
       background: var(--blue);
       background-position: top center;
       background-repeat: no-repeat;
       background-size: cover;
       text-decoration: none;
-    }
-    .card-preview::before {
-      display: inline-flex;
-      position: absolute;
-      z-index: 1;
-      top: 10px;
-      left: 10px;
-      padding: 5px 8px;
-      border: 1px solid var(--ink);
-      background: var(--paper);
-      color: var(--ink);
-      content: "LIVE DEMO";
-      font-size: 11px;
-      font-weight: 850;
-      line-height: 1;
-    }
-    .card-number {
-      position: absolute;
-      z-index: 2;
-      right: 10px;
-      bottom: 10px;
-      padding: 5px 8px;
-      border: 1px solid var(--ink);
-      background: var(--mint);
-      color: var(--ink);
-      font-size: 11px;
-      font-weight: 850;
-      line-height: 1;
     }
     .card-preview img {
       display: block;
@@ -922,107 +608,82 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       display: flex;
       flex: 1;
       flex-direction: column;
-      padding: 18px;
+      padding: 16px;
     }
     .logo-row {
       display: flex;
       flex-direction: column;
-      min-height: 50px;
+      min-height: 44px;
       align-items: flex-start;
       justify-content: flex-start;
       gap: 10px;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
     .logo-row img {
       display: block;
-      width: min(220px, 72%);
-      max-height: 48px;
+      width: min(190px, 70%);
+      max-height: 42px;
       object-fit: contain;
       object-position: left center;
     }
-    .meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      justify-content: flex-start;
-      margin: 0;
+    .card-meta {
+      margin: 0 0 8px;
+      color: var(--blue-dark);
+      font-size: 13px;
+      font-weight: 560;
+      line-height: 1.35;
     }
-    .pill {
+    .card-summary {
+      display: -webkit-box;
+      overflow: hidden;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      line-height: 1.46;
+    }
+    .card-launch {
       display: inline-flex;
       align-items: center;
-      min-height: 24px;
-      padding: 4px 8px;
+      justify-content: center;
+      min-height: 40px;
+      margin-top: 16px;
+      padding: 10px 12px;
       border: 1px solid var(--ink);
-      background: #eefaf6;
-      color: var(--ink);
-      font-size: 12px;
-      font-weight: 760;
+      background: var(--blue);
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 660;
+      line-height: 1.15;
+      text-decoration: none;
+      box-shadow: 0 3px 0 var(--ink);
+      transition: transform .18s ease, box-shadow .18s ease;
     }
-    .signals {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin: 0 0 12px;
+    .artifact-links {
+      margin-top: 10px;
+      border-top: 1px solid rgba(16, 22, 38, .16);
+      padding-top: 10px;
     }
-    .signal {
-      display: inline-flex;
-      align-items: center;
-      min-height: 22px;
-      padding: 3px 7px;
-      border: 1px solid rgba(23, 27, 43, .68);
-      background: #ffffff;
-      color: #2d3448;
-      font-size: 11px;
-      font-weight: 720;
-      line-height: 1.1;
-    }
-    .taste-queue {
-      margin: 26px 0 8px;
-    }
-    .review-notes {
-      padding: 12px;
-      border: 2px solid var(--line);
-      background: var(--surface);
-      box-shadow: 0 10px 24px var(--shadow-blue);
-    }
-    .review-notes summary {
+    .artifact-links summary {
       cursor: pointer;
-      font-weight: 850;
-    }
-    .review-notes .signals {
-      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 560;
     }
     .links {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 8px;
-      margin-top: auto;
-      padding-top: 16px;
+      gap: 7px;
+      margin-top: 9px;
     }
     .links a {
-      min-height: 38px;
-      padding: 10px 10px;
-      border: 1px solid var(--line);
+      min-height: 34px;
+      padding: 8px 7px;
+      border: 1px solid rgba(16, 22, 38, .34);
       color: var(--ink);
       font-size: 13px;
-      font-weight: 760;
+      font-weight: 560;
       text-align: center;
       text-decoration: none;
       transition: transform .18s ease, box-shadow .18s ease;
-    }
-    .links a:first-child {
-      grid-column: 1 / -1;
-      background: var(--scarlet);
-      color: var(--ink);
-      font-weight: 820;
-    }
-    .card:nth-child(3n+2) .links a:first-child {
-      background: var(--blue);
-      color: #ffffff;
-    }
-    .card:nth-child(3n+3) .links a:first-child {
-      background: var(--pink-dark);
-      color: #ffffff;
     }
     footer {
       margin-top: 32px;
@@ -1032,12 +693,8 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       font-size: 14px;
     }
     @media (max-width: 920px) {
-      .masthead,
-      .latest {
+      .masthead {
         grid-template-columns: 1fr;
-      }
-      .stats {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
       }
       .proof-strip {
         grid-template-columns: 1fr 1fr;
@@ -1045,17 +702,21 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       .proof-strip > :first-child {
         grid-column: 1 / -1;
       }
-      .grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    @media (min-width: 621px) and (max-width: 920px) {
+      .proof-strip > :first-child {
+        border-right: 0;
+        border-bottom: 2px solid var(--ink);
       }
-      .hero-shelf {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+      .proof-strip > :nth-child(3) {
+        border-right: 0;
       }
-      .pitch-points {
-        grid-template-columns: 1fr;
+      .proof-strip > :last-child {
+        grid-column: 1 / -1;
+        border-top: 2px solid var(--ink);
       }
-      .closing-board {
-        grid-template-columns: 1fr;
+      .proof-strip > :last-child p {
+        max-width: 46ch;
       }
     }
     @media (max-width: 620px) {
@@ -1063,7 +724,6 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
         width: min(100% - 24px, 1360px);
         padding-top: 24px;
       }
-      .stats,
       .proof-strip,
       .grid {
         grid-template-columns: 1fr;
@@ -1084,11 +744,8 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       .hero-copy {
         order: 1;
       }
-      .hero-shelf {
-        order: 2;
-      }
       .hero-ticket {
-        order: 3;
+        order: 2;
       }
       .masthead::before {
         background: linear-gradient(180deg, rgba(255, 241, 95, .9) 0 42%, rgba(255, 241, 95, .7) 64%, rgba(255, 241, 95, .22) 100%);
@@ -1106,72 +763,17 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
         line-height: 1.36;
         margin-top: 12px;
       }
-      .hero-note {
-        margin-top: 12px;
-        padding: 10px 11px 10px 13px;
-        font-size: 13px;
-      }
       .hero-badges li {
-        font-size: 11px;
+        font-size: 13px;
         min-height: 34px;
         padding: 8px 10px;
-      }
-      .latest {
-        padding: 12px;
-      }
-      .hero-ticket {
-        display: none;
       }
       .hero-ticket h2 {
         font-size: clamp(23px, 7.1vw, 30px);
         line-height: 1.04;
       }
-      .hero-shelf {
-        grid-template-columns: 1fr 1fr;
-        gap: 9px;
-      }
-      .hero-shelf a {
-        min-height: 104px;
-      }
-      .hero-shelf a:nth-child(n+3) {
-        display: none;
-      }
-      .hero-shelf img {
-        height: 74px;
-      }
-      .hero-shelf span {
-        padding: 6px 7px;
-        font-size: 10px;
-      }
-      .ticket-list {
-        gap: 10px;
-      }
-      .ticket-list li {
-        grid-template-columns: 28px 1fr;
-        font-size: 13px;
-        font-weight: 680;
-      }
-      .ticket-list strong {
-        min-height: 26px;
-      }
-      .ticket-ask {
-        padding: 11px;
-        font-size: 13px;
-      }
-      .closing-points {
-        grid-template-columns: 1fr;
-      }
       .links {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-      .latest-preview {
-        grid-template-columns: 1fr;
-      }
-      .mobile-shot {
-        width: min(220px, 62%)!important;
-        margin: -34px 14px 14px auto;
-        border: 2px solid var(--ink);
-        box-shadow: 0 10px 22px rgba(17, 22, 40, .16);
       }
       .logo-row {
         align-items: flex-start;
@@ -1181,17 +783,13 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       .logo-row img {
         display: none;
       }
-      .meta {
-        justify-content: flex-start;
-        margin-left: 0;
-      }
     }
     @media (prefers-reduced-motion: reduce) {
       *,
       *::before,
       *::after {
-        scroll-behavior: auto!important;
-        transition-duration: .001ms!important;
+        scroll-behavior: auto;
+        transition-duration: .001ms;
       }
     }
   </style>
@@ -1201,99 +799,50 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
     <header class="masthead">
       <img class="hero-bg" src="${escapeAttr(heroIllustration)}" alt="" loading="eager">
       <div class="hero-copy">
-        <p class="eyebrow">Site-O-Mattic pitch wall</p>
-        <h1>Win the room with live WordPress demos.</h1>
-        <p class="lede">${items.length} inspectable niche sites with ImageGen-led brand energy, screenshot proof on every card, and one-click Playground launches for the meeting.</p>
+        <p class="eyebrow">Site-O-Mattic demo catalog</p>
+        <h1>Live WordPress demos that make the idea obvious.</h1>
+        <p class="lede">A curated wall of ${items.length} niche sites, each with a real screenshot, a one-click Playground launch, and the Blueprint artifacts behind it.</p>
         <ul class="hero-badges" aria-label="Demo proof points">
-          <li>ImageGen-led</li>
-          <li>Screenshot-first</li>
-          <li>Playground-ready</li>
+          <li>Screenshot first</li>
+          <li>Playground ready</li>
+          <li>Block-first foundation</li>
         </ul>
-        <p class="hero-note">Use it like a meeting artifact: point at a niche, launch the site, show the proof trail, and make the next production lane feel obvious.</p>
         <div class="actions">
           <a class="button primary" href="${escapeAttr(featured.playgroundUrl)}" aria-label="Open ${escapeAttr(featured.name)} in WordPress Playground">Open featured demo</a>
-          <a class="button" href="#catalog">Browse screenshot wall</a>
+          <a class="button" href="#catalog">Browse the wall</a>
         </div>
       </div>
-      <aside class="hero-ticket" aria-label="90-second meeting script">
-        <p class="eyebrow">90-second room script</p>
-        <h2>Open the site. Show the receipts. Ask for the lane.</h2>
-        <img class="ticket-shot" src="${escapeAttr(featuredImage)}" alt="Screenshot of the featured ${escapeAttr(featured.name)} demo" loading="eager">
-        <ol class="ticket-list">
-          <li><strong>1</strong><span>Pick a niche the room understands instantly.</span></li>
-          <li><strong>2</strong><span>Launch the live Playground site.</span></li>
-          <li><strong>3</strong><span>Show the screenshot, JSON, and spec.</span></li>
-          <li><strong>4</strong><span>Ask for the next production lane.</span></li>
-        </ol>
-        <p class="ticket-ask">Ask: fund the next lane of inspectable WordPress sales demos.</p>
+      <aside class="hero-ticket" aria-label="Featured demo">
+        <a class="ticket-shot-link" href="${escapeAttr(featured.playgroundUrl)}" aria-label="Open ${escapeAttr(featured.name)} in WordPress Playground">
+          <img class="ticket-shot" src="${escapeAttr(featuredImage)}" alt="Screenshot of the featured ${escapeAttr(featured.name)} demo" loading="eager">
+        </a>
+        <p class="eyebrow">Featured demo</p>
+        <h2>${escapeHtml(featured.name)}</h2>
+        <p>${escapeHtml(featured.summary)}</p>
+        <div class="actions">
+          <a class="button primary" href="${escapeAttr(featured.playgroundUrl)}" aria-label="Launch ${escapeAttr(featured.name)} in WordPress Playground">Launch</a>
+          <a class="button" href="${escapeAttr(featured.blueprintUrl)}" aria-label="Open ${escapeAttr(featured.name)} Blueprint JSON">JSON</a>
+        </div>
       </aside>
-      ${heroShelf}
     </header>
-
-    <dl class="stats" aria-label="Catalog counts">
-      <div class="stat"><dt>Live demo links</dt><dd>${items.length}</dd></div>
-      <div class="stat"><dt>Approved proofs</dt><dd>${approvedCount}</dd></div>
-      <div class="stat"><dt>Screenshot cards</dt><dd>${items.length}</dd></div>
-      <div class="stat"><dt>Visual sweep</dt><dd>${escapeHtml(sweepStat)}</dd></div>
-    </dl>
 
     <section class="proof-strip" aria-labelledby="proof-heading">
       <div>
-        <h2 id="proof-heading">Bring the room a product, not a promise.</h2>
+        <h2 id="proof-heading">Enough proof to trust it fast.</h2>
       </div>
-      <article><h3>Launch</h3><p>Every niche opens as a real WordPress site from a hosted Blueprint.</p></article>
-      <article><h3>Inspect</h3><p>Screenshots, specs, assets, JSON, and ZIPs keep the artifact accountable.</p></article>
-      <article><h3>Scale</h3><p>One lean block foundation carries many brands, layouts, and service stories.</p></article>
-    </section>
-
-    <section class="latest" aria-labelledby="featured-heading">
-      <a class="latest-preview" href="${escapeAttr(featured.playgroundUrl)}" aria-label="Open ${escapeAttr(featured.name)} in WordPress Playground">
-        <img class="desktop-shot" src="${escapeAttr(featuredImage)}" alt="${escapeAttr(featured.name)} desktop preview" loading="eager">
-        ${featuredMobile ? `<img class="mobile-shot" src="${escapeAttr(featuredMobile)}" alt="${escapeAttr(featured.name)} mobile preview" loading="eager">` : ""}
-      </a>
-      <div>
-        <p class="eyebrow">Featured proof</p>
-        <h2 id="featured-heading">${escapeHtml(featured.name)}</h2>
-        <p>${escapeHtml(featured.summary)}</p>
-        <div class="actions">
-          <a class="button primary" href="${escapeAttr(featured.playgroundUrl)}" aria-label="Launch ${escapeAttr(featured.name)} in WordPress Playground">Launch in Playground</a>
-          <a class="button" href="${escapeAttr(featured.blueprintUrl)}" aria-label="Open ${escapeAttr(featured.name)} Blueprint JSON">Blueprint JSON</a>
-          <a class="button" href="${escapeAttr(featured.zipUrl)}" aria-label="Download ${escapeAttr(featured.name)} Blueprint ZIP">Download ZIP</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="closing-board" aria-labelledby="closing-heading">
-      <div>
-        <p class="eyebrow">What you are really selling</p>
-        <h2 id="closing-heading">A repeatable WordPress demo factory with taste in the loop.</h2>
-        <p>The ImageGen pitch wall brings the spark. The proof underneath is practical: core blocks, theme settings, screenshots, accessibility checks, and Playground links that make the concept inspectable.</p>
-      </div>
-      <div class="closing-points">
-        <article><h3>Fast to see</h3><p>People can understand the opportunity before they read the repo.</p></article>
-        <article><h3>Easy to trust</h3><p>Every card leads with a screenshot and carries the live site, JSON, ZIP, and spec.</p></article>
-        <article><h3>Built to govern</h3><p>Block-first output keeps the demos close to WordPress, not a fragile one-off.</p></article>
-        <article><h3>Ready to fund</h3><p>The catalog turns the next step into a concrete production lane.</p></article>
-      </div>
-    </section>
-
-    <section class="pitch-points" aria-label="Sales talking points">
-      <article><span aria-hidden="true">01</span><h2>Make it tangible</h2><p>Start with the featured demo, then jump across niches without leaving the browser.</p></article>
-      <article><span aria-hidden="true">02</span><h2>Show range</h2><p>One lean WordPress foundation, many business stories, layouts, palettes, and generated logos.</p></article>
-      <article><span aria-hidden="true">03</span><h2>Close cleanly</h2><p>Leadership sees the artifact, the guardrails, and the obvious next investment.</p></article>
+      <article><h3>${items.length} demos</h3><p>Every card leads with the rendered site, not a promise deck.</p></article>
+      <article><h3>${approvedCount} approved</h3><p>Specs, screenshots, assets, JSON, and ZIPs stay one click away.</p></article>
+      <article><h3>${escapeHtml(sweepStat)} sweep</h3><p>The catalog is backed by visual, accessibility, and editor guardrails.</p></article>
     </section>
 
     <section class="toolbar" id="catalog" aria-labelledby="catalog-heading">
-      <h2 id="catalog-heading">Demo wall: screenshot first, live WordPress one click away.</h2>
+      <h2 id="catalog-heading">Browse the live demo wall.</h2>
       <a href="${escapeAttr(repoBase)}">GitHub repository</a>
     </section>
 
     <section class="grid" aria-label="Demo catalog cards">
 ${items.map((item, index) => renderCard(item, index)).join("\n")}
     </section>
-
-    ${tasteQueue}
-
     <footer>
       Generated ${escapeHtml(generatedAt)} from ${escapeHtml(repository)} on ${escapeHtml(branch)}.
     </footer>
@@ -1303,104 +852,28 @@ ${items.map((item, index) => renderCard(item, index)).join("\n")}
 `;
 }
 
-function renderHeroShelf(items, featured) {
-  const preferredSlugs = [
-    featured.slug,
-    "garage-organization",
-    "mobile-auto-detailing",
-    "holiday-light-installation",
-    "pool-cleaning",
-    "wood-fired-pizza-taco-catering"
-  ];
-  const bySlug = new Map(items.map((item) => [item.slug, item]));
-  const seen = new Set();
-  const shelfItems = [...preferredSlugs.map((slug) => bySlug.get(slug)), ...items]
-    .filter((item) => {
-      if (!item || seen.has(item.slug)) {
-        return false;
-      }
-      seen.add(item.slug);
-      return Boolean(item.screenshotUrl && item.playgroundUrl);
-    })
-    .slice(0, 6);
-
-  if (!shelfItems.length) {
-    return "";
-  }
-
-  return `<nav class="hero-shelf" aria-label="Featured live demo screenshots">
-${shelfItems.map((item) => `        <a href="${escapeAttr(item.playgroundUrl)}" aria-label="Open ${escapeAttr(item.name)} live demo in WordPress Playground">
-          <img src="${escapeAttr(item.screenshotUrl)}" alt="" loading="eager">
-          <span>${escapeHtml(item.name)}</span>
-        </a>`).join("\n")}
-      </nav>`;
-}
-
-function renderTasteQueue(items) {
-  const nameBySlug = new Map(items.map((item) => [item.slug, item.name]));
-  const warnings = (reviewEvidence?.items || [])
-    .filter((item) => item.tasteWarnings?.length)
-    .slice(0, 3);
-  const nearest = (comparisonDashboard?.nearest || reviewEvidence?.nearestNeighbors || [])
-    .slice(0, warnings.length ? 3 : 5);
-  const warningCount = Number(reviewEvidence?.tasteWarningCount || 0);
-  const signals = [
-    { text: warnings.length ? "Visual review queue" : "Closest visual neighbors" },
-    warnings.length ? { text: `${warningCount} warnings` } : null,
-    ...warnings.map((item) => ({
-      text: `${nameBySlug.get(item.slug) || labelText(item.slug)}: ${tasteSignalFor(item.tasteWarnings)}`,
-      title: (item.tasteWarnings || []).map((warning) => typeof warning === "string" ? warning : warning?.message || warning?.reason || "").filter(Boolean).join(" | ")
-    })),
-    ...nearest.map((pair) => ({
-      text: `Watch ${nameBySlug.get(pair.left) || labelText(pair.left)} + ${nameBySlug.get(pair.right) || labelText(pair.right)}`,
-      title: [pair.distance ? `Distance ${pair.distance}` : "", pairTasteTitle(pair)].filter(Boolean).join(" | ")
-    }))
-  ].filter((item) => item?.text);
-
-  if (signals.length <= 2 && !nearest.length) {
-    return "";
-  }
-
-  return `<details class="review-notes taste-queue">
-      <summary>Design review notes</summary>
-      <div class="signals" aria-label="Design review notes">
-${signals.map(renderSignal).join("\n")}
-      </div>
-    </details>`;
-}
-
-function renderSignal(signal) {
-  return `        <span class="signal">${escapeHtml(signal.text)}</span>`;
-}
-
-function renderCard(item, index = 0) {
-  const signals = item.reviewSignals.length
-    ? `<div class="signals">${item.reviewSignals.map((signal) => `<span class="signal">${escapeHtml(signal)}</span>`).join("")}</div>`
-    : "";
+function renderCard(item) {
   return `      <article class="card" aria-labelledby="card-${escapeAttr(item.slug)}-title">
         <a class="card-preview" href="${escapeAttr(item.playgroundUrl)}" aria-label="Open ${escapeAttr(item.name)} in WordPress Playground" style="background-image: url('${escapeAttr(item.screenshotUrl)}')">
           <img src="${escapeAttr(item.screenshotUrl)}" alt="Screenshot preview of the ${escapeAttr(item.name)} demo site" loading="lazy" decoding="async">
-          <span class="card-number">Demo ${String(index + 1).padStart(2, "0")}</span>
         </a>
         <div class="content">
           <div class="logo-row">
             <img src="${escapeAttr(item.logoUrl)}" alt="${escapeAttr(item.name)} logo" loading="lazy" decoding="async">
-            <div class="meta">
-              <span class="pill">Status: ${escapeHtml(labelText(item.status))}</span>
-              <span class="pill">Pattern: ${escapeHtml(item.patternLabel)}</span>
-            </div>
           </div>
-          ${signals}
+          <p class="card-meta">${escapeHtml(item.niche)} demo</p>
           <h2 id="card-${escapeAttr(item.slug)}-title">${escapeHtml(item.name)}</h2>
-          <p class="card-kicker">${escapeHtml(item.niche)} sales demo</p>
-          <p class="card-summary"><strong>Pitch angle:</strong> ${escapeHtml(item.summary)}</p>
-          <div class="links" role="group" aria-label="${escapeAttr(item.name)} links">
-            <a href="${escapeAttr(item.playgroundUrl)}" aria-label="Launch ${escapeAttr(item.name)} in WordPress Playground">Launch Playground</a>
-            <a href="${escapeAttr(item.blueprintUrl)}" aria-label="Open ${escapeAttr(item.name)} Blueprint JSON">JSON</a>
-            <a href="${escapeAttr(item.zipUrl)}" aria-label="Download ${escapeAttr(item.name)} Blueprint ZIP">ZIP</a>
-            <a href="${escapeAttr(item.specUrl)}" aria-label="Open ${escapeAttr(item.name)} production spec">Spec</a>
-            <a href="${escapeAttr(item.readmeUrl)}" aria-label="Open ${escapeAttr(item.name)} README">README</a>
-          </div>
+          <p class="card-summary">${escapeHtml(item.summary)}</p>
+          <a class="card-launch" href="${escapeAttr(item.playgroundUrl)}" aria-label="Launch ${escapeAttr(item.name)} in WordPress Playground">Launch Playground</a>
+          <details class="artifact-links">
+            <summary>Artifacts</summary>
+            <div class="links" role="group" aria-label="${escapeAttr(item.name)} artifacts">
+              <a href="${escapeAttr(item.blueprintUrl)}" aria-label="Open ${escapeAttr(item.name)} Blueprint JSON">JSON</a>
+              <a href="${escapeAttr(item.zipUrl)}" aria-label="Download ${escapeAttr(item.name)} Blueprint ZIP">ZIP</a>
+              <a href="${escapeAttr(item.specUrl)}" aria-label="Open ${escapeAttr(item.name)} production spec">Spec</a>
+              <a href="${escapeAttr(item.readmeUrl)}" aria-label="Open ${escapeAttr(item.name)} README">README</a>
+            </div>
+          </details>
         </div>
       </article>`;
 }
@@ -1413,69 +886,6 @@ async function screenshotUrlFor(slug, fallback) {
   } catch {
     return fallback;
   }
-}
-
-function pairTasteTitle(pair) {
-  const left = comparisonDashboard?.reports?.find((item) => item.slug === pair.left)?.signature;
-  const right = comparisonDashboard?.reports?.find((item) => item.slug === pair.right)?.signature;
-  if (!left || !right) {
-    return "";
-  }
-  return [
-    `${pair.left}: ${left.silhouette} / ${left.navigationPrimitive} / ${left.styleFamily}`,
-    `${pair.right}: ${right.silhouette} / ${right.navigationPrimitive} / ${right.styleFamily}`
-  ].join(" | ");
-}
-
-function reviewSignalsFor(spec, reviewItem) {
-  const signals = [];
-  if (reviewItem) {
-    signals.push(reviewItem.status === "ok" ? "Visual sweep OK" : `Review ${reviewItem.failures?.length || 1} issues`);
-    if (reviewItem.tasteWarnings?.length) {
-      signals.push(`Taste: ${tasteSignalFor(reviewItem.tasteWarnings)}`);
-    }
-    const scenario = reviewItem.scenarios?.find((item) => item.name === "desktop")
-      || reviewItem.scenarios?.find((item) => item.name?.startsWith("mobile"))
-      || reviewItem.scenarios?.[0];
-    const ctaSignal = spec.copy?.primaryCta || scenario?.firstViewportExpectedCtaText || scenario?.firstViewportCtaText;
-    if (ctaSignal) {
-      signals.push(`CTA: ${shortSignal(ctaSignal, 22)}`);
-    }
-  } else {
-    signals.push("Visual sweep pending");
-  }
-  return signals.filter(Boolean).slice(0, 5);
-}
-
-function tasteSignalFor(warnings) {
-  const reasons = [...new Set(warnings.map(tasteWarningReason).filter(Boolean))];
-  if (!reasons.length) {
-    return `${warnings.length} taste`;
-  }
-  const [firstReason] = reasons;
-  return reasons.length === 1 ? firstReason : `${firstReason} +${reasons.length - 1}`;
-}
-
-function tasteWarningReason(warning) {
-  const text = typeof warning === "string"
-    ? warning
-    : warning?.message || warning?.reason || JSON.stringify(warning);
-  if (/media proof/i.test(text)) {
-    return "mobile proof thin";
-  }
-  if (/contrast/i.test(text)) {
-    return "contrast check";
-  }
-  if (/cta/i.test(text)) {
-    return /wrap/i.test(text) ? "CTA wrap" : "CTA timing";
-  }
-  if (/section intro|supporting copy|heading/i.test(text)) {
-    return "section spacing";
-  }
-  if (/nearest-neighbor|too close/i.test(text)) {
-    return "near neighbor";
-  }
-  return "taste check";
 }
 
 function latestCard(items) {
@@ -1530,14 +940,6 @@ async function readJsonIfExists(filePath) {
   } catch {
     return null;
   }
-}
-
-function shortSignal(value, maxLength) {
-  const text = String(value || "").replace(/\s+/g, " ").trim();
-  if (text.length <= maxLength) {
-    return text;
-  }
-  return `${text.slice(0, maxLength - 1).replace(/\s+\S*$/, "")}...`;
 }
 
 function escapeHtml(value) {

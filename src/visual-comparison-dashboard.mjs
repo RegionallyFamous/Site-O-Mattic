@@ -180,7 +180,7 @@ function buildHtml(reports, nearest, sweep) {
     .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
     article{background:#1b1f21;border:1px solid #333a3d;border-radius:8px;overflow:hidden}
     header{display:flex;justify-content:space-between;gap:16px;align-items:start;padding:16px 18px;border-bottom:1px solid #333a3d}
-    header p{margin:0 0 4px;color:#aeb6b2;font-size:12px;text-transform:uppercase;font-weight:800}
+    header p{margin:0 0 4px;color:#aeb6b2;font-size:1rem;text-transform:uppercase;font-weight:700}
     h2{margin:0;font-size:22px}
     header span{background:#27332c;color:#8ff0a4;border-radius:999px;padding:4px 10px;font-weight:800}
     .shots{display:grid;grid-template-columns:1.4fr .7fr;gap:10px;padding:10px;background:#101214}

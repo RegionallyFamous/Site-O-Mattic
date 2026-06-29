@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://regionallyfamous.test/site-o-mattic-spec.schema.json",
+  "$id": "https://regionallyfamous.com/site-o-mattic-spec.schema.json",
   "title": "Site-O-Mattic niche Blueprint spec",
   "type": "object",
   "additionalProperties": false,

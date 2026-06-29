@@ -76,14 +76,14 @@
   "contact": {
     "phoneLabel": "(555) 014-8843",
     "phoneHref": "tel:+15550148843",
-    "email": "hello@kindmove.example.com",
-    "emailHref": "mailto:hello@kindmove.example.com",
+    "email": "hello@kindmovedownsizing.com",
+    "emailHref": "mailto:hello@kindmovedownsizing.com",
     "serviceArea": "Senior downsizing consults, room-by-room sorting, family decision support, donation planning, packing prep, move labels, keepsake organization, and gentle transition help for apartments, condos, family homes, and retirement communities"
   },
   "copy": {
     "eyebrow": "Senior downsizing with patient sorting help",
-    "heroTitle": "A calmer smaller move.",
-    "heroText": "KindMove helps families sort, label, donate, pack, and plan the next chapter with steady hands, clear categories, and room for the stories that come with the boxes.",
+    "heroTitle": "A calmer downsizing plan.",
+    "heroText": "KindMove turns keep, gift, donate, pack, and unsure decisions into a room-by-room plan with family notes before move day.",
     "primaryCta": "Schedule a consult",
     "secondaryCta": "Review support steps",
     "introTitle": "Support for decisions, keepsakes, donations, and the hard maybe pile.",
@@ -124,16 +124,16 @@
   ],
   "proof": [
     {
-      "stat": "One room",
-      "label": "focused sessions reduce overwhelm"
+      "stat": "Room plan",
+      "label": "keep, gift, donate, pack, unsure"
     },
     {
       "stat": "Family notes",
-      "label": "clear prompts for shared decisions"
+      "label": "questions captured before items move"
     },
     {
-      "stat": "First week",
-      "label": "essentials staged for the new home"
+      "stat": "Move labels",
+      "label": "first-week boxes and donations staged"
     }
   ],
   "release": {
