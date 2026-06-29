@@ -7,18 +7,20 @@ import { blueprintDirForSpec, blueprintPathForSpec, readSpec, specTargets } from
 const repository = process.env.GITHUB_REPOSITORY || "RegionallyFamous/Site-O-Mattic";
 const [owner, repo] = repository.split("/");
 const branch = process.env.GITHUB_REF_NAME || currentBranch() || "main";
-const rawBase = `https://raw.githubusercontent.com/${owner}/${repo}/${branch}`;
-const sourceBase = `https://github.com/${owner}/${repo}/blob/${branch}`;
-const repoBase = `https://github.com/${owner}/${repo}`;
+const blueprintRef = process.env.SITE_O_MATTIC_BLUEPRINT_REF
+  || process.env.SITE_O_MATTIC_REF
+  || process.env.GITHUB_SHA
+  || branch;
+const sourceRef = process.env.SITE_O_MATTIC_SOURCE_REF || blueprintRef;
+const rawBase = `https://raw.githubusercontent.com/${owner}/${repo}/${blueprintRef}`;
+const sourceBase = `https://github.com/${owner}/${repo}/blob/${sourceRef}`;
 const pagePath = path.join("docs", "index.html");
-const pitchHeroSource = path.join("assets", "demo", "site-o-mattic-riso-pitch-wall.jpg");
-const pitchHeroTargetName = "site-o-mattic-riso-pitch-wall.jpg";
 const catalogFaviconSource = path.join("assets", "demo", "site-o-mattic-catalog-favicon.png");
 const catalogFaviconIcoSource = path.join("assets", "demo", "site-o-mattic-catalog-favicon.ico");
 const catalogAppleTouchIconSource = path.join("assets", "demo", "site-o-mattic-catalog-apple-touch-icon.png");
 const requestedFeaturedSlug = process.env.SITE_O_MATTIC_FEATURED_SLUG || "";
 const previewSweepDir = process.env.SITE_O_MATTIC_PREVIEW_SWEEP_DIR || path.join("qa", "reports", "visual-sweep");
-const reviewEvidence = await readJsonIfExists(path.join("qa", "reports", "visual-sweep", "review-evidence.json"));
+const reviewEvidence = await readJsonIfExists(path.join(previewSweepDir, "review-evidence.json"));
 
 const specEntries = [];
 for (const target of await specTargets([])) {
@@ -41,7 +43,6 @@ for (const { spec, updatedAtMs } of specEntries) {
   const blueprintUrl = `${rawBase}/public/blueprints/${spec.slug}/blueprint.json`;
   const playgroundUrl = `https://playground.wordpress.net/?blueprint-url=${encodeURIComponent(blueprintUrl)}`;
   const heroUrl = `${rawBase}/public/blueprints/${spec.slug}${manifest.assets.hero.outputPath}`;
-  const logoUrl = `${rawBase}/public/blueprints/${spec.slug}${manifest.assets.logo.outputPath}`;
   const screenshotUrl = await screenshotUrlFor(spec.slug, heroUrl);
 
   cards.push({
@@ -50,12 +51,8 @@ for (const { spec, updatedAtMs } of specEntries) {
     niche: titleCase(spec.niche),
     summary: summarize(spec.copy?.heroText || ""),
     status: spec.release?.status || "draft",
-    variant: spec.layoutVariant,
-    patternLabel: labelText(spec.pattern?.silhouette || spec.layoutVariant),
     heroUrl,
-    logoUrl,
     screenshotUrl,
-    heroAlt: spec.assetMeta?.hero?.alt || `${spec.businessName} preview image`,
     playgroundUrl,
     blueprintUrl,
     zipUrl: `${rawBase}/public/blueprints/${spec.slug}/${spec.slug}-blueprint.zip`,
@@ -71,10 +68,9 @@ const featuredCard = requestedFeaturedSlug
   ? cards.find((item) => item.slug === requestedFeaturedSlug) || latestCard(cards)
   : latestCard(cards);
 await prepareCatalogAssets(cards);
-const pitchHeroUrl = await preparePitchHeroAsset();
 const catalogIcons = await prepareCatalogIconAssets();
 await prepareFeaturedPreview(featuredCard);
-const pageHtml = renderPage(cards, featuredCard, pitchHeroUrl, catalogIcons);
+const pageHtml = renderPage(cards, featuredCard, catalogIcons);
 assertNoDotTestUrls(pageHtml);
 await fs.writeFile(pagePath, pageHtml);
 
@@ -111,26 +107,6 @@ async function prepareCatalogAssets(items) {
         // Keep the hosted fallback for older builds without a captured screenshot.
       }
     }
-
-    const logoSource = path.join("public", "blueprints", item.slug, "assets", "logo.png");
-    const logoTargetName = `${item.slug}-logo.png`;
-    try {
-      await fs.copyFile(logoSource, path.join(targetDir, logoTargetName));
-      item.logoUrl = `catalog-assets/${logoTargetName}`;
-    } catch {
-      // Keep the hosted fallback for older builds without a copied logo.
-    }
-  }
-}
-
-async function preparePitchHeroAsset() {
-  const targetDir = path.join("docs", "catalog-assets");
-  const target = path.join(targetDir, pitchHeroTargetName);
-  try {
-    await fs.copyFile(pitchHeroSource, target);
-    return `catalog-assets/${pitchHeroTargetName}`;
-  } catch {
-    return "";
   }
 }
 
@@ -207,13 +183,12 @@ async function prepareFeaturedPreview(item) {
   }
 }
 
-function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
+function renderPage(items, featured, catalogIcons = {}) {
   const generatedAt = new Date().toISOString().replace(/\.\d{3}Z$/, "Z");
   const approvedCount = items.filter((item) => item.status === "approved").length;
   const sweepPassed = reviewEvidence ? Math.max(0, reviewEvidence.total - reviewEvidence.failed) : null;
   const sweepStat = reviewEvidence ? `${sweepPassed}/${reviewEvidence.total}` : "n/a";
   const featuredImage = featured.desktopPreview || featured.heroUrl;
-  const heroIllustration = pitchHeroUrl || featuredImage;
   const faviconTags = [
     catalogIcons.faviconIco ? `<link rel="icon" sizes="any" href="${escapeAttr(catalogIcons.faviconIco)}">` : "",
     catalogIcons.favicon ? `<link rel="icon" type="image/png" sizes="256x256" href="${escapeAttr(catalogIcons.favicon)}">` : "",
@@ -232,7 +207,7 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
     :root {
       color-scheme: light;
       --paper: #fff06a;
-      --page: #f4f8ff;
+      --page: #f7faff;
       --surface: #fffdf7;
       --ink: #101626;
       --muted: #34394d;
@@ -254,7 +229,7 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
     body {
       margin: 0;
       background:
-        linear-gradient(180deg, rgba(255, 240, 106, .6) 0, rgba(255, 240, 106, .18) 300px, var(--page) 680px),
+        linear-gradient(180deg, rgba(255, 240, 106, .72) 0, rgba(255, 240, 106, .18) 360px, var(--page) 760px),
         var(--page);
       color: var(--ink);
       font-family: "Avenir Next", Avenir, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -264,7 +239,7 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       position: fixed;
       z-index: -1;
       inset: 0;
-      background: radial-gradient(circle at 1px 1px, rgba(17, 22, 40, .045) 1px, transparent 0) 0 0 / 26px 26px;
+      background: radial-gradient(circle at 1px 1px, rgba(17, 22, 40, .03) 1px, transparent 0) 0 0 / 32px 32px;
       content: "";
       pointer-events: none;
     }
@@ -277,21 +252,21 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       box-shadow: 0 0 0 8px var(--mint);
     }
     .page {
-      width: min(1160px, calc(100% - 28px));
+      width: min(1180px, calc(100% - 28px));
       margin: 0 auto;
-      padding: 24px 0 68px;
+      padding: 20px 0 68px;
     }
     .masthead {
       display: grid;
-      grid-template-columns: minmax(0, 1.18fr) minmax(300px, .82fr);
-      gap: clamp(18px, 3vw, 34px);
+      grid-template-columns: minmax(0, 1fr) minmax(300px, .72fr);
+      gap: clamp(22px, 4vw, 52px);
       position: relative;
       overflow: hidden;
-      min-height: clamp(360px, 48vh, 520px);
+      min-height: clamp(320px, 42vh, 470px);
       align-items: center;
-      border: 2px solid var(--ink);
+      border: 1px solid rgba(16, 22, 38, .78);
       background: var(--paper);
-      box-shadow: 4px 4px 0 var(--ink);
+      box-shadow: 3px 3px 0 var(--ink);
       isolation: isolate;
       padding: clamp(22px, 3.6vw, 46px);
     }
@@ -300,8 +275,8 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       inset: 0;
       z-index: 1;
       background:
-        linear-gradient(90deg, rgba(255, 240, 106, .97) 0 53%, rgba(255, 253, 247, .82) 100%),
-        linear-gradient(180deg, rgba(255, 253, 247, .08), rgba(255, 253, 247, .42));
+        linear-gradient(135deg, rgba(255, 253, 247, .14), transparent 48%),
+        linear-gradient(90deg, rgba(255, 240, 106, .98), rgba(255, 253, 247, .82));
       content: "";
     }
     .masthead::after {
@@ -310,33 +285,21 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       background: radial-gradient(circle at 1px 1px, rgba(22, 15, 42, .24) 1px, transparent 0) 0 0 / 12px 12px;
       content: "";
       mix-blend-mode: multiply;
-      opacity: .045;
+      opacity: .035;
       pointer-events: none;
-    }
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center center;
-      filter: saturate(1.04) contrast(1.02);
-      mix-blend-mode: multiply;
-      opacity: .16;
     }
     .hero-copy {
       position: relative;
       z-index: 2;
-      max-width: 680px;
+      max-width: 650px;
     }
     .hero-ticket {
       position: relative;
       z-index: 2;
       align-self: stretch;
-      border: 1px solid var(--ink);
+      border: 1px solid rgba(16, 22, 38, .62);
       background: rgba(255, 253, 247, .98);
-      box-shadow: 0 14px 28px rgba(17, 22, 40, .12);
+      box-shadow: 0 14px 30px rgba(17, 22, 40, .09);
       padding: clamp(12px, 1.6vw, 18px);
     }
     .hero-ticket::before {
@@ -387,97 +350,35 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       margin: 0 0 8px;
       color: var(--blue-dark);
       font-size: .95rem;
-      font-weight: 720;
+      font-weight: 660;
       letter-spacing: 0;
       text-transform: uppercase;
     }
-    .hero-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin: 18px 0 0;
-      padding: 0;
-      list-style: none;
-    }
-    .hero-badges li {
-      display: inline-flex;
-      align-items: center;
-      min-height: 32px;
-      padding: 6px 10px;
-      border: 1px solid var(--ink);
-      background: var(--surface);
-      color: var(--ink);
-      font-size: 14px;
-      font-weight: 560;
-      line-height: 1.2;
-    }
-    .hero-badges li:nth-child(2) {
-      background: var(--surface);
-    }
-    .hero-badges li:nth-child(3) {
-      background: var(--mint);
+    .hero-proof {
+      margin: 14px 0 0;
+      color: var(--blue-dark);
+      font-size: clamp(15px, 1.18vw, 17px);
+      font-weight: 620;
+      line-height: 1.35;
+      text-transform: uppercase;
     }
     h1 {
       max-width: 720px;
       margin: 0;
       font-family: Charter, "Iowan Old Style", Georgia, "Times New Roman", serif;
-      font-size: clamp(40px, 3.9vw, 62px);
+      font-size: clamp(39px, 3.75vw, 58px);
       font-weight: 720;
-      line-height: 1.01;
+      line-height: 1.02;
       letter-spacing: 0;
       text-wrap: balance;
     }
     .lede {
       max-width: 680px;
-      margin: 12px 0 0;
+      margin: 13px 0 0;
       color: #20243d;
       font-size: clamp(17px, 1.22vw, 19px);
       font-weight: 500;
       line-height: 1.48;
-    }
-    .proof-strip {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0;
-      overflow: hidden;
-      margin: 14px 0 30px;
-      border: 0;
-      background: transparent;
-      color: var(--ink);
-      box-shadow: none;
-    }
-    .proof-strip > * {
-      display: flex;
-      gap: 7px;
-      align-items: baseline;
-      min-width: 0;
-      padding: 0 13px 0 0;
-      border: 0;
-      background: transparent;
-    }
-    .proof-strip > * + * {
-      border-left: 1px solid rgba(16, 22, 38, .3);
-      padding-left: 13px;
-    }
-    .proof-strip h2,
-    .proof-strip h3,
-    .proof-strip p {
-      margin: 0;
-    }
-    .proof-strip h2,
-    .proof-strip h3 {
-      color: var(--blue);
-      font-size: 1rem;
-      font-weight: 720;
-      line-height: 1.25;
-      text-transform: uppercase;
-    }
-    .proof-strip p {
-      max-width: none;
-      margin-top: 0;
-      font-size: 1rem;
-      font-weight: 440;
-      line-height: 1.34;
     }
     .card h2 {
       margin: 0;
@@ -533,8 +434,8 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       flex-wrap: wrap;
       gap: 12px;
       align-items: end;
-      justify-content: space-between;
-      margin: 18px 0 16px;
+      justify-content: flex-start;
+      margin: clamp(28px, 4vw, 48px) 0 16px;
       scroll-margin-top: 18px;
     }
     .toolbar h2 {
@@ -546,22 +447,10 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       font-weight: 740;
       text-wrap: balance;
     }
-    .toolbar a {
-      display: inline-flex;
-      align-items: center;
-      min-height: 40px;
-      padding: 8px 12px;
-      border: 1px solid rgba(16, 22, 38, .34);
-      background: var(--surface);
-      color: var(--ink);
-      font-size: 1rem;
-      font-weight: 650;
-      text-decoration: none;
-    }
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr));
-      gap: 18px;
+      gap: clamp(16px, 2vw, 24px);
     }
     .card {
       position: relative;
@@ -569,16 +458,16 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       flex-direction: column;
       overflow: hidden;
       min-width: 0;
-      border: 1px solid rgba(16, 22, 38, .34);
+      border: 1px solid rgba(16, 22, 38, .28);
       background: var(--surface);
-      box-shadow: 0 8px 18px rgba(17, 22, 40, .055);
+      box-shadow: 0 10px 24px rgba(17, 22, 40, .055);
     }
     .card-preview {
       position: relative;
       display: block;
       overflow: hidden;
       aspect-ratio: 16 / 10;
-      border-bottom: 1px solid rgba(16, 22, 38, .32);
+      border-bottom: 1px solid rgba(16, 22, 38, .26);
       background: var(--blue);
       background-position: top center;
       background-repeat: no-repeat;
@@ -606,8 +495,8 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
     .card-meta {
       margin: 0 0 6px;
       color: var(--blue-dark);
-      font-size: 1rem;
-      font-weight: 600;
+      font-size: .95rem;
+      font-weight: 560;
       line-height: 1.35;
     }
     .card-summary {
@@ -625,7 +514,7 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       background: transparent;
       color: var(--blue);
       font-size: 1rem;
-      font-weight: 720;
+      font-weight: 680;
       line-height: 1.15;
       text-decoration: underline;
       text-decoration-thickness: 2px;
@@ -638,17 +527,17 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
     }
     .artifact-links {
       margin-top: auto;
-      border-top: 1px solid rgba(16, 22, 38, .16);
-      padding-top: 6px;
+      border-top: 0;
+      padding-top: 2px;
     }
     .artifact-links summary {
       display: flex;
-      min-height: 38px;
+      min-height: 28px;
       align-items: center;
       cursor: pointer;
       color: var(--muted);
-      font-size: .98rem;
-      font-weight: 560;
+      font-size: .88rem;
+      font-weight: 500;
     }
     .artifact-links .card-summary {
       margin: 4px 0 10px;
@@ -681,9 +570,6 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       .masthead {
         grid-template-columns: 1fr;
       }
-      .proof-strip {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
     }
     @media (max-width: 620px) {
       .page {
@@ -692,15 +578,6 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       }
       .grid {
         grid-template-columns: 1fr;
-      }
-      .proof-strip > * {
-        flex: 1 1 100%;
-        padding: 4px 0;
-      }
-      .proof-strip > * + * {
-        border-left: 0;
-        border-top: 1px solid rgba(16, 22, 38, .2);
-        padding-left: 0;
       }
       .masthead {
         grid-template-columns: 1fr;
@@ -717,10 +594,6 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       }
       .masthead::before {
         background: linear-gradient(180deg, rgba(255, 241, 95, .9) 0 42%, rgba(255, 241, 95, .7) 64%, rgba(255, 241, 95, .22) 100%);
-      }
-      .hero-bg {
-        object-position: 72% top;
-        opacity: .1;
       }
       h1 {
         font-size: clamp(32px, 9.2vw, 44px);
@@ -761,11 +634,11 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
 <body>
   <main class="page">
     <header class="masthead">
-      <img class="hero-bg" src="${escapeAttr(heroIllustration)}" alt="" loading="eager">
       <div class="hero-copy">
         <p class="eyebrow">Site-O-Mattic demo catalog</p>
-        <h1>Real WordPress demos, ready to launch.</h1>
-        <p class="lede">Pick a niche, open the live site, and show the Blueprint behind it.</p>
+        <h1>Open a demo and the concept clicks.</h1>
+        <p class="lede">Screenshot-first WordPress Blueprints for fast internal demos, live Playground previews, and inspectable artifacts.</p>
+        <p class="hero-proof">${items.length} demos / ${approvedCount} approved / ${escapeHtml(sweepStat)} sweep</p>
         <div class="actions">
           <a class="button primary" href="${escapeAttr(featured.playgroundUrl)}" aria-label="Open ${escapeAttr(featured.name)} in WordPress Playground">Open featured demo</a>
           <a class="button" href="#catalog">Browse demos</a>
@@ -784,15 +657,8 @@ function renderPage(items, featured, pitchHeroUrl = "", catalogIcons = {}) {
       </aside>
     </header>
 
-    <section class="proof-strip" aria-labelledby="proof-heading">
-      <article><h2 id="proof-heading">${items.length} demos</h2><p>Rendered screenshots first.</p></article>
-      <article><h3>${approvedCount} approved</h3><p>Files tucked away.</p></article>
-      <article><h3>${escapeHtml(sweepStat)} sweep</h3><p>Vision and checks in the loop.</p></article>
-    </section>
-
     <section class="toolbar" id="catalog" aria-labelledby="catalog-heading">
       <h2 id="catalog-heading">Choose a demo.</h2>
-      <a href="${escapeAttr(repoBase)}">Repository</a>
     </section>
 
     <section class="grid" aria-label="Demo catalog cards">
@@ -817,7 +683,7 @@ function renderCard(item) {
           <h2 id="card-${escapeAttr(item.slug)}-title">${escapeHtml(item.name)}</h2>
           <a class="card-launch" href="${escapeAttr(item.playgroundUrl)}" aria-label="Launch ${escapeAttr(item.name)} in WordPress Playground">Open Playground</a>
           <details class="artifact-links">
-            <summary>Files</summary>
+            <summary>Artifacts</summary>
             <p class="card-summary">${escapeHtml(item.summary)}</p>
             <div class="links" role="group" aria-label="${escapeAttr(item.name)} artifacts">
               <a href="${escapeAttr(item.blueprintUrl)}" aria-label="Open ${escapeAttr(item.name)} Blueprint JSON">JSON</a>
@@ -877,13 +743,6 @@ function titleCase(value) {
     .filter(Boolean)
     .map((word) => `${word.slice(0, 1).toUpperCase()}${word.slice(1)}`)
     .join(" ");
-}
-
-function labelText(value) {
-  return titleCase(String(value || "")
-    .replace(/[-_]+/g, " ")
-    .replace(/\s+/g, " ")
-    .trim());
 }
 
 async function readJsonIfExists(filePath) {

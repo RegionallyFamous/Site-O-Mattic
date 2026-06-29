@@ -704,9 +704,13 @@ function normalizePageTypography(markup, spec) {
         attrs.style.typography = attrs.style.typography || {};
         if (blockName === "heading") {
           const level = Number(attrs.level || 2);
-          attrs.style.typography.fontSize = headingFontSizeForLevel(level, spec);
+          if (!isSomResponsiveTypographyValue(attrs.style.typography.fontSize)) {
+            attrs.style.typography.fontSize = headingFontSizeForLevel(level, spec);
+          }
           attrs.style.typography.fontWeight = tokens.headingWeight;
-          attrs.style.typography.lineHeight = tokens.headingLineHeight;
+          if (!isSomResponsiveTypographyValue(attrs.style.typography.lineHeight)) {
+            attrs.style.typography.lineHeight = tokens.headingLineHeight;
+          }
         } else if (blockName === "button") {
           attrs.style.typography.fontStyle = "normal";
           attrs.style.typography.fontWeight = tokens.actionWeight;
@@ -723,7 +727,7 @@ function normalizePageTypography(markup, spec) {
       }
     })
     .replace(/(<h([1-6])\b[^>]*\bstyle=")([^"]*)("[^>]*>)/g, (_match, before, level, style, after) => {
-      return `${before}${rewriteInlineStyle(style, headingPropsForLevel(Number(level), tokens, spec))}${after}`;
+      return `${before}${rewriteInlineStyle(style, headingPropsForLevel(Number(level), tokens, spec, style))}${after}`;
     })
     .replace(/(<div\b(?=[^>]*\bwp-block-button\b)[^>]*?)\sstyle="([^"]*)"([^>]*>)/g, (_match, before, style, after) => {
       const strippedStyle = removeInlineStyleProps(style, ["font-style", "font-weight", "font-size"]);
@@ -996,12 +1000,28 @@ function fontSizeIsBelowOneRem(value) {
   return false;
 }
 
-function headingPropsForLevel(level, tokens, spec) {
-  return {
+function headingPropsForLevel(level, tokens, spec, currentStyle = "") {
+  const props = {
     "font-size": headingFontSizeForLevel(level, spec),
     "font-weight": tokens.headingWeight,
     "line-height": tokens.headingLineHeight
   };
+  if (isSomResponsiveTypographyValue(styleDeclarationValue(currentStyle, "font-size"))) {
+    delete props["font-size"];
+  }
+  if (isSomResponsiveTypographyValue(styleDeclarationValue(currentStyle, "line-height"))) {
+    delete props["line-height"];
+  }
+  return props;
+}
+
+function isSomResponsiveTypographyValue(value) {
+  return /var\(--som-/i.test(String(value || ""));
+}
+
+function styleDeclarationValue(style, property) {
+  const match = String(style || "").match(new RegExp(`${property}:\\s*([^;]+)`, "i"));
+  return match?.[1] || "";
 }
 
 function headingFontSizeForLevel(level, spec = null) {
@@ -1130,6 +1150,8 @@ function buildDessertTableGalleryPageContent(spec) {
   const styles = spec.services.map((item, index) => galleryStyleCard(index + 1, item.title, item.text, { variant: layoutVariantFor(spec) })).join("\n");
   const process = spec.process.map((item, index) => processStep(index + 1, item.title, item.text)).join("\n");
   const menuItems = spec.proof.map((item, index) => dessertMenuBoardItem(index + 1, item.stat, item.label)).join("\n");
+  const dessertHeroTitleSize = "var(--som-dessert-h1-size, clamp(36px, 4.5vw, 60px))";
+  const dessertHeroTitleLineHeight = "var(--som-dessert-h1-line-height, 1.08)";
 
   return `
 <!-- wp:group {"align":"full","backgroundColor":"white","style":{"spacing":{"padding":{"top":"18px","right":"24px","bottom":"18px","left":"24px"}}},"layout":{"type":"constrained","wideSize":"1180px"}} -->
@@ -1149,13 +1171,13 @@ ${navigationLinkBlocks(navLinks)}
 <div class="wp-block-cover alignfull som-gallery-hero som-gallery-image" style="padding-top:46px;padding-right:24px;padding-bottom:54px;padding-left:24px;min-height:680px"><span aria-hidden="true" class="wp-block-cover__background has-deep-green-background-color has-background-dim-20 has-background-dim"></span><img class="wp-block-cover__image-background wp-image-{{hero_id}}" alt="${esc(spec.assetMeta.hero.alt)}" src="{{hero_url}}" data-object-fit="cover" data-object-position="50% 52%"/><div class="wp-block-cover__inner-container">
 <!-- wp:columns {"verticalAlignment":"bottom","className":"som-gallery-copy-row","style":{"spacing":{"blockGap":{"left":"24px"}}}} -->
 <div class="wp-block-columns are-vertically-aligned-bottom som-gallery-copy-row">
-<!-- wp:column {"verticalAlignment":"bottom","width":"56%","className":"som-gallery-copy","backgroundColor":"white","style":{"border":{"radius":"8px"},"spacing":{"padding":{"top":"32px","right":"34px","bottom":"32px","left":"34px"}}}} -->
-<div class="wp-block-column is-vertically-aligned-bottom som-gallery-copy has-white-background-color has-background" style="border-radius:8px;padding-top:32px;padding-right:34px;padding-bottom:32px;padding-left:34px;flex-basis:56%">
+<!-- wp:column {"verticalAlignment":"bottom","width":"56%","className":"som-gallery-copy","backgroundColor":"white","style":{"border":{"radius":"8px"},"spacing":{"padding":{"top":"32px","right":"24px","bottom":"32px","left":"24px"}}}} -->
+<div class="wp-block-column is-vertically-aligned-bottom som-gallery-copy has-white-background-color has-background" style="border-radius:8px;padding-top:32px;padding-right:24px;padding-bottom:32px;padding-left:24px;flex-basis:56%">
 <!-- wp:paragraph {"textColor":"grass","style":{"typography":{"fontSize":"14px","fontStyle":"normal","fontWeight":"850","textTransform":"uppercase","letterSpacing":"0px"}}} -->
 <p class="has-grass-color has-text-color" style="font-size:14px;font-style:normal;font-weight:850;letter-spacing:0px;text-transform:uppercase">${esc(copy.eyebrow)}</p>
 <!-- /wp:paragraph -->
-<!-- wp:heading {"level":1,"textColor":"deep-green","style":{"typography":{"fontSize":"clamp(36px, 4.5vw, 60px)","lineHeight":"1.08","fontStyle":"normal","fontWeight":"620"},"spacing":{"margin":{"top":"10px","bottom":"16px"}}}} -->
-<h1 class="wp-block-heading has-deep-green-color has-text-color" style="margin-top:10px;margin-bottom:16px;font-size:clamp(36px, 4.5vw, 60px);font-style:normal;font-weight:620;line-height:1.08">${esc(copy.heroTitle)}</h1>
+<!-- wp:heading {"level":1,"textColor":"deep-green","style":{"typography":{"fontSize":"${dessertHeroTitleSize}","lineHeight":"${dessertHeroTitleLineHeight}","fontStyle":"normal","fontWeight":"620"},"spacing":{"margin":{"top":"10px","bottom":"16px"}}}} -->
+<h1 class="wp-block-heading has-deep-green-color has-text-color" style="margin-top:10px;margin-bottom:16px;font-size:${dessertHeroTitleSize};font-style:normal;font-weight:620;line-height:${dessertHeroTitleLineHeight}">${esc(copy.heroTitle)}</h1>
 <!-- /wp:heading -->
 <!-- wp:paragraph {"textColor":"soil","style":{"typography":{"fontSize":"clamp(18px, 1.5vw, 22px)","lineHeight":"1.5"},"spacing":{"margin":{"bottom":"22px"}}}} -->
 <p class="has-soil-color has-text-color" style="margin-bottom:22px;font-size:clamp(18px, 1.5vw, 22px);line-height:1.5">${esc(copy.heroText)}</p>
@@ -1454,12 +1476,17 @@ ${process}
 
 function buildStoryCardConsultPageContent(spec) {
   const { copy, contact } = spec;
+  const isPlantStory = layoutVariantFor(spec) === "plant-care-story";
   const navLinks = navModelForSpec(spec, ["Support", "Steps", "Consult"], ["support", "steps", "quote"]);
   const supportAnchor = anchorAt(navLinks, 0, "support");
   const stepsAnchor = anchorAt(navLinks, 1, "steps");
   const services = spec.services.map((item, index) => storySupportCard(index + 1, item.title, item.text)).join("\n");
-  const proof = spec.proof.map((item) => storyProofCard(item.stat, item.label)).join("\n");
-  const process = spec.process.map((item, index) => storyProcessStep(index + 1, item.title, item.text)).join("\n");
+  const proof = spec.proof.map((item) => (
+    isPlantStory ? storyProofPanel(item.stat, item.label) : storyProofCard(item.stat, item.label)
+  )).join("\n");
+  const process = spec.process.map((item, index) => (
+    isPlantStory ? storyProcessPanel(index + 1, item.title, item.text) : storyProcessStep(index + 1, item.title, item.text)
+  )).join("\n");
   const consultQuote = storyConsultQuote(spec);
   const details = storyConsultDetails(spec);
   const heroBullets = storyHeroBullets(spec).map((item) => `<!-- wp:list-item --><li>${esc(item)}</li><!-- /wp:list-item -->`).join("");
@@ -1469,6 +1496,13 @@ function buildStoryCardConsultPageContent(spec) {
   const actionWeight = storyActionWeight(spec);
   const heroListWeight = storyHeroListWeight(spec);
   const phoneLineWeight = storyPhoneLineWeight(spec);
+  const proofGridBlock = isPlantStory
+    ? '<!-- wp:group {"className":"som-plant-proof-grid","layout":{"type":"default"}} -->'
+    : '<!-- wp:columns {"align":"wide","style":{"spacing":{"blockGap":{"left":"14px"}}}} -->';
+  const proofGridClass = isPlantStory
+    ? "wp-block-group som-plant-proof-grid"
+    : "wp-block-columns alignwide";
+  const proofGridClose = isPlantStory ? "<!-- /wp:group -->" : "<!-- /wp:columns -->";
 
   return `
 <!-- wp:group {"align":"full","backgroundColor":"cream","style":{"spacing":{"padding":{"top":"18px","right":"24px","bottom":"18px","left":"24px"}}},"layout":{"type":"constrained","wideSize":"1180px"}} -->
@@ -1516,11 +1550,11 @@ ${navigationLinkBlocks(navLinks)}
 
 <!-- wp:group {"metadata":{"name":"${esc(proofSectionName)}"},"align":"full","className":"som-urgency-band","backgroundColor":"white","style":{"spacing":{"padding":{"top":"36px","right":"24px","bottom":"36px","left":"24px"}}},"layout":{"type":"constrained","wideSize":"1180px"}} -->
 <div class="wp-block-group alignfull som-urgency-band has-white-background-color has-background" style="padding-top:36px;padding-right:24px;padding-bottom:36px;padding-left:24px">
-<!-- wp:columns {"align":"wide","style":{"spacing":{"blockGap":{"left":"14px"}}}} -->
-<div class="wp-block-columns alignwide">
+${proofGridBlock}
+<div class="${proofGridClass}">
 ${proof}
 </div>
-<!-- /wp:columns -->
+${proofGridClose}
 </div>
 <!-- /wp:group -->
 
@@ -1899,16 +1933,31 @@ function applyVariantClassFingerprint(content, spec) {
     return content;
   }
 
-  let updated = content;
-  for (const [baseClass, extraClass] of Object.entries(classMap)) {
-    const pattern = new RegExp(`(?<![a-z0-9-])${escapeRegExp(baseClass)}(?![a-z0-9-])`, "g");
-    updated = updated.replace(pattern, `${baseClass} ${extraClass}`);
-  }
-  return updated;
-}
+  const addFingerprintClasses = (classValue) => {
+    const classes = classValue.split(/\s+/).filter(Boolean);
+    const updated = [];
 
-function escapeRegExp(value) {
-  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    for (const className of classes) {
+      updated.push(className);
+
+      const extraClasses = classMap[className]?.split(/\s+/).filter(Boolean) || [];
+      for (const extraClass of extraClasses) {
+        if (!classes.includes(extraClass) && !updated.includes(extraClass)) {
+          updated.push(extraClass);
+        }
+      }
+    }
+
+    return updated.join(" ");
+  };
+
+  return content
+    .replace(/("className"\s*:\s*")([^"]*)(")/g, (_match, before, classValue, after) => (
+      `${before}${addFingerprintClasses(classValue)}${after}`
+    ))
+    .replace(/(class=")([^"]*)(")/g, (_match, before, classValue, after) => (
+      `${before}${addFingerprintClasses(classValue)}${after}`
+    ));
 }
 
 function buildTurnoverReceiptBoardPageContent(spec) {
@@ -3369,6 +3418,7 @@ function buildFixedBottomActionPageContent(spec) {
   const packageTable = corePlanIncludes(spec, "table")
     ? serviceScopeTable(spec, {
       className: "som-detail-scope-table",
+      align: "wide",
       headings: ["Package", "Best fit", "Setup note"]
     })
     : "";
@@ -3474,10 +3524,10 @@ ${proof.map((item) => detailProof(item.stat, item.label, spec)).join("\n")}
 </div>
 <!-- /wp:group -->
 
-<!-- wp:group {"metadata":{"name":"Packages"},"anchor":"packages","className":"som-detail-packages","backgroundColor":"cream","style":{"spacing":{"padding":{"top":"clamp(54px, 7vw, 92px)","right":"clamp(24px, 5vw, 72px)","bottom":"clamp(52px, 7vw, 84px)","left":"clamp(24px, 5vw, 72px)"}}},"layout":{"type":"constrained","wideSize":"1180px","justifyContent":"left"}} -->
-<div id="packages" class="wp-block-group som-detail-packages has-cream-background-color has-background" style="padding-top:clamp(54px, 7vw, 92px);padding-right:clamp(24px, 5vw, 72px);padding-bottom:clamp(52px, 7vw, 84px);padding-left:clamp(24px, 5vw, 72px)">
-<!-- wp:group {"metadata":{"name":"Package intro"},"align":"wide","className":"som-section-intro","style":{"spacing":{"margin":{"bottom":"32px"}}},"layout":{"type":"constrained","contentSize":"760px","justifyContent":"left"}} -->
-<div class="wp-block-group alignwide som-section-intro" style="margin-bottom:32px">
+<!-- wp:group {"metadata":{"name":"Packages"},"anchor":"packages","className":"som-detail-packages som-section-center","backgroundColor":"cream","style":{"spacing":{"padding":{"top":"clamp(54px, 7vw, 92px)","right":"clamp(24px, 5vw, 72px)","bottom":"clamp(52px, 7vw, 84px)","left":"clamp(24px, 5vw, 72px)"}}},"layout":{"type":"constrained","wideSize":"1180px","justifyContent":"center"}} -->
+<div id="packages" class="wp-block-group som-detail-packages som-section-center has-cream-background-color has-background" style="padding-top:clamp(54px, 7vw, 92px);padding-right:clamp(24px, 5vw, 72px);padding-bottom:clamp(52px, 7vw, 84px);padding-left:clamp(24px, 5vw, 72px)">
+<!-- wp:group {"metadata":{"name":"Package intro"},"className":"som-section-intro","style":{"spacing":{"margin":{"right":"auto","bottom":"32px","left":"auto"}}},"layout":{"type":"constrained","contentSize":"760px","justifyContent":"left"}} -->
+<div class="wp-block-group som-section-intro" style="margin-right:auto;margin-bottom:32px;margin-left:auto">
 <!-- wp:heading {"textColor":"deep-green","style":{"typography":{"fontSize":"var:preset|font-size|section-title","lineHeight":"1","fontStyle":"normal","fontWeight":"900"},"spacing":{"margin":{"bottom":"18px"}}}} -->
 <h2 class="wp-block-heading has-deep-green-color has-text-color" style="margin-bottom:18px;font-size:var(--wp--preset--font-size--section-title);font-style:normal;font-weight:900;line-height:1">${esc(copy.servicesTitle)}</h2>
 <!-- /wp:heading -->
@@ -3486,8 +3536,8 @@ ${proof.map((item) => detailProof(item.stat, item.label, spec)).join("\n")}
 <!-- /wp:paragraph -->
 </div>
 <!-- /wp:group -->
-<!-- wp:columns {"style":{"spacing":{"blockGap":{"left":"20px"}}}} -->
-<div class="wp-block-columns">
+<!-- wp:columns {"align":"wide","style":{"spacing":{"blockGap":{"left":"20px"}}}} -->
+<div class="wp-block-columns alignwide">
 ${services.map((service, index) => detailPackageCard(index + 1, service.title, service.text, spec)).join("\n")}
 </div>
 <!-- /wp:columns -->
@@ -3786,22 +3836,9 @@ function buildSideRailServicePageContent(spec) {
 <!-- wp:group {"className":"som-side-rail","backgroundColor":"white","style":{"spacing":{"padding":{"top":"28px","right":"24px","bottom":"28px","left":"24px"}}},"layout":{"type":"constrained"}} -->
 <div class="wp-block-group som-side-rail has-white-background-color has-background" style="padding-top:28px;padding-right:24px;padding-bottom:28px;padding-left:24px">
 <!-- wp:site-logo {"width":230,"shouldSyncIcon":true} /-->
-<!-- wp:paragraph {"textColor":"${railTone.railNoteColor}","className":"som-rail-note","style":{"typography":{"fontSize":"${railTone.railNoteFontSize}","lineHeight":"1.45","fontStyle":"normal","fontWeight":"700"},"spacing":{"margin":{"top":"24px","bottom":"24px"}}}} -->
-<p class="som-rail-note has-${railTone.railNoteColor}-color has-text-color" style="margin-top:24px;margin-bottom:24px;font-size:${railTone.railNoteFontSize};font-style:normal;font-weight:700;line-height:1.45">${esc(railTone.railNoteText)}</p>
-<!-- /wp:paragraph -->
 <!-- wp:navigation {"overlayMenu":"mobile","className":"som-rail-nav","textColor":"${railTone.railNavColor}","layout":{"type":"flex","orientation":"vertical","justifyContent":"left"},"style":{"typography":{"fontSize":"17px","fontStyle":"normal","fontWeight":"720"}}} -->
 ${navigationLinkBlocks(navLinks)}
 <!-- /wp:navigation -->
-<!-- wp:buttons {"className":"som-rail-actions","style":{"spacing":{"blockGap":"10px","margin":{"top":"28px"}}},"layout":{"type":"flex","orientation":"vertical"}} -->
-<div class="wp-block-buttons som-rail-actions" style="margin-top:28px">
-<!-- wp:button {"backgroundColor":"sun","textColor":"deep-green","width":100,"style":{"border":{"radius":"999px"},"spacing":{"padding":{"top":"13px","bottom":"13px","left":"18px","right":"18px"}},"typography":{"fontSize":"16px","fontStyle":"normal","fontWeight":"760"}}} -->
-<div class="wp-block-button has-custom-width wp-block-button__width-100" style="font-size:16px;font-style:normal;font-weight:760"><a class="wp-block-button__link has-deep-green-color has-sun-background-color has-text-color has-background wp-element-button" href="#${esc(quoteAnchor)}" style="border-radius:999px;padding-top:13px;padding-right:18px;padding-bottom:13px;padding-left:18px">${esc(copy.primaryCta)}</a></div>
-<!-- /wp:button -->
-<!-- wp:button {"className":"is-style-outline","textColor":"deep-green","width":100,"style":{"border":{"radius":"999px"},"spacing":{"padding":{"top":"13px","bottom":"13px","left":"18px","right":"18px"}},"typography":{"fontSize":"16px","fontStyle":"normal","fontWeight":"760"}}} -->
-<div class="wp-block-button has-custom-width wp-block-button__width-100 is-style-outline" style="font-size:16px;font-style:normal;font-weight:760"><a class="wp-block-button__link has-deep-green-color has-text-color wp-element-button" href="${esc(contact.phoneHref)}" style="border-radius:999px;padding-top:13px;padding-right:18px;padding-bottom:13px;padding-left:18px">${esc(contact.phoneLabel)}</a></div>
-<!-- /wp:button -->
-</div>
-<!-- /wp:buttons -->
 </div>
 <!-- /wp:group -->
 
@@ -3811,8 +3848,8 @@ ${navigationLinkBlocks(navLinks)}
 <div class="wp-block-group som-haul-hero has-${heroBackground}-background-color has-background" style="padding-top:${heroPaddingY};padding-right:${heroPaddingX};padding-bottom:${heroPaddingY};padding-left:${heroPaddingX}">
 <!-- wp:columns {"align":"wide","verticalAlignment":"center","style":{"spacing":{"blockGap":{"left":"${heroColumnGap}"}}}} -->
 <div class="wp-block-columns alignwide are-vertically-aligned-center">
-<!-- wp:column {"verticalAlignment":"center","width":"${heroCopyWidth}"} -->
-<div class="wp-block-column is-vertically-aligned-center" style="${heroCopyStyle}">
+<!-- wp:column {"verticalAlignment":"center","width":"${heroCopyWidth}","className":"som-haul-copy-column"} -->
+<div class="wp-block-column is-vertically-aligned-center som-haul-copy-column" style="${heroCopyStyle}">
 <!-- wp:paragraph {"textColor":"sun","style":{"typography":{"fontSize":"16px","fontStyle":"normal","fontWeight":"760","textTransform":"uppercase","letterSpacing":"0px"}}} -->
 <p class="has-sun-color has-text-color" style="font-size:16px;font-style:normal;font-weight:760;letter-spacing:0px;text-transform:uppercase">${esc(copy.eyebrow)}</p>
 <!-- /wp:paragraph -->
@@ -3835,8 +3872,8 @@ ${navigationLinkBlocks(navLinks)}
 ${ticket}
 </div>
 <!-- /wp:column -->
-<!-- wp:column {"verticalAlignment":"center","width":"${heroPhotoWidth}"} -->
-<div class="wp-block-column is-vertically-aligned-center" style="${heroPhotoStyle}">
+<!-- wp:column {"verticalAlignment":"center","width":"${heroPhotoWidth}","className":"som-haul-media-column"} -->
+<div class="wp-block-column is-vertically-aligned-center som-haul-media-column" style="${heroPhotoStyle}">
 <!-- wp:image {"id":{{hero_id}},"sizeSlug":"full","linkDestination":"none","className":"som-haul-photo"} -->
 <figure class="wp-block-image size-full som-haul-photo"><img src="{{hero_url}}" alt="${esc(spec.assetMeta.hero.alt)}" class="wp-image-{{hero_id}}"/></figure>
 <!-- /wp:image -->
@@ -5438,13 +5475,13 @@ function buildBeforeAfterQuotePageContent(spec) {
     ? "som-split-hero som-window-split-hero"
     : "som-split-hero";
   const heroWrapClassName = isWindowScope
-    ? ',"className":"som-window-hero-wrap"'
-    : "";
+    ? ',"className":"som-before-after-hero-wrap som-window-hero-wrap"'
+    : ',"className":"som-before-after-hero-wrap"';
   const heroWrapHtmlClass = isWindowScope
-    ? "wp-block-group alignfull som-window-hero-wrap has-cream-background-color has-background"
-    : "wp-block-group alignfull has-cream-background-color has-background";
-  const heroPaddingTop = isWindowScope ? "50px" : isFurnitureProof ? "46px" : "64px";
-  const heroPaddingBottom = isWindowScope ? "58px" : isFurnitureProof ? "54px" : "74px";
+    ? "wp-block-group alignfull som-before-after-hero-wrap som-window-hero-wrap has-cream-background-color has-background"
+    : "wp-block-group alignfull som-before-after-hero-wrap has-cream-background-color has-background";
+  const heroPaddingTop = isWindowScope ? "50px" : isFurnitureProof ? "38px" : "46px";
+  const heroPaddingBottom = isWindowScope ? "58px" : isFurnitureProof ? "44px" : "54px";
   const heroColumns = imageFirstHero
     ? `${heroMediaColumn}\n${heroTextColumn}`
     : `${heroTextColumn}\n${heroMediaColumn}`;
@@ -5621,33 +5658,46 @@ function beforeAfterHeroTextColumn(spec, transformationCopy) {
   const { copy } = spec;
   const isWindow = layoutVariantFor(spec) === "window-scope-ledger";
   const isFurniture = layoutVariantFor(spec) === "furniture-refinish-proof";
-  const columnClassName = isWindow
-    ? ',"className":"som-window-hero-copy-column"'
+  const identity = [spec.slug, spec.niche, spec.businessName, spec.copy?.heroTitle].filter(Boolean).join(" ").toLowerCase();
+  const isCleaningTransformation = /\b(pressure|washing|soft wash|driveway|siding|cleaning)\b/.test(identity);
+  const specificColumnClass = isWindow
+    ? "som-window-hero-copy-column"
     : isFurniture
-      ? ',"className":"som-furniture-hero-copy-column"'
+      ? "som-furniture-hero-copy-column"
       : "";
-  const columnHtmlClass = isWindow
-    ? "wp-block-column som-window-hero-copy-column"
-    : isFurniture
-      ? "wp-block-column som-furniture-hero-copy-column"
-      : "wp-block-column";
+  const columnClassTokens = ["som-before-after-hero-copy-column", specificColumnClass].filter(Boolean).join(" ");
+  const columnClassName = `,"className":"${columnClassTokens}"`;
+  const columnHtmlClass = `wp-block-column ${columnClassTokens}`;
   const eyebrowSize = isWindow ? "13px" : "17px";
   const eyebrowWeight = isWindow ? "680" : "900";
   const heroTextColor = isWindow ? "deep-green" : "soil";
   const heroTextSize = isWindow ? "clamp(17px, 1.45vw, 21px)" : "clamp(20px, 2vw, 27px)";
   const heroTextLineHeight = isWindow ? "1.5" : "1.45";
-  const heroTitleSize = isFurniture ? "clamp(42px, 5.8vw, 76px)" : "clamp(50px, 7.4vw, 98px)";
+  const heroTitleSize = isWindow
+    ? "clamp(40px, 5.2vw, 68px)"
+    : isFurniture
+      ? "clamp(42px, 5.8vw, 76px)"
+      : isCleaningTransformation
+        ? "clamp(42px, 5.8vw, 78px)"
+        : "clamp(50px, 7.4vw, 98px)";
+  const heroTitleSizeValue = `var(--som-before-after-h1-size, ${heroTitleSize})`;
+  const heroTitleLineHeightValue = (isWindow || isCleaningTransformation)
+    ? "var(--som-before-after-h1-line-height, 1.04)"
+    : "var(--som-before-after-h1-line-height, 0.92)";
+  const heroTextSizeValue = `var(--som-before-after-copy-size, ${heroTextSize})`;
+  const heroTextLineHeightValue = `var(--som-before-after-copy-line-height, ${heroTextLineHeight})`;
+  const heroTextMarginBottomValue = "var(--som-before-after-copy-margin-bottom, 30px)";
   return `
 <!-- wp:column {"width":"47%"${columnClassName},"style":{"spacing":{"padding":{"top":"24px","bottom":"24px"}}}} -->
 <div class="${columnHtmlClass}" style="padding-top:24px;padding-bottom:24px;flex-basis:47%">
 <!-- wp:paragraph {"textColor":"grass","style":{"typography":{"fontSize":"${eyebrowSize}","fontStyle":"normal","fontWeight":"${eyebrowWeight}","textTransform":"uppercase","letterSpacing":"0px"}}} -->
 <p class="has-grass-color has-text-color" style="font-size:${eyebrowSize};font-style:normal;font-weight:${eyebrowWeight};letter-spacing:0px;text-transform:uppercase">${esc(copy.eyebrow)}</p>
 <!-- /wp:paragraph -->
-<!-- wp:heading {"level":1,"textColor":"deep-green","style":{"typography":{"fontSize":"${heroTitleSize}","lineHeight":"0.92","fontStyle":"normal","fontWeight":"900"},"spacing":{"margin":{"top":"12px","bottom":"22px"}}}} -->
-<h1 class="wp-block-heading has-deep-green-color has-text-color" style="margin-top:12px;margin-bottom:22px;font-size:${heroTitleSize};font-style:normal;font-weight:900;line-height:0.92">${esc(copy.heroTitle)}</h1>
+<!-- wp:heading {"level":1,"textColor":"deep-green","style":{"typography":{"fontSize":"${heroTitleSizeValue}","lineHeight":"${heroTitleLineHeightValue}","fontStyle":"normal","fontWeight":"900"},"spacing":{"margin":{"top":"12px","bottom":"22px"}}}} -->
+<h1 class="wp-block-heading has-deep-green-color has-text-color" style="margin-top:12px;margin-bottom:22px;font-size:${heroTitleSizeValue};font-style:normal;font-weight:900;line-height:${heroTitleLineHeightValue}">${esc(copy.heroTitle)}</h1>
 <!-- /wp:heading -->
-<!-- wp:paragraph {"textColor":"${heroTextColor}","style":{"typography":{"fontSize":"${heroTextSize}","lineHeight":"${heroTextLineHeight}"},"spacing":{"margin":{"bottom":"30px"}}}} -->
-<p class="has-${heroTextColor}-color has-text-color" style="margin-bottom:30px;font-size:${heroTextSize};line-height:${heroTextLineHeight}">${esc(copy.heroText)}</p>
+<!-- wp:paragraph {"textColor":"${heroTextColor}","style":{"typography":{"fontSize":"${heroTextSizeValue}","lineHeight":"${heroTextLineHeightValue}"},"spacing":{"margin":{"bottom":"${heroTextMarginBottomValue}"}}}} -->
+<p class="has-${heroTextColor}-color has-text-color" style="margin-bottom:${heroTextMarginBottomValue};font-size:${heroTextSizeValue};line-height:${heroTextLineHeightValue}">${esc(copy.heroText)}</p>
 <!-- /wp:paragraph -->
 <!-- wp:buttons {"style":{"spacing":{"blockGap":"12px"}}} -->
 <div class="wp-block-buttons">
@@ -5674,16 +5724,14 @@ ${transformationCopy.chips.map((chip) => `
 function beforeAfterHeroMediaColumn(spec, transformationCopy) {
   const isWindow = layoutVariantFor(spec) === "window-scope-ledger";
   const isFurniture = layoutVariantFor(spec) === "furniture-refinish-proof";
-  const columnClassName = isWindow
-    ? ',"className":"som-window-hero-media-column"'
+  const specificColumnClass = isWindow
+    ? "som-window-hero-media-column"
     : isFurniture
-      ? ',"className":"som-furniture-hero-media-column"'
+      ? "som-furniture-hero-media-column"
       : "";
-  const columnHtmlClass = isWindow
-    ? "wp-block-column som-window-hero-media-column"
-    : isFurniture
-      ? "wp-block-column som-furniture-hero-media-column"
-      : "wp-block-column";
+  const columnClassTokens = ["som-before-after-hero-media-column", specificColumnClass].filter(Boolean).join(" ");
+  const columnClassName = `,"className":"${columnClassTokens}"`;
+  const columnHtmlClass = `wp-block-column ${columnClassTokens}`;
   const evidenceCards = beforeAfterEvidenceColumns(transformationCopy, spec);
   return `
 <!-- wp:column {"width":"53%"${columnClassName}} -->
@@ -6688,6 +6736,9 @@ ${objectionAnswer ? `
 
 function serviceScopeTable(spec, options = {}) {
   const className = options.className || "som-service-scope-table";
+  const align = ["wide", "full"].includes(options.align) ? options.align : "";
+  const alignClass = align ? ` align${align}` : "";
+  const alignAttribute = align ? `"align":"${align}",` : "";
   const headings = options.headings || ["Service lane", "Proof cue", "Visit note"];
   const rows = spec.services.map((service, index) => {
     const proof = spec.proof[index] || spec.proof[0] || {};
@@ -6698,8 +6749,8 @@ function serviceScopeTable(spec, options = {}) {
   }).join("");
 
   return `
-<!-- wp:table {"className":"${esc(className)}"} -->
-<figure class="wp-block-table ${esc(className)}"><table>${tableCaption(options.caption || "Service scope comparison")}${tableHead(headings)}<tbody>${rows}</tbody></table></figure>
+<!-- wp:table {${alignAttribute}"className":"${esc(className)}"} -->
+<figure class="wp-block-table${alignClass} ${esc(className)}"><table>${tableCaption(options.caption || "Service scope comparison")}${tableHead(headings)}<tbody>${rows}</tbody></table></figure>
 <!-- /wp:table -->`.trim();
 }
 
@@ -6827,6 +6878,20 @@ function storyProofCard(stat, label) {
 <!-- /wp:column -->`.trim();
 }
 
+function storyProofPanel(stat, label) {
+  return `
+<!-- wp:group {"className":"som-proof-card","backgroundColor":"mist","style":{"border":{"radius":"8px"},"spacing":{"padding":{"top":"22px","right":"20px","bottom":"22px","left":"20px"}}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group som-proof-card has-mist-background-color has-background" style="border-radius:8px;padding-top:22px;padding-right:20px;padding-bottom:22px;padding-left:20px">
+<!-- wp:paragraph {"textColor":"leaf","style":{"typography":{"fontSize":"clamp(24px, 3vw, 34px)","lineHeight":"1","fontStyle":"normal","fontWeight":"720"},"spacing":{"margin":{"bottom":"8px"}}}} -->
+<p class="has-leaf-color has-text-color" style="margin-bottom:8px;font-size:clamp(24px, 3vw, 34px);font-style:normal;font-weight:720;line-height:1">${esc(stat)}</p>
+<!-- /wp:paragraph -->
+<!-- wp:paragraph {"textColor":"deep-green","style":{"typography":{"fontSize":"16px","lineHeight":"1.48","fontStyle":"normal","fontWeight":"650"}}} -->
+<p class="has-deep-green-color has-text-color" style="font-size:16px;font-style:normal;font-weight:650;line-height:1.48">${esc(label)}</p>
+<!-- /wp:paragraph -->
+</div>
+<!-- /wp:group -->`.trim();
+}
+
 function storyProcessStep(number, title, text) {
   return `
 <!-- wp:group {"className":"som-story-process-step","backgroundColor":"white","style":{"border":{"radius":"8px"},"spacing":{"padding":{"top":"22px","right":"24px","bottom":"22px","left":"24px"},"margin":{"bottom":"14px"}}},"layout":{"type":"constrained"}} -->
@@ -6852,6 +6917,31 @@ function storyProcessStep(number, title, text) {
 <!-- /wp:column -->
 </div>
 <!-- /wp:columns -->
+</div>
+<!-- /wp:group -->`.trim();
+}
+
+function storyProcessPanel(number, title, text) {
+  return `
+<!-- wp:group {"className":"som-story-process-step","backgroundColor":"white","style":{"border":{"radius":"8px"},"spacing":{"padding":{"top":"22px","right":"24px","bottom":"22px","left":"24px"},"margin":{"bottom":"14px"}}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group som-story-process-step has-white-background-color has-background" style="border-radius:8px;margin-bottom:14px;padding-top:22px;padding-right:24px;padding-bottom:22px;padding-left:24px">
+<!-- wp:group {"className":"som-story-process-grid","layout":{"type":"default"}} -->
+<div class="wp-block-group som-story-process-grid">
+<!-- wp:paragraph {"align":"center","backgroundColor":"sun","textColor":"deep-green","className":"som-story-step-number","style":{"typography":{"fontSize":"18px","lineHeight":"1","fontStyle":"normal","fontWeight":"780"},"spacing":{"padding":{"top":"12px","bottom":"12px"}}}} -->
+<p class="has-text-align-center som-story-step-number has-deep-green-color has-sun-background-color has-text-color has-background" style="padding-top:12px;padding-bottom:12px;font-size:18px;font-style:normal;font-weight:780;line-height:1">${number}</p>
+<!-- /wp:paragraph -->
+<!-- wp:group {"className":"som-story-process-copy","layout":{"type":"constrained"}} -->
+<div class="wp-block-group som-story-process-copy">
+<!-- wp:heading {"level":3,"textColor":"deep-green","style":{"typography":{"fontSize":"24px","lineHeight":"1.12","fontStyle":"normal","fontWeight":"640"},"spacing":{"margin":{"bottom":"7px"}}}} -->
+<h3 class="wp-block-heading has-deep-green-color has-text-color" style="margin-bottom:7px;font-size:24px;font-style:normal;font-weight:640;line-height:1.12">${esc(title)}</h3>
+<!-- /wp:heading -->
+<!-- wp:paragraph {"textColor":"soil","style":{"typography":{"fontSize":"17px","lineHeight":"1.5"}}} -->
+<p class="has-soil-color has-text-color" style="font-size:17px;line-height:1.5">${esc(text)}</p>
+<!-- /wp:paragraph -->
+</div>
+<!-- /wp:group -->
+</div>
+<!-- /wp:group -->
 </div>
 <!-- /wp:group -->`.trim();
 }

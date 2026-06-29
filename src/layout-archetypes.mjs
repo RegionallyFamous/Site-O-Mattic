@@ -408,7 +408,7 @@ export const LAYOUT_ARCHETYPES = {
     servicePresentation: "accepted-items-grid-with-donation-route-note",
     proofTreatment: "donation-sorting-proof-strip-after-hero",
     ctaRhythm: "persistent-rail-photo-cta-plus-final-haul-plan",
-    navLabels: ["We take", "Sort path", "Quote"],
+    navLabels: ["Items", "Sort", "Quote"],
     anchorOrder: ["take", "sort", "quote"],
     componentClassesExpected: [
       "som-side-rail-shell",
@@ -521,7 +521,7 @@ export const LAYOUT_ARCHETYPES = {
     servicePresentation: "consult-scope-cards-with-setup-path-note",
     proofTreatment: "quiet-proof-strip-under-consult-hero",
     ctaRhythm: "persistent-rail-consult-cta-plus-final-estimate",
-    navLabels: ["Scope", "Setup path", "Quote"],
+    navLabels: ["Scope", "Setup", "Quote"],
     anchorOrder: ["take", "sort", "quote"],
     componentClassesExpected: [
       "som-side-rail-shell",
