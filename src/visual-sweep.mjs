@@ -8,12 +8,24 @@ import { blueprintPathForSpec, readSpec, specTargets } from "./spec-utils.mjs";
 const ROOT = process.cwd();
 const OUTPUT_ROOT = process.env.VISUAL_SWEEP_DIR || "/tmp/site-o-mattic-visual-sweep";
 const START_PORT = Number(process.env.VISUAL_SWEEP_PORT || 9540);
+const CHROME_UNSAFE_PORTS = new Set([
+  1, 7, 9, 11, 13, 15, 17, 19, 20, 21, 22, 23, 25, 37, 42, 43,
+  53, 69, 77, 79, 87, 95, 101, 102, 103, 104, 109, 110, 111, 113,
+  115, 117, 119, 123, 135, 137, 139, 143, 161, 179, 389, 427, 465,
+  512, 513, 514, 515, 526, 530, 531, 532, 540, 548, 554, 556, 563,
+  587, 601, 636, 989, 990, 993, 995, 1719, 1720, 1723, 2049, 3659,
+  4045, 5060, 5061, 6000, 6566, 6665, 6666, 6667, 6668, 6669, 6697,
+  10080
+]);
 const SERVER_TIMEOUT_MS = Number(process.env.VISUAL_SWEEP_SERVER_TIMEOUT_MS || 90_000);
 const PAGE_TIMEOUT_MS = Number(process.env.VISUAL_SWEEP_PAGE_TIMEOUT_MS || 120_000);
+const SCREENSHOT_TIMEOUT_MS = Number(process.env.VISUAL_SWEEP_SCREENSHOT_TIMEOUT_MS || 90_000);
 const FOCUS_WALK_LIMIT = Number(process.env.VISUAL_SWEEP_FOCUS_WALK_LIMIT || 80);
 const MOBILE_MEDIA_PROOF_MIN_VISIBLE_RATIO = Number(process.env.VISUAL_SWEEP_MOBILE_MEDIA_PROOF_MIN_RATIO || 0.25);
 const NEAR_NEIGHBOR_TASTE_DISTANCE = Number(process.env.VISUAL_SWEEP_NEAR_NEIGHBOR_TASTE_DISTANCE || 48);
+const PLAYGROUND_CLI_PACKAGE = process.env.PLAYGROUND_CLI_PACKAGE || "@wp-playground/cli@3.1.43";
 const PLAYGROUND_NODE_BIN_DIR = await findPlaygroundNodeBinDir();
+const PLAYGROUND_CLI_BIN = process.env.PLAYGROUND_CLI_BIN || await findCachedPlaygroundCliBin();
 
 let chromium;
 try {
@@ -42,10 +54,15 @@ console.log(`Sweeping ${specPaths.length} Blueprint${specPaths.length === 1 ? ""
 if (PLAYGROUND_NODE_BIN_DIR) {
   console.log(`Playground CLI child PATH prefers Node 22: ${PLAYGROUND_NODE_BIN_DIR}`);
 }
+if (PLAYGROUND_CLI_BIN) {
+  console.log(`Playground CLI binary: ${PLAYGROUND_CLI_BIN}`);
+} else {
+  console.log(`Playground CLI package fallback: ${PLAYGROUND_CLI_PACKAGE}`);
+}
 
 for (const [index, specPath] of specPaths.entries()) {
     const spec = await readSpec(specPath);
-    const port = START_PORT + index;
+    const port = portForIndex(index);
     const blueprintPath = blueprintPathForSpec(spec);
     const url = `http://127.0.0.1:${port}`;
     const slugDir = path.join(OUTPUT_ROOT, spec.slug);
@@ -108,6 +125,24 @@ for (const [index, specPath] of specPaths.entries()) {
         scenarios: scenarioReports,
         tasteWarnings,
         failures
+      });
+    } catch (error) {
+      hasFailure = true;
+      const message = error instanceof Error ? error.message : String(error);
+      console.log(`  FAIL sweep error: ${message.split("\n")[0]}`);
+      reports.push({
+        slug: spec.slug,
+        name: spec.businessName,
+        specPath,
+        blueprintPath,
+        url,
+        layoutVariant: spec.layoutVariant,
+        pattern: spec.pattern,
+        startupWarnings: [],
+        signature: summarizeScenarioShape([]),
+        scenarios: [],
+        tasteWarnings: [],
+        failures: [`Sweep error: ${message}`]
       });
     } finally {
       await stopServer(server);
@@ -188,6 +223,20 @@ function scenarios() {
   ];
 }
 
+function portForIndex(index) {
+  let port = START_PORT;
+  let usableSeen = 0;
+  while (true) {
+    if (!CHROME_UNSAFE_PORTS.has(port)) {
+      if (usableSeen === index) {
+        return port;
+      }
+      usableSeen += 1;
+    }
+    port += 1;
+  }
+}
+
 function startPlaygroundServer(blueprintPath, port) {
   const cliArgs = [
     "server",
@@ -207,18 +256,18 @@ function startPlaygroundServer(blueprintPath, port) {
 }
 
 function playgroundCommand(cliArgs) {
-  if (process.env.PLAYGROUND_CLI_BIN) {
-    return { bin: process.env.PLAYGROUND_CLI_BIN, args: cliArgs };
+  if (PLAYGROUND_CLI_BIN) {
+    return { bin: PLAYGROUND_CLI_BIN, args: cliArgs };
   }
   if (process.env.PLAYGROUND_CLI_USE_NPM_EXEC === "1") {
     return {
       bin: "npm",
-      args: ["exec", "--yes", "--package", "@wp-playground/cli@latest", "--", "wp-playground-cli", ...cliArgs]
+      args: ["exec", "--yes", "--package", PLAYGROUND_CLI_PACKAGE, "--", "wp-playground-cli", ...cliArgs]
     };
   }
   return {
     bin: "npx",
-    args: ["--yes", "--package", "@wp-playground/cli@latest", "--", "wp-playground-cli", ...cliArgs]
+    args: ["--yes", "--package", PLAYGROUND_CLI_PACKAGE, "--", "wp-playground-cli", ...cliArgs]
   };
 }
 
@@ -268,6 +317,42 @@ async function findPlaygroundNodeBinDir() {
 
   for (const candidate of candidates) {
     if (await pathExists(path.join(candidate, "node"))) {
+      return candidate;
+    }
+  }
+
+  return null;
+}
+
+async function findCachedPlaygroundCliBin() {
+  const candidates = [
+    path.join(ROOT, "node_modules", ".bin", "wp-playground-cli")
+  ];
+  const npxCacheDir = path.join(os.homedir(), ".npm", "_npx");
+
+  try {
+    const entries = await fs.readdir(npxCacheDir, { withFileTypes: true });
+    const cachedBins = await Promise.all(entries
+      .filter((entry) => entry.isDirectory())
+      .map(async (entry) => {
+        const bin = path.join(npxCacheDir, entry.name, "node_modules", ".bin", "wp-playground-cli");
+        try {
+          const stat = await fs.stat(bin);
+          return { bin, mtimeMs: stat.mtimeMs };
+        } catch {
+          return null;
+        }
+      }));
+    candidates.push(...cachedBins
+      .filter(Boolean)
+      .sort((left, right) => right.mtimeMs - left.mtimeMs)
+      .map((entry) => entry.bin));
+  } catch {
+    // No npx cache is fine; fall back to the pinned npm package.
+  }
+
+  for (const candidate of candidates) {
+    if (await pathExists(candidate)) {
       return candidate;
     }
   }
@@ -369,7 +454,7 @@ async function inspectScenario(browser, url, scenario, screenshot, spec) {
     await page.goto(url, { waitUntil: "networkidle", timeout: PAGE_TIMEOUT_MS });
     const frame = await findWordPressFrame(page);
     await frame.waitForSelector(".wp-site-blocks, body", { timeout: 60_000 });
-    await page.screenshot({ path: screenshot, fullPage: false });
+    await page.screenshot({ path: screenshot, fullPage: false, timeout: SCREENSHOT_TIMEOUT_MS });
 
     return await frame.evaluate(async ({ expectedCtaTexts, focusWalkLimit, scenarioName, isMobileViewport, mobileMediaProofMinVisibleRatio }) => {
       const text = document.body.innerText || "";
@@ -414,7 +499,8 @@ async function inspectScenario(browser, url, scenario, screenshot, spec) {
       const navigationTypography = navigationTypographyReport(navigationElement);
       const proofAlignment = proofAlignmentReport();
       const sectionIntroAlignment = sectionIntroAlignmentReport();
-      const tasteWarnings = tasteWarningReport({ mediaProof, ctaTypography, h1Typography, navigationTypography, sectionIntroAlignment });
+      const sectionCentering = sectionCenteringReport();
+      const tasteWarnings = tasteWarningReport({ mediaProof, ctaTypography, h1Typography, navigationTypography, sectionIntroAlignment, sectionCentering });
       disableSmoothScrolling();
       const anchorNavigation = await anchorNavigationReport();
       const focusWalk = await focusWalkReport();
@@ -447,6 +533,7 @@ async function inspectScenario(browser, url, scenario, screenshot, spec) {
         keyOverlaps,
         proofAlignment,
         sectionIntroAlignment,
+        sectionCentering,
         anchorNavigation,
         focusWalk
       };
@@ -661,6 +748,86 @@ async function inspectScenario(browser, url, scenario, screenshot, spec) {
         };
       }
 
+      function sectionCenteringReport() {
+        const explicitSections = [...document.querySelectorAll(".som-section-center")];
+        const inferredSections = [...document.querySelectorAll(".wp-site-blocks .wp-block-group")]
+          .filter((section) => !explicitSections.includes(section))
+          .filter(sectionCenterCandidate);
+        const sections = [...explicitSections, ...inferredSections]
+          .filter(visibleElement)
+          .map((section) => {
+            const sectionRect = rectFor(section);
+            const childRects = [...section.children]
+              .filter(visibleElement)
+              .map((child) => rectFor(child))
+              .filter((rect) => rect && rect.width >= 160 && rect.height >= 18);
+            return {
+              section,
+              explicit: section.classList.contains("som-section-center"),
+              sectionRect,
+              contentRect: unionRect(childRects)
+            };
+          })
+          .filter((item) => item.sectionRect && item.contentRect);
+        const limit = isMobileViewport
+          ? 32
+          : Math.max(48, Math.min(96, viewport.width * 0.045));
+        const items = sections.map((item) => {
+          const visibleLeft = Math.max(0, item.sectionRect.left);
+          const visibleRight = Math.min(viewport.width, item.sectionRect.right);
+          const visibleWidth = Math.max(0, visibleRight - visibleLeft);
+          const sectionCenter = visibleLeft + (visibleWidth / 2);
+          const contentCenter = item.contentRect.left + (item.contentRect.width / 2);
+          const delta = Math.round(contentCenter - sectionCenter);
+          return {
+            name: elementDescriptor(item.section),
+            mode: item.explicit ? "explicit" : "inferred",
+            delta,
+            limit: Math.round(limit),
+            sectionLeft: Math.round(visibleLeft),
+            sectionRight: Math.round(visibleRight),
+            contentLeft: Math.round(item.contentRect.left),
+            contentRight: Math.round(item.contentRect.right),
+            contentWidth: Math.round(item.contentRect.width),
+            visibleWidth: Math.round(visibleWidth)
+          };
+        });
+        const failures = items
+          .filter((item) => item.visibleWidth > 0 && item.contentWidth < item.visibleWidth - 24 && Math.abs(item.delta) > limit)
+          .map((item) => `${item.name} (${item.mode}) content center is ${Math.abs(item.delta)}px ${item.delta > 0 ? "right" : "left"} of section center on ${scenarioName}.`);
+        return {
+          checkedSections: sections.length,
+          limit: Math.round(limit),
+          items: items.slice(0, 8),
+          failures: failures.slice(0, 8)
+        };
+      }
+
+      function sectionCenterCandidate(section) {
+        if (!visibleElement(section)) {
+          return false;
+        }
+        const rect = rectFor(section);
+        if (!rect || rect.width < Math.min(viewport.width - 4, 720)) {
+          return false;
+        }
+        const className = String(section.className || "");
+        if (/\b(som-[\w-]*(?:page|hero|header|footer|mobile-action|side-rail|quote-strip|quote-band|join|final|rail)[\w-]*)\b/.test(className)) {
+          return false;
+        }
+        const sectionName = section.getAttribute("aria-label")
+          || section.dataset?.title
+          || section.querySelector(":scope > h2, :scope > .wp-block-heading")?.textContent
+          || "";
+        if (/hero|header|footer|quote|contact|final/i.test(sectionName)) {
+          return false;
+        }
+        const directRichChild = section.querySelector(":scope > .wp-block-columns, :scope > .wp-block-table, :scope > .wp-block-gallery, :scope > .wp-block-media-text");
+        const repeatedSurface = section.querySelector(":scope .som-card, :scope .som-process-card, :scope .som-proof-card, :scope [class*='-card'], :scope [class*='-table'], :scope [class*='-grid'], :scope [class*='-board'], :scope [class*='-package'], :scope [class*='-scope']");
+        const centerIntentClass = /\b(som-[\w-]*(?:plans|notes|proof|scope|package|packages|services|process|checklist|readiness|gallery|menu|board|grid|table|route|steps|details)[\w-]*)\b/.test(className);
+        return Boolean(centerIntentClass || directRichChild || repeatedSurface);
+      }
+
       function nextIntroParagraphFor(heading) {
         let candidate = heading.nextElementSibling;
         let scanned = 0;
@@ -706,12 +873,15 @@ async function inspectScenario(browser, url, scenario, screenshot, spec) {
         };
       }
 
-      function tasteWarningReport({ mediaProof: proof, ctaTypography: ctaType, h1Typography: h1Type, navigationTypography: navType, sectionIntroAlignment: sectionIntro }) {
+      function tasteWarningReport({ mediaProof: proof, ctaTypography: ctaType, h1Typography: h1Type, navigationTypography: navType, sectionIntroAlignment: sectionIntro, sectionCentering: centerSections }) {
         const warnings = [];
         if (isMobileViewport && proof && proof.visibleArea > 0 && proof.visibleRatio < mobileMediaProofMinVisibleRatio) {
           warnings.push(`Primary media proof is thin in first viewport: ${formatPercent(proof.visibleRatio)} visible on ${scenarioName} (top ${proof.top}px, ${proof.visibleHeight}/${proof.totalHeight}px height visible).`);
         }
         for (const failure of sectionIntro?.failures || []) {
+          warnings.push(failure);
+        }
+        for (const failure of centerSections?.failures || []) {
           warnings.push(failure);
         }
         for (const failure of ctaType?.failures || []) {
@@ -944,6 +1114,24 @@ async function inspectScenario(browser, url, scenario, screenshot, spec) {
         return width * height;
       }
 
+      function unionRect(rects) {
+        if (!rects.length) {
+          return null;
+        }
+        const left = Math.min(...rects.map((rect) => rect.left));
+        const right = Math.max(...rects.map((rect) => rect.right));
+        const top = Math.min(...rects.map((rect) => rect.top));
+        const bottom = Math.max(...rects.map((rect) => rect.bottom));
+        return {
+          top,
+          right,
+          bottom,
+          left,
+          width: Math.round(right - left),
+          height: Math.round(bottom - top)
+        };
+      }
+
       function spread(values) {
         return Math.round(Math.max(...values) - Math.min(...values));
       }
@@ -1115,6 +1303,9 @@ function failuresFor(result) {
   if (result.sectionIntroAlignment?.failures?.length) {
     failures.push(`Section intro alignment drift: ${result.sectionIntroAlignment.failures.join("; ")}`);
   }
+  if (result.sectionCentering?.failures?.length) {
+    failures.push(`Section centering drift: ${result.sectionCentering.failures.join("; ")}`);
+  }
   if (result.anchorNavigation?.failures?.length) {
     failures.push(`Anchor navigation issue: ${result.anchorNavigation.failures.join("; ")}`);
   }
@@ -1223,6 +1414,7 @@ function buildReviewEvidence(report) {
       keyOverlaps: scenario.keyOverlaps,
       proofAlignment: scenario.proofAlignment,
       sectionIntroAlignment: scenario.sectionIntroAlignment,
+      sectionCentering: scenario.sectionCentering,
       anchorNavigation: scenario.anchorNavigation,
       focusWalk: scenario.focusWalk,
       failures: scenario.failures
@@ -1337,7 +1529,7 @@ async function writeContactSheet(summary) {
   const page = await browser.newPage({ viewport: { width: 1800, height: Math.max(1200, Math.ceil(summary.reports.length / 3) * 320) } });
   try {
     await page.goto(pathToFileURL(htmlPath).href, { waitUntil: "networkidle" });
-    await page.screenshot({ path: screenshotPath, fullPage: true });
+    await page.screenshot({ path: screenshotPath, fullPage: true, timeout: SCREENSHOT_TIMEOUT_MS });
   } finally {
     await page.close();
   }
