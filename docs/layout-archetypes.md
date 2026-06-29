@@ -33,7 +33,7 @@ Use [Pattern And Style Catalog](./pattern-style-catalog.md) before implementing 
 | `package-comparison` | Mobile detailing, photo booths, DJs, coffee carts, catering | Menu-style top header with date-check anchor | Event fit, package columns, add-ons, date-check CTAs, package selection |
 | `side-rail-estimate` | Smart home setup, senior downsizing, color consulting, furniture refinishing | Desktop fixed left rail with phone CTA | Full-height right-side hero image, trust cues, consult steps, services, and final soft CTA |
 | `bottom-dock-booking` | Mobile auto detailing, mobile bike repair, knife sharpening, pool cleaning | Mobile fixed bottom dock | App-like service dashboard, packages, route/service area, process, reviews, and quote |
-| `split-proof-transform` | Junk removal, carpet cleaning, deck staining | Minimal top logo plus send-photo button | Before/after transformation story, what gets fixed, process, proof, and photo-submit CTA |
+| `split-proof-transform` | Junk removal, carpet cleaning, deck staining | Minimal top brand plus send-photo button | Before/after transformation story, what gets fixed, process, proof, and photo-submit CTA |
 | `portfolio-first-mosaic` | Pet photography, headshots, murals, florals, dessert tables | Simple top gallery nav | Mosaic hero, style/package sections, process, testimonial, and inquiry |
 | `route-led-schedule` | Lawn care, plant care, knife sharpening, bike repair | Horizontal route header | Route days, service-area panel, plans, service menu, proof, and join-the-route CTA |
 | `story-card-consult` | Senior downsizing, color consulting, organization, micro-wedding florals | Calm top header | Warm editorial flow with next steps, support cards, packages, proof, and gentle consult CTA |

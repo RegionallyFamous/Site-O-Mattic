@@ -74,7 +74,6 @@ const VARIANT_CLASS_FINGERPRINTS = {
   },
   "sharp-route-bench": {
     "som-workshop-page": "som-sharp-page",
-    "som-workshop-header": "som-sharp-header",
     "som-workshop-hero": "som-sharp-hero",
     "som-workshop-photo": "som-sharp-photo",
     "som-workshop-ticket": "som-edge-ticket",
@@ -85,7 +84,6 @@ const VARIANT_CLASS_FINGERPRINTS = {
   },
   "bike-route-workstand": {
     "som-workshop-page": "som-bike-page",
-    "som-workshop-header": "som-bike-header",
     "som-workshop-hero": "som-bike-hero",
     "som-workshop-photo": "som-workstand-photo",
     "som-workshop-ticket": "som-route-ticket",
@@ -316,7 +314,6 @@ function sideRailFingerprint(prefix) {
 function workshopFingerprint(prefix) {
   return {
     "som-workshop-page": `som-${prefix}-page`,
-    "som-workshop-header": `som-${prefix}-header`,
     "som-workshop-hero": `som-${prefix}-hero`,
     "som-workshop-photo": `som-${prefix}-photo`,
     "som-workshop-ticket": `som-${prefix}-ticket`,
@@ -1135,14 +1132,10 @@ function buildPageContent(spec) {
     throw new Error(`Unsupported layoutVariant: ${variant}`);
   }
 
-  return applyTextBrandLogoBlock(applyVariantClassFingerprint(content, spec), spec);
+  return applyVariantClassFingerprint(content, spec);
 }
 
-function applyTextBrandLogoBlock(markup, spec) {
-  return markup.replace(/<!-- wp:site-logo(?:\s+\{[^}]*\})?\s*\/-->/g, textBrandLogoBlock(spec));
-}
-
-function textBrandLogoBlock(spec) {
+function textBrandBlock(spec) {
   const name = esc(spec.businessName);
   return `<!-- wp:paragraph {"className":"som-text-logo","style":{"typography":{"fontSize":"clamp(20px, 2vw, 28px)","fontStyle":"normal","fontWeight":"760","lineHeight":"1.05"},"spacing":{"margin":{"top":"0","bottom":"0"}}}} -->
 <p class="som-text-logo" style="margin-top:0;margin-bottom:0;font-size:clamp(20px, 2vw, 28px);font-style:normal;font-weight:760;line-height:1.05">${name}</p>
@@ -1163,7 +1156,7 @@ function buildDessertTableGalleryPageContent(spec) {
 <div class="wp-block-group alignfull has-white-background-color has-background" style="padding-top:18px;padding-right:24px;padding-bottom:18px;padding-left:24px">
 <!-- wp:group {"align":"wide","layout":{"type":"flex","flexWrap":"wrap","justifyContent":"space-between","verticalAlignment":"center"}} -->
 <div class="wp-block-group alignwide">
-<!-- wp:site-logo {"width":250,"shouldSyncIcon":true} /-->
+${textBrandBlock(spec)}
 <!-- wp:navigation {"overlayMenu":"mobile","layout":{"type":"flex","justifyContent":"right"},"style":{"typography":{"fontSize":"15px","fontStyle":"normal","fontWeight":"780"}}} -->
 ${navigationLinkBlocks(navLinks)}
 <!-- /wp:navigation -->
@@ -1329,7 +1322,7 @@ function buildColorConsultStoryPageContent(spec) {
 <div class="wp-block-group alignfull has-cream-background-color has-background" style="padding-top:18px;padding-right:24px;padding-bottom:18px;padding-left:24px">
 <!-- wp:group {"align":"wide","layout":{"type":"flex","flexWrap":"wrap","justifyContent":"space-between","verticalAlignment":"center"}} -->
 <div class="wp-block-group alignwide">
-<!-- wp:site-logo {"width":250,"shouldSyncIcon":true} /-->
+${textBrandBlock(spec)}
 <!-- wp:navigation {"overlayMenu":"mobile","layout":{"type":"flex","justifyContent":"right"},"style":{"typography":{"fontSize":"15px","fontStyle":"normal","fontWeight":"740"}}} -->
 ${navigationLinkBlocks(navLinks)}
 <!-- /wp:navigation -->
@@ -1514,7 +1507,7 @@ function buildStoryCardConsultPageContent(spec) {
 <div class="wp-block-group alignfull has-cream-background-color has-background" style="padding-top:18px;padding-right:24px;padding-bottom:18px;padding-left:24px">
 <!-- wp:group {"align":"wide","layout":{"type":"flex","flexWrap":"wrap","justifyContent":"space-between","verticalAlignment":"center"}} -->
 <div class="wp-block-group alignwide">
-<!-- wp:site-logo {"width":250,"shouldSyncIcon":true} /-->
+${textBrandBlock(spec)}
 <!-- wp:navigation {"overlayMenu":"mobile","layout":{"type":"flex","justifyContent":"right"},"style":{"typography":{"fontSize":"16px","fontStyle":"normal","fontWeight":"${navWeight}"}}} -->
 ${navigationLinkBlocks(navLinks)}
 <!-- /wp:navigation -->
@@ -1725,7 +1718,7 @@ function buildRouteLedSchedulePageContent(spec) {
 <div class="wp-block-columns are-vertically-aligned-center is-not-stacked-on-mobile">
 <!-- wp:column {"verticalAlignment":"center","width":"260px"} -->
 <div class="wp-block-column is-vertically-aligned-center" style="flex-basis:260px">
-<!-- wp:site-logo {"width":245,"shouldSyncIcon":true} /-->
+${textBrandBlock(spec)}
 </div>
 <!-- /wp:column -->
 <!-- wp:column {"verticalAlignment":"center"} -->
@@ -1981,7 +1974,7 @@ function buildTurnoverReceiptBoardPageContent(spec) {
 <div class="wp-block-columns are-vertically-aligned-center is-not-stacked-on-mobile">
 <!-- wp:column {"verticalAlignment":"center","width":"255px"} -->
 <div class="wp-block-column is-vertically-aligned-center" style="flex-basis:255px">
-<!-- wp:site-logo {"width":238,"shouldSyncIcon":false} /-->
+${textBrandBlock(spec)}
 </div>
 <!-- /wp:column -->
 <!-- wp:column {"verticalAlignment":"center"} -->
@@ -2234,7 +2227,7 @@ ${navigationLinkBlocks(navLinks)}
 <div class="wp-block-columns are-vertically-aligned-center is-not-stacked-on-mobile">
 <!-- wp:column {"verticalAlignment":"center","width":"255px"} -->
 <div class="wp-block-column is-vertically-aligned-center" style="flex-basis:255px">
-<!-- wp:site-logo {"width":238,"shouldSyncIcon":false} /-->
+${textBrandBlock(spec)}
 </div>
 <!-- /wp:column -->
 <!-- wp:column {"verticalAlignment":"center"} -->
@@ -2489,7 +2482,7 @@ function buildUrgentChecklistPageContent(spec) {
 <div class="wp-block-columns are-vertically-aligned-center is-not-stacked-on-mobile">
 <!-- wp:column {"verticalAlignment":"center","width":"260px"} -->
 <div class="wp-block-column is-vertically-aligned-center" style="flex-basis:260px">
-<!-- wp:site-logo {"width":235,"shouldSyncIcon":false} /-->
+${textBrandBlock(spec)}
 </div>
 <!-- /wp:column -->
 <!-- wp:column {"verticalAlignment":"center"} -->
@@ -2825,7 +2818,7 @@ ${isPollinatorSeasonBoard ? pollinatorSeasonPills(proof) : zoneMap(proof, spec)}
 <div class="wp-block-columns are-vertically-aligned-center is-not-stacked-on-mobile">
 <!-- wp:column {"verticalAlignment":"center","width":"270px"} -->
 <div class="wp-block-column is-vertically-aligned-center" style="flex-basis:270px">
-<!-- wp:site-logo {"width":235,"shouldSyncIcon":false} /-->
+${textBrandBlock(spec)}
 </div>
 <!-- /wp:column -->
 <!-- wp:column {"verticalAlignment":"center"} -->
@@ -2976,7 +2969,7 @@ function buildWaterTestBoardPageContent(spec) {
 <div class="wp-block-columns are-vertically-aligned-center is-not-stacked-on-mobile">
 <!-- wp:column {"verticalAlignment":"center","width":"270px"} -->
 <div class="wp-block-column is-vertically-aligned-center" style="flex-basis:270px">
-<!-- wp:site-logo {"width":235,"shouldSyncIcon":false} /-->
+${textBrandBlock(spec)}
 </div>
 <!-- /wp:column -->
 <!-- wp:column {"verticalAlignment":"center"} -->
@@ -3245,13 +3238,13 @@ ${mediaTicket}
   return `
 <!-- wp:group {"metadata":{"name":"Workshop bench page"},"align":"full","className":"som-workshop-page","backgroundColor":"cream","style":{"spacing":{"padding":{"top":"0","right":"0","bottom":"0","left":"0"}}},"layout":{"type":"default"}} -->
 <div class="wp-block-group alignfull som-workshop-page has-cream-background-color has-background" style="padding-top:0;padding-right:0;padding-bottom:0;padding-left:0">
-<!-- wp:group {"className":"som-workshop-header","backgroundColor":"cream","style":{"spacing":{"padding":{"top":"20px","right":"clamp(24px, 5vw, 72px)","bottom":"18px","left":"clamp(24px, 5vw, 72px)"}}},"layout":{"type":"constrained","wideSize":"1180px"}} -->
-<div class="wp-block-group som-workshop-header has-cream-background-color has-background" style="padding-top:20px;padding-right:clamp(24px, 5vw, 72px);padding-bottom:18px;padding-left:clamp(24px, 5vw, 72px)">
-<!-- wp:columns {"verticalAlignment":"center","isStackedOnMobile":false,"style":{"spacing":{"blockGap":{"left":"24px"}}}} -->
-<div class="wp-block-columns are-vertically-aligned-center is-not-stacked-on-mobile">
+<!-- wp:group {"backgroundColor":"cream","style":{"spacing":{"padding":{"top":"20px","right":"clamp(24px, 5vw, 72px)","bottom":"18px","left":"clamp(24px, 5vw, 72px)"}}},"layout":{"type":"constrained","wideSize":"1180px"}} -->
+<div class="wp-block-group has-cream-background-color has-background" style="padding-top:20px;padding-right:clamp(24px, 5vw, 72px);padding-bottom:18px;padding-left:clamp(24px, 5vw, 72px)">
+<!-- wp:columns {"verticalAlignment":"center","style":{"spacing":{"blockGap":{"left":"24px","top":"12px"}}}} -->
+<div class="wp-block-columns are-vertically-aligned-center">
 <!-- wp:column {"verticalAlignment":"center","width":"270px"} -->
 <div class="wp-block-column is-vertically-aligned-center" style="flex-basis:270px">
-<!-- wp:site-logo {"width":235,"shouldSyncIcon":false} /-->
+${textBrandBlock(spec)}
 </div>
 <!-- /wp:column -->
 <!-- wp:column {"verticalAlignment":"center"} -->
@@ -3261,17 +3254,6 @@ ${mediaTicket}
 <!-- wp:navigation-link {"label":"${esc(navLabels[1])}","url":"#process","kind":"custom","isTopLevelLink":true} /-->
 <!-- wp:navigation-link {"label":"${esc(navLabels[2])}","url":"#quote","kind":"custom","isTopLevelLink":true} /-->
 <!-- /wp:navigation -->
-</div>
-<!-- /wp:column -->
-<!-- wp:column {"verticalAlignment":"center","width":"170px","className":"som-workshop-header-action"} -->
-<div class="wp-block-column is-vertically-aligned-center som-workshop-header-action" style="flex-basis:170px">
-<!-- wp:buttons {"layout":{"type":"flex","justifyContent":"right"}} -->
-<div class="wp-block-buttons">
-<!-- wp:button {"backgroundColor":"deep-green","textColor":"white","style":{"border":{"radius":"6px"},"spacing":{"padding":{"top":"12px","right":"18px","bottom":"12px","left":"18px"}}}} -->
-<div class="wp-block-button"><a class="wp-block-button__link has-white-color has-deep-green-background-color has-text-color has-background wp-element-button" href="${esc(contact.emailHref)}" style="border-radius:6px;padding-top:12px;padding-right:18px;padding-bottom:12px;padding-left:18px">${esc(copy.primaryCta)}</a></div>
-<!-- /wp:button -->
-</div>
-<!-- /wp:buttons -->
 </div>
 <!-- /wp:column -->
 </div>
@@ -3451,7 +3433,7 @@ function buildFixedBottomActionPageContent(spec) {
 <div class="wp-block-columns are-vertically-aligned-center is-not-stacked-on-mobile">
 <!-- wp:column {"verticalAlignment":"center","width":"270px"} -->
 <div class="wp-block-column is-vertically-aligned-center" style="flex-basis:270px">
-<!-- wp:site-logo {"width":235,"shouldSyncIcon":false} /-->
+${textBrandBlock(spec)}
 </div>
 <!-- /wp:column -->
 <!-- wp:column {"verticalAlignment":"center"} -->
@@ -3643,7 +3625,7 @@ function buildPackageMenuBoardPageContent(spec) {
 <div class="wp-block-columns are-vertically-aligned-center is-not-stacked-on-mobile">
 <!-- wp:column {"verticalAlignment":"center","width":"260px"} -->
 <div class="wp-block-column is-vertically-aligned-center" style="flex-basis:260px">
-<!-- wp:site-logo {"width":230,"shouldSyncIcon":false} /-->
+${textBrandBlock(spec)}
 </div>
 <!-- /wp:column -->
 <!-- wp:column {"verticalAlignment":"center"} -->
@@ -3840,7 +3822,7 @@ function buildSideRailServicePageContent(spec) {
 <div class="wp-block-group alignfull som-side-rail-shell has-cream-background-color has-background" style="padding-top:0;padding-right:0;padding-bottom:0;padding-left:0">
 <!-- wp:group {"className":"som-side-rail","backgroundColor":"white","style":{"spacing":{"padding":{"top":"28px","right":"24px","bottom":"28px","left":"24px"}}},"layout":{"type":"constrained"}} -->
 <div class="wp-block-group som-side-rail has-white-background-color has-background" style="padding-top:28px;padding-right:24px;padding-bottom:28px;padding-left:24px">
-<!-- wp:site-logo {"width":230,"shouldSyncIcon":true} /-->
+${textBrandBlock(spec)}
 <!-- wp:navigation {"overlayMenu":"mobile","className":"som-rail-nav","textColor":"${railTone.railNavColor}","layout":{"type":"flex","orientation":"vertical","justifyContent":"left"},"style":{"typography":{"fontSize":"17px","fontStyle":"normal","fontWeight":"720"}}} -->
 ${navigationLinkBlocks(navLinks)}
 <!-- /wp:navigation -->
@@ -4047,7 +4029,7 @@ ${navigationLinkBlocks(navLinks)}
 <div class="wp-block-group alignfull has-white-background-color has-background" style="padding-top:18px;padding-right:24px;padding-bottom:18px;padding-left:24px">
 <!-- wp:group {"align":"wide","layout":{"type":"flex","flexWrap":"wrap","justifyContent":"space-between","verticalAlignment":"center"}} -->
 <div class="wp-block-group alignwide">
-<!-- wp:site-logo {"width":230,"shouldSyncIcon":true} /-->
+${textBrandBlock(spec)}
 ${headerNavigation}
 </div>
 <!-- /wp:group -->
@@ -4281,7 +4263,7 @@ function buildSurfaceSeasonalPageContent(spec) {
 <div class="wp-block-group alignfull has-white-background-color has-background" style="padding-top:18px;padding-right:24px;padding-bottom:18px;padding-left:24px">
 <!-- wp:group {"align":"wide","layout":{"type":"flex","flexWrap":"wrap","justifyContent":"space-between","verticalAlignment":"center"}} -->
 <div class="wp-block-group alignwide">
-<!-- wp:site-logo {"width":230,"shouldSyncIcon":true} /-->
+${textBrandBlock(spec)}
 <!-- wp:navigation {"overlayMenu":"mobile","layout":{"type":"flex","justifyContent":"right"},"style":{"typography":{"fontSize":"16px","fontStyle":"normal","fontWeight":"700"}}} -->
 <!-- wp:navigation-link {"label":"Timing","url":"#timing","kind":"custom","isTopLevelLink":true} /-->
 <!-- wp:navigation-link {"label":"Prep","url":"#prep","kind":"custom","isTopLevelLink":true} /-->
@@ -4466,7 +4448,7 @@ function buildStainCarePageContent(spec) {
 <div class="wp-block-group alignfull has-white-background-color has-background" style="padding-top:18px;padding-right:24px;padding-bottom:18px;padding-left:24px">
 <!-- wp:group {"align":"wide","layout":{"type":"flex","flexWrap":"wrap","justifyContent":"space-between","verticalAlignment":"center"}} -->
 <div class="wp-block-group alignwide">
-<!-- wp:site-logo {"width":240,"shouldSyncIcon":true} /-->
+${textBrandBlock(spec)}
 <!-- wp:navigation {"overlayMenu":"mobile","layout":{"type":"flex","justifyContent":"right"},"style":{"typography":{"fontSize":"16px","fontStyle":"normal","fontWeight":"700"}}} -->
 <!-- wp:navigation-link {"label":"Stains","url":"#stains","kind":"custom","isTopLevelLink":true} /-->
 <!-- wp:navigation-link {"label":"Drying","url":"#drying","kind":"custom","isTopLevelLink":true} /-->
@@ -4634,7 +4616,7 @@ function buildHeadshotProofGalleryPageContent(spec) {
 <div class="wp-block-group alignfull has-white-background-color has-background" style="padding-top:18px;padding-right:24px;padding-bottom:18px;padding-left:24px">
 <!-- wp:group {"align":"wide","layout":{"type":"flex","flexWrap":"wrap","justifyContent":"space-between","verticalAlignment":"center"}} -->
 <div class="wp-block-group alignwide">
-<!-- wp:site-logo {"width":240,"shouldSyncIcon":true} /-->
+${textBrandBlock(spec)}
 <!-- wp:navigation {"overlayMenu":"mobile","layout":{"type":"flex","justifyContent":"right"},"style":{"typography":{"fontSize":"16px","fontStyle":"normal","fontWeight":"700"}}} -->
 ${navigationLinkBlocks(navLinks)}
 <!-- /wp:navigation -->
@@ -5004,7 +4986,7 @@ ${heroActionStack}
 <div class="wp-block-group alignfull has-white-background-color has-background" style="padding-top:18px;padding-right:24px;padding-bottom:18px;padding-left:24px">
 <!-- wp:group {"align":"wide","layout":{"type":"flex","flexWrap":"wrap","justifyContent":"space-between","verticalAlignment":"center"}} -->
 <div class="wp-block-group alignwide">
-<!-- wp:site-logo {"width":230,"shouldSyncIcon":true} /-->
+${textBrandBlock(spec)}
 <!-- wp:navigation {"overlayMenu":"mobile","layout":{"type":"flex","justifyContent":"right"},"style":{"typography":{"fontSize":"16px","fontStyle":"normal","fontWeight":"700"}}} -->
 ${navigationLinkBlocks(navLinks)}
 <!-- /wp:navigation -->
@@ -5113,7 +5095,7 @@ function buildRiskPreventionPageContent(spec) {
 <div class="wp-block-group alignfull has-white-background-color has-background" style="padding-top:18px;padding-right:24px;padding-bottom:18px;padding-left:24px">
 <!-- wp:group {"align":"wide","layout":{"type":"flex","flexWrap":"wrap","justifyContent":"space-between","verticalAlignment":"center"}} -->
 <div class="wp-block-group alignwide">
-<!-- wp:site-logo {"width":230,"shouldSyncIcon":true} /-->
+${textBrandBlock(spec)}
 <!-- wp:navigation {"overlayMenu":"mobile","layout":{"type":"flex","justifyContent":"right"},"style":{"typography":{"fontSize":"16px","fontStyle":"normal","fontWeight":"700"}}} -->
 <!-- wp:navigation-link {"label":"Warning signs","url":"#signs","kind":"custom","isTopLevelLink":true} /-->
 <!-- wp:navigation-link {"label":"Plan","url":"#plan","kind":"custom","isTopLevelLink":true} /-->
@@ -5292,7 +5274,7 @@ function buildRoutePlanPageContent(spec) {
 <div class="wp-block-group alignfull has-cream-background-color has-background" style="padding-top:18px;padding-right:24px;padding-bottom:18px;padding-left:24px">
 <!-- wp:group {"align":"wide","layout":{"type":"flex","flexWrap":"wrap","justifyContent":"space-between","verticalAlignment":"center"}} -->
 <div class="wp-block-group alignwide">
-<!-- wp:site-logo {"width":230,"shouldSyncIcon":true} /-->
+${textBrandBlock(spec)}
 <!-- wp:navigation {"overlayMenu":"mobile","layout":{"type":"flex","justifyContent":"right"},"style":{"typography":{"fontSize":"16px","fontStyle":"normal","fontWeight":"700"}}} -->
 <!-- wp:navigation-link {"label":"${esc(navLabels[0])}","url":"#services","kind":"custom","isTopLevelLink":true} /-->
 <!-- wp:navigation-link {"label":"${esc(navLabels[1])}","url":"#process","kind":"custom","isTopLevelLink":true} /-->
@@ -5497,7 +5479,7 @@ function buildBeforeAfterQuotePageContent(spec) {
 <div class="wp-block-group alignfull has-cream-background-color has-background" style="padding-top:18px;padding-right:24px;padding-bottom:18px;padding-left:24px">
 <!-- wp:group {"align":"wide","layout":{"type":"flex","flexWrap":"wrap","justifyContent":"space-between","verticalAlignment":"center"}} -->
 <div class="wp-block-group alignwide">
-<!-- wp:site-logo {"width":230,"shouldSyncIcon":true} /-->
+${textBrandBlock(spec)}
 <!-- wp:navigation {"overlayMenu":"mobile","layout":{"type":"flex","justifyContent":"right"},"style":{"typography":{"fontSize":"16px","fontStyle":"normal","fontWeight":"700"}}} -->
 ${navigationLinkBlocks(navLinks)}
 <!-- /wp:navigation -->

@@ -45,7 +45,7 @@
     ],
     "knownRisks": [
       "first-viewport-cta",
-      "logo-scale",
+      "text-brand-readability",
       "floating-proof-panel-crowding"
     ],
     "styleContract": "Patient and tactile with material proof, real refinishing evidence, steel-indigo and brass accent behavior, and a hero photo proof pair plus restoration trust quote as the signature move."
@@ -65,7 +65,6 @@
   },
   "assets": {
     "hero": "assets/furniture-refinishing-repair/grainmend-hero.jpg",
-    "logo": "assets/furniture-refinishing-repair/grainmend-logo.png",
     "favicon": "assets/furniture-refinishing-repair/grainmend-favicon.png"
   },
   "assetMeta": {
@@ -143,7 +142,6 @@
     "visualBaseline": "pending",
     "reviewChecklist": {
       "firstViewportClear": true,
-      "logoReadable": true,
       "layoutDistinct": true,
       "ctaClear": true,
       "copySpecific": true,
@@ -152,15 +150,16 @@
       "hierarchyDistinct": true,
       "signatureMove": true,
       "restrainedComposition": true,
-      "screenshotCompared": true
+      "screenshotCompared": true,
+      "textBrandReadable": true
     },
     "premiumReview": {
-      "version": 2,
+      "version": 3,
       "reviewedAt": "2026-06-25",
       "score": 100,
       "categories": {
         "firstViewport": true,
-        "logoScale": true,
+        "brandText": true,
         "typography": true,
         "polishContract": true,
         "imageProof": true,

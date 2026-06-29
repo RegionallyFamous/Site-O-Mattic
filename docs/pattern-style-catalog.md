@@ -14,7 +14,7 @@ The big takeaways:
 - The visual variety risk is not `layoutVariant`; the current set already uses many implemented variants. The risk is repeated primitives: top headers, work-in-progress imagery, repeated CTA rhythms, and overly broad surface labels can still hide clone-like pages.
 - The generated pages are underusing the richer core-block grammar already allowed by the builder. Use `Media & Text`, `Gallery`, `Table`, `Quote`, `Pullquote`, `Details`, `List`, and stronger `Cover` compositions when the pattern asks for them.
 - `surfaceModel` is useful but too free-form to police scale on its own. Pair it with the stricter `surfaceFamily`, plus style, density, geometry, and core-block-plan fields before any new production spec is approved.
-- Visual distinctness needs measurable evidence: signature fields, first-viewport metrics, logo metrics, block usage, sticky/fixed overlap checks, focus walks, and nearest-neighbor screenshot comparisons.
+- Visual distinctness needs measurable evidence: signature fields, first-viewport metrics, brand text metrics, block usage, sticky/fixed overlap checks, focus walks, and nearest-neighbor screenshot comparisons.
 
 ## Production Pattern Grammar
 
@@ -38,7 +38,7 @@ Record or be able to state these choices for each generated site:
 - `colorRoles`: map ink, paper, field, line, primary, action, proof, muted, warning, and shadow tint to palette roles.
 - `geometry`: radius scale, border role, shadow role, and media crop rule.
 - `coreBlockPlan`: the richer core blocks that carry the pattern, especially `Media & Text`, `Gallery`, `Table`, `Quote`, `Pullquote`, and `Details` when appropriate.
-- `knownRisks`: first-viewport CTA, logo scale, mobile overlap, sticky anchor offset, readable package/table rows, or gallery hero height.
+- `knownRisks`: first-viewport CTA, text-brand readability, mobile overlap, sticky anchor offset, readable package/table rows, or gallery hero height.
 
 These fields are production data now, not optional notes. Every spec must include a `pattern` object with the fields above, and the builder embeds them in the non-rendered Site-O-Mattic layout signature plus `settings.custom.som.pattern`. `npm run spec:validate`, `npm run blueprint:validate`, `npm run blueprint:sync`, and `npm run blueprint:variety` use this contract to catch missing pattern intent, stale generated Blueprints, repeated navigation primitives, and clone-like production choices before a Playground link is shared.
 
@@ -62,11 +62,11 @@ Use this workflow before writing copy, generating images, or assigning a layout:
 
 Stay inside core WordPress blocks and global styles:
 
-- `Group`, `Cover`, `Media & Text`, `Columns`, `Row`, `Stack`, `Image`, `Gallery`, `Buttons`, `Navigation`, `List`, `Table`, `Details`, `Separator`, `Quote`, `Pullquote`, `Spacer`, and `Site Logo`.
+- `Group`, `Cover`, `Media & Text`, `Columns`, `Row`, `Stack`, `Image`, `Gallery`, `Buttons`, `Navigation`, `List`, `Table`, `Details`, `Separator`, `Quote`, `Pullquote`, `Spacer`, and text-brand `Paragraph` blocks.
 - WordPress core has no complete native lead-form workflow. Treat form-like patterns as quote/contact panels with real `tel:` and `mailto:` actions unless another approved core-only contact path exists.
 - Use theme/global styles and scoped custom CSS for fixed mobile action bars, side rails, responsive art direction, and repeated component polish.
 
-Prefer `wp_global_styles` and `theme.json` tokens for the reusable design system: palette, gradients, fluid typography, spacing scale, shadows, radius, root padding, block defaults, link states, and button states. Use scoped custom CSS for what block supports cannot reliably express: fixed bars, side rails, advanced grids, object-fit crops, focus-visible polish, preset utility fallbacks, logo sizing, and Playground first-render reliability.
+Prefer `wp_global_styles` and `theme.json` tokens for the reusable design system: palette, gradients, fluid typography, spacing scale, shadows, radius, root padding, block defaults, link states, and button states. Use scoped custom CSS for what block supports cannot reliably express: fixed bars, side rails, advanced grids, object-fit crops, focus-visible polish, preset utility fallbacks, text-brand sizing, and Playground first-render reliability.
 
 Do not depend on remote fonts, remote images, plugin blocks, maps, embeds, forms, external scripts, or networking. The Studio-ready Blueprint must stay self-contained.
 
@@ -75,10 +75,10 @@ Do not depend on remote fonts, remote images, plugin blocks, maps, embeds, forms
 | Capability | Use it for | Production route | CSS fallback / QA note |
 | --- | --- | --- | --- |
 | Playground/Studio Blueprint format | Portable one-file setup. | Keep `$schema`, explicit steps, embedded assets, `preferredVersions`, and `features.networking: false`. | Studio can ignore some Playground fields, so keep them harmless and self-contained. |
-| `runPHP` setup | Content, media, front page, global styles, template fix. | Import base64 media with WordPress APIs, set logo/favicon, create the Home page and `front-page` template. | Validate no local `writeFile` dependencies in Studio-ready JSON. |
+| `runPHP` setup | Content, media, front page, global styles, template fix. | Import base64 media with WordPress APIs, set the favicon, create the Home page and `front-page` template. | Validate no local `writeFile` dependencies in Studio-ready JSON. |
 | `wp_global_styles` | Tokenized design system. | Store palette, gradients, type scale, spacing, shadows, block defaults, link/button states, and custom Site-O-Mattic tokens. | Clean theme JSON caches after updates. |
 | `theme.json` block supports | Native block-level polish. | Use appearance tools, layout, spacing, border, typography, color, dimensions, shadow, and sticky support where supported. | Do not fake everything with classes when a block support exists. |
-| Core custom CSS | Reliability and advanced layout. | Use `wp_update_custom_css_post()` for preset utility fallbacks, side rails, fixed bars, focus states, object-fit crops, anchor offsets, and logo sizing. | Keep selectors scoped to Site-O-Mattic classes and core blocks. |
+| Core custom CSS | Reliability and advanced layout. | Use `wp_update_custom_css_post()` for preset utility fallbacks, side rails, fixed bars, focus states, object-fit crops, anchor offsets, and text-brand sizing. | Keep selectors scoped to Site-O-Mattic classes and core blocks. |
 | Core media blocks | Proof-first visual layouts. | Use `Cover`, `Image`, `Gallery`, and `Media & Text` for service evidence, not decorative filler. | Bound media height so the first CTA survives mobile. |
 | Core semantic blocks | Premium clarity and trust. | Use `Details` for objections, `Table` for schedules/packages, `Quote`/`Pullquote` for trust, and `List` for receipts/checklists. | Add mobile table overflow checks and focus checks for `Details`. |
 | Sticky/fixed action patterns | Better navigation and mobile conversion. | Use root `Group` sticky support where safe; use scoped CSS for fixed mobile action bars. | Require `scroll-margin-top`, safe-area padding, and footer overlap checks. |
@@ -89,7 +89,7 @@ Use this as the underlying lead-generation rhythm, then vary the visible layout,
 
 | Stage | Job | Pattern notes |
 | --- | --- | --- |
-| Utility header | Brand, local relevance, phone/quote path. | Logo readable at actual header size, service area cue, one primary action. |
+| Utility header | Brand, local relevance, phone/quote path. | Text brand readable at actual header size, service area cue, one primary action. |
 | Hero / action gate | Resolve visitor intent fast. | H1 names the service outcome and local context; include proof cue plus primary and secondary CTA. |
 | Proof strip | Put trust near hesitation. | Use operational proof for demos: response time, process, warranty, service-area familiarity, insured/safe handling. Avoid fake platform review counts. |
 | Offer / scope | Show exactly what is included. | Cards, receipt-style list, package board, checklist rows, before/after surfaces, or add-on matrix. |
@@ -113,7 +113,7 @@ CTA rhythm should be deliberate, not noisy: header, hero, after proof or offer, 
 | Authentic Work Proof Gallery | Prove the service with visible work or outcome. | Project/team/truck/tool/result imagery before testimonials; avoid generic atmosphere. | `Image`, `Gallery`, `Media & Text`, `Columns`. |
 | Package / Menu Board | Help users compare event/package options. | Tier cards or menu rows with title, fit, inclusions, starting point, and date/check CTA. | `Columns`, `Group`, `List`, `Table`, `Buttons`, `Separator`. |
 | Editorial Collage / Portfolio Proof | Make visual services feel curated and high-touch. | Large hero shot, narrow crops, alternating image/text panels, category cards, testimonial proof. | `Cover`, `Columns`, `Image`, `Gallery`, `Group`, `Quote`. |
-| Desktop Side Rail | Keep long one-page flows navigable without top-header sameness. | Sticky desktop rail with logo, local anchors, CTA, proof or ticket; mobile collapses to compact top header. | `Group` or `Columns`, `Navigation`, `Buttons`, responsive custom CSS. |
+| Desktop Side Rail | Keep long one-page flows navigable without top-header sameness. | Sticky desktop rail with text brand, local anchors, CTA, proof or ticket; mobile collapses to compact top header. | `Group` or `Columns`, `Navigation`, `Buttons`, responsive custom CSS. |
 | Mobile Fixed Action Bar | Keep the primary action thumb-friendly. | One dominant mobile CTA, optional secondary call/text action, safe-area padding, no full nav dock unless app-like. | `Group`, `Row`, `Buttons`, custom CSS. |
 | Service Area Confidence Strip | Reinforce local relevance and response scope. | Towns/neighborhoods, route note, availability cue, local proof. | `Group`, `Columns`, `List`, `Paragraph`, `Buttons`. |
 | FAQ / Objection Accordion | Resolve late-stage objections without bloating the page. | 4-6 concise objections: pricing, timing, prep, warranty, service area, what happens next. | `Details`, `Heading`, `Paragraph`. |
@@ -149,7 +149,7 @@ These are generic conversion jobs, not niches:
 | `gallery-led` | Editorial Collage / Portfolio Proof, Authentic Work Proof Gallery. | Needs CTA-in-first-viewport guardrails every time. |
 | `surface-seasonal` | Hero Quote Panel, Proof Bar, Process Timeline. | Good seasonal urgency; vary surface/card rhythm if reused. |
 | `stain-care` | Decision Filter Hero, Proof Bar, Service Path Tiles. | Good softer trust pattern; add more distinctive proof if reused. |
-| `side-rail-service` | Desktop Side Rail, Hero Quote Panel, Proof Bar, Process Timeline. | Strong operational silhouette; mobile collapse and logo scale must be checked. |
+| `side-rail-service` | Desktop Side Rail, Hero Quote Panel, Proof Bar, Process Timeline. | Strong operational silhouette; mobile collapse and text-brand readability must be checked. |
 | `package-menu-board` | Package / Menu Board, Proof Bar, Process Reassurance Timeline. | Strong for event and catering services; keep menu ticket and package comparison readable on mobile. |
 | `fixed-bottom-action` | Mobile Fixed Action Bar, Decision Filter Hero, Proof Bar. | Strong for phone-first/mobile services; verify the fixed bar does not cover footer content or compete with desktop CTAs. |
 | `workshop-bench` | Workshop / Craft Bench, Receipt / Scope Summary, Process Reassurance Timeline. | Strong for craft and material-sensitive services; keep process closeups, care notes, and photo quote instructions concrete. |
@@ -175,7 +175,7 @@ Record these in the layout signature where practical, and verify them in screens
 - `imagePromptArtDirection`: each hero prompt body should name the service moment, visible proof/outcome, environment, composition/crop, negative space, light, tools/materials/textures, and artifact negatives before the shared Site-O-Mattic contract.
 - `renderFamily`: use the shared builder family as a scale metric. Alias variants need a true composition difference, not only different class prefixes.
 - `copyRhythm`: quote instructions, objection answers, and final contact copy should vary by CTA rhythm and niche-specific visitor instructions.
-- `brandSignal`: first viewport should include logo, literal service promise, CTA, and image/proof cue.
+- `brandSignal`: first viewport should include a readable text brand, literal service promise, CTA, and image/proof cue.
 - `ctaRhythm`: call-first, quote-first, photo-first, date-check, package-select, consult, route-join, or final-only-soft-close. Use one visually dominant action color.
 - `cardGeometry`: card radius stays at 8px or less; use 2px for precise, 4px for utilitarian, 6px for friendly, and 8px for premium-soft. Pills are for compact labels and CTA affordances, not whole sections.
 - `shadowRole`: use borders and tonal fields for ordinary surfaces; reserve shadows for hero media, key proof, and CTA/callout surfaces.
@@ -236,15 +236,15 @@ Use the research taxonomy in [Lane 2 Visual Layout Taxonomy](./lane-2-visual-lay
 
 | Primitive | Desktop behavior | Mobile behavior | Core-block translation | QA risks |
 | --- | --- | --- | --- | --- |
-| `compact-header` | Sticky top header with logo, short anchors, one CTA. | Logo plus compact nav or action button. | `Group`, `Site Logo`, `Navigation`, `Buttons`. | Logo scale, wrapped nav labels, anchor offset. |
-| `split-nav-action-header` | Logo left, anchors center, action buttons right. | Actions move to fixed bottom bar or stacked hero buttons. | Header `Group` as grid/columns with `Navigation` and `Buttons`. | Crowded 390px header, duplicate CTA focus order. |
-| `menu-utility-header` | Utility/menu header with package/date emphasis. | Compact logo plus date/package action. | `Group`, `Navigation`, `Buttons`, menu-ticket classes. | Menu labels can look decorative instead of actionable. |
-| `desktop-side-rail` | Sticky/fixed side rail with logo, vertical anchors, primary CTA. | Side rail hidden, compact top header appears. | `Group`/`Columns`, `Site Logo`, `Navigation`, `Buttons`. | Main content offset, focus order, mobile collapse, z-index. |
+| `compact-header` | Sticky top header with text brand, short anchors, one CTA. | Text brand plus compact nav or action button. | `Group`, text-brand `Paragraph`, `Navigation`, `Buttons`. | Text-brand readability, wrapped nav labels, anchor offset. |
+| `split-nav-action-header` | Text brand left, anchors center, action buttons right. | Actions move to fixed bottom bar or stacked hero buttons. | Header `Group` as grid/columns with `Navigation` and `Buttons`. | Crowded 390px header, duplicate CTA focus order. |
+| `menu-utility-header` | Utility/menu header with package/date emphasis. | Compact text brand plus date/package action. | `Group`, `Navigation`, `Buttons`, menu-ticket classes. | Menu labels can look decorative instead of actionable. |
+| `desktop-side-rail` | Sticky/fixed side rail with text brand, vertical anchors, primary CTA. | Side rail hidden, compact top header appears. | `Group`/`Columns`, text-brand `Paragraph`, `Navigation`, `Buttons`. | Main content offset, focus order, mobile collapse, z-index. |
 | `split-side-top-hybrid` | Side label/rail cues plus a top action strip. | Collapses to normal top header. | `Group`, `Columns`, `Navigation`, `Buttons`. | Can feel like two nav systems if labels repeat. |
 | `section-anchor-strip` | Thin in-page anchor strip after hero or under intro. | Horizontal scroll strip or omitted in favor of CTA bar. | `Navigation` or linked `List` in a `Group`. | Hidden targets, cramped labels, focus rings clipped. |
 | `fixed-bottom-mobile-cta` | Hidden or reduced to normal desktop CTA. | One dominant action plus optional call/text action. | Mobile-only `Group`/`Row` with `Buttons`. | Footer coverage, safe-area padding, keyboard viewport shifts. |
 | `floating-proof-action` | Sticky proof/contact sidecar beside copy or media. | Inline proof group or hidden secondary proof. | `Columns`, sticky `Group`, `Quote`/`List`, `Buttons`. | Overlap with media, confusing keyboard order, clipped focus. |
-| `viewport-safe-hero-shell` | First viewport guarantees logo, H1, proof cue, CTA, and media. | Uses `svh`/`dvh` fallback and reduced media height. | `Cover`/`Group`, `Buttons`, constrained `Image`. | CTA below fold, browser chrome height changes. |
+| `viewport-safe-hero-shell` | First viewport guarantees text brand, H1, proof cue, CTA, and media. | Uses `svh`/`dvh` fallback and reduced media height. | `Cover`/`Group`, `Buttons`, constrained `Image`. | CTA below fold, browser chrome height changes. |
 
 Highest-value primitives for the next silhouettes: `desktop-side-rail`, `section-anchor-strip`, `viewport-safe-hero-shell`, `floating-proof-action`, and receipt/scope stack compositions. Be cautious with another split nav/action hero immediately after the zone-grid and urgent-checklist patterns unless the hero and proof geometry change significantly.
 
@@ -253,14 +253,14 @@ Highest-value primitives for the next silhouettes: `desktop-side-rail`, `section
 | Area | Fail when | Machine-check direction |
 | --- | --- | --- |
 | Visual clone detection | The new screenshot reads like one of the previous two before the brand name is read. | Compare signature fields, component-class Jaccard, palette fingerprint, screenshot layout boxes, and nearest-neighbor review notes. |
-| First mobile viewport | At 360px, 390px, or 430px the logo, service H1, proof cue, primary CTA, or service media is missing. | Extend visual QA viewport matrix and record `h1Rect`, `ctaRect`, `logoRect`, media rect, and overflow. |
-| Logo sizing | The wordmark is timid, cropped, too wide, or includes tagline text. | Keep desktop logo roughly 180px+ wide, mobile under about 62vw, and enforce no tagline in logo metadata/review. |
+| First mobile viewport | At 360px, 390px, or 430px the text brand, service H1, proof cue, primary CTA, or service media is missing. | Extend visual QA viewport matrix and record `h1Rect`, `ctaRect`, `brandRect`, media rect, and overflow. |
+| Text-brand sizing | The business name is timid, cropped, too wide, or hard to read. | Tune the text-brand block with global typography tokens, block attributes, and the shared `.som-text-logo` class. |
 | Contrast | Token pairs pass but text over image, muted pills, or buttons fail in screenshots. | Add computed contrast checks plus screenshot sampling for image overlays. |
 | Focus states | Keyboard focus is invisible, clipped, or hidden under fixed/sticky elements. | Add a Playwright tab walk and verify active element rect plus visible focus pixels. |
 | Sticky/fixed overlap | Anchor headings hide under sticky headers or mobile bars cover footer/final CTA. | Measure sticky/fixed intersections after anchor clicks and footer scroll. Require `scroll-margin-top` and bottom padding. |
 | Core block misuse | Non-core blocks, fake forms, remote assets, or navigation-as-action-dock appear. | Keep allowlist validation; action docks should use `Buttons`, not another `Navigation`. |
 | Asset specificity | Hero image is generic, text-artifacted, or does not match `imageRole`. | Store prompt review, evidence nouns, forbidden artifact flags, and screenshot crop notes. |
-| Review evidence | `approved` exists without measured or written rationale. | Add `review.json` fields for viewport metrics, logo metrics, focus walk, overlap findings, contrast failures, nearest visual neighbors, and blocking notes. |
+| Review evidence | `approved` exists without measured or written rationale. | Add `review.json` fields for viewport metrics, brand text metrics, focus walk, overlap findings, contrast failures, nearest visual neighbors, and blocking notes. |
 
 ## Production Implications
 

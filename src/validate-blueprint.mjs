@@ -447,7 +447,7 @@ function validateNavigationPrimitiveEvidence(signature, pageContent, errors) {
     "desktop-side-rail": ["som-side-rail-shell", "som-side-rail", "som-rail-nav"],
     "fixed-bottom-mobile-cta": ["som-mobile-action-bar"],
     "menu-utility-header": ["som-menu-header"],
-    "split-side-top-hybrid": ["som-workshop-header", "som-material-proof-rail"],
+    "split-side-top-hybrid": ["som-workshop-hero", "som-material-proof-rail"],
     "split-nav-action-header": ["header-action"],
     "viewport-safe-hero-shell": ["hero"],
     "floating-proof-action": ["floating"]

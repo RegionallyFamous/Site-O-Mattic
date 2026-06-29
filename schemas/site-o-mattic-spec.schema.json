@@ -411,14 +411,10 @@
       "additionalProperties": false,
       "required": [
         "hero",
-        "logo",
         "favicon"
       ],
       "properties": {
         "hero": {
-          "type": "string"
-        },
-        "logo": {
           "type": "string"
         },
         "favicon": {
@@ -632,7 +628,7 @@
           "additionalProperties": false,
           "required": [
             "firstViewportClear",
-            "logoReadable",
+            "textBrandReadable",
             "layoutDistinct",
             "ctaClear",
             "copySpecific",
@@ -647,7 +643,7 @@
             "firstViewportClear": {
               "type": "boolean"
             },
-            "logoReadable": {
+            "textBrandReadable": {
               "type": "boolean"
             },
             "layoutDistinct": {
@@ -707,7 +703,7 @@
               "additionalProperties": false,
               "required": [
                 "firstViewport",
-                "logoScale",
+                "brandText",
                 "typography",
                 "polishContract",
                 "imageProof",
@@ -722,7 +718,7 @@
                 "firstViewport": {
                   "type": "boolean"
                 },
-                "logoScale": {
+                "brandText": {
                   "type": "boolean"
                 },
                 "typography": {

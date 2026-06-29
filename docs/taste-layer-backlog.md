@@ -4,7 +4,7 @@ Site-O-Mattic should stay block-first: core WordPress blocks and global settings
 
 ## Active Review Lanes
 
-- Visual composition: first viewport balance, proof timing, logo/header weight, repeated formulas, and screenshot evidence.
+- Visual composition: first viewport balance, proof timing, text-brand/header weight, repeated formulas, and screenshot evidence.
 - Typography: type scale, measure, role contrast, mobile wrapping, button labels, and avoiding CSS rescue typography.
 - Color theory: value contrast, warm/cool balance, action color discipline, and palette fingerprints that reflect rendered behavior.
 - Lean output: custom CSS size, priority overrides, negative margins, transforms, sticky/fixed UI, wildcard selectors, and fragile breakpoints.

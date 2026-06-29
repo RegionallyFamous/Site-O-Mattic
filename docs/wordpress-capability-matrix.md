@@ -40,7 +40,7 @@ Use `wp_global_styles` as the canonical token layer for Blueprints. It can carry
 | `styles.blocks` | Apply defaults for core blocks actually used: Group, Cover, Columns, Button, Navigation, Heading, Paragraph, Image, Gallery, Media & Text, List, Table, Details, Quote, Pullquote. |
 | `styles.css` | Use as a scoped escape hatch. Keep it smaller than custom CSS and use it for token-connected polish, not complex layout. |
 
-Use `wp_update_custom_css_post()` for fixed mobile action bars, side rails, object-fit crops, responsive table handling, focus-visible reliability, anchor offsets, safe-area padding, first-render preset fallbacks, and logo sizing.
+Use `wp_update_custom_css_post()` for fixed mobile action bars, side rails, object-fit crops, responsive table handling, focus-visible reliability, anchor offsets, safe-area padding, first-render preset fallbacks, and text-brand sizing.
 
 ## Core Block Matrix
 
@@ -50,10 +50,10 @@ Use `wp_update_custom_css_post()` for fixed mobile action bars, side rails, obje
 | `core/cover` | Hero gates, proof bands, final CTA images. | Uploaded image/video, focal point, overlay color/gradient, duotone, min-height, content position, inner layout. | Keep proof inspectable; verify CTA in first viewport. |
 | `core/columns` / `core/column` | Service lanes, packages, proof rows. | Width ratios, stacking, vertical alignment, block gap, spacing, borders. | QA mobile stacking and overflow. |
 | `core/media-text` | Editorial proof, consultation stories, before/after process. | Media position, media width, image fill, focal point, mobile stack, inner blocks. | Make media real evidence, not filler. |
-| `core/image` | Hero/proof/logo-adjacent visuals. | Attachment ID, alt, aspect ratio, scale/object-fit, size slug, border, shadow, duotone. | Always set alt and crop intentionally. |
+| `core/image` | Hero and proof visuals. | Attachment ID, alt, aspect ratio, scale/object-fit, size slug, border, shadow, duotone. | Always set alt and crop intentionally. |
 | `core/gallery` | Visual proof mosaics and portfolio strips. | Columns, image crop, fixed height/aspect ratio, gap, attachment metadata. | Use `linkTo:"none"` unless links matter; verify mobile. |
 | `core/navigation` | Header nav, side rail nav, section anchor strips. | Overlay behavior, orientation, justification, typography, anchor links. | Nav is for movement; use Buttons for action docks. Anchors must exist. |
-| `core/site-logo` | Brand signal. | Uploaded logo attachment, width, link behavior. | Wordmark width usually needs 220-260px plus CSS max-width. No tagline in art. |
+| text-brand `core/paragraph` | Brand signal. | Exact business name rendered as editable text with block typography and the shared `.som-text-logo` class. | Keep readable at desktop and mobile header sizes; do not package unused logo assets. |
 | `core/buttons` / `core/button` | Calls, email, quote, anchor actions. | Layout, wrapping, width, colors, gradients, border, shadow, typography, spacing. | Use real `tel:`, `mailto:`, or real anchors. No `#` placeholders. |
 | `core/details` | FAQ, objections, prep notes. | Summary/content structure, spacing, border, color, typography, keyboard-native disclosure. | Keep summaries concise and useful near conversion points. |
 | `core/table` | Scope, pricing bands, route days, quote prep. | Header/footer, caption, typography, color, border, spacing. | Add scoped CSS for mobile overflow/card behavior. |
@@ -70,4 +70,4 @@ Avoid experimental blocks for production Blueprints unless the target WordPress 
 - Every spec `coreBlockPlan` must appear in actual page markup when it names a rich block.
 - Color roles should resolve into real tokens, not only metadata.
 - Geometry choices should resolve into radius, border, shadow, media crop, and spacing tokens.
-- Screenshot QA is the authority for first viewport CTA, logo size, mobile overflow, sticky/fixed overlap, and table/gallery behavior.
+- Screenshot QA is the authority for first viewport CTA, text-brand readability, mobile overflow, sticky/fixed overlap, and table/gallery behavior.

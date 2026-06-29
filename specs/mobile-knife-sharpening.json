@@ -64,7 +64,6 @@
   },
   "assets": {
     "hero": "assets/mobile-knife-sharpening/edgeroute-hero.jpg",
-    "logo": "assets/mobile-knife-sharpening/edgeroute-logo.png",
     "favicon": "assets/mobile-knife-sharpening/edgeroute-favicon.png"
   },
   "assetMeta": {
@@ -142,7 +141,6 @@
     "visualBaseline": "pending",
     "reviewChecklist": {
       "firstViewportClear": true,
-      "logoReadable": true,
       "layoutDistinct": true,
       "ctaClear": true,
       "copySpecific": true,
@@ -151,15 +149,16 @@
       "hierarchyDistinct": true,
       "signatureMove": true,
       "restrainedComposition": true,
-      "screenshotCompared": true
+      "screenshotCompared": true,
+      "textBrandReadable": true
     },
     "premiumReview": {
-      "version": 2,
+      "version": 3,
       "reviewedAt": "2026-06-27",
       "score": 100,
       "categories": {
         "firstViewport": true,
-        "logoScale": true,
+        "brandText": true,
         "typography": true,
         "polishContract": true,
         "imageProof": true,
@@ -171,7 +170,7 @@
         "brandBrief": true
       },
       "notes": [
-        "Works: stainless blue-gray surfaces, tomato action accents, and a route-day bench ticket give the page a memorable workshop shape.",
+        "Works: tomato action accents and a route-day bench ticket. gives the page a memorable shape.",
         "Proof: sharpening bench with knives, water tray, and route bins. anchors the niche in the first viewport.",
         "Action: Book knife route is the main conversion path."
       ]

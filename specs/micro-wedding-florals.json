@@ -44,7 +44,7 @@
     ],
     "knownRisks": [
       "first-viewport-cta",
-      "logo-scale",
+      "text-brand-readability",
       "mobile-crop"
     ],
     "styleContract": "Romantic editorial calm with bouquet prep proof, celadon page fields, cream support cards, blackberry ink, marigold accents reserved for consult actions, and a post-hero floral brief anchor strip as the signature move."
@@ -64,7 +64,6 @@
   },
   "assets": {
     "hero": "assets/micro-wedding-florals/vowsprig-hero.jpg",
-    "logo": "assets/micro-wedding-florals/vowsprig-logo.png",
     "favicon": "assets/micro-wedding-florals/vowsprig-favicon.png"
   },
   "assetMeta": {
@@ -142,7 +141,6 @@
     "visualBaseline": "pending",
     "reviewChecklist": {
       "firstViewportClear": true,
-      "logoReadable": true,
       "layoutDistinct": true,
       "ctaClear": true,
       "copySpecific": true,
@@ -151,15 +149,16 @@
       "hierarchyDistinct": true,
       "signatureMove": true,
       "restrainedComposition": true,
-      "screenshotCompared": true
+      "screenshotCompared": true,
+      "textBrandReadable": true
     },
     "premiumReview": {
-      "version": 2,
+      "version": 3,
       "reviewedAt": "2026-06-25",
       "score": 100,
       "categories": {
         "firstViewport": true,
-        "logoScale": true,
+        "brandText": true,
         "typography": true,
         "polishContract": true,
         "imageProof": true,

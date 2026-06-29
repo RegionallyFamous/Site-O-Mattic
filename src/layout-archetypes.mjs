@@ -161,10 +161,10 @@ function sideRailAlias(config) {
 
 function workshopAlias(config) {
   const classes = withPrefixedClasses(
-    ["som-workshop-page", "som-workshop-header", "som-workshop-hero", "som-workshop-photo", "som-workshop-ticket", "som-material-proof", "som-wood-card", "som-care-note", "som-craft-step", "som-quote-strip"],
+    ["som-workshop-page", "som-workshop-hero", "som-workshop-photo", "som-workshop-ticket", "som-material-proof", "som-wood-card", "som-care-note", "som-craft-step", "som-quote-strip"],
     config.prefix,
-    ["page", "header", "hero", "photo", "ticket", "proof", "card", "care-note", "step", "quote-strip"],
-    ["page", "header", "hero", "photo", "ticket", "proof", "card", "quote-strip"]
+    ["page", "hero", "photo", "ticket", "proof", "card", "care-note", "step", "quote-strip"],
+    ["page", "hero", "photo", "ticket", "proof", "card", "quote-strip"]
   );
   return { ...config, ...classes };
 }
@@ -424,7 +424,7 @@ export const LAYOUT_ARCHETYPES = {
       "som-footer"
     ],
     layoutMarkers: ["som-side-rail-shell", "som-side-rail", "som-haul-hero", "som-haul-photo", "som-haul-ticket", "som-donation-strip", "som-haul-card", "som-haul-step", "som-quote-strip"],
-    guidance: "Use a persistent desktop side rail with logo, section anchors, and a quote CTA, then collapse to a compact top header on mobile. Best for operational, checklist-heavy services where the page should feel like a useful service console."
+    guidance: "Use a persistent desktop side rail with text brand, section anchors, and a quote CTA, then collapse to a compact top header on mobile. Best for operational, checklist-heavy services where the page should feel like a useful service console."
   },
   "zone-grid-planner": {
     label: "Zone grid planner",
@@ -546,7 +546,7 @@ export const LAYOUT_ARCHETYPES = {
       "som-footer"
     ],
     layoutMarkers: ["som-estimate-rail-shell", "som-estimate-rail", "som-consult-hero", "som-consult-photo", "som-consult-ticket", "som-consult-proof-strip", "som-consult-card", "som-consult-step", "som-quote-strip"],
-    guidance: "Use a full-height desktop rail for logo, anchors, and phone/estimate CTA, paired with an image-led consult hero and setup steps. Mobile should collapse to a compact header."
+    guidance: "Use a full-height desktop rail for text brand, anchors, and phone/estimate CTA, paired with an image-led consult hero and setup steps. Mobile should collapse to a compact header."
   },
   "bottom-dock-booking": {
     label: "Bottom dock booking",
@@ -620,8 +620,6 @@ export const LAYOUT_ARCHETYPES = {
     componentClassesExpected: [
       "som-workshop-page",
       "som-sharp-page",
-      "som-workshop-header",
-      "som-sharp-header",
       "som-workshop-hero",
       "som-sharp-hero",
       "som-workshop-photo",
@@ -639,7 +637,7 @@ export const LAYOUT_ARCHETYPES = {
       "som-quote-strip",
       "som-footer"
     ],
-    layoutMarkers: ["som-sharp-page", "som-sharp-header", "som-sharp-hero", "som-sharp-photo", "som-edge-ticket", "som-edge-proof", "som-sharp-card", "som-edge-care-note", "som-sharp-step", "som-quote-strip"],
+    layoutMarkers: ["som-sharp-page", "som-sharp-hero", "som-sharp-photo", "som-edge-ticket", "som-edge-proof", "som-sharp-card", "som-edge-care-note", "som-sharp-step", "som-quote-strip"],
     guidance: "Use craft-bench imagery, route-day proof, item-scope cards, care notes, and join-the-next-route CTAs."
   },
   "bike-route-workstand": {
@@ -667,8 +665,6 @@ export const LAYOUT_ARCHETYPES = {
     componentClassesExpected: [
       "som-workshop-page",
       "som-bike-page",
-      "som-workshop-header",
-      "som-bike-header",
       "som-workshop-hero",
       "som-bike-hero",
       "som-workshop-photo",
@@ -687,7 +683,7 @@ export const LAYOUT_ARCHETYPES = {
       "som-bike-booking-strip",
       "som-footer"
     ],
-    layoutMarkers: ["som-bike-page", "som-bike-header", "som-bike-hero", "som-workstand-photo", "som-route-ticket", "som-ride-proof", "som-tune-card", "som-ride-care-note", "som-bike-route-step", "som-bike-booking-strip"],
+    layoutMarkers: ["som-bike-page", "som-bike-hero", "som-workstand-photo", "som-route-ticket", "som-ride-proof", "som-tune-card", "som-ride-care-note", "som-bike-route-step", "som-bike-booking-strip"],
     guidance: "Use a light portable workstand bay as the visual anchor, pair route-day proof with tune-lane cards, and keep booking language focused on bike photos, tire size, symptoms, and a clean curbside handoff."
   },
   "organizing-zone-board": {
@@ -750,7 +746,7 @@ export const LAYOUT_ARCHETYPES = {
   "split-proof-transform": {
     label: "Split proof transform",
     bestFor: ["junk removal", "garage organization", "carpet cleaning", "deck staining"],
-    navigationTreatment: "minimal-top-logo-plus-send-photo-button",
+    navigationTreatment: "minimal-top-brand-plus-send-photo-button",
     typographyTreatment: "bold-proof-before-after",
     colorStrategy: "transformation-before-after-contrast-with-bright-proof-accent",
     guidance: "Lead with a split before/after transformation story, then move through what gets fixed, process, proof, and a photo-submit CTA without relying on JavaScript sliders."
@@ -1200,7 +1196,6 @@ export const LAYOUT_ARCHETYPES = {
     anchorOrder: ["wood", "process", "quote"],
     componentClassesExpected: [
       "som-workshop-page",
-      "som-workshop-header",
       "som-workshop-hero",
       "som-workshop-photo",
       "som-workshop-ticket",
@@ -1211,7 +1206,7 @@ export const LAYOUT_ARCHETYPES = {
       "som-quote-strip",
       "som-footer"
     ],
-    layoutMarkers: ["som-workshop-page", "som-workshop-header", "som-workshop-hero", "som-workshop-photo", "som-workshop-ticket", "som-material-proof", "som-wood-card", "som-care-note", "som-craft-step", "som-quote-strip"],
+    layoutMarkers: ["som-workshop-page", "som-workshop-hero", "som-workshop-photo", "som-workshop-ticket", "som-material-proof", "som-wood-card", "som-care-note", "som-craft-step", "som-quote-strip"],
     guidance: "Use close-up craft imagery, materials/process chips, a stacked timeline, gallery/proof, care notes, and send-a-photo CTAs."
   },
   "deck-finish-sample-board": workshopAlias({

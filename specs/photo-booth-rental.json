@@ -45,7 +45,7 @@
     ],
     "knownRisks": [
       "first-viewport-cta",
-      "logo-scale",
+      "text-brand-readability",
       "mobile-crop"
     ],
     "styleContract": "Bright and event-ready with guest-flow proof, a real photo booth environment in use, flash-yellow action accents, and a mobile reserve dock as the signature move."
@@ -65,7 +65,6 @@
   },
   "assets": {
     "hero": "assets/photo-booth-rental/flashdash-hero.jpg",
-    "logo": "assets/photo-booth-rental/flashdash-logo.png",
     "favicon": "assets/photo-booth-rental/flashdash-favicon.png"
   },
   "assetMeta": {
@@ -143,7 +142,6 @@
     "visualBaseline": "pending",
     "reviewChecklist": {
       "firstViewportClear": true,
-      "logoReadable": true,
       "layoutDistinct": true,
       "ctaClear": true,
       "copySpecific": true,
@@ -152,15 +150,16 @@
       "hierarchyDistinct": true,
       "signatureMove": true,
       "restrainedComposition": true,
-      "screenshotCompared": true
+      "screenshotCompared": true,
+      "textBrandReadable": true
     },
     "premiumReview": {
-      "version": 2,
+      "version": 3,
       "reviewedAt": "2026-06-27",
       "score": 100,
       "categories": {
         "firstViewport": true,
-        "logoScale": true,
+        "brandText": true,
         "typography": true,
         "polishContract": true,
         "imageProof": true,
@@ -172,7 +171,7 @@
         "brandBrief": true
       },
       "notes": [
-        "Works: the mobile reserve dock gives the page a memorable shape, with booth hardware and package proof visible early.",
+        "Works: a mobile reserve dock. gives the page a memorable shape.",
         "Proof: open-air photo booth in use with attendant, guests, props table, lit kiosk, and event backdrop. anchors the niche in the first viewport.",
         "Action: Reserve a booth is the main conversion path."
       ]

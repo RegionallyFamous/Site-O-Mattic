@@ -1,4 +1,4 @@
-export const POLISH_REVIEW_VERSION = 2;
+export const POLISH_REVIEW_VERSION = 3;
 
 export const RICH_CORE_BLOCKS = [
   "media-text",
@@ -26,7 +26,7 @@ export const SILHOUETTE_MATRIX = {
     signatureMove: "First-screen conversion shell",
     preferredNavigation: ["compact-header", "split-nav-action-header", "viewport-safe-hero-shell"],
     strongBlocks: ["cover", "columns", "image", "buttons", "list"],
-    risks: ["CTA below first viewport", "hero media crowds mobile copy", "logo too small"]
+    risks: ["CTA below first viewport", "hero media crowds mobile copy", "text brand too small"]
   },
   "editorial-proof-stage": {
     job: "Let outcome or process imagery prove the service before claims do.",

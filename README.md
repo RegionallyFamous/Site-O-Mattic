@@ -7,7 +7,7 @@ The repo currently includes 35 single-page service-business Blueprints. Each one
 - the default WordPress theme when available, with Twenty Twenty-Five selected if present;
 - core blocks and WordPress settings first, with generated CSS reserved for shared polish, accessibility, and responsive edge-case fixes;
 - a generated hero image;
-- custom ImageGen raster logo and favicon assets;
+- a generated favicon and a core text brand in the header;
 - a professional but fun one-page service-site voice.
 
 ## Build
@@ -18,7 +18,7 @@ npm run quality
 npm run build
 ```
 
-`npm run quality` runs spec validation, Blueprint validation, the polish report, accessibility checks, layout variety, typography guardrails, production guardrails, asset QA, copy realism, premium review, the visual baseline gate, the production host build, and lint. The polish report checks the token stack, block-level styles, focus states, contrast pairs, anchors, component polish classes, layout signatures, and logo metadata. The variety and premium reports compare Blueprints so different niches cannot quietly reuse the same hero structure, service presentation, proof treatment, CTA rhythm, navigation, typography, palette behavior, and component class mix.
+`npm run quality` runs spec validation, Blueprint validation, the polish report, accessibility checks, layout variety, typography guardrails, production guardrails, asset QA, copy realism, premium review, the visual baseline gate, the production host build, and lint. The polish report checks the token stack, block-level styles, focus states, contrast pairs, anchors, component polish classes, layout signatures, and text-brand discipline. The variety and premium reports compare Blueprints so different niches cannot quietly reuse the same hero structure, service presentation, proof treatment, CTA rhythm, navigation, typography, palette behavior, and component class mix.
 
 Use `npm run quality:catalog` for a full local release lane. It rebuilds the catalog, checks repeated-build determinism for generated Blueprint files and ZIPs, runs the static quality suite, refreshes the local screenshot sweep, and writes the visual comparison dashboard.
 
@@ -28,7 +28,7 @@ For a local Playground visual smoke test, start the Playground CLI for a Bluepri
 npm run blueprint:visual -- http://127.0.0.1:<port>
 ```
 
-The visual smoke test checks desktop and mobile first viewports for readable logo sizing, visible CTAs, missing default theme wrappers, and horizontal overflow.
+The visual smoke test checks desktop and mobile first viewports for readable text branding, visible CTAs, missing default theme wrappers, and horizontal overflow.
 
 For a full local screenshot sweep across specs:
 
@@ -60,7 +60,7 @@ SLUG=<slug> PLAYGROUND_URL=<url> npm run visual:baseline:capture
 
 The generated Blueprint files are written to `public/blueprints/<slug>/`.
 
-Use each `public/blueprints/<slug>/blueprint.json` as the Studio-ready Blueprint file. It is self-contained, with the generated hero image, logo, and favicon embedded into the setup step. Once deployed, the Playground links point at `/api/blueprints/<slug>/blueprint.json`, which serves the same Blueprint with CORS headers.
+Use each `public/blueprints/<slug>/blueprint.json` as the Studio-ready Blueprint file. It is self-contained, with the generated hero image and favicon embedded into the setup step. The visible business name renders as core text, not a packaged logo asset. Once deployed, the Playground links point at `/api/blueprints/<slug>/blueprint.json`, which serves the same Blueprint with CORS headers.
 
 The host app catalog and API routes are generated from `specs/*.json`, so new production blueprints should not require hand-editing the homepage or route files.
 
@@ -82,7 +82,7 @@ This writes `docs/index.html` and `docs/.nojekyll`. Configure GitHub Pages to pu
 - `schemas/`: spec contract for production inputs.
 - `config/production-guardrails.json`: asset, Blueprint, and bundle budgets.
 - `src/`: Blueprint builder and validator.
-- `assets/`: Imagegen heroes, logo sources, favicon sources, rendered PNG assets, and prompt notes by niche.
+- `assets/`: Imagegen heroes, favicon sources, rendered PNG assets, and prompt notes by niche.
 - `public/blueprints/`: generated Blueprint directories and bundles served by the host site.
 - `qa/baselines/`: approved desktop/mobile screenshots for published Blueprints.
 - `qa/reports/`: lightweight release review dashboards; raw visual sweep and public smoke screenshots are local by default.

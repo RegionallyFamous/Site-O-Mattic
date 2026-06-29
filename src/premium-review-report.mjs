@@ -21,7 +21,7 @@ import { blueprintDirForSpec, blueprintPathForSpec, readSpec, specTargets } from
 const REVIEW_VERSION = POLISH_REVIEW_VERSION;
 const REVIEW_CATEGORIES = [
   "firstViewport",
-  "logoScale",
+  "brandText",
   "typography",
   "polishContract",
   "imageProof",
@@ -86,12 +86,12 @@ export async function buildPremiumReview(spec) {
       String(spec.copy?.heroText || "").length >= 70 && String(spec.copy?.heroText || "").length <= 310,
       /\bwp-block-button__link\b/.test(pageContent)
     ],
-    logoScale: [
+    brandText: [
       textBrandPresentFromMarkup(pageContent, spec),
       !pageContent.includes("wp:site-logo"),
       !phpStep?.code.includes("\"logo\":"),
       !manifest?.assets?.logo,
-      Boolean(spec.release?.reviewChecklist?.logoReadable)
+      Boolean(spec.release?.reviewChecklist?.textBrandReadable)
     ],
     typography: [
       (globalStyles?.settings?.typography?.fontFamilies || []).length >= 3,

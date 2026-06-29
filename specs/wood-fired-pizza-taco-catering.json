@@ -42,7 +42,7 @@
     ],
     "knownRisks": [
       "first-viewport-cta",
-      "logo-scale",
+      "text-brand-readability",
       "mobile-crop"
     ],
     "styleContract": "Warm and lively with guest-count proof, an outdoor live-fire catering station, tomato, cilantro-teal, and masa-yellow action accents, and a readable menu ticket as the signature move."
@@ -62,7 +62,6 @@
   },
   "assets": {
     "hero": "assets/wood-fired-pizza-taco-catering/embermasa-hero.jpg",
-    "logo": "assets/wood-fired-pizza-taco-catering/embermasa-logo.png",
     "favicon": "assets/wood-fired-pizza-taco-catering/embermasa-favicon.png"
   },
   "assetMeta": {
@@ -140,7 +139,6 @@
     "visualBaseline": "pending",
     "reviewChecklist": {
       "firstViewportClear": true,
-      "logoReadable": true,
       "layoutDistinct": true,
       "ctaClear": true,
       "copySpecific": true,
@@ -149,15 +147,16 @@
       "hierarchyDistinct": true,
       "signatureMove": true,
       "restrainedComposition": true,
-      "screenshotCompared": true
+      "screenshotCompared": true,
+      "textBrandReadable": true
     },
     "premiumReview": {
-      "version": 2,
+      "version": 3,
       "reviewedAt": "2026-06-25",
       "score": 100,
       "categories": {
         "firstViewport": true,
-        "logoScale": true,
+        "brandText": true,
         "typography": true,
         "polishContract": true,
         "imageProof": true,

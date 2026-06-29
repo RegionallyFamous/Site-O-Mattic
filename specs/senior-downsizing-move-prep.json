@@ -64,7 +64,6 @@
   },
   "assets": {
     "hero": "assets/senior-downsizing-move-prep/kindmove-hero.jpg",
-    "logo": "assets/senior-downsizing-move-prep/kindmove-logo.png",
     "favicon": "assets/senior-downsizing-move-prep/kindmove-favicon.png"
   },
   "assetMeta": {
@@ -142,7 +141,6 @@
     "visualBaseline": "pending",
     "reviewChecklist": {
       "firstViewportClear": true,
-      "logoReadable": true,
       "layoutDistinct": true,
       "ctaClear": true,
       "copySpecific": true,
@@ -151,15 +149,16 @@
       "hierarchyDistinct": true,
       "signatureMove": true,
       "restrainedComposition": true,
-      "screenshotCompared": true
+      "screenshotCompared": true,
+      "textBrandReadable": true
     },
     "premiumReview": {
-      "version": 2,
+      "version": 3,
       "reviewedAt": "2026-06-27",
       "score": 100,
       "categories": {
         "firstViewport": true,
-        "logoScale": true,
+        "brandText": true,
         "typography": true,
         "polishContract": true,
         "imageProof": true,

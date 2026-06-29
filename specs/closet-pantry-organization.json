@@ -62,7 +62,6 @@
   },
   "assets": {
     "hero": "assets/closet-pantry-organization/shelfwise-hero.jpg",
-    "logo": "assets/closet-pantry-organization/shelfwise-logo.png",
     "favicon": "assets/closet-pantry-organization/shelfwise-favicon.png"
   },
   "assetMeta": {
@@ -140,7 +139,6 @@
     "visualBaseline": "pending",
     "reviewChecklist": {
       "firstViewportClear": true,
-      "logoReadable": true,
       "layoutDistinct": true,
       "ctaClear": true,
       "copySpecific": true,
@@ -149,15 +147,16 @@
       "hierarchyDistinct": true,
       "signatureMove": true,
       "restrainedComposition": true,
-      "screenshotCompared": true
+      "screenshotCompared": true,
+      "textBrandReadable": true
     },
     "premiumReview": {
-      "version": 2,
+      "version": 3,
       "reviewedAt": "2026-06-27",
       "score": 100,
       "categories": {
         "firstViewport": true,
-        "logoScale": true,
+        "brandText": true,
         "typography": true,
         "polishContract": true,
         "imageProof": true,

@@ -43,7 +43,7 @@
     ],
     "knownRisks": [
       "first-viewport-cta",
-      "logo-scale",
+      "text-brand-readability",
       "mobile-crop"
     ],
     "styleContract": "Celebratory and polished with portion proof, styled dessert table evidence, raspberry action, butter divider accents, powder-blue support fields, and flavor caption cards as the signature move."
@@ -63,7 +63,6 @@
   },
   "assets": {
     "hero": "assets/dessert-table-bakery-catering/sugarline-hero.jpg",
-    "logo": "assets/dessert-table-bakery-catering/sugarline-logo.png",
     "favicon": "assets/dessert-table-bakery-catering/sugarline-favicon.png"
   },
   "assetMeta": {
@@ -141,7 +140,6 @@
     "visualBaseline": "pending",
     "reviewChecklist": {
       "firstViewportClear": true,
-      "logoReadable": true,
       "layoutDistinct": true,
       "ctaClear": true,
       "copySpecific": true,
@@ -150,15 +148,16 @@
       "hierarchyDistinct": true,
       "signatureMove": true,
       "restrainedComposition": true,
-      "screenshotCompared": true
+      "screenshotCompared": true,
+      "textBrandReadable": true
     },
     "premiumReview": {
-      "version": 2,
+      "version": 3,
       "reviewedAt": "2026-06-27",
       "score": 100,
       "categories": {
         "firstViewport": true,
-        "logoScale": true,
+        "brandText": true,
         "typography": true,
         "polishContract": true,
         "imageProof": true,

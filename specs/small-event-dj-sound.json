@@ -44,7 +44,7 @@
     ],
     "knownRisks": [
       "first-viewport-cta",
-      "logo-scale",
+      "text-brand-readability",
       "mobile-crop"
     ],
     "styleContract": "Energetic and controlled with setup proof, real soundcheck evidence, signal-lime action accents, and a side-rail sound console as the signature move."
@@ -64,7 +64,6 @@
   },
   "assets": {
     "hero": "assets/small-event-dj-sound/soundnest-hero.jpg",
-    "logo": "assets/small-event-dj-sound/soundnest-logo.png",
     "favicon": "assets/small-event-dj-sound/soundnest-favicon.png"
   },
   "assetMeta": {
@@ -142,7 +141,6 @@
     "visualBaseline": "pending",
     "reviewChecklist": {
       "firstViewportClear": true,
-      "logoReadable": true,
       "layoutDistinct": true,
       "ctaClear": true,
       "copySpecific": true,
@@ -151,15 +149,16 @@
       "hierarchyDistinct": true,
       "signatureMove": true,
       "restrainedComposition": true,
-      "screenshotCompared": true
+      "screenshotCompared": true,
+      "textBrandReadable": true
     },
     "premiumReview": {
-      "version": 2,
+      "version": 3,
       "reviewedAt": "2026-06-25",
       "score": 100,
       "categories": {
         "firstViewport": true,
-        "logoScale": true,
+        "brandText": true,
         "typography": true,
         "polishContract": true,
         "imageProof": true,

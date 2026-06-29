@@ -10,14 +10,6 @@
       "maxHeight": 1600,
       "allowedExtensions": [".jpg", ".jpeg", ".png"]
     },
-    "logo": {
-      "maxBytes": 140000,
-      "minWidth": 900,
-      "minHeight": 180,
-      "maxWidth": 1800,
-      "maxHeight": 520,
-      "allowedExtensions": [".png"]
-    },
     "favicon": {
       "maxBytes": 100000,
       "minWidth": 256,

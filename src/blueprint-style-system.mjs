@@ -3444,14 +3444,6 @@ function buildVariantCustomCss(spec) {
 
   if (variant === "workshop-bench") {
     return `
-.som-workshop-header .wp-block-navigation a{
-  border-radius:6px;
-  padding:8px 12px;
-}
-.som-workshop-header .wp-block-navigation a:hover{
-  background:color-mix(in srgb, ${spec.palette.leaf} 16%, transparent);
-  text-decoration:none;
-}
 .som-workshop-hero{
   background-image:radial-gradient(circle at 78% 18%, color-mix(in srgb, ${spec.palette.leaf} 20%, transparent), transparent 34%), linear-gradient(135deg, rgba(255,255,255,.05), rgba(255,255,255,0));
 }
@@ -3516,19 +3508,7 @@ function buildVariantCustomCss(spec) {
   padding:0;
   white-space:nowrap;
 }
-@media (max-width:900px){
-  .som-workshop-header{
-    padding-right:24px;
-    padding-left:24px;
-  }
-  .som-workshop-header-action{
-    display:none;
-  }
-}
 @media (max-width:700px){
-  .som-workshop-header .wp-block-columns{
-    gap:12px;
-  }
   .som-workshop-hero{
     padding-top:42px;
     padding-right:24px;

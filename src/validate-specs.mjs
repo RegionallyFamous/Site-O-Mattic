@@ -112,7 +112,7 @@ function validatePalette(palette, errors) {
 }
 
 async function validateAssets(assets, errors) {
-  for (const key of ["hero", "logo", "favicon"]) {
+  for (const key of ["hero", "favicon"]) {
     const source = assets?.[key];
     if (!source) {
       errors.push(`assets.${key} is required.`);
@@ -243,7 +243,7 @@ function validateRelease(release, errors) {
   const checklist = release?.reviewChecklist || {};
   const requiredChecks = [
     "firstViewportClear",
-    "logoReadable",
+    "textBrandReadable",
     "layoutDistinct",
     "ctaClear",
     "copySpecific",
@@ -278,7 +278,7 @@ function validateRelease(release, errors) {
   }
   const categories = [
     "firstViewport",
-    "logoScale",
+    "brandText",
     "typography",
     "polishContract",
     "imageProof",

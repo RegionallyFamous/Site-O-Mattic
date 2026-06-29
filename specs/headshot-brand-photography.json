@@ -45,7 +45,7 @@
     ],
     "knownRisks": [
       "first-viewport-cta",
-      "logo-scale",
+      "text-brand-readability",
       "hero-overlay-contrast",
       "contact-sheet-crop-proof"
     ],
@@ -66,7 +66,6 @@
   },
   "assets": {
     "hero": "assets/headshot-brand-photography/frameforge-hero.jpg",
-    "logo": "assets/headshot-brand-photography/frameforge-logo.png",
     "favicon": "assets/headshot-brand-photography/frameforge-favicon.png"
   },
   "assetMeta": {
@@ -144,7 +143,6 @@
     "visualBaseline": "pending",
     "reviewChecklist": {
       "firstViewportClear": true,
-      "logoReadable": true,
       "layoutDistinct": true,
       "ctaClear": true,
       "copySpecific": true,
@@ -153,15 +151,16 @@
       "hierarchyDistinct": true,
       "signatureMove": true,
       "restrainedComposition": true,
-      "screenshotCompared": true
+      "screenshotCompared": true,
+      "textBrandReadable": true
     },
     "premiumReview": {
-      "version": 2,
+      "version": 3,
       "reviewedAt": "2026-06-27",
       "score": 100,
       "categories": {
         "firstViewport": true,
-        "logoScale": true,
+        "brandText": true,
         "typography": true,
         "polishContract": true,
         "imageProof": true,

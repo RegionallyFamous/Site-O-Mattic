@@ -1458,8 +1458,8 @@ function nearestNeighborTasteWarning(slug, distance) {
 }
 
 function layoutDistance(left, right) {
-  const leftRects = [left.desktopLogo, left.desktopH1, left.desktopMedia].filter(Boolean);
-  const rightRects = [right.desktopLogo, right.desktopH1, right.desktopMedia].filter(Boolean);
+  const leftRects = [left.desktopBrand, left.desktopH1, left.desktopMedia].filter(Boolean);
+  const rightRects = [right.desktopBrand, right.desktopH1, right.desktopMedia].filter(Boolean);
   const count = Math.min(leftRects.length, rightRects.length);
   if (!count) {
     return 999999;

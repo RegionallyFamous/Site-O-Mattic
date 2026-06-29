@@ -63,7 +63,6 @@
   },
   "assets": {
     "hero": "assets/pollinator-garden/bloomroute-hero.jpg",
-    "logo": "assets/pollinator-garden/bloomroute-logo.png",
     "favicon": "assets/pollinator-garden/bloomroute-favicon.png"
   },
   "assetMeta": {
@@ -141,7 +140,6 @@
     "visualBaseline": "pending",
     "reviewChecklist": {
       "firstViewportClear": true,
-      "logoReadable": true,
       "layoutDistinct": true,
       "ctaClear": true,
       "copySpecific": true,
@@ -150,15 +148,16 @@
       "hierarchyDistinct": true,
       "signatureMove": true,
       "restrainedComposition": true,
-      "screenshotCompared": true
+      "screenshotCompared": true,
+      "textBrandReadable": true
     },
     "premiumReview": {
-      "version": 2,
+      "version": 3,
       "reviewedAt": "2026-06-27",
       "score": 100,
       "categories": {
         "firstViewport": true,
-        "logoScale": true,
+        "brandText": true,
         "typography": true,
         "polishContract": true,
         "imageProof": true,
