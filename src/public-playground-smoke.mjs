@@ -266,7 +266,7 @@ async function inspectScenario(browser, url, scenario, screenshot) {
     await page.screenshot({ path: screenshot, fullPage: false });
     const result = await frame.evaluate(() => {
       const text = document.body.innerText || "";
-      const logo = rectFor(document.querySelector(".wp-block-site-logo img"));
+      const brand = rectFor(document.querySelector(".som-text-logo"));
       const h1 = rectFor(document.querySelector("h1"));
       const media = rectFor(document.querySelector(".wp-block-cover__image-background, .wp-block-image img, .wp-block-media-text__media"));
       const ctas = [...document.querySelectorAll(".wp-block-button__link")]
@@ -284,7 +284,7 @@ async function inspectScenario(browser, url, scenario, screenshot) {
         defaultWrapperLeak: /Twenty Twenty|Designed with WordPress|^Home$/m.test(text),
         firstViewportCtaVisible: ctas.some((cta) => visible(cta.rect)),
         firstViewportCtaText: ctas.find((cta) => visible(cta.rect))?.text || null,
-        logo,
+        brand,
         h1,
         h1Visible: visible(h1),
         media,
@@ -350,8 +350,8 @@ function failuresFor(result) {
   if (result.bodyTextLength < 400) {
     failures.push("Rendered page text is unexpectedly short.");
   }
-  if (!result.logo || result.logo.width < 180 || result.logo.height < 30) {
-    failures.push(`Logo is missing or too small: ${JSON.stringify(result.logo)}`);
+  if (!result.brand || result.brand.width < 60 || result.brand.height < 20) {
+    failures.push(`Text brand is missing or too small: ${JSON.stringify(result.brand)}`);
   }
   if (!result.h1Visible) {
     failures.push("H1 is not visible in the first viewport.");
@@ -392,7 +392,7 @@ async function findWordPressFrame(page) {
 
 async function hasWordPressContent(frame) {
   try {
-    return await frame.evaluate(() => Boolean(document.querySelector(".wp-site-blocks, .wp-block-site-logo, .wp-block-button__link")));
+    return await frame.evaluate(() => Boolean(document.querySelector(".wp-site-blocks, .som-text-logo, .wp-block-button__link")));
   } catch {
     return false;
   }

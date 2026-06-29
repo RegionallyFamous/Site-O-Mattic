@@ -22,6 +22,7 @@ const BLUEPRINT_SCHEMA = "https://playground.wordpress.net/blueprint-schema.json
 const ROOT = process.cwd();
 const BLUEPRINT_OUTPUT_ROOT = path.join(ROOT, "public", "blueprints");
 const BUNDLE_MTIME = new Date("2026-01-01T00:00:00Z");
+const GENERATED_ASSET_KEYS = new Set(["hero", "favicon"]);
 
 const CORE_BLOCKS_USED = [
   "buttons",
@@ -44,7 +45,6 @@ const CORE_BLOCKS_USED = [
   "pullquote",
   "quote",
   "separator",
-  "site-logo",
   "spacer",
   "table"
 ];
@@ -379,6 +379,10 @@ async function copyAssets(spec, outAssets) {
   const mapped = {};
 
   for (const [key, source] of Object.entries(spec.assets)) {
+    if (!GENERATED_ASSET_KEYS.has(key)) {
+      continue;
+    }
+
     const sourcePath = path.join(ROOT, source);
     const extension = path.extname(sourcePath);
     const fileName = `${key}${extension}`;
@@ -484,13 +488,6 @@ function buildSetupPhp(spec, assets) {
       alt: heroMeta.alt || `Hero image for ${spec.businessName}.`,
       base64: assets.hero.base64
     },
-    logo: {
-      filename: assets.logo.fileName,
-      mimeType: assets.logo.mimeType,
-      title: `${spec.businessName} logo`,
-      alt: `${spec.businessName} logo`,
-      base64: assets.logo.base64
-    },
     favicon: {
       filename: assets.favicon.fileName,
       mimeType: assets.favicon.mimeType,
@@ -545,7 +542,6 @@ $site_o_mattic_assets = json_decode(${phpString(JSON.stringify(assetPayloads))},
 $site_o_mattic_layout_signature_json = ${phpString(JSON.stringify(layoutSignature))};
 $site_o_mattic_layout_signature = json_decode($site_o_mattic_layout_signature_json, true);
 $hero_id = site_o_mattic_import_asset($site_o_mattic_assets['hero']);
-$logo_id = site_o_mattic_import_asset($site_o_mattic_assets['logo']);
 $favicon_id = site_o_mattic_import_asset($site_o_mattic_assets['favicon']);
 
 $hero_url = wp_get_attachment_url($hero_id);
@@ -563,8 +559,6 @@ update_option('default_comment_status', 'closed');
 update_option('default_ping_status', 'closed');
 update_user_meta(1, 'show_admin_bar_front', 'false');
 
-set_theme_mod('custom_logo', $logo_id);
-update_option('site_logo', $logo_id);
 update_option('site_icon', $favicon_id);
 
 foreach ([['hello-world', 'post'], ['sample-page', 'page'], ['privacy-policy', 'page']] as $default_content) {
@@ -1141,7 +1135,18 @@ function buildPageContent(spec) {
     throw new Error(`Unsupported layoutVariant: ${variant}`);
   }
 
-  return applyVariantClassFingerprint(content, spec);
+  return applyTextBrandLogoBlock(applyVariantClassFingerprint(content, spec), spec);
+}
+
+function applyTextBrandLogoBlock(markup, spec) {
+  return markup.replace(/<!-- wp:site-logo(?:\s+\{[^}]*\})?\s*\/-->/g, textBrandLogoBlock(spec));
+}
+
+function textBrandLogoBlock(spec) {
+  const name = esc(spec.businessName);
+  return `<!-- wp:paragraph {"className":"som-text-logo","style":{"typography":{"fontSize":"clamp(20px, 2vw, 28px)","fontStyle":"normal","fontWeight":"760","lineHeight":"1.05"},"spacing":{"margin":{"top":"0","bottom":"0"}}}} -->
+<p class="som-text-logo" style="margin-top:0;margin-bottom:0;font-size:clamp(20px, 2vw, 28px);font-style:normal;font-weight:760;line-height:1.05">${name}</p>
+<!-- /wp:paragraph -->`;
 }
 
 function buildDessertTableGalleryPageContent(spec) {
@@ -7605,15 +7610,15 @@ Generated WordPress Studio / Playground Blueprint.
 
 ## Import
 
-Use \`public/blueprints/${spec.slug}/blueprint.json\` as the Studio-ready Blueprint file. It is self-contained and embeds the hero image, logo, and favicon in the PHP setup step.
+Use \`public/blueprints/${spec.slug}/blueprint.json\` as the Studio-ready Blueprint file. It is self-contained and embeds the hero image and favicon in the PHP setup step.
 
 The ZIP includes the same root \`blueprint.json\`, an \`asset-manifest.json\`, plus asset files for inspection and Playground/CLI distribution.
 
 ## What It Builds
 
 - Switches to \`${spec.themeSlug}\` when that default theme exists.
-- Imports the embedded hero image, logo, and favicon into the Media Library.
-- Sets the site logo and site icon.
+- Imports the embedded hero image and favicon into the Media Library.
+- Sets the site icon and uses text branding in the header.
 - Creates a one-page ${spec.niche || "service business"} homepage using core blocks only.
 - Creates a front-page block template so the default theme does not wrap the site with its stock header, title, or footer.
 - Applies the site palette and typography through WordPress global styles/settings, with a core custom CSS fallback for first-load palette classes.

@@ -4,6 +4,7 @@ import { imageInfo } from "./image-size.mjs";
 import { blueprintDirForSpec, blueprintPathForSpec, readSpec, specTargets } from "./spec-utils.mjs";
 
 const budgets = JSON.parse(await fs.readFile("config/production-guardrails.json", "utf8"));
+const GENERATED_ASSET_KEYS = new Set(["hero", "favicon"]);
 const targets = await specTargets();
 let hasFailures = false;
 
@@ -40,6 +41,10 @@ async function inspectSpec(spec) {
 
 async function checkAssetBudgets(spec, manifest, checks) {
   for (const [key, source] of Object.entries(spec.assets || {})) {
+    if (!GENERATED_ASSET_KEYS.has(key)) {
+      continue;
+    }
+
     const budget = budgets.assets[key];
     const info = await imageInfo(source);
     const extension = path.extname(source).toLowerCase();
@@ -67,7 +72,8 @@ async function checkFileBudget(filePath, maxBytes, name, checks) {
 function checkManifest(spec, manifest, checks) {
   add(checks, "asset manifest present", Boolean(manifest), "Generated asset-manifest.json exists.");
   add(checks, "asset manifest identity", manifest?.slug === spec.slug && manifest?.businessName === spec.businessName, `${manifest?.slug || "missing"} / ${manifest?.businessName || "missing"}`);
-  add(checks, "asset manifest embedded flags", ["hero", "logo", "favicon"].every((key) => manifest?.assets?.[key]?.embedded === true), "Hero, logo, and favicon are marked embedded.");
+  add(checks, "asset manifest embedded flags", ["hero", "favicon"].every((key) => manifest?.assets?.[key]?.embedded === true), "Hero and favicon are marked embedded.");
+  add(checks, "asset manifest omits unused logo", !manifest?.assets?.logo, "Generated manifest should not include logo.");
 }
 
 async function checkPromptNotes(spec, checks) {

@@ -36,7 +36,6 @@ const ALLOWED_CORE_BLOCKS = new Set([
   "pullquote",
   "quote",
   "separator",
-  "site-logo",
   "spacer",
   "table"
 ]);
@@ -90,11 +89,14 @@ if (writeFileSteps.length) {
 
 const packagedAssetsDir = path.join(bundleDir, "assets");
 if (await exists(packagedAssetsDir)) {
-  for (const asset of ["assets/hero.jpg", "assets/logo.png", "assets/favicon.png"]) {
+  for (const asset of ["assets/hero.jpg", "assets/favicon.png"]) {
     const assetPath = path.join(bundleDir, asset);
     if (!(await exists(assetPath))) {
       errors.push(`Missing packaged asset copy: ${asset}`);
     }
+  }
+  if (await exists(path.join(bundleDir, "assets", "logo.png"))) {
+    errors.push("Generated Blueprint packages should not include unused assets/logo.png.");
   }
 } else {
   warnings.push("No packaged assets directory found; validating as standalone Blueprint JSON.");
@@ -127,6 +129,15 @@ if (!phpStep) {
   const disallowed = [...new Set(blockNames.filter((name) => !ALLOWED_CORE_BLOCKS.has(name)))];
   if (disallowed.length) {
     errors.push(`Non-core or unexpected block names found: ${disallowed.join(", ")}`);
+  }
+  if (pageContent.includes("wp:site-logo")) {
+    errors.push("Generated page should use text branding, not core/site-logo.");
+  }
+  if (phpStep.code.includes("\"logo\":") || phpStep.code.includes("'logo'")) {
+    errors.push("Generated Blueprint should not embed or import an unused logo asset.");
+  }
+  if (phpStep.code.includes("custom_logo") || phpStep.code.includes("site_logo")) {
+    errors.push("Generated Blueprint should not set or clean up unused logo options.");
   }
   if (/href=(["'])#\1/.test(phpStep.code)) {
     errors.push("Empty anchor links are not allowed.");

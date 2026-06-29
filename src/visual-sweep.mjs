@@ -458,7 +458,7 @@ async function inspectScenario(browser, url, scenario, screenshot, spec) {
 
     return await frame.evaluate(async ({ expectedCtaTexts, focusWalkLimit, scenarioName, isMobileViewport, mobileMediaProofMinVisibleRatio }) => {
       const text = document.body.innerText || "";
-      const logo = rectFor(document.querySelector(".wp-block-site-logo img"));
+      const brand = rectFor(document.querySelector(".som-text-logo"));
       const h1Element = document.querySelector("h1");
       const h1 = rectFor(h1Element);
       const h1Contrast = contrastReport(h1Element);
@@ -486,7 +486,7 @@ async function inspectScenario(browser, url, scenario, screenshot, spec) {
       const firstViewportCtaIsExpected = Boolean(firstViewportCta
         && (!expectedCtas.length || expectedCtas.includes(normalizeCtaText(firstViewportCta.text))));
       const keyOverlaps = keyOverlapFailures([
-        { name: "logo", rect: logo },
+        { name: "brand", rect: brand },
         { name: "navigation", rect: navigation },
         { name: "h1", rect: h1 },
         ...ctas
@@ -518,7 +518,7 @@ async function inspectScenario(browser, url, scenario, screenshot, spec) {
         ctaTypography,
         h1Typography,
         navigationTypography,
-        logo,
+        brand,
         h1,
         h1Contrast,
         h1Visible: visible(h1),
@@ -1267,8 +1267,8 @@ function failuresFor(result) {
   if (result.bodyTextLength < 400) {
     failures.push("Rendered page text is unexpectedly short.");
   }
-  if (!result.logo || result.logo.width < 180 || result.logo.height < 30) {
-    failures.push(`Logo is missing or too small: ${JSON.stringify(result.logo)}`);
+  if (!result.brand || result.brand.width < 60 || result.brand.height < 20) {
+    failures.push(`Text brand is missing or too small: ${JSON.stringify(result.brand)}`);
   }
   if (!result.h1Visible) {
     failures.push("H1 is not visible in the first viewport.");
@@ -1349,7 +1349,7 @@ async function findWordPressFrame(page) {
 
 async function hasWordPressContent(frame) {
   try {
-    return await frame.evaluate(() => Boolean(document.querySelector(".wp-site-blocks, .wp-block-site-logo, .wp-block-button__link")));
+    return await frame.evaluate(() => Boolean(document.querySelector(".wp-site-blocks, .som-text-logo, .wp-block-button__link")));
   } catch {
     return false;
   }
@@ -1358,7 +1358,7 @@ async function hasWordPressContent(frame) {
 function summarizeScenarioShape(scenarios) {
   const desktop = scenarios.find((scenario) => scenario.name === "desktop") || scenarios[0];
   return {
-    desktopLogo: desktop?.logo,
+    desktopBrand: desktop?.brand,
     desktopH1: desktop?.h1,
     desktopCtaText: desktop?.firstViewportCtaText,
     desktopMedia: desktop?.media,
@@ -1404,7 +1404,7 @@ function buildReviewEvidence(report) {
       ctaTypography: scenario.ctaTypography,
       h1Typography: scenario.h1Typography,
       navigationTypography: scenario.navigationTypography,
-      logo: scenario.logo,
+      brand: scenario.brand,
       h1: scenario.h1,
       h1Contrast: scenario.h1Contrast,
       media: scenario.media,

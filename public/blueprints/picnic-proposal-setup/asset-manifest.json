@@ -14,16 +14,6 @@
       "height": 1080,
       "embedded": true
     },
-    "logo": {
-      "source": "assets/picnic-proposal-setup/linenlantern-logo.png",
-      "fileName": "logo.png",
-      "outputPath": "/assets/logo.png",
-      "mimeType": "image/png",
-      "byteSize": 57753,
-      "width": 1000,
-      "height": 300,
-      "embedded": true
-    },
     "favicon": {
       "source": "assets/picnic-proposal-setup/linenlantern-favicon.png",
       "fileName": "favicon.png",

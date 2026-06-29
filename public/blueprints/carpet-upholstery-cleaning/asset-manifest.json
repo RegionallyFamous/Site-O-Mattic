@@ -14,16 +14,6 @@
       "height": 1080,
       "embedded": true
     },
-    "logo": {
-      "source": "assets/carpet-upholstery/freshthread-logo.png",
-      "fileName": "logo.png",
-      "outputPath": "/assets/logo.png",
-      "mimeType": "image/png",
-      "byteSize": 62769,
-      "width": 1000,
-      "height": 300,
-      "embedded": true
-    },
     "favicon": {
       "source": "assets/carpet-upholstery/freshthread-favicon.png",
       "fileName": "favicon.png",

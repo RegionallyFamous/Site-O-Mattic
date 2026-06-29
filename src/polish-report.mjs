@@ -78,7 +78,7 @@ async function buildReport(target) {
   add(checks, "valid in-page anchors", hrefTargets.every((targetId) => ids.has(targetId)), hrefTargets.length ? `${hrefTargets.length} in-page links checked.` : "No in-page links found.");
   add(checks, "no empty links", !/href=(["'])#\1/.test(pageContent), "No empty hash links.");
   add(checks, "contrast pairs", contrastPairsPass(palette), "Primary text/background pairs meet WCAG AA contrast.");
-  add(checks, "logo rule", phpStep.code.includes(`${extractBusinessName(phpStep.code)} logo`) && !/tagline/i.test(extractLogoMetadata(phpStep.code)), "Logo metadata stays brand/name only.");
+  add(checks, "text brand rule", pageContent.includes("som-text-logo") && !pageContent.includes("wp:site-logo") && !phpStep.code.includes("\"logo\":"), "Brand renders as text and no unused logo payload ships.");
 
   info.push(`inline style attributes: ${inlineStyleCount}`);
   if (layoutSignature) {
@@ -135,16 +135,6 @@ function proofCardAlignmentSystemPass(customCss) {
     && !customCss.includes("[class*=\"-proof-card\"]")
     && customCss.includes("font-family:var(--wp--preset--font-family--display)")
     && customCss.includes("font-family:var(--wp--preset--font-family--accent)");
-}
-
-function extractBusinessName(phpCode) {
-  const match = phpCode.match(/update_option\('blogname', '([^']+)'/);
-  return match ? match[1] : "";
-}
-
-function extractLogoMetadata(phpCode) {
-  const logoMatch = phpCode.match(/"logo":\{"filename":"[^"]+","mimeType":"[^"]+","title":"([^"]+)","alt":"([^"]+)"/);
-  return logoMatch ? `${logoMatch[1]} ${logoMatch[2]}` : "";
 }
 
 function printReport(report) {

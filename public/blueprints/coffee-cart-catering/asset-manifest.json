@@ -14,16 +14,6 @@
       "height": 1080,
       "embedded": true
     },
-    "logo": {
-      "source": "assets/coffee-cart/cartwright-logo.png",
-      "fileName": "logo.png",
-      "outputPath": "/assets/logo.png",
-      "mimeType": "image/png",
-      "byteSize": 62604,
-      "width": 1000,
-      "height": 300,
-      "embedded": true
-    },
     "favicon": {
       "source": "assets/coffee-cart/cartwright-favicon.png",
       "fileName": "favicon.png",

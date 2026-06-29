@@ -1328,9 +1328,25 @@ ${buildSharedPolishCss(spec)}
   position:relative;
   z-index:1;
 }
-.wp-block-site-logo img{
-  height:auto;
-  max-width:min(230px, 62vw);
+.som-text-logo{
+  color:var(--wp--custom--som--color--ink);
+  font-family:var(--wp--preset--font-family--display);
+  font-size:clamp(20px, 2vw, 28px);
+  font-style:normal;
+  font-weight:760;
+  line-height:1.05;
+  letter-spacing:0;
+  margin:0;
+  max-inline-size:min(24ch, 64vw);
+  overflow-wrap:normal;
+  text-wrap:balance;
+}
+.has-deep-green-background-color .som-text-logo,
+.has-grass-background-color .som-text-logo,
+.has-soil-background-color .som-text-logo,
+.som-side-rail .som-text-logo,
+.som-sound-rail .som-text-logo{
+  color:var(--wp--preset--color--white);
 }
 ${variantCssBlock}@media (max-width:700px){
   .wp-site-blocks :where(.som-proof-card,.som-route-proof-card){
@@ -1919,10 +1935,6 @@ function buildVariantCustomCss(spec) {
   position:sticky;
   top:0;
   z-index:10;
-  border-bottom:1px solid color-mix(in srgb, ${spec.palette.deepGreen} 10%, transparent);
-}
-.som-route-header .wp-block-site-logo img{
-  max-width:min(245px, 62vw);
 }
 .som-route-header .wp-block-navigation a{
   border-radius:6px;
@@ -2051,9 +2063,6 @@ function buildVariantCustomCss(spec) {
   .som-route-header .wp-block-columns{
     gap:10px;
   }
-  .som-route-header .wp-block-site-logo img{
-    max-width:min(220px, 68vw);
-  }
   #routes,
   #notes,
   #proof,
@@ -2140,10 +2149,6 @@ function buildVariantCustomCss(spec) {
 .som-urgent-header{
   position:relative;
   z-index:5;
-  border-bottom:1px solid color-mix(in srgb, ${spec.palette.deepGreen} 12%, transparent);
-}
-.som-urgent-header .wp-block-site-logo img{
-  max-width:min(235px, 58vw);
 }
 .som-urgent-header .wp-block-navigation a{
   color:${spec.palette.deepGreen};
@@ -2558,19 +2563,6 @@ function buildVariantCustomCss(spec) {
   border-right:1px solid rgba(32,38,45,.12);
   box-shadow:0 18px 60px rgba(32,38,45,.08);
 }
-.som-side-rail .wp-block-site-logo{
-  box-sizing:border-box;
-  min-width:0;
-  margin-bottom:0;
-}
-.som-side-rail .wp-block-site-logo a{
-  display:block;
-}
-.som-side-rail .wp-block-site-logo img{
-  display:block;
-  height:auto;
-  max-width:min(230px, 62vw);
-}
 .som-side-rail .wp-block-navigation__container{
   align-items:flex-start;
   gap:8px;
@@ -2711,19 +2703,6 @@ function buildVariantCustomCss(spec) {
     margin:0;
     overflow:hidden;
   }
-  .som-side-rail .wp-block-site-logo{
-    flex:0 1 min(230px, calc(100% - 58px));
-    width:min(230px, calc(100% - 58px));
-    max-width:min(230px, calc(100% - 58px));
-    overflow:hidden;
-  }
-  .som-side-rail .wp-block-site-logo a,
-  .som-side-rail .wp-block-site-logo img{
-    display:block;
-    width:100%;
-    max-width:100%;
-    height:auto;
-  }
   .som-side-rail .wp-block-navigation{
     flex:0 0 44px;
     margin-left:auto;
@@ -2791,10 +2770,6 @@ function buildVariantCustomCss(spec) {
 .som-menu-header{
   position:relative;
   z-index:4;
-  border-bottom:1px solid color-mix(in srgb, ${spec.palette.deepGreen} 10%, transparent);
-}
-.som-menu-header .wp-block-site-logo img{
-  max-width:min(230px, 58vw);
 }
 .som-menu-header .wp-block-navigation a{
   border-radius:999px;
@@ -2973,12 +2948,6 @@ function buildVariantCustomCss(spec) {
 .som-fixed-page{
   position:relative;
 }
-.som-fixed-header{
-  border-bottom:1px solid color-mix(in srgb, ${spec.palette.deepGreen} 10%, transparent);
-}
-.som-fixed-header .wp-block-site-logo img{
-  max-width:min(235px, 62vw);
-}
 .som-fixed-header .wp-block-navigation a{
   border-radius:999px;
   padding:8px 12px;
@@ -3140,10 +3109,6 @@ function buildVariantCustomCss(spec) {
 .som-water-header{
   position:relative;
   z-index:4;
-  border-bottom:1px solid color-mix(in srgb, ${spec.palette.deepGreen} 10%, transparent);
-}
-.som-water-header .wp-block-site-logo img{
-  max-width:min(235px, 62vw);
 }
 .som-water-header .wp-block-navigation a{
   border-radius:999px;
@@ -3332,12 +3297,6 @@ function buildVariantCustomCss(spec) {
 
   if (variant === "zone-grid-planner") {
     return `
-.som-zone-header{
-  border-bottom:1px solid color-mix(in srgb, ${spec.palette.deepGreen} 12%, transparent);
-}
-.som-zone-header .wp-block-site-logo img{
-  max-width:min(235px, 62vw);
-}
 .som-zone-header .wp-block-navigation a{
   border-radius:6px;
   padding:8px 12px;
@@ -3485,12 +3444,6 @@ function buildVariantCustomCss(spec) {
 
   if (variant === "workshop-bench") {
     return `
-.som-workshop-header{
-  border-bottom:1px solid color-mix(in srgb, ${spec.palette.deepGreen} 12%, transparent);
-}
-.som-workshop-header .wp-block-site-logo img{
-  max-width:min(235px, 62vw);
-}
 .som-workshop-header .wp-block-navigation a{
   border-radius:6px;
   padding:8px 12px;
@@ -3698,13 +3651,9 @@ function buildVariantCustomCss(spec) {
   background:${spec.palette.cream};
 }
 .som-receipt-header{
-  border-bottom:1px solid color-mix(in srgb, ${spec.palette.deepGreen} 12%, transparent);
   position:sticky;
   top:0;
   z-index:10;
-}
-.som-receipt-header .wp-block-site-logo img{
-  max-width:min(238px, 58vw);
 }
 .som-receipt-hero-shell,
 .som-receipt-scope,
@@ -5354,22 +5303,6 @@ function buildAliasVisualCss(spec) {
   background:
     linear-gradient(180deg, ${p.deepGreen}, color-mix(in srgb, ${p.deepGreen} 88%, #000));
 }
-.som-sound-rail .wp-block-site-logo{
-  display:inline-flex;
-  align-items:center;
-  box-sizing:border-box;
-  width:230px;
-  max-width:min(230px, 64vw);
-  padding:10px 12px;
-  border-radius:8px;
-  background:${p.cream};
-  box-shadow:0 0 0 1px color-mix(in srgb, ${p.sun} 34%, transparent), 0 14px 28px rgba(0,0,0,.2);
-}
-.som-sound-rail .wp-block-site-logo img{
-  display:block;
-  width:100%;
-  height:auto;
-}
 .som-sound-hero{
   background:
     radial-gradient(circle at 70% 14%, color-mix(in srgb, ${p.leaf} 28%, transparent), transparent 28%),
@@ -5626,10 +5559,6 @@ function buildAliasVisualCss(spec) {
   position:sticky;
   top:0;
   z-index:10;
-  border-bottom:1px dashed color-mix(in srgb, ${p.deepGreen} 18%, transparent);
-}
-.som-turnover-header .wp-block-site-logo img{
-  max-width:min(238px, 58vw);
 }
 .som-turnover-hero{
   overflow:hidden;
@@ -5860,9 +5789,6 @@ function buildAliasVisualCss(spec) {
 }
 `.trim(),
     "headshot-prep-ledger": `
-.som-headshot-header{
-  border-bottom:1px solid color-mix(in srgb, ${p.deepGreen} 14%, transparent);
-}
 .som-headshot-hero-shell{
   background:
     linear-gradient(90deg, color-mix(in srgb, ${p.deepGreen} 7%, transparent) 1px, transparent 1px),

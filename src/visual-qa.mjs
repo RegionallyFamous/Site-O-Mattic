@@ -34,7 +34,7 @@ try {
 
     const result = await frame.evaluate(() => {
       const text = document.body.innerText || "";
-      const logo = document.querySelector(".wp-block-site-logo img")?.getBoundingClientRect();
+      const brand = document.querySelector(".som-text-logo")?.getBoundingClientRect();
       const ctas = [...document.querySelectorAll(".wp-block-button__link")]
         .map((element) => {
           const rect = element.getBoundingClientRect();
@@ -52,7 +52,7 @@ try {
         bodyTextLength: text.length,
         defaultWrapperLeak: /Twenty Twenty|Designed with WordPress|^Home$/m.test(text),
         firstViewportCtaVisible: ctas.some((cta) => cta.visible),
-        logo: logo ? { width: Math.round(logo.width), height: Math.round(logo.height) } : null,
+        brand: brand ? { width: Math.round(brand.width), height: Math.round(brand.height) } : null,
         overflowers
       };
     });
@@ -101,8 +101,8 @@ function failuresFor(result) {
   if (result.bodyTextLength < 400) {
     failures.push("Rendered page text is unexpectedly short.");
   }
-  if (!result.logo || result.logo.width < 180 || result.logo.height < 30) {
-    failures.push(`Logo is missing or too small: ${JSON.stringify(result.logo)}`);
+  if (!result.brand || result.brand.width < 60 || result.brand.height < 20) {
+    failures.push(`Text brand is missing or too small: ${JSON.stringify(result.brand)}`);
   }
   if (!result.firstViewportCtaVisible) {
     failures.push("No CTA button is visible in the first viewport.");
@@ -136,7 +136,7 @@ async function findWordPressFrame(page) {
 
 async function hasWordPressContent(frame) {
   try {
-    return await frame.evaluate(() => Boolean(document.querySelector(".wp-site-blocks, .wp-block-site-logo, .wp-block-button__link")));
+    return await frame.evaluate(() => Boolean(document.querySelector(".wp-site-blocks, .som-text-logo, .wp-block-button__link")));
   } catch {
     return false;
   }

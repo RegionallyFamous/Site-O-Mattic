@@ -14,16 +14,6 @@
       "height": 1080,
       "embedded": true
     },
-    "logo": {
-      "source": "assets/micro-wedding-florals/vowsprig-logo.png",
-      "fileName": "logo.png",
-      "outputPath": "/assets/logo.png",
-      "mimeType": "image/png",
-      "byteSize": 62793,
-      "width": 1000,
-      "height": 300,
-      "embedded": true
-    },
     "favicon": {
       "source": "assets/micro-wedding-florals/vowsprig-favicon.png",
       "fileName": "favicon.png",

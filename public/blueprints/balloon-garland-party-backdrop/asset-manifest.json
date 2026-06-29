@@ -14,16 +14,6 @@
       "height": 1080,
       "embedded": true
     },
-    "logo": {
-      "source": "assets/balloon-garland-party-backdrop/poparc-logo.png",
-      "fileName": "logo.png",
-      "outputPath": "/assets/logo.png",
-      "mimeType": "image/png",
-      "byteSize": 53885,
-      "width": 1000,
-      "height": 300,
-      "embedded": true
-    },
     "favicon": {
       "source": "assets/balloon-garland-party-backdrop/poparc-favicon.png",
       "fileName": "favicon.png",

@@ -70,7 +70,6 @@ export async function buildPremiumReview(spec) {
   const globalStyles = phpStep ? extractGlobalStyles(phpStep.code) : null;
   const signature = phpStep ? extractLayoutSignature(phpStep.code) : null;
   const manifest = await readJsonIfExists(path.join(blueprintDirForSpec(spec), "asset-manifest.json"));
-  const logo = await imageInfo(spec.assets.logo);
   const favicon = await imageInfo(spec.assets.favicon);
   const prompt = await fs.readFile(path.join(path.dirname(spec.assets.hero), "hero-prompt.md"), "utf8").catch(() => "");
   const fieldErrors = validateProductionPolishFields(spec);
@@ -88,11 +87,10 @@ export async function buildPremiumReview(spec) {
       /\bwp-block-button__link\b/.test(pageContent)
     ],
     logoScale: [
-      logo.width >= 900,
-      logo.height >= 180,
-      logo.width / logo.height >= 3,
-      siteLogoWidthFromMarkup(pageContent) >= 220,
-      siteLogoWidthFromMarkup(pageContent) <= 260,
+      textBrandPresentFromMarkup(pageContent, spec),
+      !pageContent.includes("wp:site-logo"),
+      !phpStep?.code.includes("\"logo\":"),
+      !manifest?.assets?.logo,
       Boolean(spec.release?.reviewChecklist?.logoReadable)
     ],
     typography: [
@@ -128,7 +126,7 @@ export async function buildPremiumReview(spec) {
     ],
     mobilePolish: [
       customCss.includes("@media (max-width:700px)"),
-      customCss.includes("max-width:min(230px, 62vw)"),
+      customCss.includes(".som-text-logo"),
       Boolean(spec.release?.reviewChecklist?.screenshotCompared),
       (spec.pattern?.knownRisks || []).length >= 2
     ],
@@ -150,7 +148,6 @@ export async function buildPremiumReview(spec) {
     ],
     assetQa: [
       manifest?.assets?.hero?.embedded === true,
-      manifest?.assets?.logo?.embedded === true,
       manifest?.assets?.favicon?.embedded === true,
       favicon.width === favicon.height,
       favicon.width >= 256
@@ -225,9 +222,17 @@ async function readJsonIfExists(filePath) {
   }
 }
 
-function siteLogoWidthFromMarkup(markup) {
-  const match = String(markup || "").match(/<!-- wp:site-logo \{"width":([0-9]+)/);
-  return match ? Number(match[1]) : NaN;
+function textBrandPresentFromMarkup(markup, spec) {
+  return String(markup || "").includes("som-text-logo")
+    && String(markup || "").includes(escapeHtml(spec.businessName));
+}
+
+function escapeHtml(value) {
+  return String(value || "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
 }
 
 function actionText(value) {

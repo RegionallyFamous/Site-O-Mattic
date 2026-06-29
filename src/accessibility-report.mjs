@@ -52,7 +52,12 @@ async function buildReport(target) {
   add(checks, "heading order", headingOrderPass(headings), headings.join(" > "));
   add(checks, "valid in-page link targets", extractHrefTargets(pageContent).every((id) => extractElementIds(pageContent).has(id)), "All #links target existing IDs.");
   add(checks, "unique element IDs", new Set(ids).size === ids.length, `${ids.length} IDs.`);
-  add(checks, "accessible media metadata", ["hero", "logo", "favicon"].every((key) => assetPayloads?.[key]?.alt), "Hero, logo, and favicon attachment alt text present.");
+  add(
+    checks,
+    "accessible media metadata",
+    ["hero", "favicon"].every((key) => assetPayloads?.[key]?.alt) && !assetPayloads?.logo && pageContent.includes("som-text-logo"),
+    "Hero and favicon attachment alt text present; brand renders as text."
+  );
   add(checks, "button link text", buttonLinks.length >= 2 && buttonLinks.every((link) => link.text.length >= 3), `${buttonLinks.length} CTA-style links.`);
   add(checks, "safe link hrefs", links.every((link) => isSafeHref(link.href)), `${links.length} links checked.`);
   add(checks, "no vague link text", links.every((link) => !/^(click here|learn more|read more)$/i.test(link.text)), "Link text names the action.");
